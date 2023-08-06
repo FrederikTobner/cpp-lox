@@ -42,4 +42,6 @@ jobs:
     - name: Generate Report
       id: generate_test_report
       shell: cmd
-      run: OpenCppCoverage.exe --sources src --export_type cobertura:cpplox.xml -- build/src/cpplox.exe
+      run: |
+        OpenCppCoverage.exe --sources src --export_type cobertura:cpplox.xml -- build/src/cpplox.exe
+        more cpplox.xml
