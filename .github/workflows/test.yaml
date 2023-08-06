@@ -1,9 +1,9 @@
 name: Tests
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -33,3 +33,6 @@ jobs:
     - name: Run tests
       working-directory: ${{github.workspace}}/build
       run: ctest -j 1 -C ${{env.BUILD_TYPE}}
+
+    - name: Generate a code coverage report
+      uses: threeal/gcovr-action@latest
