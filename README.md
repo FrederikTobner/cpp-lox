@@ -1,5 +1,9 @@
 # cpplox
 
+[![Build Interpreter](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yml)
+[![Test](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/FrederikTobner/cpp-lox/branch/main/graph/badge.svg?token=APJ1NXKOTG)](https://codecov.io/gh/FrederikTobner/cpp-lox)
+
 A C++ implementation of everybody's favorite learning language, Lox!
 
 ## Building
