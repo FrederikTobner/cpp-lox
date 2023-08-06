@@ -12,9 +12,6 @@ FetchContent_Declare(
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
-# Includes google test framework
-include(googletest)
-
 # testfiles
 set(TEST_SOURCE_FILES
 unit/chunk_test.cpp
