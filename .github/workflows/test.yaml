@@ -33,6 +33,9 @@ jobs:
     - name: Run tests
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
+    
+    - name: Generate a code coverage report
+      uses: threeal/gcovr-action@latest
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
