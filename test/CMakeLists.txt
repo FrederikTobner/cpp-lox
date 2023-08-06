@@ -21,6 +21,7 @@ unit/chunk_test.cpp
 unit/value_test.cpp
 unit/vm_test.cpp
 integration/vm_test_IT.cpp
+main.cpp
 )
 
 set(TEST_HEADER_FILES
@@ -78,8 +79,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 #Fetches google test
 FetchContent_MakeAvailable(googletest)
 
-#Links googletest libary and cellox tests
+#Links googletest and googlemock to the test executable
 target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)
 
-# Automatic discovering of tests
-gtest_discover_tests(${INTERPRETER_TESTS})
+add_test(NAME ${INTERPRETER_TESTS} COMMAND ${INTERPRETER_TESTS})
