@@ -34,7 +34,7 @@ jobs:
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
     
-    - name: Setup OpenCppCoverage and add to PATh
+    - name: Setup OpenCppCoverage and add to Path
       id: setup_opencppcoverage
       run: |
         choco install OpenCppCoverage -y
@@ -42,4 +42,4 @@ jobs:
     - name: Generate Report
       id: generate_test_report
       shell: cmd
-      run: OpenCppCoverage.exe --sources cpplox --export_type cobertura:cpplox.xml
+      run: OpenCppCoverage.exe --sources src --export_type cobertura:cpplox.xml
