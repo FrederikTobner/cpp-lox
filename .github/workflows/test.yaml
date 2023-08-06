@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests
       working-directory: ${{github.workspace}}/build
-      run: ctest --test-dir build -C ${{env.BUILD_TYPE}}
+      run: ctest -C ${{env.BUILD_TYPE}}
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
