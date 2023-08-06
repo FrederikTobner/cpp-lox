@@ -1,10 +1,12 @@
 #pragma once
 
+#include <iostream>
+
 class Value {
   public:
     enum Type {
         VAL_BOOL,
-        VAL_NIL,
+        VAL_NULL,
         VAL_NUMBER,
     };
 
@@ -13,13 +15,18 @@ class Value {
     Value(double value);
     ~Value();
 
-    Type getType() const;
-    bool isBool() const;
-    bool isNil() const;
-    bool isNumber() const;
-    bool asBool() const;
-    double asNumber() const;
-    void print() const;
+    [[nodiscard]] Type getType() const;
+    [[nodiscard]] bool is(Type type) const noexcept;
+    [[nodiscard]] bool asBool() const;
+    [[nodiscard]] double asNumber() const;
+    friend std::ostream & operator<<(std::ostream & os, const Value & dt);
+    [[nodiscard]] bool operator==(const Value & other) const;
+    [[nodiscard]] bool operator!=(const Value & other) const;
+    [[nodiscard]] Value operator-() const;
+    [[nodiscard]] Value operator+(const Value & other) const;
+    [[nodiscard]] Value operator-(const Value & other) const;
+    [[nodiscard]] Value operator*(const Value & other) const;
+    [[nodiscard]] Value operator/(const Value & other) const;
 
   private:
     Type m_type;

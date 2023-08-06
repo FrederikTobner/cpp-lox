@@ -16,6 +16,8 @@ set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 set(TEST_SOURCE_FILES
 unit/chunk_test.cpp
 unit/value_test.cpp
+unit/vm_test.cpp
+integration/vm_test_IT.cpp
 )
 
 set(TEST_HEADER_FILES
@@ -26,11 +28,13 @@ set(TEST_HEADER_FILES
 set(TEST_DEPENDENCIES_SOURCE_FILES
 ${SOURCE_PATH}/chunk.cpp
 ${SOURCE_PATH}/value.cpp
+${SOURCE_PATH}/vm.cpp
 )
 
 set(TEST_DEPENDENCIES_HEADER_FILES
 ${SOURCE_PATH}/chunk.hpp
 ${SOURCE_PATH}/value.hpp
+${SOURCE_PATH}/vm.hpp
 )
 
 add_compile_definitions(
@@ -46,7 +50,24 @@ ${TEST_DEPENDENCIES_SOURCE_FILES} ${TEST_DEPENDENCIES_HEADER_FILES}
 ${TEST_SOURCE_FILES} ${TEST_HEADER_FILES})
 
 # Includes SourcePath of the compiler for shorter includes and the config file
-target_include_directories(${INTERPRETER_TESTS} PUBLIC ${SOURCEPATH}/ ${PROJECT_BINARY_DIR}/src)
+target_include_directories(${INTERPRETER_TESTS} PUBLIC ${SOURCEPATH} ${PROJECT_BINARY_DIR}/src)
+
+if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
+  # Debug options
+  if(CLX_DEBUG_PRINT_BYTECODE)
+    add_compile_definitions(DEBUG_PRINT_CODE)
+  endif()
+  if(CLX_DEBUG_TRACE_EXECUTION)
+    add_compile_definitions(DEBUG_TRACE_EXECUTION)
+  endif()
+  if(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR)
+    add_compile_definitions(DEBUG_STRESS_GC)
+  endif()
+  if(CLX_DEBUG_LOG_GARBAGE_COLLECTOIN)
+    add_compile_definitions(DEBUG_LOG_GC)
+  endif()
+  add_compile_definitions(BUILD_TYPE_DEBUG)
+endif()
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -55,7 +76,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 #Links googletest libary and cellox tests
-target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main)
+target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)
 
 # Includes google test framework
 include(googletest)
