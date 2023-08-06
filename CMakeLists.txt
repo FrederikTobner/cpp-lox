@@ -6,6 +6,11 @@ option(CLX_DEBUG_PRINT_BYTECODE "Determines whether the chunks are dissassembled
 option(CLX_DEBUG_TRACE_EXECUTION "Determines whether the execution shall be traced" OFF)
 option(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR "Determines whether the garbage collector shall be stressed" OFF)
 option(CLX_DEBUG_LOG_GARBAGE_COLLECTION "Determines whether the garbage collection be logged" OFF)
+option(CLX_BUILD_TESTS "Determines whether the tests shall be built" OFF)
 
 add_subdirectory(src)
-add_subdirectory(test)
+
+if(CLX_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
