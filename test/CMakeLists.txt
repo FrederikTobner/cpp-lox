@@ -12,6 +12,9 @@ FetchContent_Declare(
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
+# Includes google test framework
+include(googletest)
+
 # testfiles
 set(TEST_SOURCE_FILES
 unit/chunk_test.cpp
@@ -78,7 +81,5 @@ FetchContent_MakeAvailable(googletest)
 #Links googletest libary and cellox tests
 target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)
 
-# Includes google test framework
-include(googletest)
 # Automatic discovering of tests
 gtest_discover_tests(${INTERPRETER_TESTS})
