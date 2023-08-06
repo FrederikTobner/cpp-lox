@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env:
       BUILD_TYPE: ${{matrix.buildtypes}}
     strategy:  
@@ -34,12 +34,12 @@ jobs:
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
     
-    - name: Generate a code coverage report
-      uses: threeal/gcovr-action@latest
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: true
-        verbose: true
+    - name: Setup OpenCppCoverage and add to PATh
+      id: setup_opencppcoverage
+      run: |
+        choco install OpenCppCoverage -y
+        echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+    - name: Generate Report
+      id: generate_test_report
+      shell: cmd
+      run: OpenCppCoverage.exe --sources cpplox --export_type cobertura:cpplox.xml

@@ -18,7 +18,6 @@ unit/chunk_test.cpp
 unit/value_test.cpp
 unit/vm_test.cpp
 integration/vm_test_IT.cpp
-main.cpp
 )
 
 set(TEST_HEADER_FILES
@@ -80,3 +79,7 @@ FetchContent_MakeAvailable(googletest)
 target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)
 
 add_test(NAME ${INTERPRETER_TESTS} COMMAND ${INTERPRETER_TESTS})
+
+include(GoogleTest)
+
+gtest_discover_tests(${INTERPRETER_TESTS})
