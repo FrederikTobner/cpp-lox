@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       BUILD_TYPE: ${{matrix.buildtypes}}
     strategy:  
@@ -42,5 +42,4 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true
-        files: ./coverage.xml
         verbose: true
