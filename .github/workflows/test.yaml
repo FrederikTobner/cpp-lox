@@ -43,7 +43,7 @@ jobs:
       id: generate_test_report
       shell: cmd
       run: |
-        OpenCppCoverage.exe --sources ./src --export_type cobertura:cpplox.xml -- build/src/cpplox.exe
+        OpenCppCoverage.exe --sources .\src --export_type cobertura:cpplox.xml -- build/src/cpplox.exe
         more cpplox.xml
     - name: Upload Report to Codecov
       uses: codecov/codecov-action@v3
