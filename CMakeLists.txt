@@ -11,7 +11,7 @@ option(CLX_BUILD_TESTS "Determines whether the tests shall be built" OFF)
 
 add_subdirectory(src)
 
-if(true)
+if(CLX_BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
