@@ -4,68 +4,80 @@
 // Test fixture for Value unit tests
 class ValueTest : public ::testing::Test {
   public:
-    Value v;
-    Value v2;
-    Value v3;
-    Value v4;
+    Value numVal;
+    Value boolVal;
+    Value nullVal;
     void SetUp() override {
-        v = Value(3.14);
-        v2 = Value(3.14);
-        v3 = Value(true);
-        v4 = Value();
+        numVal = Value(3.14);
+        boolVal = Value(true);
+        nullVal = Value();
     }
 };
 
 TEST_F(ValueTest, is) {
-    EXPECT_TRUE(v.is(Value::VAL_NUMBER));
-    EXPECT_FALSE(v.is(Value::VAL_NULL));
-    EXPECT_FALSE(v.is(Value::VAL_BOOL));
-    EXPECT_TRUE(v3.is(Value::VAL_BOOL));
-    EXPECT_FALSE(v3.is(Value::VAL_NULL));
-    EXPECT_FALSE(v3.is(Value::VAL_NUMBER));
-    EXPECT_TRUE(v4.is(Value::VAL_NULL));
-    EXPECT_FALSE(v4.is(Value::VAL_BOOL));
-    EXPECT_FALSE(v4.is(Value::VAL_NUMBER));
+    EXPECT_TRUE(numVal.is(Value::VAL_NUMBER));
+    EXPECT_FALSE(numVal.is(Value::VAL_NULL));
+    EXPECT_FALSE(numVal.is(Value::VAL_BOOL));
+    EXPECT_TRUE(boolVal.is(Value::VAL_BOOL));
+    EXPECT_FALSE(boolVal.is(Value::VAL_NULL));
+    EXPECT_FALSE(boolVal.is(Value::VAL_NUMBER));
+    EXPECT_TRUE(nullVal.is(Value::VAL_NULL));
+    EXPECT_FALSE(nullVal.is(Value::VAL_BOOL));
+    EXPECT_FALSE(nullVal.is(Value::VAL_NUMBER));
+}
+
+TEST_F(ValueTest, as) {
+    EXPECT_EQ(numVal.asNumber(), 3.14);
+    EXPECT_EQ(boolVal.asBool(), true);
+}
+
+TEST_F(ValueTest, getType) {
+    EXPECT_EQ(numVal.getType(), Value::VAL_NUMBER);
+    EXPECT_EQ(boolVal.getType(), Value::VAL_BOOL);
+    EXPECT_EQ(nullVal.getType(), Value::VAL_NULL);
 }
 
 TEST_F(ValueTest, EqualityOperator) {
-    EXPECT_TRUE(v == v2);
-    EXPECT_FALSE(v == v3);
+    EXPECT_TRUE(numVal == Value(3.14));
+    EXPECT_FALSE(numVal == boolVal);
 }
 
 TEST_F(ValueTest, InequalityOperator) {
-    EXPECT_FALSE(v != v2);
-    EXPECT_TRUE(v != v3);
+    EXPECT_FALSE(numVal != Value(3.14));
+    EXPECT_TRUE(numVal != boolVal);
 }
 
 TEST_F(ValueTest, ExtractionOperator) {
     testing::internal::CaptureStdout();
-    std::cout << v;
+    std::cout << numVal;
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_EQ(output, "3.14");
+    testing::internal::CaptureStdout();
+    std::cout << boolVal;
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "true");
+    testing::internal::CaptureStdout();
+    std::cout << nullVal;
+    output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "null");
 }
 
 TEST_F(ValueTest, Negate) {
-    Value v5 = -v;
-    EXPECT_EQ(Value(-3.14), v5);
+    EXPECT_EQ(Value(-3.14), -numVal);
 }
 
 TEST_F(ValueTest, Add) {
-    Value v5 = v + v2;
-    EXPECT_EQ(Value(6.28), v5);
+    EXPECT_EQ(Value(6.28), numVal + numVal);
 }
 
 TEST_F(ValueTest, Subtract) {
-    Value v5 = v - v2;
-    EXPECT_EQ(Value(0.0), v5);
+    EXPECT_EQ(Value(0.0), numVal - numVal);
 }
 
 TEST_F(ValueTest, Multiply) {
-    Value v5 = v * v2;
-    EXPECT_EQ(Value(9.8596), v5);
+    EXPECT_EQ(Value(9.8596), numVal * numVal);
 }
 
 TEST_F(ValueTest, Divide) {
-    Value v5 = v / v2;
-    EXPECT_EQ(Value(1.0), v5);
+    EXPECT_EQ(Value(1.0), numVal / numVal);
 }

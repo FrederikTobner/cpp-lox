@@ -41,7 +41,7 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
         os << (value.asBool() ? "true" : "false");
         break;
     case Value::VAL_NULL:
-        os << "nil";
+        os << "null";
         break;
     case Value::VAL_NUMBER:
         os << value.asNumber();

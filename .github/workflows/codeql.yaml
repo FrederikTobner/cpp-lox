@@ -1,0 +1,49 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "master" ]
+     
+env:
+  BUILD_TYPE: Release
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{matrix.language}}
+
+    - name: Setup Ninja
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install \
+          cmake \
+          ninja-build \
+          ${NULL+}
+
+    - name: Configuring CMake 
+      run: |
+       echo "Configuring CMake ..."
+       cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
+       echo "Building Compiler ..."
+       cmake --build ${{github.workspace}}/build
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}"
