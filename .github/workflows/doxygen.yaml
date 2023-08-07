@@ -13,10 +13,7 @@ jobs:
     - name: Install Doxygen
       run:  sudo apt-get install doxygen
     - name: Generate documentation
-      run: |
-        ls -la
-        pwd
-        doxygen
+      run: doxygen
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
       env:
