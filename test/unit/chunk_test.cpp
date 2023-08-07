@@ -34,8 +34,7 @@ TEST_F(ChunkTest, DisassembleConstant) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output,
-              "== test chunk ==\n0000  123      OP_CONSTANT               0 '1.2'\n0002    |        OP_RETURN\n");
+    EXPECT_EQ(output, "== test chunk ==\n0000  123      OP_CONSTANT               0 '1.2'\n");
 }
 
 TEST_F(ChunkTest, DisassembleReturn) {
@@ -48,7 +47,7 @@ TEST_F(ChunkTest, DisassembleReturn) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output, "== test chunk ==\n0000  123      OP_RETURN\n");
+    EXPECT_EQ(output, "== test chunk ==\n0000  123        OP_RETURN\n");
 }
 
 TEST_F(ChunkTest, DisassembleAdd) {
@@ -61,7 +60,7 @@ TEST_F(ChunkTest, DisassembleAdd) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output, "== test chunk ==\n0000  123        OP_ADD\n");
+    EXPECT_EQ(output, "== test chunk ==\n0000  123           OP_ADD\n");
 }
 
 TEST_F(ChunkTest, DisassembleSubtract) {
@@ -74,7 +73,7 @@ TEST_F(ChunkTest, DisassembleSubtract) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output, "== test chunk ==\n0000  123        OP_SUBTRACT\n");
+    EXPECT_EQ(output, "== test chunk ==\n0000  123      OP_SUBTRACT\n");
 }
 
 TEST_F(ChunkTest, DisassembleMultiply) {
@@ -87,7 +86,7 @@ TEST_F(ChunkTest, DisassembleMultiply) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output, "== test chunk ==\n0000  123        OP_MULTIPLY\n");
+    EXPECT_EQ(output, "== test chunk ==\n0000  123      OP_MULTIPLY\n");
 }
 
 TEST_F(ChunkTest, DisassembleDivide) {
