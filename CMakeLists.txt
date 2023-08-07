@@ -9,8 +9,6 @@ option(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR "Determines whether the garbage collec
 option(CLX_DEBUG_LOG_GARBAGE_COLLECTION "Determines whether the garbage collection be logged" OFF)
 option(CLX_BUILD_TESTS "Determines whether the tests shall be built" OFF)
 
-include(Docs)
-
 add_subdirectory(src)
 
 if(CLX_BUILD_TESTS)

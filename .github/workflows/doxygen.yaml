@@ -17,9 +17,8 @@ jobs:
     - name: configure
       run: |
         cmake -H. -B build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug"
-    - name: building
-      run: |
-        cmake --build build --config Debug --target docs -j4
+    - name: Generate documentation
+      run: doxygen Doxyfile
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
       env:
