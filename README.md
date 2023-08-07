@@ -2,6 +2,7 @@
 
 [![Build Interpreter](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yaml)
 [![Test](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yaml)
+[![CodeQL](https://github.com/FrederikTobner/cpp-lox/actions/workflows/codeql.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/codeql.yaml)
 [![codecov](https://codecov.io/gh/FrederikTobner/cpp-lox/branch/main/graph/badge.svg?token=APJ1NXKOTG)](https://codecov.io/gh/FrederikTobner/cpp-lox)
 
 A C++ implementation of everybody's favorite learning language, Lox!
@@ -11,10 +12,8 @@ A C++ implementation of everybody's favorite learning language, Lox!
 To build the project, you'll need to have CMake installed. Then, run the following commands:
 
 ```bash
-mkdir build
-cd build
-cmake ..
-cmake --build .
+cmake .
+cmake --build ./build
 ```
 
 ### Build Options

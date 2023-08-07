@@ -65,6 +65,10 @@ void VM::push(Value value) {
 }
 
 [[nodiscard]] Value VM::pop() {
+    if (this->m_stack_top == this->m_stack) {
+        std::cout << "Stack underflow" << std::endl;
+        exit(1);
+    }
     this->m_stack_top--;
     return *this->m_stack_top;
 }

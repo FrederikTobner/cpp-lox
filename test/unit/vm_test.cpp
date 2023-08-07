@@ -25,3 +25,18 @@ TEST_F(VMTest, PushAndPop) {
     // Assert
     EXPECT_EQ(value, result);
 }
+
+TEST_F(VMTest, StackOverflow) {
+    // Arrange
+    Value value(42.0);
+    for (int i = 0; i < 256; i++) {
+        vm.push(value);
+    }
+    // Act & Assert
+    ASSERT_DEATH(vm.push(value), "Stack overflow");
+}
+
+TEST_F(VMTest, StackUnderflow) {
+    // Act & Assert
+    ASSERT_DEATH(vm.pop(), "Stack underflow");
+}

@@ -70,14 +70,30 @@ TEST_F(ValueTest, Add) {
     EXPECT_EQ(Value(6.28), numVal + numVal);
 }
 
+TEST_F(ValueTest, AddFail) {
+    ASSERT_DEATH(numVal + boolVal, "Can not add number and boolean");
+}
+
 TEST_F(ValueTest, Subtract) {
     EXPECT_EQ(Value(0.0), numVal - numVal);
+}
+
+TEST_F(ValueTest, SubtractFail) {
+    ASSERT_DEATH(numVal - boolVal, "Can not subtract number and boolean");
 }
 
 TEST_F(ValueTest, Multiply) {
     EXPECT_EQ(Value(9.8596), numVal * numVal);
 }
 
+TEST_F(ValueTest, MultiplyFail) {
+    ASSERT_DEATH(numVal * boolVal, "Can not multiply number and boolean");
+}
+
 TEST_F(ValueTest, Divide) {
     EXPECT_EQ(Value(1.0), numVal / numVal);
+}
+
+TEST_F(ValueTest, DivideFail) {
+    ASSERT_DEATH(numVal / boolVal, "Can not divide number and boolean");
 }
