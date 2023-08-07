@@ -11,7 +11,7 @@ class VM {
   private:
     size_t m_instruction_index;
     Value m_stack[STACK_MAX];
-    Value * m_stack_top;
+    size_t m_stack_top;
 
   public:
     typedef enum {

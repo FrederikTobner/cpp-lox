@@ -6,7 +6,7 @@
 
 VM::VM() {
     this->m_instruction_index = 0;
-    this->m_stack_top = this->m_stack;
+    this->m_stack_top = 0;
 }
 
 VM::~VM() {
@@ -56,19 +56,19 @@ VM::~VM() {
 }
 
 void VM::push(Value value) {
-    if (this->m_stack_top - this->m_stack == STACK_MAX) {
-        std::cout << "Stack overflow" << std::endl;
+    if (this->m_stack_top == (size_t)STACK_MAX) {
+        std::cerr << "Stack overflow" << std::endl;
         exit(1);
     }
-    *this->m_stack_top = value;
+    this->m_stack[this->m_stack_top] = value;
     this->m_stack_top++;
 }
 
 [[nodiscard]] Value VM::pop() {
-    if (this->m_stack_top == this->m_stack) {
-        std::cout << "Stack underflow" << std::endl;
+    if (this->m_stack_top == 0) {
+        std::cerr << "Stack underflow" << std::endl;
         exit(1);
     }
     this->m_stack_top--;
-    return *this->m_stack_top;
+    return this->m_stack[this->m_stack_top];
 }

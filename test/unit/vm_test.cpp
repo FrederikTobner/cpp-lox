@@ -3,6 +3,8 @@
 #include "../../src/value.hpp"
 #include "../../src/vm.hpp"
 
+#include <iostream>
+
 #include <gtest/gtest.h>
 
 // Test fixture for VM unit tests
@@ -38,5 +40,5 @@ TEST_F(VMTest, StackOverflow) {
 
 TEST_F(VMTest, StackUnderflow) {
     // Act & Assert
-    ASSERT_DEATH(vm.pop(), "Stack underflow");
+    ASSERT_DEATH({ auto val = vm.pop(); }, "Stack underflow");
 }
