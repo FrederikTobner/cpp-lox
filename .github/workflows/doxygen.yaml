@@ -14,11 +14,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Doxygen
       run:  sudo apt-get install doxygen
-    - name: configure
-      run: |
-        cmake -H. -B build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug"
     - name: Generate documentation
-      run: doxygen Doxyfile
+      run: doxygen
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
       env:
