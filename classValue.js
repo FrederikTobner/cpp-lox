@@ -8,7 +8,6 @@ var classValue =
     [ "Value", "classValue.html#abe8b5f7eee6b178c99c13b92f7ce85d4", null ],
     [ "Value", "classValue.html#ad7a6ddd22c84ae38cb303a4917f3d654", null ],
     [ "Value", "classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f", null ],
-    [ "~Value", "classValue.html#a99207205ef9a9d2a69189b39051d31ae", null ],
     [ "asBool", "classValue.html#aa89e0884952cab63a940c6626ed9a5d6", null ],
     [ "asNumber", "classValue.html#a684d55e631b4bbbe89931b2140978fbc", null ],
     [ "getType", "classValue.html#a1a06e50a917baccb055a0a2e7f617c17", null ],

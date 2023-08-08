@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['interpret_14',['interpret',['../classVM.html#ac55777afd86e89db57affbcecfacd80d',1,'VM']]],
-  ['interpret_5fcompile_5ferror_15',['INTERPRET_COMPILE_ERROR',['../classVM.html#a2d13677ff3a805e038dc7a185854010baae99c979231ba7e46438a670d60eaa1f',1,'VM']]],
-  ['interpret_5fok_16',['INTERPRET_OK',['../classVM.html#a2d13677ff3a805e038dc7a185854010ba21efe79feb312c3a5aab7a6c3f867839',1,'VM']]],
-  ['interpret_5fruntime_5ferror_17',['INTERPRET_RUNTIME_ERROR',['../classVM.html#a2d13677ff3a805e038dc7a185854010ba972582a24d30295c98b476fc924f2a0c',1,'VM']]],
-  ['interpretresult_18',['InterpretResult',['../classVM.html#a2d13677ff3a805e038dc7a185854010b',1,'VM']]],
-  ['is_19',['is',['../classValue.html#ab9e38e219cc3805bf8443c0ac4de6759',1,'Value']]]
+  ['else_17',['ELSE',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a90d649d830ea440c8b8a56c7ef23c426',1,'Token']]],
+  ['end_5fof_5ffile_18',['END_OF_FILE',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a7ea291c26de584b23fd7f9111784f860',1,'Token']]],
+  ['equal_19',['EQUAL',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a59a84258a4cb9025b567ee5139455029',1,'Token']]],
+  ['equal_5fequal_20',['EQUAL_EQUAL',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a56bd89f44f205c00adcfe8cb62332f78',1,'Token']]]
 ];

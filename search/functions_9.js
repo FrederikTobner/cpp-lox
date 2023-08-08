@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['value_105',['Value',['../classValue.html#abe8b5f7eee6b178c99c13b92f7ce85d4',1,'Value::Value()'],['../classValue.html#ad7a6ddd22c84ae38cb303a4917f3d654',1,'Value::Value(bool value)'],['../classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f',1,'Value::Value(double value)']]],
-  ['vm_106',['VM',['../classVM.html#a19427bc666639787ab1a4f1c1da56c65',1,'VM']]]
+  ['peek_184',['peek',['../classLexer.html#a96fde2784770eee5dd1fba7d1c89196a',1,'Lexer']]],
+  ['peeknext_185',['peekNext',['../classLexer.html#a2fd3c54ab0b96a7c58b90308c473771b',1,'Lexer']]],
+  ['pop_186',['pop',['../classVM.html#a182b10dd85413185aed3c2e3db794041',1,'VM']]],
+  ['push_187',['push',['../classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b',1,'VM']]]
 ];

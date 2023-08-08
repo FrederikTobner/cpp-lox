@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('classValue.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 
+<p>A value that can be stored in a variable or on the stack.  
+ <a href="classValue.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="value_8hpp_source.html">value.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -101,59 +104,79 @@ Public Types</h2></td></tr>
 , <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a6150dd0e3b6b5e2efb2fda1e72d15557">VAL_NULL</a>
 , <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a92c4e89ee247ed0b07e8920bbba1a718">VAL_NUMBER</a>
  }</td></tr>
+<tr class="memdesc:a1d1cfd8ffb84e947f82999c682b666a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The possible types of a value.  <a href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">More...</a><br /></td></tr>
 <tr class="separator:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abe8b5f7eee6b178c99c13b92f7ce85d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#abe8b5f7eee6b178c99c13b92f7ce85d4">Value</a> ()</td></tr>
+<tr class="memdesc:abe8b5f7eee6b178c99c13b92f7ce85d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NULL.  <a href="classValue.html#abe8b5f7eee6b178c99c13b92f7ce85d4">More...</a><br /></td></tr>
 <tr class="separator:abe8b5f7eee6b178c99c13b92f7ce85d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7a6ddd22c84ae38cb303a4917f3d654"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ad7a6ddd22c84ae38cb303a4917f3d654">Value</a> (bool value)</td></tr>
+<tr class="memdesc:ad7a6ddd22c84ae38cb303a4917f3d654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_BOOL.  <a href="classValue.html#ad7a6ddd22c84ae38cb303a4917f3d654">More...</a><br /></td></tr>
 <tr class="separator:ad7a6ddd22c84ae38cb303a4917f3d654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f">Value</a> (double value)</td></tr>
+<tr class="memdesc:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NUMBER.  <a href="classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f">More...</a><br /></td></tr>
 <tr class="separator:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99207205ef9a9d2a69189b39051d31ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a99207205ef9a9d2a69189b39051d31ae">~Value</a> ()</td></tr>
-<tr class="separator:a99207205ef9a9d2a69189b39051d31ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a06e50a917baccb055a0a2e7f617c17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">getType</a> () const</td></tr>
+<tr class="memdesc:a1a06e50a917baccb055a0a2e7f617c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the value.  <a href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">More...</a><br /></td></tr>
 <tr class="separator:a1a06e50a917baccb055a0a2e7f617c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9e38e219cc3805bf8443c0ac4de6759"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ab9e38e219cc3805bf8443c0ac4de6759">is</a> (<a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> type) const noexcept</td></tr>
+<tr class="memdesc:ab9e38e219cc3805bf8443c0ac4de6759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the value is of the given type.  <a href="classValue.html#ab9e38e219cc3805bf8443c0ac4de6759">More...</a><br /></td></tr>
 <tr class="separator:ab9e38e219cc3805bf8443c0ac4de6759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89e0884952cab63a940c6626ed9a5d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aa89e0884952cab63a940c6626ed9a5d6">asBool</a> () const</td></tr>
+<tr class="memdesc:aa89e0884952cab63a940c6626ed9a5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a bool.  <a href="classValue.html#aa89e0884952cab63a940c6626ed9a5d6">More...</a><br /></td></tr>
 <tr class="separator:aa89e0884952cab63a940c6626ed9a5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a684d55e631b4bbbe89931b2140978fbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">asNumber</a> () const</td></tr>
+<tr class="memdesc:a684d55e631b4bbbe89931b2140978fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a number.  <a href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">More...</a><br /></td></tr>
 <tr class="separator:a684d55e631b4bbbe89931b2140978fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98323b147edae27c637365ebf31dfd85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a98323b147edae27c637365ebf31dfd85">operator==</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:a98323b147edae27c637365ebf31dfd85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#a98323b147edae27c637365ebf31dfd85">More...</a><br /></td></tr>
 <tr class="separator:a98323b147edae27c637365ebf31dfd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1ecbc7c7f4d956b8b5bab95734fe5aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ac1ecbc7c7f4d956b8b5bab95734fe5aa">operator!=</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:ac1ecbc7c7f4d956b8b5bab95734fe5aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#ac1ecbc7c7f4d956b8b5bab95734fe5aa">More...</a><br /></td></tr>
 <tr class="separator:ac1ecbc7c7f4d956b8b5bab95734fe5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd80def02358d038584820917dbf250"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aafd80def02358d038584820917dbf250">operator-</a> () const</td></tr>
+<tr class="memdesc:aafd80def02358d038584820917dbf250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negates the value.  <a href="classValue.html#aafd80def02358d038584820917dbf250">More...</a><br /></td></tr>
 <tr class="separator:aafd80def02358d038584820917dbf250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b687d964bd97f0891143e905d9afbd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a2b687d964bd97f0891143e905d9afbd2">operator+</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:a2b687d964bd97f0891143e905d9afbd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two values.  <a href="classValue.html#a2b687d964bd97f0891143e905d9afbd2">More...</a><br /></td></tr>
 <tr class="separator:a2b687d964bd97f0891143e905d9afbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b87702e19c3b7d6568de1158e3b40ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a9b87702e19c3b7d6568de1158e3b40ff">operator-</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:a9b87702e19c3b7d6568de1158e3b40ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts two values.  <a href="classValue.html#a9b87702e19c3b7d6568de1158e3b40ff">More...</a><br /></td></tr>
 <tr class="separator:a9b87702e19c3b7d6568de1158e3b40ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aa577da255be8d479aeed894559fc03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8aa577da255be8d479aeed894559fc03">operator*</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:a8aa577da255be8d479aeed894559fc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two values.  <a href="classValue.html#a8aa577da255be8d479aeed894559fc03">More...</a><br /></td></tr>
 <tr class="separator:a8aa577da255be8d479aeed894559fc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dacc47f3c7242ce751a3b707264c8d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a3dacc47f3c7242ce751a3b707264c8d1">operator/</a> (const <a class="el" href="classValue.html">Value</a> &amp;other) const</td></tr>
+<tr class="memdesc:a3dacc47f3c7242ce751a3b707264c8d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides two values.  <a href="classValue.html#a3dacc47f3c7242ce751a3b707264c8d1">More...</a><br /></td></tr>
 <tr class="separator:a3dacc47f3c7242ce751a3b707264c8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a052de381c96953b4e5206272c00cbfd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a052de381c96953b4e5206272c00cbfd1">m_type</a></td></tr>
+<tr class="memdesc:a052de381c96953b4e5206272c00cbfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the value.  <a href="classValue.html#a052de381c96953b4e5206272c00cbfd1">More...</a><br /></td></tr>
 <tr class="separator:a052de381c96953b4e5206272c00cbfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829dc06aeebb03e89b6e9ad4720420fa"><td class="memItemLeft" >union {</td></tr>
 <tr class="memitem:a19f5c35b0377d034b92435561d5b0b44"><td class="memItemLeft" >&#160;&#160;&#160;bool&#160;&#160;&#160;<a class="el" href="classValue.html#a19f5c35b0377d034b92435561d5b0b44">m_bool</a></td></tr>
+<tr class="memdesc:a19f5c35b0377d034b92435561d5b0b44"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying bool value.  <a href="unionValue_1_1_0d0.html#a19f5c35b0377d034b92435561d5b0b44">More...</a><br /></td></tr>
 <tr class="separator:a19f5c35b0377d034b92435561d5b0b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0603410ad21c532b613ebeed38e5295"><td class="memItemLeft" >&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="classValue.html#ad0603410ad21c532b613ebeed38e5295">m_number</a></td></tr>
+<tr class="memdesc:ad0603410ad21c532b613ebeed38e5295"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying number value.  <a href="unionValue_1_1_0d0.html#ad0603410ad21c532b613ebeed38e5295">More...</a><br /></td></tr>
 <tr class="separator:ad0603410ad21c532b613ebeed38e5295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829dc06aeebb03e89b6e9ad4720420fa"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a829dc06aeebb03e89b6e9ad4720420fa">m_underlying_value</a></td></tr>
+<tr class="memdesc:a829dc06aeebb03e89b6e9ad4720420fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying value.  <a href="classValue.html#a829dc06aeebb03e89b6e9ad4720420fa">More...</a><br /></td></tr>
 <tr class="separator:a829dc06aeebb03e89b6e9ad4720420fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a8a074347da4536b4259f654ee2892fe2"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8a074347da4536b4259f654ee2892fe2">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classValue.html">Value</a> &amp;dt)</td></tr>
+<tr class="memdesc:a8a074347da4536b4259f654ee2892fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the value to the given output stream.  <a href="classValue.html#a8a074347da4536b4259f654ee2892fe2">More...</a><br /></td></tr>
 <tr class="separator:a8a074347da4536b4259f654ee2892fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A value that can be stored in a variable or on the stack. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a1d1cfd8ffb84e947f82999c682b666a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d1cfd8ffb84e947f82999c682b666a7">&#9670;&nbsp;</a></span>Type</h2>
 
@@ -165,6 +188,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The possible types of a value. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a0f0f6f8ec1389872c13b69a7ee1cb1b0"></a>VAL_BOOL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a6150dd0e3b6b5e2efb2fda1e72d15557"></a>VAL_NULL&#160;</td><td class="fielddoc"></td></tr>
@@ -189,6 +214,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NULL. </p>
+
 </div>
 </div>
 <a id="ad7a6ddd22c84ae38cb303a4917f3d654"></a>
@@ -206,6 +233,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_BOOL. </p>
 
 </div>
 </div>
@@ -225,22 +254,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a99207205ef9a9d2a69189b39051d31ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99207205ef9a9d2a69189b39051d31ae">&#9670;&nbsp;</a></span>~Value()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">~<a class="el" href="classValue.html">Value</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NUMBER. </p>
 
 </div>
 </div>
@@ -260,6 +274,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the value as a bool. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value as a bool </dd></dl>
+
 </div>
 </div>
 <a id="a684d55e631b4bbbe89931b2140978fbc"></a>
@@ -277,6 +294,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the value as a number. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value as a number </dd></dl>
+
 </div>
 </div>
 <a id="a1a06e50a917baccb055a0a2e7f617c17"></a>
@@ -293,6 +313,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets the type of the value. </p>
+<dl class="section return"><dt>Returns</dt><dd>The type of the value </dd></dl>
 
 </div>
 </div>
@@ -320,6 +343,15 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Checks if the value is of the given type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type to check against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the value is of the given type, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="ac1ecbc7c7f4d956b8b5bab95734fe5aa"></a>
@@ -337,6 +369,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compares two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to compare against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the values are not equal, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -356,6 +397,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Multiplies two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to multiply </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The product of the two values </dd></dl>
+
 </div>
 </div>
 <a id="a2b687d964bd97f0891143e905d9afbd2"></a>
@@ -374,6 +424,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to add </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The sum of the two values </dd></dl>
+
 </div>
 </div>
 <a id="aafd80def02358d038584820917dbf250"></a>
@@ -390,6 +449,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Negates the value. </p>
+<dl class="section return"><dt>Returns</dt><dd>The negated value </dd></dl>
 
 </div>
 </div>
@@ -409,6 +471,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Subtracts two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to subtract </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The difference of the two values </dd></dl>
+
 </div>
 </div>
 <a id="a3dacc47f3c7242ce751a3b707264c8d1"></a>
@@ -427,6 +498,15 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Divides two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to divide </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The quotient of the two values </dd></dl>
+
 </div>
 </div>
 <a id="a98323b147edae27c637365ebf31dfd85"></a>
@@ -444,6 +524,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Compares two values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The value to compare against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the values are equal, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -482,6 +571,16 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Prints the value to the given output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>The output stream to print to </td></tr>
+    <tr><td class="paramname">dt</td><td>The value to print </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The output stream </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -497,6 +596,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The underlying bool value. </p>
+
 </div>
 </div>
 <a id="ad0603410ad21c532b613ebeed38e5295"></a>
@@ -510,6 +611,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The underlying number value. </p>
 
 </div>
 </div>
@@ -533,6 +636,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The type of the value. </p>
+
 </div>
 </div>
 <a id="a829dc06aeebb03e89b6e9ad4720420fa"></a>
@@ -546,6 +651,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The underlying value. </p>
 
 </div>
 </div>

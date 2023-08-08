@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['getbyte_9',['getByte',['../classChunk.html#aa2d75780d4584588b387b3e86df8b085',1,'Chunk']]],
-  ['getconstant_10',['getConstant',['../classChunk.html#a2960e18e8edc8a68159e1d09814bf8d3',1,'Chunk']]],
-  ['getline_11',['getLine',['../classChunk.html#a47e3e4174fbcde0708b3254bc59d1244',1,'Chunk']]],
-  ['getsize_12',['getSize',['../classChunk.html#a9be1e4285daa77fe397767c097fbdc66',1,'Chunk']]],
-  ['gettype_13',['getType',['../classValue.html#a1a06e50a917baccb055a0a2e7f617c17',1,'Value']]]
+  ['disassemble_14',['disassemble',['../classChunk.html#a39d7b79c16e1feb166b52122f005f7f6',1,'Chunk']]],
+  ['disassembleinstruction_15',['disassembleInstruction',['../classChunk.html#aebf72fa6da6e041ff30742261b95299a',1,'Chunk']]],
+  ['dot_16',['DOT',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a87fdcd2ffa8f71b49da9e0cfd4fb893f',1,'Token']]]
 ];
