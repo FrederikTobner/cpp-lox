@@ -17,6 +17,8 @@ set(TEST_SOURCE_FILES
 unit/chunk_test.cpp
 unit/value_test.cpp
 unit/vm_test.cpp
+unit/token_test.cpp
+integration/lexer_test_IT.cpp
 integration/vm_test_IT.cpp
 )
 
@@ -27,12 +29,16 @@ set(TEST_HEADER_FILES
 # dependencies from the interpreter needed to build the tests
 set(TEST_DEPENDENCIES_SOURCE_FILES
 ${SOURCE_PATH}/chunk.cpp
+${SOURCE_PATH}/lexer.cpp
+${SOURCE_PATH}/token.cpp
 ${SOURCE_PATH}/value.cpp
 ${SOURCE_PATH}/vm.cpp
 )
 
 set(TEST_DEPENDENCIES_HEADER_FILES
 ${SOURCE_PATH}/chunk.hpp
+${SOURCE_PATH}/lexer.hpp
+${SOURCE_PATH}/token.hpp
 ${SOURCE_PATH}/value.hpp
 ${SOURCE_PATH}/vm.hpp
 )

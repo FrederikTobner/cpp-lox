@@ -1,5 +1,6 @@
 #include "../../src/value.hpp"
-#include "gtest/gtest.h"
+
+#include <gtest/gtest.h>
 
 // Test fixture for Value unit tests
 class ValueTest : public ::testing::Test {
@@ -63,11 +64,11 @@ TEST_F(ValueTest, ExtractionOperator) {
 }
 
 TEST_F(ValueTest, Negate) {
-    EXPECT_EQ(Value(-3.14), -numVal);
+    ASSERT_EQ(Value(-3.14), -numVal);
 }
 
 TEST_F(ValueTest, Add) {
-    EXPECT_EQ(Value(6.28), numVal + numVal);
+    ASSERT_EQ(Value(6.28), numVal + numVal);
 }
 
 TEST_F(ValueTest, AddFail) {
@@ -75,7 +76,7 @@ TEST_F(ValueTest, AddFail) {
 }
 
 TEST_F(ValueTest, Subtract) {
-    EXPECT_EQ(Value(0.0), numVal - numVal);
+    ASSERT_EQ(Value(0.0), numVal - numVal);
 }
 
 TEST_F(ValueTest, SubtractFail) {
@@ -83,7 +84,7 @@ TEST_F(ValueTest, SubtractFail) {
 }
 
 TEST_F(ValueTest, Multiply) {
-    EXPECT_EQ(Value(9.8596), numVal * numVal);
+    ASSERT_EQ(Value(9.8596), numVal * numVal);
 }
 
 TEST_F(ValueTest, MultiplyFail) {
@@ -91,7 +92,7 @@ TEST_F(ValueTest, MultiplyFail) {
 }
 
 TEST_F(ValueTest, Divide) {
-    EXPECT_EQ(Value(1.0), numVal / numVal);
+    ASSERT_EQ(Value(1.0), numVal / numVal);
 }
 
 TEST_F(ValueTest, DivideFail) {

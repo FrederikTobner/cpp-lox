@@ -25,7 +25,7 @@ TEST_F(VMTest, PushAndPop) {
     Value result = vm.pop();
 
     // Assert
-    EXPECT_EQ(value, result);
+    ASSERT_EQ(value, result);
 }
 
 TEST_F(VMTest, StackOverflow) {

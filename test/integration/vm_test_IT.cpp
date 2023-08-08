@@ -110,7 +110,7 @@ TEST_F(VMTestIT, ReturnInstruction) {
     VM::InterpretResult interpretResult = vm.interpret(chunk);
 
     // Assert
-    EXPECT_EQ(VM::InterpretResult::INTERPRET_OK, interpretResult);
+    ASSERT_EQ(VM::InterpretResult::INTERPRET_OK, interpretResult);
 }
 
 TEST_F(VMTestIT, SubtractInstruction) {

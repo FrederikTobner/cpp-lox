@@ -1,7 +1,8 @@
 #include "../../src/chunk.hpp"
 #include "../../src/opcode.hpp"
 #include "../../src/value.hpp"
-#include "gtest/gtest.h"
+
+#include <gtest/gtest.h>
 
 class ChunkTest : public ::testing::Test {
   public:
