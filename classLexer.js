@@ -12,6 +12,7 @@ var classLexer =
     [ "peek", "classLexer.html#a96fde2784770eee5dd1fba7d1c89196a", null ],
     [ "peekNext", "classLexer.html#a2fd3c54ab0b96a7c58b90308c473771b", null ],
     [ "scanToken", "classLexer.html#a1d554868127074954699ec1e5fe18631", null ],
+    [ "skipWhitespace", "classLexer.html#a7c20f73f1049f4271db524a09071fed9", null ],
     [ "string", "classLexer.html#ae42fcd7a2b198c7fdded2d142ad118b9", null ],
     [ "tokenize", "classLexer.html#ac02a59acb29d41ff4a05834350188237", null ],
     [ "m_current", "classLexer.html#a400d8afbcc890873a97f5608515fa20a", null ],

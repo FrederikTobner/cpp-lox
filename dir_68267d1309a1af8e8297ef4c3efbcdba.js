@@ -4,12 +4,18 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "chunk.hpp", "chunk_8hpp.html", [
       [ "Chunk", "classChunk.html", "classChunk" ]
     ] ],
+    [ "compiletime_exception.hpp", "compiletime__exception_8hpp.html", [
+      [ "CompileTimeException", "classCompileTimeException.html", "classCompileTimeException" ]
+    ] ],
     [ "lexer.cpp", "lexer_8cpp.html", null ],
     [ "lexer.hpp", "lexer_8hpp.html", [
       [ "Lexer", "classLexer.html", "classLexer" ]
     ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "opcode.hpp", "opcode_8hpp.html", "opcode_8hpp" ],
+    [ "runtime_exception.hpp", "runtime__exception_8hpp.html", [
+      [ "RunTimeException", "classRunTimeException.html", "classRunTimeException" ]
+    ] ],
     [ "token.cpp", "token_8cpp.html", null ],
     [ "token.hpp", "token_8hpp.html", [
       [ "Token", "classToken.html", "classToken" ]
