@@ -1,18 +1,7 @@
-set(HEADER_FILES 
-chunk.hpp
-lexer.hpp
-opcode.hpp
-token.hpp
-value.hpp
-vm.hpp
-)
-set(SOURCE_FILES 
-chunk.cpp
-lexer.cpp
-main.cpp
-token.cpp
-value.cpp
-vm.cpp
-)
+# configure cellox config to show version
+configure_file(cpplox-config.hpp.in cpplox-config.hpp)
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(${PROJECT_NAME} ${INTERPRETER_SOURCES})
+
+# for including the cpplox-config.hpp file
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/src)

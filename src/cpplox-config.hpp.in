@@ -1,0 +1,7 @@
+#pragma once
+
+// the configured options and settings for Cellox
+#define PROJECT_VERSION_MAJOR (@cpplox_VERSION_MAJOR @)
+#define PROJECT_VERSION_MINOR (@cpplox_VERSION_MINOR @)
+#define PROJECT_VERSION_PATCH (@cpplox_VERSION_PATCH @)
+#define PROJECT_NAME          ("@PROJECT_NAME@")

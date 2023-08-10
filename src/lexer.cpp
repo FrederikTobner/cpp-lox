@@ -12,6 +12,7 @@ Lexer::Lexer() {
     this->m_line = 1;
     this->m_tokens.clear();
     while (!isAtEnd(source)) {
+        skipWhitespace(source);
         m_start = m_current;
         scanToken(source);
     }
@@ -73,10 +74,6 @@ void Lexer::scanToken(std::string & source) {
             addToken(Token::Type::SLASH, source);
         }
         break;
-    case ' ':
-    case '\r':
-    case '\t':
-        break;
     case '\n':
         m_line++;
         break;
@@ -92,6 +89,12 @@ void Lexer::scanToken(std::string & source) {
             std::cout << "Unexpected character: " << c << std::endl;
         }
         break;
+    }
+}
+
+void Lexer::skipWhitespace(std::string & source) {
+    while (peek(source) == ' ' || peek(source) == '\r' || peek(source) == '\t') {
+        advance(source);
     }
 }
 
@@ -172,7 +175,7 @@ void Lexer::identifier(std::string & source) {
         advance(source);
     }
     std::string text = source.substr(m_start, m_current - m_start);
-    Token::Type type = Token::Type::IDENTIFIER;
+    Token::Type type;
     if (text == "and") {
         type = Token::Type::AND;
     } else if (text == "class") {
@@ -187,7 +190,7 @@ void Lexer::identifier(std::string & source) {
         type = Token::Type::FUN;
     } else if (text == "if") {
         type = Token::Type::IF;
-    } else if (text == "nil") {
+    } else if (text == "null") {
         type = Token::Type::NULL_;
     } else if (text == "or") {
         type = Token::Type::OR;
@@ -205,6 +208,8 @@ void Lexer::identifier(std::string & source) {
         type = Token::Type::VAR;
     } else if (text == "while") {
         type = Token::Type::WHILE;
+    } else {
+        type = Token::Type::IDENTIFIER;
     }
     std::string lexeme = source.substr(m_start, m_current - m_start);
     addToken(type, lexeme);

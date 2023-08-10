@@ -12,19 +12,7 @@ FetchContent_Declare(
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
-# testfiles
-set(TEST_SOURCE_FILES
-unit/chunk_test.cpp
-unit/value_test.cpp
-unit/vm_test.cpp
-unit/token_test.cpp
-integration/lexer_test_IT.cpp
-integration/vm_test_IT.cpp
-)
-
-set(TEST_HEADER_FILES
-
-)
+file(GLOB_RECURSE TEST_SOURCES *.cpp *.hpp)
 
 # dependencies from the interpreter needed to build the tests
 set(TEST_DEPENDENCIES_SOURCE_FILES
@@ -52,8 +40,7 @@ TEST_PROGRAM_BASE_PATH="${PROJECT_SOURCE_DIR}/test/"
 
 # Builds tests
 add_executable(${INTERPRETER_TESTS} 
-${TEST_DEPENDENCIES_SOURCE_FILES} ${TEST_DEPENDENCIES_HEADER_FILES} 
-${TEST_SOURCE_FILES} ${TEST_HEADER_FILES})
+${TEST_SOURCES} ${INTERPRETER_SOURCES})
 
 # Includes SourcePath of the compiler for shorter includes and the config file
 target_include_directories(${INTERPRETER_TESTS} PUBLIC ${SOURCEPATH} ${PROJECT_BINARY_DIR}/src)

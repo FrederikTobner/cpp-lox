@@ -9,9 +9,14 @@ option(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR "Determines whether the garbage collec
 option(CLX_DEBUG_LOG_GARBAGE_COLLECTION "Determines whether the garbage collection be logged" OFF)
 option(CLX_BUILD_TESTS "Determines whether the tests shall be built" OFF)
 
+# Looks up all the files in the src directory that end with .cpp or .hpp (Recursively)
+file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp src/*.hpp)
+
 add_subdirectory(src)
 
-if(CLX_BUILD_TESTS)
+if(true)
     enable_testing()
+    # Remove main.cpp from the sources, as it is not needed for the tests
+    list(REMOVE_ITEM INTERPRETER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
     add_subdirectory(test)
 endif()

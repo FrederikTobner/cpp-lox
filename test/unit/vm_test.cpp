@@ -1,5 +1,6 @@
 #include "../../src/chunk.hpp"
 #include "../../src/opcode.hpp"
+#include "../../src/runtime_exception.hpp"
 #include "../../src/value.hpp"
 #include "../../src/vm.hpp"
 
@@ -35,10 +36,10 @@ TEST_F(VMTest, StackOverflow) {
         vm.push(value);
     }
     // Act & Assert
-    ASSERT_DEATH(vm.push(value), "Stack overflow");
+    ASSERT_THROW(vm.push(value), RunTimeException);
 }
 
 TEST_F(VMTest, StackUnderflow) {
     // Act & Assert
-    ASSERT_DEATH({ auto val = vm.pop(); }, "Stack underflow");
+    ASSERT_THROW({ auto val = vm.pop(); }, RunTimeException);
 }

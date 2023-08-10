@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "runtime_exception.hpp"
+
 Value::Value() {
     this->m_type = VAL_NULL;
 }
@@ -68,40 +70,35 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
 
 [[nodiscard]] Value Value::operator-() const {
     if (this->m_type != VAL_NUMBER) {
-        std::cerr << "Runtime error: unary negation is only defined for numbers" << std::endl;
-        exit(1);
+        throw RunTimeException("Runtime error: unary negation is only defined for numbers");
     }
     return Value(-this->m_underlying_value.m_number);
 }
 
 [[nodiscard]] Value Value::operator+(const Value & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
-        std::cerr << "Runtime error: addition is only defined for numbers" << std::endl;
-        exit(1);
+        throw RunTimeException("addition is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number + other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] Value Value::operator-(const Value & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
-        std::cerr << "Runtime error: subtraction is only defined for numbers" << std::endl;
-        exit(1);
+        throw RunTimeException("subtraction is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number - other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] Value Value::operator*(const Value & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
-        std::cerr << "Runtime error: multiplication is only defined for numbers" << std::endl;
-        exit(1);
+        throw RunTimeException("multiplication is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number * other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] Value Value::operator/(const Value & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
-        std::cerr << "Runtime error: division is only defined for numbers" << std::endl;
-        exit(1);
+        throw RunTimeException("division is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number / other.m_underlying_value.m_number);
 }

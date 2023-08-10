@@ -7,15 +7,20 @@ class Value {
   public:
     /// @brief The possible types of a value
     enum Type {
+        /// @brief A boolean value
         VAL_BOOL,
+        /// @brief A null value
         VAL_NULL,
+        /// @brief A numeric value
         VAL_NUMBER,
     };
 
     /// @brief Construct a new Value object with type VAL_NULL
     Value();
+
     /// @brief Construct a new Value object with type VAL_BOOL
     Value(bool value);
+
     /// @brief Construct a new Value object with type VAL_NUMBER
     Value(double value);
 

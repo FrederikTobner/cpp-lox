@@ -21,6 +21,7 @@ class Lexer {
     [[nodiscard]] bool isAlpha(char c) const;
     void number(std::string & source);
     void identifier(std::string & source);
+    void skipWhitespace(std::string & source);
     size_t m_start;
     size_t m_current;
     size_t m_line;

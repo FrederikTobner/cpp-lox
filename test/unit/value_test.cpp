@@ -1,3 +1,4 @@
+#include "../../src/runtime_exception.hpp"
 #include "../../src/value.hpp"
 
 #include <gtest/gtest.h>
@@ -72,7 +73,7 @@ TEST_F(ValueTest, Add) {
 }
 
 TEST_F(ValueTest, AddFail) {
-    ASSERT_DEATH(numVal + boolVal, "addition is only defined for numbers");
+    ASSERT_THROW(numVal + boolVal, RunTimeException);
 }
 
 TEST_F(ValueTest, Subtract) {
@@ -80,7 +81,7 @@ TEST_F(ValueTest, Subtract) {
 }
 
 TEST_F(ValueTest, SubtractFail) {
-    ASSERT_DEATH(numVal - boolVal, "subtraction is only defined for numbers");
+    ASSERT_THROW(numVal - boolVal, RunTimeException);
 }
 
 TEST_F(ValueTest, Multiply) {
@@ -88,7 +89,7 @@ TEST_F(ValueTest, Multiply) {
 }
 
 TEST_F(ValueTest, MultiplyFail) {
-    ASSERT_DEATH(numVal * boolVal, "multiplication is only defined for numbers");
+    ASSERT_THROW(numVal * boolVal, RunTimeException);
 }
 
 TEST_F(ValueTest, Divide) {
@@ -96,5 +97,5 @@ TEST_F(ValueTest, Divide) {
 }
 
 TEST_F(ValueTest, DivideFail) {
-    ASSERT_DEATH(numVal / boolVal, "division is only defined for numbers");
+    ASSERT_THROW(numVal / boolVal, RunTimeException);
 }

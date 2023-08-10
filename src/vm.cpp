@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "opcode.hpp"
+#include "runtime_exception.hpp"
 
 VM::VM() {
     this->m_instruction_index = 0;
@@ -57,8 +58,7 @@ VM::~VM() {
 
 void VM::push(Value value) {
     if (this->m_stack_top == (size_t)STACK_MAX) {
-        std::cerr << "Stack overflow" << std::endl;
-        exit(1);
+        throw RunTimeException("Stack overflow");
     }
     this->m_stack[this->m_stack_top] = value;
     this->m_stack_top++;
@@ -66,8 +66,7 @@ void VM::push(Value value) {
 
 [[nodiscard]] Value VM::pop() {
     if (this->m_stack_top == 0) {
-        std::cerr << "Stack underflow" << std::endl;
-        exit(1);
+        throw RunTimeException("Stack underflow");
     }
     this->m_stack_top--;
     return this->m_stack[this->m_stack_top];
