@@ -10,7 +10,6 @@ var classVM =
     [ "interpret", "classVM.html#ac55777afd86e89db57affbcecfacd80d", null ],
     [ "pop", "classVM.html#a182b10dd85413185aed3c2e3db794041", null ],
     [ "push", "classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b", null ],
-    [ "m_instruction_index", "classVM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4", null ],
     [ "m_stack", "classVM.html#a90d3c55a6af3a3d1d3b2eda89c88e398", null ],
     [ "m_stack_top", "classVM.html#ade81abe3ce1aa3855490cc6193bef78c", null ]
 ];

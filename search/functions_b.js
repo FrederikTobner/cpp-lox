@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['scantoken_201',['scanToken',['../classLexer.html#a1d554868127074954699ec1e5fe18631',1,'Lexer']]],
-  ['simpleinstruction_202',['simpleInstruction',['../classChunk.html#a8e1c3837208808cbf9e767e3e37d924c',1,'Chunk']]],
-  ['skipwhitespace_203',['skipWhitespace',['../classLexer.html#a7c20f73f1049f4271db524a09071fed9',1,'Lexer']]],
-  ['string_204',['string',['../classLexer.html#ae42fcd7a2b198c7fdded2d142ad118b9',1,'Lexer']]]
+  ['parseprecedence_260',['parsePrecedence',['../classCompiler.html#ae618a2e60f86f66247ab472a97aa21e2',1,'Compiler']]],
+  ['parserule_261',['ParseRule',['../classCompiler_1_1ParseRule.html#a54715a6eb7c36d225c75ab5abe49be77',1,'Compiler::ParseRule::ParseRule()'],['../classCompiler_1_1ParseRule.html#ab94bdac15505b2d2837594aedab59f2e',1,'Compiler::ParseRule::ParseRule(Parse_func prefix, Parse_func infix, Precedence precedence)']]],
+  ['peek_262',['peek',['../classLexer.html#a96fde2784770eee5dd1fba7d1c89196a',1,'Lexer']]],
+  ['peeknext_263',['peekNext',['../classLexer.html#a2fd3c54ab0b96a7c58b90308c473771b',1,'Lexer']]],
+  ['pop_264',['pop',['../classVM.html#a182b10dd85413185aed3c2e3db794041',1,'VM']]],
+  ['precedence_265',['precedence',['../classCompiler_1_1ParseRule.html#a828fa2b1ed13d0710c166e3a4c26c8cd',1,'Compiler::ParseRule']]],
+  ['prefix_266',['prefix',['../classCompiler_1_1ParseRule.html#a15680b3c3d1792e82597e6a52d496a65',1,'Compiler::ParseRule']]],
+  ['push_267',['push',['../classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b',1,'VM']]]
 ];

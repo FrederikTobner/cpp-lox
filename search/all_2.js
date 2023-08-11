@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['chunk_8',['Chunk',['../classChunk.html',1,'Chunk'],['../classChunk.html#a9b6d483f2d4284db0933f85aa636653b',1,'Chunk::Chunk()']]],
-  ['chunk_2ecpp_9',['chunk.cpp',['../chunk_8cpp.html',1,'']]],
-  ['chunk_2ehpp_10',['chunk.hpp',['../chunk_8hpp.html',1,'']]],
-  ['class_11',['CLASS',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a8dabc58c34c5df57f2151d6f233d6c15',1,'Token']]],
-  ['comma_12',['COMMA',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7af81277bcd86412fe04bb68718ea09392',1,'Token']]],
-  ['compiletime_5fexception_2ehpp_13',['compiletime_exception.hpp',['../compiletime__exception_8hpp.html',1,'']]],
-  ['compiletimeexception_14',['CompileTimeException',['../classCompileTimeException.html',1,'CompileTimeException'],['../classCompileTimeException.html#a58172a4c386e2b6ffa8066e32b8d37dd',1,'CompileTimeException::CompileTimeException()']]],
-  ['constantinstruction_15',['constantInstruction',['../classChunk.html#a4ef71943068d4b6fec848f8788bbe1aa',1,'Chunk']]]
+  ['call_10',['CALL',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006abd0ebc08c262bab82a1882256d2d66e8',1,'precedence.hpp']]],
+  ['chunk_11',['Chunk',['../classChunk.html',1,'Chunk'],['../classChunk.html#a9b6d483f2d4284db0933f85aa636653b',1,'Chunk::Chunk()']]],
+  ['chunk_2ecpp_12',['chunk.cpp',['../chunk_8cpp.html',1,'']]],
+  ['chunk_2ehpp_13',['chunk.hpp',['../chunk_8hpp.html',1,'']]],
+  ['class_14',['CLASS',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a8dabc58c34c5df57f2151d6f233d6c15',1,'Token']]],
+  ['comma_15',['COMMA',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7af81277bcd86412fe04bb68718ea09392',1,'Token']]],
+  ['comparison_16',['COMPARISON',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a195d45c0c030939920d8a2aad646216e',1,'precedence.hpp']]],
+  ['compile_17',['compile',['../classCompiler.html#ae6b9e92869e4191d44d8e2dfb2e69de2',1,'Compiler']]],
+  ['compiler_18',['Compiler',['../classCompiler.html#a3493831cad915284240d6d6b67251a6a',1,'Compiler::Compiler()'],['../classCompiler.html',1,'Compiler']]],
+  ['compiler_2ecpp_19',['compiler.cpp',['../compiler_8cpp.html',1,'']]],
+  ['compiler_2ehpp_20',['compiler.hpp',['../compiler_8hpp.html',1,'']]],
+  ['compiletime_5fexception_2ehpp_21',['compiletime_exception.hpp',['../compiletime__exception_8hpp.html',1,'']]],
+  ['compiletimeexception_22',['CompileTimeException',['../classCompileTimeException.html#a58172a4c386e2b6ffa8066e32b8d37dd',1,'CompileTimeException::CompileTimeException()'],['../classCompileTimeException.html',1,'CompileTimeException']]],
+  ['constantinstruction_23',['constantInstruction',['../classChunk.html#a4ef71943068d4b6fec848f8788bbe1aa',1,'Chunk']]],
+  ['consume_24',['consume',['../classCompiler.html#af7a0d19b635f2409af6e476fd479b910',1,'Compiler']]],
+  ['currentchunk_25',['currentChunk',['../classCompiler.html#a6d9436a44de3f68edbb30e289abc4c08',1,'Compiler']]]
 ];

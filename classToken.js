@@ -42,7 +42,7 @@ var classToken =
       [ "WHILE", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73", null ]
     ] ],
     [ "Token", "classToken.html#a3836d4e84d9b1a5aa95bfe71bc147537", null ],
-    [ "lexeme", "classToken.html#a5c75de0782e8970c2415ac6a3e70748e", null ],
+    [ "lexeme", "classToken.html#a4da22806b32343a95d247c8d2655ca88", null ],
     [ "line", "classToken.html#a595736ce3b1d50e22adb424de13d5021", null ],
     [ "type", "classToken.html#af1e0cad93ffab33cba8f85685369a1e9", null ],
     [ "m_lexeme", "classToken.html#afa337010f84607c7ae351df7b74be284", null ],

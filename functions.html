@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classLexer.html#a22fc113e5967eaba433b147b03c0cbf3">Lexer</a>
 </li>
 <li>advance()
-: <a class="el" href="classLexer.html#ab4c9ef9346d10daf496efba61319cda7">Lexer</a>
+: <a class="el" href="classCompiler.html#ae7a381064e8f3244715c1dbb51849dd6">Compiler</a>
+, <a class="el" href="classLexer.html#ab4c9ef9346d10daf496efba61319cda7">Lexer</a>
 </li>
 <li>AND
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a865555c9f2e0458a7078486aa1b3254f">Token</a>
@@ -113,6 +114,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>BANG_EQUAL
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a783d53dd60297984dc8336d5f80cb275">Token</a>
 </li>
+<li>binary()
+: <a class="el" href="classCompiler.html#a10651725874f492ef152a1c9ac16ec2b">Compiler</a>
+</li>
 </ul>
 
 
@@ -126,11 +130,23 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>COMMA
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7af81277bcd86412fe04bb68718ea09392">Token</a>
 </li>
+<li>compile()
+: <a class="el" href="classCompiler.html#ae6b9e92869e4191d44d8e2dfb2e69de2">Compiler</a>
+</li>
+<li>Compiler()
+: <a class="el" href="classCompiler.html#a3493831cad915284240d6d6b67251a6a">Compiler</a>
+</li>
 <li>CompileTimeException()
 : <a class="el" href="classCompileTimeException.html#a58172a4c386e2b6ffa8066e32b8d37dd">CompileTimeException</a>
 </li>
 <li>constantInstruction()
 : <a class="el" href="classChunk.html#a4ef71943068d4b6fec848f8788bbe1aa">Chunk</a>
+</li>
+<li>consume()
+: <a class="el" href="classCompiler.html#af7a0d19b635f2409af6e476fd479b910">Compiler</a>
+</li>
+<li>currentChunk()
+: <a class="el" href="classCompiler.html#a6d9436a44de3f68edbb30e289abc4c08">Compiler</a>
 </li>
 </ul>
 
@@ -152,14 +168,35 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>ELSE
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a90d649d830ea440c8b8a56c7ef23c426">Token</a>
 </li>
+<li>emitByte()
+: <a class="el" href="classCompiler.html#a6fca35b09aa2577bcacf7cfe7331a200">Compiler</a>
+</li>
+<li>emitBytes()
+: <a class="el" href="classCompiler.html#a06b912c2be4c82b3b558437ab196faf2">Compiler</a>
+</li>
+<li>emitConstant()
+: <a class="el" href="classCompiler.html#abfd4c95d38acbf278e0a8f4073c84f95">Compiler</a>
+</li>
 <li>END_OF_FILE
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a7ea291c26de584b23fd7f9111784f860">Token</a>
+</li>
+<li>endCompilation()
+: <a class="el" href="classCompiler.html#ac54615fc50618394f8dc31c9f70e7331">Compiler</a>
 </li>
 <li>EQUAL
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a59a84258a4cb9025b567ee5139455029">Token</a>
 </li>
 <li>EQUAL_EQUAL
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a56bd89f44f205c00adcfe8cb62332f78">Token</a>
+</li>
+<li>error()
+: <a class="el" href="classCompiler.html#aa35e8ed4e03646e6b2f0702612610d98">Compiler</a>
+</li>
+<li>errorAtCurrent()
+: <a class="el" href="classCompiler.html#a5dfbb278277ece81add4f3bfbb00d3ad">Compiler</a>
+</li>
+<li>expression()
+: <a class="el" href="classCompiler.html#a8e902413e3647524c944bfebef3f353d">Compiler</a>
 </li>
 </ul>
 
@@ -187,6 +224,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getLine()
 : <a class="el" href="classChunk.html#a47e3e4174fbcde0708b3254bc59d1244">Chunk</a>
 </li>
+<li>getRule()
+: <a class="el" href="classCompiler.html#addaa642339d6469a444aa3622b1aa96e">Compiler</a>
+</li>
 <li>getSize()
 : <a class="el" href="classChunk.html#a9be1e4285daa77fe397767c097fbdc66">Chunk</a>
 </li>
@@ -198,6 +238,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>GREATER_EQUAL
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a4495f63771aa2060042a31363e16d4f9">Token</a>
+</li>
+<li>grouping()
+: <a class="el" href="classCompiler.html#a40499e027e6813ad024e7d11b8001588">Compiler</a>
 </li>
 </ul>
 
@@ -211,6 +254,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>IF
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a252802eda493fb6b4a279c4452acb547">Token</a>
+</li>
+<li>infix()
+: <a class="el" href="classCompiler_1_1ParseRule.html#a44c7af94bc2c12a271b763880397a0bd">Compiler::ParseRule</a>
 </li>
 <li>interpret()
 : <a class="el" href="classVM.html#ac55777afd86e89db57affbcecfacd80d">VM</a>
@@ -256,7 +302,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7ac7fcbbb467ef6d40ec686d894e26accd">Token</a>
 </li>
 <li>lexeme()
-: <a class="el" href="classToken.html#a5c75de0782e8970c2415ac6a3e70748e">Token</a>
+: <a class="el" href="classToken.html#a4da22806b32343a95d247c8d2655ca88">Token</a>
 </li>
 <li>Lexer()
 : <a class="el" href="classLexer.html#aaf30014452cefcea8594d264459a72fa">Lexer</a>
@@ -271,6 +317,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_bool
 : <a class="el" href="classValue.html#a19f5c35b0377d034b92435561d5b0b44">Value</a>
 </li>
+<li>m_chunk
+: <a class="el" href="classCompiler.html#a59520de9e91d99682fb72789fe81718f">Compiler</a>
+</li>
 <li>m_code
 : <a class="el" href="classChunk.html#ab289222042edf9fb2b6f44a34b187e37">Chunk</a>
 </li>
@@ -278,10 +327,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classChunk.html#aaca9f8f2a485fe1b4eefd6624f0df438">Chunk</a>
 </li>
 <li>m_current
-: <a class="el" href="classLexer.html#a400d8afbcc890873a97f5608515fa20a">Lexer</a>
+: <a class="el" href="classCompiler.html#a1cdf1ceec7bdb808a206622e83753dd7">Compiler</a>
+, <a class="el" href="classLexer.html#a400d8afbcc890873a97f5608515fa20a">Lexer</a>
 </li>
-<li>m_instruction_index
-: <a class="el" href="classVM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">VM</a>
+<li>m_currentTokenIndex
+: <a class="el" href="classCompiler.html#ab36625d400fdb9914c13582ac9f9b177">Compiler</a>
+</li>
+<li>m_infix
+: <a class="el" href="classCompiler_1_1ParseRule.html#ad1e43b2175ec3c4c64e3741117f8782f">Compiler::ParseRule</a>
 </li>
 <li>m_lexeme
 : <a class="el" href="classToken.html#afa337010f84607c7ae351df7b74be284">Token</a>
@@ -299,6 +352,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>m_number
 : <a class="el" href="classValue.html#ad0603410ad21c532b613ebeed38e5295">Value</a>
+</li>
+<li>m_precedence
+: <a class="el" href="classCompiler_1_1ParseRule.html#a53b92ac1bf845d7a5089ee01d72a1d59">Compiler::ParseRule</a>
+</li>
+<li>m_prefix
+: <a class="el" href="classCompiler_1_1ParseRule.html#af825d04d2e26d41067fb3948f0062cab">Compiler::ParseRule</a>
+</li>
+<li>m_previous
+: <a class="el" href="classCompiler.html#a42b6a736f73e527aa3c8dba23d65fe7c">Compiler</a>
+</li>
+<li>m_rules
+: <a class="el" href="classCompiler.html#a6a00a0e758fbe7c063ddd5252b145a95">Compiler</a>
 </li>
 <li>m_stack
 : <a class="el" href="classVM.html#a90d3c55a6af3a3d1d3b2eda89c88e398">VM</a>
@@ -319,6 +384,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_underlying_value
 : <a class="el" href="classValue.html#a829dc06aeebb03e89b6e9ad4720420fa">Value</a>
 </li>
+<li>makeConstant()
+: <a class="el" href="classCompiler.html#a09eb8063449783add2285960153dacd5">Compiler</a>
+</li>
 <li>match()
 : <a class="el" href="classLexer.html#aed6129590bf70a34de12baab5730107e">Lexer</a>
 </li>
@@ -333,7 +401,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a76f4c395d6532d906407afb2ac511e54">Token</a>
 </li>
 <li>number()
-: <a class="el" href="classLexer.html#ad3cbc0218e150c59212d953545df3896">Lexer</a>
+: <a class="el" href="classCompiler.html#a693ac695c942a661c8c9cbfbde38a505">Compiler</a>
+, <a class="el" href="classLexer.html#ad3cbc0218e150c59212d953545df3896">Lexer</a>
 </li>
 <li>NUMBER
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a12a90dfe20486bbe3e075afcd19ef2d0">Token</a>
@@ -370,6 +439,15 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>Parse_func
+: <a class="el" href="classCompiler.html#a97fd7a8e826e0ac0ef6dd6bd2bbc011d">Compiler</a>
+</li>
+<li>parsePrecedence()
+: <a class="el" href="classCompiler.html#ae618a2e60f86f66247ab472a97aa21e2">Compiler</a>
+</li>
+<li>ParseRule()
+: <a class="el" href="classCompiler_1_1ParseRule.html#a54715a6eb7c36d225c75ab5abe49be77">Compiler::ParseRule</a>
+</li>
 <li>peek()
 : <a class="el" href="classLexer.html#a96fde2784770eee5dd1fba7d1c89196a">Lexer</a>
 </li>
@@ -381,6 +459,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>pop()
 : <a class="el" href="classVM.html#a182b10dd85413185aed3c2e3db794041">VM</a>
+</li>
+<li>precedence()
+: <a class="el" href="classCompiler_1_1ParseRule.html#a828fa2b1ed13d0710c166e3a4c26c8cd">Compiler::ParseRule</a>
+</li>
+<li>prefix()
+: <a class="el" href="classCompiler_1_1ParseRule.html#a15680b3c3d1792e82597e6a52d496a65">Compiler::ParseRule</a>
 </li>
 <li>PRINT
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7ab107229d44d042caa8ab8df4c8acaa1f">Token</a>
@@ -461,6 +545,13 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </ul>
 
 
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>unary()
+: <a class="el" href="classCompiler.html#a3c7e09cbb9e3c1caf5b3db40871461cd">Compiler</a>
+</li>
+</ul>
+
+
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>VAL_BOOL
 : <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a0f0f6f8ec1389872c13b69a7ee1cb1b0">Value</a>
@@ -500,6 +591,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
 <li>~Chunk()
 : <a class="el" href="classChunk.html#a5aab0c1f2cbca353b840193d9d54cdd7">Chunk</a>
+</li>
+<li>~Compiler()
+: <a class="el" href="classCompiler.html#acf166c9448a67e8c58923e93d4798aaf">Compiler</a>
+</li>
+<li>~ParseRule()
+: <a class="el" href="classCompiler_1_1ParseRule.html#a7ec65d701fdba26cd6fbf1c9fc3d960f">Compiler::ParseRule</a>
 </li>
 <li>~VM()
 : <a class="el" href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">VM</a>

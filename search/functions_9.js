@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['peek_196',['peek',['../classLexer.html#a96fde2784770eee5dd1fba7d1c89196a',1,'Lexer']]],
-  ['peeknext_197',['peekNext',['../classLexer.html#a2fd3c54ab0b96a7c58b90308c473771b',1,'Lexer']]],
-  ['pop_198',['pop',['../classVM.html#a182b10dd85413185aed3c2e3db794041',1,'VM']]],
-  ['push_199',['push',['../classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b',1,'VM']]]
+  ['number_252',['number',['../classCompiler.html#a693ac695c942a661c8c9cbfbde38a505',1,'Compiler::number()'],['../classLexer.html#ad3cbc0218e150c59212d953545df3896',1,'Lexer::number()']]]
 ];

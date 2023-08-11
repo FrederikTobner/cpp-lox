@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7echunk_138',['~Chunk',['../classChunk.html#a5aab0c1f2cbca353b840193d9d54cdd7',1,'Chunk']]],
-  ['_7evm_139',['~VM',['../classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f',1,'VM']]]
+  ['what_176',['what',['../classCompileTimeException.html#ad62489809e3df568e973597b928d6d9b',1,'CompileTimeException::what()'],['../classRunTimeException.html#ad62489809e3df568e973597b928d6d9b',1,'RunTimeException::what()']]],
+  ['while_177',['WHILE',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73',1,'Token']]],
+  ['write_178',['write',['../classChunk.html#ad9a74f369e90dbfaf1ad3625e00bbf08',1,'Chunk']]]
 ];

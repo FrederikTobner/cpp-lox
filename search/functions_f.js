@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7echunk_212',['~Chunk',['../classChunk.html#a5aab0c1f2cbca353b840193d9d54cdd7',1,'Chunk']]],
-  ['_7evm_213',['~VM',['../classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f',1,'VM']]]
+  ['unary_276',['unary',['../classCompiler.html#a3c7e09cbb9e3c1caf5b3db40871461cd',1,'Compiler']]]
 ];
