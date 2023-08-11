@@ -12,7 +12,7 @@ Token::Token(Type type, std::string lexeme, size_t line) {
     return this->m_type;
 }
 
-[[nodiscard]] std::string Token::lexeme() const {
+[[nodiscard]] const std::string & Token::lexeme() const {
     return this->m_lexeme;
 }
 

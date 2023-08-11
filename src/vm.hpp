@@ -22,7 +22,6 @@ class VM {
     [[nodiscard]] Value pop();
 
   private:
-    size_t m_instruction_index;
     Value m_stack[STACK_MAX];
     size_t m_stack_top;
 };

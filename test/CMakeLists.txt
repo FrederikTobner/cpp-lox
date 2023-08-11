@@ -14,23 +14,6 @@ set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.hpp)
 
-# dependencies from the interpreter needed to build the tests
-set(TEST_DEPENDENCIES_SOURCE_FILES
-${SOURCE_PATH}/chunk.cpp
-${SOURCE_PATH}/lexer.cpp
-${SOURCE_PATH}/token.cpp
-${SOURCE_PATH}/value.cpp
-${SOURCE_PATH}/vm.cpp
-)
-
-set(TEST_DEPENDENCIES_HEADER_FILES
-${SOURCE_PATH}/chunk.hpp
-${SOURCE_PATH}/lexer.hpp
-${SOURCE_PATH}/token.hpp
-${SOURCE_PATH}/value.hpp
-${SOURCE_PATH}/vm.hpp
-)
-
 add_compile_definitions(
 # Flag that indicates that test are executed
 CELLOX_TESTS_RUNNING

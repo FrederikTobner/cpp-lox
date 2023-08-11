@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 class Token {
@@ -95,7 +97,7 @@ class Token {
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
-    [[nodiscard]] std::string lexeme() const;
+    [[nodiscard]] const std::string & lexeme() const;
 
     /// @brief Get the line number where the token was found
     /// @return The line number where the token was found

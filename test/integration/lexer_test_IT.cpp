@@ -5,7 +5,7 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for Lexer unit tests
+// Test fixture for Lexer integration tests
 class LexerTestIT : public ::testing::Test {
   public:
     Lexer lexer;
@@ -17,9 +17,11 @@ class LexerTestIT : public ::testing::Test {
 TEST_F(LexerTestIT, ScanNumber) {
     // Arrange
     std::string source = "3.14";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::NUMBER);
     EXPECT_EQ(token.lexeme(), "3.14");
@@ -29,9 +31,11 @@ TEST_F(LexerTestIT, ScanNumber) {
 TEST_F(LexerTestIT, ScanString) {
     // Arrange
     std::string source = "\"Hello, World!\"";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::STRING);
     EXPECT_EQ(token.lexeme(), "Hello, World!");
@@ -41,9 +45,11 @@ TEST_F(LexerTestIT, ScanString) {
 TEST_F(LexerTestIT, ScanIdentifier) {
     // Arrange
     std::string source = "foo";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::IDENTIFIER);
     EXPECT_EQ(token.lexeme(), "foo");
@@ -53,9 +59,11 @@ TEST_F(LexerTestIT, ScanIdentifier) {
 TEST_F(LexerTestIT, ScanAndKeyword) {
     // Arrange
     std::string source = "and";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::AND);
     EXPECT_EQ(token.lexeme(), "and");
@@ -65,9 +73,11 @@ TEST_F(LexerTestIT, ScanAndKeyword) {
 TEST_F(LexerTestIT, ScanClassKeyword) {
     // Arrange
     std::string source = "class";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::CLASS);
     EXPECT_EQ(token.lexeme(), "class");
@@ -77,9 +87,11 @@ TEST_F(LexerTestIT, ScanClassKeyword) {
 TEST_F(LexerTestIT, ScanElseKeyword) {
     // Arrange
     std::string source = "else";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::ELSE);
     EXPECT_EQ(token.lexeme(), "else");
@@ -89,9 +101,11 @@ TEST_F(LexerTestIT, ScanElseKeyword) {
 TEST_F(LexerTestIT, ScanForKeyword) {
     // Arrange
     std::string source = "for";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::FOR);
     EXPECT_EQ(token.lexeme(), "for");
@@ -101,9 +115,11 @@ TEST_F(LexerTestIT, ScanForKeyword) {
 TEST_F(LexerTestIT, ScanFunKeyword) {
     // Arrange
     std::string source = "fun";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::FUN);
     EXPECT_EQ(token.lexeme(), "fun");
@@ -113,9 +129,11 @@ TEST_F(LexerTestIT, ScanFunKeyword) {
 TEST_F(LexerTestIT, ScanIfKeyword) {
     // Arrange
     std::string source = "if";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::Type::IF);
     EXPECT_EQ(token.lexeme(), "if");
@@ -125,9 +143,11 @@ TEST_F(LexerTestIT, ScanIfKeyword) {
 TEST_F(LexerTestIT, ScanNullKeyword) {
     // Arrange
     std::string source = "null";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::NULL_);
     EXPECT_EQ(token.lexeme(), "null");
@@ -137,9 +157,11 @@ TEST_F(LexerTestIT, ScanNullKeyword) {
 TEST_F(LexerTestIT, ScanOrKeyword) {
     // Arrange
     std::string source = "or";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::OR);
     EXPECT_EQ(token.lexeme(), "or");
@@ -149,9 +171,11 @@ TEST_F(LexerTestIT, ScanOrKeyword) {
 TEST_F(LexerTestIT, ScanPrintKeyword) {
     // Arrange
     std::string source = "print";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::PRINT);
     EXPECT_EQ(token.lexeme(), "print");
@@ -161,9 +185,11 @@ TEST_F(LexerTestIT, ScanPrintKeyword) {
 TEST_F(LexerTestIT, ScanReturnKeyword) {
     // Arrange
     std::string source = "return";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.type(), Token::RETURN);
     EXPECT_EQ(token.lexeme(), "return");
@@ -173,9 +199,11 @@ TEST_F(LexerTestIT, ScanReturnKeyword) {
 TEST_F(LexerTestIT, ScanSuperKeyword) {
     // Arrange
     std::string source = "super";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(token.lexeme(), "super");
     EXPECT_EQ(token.type(), Token::SUPER);
@@ -185,9 +213,11 @@ TEST_F(LexerTestIT, ScanSuperKeyword) {
 TEST_F(LexerTestIT, ScanThisKeyword) {
     // Arrange
     std::string source = "this";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("this", token.lexeme());
     EXPECT_EQ(Token::Type::THIS, token.type());
@@ -197,9 +227,11 @@ TEST_F(LexerTestIT, ScanThisKeyword) {
 TEST_F(LexerTestIT, ScanTrueKeyword) {
     // Arrange
     std::string source = "true";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("true", token.lexeme());
     EXPECT_EQ(Token::Type::TRUE, token.type());
@@ -209,9 +241,11 @@ TEST_F(LexerTestIT, ScanTrueKeyword) {
 TEST_F(LexerTestIT, ScanVarKeyword) {
     // Arrange
     std::string source = "var";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("var", token.lexeme());
     EXPECT_EQ(Token::Type::VAR, token.type());
@@ -221,9 +255,11 @@ TEST_F(LexerTestIT, ScanVarKeyword) {
 TEST_F(LexerTestIT, ScanWhileKeyword) {
     // Arrange
     std::string source = "while";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("while", token.lexeme());
     EXPECT_EQ(Token::Type::WHILE, token.type());
@@ -233,9 +269,11 @@ TEST_F(LexerTestIT, ScanWhileKeyword) {
 TEST_F(LexerTestIT, ScanLeftParen) {
     // Arrange
     std::string source = "(";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("(", token.lexeme());
     EXPECT_EQ(Token::Type::LEFT_PARENTHESES, token.type());
@@ -245,9 +283,11 @@ TEST_F(LexerTestIT, ScanLeftParen) {
 TEST_F(LexerTestIT, ScanRightParen) {
     // Arrange
     std::string source = ")";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(")", token.lexeme());
     EXPECT_EQ(Token::Type::RIGHT_PARENTHESES, token.type());
@@ -257,9 +297,11 @@ TEST_F(LexerTestIT, ScanRightParen) {
 TEST_F(LexerTestIT, ScanLeftBrace) {
     // Arrange
     std::string source = "{";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("{", token.lexeme());
     EXPECT_EQ(Token::Type::LEFT_BRACE, token.type());
@@ -269,9 +311,11 @@ TEST_F(LexerTestIT, ScanLeftBrace) {
 TEST_F(LexerTestIT, ScanRightBrace) {
     // Arrange
     std::string source = "}";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("}", token.lexeme());
     EXPECT_EQ(Token::Type::RIGHT_BRACE, token.type());
@@ -281,9 +325,11 @@ TEST_F(LexerTestIT, ScanRightBrace) {
 TEST_F(LexerTestIT, ScanComma) {
     // Arrange
     std::string source = ",";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(",", token.lexeme());
     EXPECT_EQ(Token::Type::COMMA, token.type());
@@ -293,9 +339,11 @@ TEST_F(LexerTestIT, ScanComma) {
 TEST_F(LexerTestIT, ScanDot) {
     // Arrange
     std::string source = ".";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(".", token.lexeme());
     EXPECT_EQ(Token::Type::DOT, token.type());
@@ -305,9 +353,11 @@ TEST_F(LexerTestIT, ScanDot) {
 TEST_F(LexerTestIT, ScanMinus) {
     // Arrange
     std::string source = "-";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("-", token.lexeme());
     EXPECT_EQ(Token::Type::MINUS, token.type());
@@ -317,9 +367,11 @@ TEST_F(LexerTestIT, ScanMinus) {
 TEST_F(LexerTestIT, ScanPlus) {
     // Arrange
     std::string source = "+";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("+", token.lexeme());
     EXPECT_EQ(Token::Type::PLUS, token.type());
@@ -329,9 +381,11 @@ TEST_F(LexerTestIT, ScanPlus) {
 TEST_F(LexerTestIT, ScanSlash) {
     // Arrange
     std::string source = "/";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("/", token.lexeme());
     EXPECT_EQ(Token::Type::SLASH, token.type());
@@ -341,9 +395,11 @@ TEST_F(LexerTestIT, ScanSlash) {
 TEST_F(LexerTestIT, ScanStar) {
     // Arrange
     std::string source = "*";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("*", token.lexeme());
     EXPECT_EQ(Token::Type::STAR, token.type());
@@ -353,9 +409,11 @@ TEST_F(LexerTestIT, ScanStar) {
 TEST_F(LexerTestIT, ScanSemicolon) {
     // Arrange
     std::string source = ";";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(";", token.lexeme());
     EXPECT_EQ(Token::Type::SEMICOLON, token.type());
@@ -365,9 +423,11 @@ TEST_F(LexerTestIT, ScanSemicolon) {
 TEST_F(LexerTestIT, ScanBang) {
     // Arrange
     std::string source = "!";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("!", token.lexeme());
     EXPECT_EQ(Token::Type::BANG, token.type());
@@ -377,9 +437,11 @@ TEST_F(LexerTestIT, ScanBang) {
 TEST_F(LexerTestIT, ScanBangEqual) {
     // Arrange
     std::string source = "!=";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("!=", token.lexeme());
     EXPECT_EQ(Token::Type::BANG_EQUAL, token.type());
@@ -389,9 +451,11 @@ TEST_F(LexerTestIT, ScanBangEqual) {
 TEST_F(LexerTestIT, ScanEqual) {
     // Arrange
     std::string source = "=";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("=", token.lexeme());
     EXPECT_EQ(Token::Type::EQUAL, token.type());
@@ -401,9 +465,11 @@ TEST_F(LexerTestIT, ScanEqual) {
 TEST_F(LexerTestIT, ScanEqualEqual) {
     // Arrange
     std::string source = "==";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("==", token.lexeme());
     EXPECT_EQ(Token::Type::EQUAL_EQUAL, token.type());
@@ -413,9 +479,11 @@ TEST_F(LexerTestIT, ScanEqualEqual) {
 TEST_F(LexerTestIT, ScanGreater) {
     // Arrange
     std::string source = ">";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(">", token.lexeme());
     EXPECT_EQ(Token::Type::GREATER, token.type());
@@ -425,9 +493,11 @@ TEST_F(LexerTestIT, ScanGreater) {
 TEST_F(LexerTestIT, ScanGreaterEqual) {
     // Arrange
     std::string source = ">=";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(">=", token.lexeme());
     EXPECT_EQ(Token::Type::GREATER_EQUAL, token.type());
@@ -437,9 +507,11 @@ TEST_F(LexerTestIT, ScanGreaterEqual) {
 TEST_F(LexerTestIT, ScanLess) {
     // Arrange
     std::string source = "<";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("<", token.lexeme());
     EXPECT_EQ(Token::Type::LESS, token.type());
@@ -449,9 +521,11 @@ TEST_F(LexerTestIT, ScanLess) {
 TEST_F(LexerTestIT, ScanLessEqual) {
     // Arrange
     std::string source = "<=";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ("<=", token.lexeme());
     EXPECT_EQ(Token::Type::LESS_EQUAL, token.type());
@@ -461,9 +535,11 @@ TEST_F(LexerTestIT, ScanLessEqual) {
 TEST_F(LexerTestIT, CanHandleComment) {
     // Arrange
     std::string source = "// This is a comment";
+
     // Act
     std::vector<Token> tokens = lexer.tokenize(source);
     Token token = tokens[0];
+
     // Assert
     EXPECT_EQ(Token::Type::END_OF_FILE, token.type());
 }

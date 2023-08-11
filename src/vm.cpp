@@ -6,14 +6,14 @@
 #include "runtime_exception.hpp"
 
 VM::VM() {
-    this->m_instruction_index = 0;
-    this->m_stack_top = 0;
+    m_stack_top = 0;
 }
 
 VM::~VM() {
 }
 
 [[nodiscard]] VM::InterpretResult VM::interpret(Chunk & chunk) {
+    size_t instruction_index = 0;
     for (;;) {
 #ifdef DEBUG_TRACE_EXECUTION
         for (Value * slot = this->m_stack; slot < this->m_stack_top; slot++) {
@@ -22,17 +22,17 @@ VM::~VM() {
             std::cout << "]";
         }
         std::cout << std::endl;
-        chunk_disassemble_instruction(chunk, this->m_instruction_index);
+        chunk_disassemble_instruction(chunk, instruction_index);
 #endif
 
-        uint8_t instruction = chunk.getByte(this->m_instruction_index++);
+        uint8_t instruction = chunk.getByte(instruction_index++);
         switch (instruction) {
         case OP_ADD:
             this->push(this->pop() + this->pop());
             break;
         case OP_CONSTANT:
             {
-                uint8_t constant = chunk.getByte(this->m_instruction_index++);
+                uint8_t constant = chunk.getByte(instruction_index++);
                 this->push(chunk.getConstant(constant));
                 break;
             }
