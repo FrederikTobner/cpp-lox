@@ -44,8 +44,8 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         brew install \
-          gcc-13 \
-          g++-13 \
+          gcc@13 \
+          g++@13 \
           ninja \
           ${NULL+}
 
