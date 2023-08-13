@@ -46,7 +46,8 @@ jobs:
         brew install \
           llvm@16 \
           ninja \
-          ${NULL+}  
+          ${NULL+} \
+          echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> /Users/runner/.bash_profile 
 
     - name: Configure CMake
       if: runner.os != 'Linux' && runner.os != 'macOS'
