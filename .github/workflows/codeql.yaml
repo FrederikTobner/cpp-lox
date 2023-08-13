@@ -43,7 +43,7 @@ jobs:
        echo "Configuring CMake ..."
        cmake -D CMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
        echo "Building Compiler ..."
-       cmake --build ${{github.workspace}}/build
+       cmake --build ${{github.workspace}}/build --target cpplox
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
