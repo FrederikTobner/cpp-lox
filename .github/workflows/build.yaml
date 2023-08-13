@@ -48,7 +48,13 @@ jobs:
           ${NULL+}  
 
     - name: Configure CMake
+      if: runner.os != 'Linux'
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
-    - name: Building Compiler
+    - name: Configure Cmake under Linux
+      if: runner.os == 'Linux'
+      run: cmake CC=gcc-13 CXX=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
+
+    - name: Building Interpreter
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --target cpplox
+    
