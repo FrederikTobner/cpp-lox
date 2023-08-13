@@ -83,8 +83,8 @@ $(document).ready(function(){initNavTree('classVM.html',''); initResizable(); })
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classVM-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -94,57 +94,41 @@ $(document).ready(function(){initNavTree('classVM.html',''); initResizable(); })
 
 <p><code>#include &lt;<a class="el" href="vm_8hpp_source.html">vm.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a2d13677ff3a805e038dc7a185854010b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010b">InterpretResult</a> { <a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010ba21efe79feb312c3a5aab7a6c3f867839">INTERPRET_OK</a>
-, <a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010baae99c979231ba7e46438a670d60eaa1f">INTERPRET_COMPILE_ERROR</a>
-, <a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010ba972582a24d30295c98b476fc924f2a0c">INTERPRET_RUNTIME_ERROR</a>
- }</td></tr>
-<tr class="memdesc:a2d13677ff3a805e038dc7a185854010b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result of interpreting a chunk of bytecode.  <a href="classVM.html#a2d13677ff3a805e038dc7a185854010b">More...</a><br /></td></tr>
-<tr class="separator:a2d13677ff3a805e038dc7a185854010b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a19427bc666639787ab1a4f1c1da56c65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a19427bc666639787ab1a4f1c1da56c65">VM</a> ()</td></tr>
 <tr class="separator:a19427bc666639787ab1a4f1c1da56c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">~VM</a> ()</td></tr>
 <tr class="separator:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac55777afd86e89db57affbcecfacd80d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010b">InterpretResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ac55777afd86e89db57affbcecfacd80d">interpret</a> (<a class="el" href="classChunk.html">Chunk</a> &amp;chunk)</td></tr>
-<tr class="separator:ac55777afd86e89db57affbcecfacd80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02c8f56cfaa1ec065d5c4c9e4f62fbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd">interpret</a> (<a class="el" href="classChunk.html">Chunk</a> &amp;chunk)</td></tr>
+<tr class="separator:af02c8f56cfaa1ec065d5c4c9e4f62fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac56a5c5a8a90b5fac03dd9d59d2de40b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b">push</a> (<a class="el" href="classValue.html">Value</a> value)</td></tr>
 <tr class="separator:ac56a5c5a8a90b5fac03dd9d59d2de40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a182b10dd85413185aed3c2e3db794041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a182b10dd85413185aed3c2e3db794041">pop</a> ()</td></tr>
 <tr class="separator:a182b10dd85413185aed3c2e3db794041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1220a1439147aac29d4d6dd510fd15bc"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a1220a1439147aac29d4d6dd510fd15bc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classVM.html#a1220a1439147aac29d4d6dd510fd15bc">runTimeError</a> (std::string_view fmt, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a1220a1439147aac29d4d6dd510fd15bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws a runtime exception with the given message.  <a href="classVM.html#a1220a1439147aac29d4d6dd510fd15bc">More...</a><br /></td></tr>
+<tr class="separator:a1220a1439147aac29d4d6dd510fd15bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a90d3c55a6af3a3d1d3b2eda89c88e398"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a90d3c55a6af3a3d1d3b2eda89c88e398">m_stack</a> [<a class="el" href="vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e">STACK_MAX</a>]</td></tr>
+<tr class="memdesc:a90d3c55a6af3a3d1d3b2eda89c88e398"><td class="mdescLeft">&#160;</td><td class="mdescRight">The stack.  <a href="classVM.html#a90d3c55a6af3a3d1d3b2eda89c88e398">More...</a><br /></td></tr>
 <tr class="separator:a90d3c55a6af3a3d1d3b2eda89c88e398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade81abe3ce1aa3855490cc6193bef78c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ade81abe3ce1aa3855490cc6193bef78c">m_stack_top</a></td></tr>
+<tr class="memdesc:ade81abe3ce1aa3855490cc6193bef78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the top of the stack.  <a href="classVM.html#ade81abe3ce1aa3855490cc6193bef78c">More...</a><br /></td></tr>
 <tr class="separator:ade81abe3ce1aa3855490cc6193bef78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">m_instruction_index</a></td></tr>
+<tr class="memdesc:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the currently executed instruction.  <a href="classVM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">More...</a><br /></td></tr>
+<tr class="separator:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classChunk.html">Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a1e20b8878edf298a7be3fb7ceb82bd8b">m_chunk</a></td></tr>
+<tr class="memdesc:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk to execute.  <a href="classVM.html#a1e20b8878edf298a7be3fb7ceb82bd8b">More...</a><br /></td></tr>
+<tr class="separator:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a2d13677ff3a805e038dc7a185854010b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d13677ff3a805e038dc7a185854010b">&#9670;&nbsp;</a></span>InterpretResult</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010b">InterpretResult</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The result of interpreting a chunk of bytecode. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2d13677ff3a805e038dc7a185854010ba21efe79feb312c3a5aab7a6c3f867839"></a>INTERPRET_OK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2d13677ff3a805e038dc7a185854010baae99c979231ba7e46438a670d60eaa1f"></a>INTERPRET_COMPILE_ERROR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2d13677ff3a805e038dc7a185854010ba972582a24d30295c98b476fc924f2a0c"></a>INTERPRET_RUNTIME_ERROR&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a19427bc666639787ab1a4f1c1da56c65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19427bc666639787ab1a4f1c1da56c65">&#9670;&nbsp;</a></span>VM()</h2>
@@ -181,14 +165,14 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac55777afd86e89db57affbcecfacd80d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac55777afd86e89db57affbcecfacd80d">&#9670;&nbsp;</a></span>interpret()</h2>
+<a id="af02c8f56cfaa1ec065d5c4c9e4f62fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02c8f56cfaa1ec065d5c4c9e4f62fbd">&#9670;&nbsp;</a></span>interpret()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classVM.html#a2d13677ff3a805e038dc7a185854010b">VM::InterpretResult</a> interpret </td>
+          <td class="memname">void interpret </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classChunk.html">Chunk</a> &amp;&#160;</td>
           <td class="paramname"><em>chunk</em></td><td>)</td>
@@ -234,7 +218,106 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1220a1439147aac29d4d6dd510fd15bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1220a1439147aac29d4d6dd510fd15bc">&#9670;&nbsp;</a></span>runTimeError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runTimeError </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Throws a runtime exception with the given message. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">...Args</td><td>The types of the arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmt</td><td>The format string </td></tr>
+    <tr><td class="paramname">...args</td><td>The arguments to the format string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1e20b8878edf298a7be3fb7ceb82bd8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e20b8878edf298a7be3fb7ceb82bd8b">&#9670;&nbsp;</a></span>m_chunk</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classChunk.html">Chunk</a>* m_chunk</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The chunk to execute. </p>
+
+</div>
+</div>
+<a id="a55a4d8f05dcb5f6255fb28f6235ac3c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a4d8f05dcb5f6255fb28f6235ac3c4">&#9670;&nbsp;</a></span>m_instruction_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t m_instruction_index</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The index of the currently executed instruction. </p>
+
+</div>
+</div>
 <a id="a90d3c55a6af3a3d1d3b2eda89c88e398"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90d3c55a6af3a3d1d3b2eda89c88e398">&#9670;&nbsp;</a></span>m_stack</h2>
 
@@ -254,6 +337,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The stack. </p>
 
 </div>
 </div>
@@ -276,6 +361,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The index of the top of the stack. </p>
 
 </div>
 </div>

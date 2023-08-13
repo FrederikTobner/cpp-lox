@@ -11,5 +11,12 @@ var searchData=
   ['equality_37',['EQUALITY',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a67039f5b6bfa7fb2b9b29217e6be44c1',1,'precedence.hpp']]],
   ['error_38',['error',['../classCompiler.html#aa35e8ed4e03646e6b2f0702612610d98',1,'Compiler']]],
   ['erroratcurrent_39',['errorAtCurrent',['../classCompiler.html#a5dfbb278277ece81add4f3bfbb00d3ad',1,'Compiler']]],
-  ['expression_40',['expression',['../classCompiler.html#a8e902413e3647524c944bfebef3f353d',1,'Compiler']]]
+  ['exit_5fcode_2ehpp_40',['exit_code.hpp',['../exit__code_8hpp.html',1,'']]],
+  ['exit_5fcode_5fcommand_5fline_5fusage_5ferror_41',['EXIT_CODE_COMMAND_LINE_USAGE_ERROR',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52aa98e0c27ad21c8b40a761cb64447ae6db',1,'exit_code.hpp']]],
+  ['exit_5fcode_5fcompilation_5ferror_42',['EXIT_CODE_COMPILATION_ERROR',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52aadb83b83bca8f75ff2266b9760a66bd14',1,'exit_code.hpp']]],
+  ['exit_5fcode_5finput_5foutput_5ferror_43',['EXIT_CODE_INPUT_OUTPUT_ERROR',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52aaa89869f27a1d1de61bba55507a26d676',1,'exit_code.hpp']]],
+  ['exit_5fcode_5fruntime_5ferror_44',['EXIT_CODE_RUNTIME_ERROR',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52aab46ca1d32c5845d516dfc744d3c9b381',1,'exit_code.hpp']]],
+  ['exit_5fcode_5fsystem_5ferror_45',['EXIT_CODE_SYSTEM_ERROR',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52aa11d65c27a9297140b1822730e777e336',1,'exit_code.hpp']]],
+  ['exit_5fcode_5ft_46',['exit_code_t',['../exit__code_8hpp.html#a2d967eed409413b06a8450ff977ab52a',1,'exit_code.hpp']]],
+  ['expression_47',['expression',['../classCompiler.html#a8e902413e3647524c944bfebef3f353d',1,'Compiler']]]
 ];
