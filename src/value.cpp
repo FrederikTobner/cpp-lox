@@ -75,6 +75,13 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
     return Value(-this->m_underlying_value.m_number);
 }
 
+[[nodiscard]] Value Value::operator!() const {
+    if (this->m_type != VAL_BOOL) {
+        throw RunTimeException("Runtime error: Unary not is only defined for booleans");
+    }
+    return Value(!this->m_underlying_value.m_bool);
+}
+
 [[nodiscard]] Value Value::operator+(const Value & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("addition is only defined for numbers");
@@ -101,4 +108,32 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
         throw RunTimeException("division is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number / other.m_underlying_value.m_number);
+}
+
+[[nodiscard]] Value Value::operator<(const Value & other) const {
+    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+        throw RunTimeException("less than is only defined for numbers");
+    }
+    return Value(this->m_underlying_value.m_number < other.m_underlying_value.m_number);
+}
+
+[[nodiscard]] Value Value::operator<=(const Value & other) const {
+    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+        throw RunTimeException("less than is only defined for numbers");
+    }
+    return Value(this->m_underlying_value.m_number <= other.m_underlying_value.m_number);
+}
+
+[[nodiscard]] Value Value::operator>(const Value & other) const {
+    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+        throw RunTimeException("less than is only defined for numbers");
+    }
+    return Value(this->m_underlying_value.m_number > other.m_underlying_value.m_number);
+}
+
+[[nodiscard]] Value Value::operator>=(const Value & other) const {
+    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+        throw RunTimeException("less than is only defined for numbers");
+    }
+    return Value(this->m_underlying_value.m_number >= other.m_underlying_value.m_number);
 }

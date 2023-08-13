@@ -1,13 +1,18 @@
-#include "chunk.hpp"
-#include "opcode.hpp"
-#include "value.hpp"
-#include "vm.hpp"
+#include <iostream>
 
-int main(int argc, char const * argv[]) {
-    Chunk chunk;
-    chunk.write(OP_CONSTANT, 1);
-    chunk.write(chunk.addConstant(1.2), 1);
-    chunk.write(OP_RETURN, 2);
-    chunk.disassemble("test chunk");
+#include "exit_code.hpp"
+#include "init.hpp"
+
+#include "cpplox-config.hpp"
+
+int main(int argc, const char * argv[]) {
+    if (argc == 1) {
+        repl();
+    } else if (argc == 2) {
+        runFile(argv[1]);
+    } else {
+        std::cout << "Usage: " << PROJECT_NAME << " [script]" << std::endl;
+        exit(EXIT_CODE_COMMAND_LINE_USAGE_ERROR);
+    }
     return 0;
 }

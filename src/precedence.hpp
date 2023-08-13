@@ -1,5 +1,6 @@
 #pragma once
 
+/// @brief The precedence of the expressions and statements of the language
 enum Precedence {
     NONE,
     ASSIGNMENT, // =

@@ -42,14 +42,36 @@ void Chunk::disassemble(const std::string & name) const {
         return constantInstruction("OP_CONSTANT", offset);
     case OP_DIVIDE:
         return simpleInstruction("OP_DIVIDE", offset);
+    case OP_EQUAL:
+        return simpleInstruction("OP_EQUAL", offset);
+    case OP_FALSE:
+        return simpleInstruction("OP_FALSE", offset);
+    case OP_GREATER:
+        return simpleInstruction("OP_GREATER", offset);
+    case OP_GREATER_EQUAL:
+        return simpleInstruction("OP_GREATER_EQUAL", offset);
+    case OP_LESS:
+        return simpleInstruction("OP_LESS", offset);
+    case OP_LESS_EQUAL:
+        return simpleInstruction("OP_LESS_EQUAL", offset);
     case OP_MULTIPLY:
         return simpleInstruction("OP_MULTIPLY", offset);
     case OP_NEGATE:
         return simpleInstruction("OP_NEGATE", offset);
+    case OP_NOT_EQUAL:
+        return simpleInstruction("OP_NOT_EQUAL", offset);
+    case OP_NULL:
+        return simpleInstruction("OP_NULL", offset);
+    case OP_NOT:
+        return simpleInstruction("OP_NOT", offset);
+    case OP_PRINT:
+        return simpleInstruction("OP_PRINT", offset);
     case OP_RETURN:
         return simpleInstruction("OP_RETURN", offset);
     case OP_SUBTRACT:
         return simpleInstruction("OP_SUBTRACT", offset);
+    case OP_TRUE:
+        return simpleInstruction("OP_TRUE", offset);
     default:
         std::cout << "Unknown opcode " << instruction << std::endl;
         return offset + 1;

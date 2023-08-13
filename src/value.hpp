@@ -57,10 +57,6 @@ class Value {
     /// @return true if the values are not equal, false otherwise
     [[nodiscard]] bool operator!=(const Value & other) const;
 
-    /// @brief Negates the value
-    /// @return The negated value
-    [[nodiscard]] Value operator-() const;
-
     /// @brief Adds two values
     /// @param other The value to add
     /// @return The sum of the two values
@@ -80,6 +76,34 @@ class Value {
     /// @param other The value to divide
     /// @return The quotient of the two values
     [[nodiscard]] Value operator/(const Value & other) const;
+
+    /// @brief Determines if one value is less than another
+    /// @param other The value to compare against
+    /// @return true if the first value is less than the second, false otherwise
+    [[nodiscard]] Value operator<(const Value & other) const;
+
+    /// @brief Determines if one value is less than or equal to another
+    /// @param other The value to compare against
+    /// @return true if the first value is less than or equal to the second, false otherwise
+    [[nodiscard]] Value operator<=(const Value & other) const;
+
+    /// @brief Determines if one value is greater than or equal to another
+    /// @param other The value to compare against
+    /// @return true if the first value is greater than or equal to the second, false otherwise
+    [[nodiscard]] Value operator>(const Value & other) const;
+
+    /// @brief Determines if one value is greater than another
+    /// @param other The value to compare against
+    /// @return true if the first value is greater than the second, false otherwise
+    [[nodiscard]] Value operator>=(const Value & other) const;
+
+    /// @brief Negates the value
+    /// @return The negated value
+    [[nodiscard]] Value operator-() const;
+
+    /// @brief Inverts a boolean value
+    /// @return The inverted value
+    [[nodiscard]] Value operator!() const;
 
   private:
     /// @brief The type of the value

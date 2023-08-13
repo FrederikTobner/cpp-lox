@@ -99,3 +99,35 @@ TEST_F(ValueTest, Divide) {
 TEST_F(ValueTest, DivideFail) {
     ASSERT_THROW(numVal / boolVal, RunTimeException);
 }
+
+TEST_F(ValueTest, Greater) {
+    ASSERT_EQ(Value(true), numVal > Value(2.0));
+}
+
+TEST_F(ValueTest, GreaterFail) {
+    ASSERT_THROW(numVal > boolVal, RunTimeException);
+}
+
+TEST_F(ValueTest, GreaterEqual) {
+    ASSERT_EQ(Value(true), numVal >= Value(3.14));
+}
+
+TEST_F(ValueTest, GreaterEqualFail) {
+    ASSERT_THROW(numVal >= boolVal, RunTimeException);
+}
+
+TEST_F(ValueTest, Less) {
+    ASSERT_EQ(Value(true), numVal < Value(4.0));
+}
+
+TEST_F(ValueTest, LessFail) {
+    ASSERT_THROW(numVal < boolVal, RunTimeException);
+}
+
+TEST_F(ValueTest, LessEqual) {
+    ASSERT_EQ(Value(true), numVal <= Value(3.14));
+}
+
+TEST_F(ValueTest, LessEqualFail) {
+    ASSERT_THROW(numVal <= boolVal, RunTimeException);
+}

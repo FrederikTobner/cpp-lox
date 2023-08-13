@@ -6,7 +6,7 @@
 #include <gtest/gtest.h>
 
 // Test fixture for Lexer integration tests
-class LexerTestIT : public ::testing::Test {
+class LexerTest : public ::testing::Test {
   public:
     Lexer lexer;
     void SetUp() override {
@@ -14,7 +14,7 @@ class LexerTestIT : public ::testing::Test {
     }
 };
 
-TEST_F(LexerTestIT, ScanNumber) {
+TEST_F(LexerTest, ScanNumber) {
     // Arrange
     std::string source = "3.14";
 
@@ -28,7 +28,7 @@ TEST_F(LexerTestIT, ScanNumber) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanString) {
+TEST_F(LexerTest, ScanString) {
     // Arrange
     std::string source = "\"Hello, World!\"";
 
@@ -42,7 +42,7 @@ TEST_F(LexerTestIT, ScanString) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanIdentifier) {
+TEST_F(LexerTest, ScanIdentifier) {
     // Arrange
     std::string source = "foo";
 
@@ -56,7 +56,7 @@ TEST_F(LexerTestIT, ScanIdentifier) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanAndKeyword) {
+TEST_F(LexerTest, ScanAndKeyword) {
     // Arrange
     std::string source = "and";
 
@@ -70,7 +70,7 @@ TEST_F(LexerTestIT, ScanAndKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanClassKeyword) {
+TEST_F(LexerTest, ScanClassKeyword) {
     // Arrange
     std::string source = "class";
 
@@ -84,7 +84,7 @@ TEST_F(LexerTestIT, ScanClassKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanElseKeyword) {
+TEST_F(LexerTest, ScanElseKeyword) {
     // Arrange
     std::string source = "else";
 
@@ -98,7 +98,7 @@ TEST_F(LexerTestIT, ScanElseKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanForKeyword) {
+TEST_F(LexerTest, ScanForKeyword) {
     // Arrange
     std::string source = "for";
 
@@ -112,7 +112,7 @@ TEST_F(LexerTestIT, ScanForKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanFunKeyword) {
+TEST_F(LexerTest, ScanFunKeyword) {
     // Arrange
     std::string source = "fun";
 
@@ -126,7 +126,7 @@ TEST_F(LexerTestIT, ScanFunKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanIfKeyword) {
+TEST_F(LexerTest, ScanIfKeyword) {
     // Arrange
     std::string source = "if";
 
@@ -140,7 +140,7 @@ TEST_F(LexerTestIT, ScanIfKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanNullKeyword) {
+TEST_F(LexerTest, ScanNullKeyword) {
     // Arrange
     std::string source = "null";
 
@@ -154,7 +154,7 @@ TEST_F(LexerTestIT, ScanNullKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanOrKeyword) {
+TEST_F(LexerTest, ScanOrKeyword) {
     // Arrange
     std::string source = "or";
 
@@ -168,7 +168,7 @@ TEST_F(LexerTestIT, ScanOrKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanPrintKeyword) {
+TEST_F(LexerTest, ScanPrintKeyword) {
     // Arrange
     std::string source = "print";
 
@@ -182,7 +182,7 @@ TEST_F(LexerTestIT, ScanPrintKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanReturnKeyword) {
+TEST_F(LexerTest, ScanReturnKeyword) {
     // Arrange
     std::string source = "return";
 
@@ -196,7 +196,7 @@ TEST_F(LexerTestIT, ScanReturnKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanSuperKeyword) {
+TEST_F(LexerTest, ScanSuperKeyword) {
     // Arrange
     std::string source = "super";
 
@@ -210,7 +210,7 @@ TEST_F(LexerTestIT, ScanSuperKeyword) {
     EXPECT_EQ(token.line(), 1);
 }
 
-TEST_F(LexerTestIT, ScanThisKeyword) {
+TEST_F(LexerTest, ScanThisKeyword) {
     // Arrange
     std::string source = "this";
 
@@ -224,7 +224,7 @@ TEST_F(LexerTestIT, ScanThisKeyword) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanTrueKeyword) {
+TEST_F(LexerTest, ScanTrueKeyword) {
     // Arrange
     std::string source = "true";
 
@@ -238,7 +238,7 @@ TEST_F(LexerTestIT, ScanTrueKeyword) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanVarKeyword) {
+TEST_F(LexerTest, ScanVarKeyword) {
     // Arrange
     std::string source = "var";
 
@@ -252,7 +252,7 @@ TEST_F(LexerTestIT, ScanVarKeyword) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanWhileKeyword) {
+TEST_F(LexerTest, ScanWhileKeyword) {
     // Arrange
     std::string source = "while";
 
@@ -266,7 +266,7 @@ TEST_F(LexerTestIT, ScanWhileKeyword) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanLeftParen) {
+TEST_F(LexerTest, ScanLeftParen) {
     // Arrange
     std::string source = "(";
 
@@ -280,7 +280,7 @@ TEST_F(LexerTestIT, ScanLeftParen) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanRightParen) {
+TEST_F(LexerTest, ScanRightParen) {
     // Arrange
     std::string source = ")";
 
@@ -294,7 +294,7 @@ TEST_F(LexerTestIT, ScanRightParen) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanLeftBrace) {
+TEST_F(LexerTest, ScanLeftBrace) {
     // Arrange
     std::string source = "{";
 
@@ -308,7 +308,7 @@ TEST_F(LexerTestIT, ScanLeftBrace) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanRightBrace) {
+TEST_F(LexerTest, ScanRightBrace) {
     // Arrange
     std::string source = "}";
 
@@ -322,7 +322,7 @@ TEST_F(LexerTestIT, ScanRightBrace) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanComma) {
+TEST_F(LexerTest, ScanComma) {
     // Arrange
     std::string source = ",";
 
@@ -336,7 +336,7 @@ TEST_F(LexerTestIT, ScanComma) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanDot) {
+TEST_F(LexerTest, ScanDot) {
     // Arrange
     std::string source = ".";
 
@@ -350,7 +350,7 @@ TEST_F(LexerTestIT, ScanDot) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanMinus) {
+TEST_F(LexerTest, ScanMinus) {
     // Arrange
     std::string source = "-";
 
@@ -364,7 +364,7 @@ TEST_F(LexerTestIT, ScanMinus) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanPlus) {
+TEST_F(LexerTest, ScanPlus) {
     // Arrange
     std::string source = "+";
 
@@ -378,7 +378,7 @@ TEST_F(LexerTestIT, ScanPlus) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanSlash) {
+TEST_F(LexerTest, ScanSlash) {
     // Arrange
     std::string source = "/";
 
@@ -392,7 +392,7 @@ TEST_F(LexerTestIT, ScanSlash) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanStar) {
+TEST_F(LexerTest, ScanStar) {
     // Arrange
     std::string source = "*";
 
@@ -406,7 +406,7 @@ TEST_F(LexerTestIT, ScanStar) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanSemicolon) {
+TEST_F(LexerTest, ScanSemicolon) {
     // Arrange
     std::string source = ";";
 
@@ -420,7 +420,7 @@ TEST_F(LexerTestIT, ScanSemicolon) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanBang) {
+TEST_F(LexerTest, ScanBang) {
     // Arrange
     std::string source = "!";
 
@@ -434,7 +434,7 @@ TEST_F(LexerTestIT, ScanBang) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanBangEqual) {
+TEST_F(LexerTest, ScanBangEqual) {
     // Arrange
     std::string source = "!=";
 
@@ -448,7 +448,7 @@ TEST_F(LexerTestIT, ScanBangEqual) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanEqual) {
+TEST_F(LexerTest, ScanEqual) {
     // Arrange
     std::string source = "=";
 
@@ -462,7 +462,7 @@ TEST_F(LexerTestIT, ScanEqual) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanEqualEqual) {
+TEST_F(LexerTest, ScanEqualEqual) {
     // Arrange
     std::string source = "==";
 
@@ -476,7 +476,7 @@ TEST_F(LexerTestIT, ScanEqualEqual) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanGreater) {
+TEST_F(LexerTest, ScanGreater) {
     // Arrange
     std::string source = ">";
 
@@ -490,7 +490,7 @@ TEST_F(LexerTestIT, ScanGreater) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanGreaterEqual) {
+TEST_F(LexerTest, ScanGreaterEqual) {
     // Arrange
     std::string source = ">=";
 
@@ -504,7 +504,7 @@ TEST_F(LexerTestIT, ScanGreaterEqual) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanLess) {
+TEST_F(LexerTest, ScanLess) {
     // Arrange
     std::string source = "<";
 
@@ -518,7 +518,7 @@ TEST_F(LexerTestIT, ScanLess) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, ScanLessEqual) {
+TEST_F(LexerTest, ScanLessEqual) {
     // Arrange
     std::string source = "<=";
 
@@ -532,7 +532,7 @@ TEST_F(LexerTestIT, ScanLessEqual) {
     EXPECT_EQ(1, token.line());
 }
 
-TEST_F(LexerTestIT, CanHandleComment) {
+TEST_F(LexerTest, CanHandleComment) {
     // Arrange
     std::string source = "// This is a comment";
 

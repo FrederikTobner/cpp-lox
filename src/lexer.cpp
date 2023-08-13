@@ -6,7 +6,7 @@ Lexer::Lexer() {
     this->m_tokens = std::vector<Token>();
 }
 
-[[nodiscard]] std::vector<Token> Lexer::tokenize(std::string & source) {
+[[nodiscard]] std::vector<Token> Lexer::tokenize(const std::string & source) {
     this->m_start = 0;
     this->m_current = 0;
     this->m_line = 1;
@@ -20,7 +20,7 @@ Lexer::Lexer() {
     return m_tokens;
 }
 
-void Lexer::scanToken(std::string & source) {
+void Lexer::scanToken(std::string const & source) {
     char c = advance(source);
     switch (c) {
     case '(':
@@ -92,21 +92,21 @@ void Lexer::scanToken(std::string & source) {
     }
 }
 
-void Lexer::skipWhitespace(std::string & source) {
+void Lexer::skipWhitespace(std::string const & source) {
     while (peek(source) == ' ' || peek(source) == '\r' || peek(source) == '\t') {
         advance(source);
     }
 }
 
-[[nodiscard]] bool Lexer::isAtEnd(std::string & source) {
+[[nodiscard]] bool Lexer::isAtEnd(std::string const & source) {
     return m_current >= source.length();
 }
 
-char Lexer::advance(std::string & source) {
+char Lexer::advance(std::string const & source) {
     return source[m_current++];
 }
 
-[[nodiscard]] bool Lexer::match(char expected, std::string & source) {
+[[nodiscard]] bool Lexer::match(char expected, std::string const & source) {
     if (isAtEnd(source)) {
         return false;
     }
@@ -117,22 +117,22 @@ char Lexer::advance(std::string & source) {
     return true;
 }
 
-void Lexer::addToken(Token::Type type, std::string & lexeme) {
+void Lexer::addToken(Token::Type type, std::string const & lexeme) {
     m_tokens.push_back(Token(type, lexeme, m_line));
 }
 
-[[nodiscard]] char Lexer::peek(std::string & source) {
+[[nodiscard]] char Lexer::peek(std::string const & source) {
     return source[m_current];
 }
 
-[[nodiscard]] char Lexer::peekNext(std::string & source) {
+[[nodiscard]] char Lexer::peekNext(std::string const & source) {
     if (isAtEnd(source)) {
         return '\0';
     }
     return source[m_current + 1];
 }
 
-void Lexer::string(std::string & source) {
+void Lexer::string(std::string const & source) {
     while (peek(source) != '"' && !isAtEnd(source)) {
         if (peek(source) == '\n') {
             m_line++;
@@ -156,7 +156,7 @@ void Lexer::string(std::string & source) {
     return c >= '0' && c <= '9';
 }
 
-void Lexer::number(std::string & source) {
+void Lexer::number(std::string const & source) {
     while (isDigit(peek(source))) {
         advance(source);
     }
@@ -170,7 +170,7 @@ void Lexer::number(std::string & source) {
     addToken(Token::Type::NUMBER, lexeme);
 }
 
-void Lexer::identifier(std::string & source) {
+void Lexer::identifier(std::string const & source) {
     while (isAlpha(peek(source)) || isDigit(peek(source))) {
         advance(source);
     }

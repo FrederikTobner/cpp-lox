@@ -103,6 +103,45 @@ TEST_F(ChunkTest, DisassembleDivide) {
     EXPECT_EQ(output, "== test chunk ==\n0000  123        OP_DIVIDE\n");
 }
 
+TEST_F(ChunkTest, DisassembleFalse) {
+    // Arrange
+    chunk.write(OP_FALSE, 123);
+    testing::internal::CaptureStdout();
+
+    // Act
+    chunk.disassemble("test chunk");
+    std::string output = testing::internal::GetCapturedStdout();
+
+    // Assert
+    EXPECT_EQ(output, "== test chunk ==\n0000  123         OP_FALSE\n");
+}
+
+TEST_F(ChunkTest, DisassembleNull) {
+    // Arrange
+    chunk.write(OP_NULL, 123);
+    testing::internal::CaptureStdout();
+
+    // Act
+    chunk.disassemble("test chunk");
+    std::string output = testing::internal::GetCapturedStdout();
+
+    // Assert
+    EXPECT_EQ(output, "== test chunk ==\n0000  123          OP_NULL\n");
+}
+
+TEST_F(ChunkTest, DisassembleTrue) {
+    // Arrange
+    chunk.write(OP_TRUE, 123);
+    testing::internal::CaptureStdout();
+
+    // Act
+    chunk.disassemble("test chunk");
+    std::string output = testing::internal::GetCapturedStdout();
+
+    // Assert
+    EXPECT_EQ(output, "== test chunk ==\n0000  123          OP_TRUE\n");
+}
+
 TEST_F(ChunkTest, GetSize) {
     // Arrange
     chunk.write(OP_CONSTANT, 123);
