@@ -57,7 +57,7 @@ jobs:
       run: cmake CC=gcc-13 CXX=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
     
     - name: Configure Cmake under MacOS
-      if: runner.os == 'Linux'
+      if: runner.os == 'macOS'
       run: cmake CC=clang-15 CXX=clang-15 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Building Interpreter
