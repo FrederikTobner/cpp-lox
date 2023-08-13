@@ -40,26 +40,22 @@ jobs:
           ${NULL+}
 
     # SchmockOS setup
-    - name: Setup Ninja under MacOS
+    - name: Setup Dependencies under MacOS
       if: runner.os == 'macOS'
       run: |
         brew install \
-          llvm@16 \
+          gcc-13 \
+          g++-13 \
           ninja \
-          ${NULL+} \
-          echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> /Users/runner/.bash_profile 
+          ${NULL+}
 
     - name: Configure CMake
       if: runner.os != 'Linux' && runner.os != 'macOS'
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
-    - name: Configure Cmake under Linux
-      if: runner.os == 'Linux'
+    - name: Configure Cmake under Linux or MacOS
+      if: runner.os == 'Linux' || runner.os == 'macOS'
       run: cmake -D CMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
-    
-    - name: Configure Cmake under MacOS
-      if: runner.os == 'macOS'
-      run: cmake -D CMAKE_C_COMPILER=clang-16 -D CMAKE_CXX_COMPILER=clang-16 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Building Interpreter
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --target cpplox
