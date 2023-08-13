@@ -44,16 +44,21 @@ jobs:
       if: runner.os == 'macOS'
       run: |
         brew install \
+          llvm@15 \
           ninja \
           ${NULL+}  
 
     - name: Configure CMake
-      if: runner.os != 'Linux'
+      if: runner.os != 'Linux' && runner.os != 'macOS'
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Configure Cmake under Linux
       if: runner.os == 'Linux'
       run: cmake CC=gcc-13 CXX=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
+    
+    - name: Configure Cmake under MacOS
+      if: runner.os == 'Linux'
+      run: cmake CC=clang-15 CXX=clang-15 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Building Interpreter
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --target cpplox
