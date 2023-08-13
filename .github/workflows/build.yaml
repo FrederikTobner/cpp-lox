@@ -12,7 +12,7 @@ jobs:
       BUILD_TYPE: ${{matrix.buildtypes}}
     strategy:
       matrix:
-        operatingsystems: [windows-latest, ubuntu-latest, macos-latest] 
+        operatingsystems: [windows-latest, ubuntu-latest, macos-latest]
         buildtypes: [Debug, Release] 
     steps:
     - uses: actions/checkout@v3
@@ -28,13 +28,15 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
     
     # Schlinux setup
-    - name: Setup Ninja under Linux
+    - name: Setup Dependencies under Linux
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
         sudo apt-get -y install \
           cmake \
           ninja-build \
+          gcc-13 \
+          g++-13 \
           ${NULL+}
 
     # SchmockOS setup
