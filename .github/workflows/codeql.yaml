@@ -41,7 +41,7 @@ jobs:
     - name: Configuring CMake 
       run: |
        echo "Configuring CMake ..."
-       cmake CMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
+       cmake -D CMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
        echo "Building Compiler ..."
        cmake --build ${{github.workspace}}/build
 
