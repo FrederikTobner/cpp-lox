@@ -31,7 +31,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     ] ],
     [ "value.cpp", "value_8cpp.html", "value_8cpp" ],
     [ "value.hpp", "value_8hpp.html", [
-      [ "Value", "classValue.html", "classValue" ]
+      [ "Value", "classValue.html", "classValue" ],
+      [ "formatter< Value >", "structstd_1_1formatter_3_01Value_01_4.html", "structstd_1_1formatter_3_01Value_01_4" ]
     ] ],
     [ "vm.cpp", "vm_8cpp.html", null ],
     [ "vm.hpp", "vm_8hpp.html", "vm_8hpp" ]

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['number_284',['number',['../classCompiler.html#a693ac695c942a661c8c9cbfbde38a505',1,'Compiler::number()'],['../classLexer.html#a5dbaa3a752697794ad66b5ad25edd73f',1,'Lexer::number()']]]
+  ['main_285',['main',['../main_8cpp.html#abf9e6b7e6f15df4b525a2e7705ba3089',1,'main.cpp']]],
+  ['makeconstant_286',['makeConstant',['../classCompiler.html#a09eb8063449783add2285960153dacd5',1,'Compiler']]],
+  ['match_287',['match',['../classLexer.html#acb35d5d56f105b99878c60478000836a',1,'Lexer']]]
 ];

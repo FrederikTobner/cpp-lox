@@ -109,29 +109,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acf166c9448a67e8c58923e93d4798aaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#acf166c9448a67e8c58923e93d4798aaf">~Compiler</a> ()</td></tr>
 <tr class="memdesc:acf166c9448a67e8c58923e93d4798aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the compiler.  <a href="classCompiler.html#acf166c9448a67e8c58923e93d4798aaf">More...</a><br /></td></tr>
 <tr class="separator:acf166c9448a67e8c58923e93d4798aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b9e92869e4191d44d8e2dfb2e69de2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classChunk.html">Chunk</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ae6b9e92869e4191d44d8e2dfb2e69de2">compile</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:ae6b9e92869e4191d44d8e2dfb2e69de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the given tokens.  <a href="classCompiler.html#ae6b9e92869e4191d44d8e2dfb2e69de2">More...</a><br /></td></tr>
-<tr class="separator:ae6b9e92869e4191d44d8e2dfb2e69de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7c6ecd200843babca4d504adb290217"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classChunk.html">Chunk</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ab7c6ecd200843babca4d504adb290217">compile</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:ab7c6ecd200843babca4d504adb290217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the given tokens.  <a href="classCompiler.html#ab7c6ecd200843babca4d504adb290217">More...</a><br /></td></tr>
+<tr class="separator:ab7c6ecd200843babca4d504adb290217"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:a97fd7a8e826e0ac0ef6dd6bd2bbc011d"><td class="memItemLeft" align="right" valign="top">typedef void(Compiler::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a97fd7a8e826e0ac0ef6dd6bd2bbc011d">Parse_func</a>) (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="separator:a97fd7a8e826e0ac0ef6dd6bd2bbc011d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9adda3c4dee65917faeb7ab556f3b63"><td class="memItemLeft" align="right" valign="top">typedef void(Compiler::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#af9adda3c4dee65917faeb7ab556f3b63">Parse_func</a>) (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="separator:af9adda3c4dee65917faeb7ab556f3b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ae7a381064e8f3244715c1dbb51849dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ae7a381064e8f3244715c1dbb51849dd6">advance</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:ae7a381064e8f3244715c1dbb51849dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances to the next token.  <a href="classCompiler.html#ae7a381064e8f3244715c1dbb51849dd6">More...</a><br /></td></tr>
-<tr class="separator:ae7a381064e8f3244715c1dbb51849dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10651725874f492ef152a1c9ac16ec2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a10651725874f492ef152a1c9ac16ec2b">binary</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a10651725874f492ef152a1c9ac16ec2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a binary expression.  <a href="classCompiler.html#a10651725874f492ef152a1c9ac16ec2b">More...</a><br /></td></tr>
-<tr class="separator:a10651725874f492ef152a1c9ac16ec2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7a0d19b635f2409af6e476fd479b910"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#af7a0d19b635f2409af6e476fd479b910">consume</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type, std::string message, std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:af7a0d19b635f2409af6e476fd479b910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumes a token.  <a href="classCompiler.html#af7a0d19b635f2409af6e476fd479b910">More...</a><br /></td></tr>
-<tr class="separator:af7a0d19b635f2409af6e476fd479b910"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d9436a44de3f68edbb30e289abc4c08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classChunk.html">Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a6d9436a44de3f68edbb30e289abc4c08">currentChunk</a> ()</td></tr>
-<tr class="memdesc:a6d9436a44de3f68edbb30e289abc4c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current chunk.  <a href="classCompiler.html#a6d9436a44de3f68edbb30e289abc4c08">More...</a><br /></td></tr>
-<tr class="separator:a6d9436a44de3f68edbb30e289abc4c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8feb586534e6d77e1617c1622f97264e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a8feb586534e6d77e1617c1622f97264e">advance</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a8feb586534e6d77e1617c1622f97264e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances to the next token.  <a href="classCompiler.html#a8feb586534e6d77e1617c1622f97264e">More...</a><br /></td></tr>
+<tr class="separator:a8feb586534e6d77e1617c1622f97264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a929ee0ad89c9b0cdaf42d4b077795"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a46a929ee0ad89c9b0cdaf42d4b077795">binary</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a46a929ee0ad89c9b0cdaf42d4b077795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a binary expression.  <a href="classCompiler.html#a46a929ee0ad89c9b0cdaf42d4b077795">More...</a><br /></td></tr>
+<tr class="separator:a46a929ee0ad89c9b0cdaf42d4b077795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c8a6ddc45347c0d5f7a28c2b148d24f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a0c8a6ddc45347c0d5f7a28c2b148d24f">consume</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type, std::string message, std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a0c8a6ddc45347c0d5f7a28c2b148d24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consumes a token.  <a href="classCompiler.html#a0c8a6ddc45347c0d5f7a28c2b148d24f">More...</a><br /></td></tr>
+<tr class="separator:a0c8a6ddc45347c0d5f7a28c2b148d24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd961881d38a39318504666d8c4ba574"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classChunk.html">Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#acd961881d38a39318504666d8c4ba574">currentChunk</a> () const</td></tr>
+<tr class="memdesc:acd961881d38a39318504666d8c4ba574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current chunk.  <a href="classCompiler.html#acd961881d38a39318504666d8c4ba574">More...</a><br /></td></tr>
+<tr class="separator:acd961881d38a39318504666d8c4ba574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fca35b09aa2577bcacf7cfe7331a200"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a6fca35b09aa2577bcacf7cfe7331a200">emitByte</a> (uint8_t byte)</td></tr>
 <tr class="memdesc:a6fca35b09aa2577bcacf7cfe7331a200"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a byte.  <a href="classCompiler.html#a6fca35b09aa2577bcacf7cfe7331a200">More...</a><br /></td></tr>
 <tr class="separator:a6fca35b09aa2577bcacf7cfe7331a200"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,47 +144,48 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ac54615fc50618394f8dc31c9f70e7331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ac54615fc50618394f8dc31c9f70e7331">endCompilation</a> ()</td></tr>
 <tr class="memdesc:ac54615fc50618394f8dc31c9f70e7331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the compilation.  <a href="classCompiler.html#ac54615fc50618394f8dc31c9f70e7331">More...</a><br /></td></tr>
 <tr class="separator:ac54615fc50618394f8dc31c9f70e7331"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa35e8ed4e03646e6b2f0702612610d98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#aa35e8ed4e03646e6b2f0702612610d98">error</a> (std::string message)</td></tr>
-<tr class="memdesc:aa35e8ed4e03646e6b2f0702612610d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception at the previous token.  <a href="classCompiler.html#aa35e8ed4e03646e6b2f0702612610d98">More...</a><br /></td></tr>
-<tr class="separator:aa35e8ed4e03646e6b2f0702612610d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dfbb278277ece81add4f3bfbb00d3ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a5dfbb278277ece81add4f3bfbb00d3ad">errorAtCurrent</a> (std::string message)</td></tr>
-<tr class="memdesc:a5dfbb278277ece81add4f3bfbb00d3ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception at the current token.  <a href="classCompiler.html#a5dfbb278277ece81add4f3bfbb00d3ad">More...</a><br /></td></tr>
-<tr class="separator:a5dfbb278277ece81add4f3bfbb00d3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e902413e3647524c944bfebef3f353d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a8e902413e3647524c944bfebef3f353d">expression</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a8e902413e3647524c944bfebef3f353d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an expression.  <a href="classCompiler.html#a8e902413e3647524c944bfebef3f353d">More...</a><br /></td></tr>
-<tr class="separator:a8e902413e3647524c944bfebef3f353d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40499e027e6813ad024e7d11b8001588"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a40499e027e6813ad024e7d11b8001588">grouping</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a40499e027e6813ad024e7d11b8001588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a grouping expression.  <a href="classCompiler.html#a40499e027e6813ad024e7d11b8001588">More...</a><br /></td></tr>
-<tr class="separator:a40499e027e6813ad024e7d11b8001588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade28e18a6a61d3eb3bef687699234ad4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ade28e18a6a61d3eb3bef687699234ad4">error</a> (std::string &amp;message)</td></tr>
+<tr class="memdesc:ade28e18a6a61d3eb3bef687699234ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception at the previous token.  <a href="classCompiler.html#ade28e18a6a61d3eb3bef687699234ad4">More...</a><br /></td></tr>
+<tr class="separator:ade28e18a6a61d3eb3bef687699234ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f89dfb9616d8a741bec858593a0f5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a97f89dfb9616d8a741bec858593a0f5a">errorAtCurrent</a> (std::string &amp;message)</td></tr>
+<tr class="memdesc:a97f89dfb9616d8a741bec858593a0f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception at the current token.  <a href="classCompiler.html#a97f89dfb9616d8a741bec858593a0f5a">More...</a><br /></td></tr>
+<tr class="separator:a97f89dfb9616d8a741bec858593a0f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1dcf94b61ddf4c8a70f7ce2333b4ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a8e1dcf94b61ddf4c8a70f7ce2333b4ac">expression</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a8e1dcf94b61ddf4c8a70f7ce2333b4ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an expression.  <a href="classCompiler.html#a8e1dcf94b61ddf4c8a70f7ce2333b4ac">More...</a><br /></td></tr>
+<tr class="separator:a8e1dcf94b61ddf4c8a70f7ce2333b4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5841d68e1fc21a30faaa340828d9e7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c">grouping</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:af5841d68e1fc21a30faaa340828d9e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a grouping expression.  <a href="classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c">More...</a><br /></td></tr>
+<tr class="separator:af5841d68e1fc21a30faaa340828d9e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addaa642339d6469a444aa3622b1aa96e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#addaa642339d6469a444aa3622b1aa96e">getRule</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type)</td></tr>
 <tr class="memdesc:addaa642339d6469a444aa3622b1aa96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the rule for the given token type.  <a href="classCompiler.html#addaa642339d6469a444aa3622b1aa96e">More...</a><br /></td></tr>
 <tr class="separator:addaa642339d6469a444aa3622b1aa96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb6f9cb058f4b02120f34af87382675f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#aeb6f9cb058f4b02120f34af87382675f">literal</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="separator:aeb6f9cb058f4b02120f34af87382675f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60bdb25f5995c534d6280ea9c026303c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a60bdb25f5995c534d6280ea9c026303c">literal</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a60bdb25f5995c534d6280ea9c026303c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an literal expression.  <a href="classCompiler.html#a60bdb25f5995c534d6280ea9c026303c">More...</a><br /></td></tr>
+<tr class="separator:a60bdb25f5995c534d6280ea9c026303c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09eb8063449783add2285960153dacd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a09eb8063449783add2285960153dacd5">makeConstant</a> (<a class="el" href="classValue.html">Value</a> value)</td></tr>
 <tr class="memdesc:a09eb8063449783add2285960153dacd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a constant from the given value.  <a href="classCompiler.html#a09eb8063449783add2285960153dacd5">More...</a><br /></td></tr>
 <tr class="separator:a09eb8063449783add2285960153dacd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a693ac695c942a661c8c9cbfbde38a505"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a693ac695c942a661c8c9cbfbde38a505">number</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a693ac695c942a661c8c9cbfbde38a505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a numerical constant.  <a href="classCompiler.html#a693ac695c942a661c8c9cbfbde38a505">More...</a><br /></td></tr>
-<tr class="separator:a693ac695c942a661c8c9cbfbde38a505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae618a2e60f86f66247ab472a97aa21e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ae618a2e60f86f66247ab472a97aa21e2">parsePrecedence</a> (<a class="el" href="precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006">Precedence</a> precedence, std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:ae618a2e60f86f66247ab472a97aa21e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the precedence of the current token.  <a href="classCompiler.html#ae618a2e60f86f66247ab472a97aa21e2">More...</a><br /></td></tr>
-<tr class="separator:ae618a2e60f86f66247ab472a97aa21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a6a794d43be47fa3c9290174aeff144"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a7a6a794d43be47fa3c9290174aeff144">printStatement</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a7a6a794d43be47fa3c9290174aeff144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a print statement.  <a href="classCompiler.html#a7a6a794d43be47fa3c9290174aeff144">More...</a><br /></td></tr>
-<tr class="separator:a7a6a794d43be47fa3c9290174aeff144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c7e09cbb9e3c1caf5b3db40871461cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a3c7e09cbb9e3c1caf5b3db40871461cd">unary</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
-<tr class="memdesc:a3c7e09cbb9e3c1caf5b3db40871461cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a unary expression.  <a href="classCompiler.html#a3c7e09cbb9e3c1caf5b3db40871461cd">More...</a><br /></td></tr>
-<tr class="separator:a3c7e09cbb9e3c1caf5b3db40871461cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bfb8ac58fcf183f26ca362664d67827"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a1bfb8ac58fcf183f26ca362664d67827">number</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a1bfb8ac58fcf183f26ca362664d67827"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a numerical constant.  <a href="classCompiler.html#a1bfb8ac58fcf183f26ca362664d67827">More...</a><br /></td></tr>
+<tr class="separator:a1bfb8ac58fcf183f26ca362664d67827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7fca480a1317d692566e92ca1a81b93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#aa7fca480a1317d692566e92ca1a81b93">parsePrecedence</a> (<a class="el" href="precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006">Precedence</a> precedence, std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:aa7fca480a1317d692566e92ca1a81b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the precedence of the current token.  <a href="classCompiler.html#aa7fca480a1317d692566e92ca1a81b93">More...</a><br /></td></tr>
+<tr class="separator:aa7fca480a1317d692566e92ca1a81b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467470ea7086630af99e64f45c6b160e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a467470ea7086630af99e64f45c6b160e">printStatement</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a467470ea7086630af99e64f45c6b160e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a print statement.  <a href="classCompiler.html#a467470ea7086630af99e64f45c6b160e">More...</a><br /></td></tr>
+<tr class="separator:a467470ea7086630af99e64f45c6b160e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a812bb81b7ca2d5d79ce8364c768ba9c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a812bb81b7ca2d5d79ce8364c768ba9c5">unary</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
+<tr class="memdesc:a812bb81b7ca2d5d79ce8364c768ba9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a unary expression.  <a href="classCompiler.html#a812bb81b7ca2d5d79ce8364c768ba9c5">More...</a><br /></td></tr>
+<tr class="separator:a812bb81b7ca2d5d79ce8364c768ba9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a42b6a736f73e527aa3c8dba23d65fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a42b6a736f73e527aa3c8dba23d65fe7c">m_previous</a></td></tr>
-<tr class="memdesc:a42b6a736f73e527aa3c8dba23d65fe7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The token that was previously compiled.  <a href="classCompiler.html#a42b6a736f73e527aa3c8dba23d65fe7c">More...</a><br /></td></tr>
-<tr class="separator:a42b6a736f73e527aa3c8dba23d65fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cdf1ceec7bdb808a206622e83753dd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a1cdf1ceec7bdb808a206622e83753dd7">m_current</a></td></tr>
-<tr class="memdesc:a1cdf1ceec7bdb808a206622e83753dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The token that is currently compiled.  <a href="classCompiler.html#a1cdf1ceec7bdb808a206622e83753dd7">More...</a><br /></td></tr>
-<tr class="separator:a1cdf1ceec7bdb808a206622e83753dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737eb262dbf2baabad30f5774865d7dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a737eb262dbf2baabad30f5774865d7dd">m_previous</a></td></tr>
+<tr class="memdesc:a737eb262dbf2baabad30f5774865d7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The token that was previously compiled.  <a href="classCompiler.html#a737eb262dbf2baabad30f5774865d7dd">More...</a><br /></td></tr>
+<tr class="separator:a737eb262dbf2baabad30f5774865d7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac332007a6139a87217c08b3cf3a4be9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ac332007a6139a87217c08b3cf3a4be9d">m_current</a></td></tr>
+<tr class="memdesc:ac332007a6139a87217c08b3cf3a4be9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The token that is currently compiled.  <a href="classCompiler.html#ac332007a6139a87217c08b3cf3a4be9d">More...</a><br /></td></tr>
+<tr class="separator:ac332007a6139a87217c08b3cf3a4be9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab36625d400fdb9914c13582ac9f9b177"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#ab36625d400fdb9914c13582ac9f9b177">m_currentTokenIndex</a></td></tr>
 <tr class="memdesc:ab36625d400fdb9914c13582ac9f9b177"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the current token.  <a href="classCompiler.html#ab36625d400fdb9914c13582ac9f9b177">More...</a><br /></td></tr>
 <tr class="separator:ab36625d400fdb9914c13582ac9f9b177"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,8 +197,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a6a00a0e758fbe7c063ddd5252b145a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a97fd7a8e826e0ac0ef6dd6bd2bbc011d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97fd7a8e826e0ac0ef6dd6bd2bbc011d">&#9670;&nbsp;</a></span>Parse_func</h2>
+<a id="af9adda3c4dee65917faeb7ab556f3b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9adda3c4dee65917faeb7ab556f3b63">&#9670;&nbsp;</a></span>Parse_func</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,7 +207,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(Compiler::* Parse_func) (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td>
+          <td class="memname">typedef void(Compiler::* Parse_func) (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td>
         </tr>
       </table>
   </td>
@@ -258,8 +259,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae7a381064e8f3244715c1dbb51849dd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7a381064e8f3244715c1dbb51849dd6">&#9670;&nbsp;</a></span>advance()</h2>
+<a id="a8feb586534e6d77e1617c1622f97264e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8feb586534e6d77e1617c1622f97264e">&#9670;&nbsp;</a></span>advance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -270,7 +271,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void advance </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -292,8 +293,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a10651725874f492ef152a1c9ac16ec2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10651725874f492ef152a1c9ac16ec2b">&#9670;&nbsp;</a></span>binary()</h2>
+<a id="a46a929ee0ad89c9b0cdaf42d4b077795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46a929ee0ad89c9b0cdaf42d4b077795">&#9670;&nbsp;</a></span>binary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,7 +305,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void binary </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -326,8 +327,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6b9e92869e4191d44d8e2dfb2e69de2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6b9e92869e4191d44d8e2dfb2e69de2">&#9670;&nbsp;</a></span>compile()</h2>
+<a id="ab7c6ecd200843babca4d504adb290217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7c6ecd200843babca4d504adb290217">&#9670;&nbsp;</a></span>compile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +336,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">std::unique_ptr&lt; <a class="el" href="classChunk.html">Chunk</a> &gt; compile </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -353,8 +354,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af7a0d19b635f2409af6e476fd479b910"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7a0d19b635f2409af6e476fd479b910">&#9670;&nbsp;</a></span>consume()</h2>
+<a id="a0c8a6ddc45347c0d5f7a28c2b148d24f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c8a6ddc45347c0d5f7a28c2b148d24f">&#9670;&nbsp;</a></span>consume()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -377,7 +378,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em>&#160;</td>
         </tr>
         <tr>
@@ -405,8 +406,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6d9436a44de3f68edbb30e289abc4c08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d9436a44de3f68edbb30e289abc4c08">&#9670;&nbsp;</a></span>currentChunk()</h2>
+<a id="acd961881d38a39318504666d8c4ba574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd961881d38a39318504666d8c4ba574">&#9670;&nbsp;</a></span>currentChunk()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +419,7 @@ Private Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="classChunk.html">Chunk</a> * currentChunk </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -567,8 +568,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa35e8ed4e03646e6b2f0702612610d98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa35e8ed4e03646e6b2f0702612610d98">&#9670;&nbsp;</a></span>error()</h2>
+<a id="ade28e18a6a61d3eb3bef687699234ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade28e18a6a61d3eb3bef687699234ad4">&#9670;&nbsp;</a></span>error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -579,7 +580,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void error </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
@@ -601,8 +602,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dfbb278277ece81add4f3bfbb00d3ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dfbb278277ece81add4f3bfbb00d3ad">&#9670;&nbsp;</a></span>errorAtCurrent()</h2>
+<a id="a97f89dfb9616d8a741bec858593a0f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f89dfb9616d8a741bec858593a0f5a">&#9670;&nbsp;</a></span>errorAtCurrent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -613,7 +614,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void errorAtCurrent </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
@@ -635,8 +636,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8e902413e3647524c944bfebef3f353d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e902413e3647524c944bfebef3f353d">&#9670;&nbsp;</a></span>expression()</h2>
+<a id="a8e1dcf94b61ddf4c8a70f7ce2333b4ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1dcf94b61ddf4c8a70f7ce2333b4ac">&#9670;&nbsp;</a></span>expression()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -647,7 +648,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void expression </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -704,8 +705,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a40499e027e6813ad024e7d11b8001588"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40499e027e6813ad024e7d11b8001588">&#9670;&nbsp;</a></span>grouping()</h2>
+<a id="af5841d68e1fc21a30faaa340828d9e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5841d68e1fc21a30faaa340828d9e7c">&#9670;&nbsp;</a></span>grouping()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -716,7 +717,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void grouping </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -738,8 +739,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb6f9cb058f4b02120f34af87382675f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb6f9cb058f4b02120f34af87382675f">&#9670;&nbsp;</a></span>literal()</h2>
+<a id="a60bdb25f5995c534d6280ea9c026303c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60bdb25f5995c534d6280ea9c026303c">&#9670;&nbsp;</a></span>literal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -750,7 +751,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void literal </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -761,6 +762,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Compiles an literal expression. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tokens</td><td>The tokens that are compiled. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -798,8 +807,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a693ac695c942a661c8c9cbfbde38a505"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a693ac695c942a661c8c9cbfbde38a505">&#9670;&nbsp;</a></span>number()</h2>
+<a id="a1bfb8ac58fcf183f26ca362664d67827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bfb8ac58fcf183f26ca362664d67827">&#9670;&nbsp;</a></span>number()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -810,7 +819,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void number </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -832,8 +841,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae618a2e60f86f66247ab472a97aa21e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae618a2e60f86f66247ab472a97aa21e2">&#9670;&nbsp;</a></span>parsePrecedence()</h2>
+<a id="aa7fca480a1317d692566e92ca1a81b93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7fca480a1317d692566e92ca1a81b93">&#9670;&nbsp;</a></span>parsePrecedence()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -850,7 +859,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em>&#160;</td>
         </tr>
         <tr>
@@ -877,8 +886,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a6a794d43be47fa3c9290174aeff144"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a6a794d43be47fa3c9290174aeff144">&#9670;&nbsp;</a></span>printStatement()</h2>
+<a id="a467470ea7086630af99e64f45c6b160e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a467470ea7086630af99e64f45c6b160e">&#9670;&nbsp;</a></span>printStatement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -889,7 +898,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void printStatement </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -911,8 +920,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3c7e09cbb9e3c1caf5b3db40871461cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c7e09cbb9e3c1caf5b3db40871461cd">&#9670;&nbsp;</a></span>unary()</h2>
+<a id="a812bb81b7ca2d5d79ce8364c768ba9c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812bb81b7ca2d5d79ce8364c768ba9c5">&#9670;&nbsp;</a></span>unary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -923,7 +932,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void unary </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
           <td></td>
         </tr>
@@ -970,8 +979,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1cdf1ceec7bdb808a206622e83753dd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cdf1ceec7bdb808a206622e83753dd7">&#9670;&nbsp;</a></span>m_current</h2>
+<a id="ac332007a6139a87217c08b3cf3a4be9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac332007a6139a87217c08b3cf3a4be9d">&#9670;&nbsp;</a></span>m_current</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -980,7 +989,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classToken.html">Token</a>* m_current</td>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> const* m_current</td>
         </tr>
       </table>
   </td>
@@ -1018,8 +1027,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a42b6a736f73e527aa3c8dba23d65fe7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42b6a736f73e527aa3c8dba23d65fe7c">&#9670;&nbsp;</a></span>m_previous</h2>
+<a id="a737eb262dbf2baabad30f5774865d7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737eb262dbf2baabad30f5774865d7dd">&#9670;&nbsp;</a></span>m_previous</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1028,7 +1037,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classToken.html">Token</a>* m_previous</td>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> const* m_previous</td>
         </tr>
       </table>
   </td>
