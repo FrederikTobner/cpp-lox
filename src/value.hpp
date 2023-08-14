@@ -2,6 +2,7 @@
 
 #include <format>
 #include <iostream>
+#include <string>
 
 /// @brief A value that can be stored in a variable or on the stack
 class Value {
@@ -118,17 +119,16 @@ class Value {
         double m_number;
     } m_underlying_value;
 };
-
-template <> struct std::formatter<Value> : std::formatter<std::string> {
-    auto format(Value val, std::format_context & ctx) {
+template <> struct std::formatter<Value> : std::formatter<std::string_view> {
+    template <typename Context> auto format(Value val, Context & ctx) {
         switch (val.getType()) {
         case Value::VAL_BOOL:
-            return std::formatter<std::string>::format(std::format("{}", val.asBool()), ctx);
+            return std::formatter<std::string_view>::format(std::format("{}", val.asBool()), ctx);
         case Value::VAL_NULL:
-            return std::formatter<std::string>::format("null", ctx);
+            return std::formatter<std::string_view>::format("null", ctx);
         case Value::VAL_NUMBER:
-            return std::formatter<std::string>::format(std::format("{}", val.asNumber()), ctx);
+            return std::formatter<std::string_view>::format(std::format("{}", val.asNumber()), ctx);
         }
-        return std::formatter<std::string>::format("not defined for type", ctx);
+        return ctx.out();
     }
 };
