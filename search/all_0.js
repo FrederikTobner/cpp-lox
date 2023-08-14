@@ -6,5 +6,6 @@ var searchData=
   ['and_3',['AND',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a865555c9f2e0458a7078486aa1b3254f',1,'Token::AND()'],['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a865555c9f2e0458a7078486aa1b3254f',1,'AND():&#160;precedence.hpp']]],
   ['asbool_4',['asBool',['../classValue.html#aa89e0884952cab63a940c6626ed9a5d6',1,'Value']]],
   ['asnumber_5',['asNumber',['../classValue.html#a684d55e631b4bbbe89931b2140978fbc',1,'Value']]],
-  ['assignment_6',['ASSIGNMENT',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a2967ccae03791ac3d69b2b731e479ec2',1,'precedence.hpp']]]
+  ['assignment_6',['ASSIGNMENT',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a2967ccae03791ac3d69b2b731e479ec2',1,'precedence.hpp']]],
+  ['asstring_7',['asString',['../classValue.html#a21aed6732ef1c8a17601d42e53959781',1,'Value']]]
 ];

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['repl_310',['repl',['../init_8cpp.html#a34fa27b192f788b6c3f8386f3d9383b1',1,'repl():&#160;init.cpp'],['../init_8hpp.html#a34fa27b192f788b6c3f8386f3d9383b1',1,'repl():&#160;init.cpp']]],
-  ['run_311',['run',['../init_8cpp.html#aa9f105a80ca9a15e1557a80703fb2a4e',1,'init.cpp']]],
-  ['runfile_312',['runFile',['../init_8cpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9',1,'runFile(char const *path):&#160;init.cpp'],['../init_8hpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9',1,'runFile(char const *path):&#160;init.cpp']]],
-  ['runtimeerror_313',['runTimeError',['../classVM.html#a1220a1439147aac29d4d6dd510fd15bc',1,'VM']]],
-  ['runtimeexception_314',['RunTimeException',['../classRunTimeException.html#a829bf95acdc318f7da86343a99f52e1f',1,'RunTimeException']]]
+  ['scantoken_313',['scanToken',['../classLexer.html#a73a69de77b50640acd606c6a3d388f07',1,'Lexer']]],
+  ['simpleinstruction_314',['simpleInstruction',['../classChunk.html#a8f7fe7431442f3a4675e62fbcda0d356',1,'Chunk']]],
+  ['skipwhitespace_315',['skipWhitespace',['../classLexer.html#a609aef6cd7a21b60ed05688e20b43cf7',1,'Lexer']]],
+  ['string_316',['string',['../classLexer.html#ad89816483323d1841602cedf2b6d76e1',1,'Lexer']]]
 ];

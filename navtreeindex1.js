@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a195d45c0c030939920d8a2aad646216e":[2,0,0,12,0,5],
 "precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a27b19c6b34c0f53345217914b1179560":[2,0,0,12,0,7],
 "precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a2967ccae03791ac3d69b2b731e479ec2":[2,0,0,12,0,1],
 "precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a5ce2e4adeaefc771566d91471561dba4":[2,0,0,12,0,10],
@@ -12,8 +13,6 @@ var NAVTREEINDEX1 =
 "precedence_8hpp_source.html":[2,0,0,12],
 "runtime__exception_8hpp.html":[2,0,0,13],
 "runtime__exception_8hpp_source.html":[2,0,0,13],
-"structstd_1_1formatter_3_01Value_01_4.html":[1,0,0,0],
-"structstd_1_1formatter_3_01Value_01_4.html#ab6831358deb6273e2e8d7302ae64d04b":[1,0,0,0,0],
 "token_8cpp.html":[2,0,0,14],
 "token_8hpp.html":[2,0,0,15],
 "token_8hpp_source.html":[2,0,0,15],
