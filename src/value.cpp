@@ -37,7 +37,12 @@ Value::Value(double value) {
     case VAL_NULL:
         return "null";
     case VAL_NUMBER:
-        return std::to_string(this->m_underlying_value.m_number);
+        {
+            // Remove trailing zeros and decimal point if there are no fractional digits
+            std::string str = std::to_string(this->m_underlying_value.m_number);
+            str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+            return str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+        }
     }
     return "";
 }
@@ -47,18 +52,7 @@ Value::Value(double value) {
 }
 
 std::ostream & operator<<(std::ostream & os, Value const & value) {
-    switch (value.m_type) {
-    case Value::VAL_BOOL:
-        os << (value.asBool() ? "true" : "false");
-        break;
-    case Value::VAL_NULL:
-        os << "null";
-        break;
-    case Value::VAL_NUMBER:
-        os << value.asNumber();
-        break;
-    }
-    return os;
+    return os << value.asString();
 }
 
 [[nodiscard]] bool Value::operator==(Value const & other) const {

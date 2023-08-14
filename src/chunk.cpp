@@ -80,7 +80,7 @@ void Chunk::disassemble(std::string const & name) const {
 }
 
 [[nodiscard]] size_t Chunk::simpleInstruction(std::string const & name, size_t offset) const {
-    std::cout << std::setfill(' ') << std::setw(16) << name << std::endl;
+    std::cout << std::format("{:>16}", name) << std::endl;
     return offset + 1;
 }
 
