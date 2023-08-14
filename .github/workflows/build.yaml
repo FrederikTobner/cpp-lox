@@ -48,8 +48,8 @@ jobs:
           ninja \
           ${NULL+}
 
-    - name: Configure CMake
-      if: runner.os != 'Linux' && runner.os != 'macOS'
+    - name: Configure CMake under Windows
+      if: runner.os == 'Windows'
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Configure Cmake under Linux or MacOS

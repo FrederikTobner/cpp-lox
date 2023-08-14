@@ -15,7 +15,7 @@
 #include <iostream>
 #include <memory>
 
-static void run(const std::string & source);
+static void run(std::string const & source);
 
 void repl() {
     std::string line;
@@ -29,7 +29,7 @@ void repl() {
     }
 }
 
-void runFile(const char * path) {
+void runFile(char const * path) {
     std::string source;
     std::ifstream file;
     file.open(path);
@@ -41,7 +41,7 @@ void runFile(const char * path) {
     run(source);
 }
 
-static void run(const std::string & source) {
+static void run(std::string const & source) {
     VM vm;
     Lexer lexer;
     Compiler compiler;

@@ -6,16 +6,16 @@
 class Lexer {
   public:
     Lexer();
-    [[nodiscard]] std::vector<Token> tokenize(const std::string & source);
+    [[nodiscard]] std::vector<Token> tokenize(std::string const & source);
 
   private:
     void scanToken(std::string const & source);
-    [[nodiscard]] bool isAtEnd(std::string const & source);
+    [[nodiscard]] bool isAtEnd(std::string const & source) const;
     char advance(std::string const & source);
     void addToken(Token::Type type, std::string const & lexeme);
     [[nodiscard]] bool match(char c, std::string const & source);
-    [[nodiscard]] char peek(std::string const & source);
-    [[nodiscard]] char peekNext(std::string const & source);
+    [[nodiscard]] char peek(std::string const & source) const;
+    [[nodiscard]] char peekNext(std::string const & source) const;
     void string(std::string const & source);
     [[nodiscard]] bool isDigit(char c) const;
     [[nodiscard]] bool isAlpha(char c) const;

@@ -7,7 +7,7 @@ class RunTimeException : public std::exception {
   public:
     RunTimeException(std::string message) : m_message(message) {
     }
-    virtual const char * what() const throw() {
+    virtual char const * what() const throw() {
         return m_message.c_str();
     }
 

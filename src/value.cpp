@@ -34,7 +34,7 @@ Value::Value(double value) {
     return this->m_type;
 }
 
-std::ostream & operator<<(std::ostream & os, const Value & value) {
+std::ostream & operator<<(std::ostream & os, Value const & value) {
     switch (value.m_type) {
     case Value::VAL_BOOL:
         os << (value.asBool() ? "true" : "false");
@@ -49,7 +49,7 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
     return os;
 }
 
-[[nodiscard]] bool Value::operator==(const Value & other) const {
+[[nodiscard]] bool Value::operator==(Value const & other) const {
     if (this->m_type != other.m_type) {
         return false;
     }
@@ -64,7 +64,7 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
     return false;
 }
 
-[[nodiscard]] bool Value::operator!=(const Value & other) const {
+[[nodiscard]] bool Value::operator!=(Value const & other) const {
     return !(*this == other);
 }
 
@@ -82,56 +82,56 @@ std::ostream & operator<<(std::ostream & os, const Value & value) {
     return Value(!this->m_underlying_value.m_bool);
 }
 
-[[nodiscard]] Value Value::operator+(const Value & other) const {
+[[nodiscard]] Value Value::operator+(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("addition is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number + other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator-(const Value & other) const {
+[[nodiscard]] Value Value::operator-(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("subtraction is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number - other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator*(const Value & other) const {
+[[nodiscard]] Value Value::operator*(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("multiplication is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number * other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator/(const Value & other) const {
+[[nodiscard]] Value Value::operator/(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("division is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number / other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator<(const Value & other) const {
+[[nodiscard]] Value Value::operator<(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number < other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator<=(const Value & other) const {
+[[nodiscard]] Value Value::operator<=(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number <= other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator>(const Value & other) const {
+[[nodiscard]] Value Value::operator>(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number > other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator>=(const Value & other) const {
+[[nodiscard]] Value Value::operator>=(Value const & other) const {
     if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }

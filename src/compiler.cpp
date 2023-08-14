@@ -1,5 +1,6 @@
 #include "compiler.hpp"
 
+#include <format>
 #include <iostream>
 
 #include "compiletime_exception.hpp"
@@ -51,7 +52,7 @@ Compiler::Compiler() {
 Compiler::~Compiler() {
 }
 
-std::unique_ptr<Chunk> Compiler::compile(std::vector<Token> & tokens) {
+std::unique_ptr<Chunk> Compiler::compile(std::vector<Token> const & tokens) {
     m_previous = nullptr;
     m_current = nullptr;
     m_chunk = new Chunk();
@@ -63,15 +64,15 @@ std::unique_ptr<Chunk> Compiler::compile(std::vector<Token> & tokens) {
     return std::unique_ptr<Chunk>(m_chunk);
 }
 
-void Compiler::error(std::string message) {
-    throw CompileTimeException(message.append(" at line ").append(std::to_string(m_previous->line())));
+void Compiler::error(std::string & message) {
+    throw CompileTimeException(std::format("{} at line {}", message, m_previous->line()));
 }
 
-void Compiler::errorAtCurrent(std::string message) {
-    throw CompileTimeException(message.append(" at line ").append(std::to_string(m_current->line())));
+void Compiler::errorAtCurrent(std::string & message) {
+    throw CompileTimeException(std::format("{} at line {}", message, m_current->line()));
 }
 
-void Compiler::advance(std::vector<Token> & tokens) {
+void Compiler::advance(std::vector<Token> const & tokens) {
     if (m_current && m_current->type() == Token::Type::END_OF_FILE) {
         return;
     }
@@ -80,7 +81,7 @@ void Compiler::advance(std::vector<Token> & tokens) {
     m_currentTokenIndex++;
 }
 
-void Compiler::consume(Token::Type type, std::string message, std::vector<Token> & tokens) {
+void Compiler::consume(Token::Type type, std::string message, std::vector<Token> const & tokens) {
     if (m_current->type() == type) {
         advance(tokens);
         return;
@@ -88,7 +89,7 @@ void Compiler::consume(Token::Type type, std::string message, std::vector<Token>
     errorAtCurrent(message);
 }
 
-void Compiler::printStatement(std::vector<Token> & tokens) {
+void Compiler::printStatement(std::vector<Token> const & tokens) {
     expression(tokens);
     consume(Token::Type::SEMICOLON, "Expect ';' after value", tokens);
     emitByte(OP_PRINT);
@@ -107,11 +108,11 @@ void inline Compiler::emitConstant(Value value) {
     emitBytes(OP_CONSTANT, m_chunk->addConstant(value));
 }
 
-Chunk * Compiler::currentChunk() {
+Chunk * Compiler::currentChunk() const {
     return m_chunk;
 }
 
-void Compiler::literal(std::vector<Token> & tokens) {
+void Compiler::literal(std::vector<Token> const & tokens) {
     switch (m_previous->type()) {
     case Token::Type::FALSE:
         emitByte(OP_FALSE);
@@ -131,11 +132,11 @@ void Compiler::endCompilation() {
     m_chunk->write(OP_RETURN, m_previous->line());
 }
 
-void Compiler::expression(std::vector<Token> & tokens) {
+void Compiler::expression(std::vector<Token> const & tokens) {
     parsePrecedence(Precedence::ASSIGNMENT, tokens);
 }
 
-void Compiler::number(std::vector<Token> & tokens) {
+void Compiler::number(std::vector<Token> const & tokens) {
     double value = std::stod(m_previous->lexeme());
     emitConstant(value);
 }
@@ -148,12 +149,12 @@ void Compiler::makeConstant(Value value) {
     emitBytes(OP_CONSTANT, (uint8_t)constant);
 }
 
-void Compiler::grouping(std::vector<Token> & tokens) {
+void Compiler::grouping(std::vector<Token> const & tokens) {
     expression(tokens);
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after expression", tokens);
 }
 
-void Compiler::unary(std::vector<Token> & tokens) {
+void Compiler::unary(std::vector<Token> const & tokens) {
     Token::Type operatorType = m_previous->type();
     parsePrecedence(Precedence::UNARY, tokens);
     switch (operatorType) {
@@ -172,7 +173,7 @@ Compiler::ParseRule * Compiler::getRule(Token::Type type) {
     return &m_rules[type];
 }
 
-void Compiler::binary(std::vector<Token> & tokens) {
+void Compiler::binary(std::vector<Token> const & tokens) {
     Token::Type operatorType = m_previous->type();
     // Compile the right operand.
     auto rule = getRule(operatorType);
@@ -214,7 +215,7 @@ void Compiler::binary(std::vector<Token> & tokens) {
     }
 }
 
-void Compiler::parsePrecedence(Precedence precedence, std::vector<Token> & tokens) {
+void Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) {
     advance(tokens);
     Parse_func prefixRule = getRule(m_previous->type())->prefix();
     if (prefixRule == nullptr) {

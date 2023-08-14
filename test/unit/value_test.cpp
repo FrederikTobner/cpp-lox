@@ -73,7 +73,7 @@ TEST_F(ValueTest, Add) {
 }
 
 TEST_F(ValueTest, AddFail) {
-    ASSERT_THROW(numVal + boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal + boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, Subtract) {
@@ -81,7 +81,7 @@ TEST_F(ValueTest, Subtract) {
 }
 
 TEST_F(ValueTest, SubtractFail) {
-    ASSERT_THROW(numVal - boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal - boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, Multiply) {
@@ -89,7 +89,7 @@ TEST_F(ValueTest, Multiply) {
 }
 
 TEST_F(ValueTest, MultiplyFail) {
-    ASSERT_THROW(numVal * boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal * boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, Divide) {
@@ -97,7 +97,7 @@ TEST_F(ValueTest, Divide) {
 }
 
 TEST_F(ValueTest, DivideFail) {
-    ASSERT_THROW(numVal / boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal / boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, Greater) {
@@ -105,7 +105,7 @@ TEST_F(ValueTest, Greater) {
 }
 
 TEST_F(ValueTest, GreaterFail) {
-    ASSERT_THROW(numVal > boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal > boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, GreaterEqual) {
@@ -113,7 +113,7 @@ TEST_F(ValueTest, GreaterEqual) {
 }
 
 TEST_F(ValueTest, GreaterEqualFail) {
-    ASSERT_THROW(numVal >= boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal >= boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, Less) {
@@ -121,7 +121,7 @@ TEST_F(ValueTest, Less) {
 }
 
 TEST_F(ValueTest, LessFail) {
-    ASSERT_THROW(numVal < boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal < boolVal; }, RunTimeException);
 }
 
 TEST_F(ValueTest, LessEqual) {
@@ -129,5 +129,5 @@ TEST_F(ValueTest, LessEqual) {
 }
 
 TEST_F(ValueTest, LessEqualFail) {
-    ASSERT_THROW(numVal <= boolVal, RunTimeException);
+    ASSERT_THROW({ Value val = numVal <= boolVal; }, RunTimeException);
 }

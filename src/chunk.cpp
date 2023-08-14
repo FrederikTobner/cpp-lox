@@ -1,5 +1,6 @@
 #include "chunk.hpp"
 
+#include <format>
 #include <iomanip>
 #include <iostream>
 
@@ -17,8 +18,8 @@ void Chunk::write(uint8_t byte, int line) {
     m_lines.push_back(line);
 }
 
-void Chunk::disassemble(const std::string & name) const {
-    std::cout << "== " << name << " ==" << std::endl;
+void Chunk::disassemble(std::string const & name) const {
+    std::cout << std::format("== {} ==", name) << std::endl;
 
     for (size_t offset = 0; offset < m_code.size();) {
         offset = disassembleInstruction(offset);
@@ -26,12 +27,12 @@ void Chunk::disassemble(const std::string & name) const {
 }
 
 [[nodiscard]] size_t Chunk::disassembleInstruction(size_t offset) const {
-    std::cout << std::setfill('0') << std::setw(4) << offset << " ";
+    std::cout << std::format("{:04} ", offset);
 
     if (offset > 0 && this->m_lines[offset] == this->m_lines[offset - 1]) {
         std::cout << "   | ";
     } else {
-        std::cout << std::setfill(' ') << std::setw(4) << this->m_lines[offset] << " ";
+        std::cout << std::format(" {:<4}", m_lines[offset]);
     }
 
     uint8_t instruction = this->m_code[offset];
@@ -73,25 +74,24 @@ void Chunk::disassemble(const std::string & name) const {
     case OP_TRUE:
         return simpleInstruction("OP_TRUE", offset);
     default:
-        std::cout << "Unknown opcode " << instruction << std::endl;
+        std::cout << std::format("Unknown opcode {}", instruction) << std::endl;
         return offset + 1;
     }
 }
 
-[[nodiscard]] size_t Chunk::simpleInstruction(const std::string & name, size_t offset) const {
+[[nodiscard]] size_t Chunk::simpleInstruction(std::string const & name, size_t offset) const {
     std::cout << std::setfill(' ') << std::setw(16) << name << std::endl;
     return offset + 1;
 }
 
-[[nodiscard]] size_t Chunk::addConstant(const Value & value) {
+[[nodiscard]] size_t Chunk::addConstant(Value const & value) {
     this->m_constants.push_back(value);
     return this->m_constants.size() - 1;
 }
 
-[[nodiscard]] size_t Chunk::constantInstruction(const std::string & name, size_t offset) const {
+[[nodiscard]] size_t Chunk::constantInstruction(std::string const & name, size_t offset) const {
     uint8_t constant = this->m_code[offset + 1];
-    std::cout << std::setfill(' ') << std::setw(16) << name << std::setw(16) << +constant << " '"
-              << this->m_constants[constant] << "'" << std::endl;
+    std::cout << std::format("{:>16}{:>16} '{}'", name, unsigned(constant), m_constants[constant]) << std::endl;
     return offset + 2;
 }
 
@@ -102,7 +102,7 @@ void Chunk::disassemble(const std::string & name) const {
 [[nodiscard]] size_t Chunk::getLine(size_t offset) const {
     return this->m_lines[offset];
 }
-[[nodiscard]] const Value & Chunk::getConstant(size_t offset) const {
+[[nodiscard]] Value const & Chunk::getConstant(size_t offset) const {
     return this->m_constants[offset];
 }
 [[nodiscard]] size_t Chunk::getSize() const {

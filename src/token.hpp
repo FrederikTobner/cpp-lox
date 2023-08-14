@@ -97,7 +97,7 @@ class Token {
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
-    [[nodiscard]] const std::string & lexeme() const;
+    [[nodiscard]] std::string const & lexeme() const;
 
     /// @brief Get the line number where the token was found
     /// @return The line number where the token was found

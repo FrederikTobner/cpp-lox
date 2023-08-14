@@ -1,6 +1,5 @@
 #pragma once
 
-#include <array>
 #include <memory>
 #include <string>
 #include <vector>
@@ -10,7 +9,7 @@
 #include "token.hpp"
 
 class Compiler {
-    typedef void (Compiler::*Parse_func)(std::vector<Token> & tokens);
+    typedef void (Compiler::*Parse_func)(std::vector<Token> const & tokens);
     class ParseRule {
       public:
         ParseRule() {
@@ -31,7 +30,7 @@ class Compiler {
         Parse_func infix() {
             return m_infix;
         }
-        const Precedence & precedence() {
+        Precedence const & precedence() {
             return m_precedence;
         }
 
@@ -51,26 +50,26 @@ class Compiler {
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    std::unique_ptr<Chunk> compile(std::vector<Token> & tokens);
+    std::unique_ptr<Chunk> compile(std::vector<Token> const & tokens);
 
   private:
     /// @brief Advances to the next token.
     /// @param tokens The tokens that are compiled.
-    void advance(std::vector<Token> & tokens);
+    void advance(std::vector<Token> const & tokens);
 
     /// @brief Compiles a binary expression.
     /// @param tokens The tokens that are compiled.
-    void binary(std::vector<Token> & tokens);
+    void binary(std::vector<Token> const & tokens);
 
     /// @brief Consumes a token.
     /// @param type The type of the token.
     /// @param message The message to display if the token is not of the given type.
     /// @param tokens The tokens that are compiled.
-    void consume(Token::Type type, std::string message, std::vector<Token> & tokens);
+    void consume(Token::Type type, std::string message, std::vector<Token> const & tokens);
 
     /// @brief Gets the current chunk.
     /// @return The current chunk.
-    Chunk * currentChunk();
+    Chunk * currentChunk() const;
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
@@ -89,25 +88,28 @@ class Compiler {
 
     /// @brief Throws an exception at the previous token.
     /// @param message The message to display.
-    void error(std::string message);
+    void error(std::string & message);
 
     /// @brief Throws an exception at the current token.
     /// @param message The message to display.
-    void errorAtCurrent(std::string message);
+    void errorAtCurrent(std::string & message);
 
     /// @brief Compiles an expression.
     /// @param tokens The tokens that are compiled.
-    void expression(std::vector<Token> & tokens);
+    void expression(std::vector<Token> const & tokens);
 
     /// @brief Compiles a grouping expression.
     /// @param tokens The tokens that are compiled.
-    void grouping(std::vector<Token> & tokens);
+    void grouping(std::vector<Token> const & tokens);
 
     /// @brief Gets the rule for the given token type.
     /// @param type The type of the token.
     /// @return The rule for the given token type.
     ParseRule * getRule(Token::Type type);
-    void literal(std::vector<Token> & tokens);
+
+    /// @brief Compiles an literal expression.
+    /// @param tokens The tokens that are compiled.
+    void literal(std::vector<Token> const & tokens);
 
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
@@ -115,25 +117,25 @@ class Compiler {
 
     /// @brief Compiles a numerical constant.
     /// @param tokens The tokens that are compiled.
-    void number(std::vector<Token> & tokens);
+    void number(std::vector<Token> const & tokens);
 
     /// @brief Parses the precedence of the current token.
     /// @param precedence The precedence to parse.
     /// @param tokens The tokens that are compiled.
-    void parsePrecedence(Precedence precedence, std::vector<Token> & tokens);
+    void parsePrecedence(Precedence precedence, std::vector<Token> const & tokens);
 
     /// @brief Compiles a print statement.
     /// @param tokens The tokens that are compiled.
-    void printStatement(std::vector<Token> & tokens);
+    void printStatement(std::vector<Token> const & tokens);
 
     /// @brief Compiles a unary expression.
     /// @param tokens The tokens that are compiled.
-    void unary(std::vector<Token> & tokens);
+    void unary(std::vector<Token> const & tokens);
 
     /// @brief The token that was previously compiled.
-    Token * m_previous;
+    Token const * m_previous;
     /// @brief The token that is currently compiled.
-    Token * m_current;
+    Token const * m_current;
     /// @brief The index of the current token.
     size_t m_currentTokenIndex;
     /// @brief The chunk that is currently compiled.

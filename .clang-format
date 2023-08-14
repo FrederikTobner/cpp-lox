@@ -17,5 +17,6 @@ IndentWidth: 4
 IndentCaseBlocks: true
 InsertBraces: true
 PointerAlignment: Middle
+QualifierAlignment: Right
 SpaceBeforeAssignmentOperators: true
 UseTab: Never

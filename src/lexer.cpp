@@ -1,12 +1,13 @@
 #include "lexer.hpp"
 
+#include <format>
 #include <iostream>
 
 Lexer::Lexer() {
     this->m_tokens = std::vector<Token>();
 }
 
-[[nodiscard]] std::vector<Token> Lexer::tokenize(const std::string & source) {
+[[nodiscard]] std::vector<Token> Lexer::tokenize(std::string const & source) {
     this->m_start = 0;
     this->m_current = 0;
     this->m_line = 1;
@@ -86,7 +87,7 @@ void Lexer::scanToken(std::string const & source) {
         } else if (isAlpha(c)) {
             identifier(source);
         } else {
-            std::cout << "Unexpected character: " << c << std::endl;
+            std::cout << std::format("Unexpected character: {}", c) << std::endl;
         }
         break;
     }
@@ -98,7 +99,7 @@ void Lexer::skipWhitespace(std::string const & source) {
     }
 }
 
-[[nodiscard]] bool Lexer::isAtEnd(std::string const & source) {
+[[nodiscard]] bool Lexer::isAtEnd(std::string const & source) const {
     return m_current >= source.length();
 }
 
@@ -121,11 +122,11 @@ void Lexer::addToken(Token::Type type, std::string const & lexeme) {
     m_tokens.push_back(Token(type, lexeme, m_line));
 }
 
-[[nodiscard]] char Lexer::peek(std::string const & source) {
+[[nodiscard]] char Lexer::peek(std::string const & source) const {
     return source[m_current];
 }
 
-[[nodiscard]] char Lexer::peekNext(std::string const & source) {
+[[nodiscard]] char Lexer::peekNext(std::string const & source) const {
     if (isAtEnd(source)) {
         return '\0';
     }
@@ -149,7 +150,7 @@ void Lexer::string(std::string const & source) {
 }
 
 [[nodiscard]] bool Lexer::isAlpha(char c) const {
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_');
 }
 
 [[nodiscard]] bool Lexer::isDigit(char c) const {
@@ -174,43 +175,42 @@ void Lexer::identifier(std::string const & source) {
     while (isAlpha(peek(source)) || isDigit(peek(source))) {
         advance(source);
     }
-    std::string text = source.substr(m_start, m_current - m_start);
+    std::string lexeme = source.substr(m_start, m_current - m_start);
     Token::Type type;
-    if (text == "and") {
+    if (lexeme == "and") {
         type = Token::Type::AND;
-    } else if (text == "class") {
+    } else if (lexeme == "class") {
         type = Token::Type::CLASS;
-    } else if (text == "else") {
+    } else if (lexeme == "else") {
         type = Token::Type::ELSE;
-    } else if (text == "false") {
+    } else if (lexeme == "false") {
         type = Token::Type::FALSE;
-    } else if (text == "for") {
+    } else if (lexeme == "for") {
         type = Token::Type::FOR;
-    } else if (text == "fun") {
+    } else if (lexeme == "fun") {
         type = Token::Type::FUN;
-    } else if (text == "if") {
+    } else if (lexeme == "if") {
         type = Token::Type::IF;
-    } else if (text == "null") {
+    } else if (lexeme == "null") {
         type = Token::Type::NULL_;
-    } else if (text == "or") {
+    } else if (lexeme == "or") {
         type = Token::Type::OR;
-    } else if (text == "print") {
+    } else if (lexeme == "print") {
         type = Token::Type::PRINT;
-    } else if (text == "return") {
+    } else if (lexeme == "return") {
         type = Token::Type::RETURN;
-    } else if (text == "super") {
+    } else if (lexeme == "super") {
         type = Token::Type::SUPER;
-    } else if (text == "this") {
+    } else if (lexeme == "this") {
         type = Token::Type::THIS;
-    } else if (text == "true") {
+    } else if (lexeme == "true") {
         type = Token::Type::TRUE;
-    } else if (text == "var") {
+    } else if (lexeme == "var") {
         type = Token::Type::VAR;
-    } else if (text == "while") {
+    } else if (lexeme == "while") {
         type = Token::Type::WHILE;
     } else {
         type = Token::Type::IDENTIFIER;
     }
-    std::string lexeme = source.substr(m_start, m_current - m_start);
     addToken(type, lexeme);
 }

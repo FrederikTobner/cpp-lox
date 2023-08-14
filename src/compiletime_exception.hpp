@@ -7,7 +7,7 @@ class CompileTimeException : public std::exception {
   public:
     CompileTimeException(std::string message) : m_message(message) {
     }
-    virtual const char * what() const throw() {
+    virtual char const * what() const throw() {
         return m_message.c_str();
     }
 

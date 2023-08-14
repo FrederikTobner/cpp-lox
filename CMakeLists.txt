@@ -14,7 +14,7 @@ file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp src/*.hpp)
 
 add_subdirectory(src)
 
-if(true)
+if(CLX_BUILD_TESTS)
     enable_testing()
     # Remove main.cpp from the sources, as it is not needed for the tests
     list(REMOVE_ITEM INTERPRETER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
