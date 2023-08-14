@@ -30,6 +30,18 @@ Value::Value(double value) {
     return this->m_underlying_value.m_number;
 }
 
+[[nodiscard]] std::string Value::asString() const {
+    switch (this->m_type) {
+    case VAL_BOOL:
+        return this->m_underlying_value.m_bool ? "true" : "false";
+    case VAL_NULL:
+        return "null";
+    case VAL_NUMBER:
+        return std::to_string(this->m_underlying_value.m_number);
+    }
+    return "";
+}
+
 [[nodiscard]] Value::Type Value::getType() const {
     return this->m_type;
 }

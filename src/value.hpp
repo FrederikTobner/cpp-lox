@@ -43,6 +43,8 @@ class Value {
     /// @return The value as a number
     [[nodiscard]] double asNumber() const;
 
+    [[nodiscard]] std::string asString() const;
+
     /// @brief Prints the value to the given output stream
     /// @param os The output stream to print to
     /// @param dt The value to print
@@ -118,17 +120,4 @@ class Value {
         /// @brief The underlying number value
         double m_number;
     } m_underlying_value;
-};
-template <> struct std::formatter<Value> : std::formatter<std::string_view> {
-    template <typename Context> auto format(Value val, Context & ctx) {
-        switch (val.getType()) {
-        case Value::VAL_BOOL:
-            return std::formatter<std::string_view>::format(std::format("{}", val.asBool() ? "true" : "false"), ctx);
-        case Value::VAL_NULL:
-            return std::formatter<std::string_view>::format("null", ctx);
-        case Value::VAL_NUMBER:
-            return std::formatter<std::string_view>::format(std::format("{}", std::to_string(val.asNumber())), ctx);
-        }
-        return ctx.out();
-    }
 };

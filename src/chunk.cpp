@@ -91,7 +91,8 @@ void Chunk::disassemble(std::string const & name) const {
 
 [[nodiscard]] size_t Chunk::constantInstruction(std::string const & name, size_t offset) const {
     uint8_t constant = this->m_code[offset + 1];
-    std::cout << std::format("{:>16}{:>16} '{}'", name, unsigned(constant), m_constants[constant]) << std::endl;
+    std::cout << std::format("{:>16}{:>16} '{}'", name, unsigned(constant), m_constants[constant].asString())
+              << std::endl;
     return offset + 2;
 }
 
