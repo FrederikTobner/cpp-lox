@@ -123,11 +123,11 @@ template <> struct std::formatter<Value> : std::formatter<std::string_view> {
     template <typename Context> auto format(Value val, Context & ctx) {
         switch (val.getType()) {
         case Value::VAL_BOOL:
-            return std::formatter<std::string_view>::format(std::format("{}", val.asBool()), ctx);
+            return std::formatter<std::string_view>::format(std::format("{}", val.asBool() ? "true" : "false"), ctx);
         case Value::VAL_NULL:
             return std::formatter<std::string_view>::format("null", ctx);
         case Value::VAL_NUMBER:
-            return std::formatter<std::string_view>::format(std::format("{}", val.asNumber()), ctx);
+            return std::formatter<std::string_view>::format(std::format("{}", std::to_string(val.asNumber())), ctx);
         }
         return ctx.out();
     }
