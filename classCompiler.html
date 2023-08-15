@@ -99,6 +99,8 @@ $(document).ready(function(){initNavTree('classCompiler.html',''); initResizable
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCompiler_1_1ParseRules.html">ParseRules</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -150,9 +152,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:af5841d68e1fc21a30faaa340828d9e7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c">grouping</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
 <tr class="memdesc:af5841d68e1fc21a30faaa340828d9e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a grouping expression.  <a href="classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c">More...</a><br /></td></tr>
 <tr class="separator:af5841d68e1fc21a30faaa340828d9e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addaa642339d6469a444aa3622b1aa96e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#addaa642339d6469a444aa3622b1aa96e">getRule</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type)</td></tr>
-<tr class="memdesc:addaa642339d6469a444aa3622b1aa96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the rule for the given token type.  <a href="classCompiler.html#addaa642339d6469a444aa3622b1aa96e">More...</a><br /></td></tr>
-<tr class="separator:addaa642339d6469a444aa3622b1aa96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc6e9f063aabe1d437b52b2bd06279a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a> const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#abcc6e9f063aabe1d437b52b2bd06279a">getRule</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type)</td></tr>
+<tr class="memdesc:abcc6e9f063aabe1d437b52b2bd06279a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the rule for the given token type.  <a href="classCompiler.html#abcc6e9f063aabe1d437b52b2bd06279a">More...</a><br /></td></tr>
+<tr class="separator:abcc6e9f063aabe1d437b52b2bd06279a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60bdb25f5995c534d6280ea9c026303c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a60bdb25f5995c534d6280ea9c026303c">literal</a> (std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; const &amp;tokens)</td></tr>
 <tr class="memdesc:a60bdb25f5995c534d6280ea9c026303c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an literal expression.  <a href="classCompiler.html#a60bdb25f5995c534d6280ea9c026303c">More...</a><br /></td></tr>
 <tr class="separator:a60bdb25f5995c534d6280ea9c026303c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,9 +188,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classChunk.html">Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a1e20b8878edf298a7be3fb7ceb82bd8b">m_chunk</a></td></tr>
 <tr class="memdesc:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk that is currently compiled.  <a href="classCompiler.html#a1e20b8878edf298a7be3fb7ceb82bd8b">More...</a><br /></td></tr>
 <tr class="separator:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a00a0e758fbe7c063ddd5252b145a95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#a6a00a0e758fbe7c063ddd5252b145a95">m_rules</a> [<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73">Token::WHILE</a>+1]</td></tr>
-<tr class="memdesc:a6a00a0e758fbe7c063ddd5252b145a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rules for the different token types.  <a href="classCompiler.html#a6a00a0e758fbe7c063ddd5252b145a95">More...</a><br /></td></tr>
-<tr class="separator:a6a00a0e758fbe7c063ddd5252b145a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe9665182be132237c6bfe06f015cdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCompiler_1_1ParseRules.html">ParseRules</a>&lt; Token::Type::WHILE+1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCompiler.html#aabe9665182be132237c6bfe06f015cdc">m_rules</a> = <a class="el" href="structCompiler_1_1ParseRules.html">ParseRules</a>&lt;Token::Type::WHILE + 1&gt;()</td></tr>
+<tr class="memdesc:aabe9665182be132237c6bfe06f015cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rules for the different token types.  <a href="classCompiler.html#aabe9665182be132237c6bfe06f015cdc">More...</a><br /></td></tr>
+<tr class="separator:aabe9665182be132237c6bfe06f015cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3493831cad915284240d6d6b67251a6a"></a>
@@ -641,8 +643,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="addaa642339d6469a444aa3622b1aa96e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addaa642339d6469a444aa3622b1aa96e">&#9670;&nbsp;</a></span>getRule()</h2>
+<a id="abcc6e9f063aabe1d437b52b2bd06279a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc6e9f063aabe1d437b52b2bd06279a">&#9670;&nbsp;</a></span>getRule()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -651,7 +653,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCompiler_1_1ParseRule.html">Compiler::ParseRule</a> * getRule </td>
+          <td class="memname"><a class="el" href="classCompiler_1_1ParseRule.html">Compiler::ParseRule</a> const  * getRule </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
@@ -1022,8 +1024,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6a00a0e758fbe7c063ddd5252b145a95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a00a0e758fbe7c063ddd5252b145a95">&#9670;&nbsp;</a></span>m_rules</h2>
+<a id="aabe9665182be132237c6bfe06f015cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabe9665182be132237c6bfe06f015cdc">&#9670;&nbsp;</a></span>m_rules</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1032,7 +1034,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classCompiler_1_1ParseRule.html">ParseRule</a> m_rules[<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73">Token::WHILE</a>+1]</td>
+          <td class="memname"><a class="el" href="structCompiler_1_1ParseRules.html">ParseRules</a>&lt;Token::Type::WHILE + 1&gt; m_rules = <a class="el" href="structCompiler_1_1ParseRules.html">ParseRules</a>&lt;Token::Type::WHILE + 1&gt;()</td>
         </tr>
       </table>
   </td>

@@ -7,7 +7,7 @@ var searchData=
   ['init_2ecpp_66',['init.cpp',['../init_8cpp.html',1,'']]],
   ['init_2ehpp_67',['init.hpp',['../init_8hpp.html',1,'']]],
   ['interpret_68',['interpret',['../classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd',1,'VM']]],
-  ['is_69',['is',['../classValue.html#ab9e38e219cc3805bf8443c0ac4de6759',1,'Value']]],
+  ['is_69',['is',['../classValue.html#abeb90e9a35a902d0c2c5950e7f4ac9cb',1,'Value']]],
   ['isalpha_70',['isAlpha',['../classLexer.html#ac655e87a555bc2d278eb63b8f2493375',1,'Lexer']]],
   ['isatend_71',['isAtEnd',['../classLexer.html#a9ea91fbdf3cb569281c63ff09110ea3f',1,'Lexer']]],
   ['isdigit_72',['isDigit',['../classLexer.html#a6ff0aa9a84ef59c2e1a7025d2d79474e',1,'Lexer']]]

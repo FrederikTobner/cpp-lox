@@ -7,7 +7,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "compiler.cpp", "compiler_8cpp.html", null ],
     [ "compiler.hpp", "compiler_8hpp.html", [
       [ "Compiler", "classCompiler.html", "classCompiler" ],
-      [ "ParseRule", "classCompiler_1_1ParseRule.html", "classCompiler_1_1ParseRule" ]
+      [ "ParseRule", "classCompiler_1_1ParseRule.html", "classCompiler_1_1ParseRule" ],
+      [ "ParseRules", "structCompiler_1_1ParseRules.html", "structCompiler_1_1ParseRules" ]
     ] ],
     [ "compiletime_exception.hpp", "compiletime__exception_8hpp.html", [
       [ "CompileTimeException", "classCompileTimeException.html", "classCompileTimeException" ]
@@ -25,7 +26,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "runtime_exception.hpp", "runtime__exception_8hpp.html", [
       [ "RunTimeException", "classRunTimeException.html", "classRunTimeException" ]
     ] ],
-    [ "token.cpp", "token_8cpp.html", null ],
+    [ "token.cpp", "token_8cpp.html", "token_8cpp" ],
     [ "token.hpp", "token_8hpp.html", [
       [ "Token", "classToken.html", "classToken" ]
     ] ],

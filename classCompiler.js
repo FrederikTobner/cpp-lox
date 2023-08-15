@@ -1,6 +1,7 @@
 var classCompiler =
 [
     [ "ParseRule", "classCompiler_1_1ParseRule.html", "classCompiler_1_1ParseRule" ],
+    [ "ParseRules", "structCompiler_1_1ParseRules.html", "structCompiler_1_1ParseRules" ],
     [ "Compiler", "classCompiler.html#a3493831cad915284240d6d6b67251a6a", null ],
     [ "~Compiler", "classCompiler.html#acf166c9448a67e8c58923e93d4798aaf", null ],
     [ "advance", "classCompiler.html#a8feb586534e6d77e1617c1622f97264e", null ],
@@ -15,7 +16,7 @@ var classCompiler =
     [ "error", "classCompiler.html#ade28e18a6a61d3eb3bef687699234ad4", null ],
     [ "errorAtCurrent", "classCompiler.html#a97f89dfb9616d8a741bec858593a0f5a", null ],
     [ "expression", "classCompiler.html#a8e1dcf94b61ddf4c8a70f7ce2333b4ac", null ],
-    [ "getRule", "classCompiler.html#addaa642339d6469a444aa3622b1aa96e", null ],
+    [ "getRule", "classCompiler.html#abcc6e9f063aabe1d437b52b2bd06279a", null ],
     [ "grouping", "classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c", null ],
     [ "literal", "classCompiler.html#a60bdb25f5995c534d6280ea9c026303c", null ],
     [ "makeConstant", "classCompiler.html#a09eb8063449783add2285960153dacd5", null ],
@@ -27,5 +28,5 @@ var classCompiler =
     [ "m_current", "classCompiler.html#ac332007a6139a87217c08b3cf3a4be9d", null ],
     [ "m_currentTokenIndex", "classCompiler.html#ab36625d400fdb9914c13582ac9f9b177", null ],
     [ "m_previous", "classCompiler.html#a737eb262dbf2baabad30f5774865d7dd", null ],
-    [ "m_rules", "classCompiler.html#a6a00a0e758fbe7c063ddd5252b145a95", null ]
+    [ "m_rules", "classCompiler.html#aabe9665182be132237c6bfe06f015cdc", null ]
 ];
