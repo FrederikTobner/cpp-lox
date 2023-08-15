@@ -3,7 +3,7 @@ var searchData=
   ['identifier_62',['identifier',['../classLexer.html#a0673291a2fb0b20d243e5387102f7b53',1,'Lexer']]],
   ['identifier_63',['IDENTIFIER',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a84f8ae2490f9e4bd2321fd21f4b0e807',1,'Token']]],
   ['if_64',['IF',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a252802eda493fb6b4a279c4452acb547',1,'Token']]],
-  ['infix_65',['infix',['../classCompiler_1_1ParseRule.html#a44c7af94bc2c12a271b763880397a0bd',1,'Compiler::ParseRule']]],
+  ['infix_65',['infix',['../classCompiler_1_1ParseRule.html#a41bfe30270d94497b96e0af356a583f3',1,'Compiler::ParseRule']]],
   ['init_2ecpp_66',['init.cpp',['../init_8cpp.html',1,'']]],
   ['init_2ehpp_67',['init.hpp',['../init_8hpp.html',1,'']]],
   ['interpret_68',['interpret',['../classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd',1,'VM']]],
