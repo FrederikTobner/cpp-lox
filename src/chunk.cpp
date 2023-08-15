@@ -27,7 +27,7 @@ void Chunk::disassemble(std::string const & name) const {
 }
 
 [[nodiscard]] size_t Chunk::disassembleInstruction(size_t offset) const {
-    std::cout << std::format("{:04} ", offset);
+    std::cout << std::format("{:#06X} ", offset);
 
     if (offset > 0 && this->m_lines[offset] == this->m_lines[offset - 1]) {
         std::cout << "   | ";

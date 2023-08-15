@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -9,25 +10,25 @@
 #include "token.hpp"
 
 class Compiler {
-    typedef void (Compiler::*Parse_func)(std::vector<Token> const & tokens);
     class ParseRule {
       public:
         ParseRule() {
-            m_prefix = nullptr;
-            m_infix = nullptr;
+            m_prefix = std::nullopt;
+            m_infix = std::nullopt;
             m_precedence = Precedence::NONE;
         }
-        ParseRule(Parse_func prefix, Parse_func infix, Precedence precedence) {
+        ParseRule(std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> prefix,
+                  std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> infix, Precedence precedence) {
             m_prefix = prefix;
             m_infix = infix;
             m_precedence = precedence;
         }
         ~ParseRule() {
         }
-        Parse_func prefix() {
+        std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> prefix() const {
             return m_prefix;
         }
-        Parse_func infix() {
+        std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> infix() const {
             return m_infix;
         }
         Precedence const & precedence() {
@@ -35,8 +36,8 @@ class Compiler {
         }
 
       private:
-        Parse_func m_prefix;
-        Parse_func m_infix;
+        std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> m_prefix;
+        std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> m_infix;
         Precedence m_precedence;
     };
 

@@ -8,45 +8,45 @@
 #include "opcode.hpp"
 
 Compiler::Compiler() {
-    m_rules[Token::Type::LEFT_PARENTHESES] = ParseRule(&Compiler::grouping, nullptr, Precedence::NONE);
-    m_rules[Token::Type::RIGHT_PARENTHESES] = Compiler::ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::LEFT_BRACE] = Compiler::ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::RIGHT_BRACE] = Compiler::ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::COMMA] = Compiler::ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::DOT] = ParseRule(nullptr, nullptr, Precedence::NONE);
+    m_rules[Token::Type::LEFT_PARENTHESES] = ParseRule(&Compiler::grouping, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::RIGHT_PARENTHESES] = Compiler::ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::LEFT_BRACE] = Compiler::ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::RIGHT_BRACE] = Compiler::ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::COMMA] = Compiler::ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::DOT] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
     m_rules[Token::Type::MINUS] = ParseRule(&Compiler::unary, &Compiler::binary, Precedence::TERM);
-    m_rules[Token::Type::PLUS] = ParseRule(nullptr, &Compiler::binary, Precedence::TERM);
-    m_rules[Token::Type::SEMICOLON] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::SLASH] = ParseRule(nullptr, &Compiler::binary, Precedence::FACTOR);
-    m_rules[Token::Type::STAR] = ParseRule(nullptr, &Compiler::binary, Precedence::FACTOR);
-    m_rules[Token::Type::BANG] = ParseRule(&Compiler::unary, nullptr, Precedence::NONE);
-    m_rules[Token::Type::BANG_EQUAL] = ParseRule(nullptr, &Compiler::binary, Precedence::EQUALITY);
-    m_rules[Token::Type::EQUAL] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::EQUAL_EQUAL] = ParseRule(nullptr, &Compiler::binary, Precedence::NONE);
-    m_rules[Token::Type::GREATER] = ParseRule(nullptr, &Compiler::binary, Precedence::NONE);
-    m_rules[Token::Type::GREATER_EQUAL] = ParseRule(nullptr, &Compiler::binary, Precedence::NONE);
-    m_rules[Token::Type::LESS] = ParseRule(nullptr, &Compiler::binary, Precedence::NONE);
-    m_rules[Token::Type::LESS_EQUAL] = ParseRule(nullptr, &Compiler::binary, Precedence::NONE);
-    m_rules[Token::Type::IDENTIFIER] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::STRING] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::NUMBER] = ParseRule(&Compiler::number, nullptr, Precedence::NONE);
-    m_rules[Token::Type::AND] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::CLASS] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::ELSE] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::FALSE] = ParseRule(&Compiler::literal, nullptr, Precedence::NONE);
-    m_rules[Token::Type::FUN] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::FOR] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::IF] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::NULL_] = ParseRule(&Compiler::literal, nullptr, Precedence::NONE);
-    m_rules[Token::Type::OR] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::PRINT] = ParseRule(&Compiler::printStatement, nullptr, Precedence::NONE);
-    m_rules[Token::Type::RETURN] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::SUPER] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::THIS] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::TRUE] = ParseRule(&Compiler::literal, nullptr, Precedence::NONE);
-    m_rules[Token::Type::VAR] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::WHILE] = ParseRule(nullptr, nullptr, Precedence::NONE);
-    m_rules[Token::Type::END_OF_FILE] = ParseRule(nullptr, nullptr, Precedence::NONE);
+    m_rules[Token::Type::PLUS] = ParseRule(std::nullopt, &Compiler::binary, Precedence::TERM);
+    m_rules[Token::Type::SEMICOLON] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::SLASH] = ParseRule(std::nullopt, &Compiler::binary, Precedence::FACTOR);
+    m_rules[Token::Type::STAR] = ParseRule(std::nullopt, &Compiler::binary, Precedence::FACTOR);
+    m_rules[Token::Type::BANG] = ParseRule(&Compiler::unary, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::BANG_EQUAL] = ParseRule(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
+    m_rules[Token::Type::EQUAL] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::EQUAL_EQUAL] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+    m_rules[Token::Type::GREATER] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+    m_rules[Token::Type::GREATER_EQUAL] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+    m_rules[Token::Type::LESS] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+    m_rules[Token::Type::LESS_EQUAL] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+    m_rules[Token::Type::IDENTIFIER] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::STRING] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::NUMBER] = ParseRule(&Compiler::number, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::AND] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::CLASS] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::ELSE] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::FALSE] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::FUN] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::FOR] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::IF] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::NULL_] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::OR] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::PRINT] = ParseRule(&Compiler::printStatement, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::RETURN] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::SUPER] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::THIS] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::TRUE] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::VAR] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::WHILE] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+    m_rules[Token::Type::END_OF_FILE] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
 }
 
 Compiler::~Compiler() {
@@ -217,15 +217,19 @@ void Compiler::binary(std::vector<Token> const & tokens) {
 
 void Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) {
     advance(tokens);
-    Parse_func prefixRule = getRule(m_previous->type())->prefix();
-    if (prefixRule == nullptr) {
+    auto prefixRule = getRule(m_previous->type())->prefix();
+    if (prefixRule == std::nullopt) {
         throw CompileTimeException("Expect expression");
         return;
     }
-    (this->*prefixRule)(tokens);
+    (this->*prefixRule.value())(tokens);
     while (precedence <= getRule(m_current->type())->precedence()) {
         advance(tokens);
-        Parse_func infixRule = getRule(m_previous->type())->infix();
-        (this->*infixRule)(tokens);
+        auto infixRule = getRule(m_previous->type())->infix();
+        if (infixRule == std::nullopt) {
+            throw CompileTimeException("Expect expression");
+            return;
+        }
+        (this->*infixRule.value())(tokens);
     }
 }
