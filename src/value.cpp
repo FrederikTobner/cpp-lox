@@ -18,7 +18,7 @@ Value::Value(double value) {
     this->m_underlying_value.m_number = value;
 }
 
-[[nodiscard]] bool Value::is(Value::Type type) const noexcept {
+[[nodiscard]] bool Value::is(Value::Type type) noexcept {
     return type == this->m_type;
 }
 

@@ -33,7 +33,7 @@ class Value {
     /// @brief Checks if the value is of the given type
     /// @param type The type to check against
     /// @return true if the value is of the given type, false otherwise
-    [[nodiscard]] bool is(Type type) const noexcept;
+    [[nodiscard]] bool is(Type type) noexcept;
 
     /// @brief Gets the value as a bool
     /// @return The value as a bool

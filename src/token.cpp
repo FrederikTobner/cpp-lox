@@ -1,5 +1,6 @@
 #include "token.hpp"
 
+#include <format>
 #include <iostream>
 
 Token::Token(Type type, std::string lexeme, size_t line) {
@@ -8,14 +9,7 @@ Token::Token(Type type, std::string lexeme, size_t line) {
     this->m_line = line;
 }
 
-[[nodiscard]] Token::Type Token::type() const {
-    return this->m_type;
-}
-
-[[nodiscard]] std::string const & Token::lexeme() const {
-    return this->m_lexeme;
-}
-
-[[nodiscard]] size_t Token::line() const {
-    return this->m_line;
+std::ostream & operator<<(std::ostream & os, Token const & token) {
+    os << std::format("Token({0}, {1}, {2})", unsigned(token.m_type), token.m_lexeme, token.m_line);
+    return os;
 }

@@ -91,17 +91,29 @@ class Token {
     /// @param line The line number where the token was found
     Token(Type type, std::string lexeme, size_t line);
 
+    /// @brief Appends the string representation of the token to the output stream
+    /// @param os The output stream to append to
+    /// @param token The token to append
+    /// @return The output stream
+    friend std::ostream & operator<<(std::ostream & os, Token const & token);
+
     /// @brief Get the type of the token
     /// @return The type of the token
-    [[nodiscard]] Type type() const;
+    [[nodiscard]] Type type() const {
+        return this->m_type;
+    }
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
-    [[nodiscard]] std::string const & lexeme() const;
+    [[nodiscard]] std::string const & lexeme() const {
+        return this->m_lexeme;
+    }
 
     /// @brief Get the line number where the token was found
     /// @return The line number where the token was found
-    [[nodiscard]] size_t line() const;
+    [[nodiscard]] inline size_t line() const {
+        return this->m_line;
+    }
 
   private:
     /// @brief The type of the token
