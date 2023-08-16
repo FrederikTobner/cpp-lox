@@ -95,6 +95,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classCompiler.html#a8feb586534e6d77e1617c1622f97264e">Compiler</a>
 , <a class="el" href="classLexer.html#a0e792d844620cad82bd539c31d45fda0">Lexer</a>
 </li>
+<li>AMOUNT
+: <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a4ae3ac2b199ac6dd5e7a2622dd408e97">Token</a>
+</li>
 <li>AND
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a865555c9f2e0458a7078486aa1b3254f">Token</a>
 </li>
@@ -228,7 +231,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classChunk.html#a47e3e4174fbcde0708b3254bc59d1244">Chunk</a>
 </li>
 <li>getRule()
-: <a class="el" href="classCompiler.html#abcc6e9f063aabe1d437b52b2bd06279a">Compiler</a>
+: <a class="el" href="classCompiler.html#a31a876b90ee44700bb135c5e8cd5c49f">Compiler</a>
 </li>
 <li>getSize()
 : <a class="el" href="classChunk.html#a9be1e4285daa77fe397767c097fbdc66">Chunk</a>
@@ -259,7 +262,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a252802eda493fb6b4a279c4452acb547">Token</a>
 </li>
 <li>infix()
-: <a class="el" href="classCompiler_1_1ParseRule.html#a41bfe30270d94497b96e0af356a583f3">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#a41bfe30270d94497b96e0af356a583f3">ParseRule</a>
 </li>
 <li>interpret()
 : <a class="el" href="classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd">VM</a>
@@ -329,7 +332,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classCompiler.html#ab36625d400fdb9914c13582ac9f9b177">Compiler</a>
 </li>
 <li>m_infix
-: <a class="el" href="classCompiler_1_1ParseRule.html#a95e88469a508b79331b5040d2e8b6572">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#a95e88469a508b79331b5040d2e8b6572">ParseRule</a>
 </li>
 <li>m_instruction_index
 : <a class="el" href="classVM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">VM</a>
@@ -352,16 +355,16 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classValue.html#ad0603410ad21c532b613ebeed38e5295">Value</a>
 </li>
 <li>m_precedence
-: <a class="el" href="classCompiler_1_1ParseRule.html#a53b92ac1bf845d7a5089ee01d72a1d59">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#a53b92ac1bf845d7a5089ee01d72a1d59">ParseRule</a>
 </li>
 <li>m_prefix
-: <a class="el" href="classCompiler_1_1ParseRule.html#ab6f4785f2184bfd373f5eb4ccad61f97">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#ab6f4785f2184bfd373f5eb4ccad61f97">ParseRule</a>
 </li>
 <li>m_previous
 : <a class="el" href="classCompiler.html#a737eb262dbf2baabad30f5774865d7dd">Compiler</a>
 </li>
 <li>m_rules
-: <a class="el" href="classCompiler.html#aabe9665182be132237c6bfe06f015cdc">Compiler</a>
+: <a class="el" href="classCompiler.html#a86d163155b74b206da2680230ba01f31">Compiler</a>
 </li>
 <li>m_stack
 : <a class="el" href="classVM.html#a90d3c55a6af3a3d1d3b2eda89c88e398">VM</a>
@@ -384,6 +387,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>makeConstant()
 : <a class="el" href="classCompiler.html#a09eb8063449783add2285960153dacd5">Compiler</a>
+</li>
+<li>makeRules()
+: <a class="el" href="classCompiler.html#a845f7d46c28c11a3d28cc2944b2ecb6f">Compiler</a>
 </li>
 <li>match()
 : <a class="el" href="classLexer.html#acb35d5d56f105b99878c60478000836a">Lexer</a>
@@ -457,10 +463,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classCompiler.html#aa7fca480a1317d692566e92ca1a81b93">Compiler</a>
 </li>
 <li>ParseRule()
-: <a class="el" href="classCompiler_1_1ParseRule.html#a54715a6eb7c36d225c75ab5abe49be77">Compiler::ParseRule</a>
-</li>
-<li>ParseRules()
-: <a class="el" href="structCompiler_1_1ParseRules.html#ae6b5b91949455176389b22a6e5c4e2b8">Compiler::ParseRules&lt; N &gt;</a>
+: <a class="el" href="classParseRule.html#a54715a6eb7c36d225c75ab5abe49be77">ParseRule</a>
 </li>
 <li>peek()
 : <a class="el" href="classLexer.html#a8a92172bf1fecd7f39d8cf7756cca4f4">Lexer</a>
@@ -475,10 +478,10 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classVM.html#a182b10dd85413185aed3c2e3db794041">VM</a>
 </li>
 <li>precedence()
-: <a class="el" href="classCompiler_1_1ParseRule.html#ac0350fd13769a71b092ec1eb98b18042">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#ac0350fd13769a71b092ec1eb98b18042">ParseRule</a>
 </li>
 <li>prefix()
-: <a class="el" href="classCompiler_1_1ParseRule.html#a6e8a2003fd286bef369ac2651df4fd2b">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#a6e8a2003fd286bef369ac2651df4fd2b">ParseRule</a>
 </li>
 <li>PRINT
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7ab107229d44d042caa8ab8df4c8acaa1f">Token</a>
@@ -501,9 +504,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>RIGHT_PARENTHESES
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a99f5cfe9f2e0a2880af8cd535bdf1a0a">Token</a>
-</li>
-<li>rules
-: <a class="el" href="structCompiler_1_1ParseRules.html#aa0913e03e992c050ec9441b550f297d7">Compiler::ParseRules&lt; N &gt;</a>
 </li>
 <li>runTimeError()
 : <a class="el" href="classVM.html#a1220a1439147aac29d4d6dd510fd15bc">VM</a>
@@ -558,12 +558,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>TRUE
 : <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7aa82764c3079aea4e60c80e45befbb839">Token</a>
 </li>
+<li>Type
+: <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token</a>
+</li>
 <li>type()
 : <a class="el" href="classToken.html#adf4a6727c689e0038cf2cdd158d5ed2c">Token</a>
 </li>
 <li>Type
-: <a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token</a>
-, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value</a>
+: <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value</a>
 </li>
 </ul>
 
@@ -619,7 +621,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classCompiler.html#acf166c9448a67e8c58923e93d4798aaf">Compiler</a>
 </li>
 <li>~ParseRule()
-: <a class="el" href="classCompiler_1_1ParseRule.html#a7ec65d701fdba26cd6fbf1c9fc3d960f">Compiler::ParseRule</a>
+: <a class="el" href="classParseRule.html#a7ec65d701fdba26cd6fbf1c9fc3d960f">ParseRule</a>
 </li>
 <li>~VM()
 : <a class="el" href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">VM</a>

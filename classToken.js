@@ -39,7 +39,8 @@ var classToken =
       [ "THIS", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7aac234b49144e47526107d3001284d928", null ],
       [ "TRUE", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7aa82764c3079aea4e60c80e45befbb839", null ],
       [ "VAR", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7af68346ce0bfce7ab2ca0a240f5132863", null ],
-      [ "WHILE", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73", null ]
+      [ "WHILE", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a3278fd035226215822c903790a1eee73", null ],
+      [ "AMOUNT", "classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a4ae3ac2b199ac6dd5e7a2622dd408e97", null ]
     ] ],
     [ "Token", "classToken.html#a3836d4e84d9b1a5aa95bfe71bc147537", null ],
     [ "lexeme", "classToken.html#a5527fb7b4fb55cff392c9a24015ab455", null ],
