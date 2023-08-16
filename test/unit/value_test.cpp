@@ -3,20 +3,11 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for Value unit tests
-class ValueTest : public ::testing::Test {
-  public:
-    Value numVal;
-    Value boolVal;
-    Value nullVal;
-    void SetUp() override {
-        numVal = Value(3.14);
-        boolVal = Value(true);
-        nullVal = Value();
-    }
-};
+Value numVal = Value(3.14);
+Value boolVal = Value(true);
+Value nullVal = Value();
 
-TEST_F(ValueTest, is) {
+TEST(ValueTest, is) {
     EXPECT_TRUE(numVal.is(Value::VAL_NUMBER));
     EXPECT_FALSE(numVal.is(Value::VAL_NULL));
     EXPECT_FALSE(numVal.is(Value::VAL_BOOL));
@@ -28,28 +19,28 @@ TEST_F(ValueTest, is) {
     EXPECT_FALSE(nullVal.is(Value::VAL_NUMBER));
 }
 
-TEST_F(ValueTest, as) {
+TEST(ValueTest, as) {
     EXPECT_EQ(numVal.asNumber(), 3.14);
     EXPECT_EQ(boolVal.asBool(), true);
 }
 
-TEST_F(ValueTest, getType) {
+TEST(ValueTest, getType) {
     EXPECT_EQ(numVal.getType(), Value::VAL_NUMBER);
     EXPECT_EQ(boolVal.getType(), Value::VAL_BOOL);
     EXPECT_EQ(nullVal.getType(), Value::VAL_NULL);
 }
 
-TEST_F(ValueTest, EqualityOperator) {
+TEST(ValueTest, EqualityOperator) {
     EXPECT_TRUE(numVal == Value(3.14));
     EXPECT_FALSE(numVal == boolVal);
 }
 
-TEST_F(ValueTest, InequalityOperator) {
+TEST(ValueTest, InequalityOperator) {
     EXPECT_FALSE(numVal != Value(3.14));
     EXPECT_TRUE(numVal != boolVal);
 }
 
-TEST_F(ValueTest, ExtractionOperator) {
+TEST(ValueTest, ExtractionOperator) {
     testing::internal::CaptureStdout();
     std::cout << numVal;
     std::string output = testing::internal::GetCapturedStdout();
@@ -64,70 +55,70 @@ TEST_F(ValueTest, ExtractionOperator) {
     EXPECT_EQ(output, "null");
 }
 
-TEST_F(ValueTest, Negate) {
+TEST(ValueTest, Negate) {
     ASSERT_EQ(Value(-3.14), -numVal);
 }
 
-TEST_F(ValueTest, Add) {
+TEST(ValueTest, Add) {
     ASSERT_EQ(Value(6.28), numVal + numVal);
 }
 
-TEST_F(ValueTest, AddFail) {
+TEST(ValueTest, AddFail) {
     ASSERT_THROW({ Value val = numVal + boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, Subtract) {
+TEST(ValueTest, Subtract) {
     ASSERT_EQ(Value(0.0), numVal - numVal);
 }
 
-TEST_F(ValueTest, SubtractFail) {
+TEST(ValueTest, SubtractFail) {
     ASSERT_THROW({ Value val = numVal - boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, Multiply) {
+TEST(ValueTest, Multiply) {
     ASSERT_EQ(Value(9.8596), numVal * numVal);
 }
 
-TEST_F(ValueTest, MultiplyFail) {
+TEST(ValueTest, MultiplyFail) {
     ASSERT_THROW({ Value val = numVal * boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, Divide) {
+TEST(ValueTest, Divide) {
     ASSERT_EQ(Value(1.0), numVal / numVal);
 }
 
-TEST_F(ValueTest, DivideFail) {
+TEST(ValueTest, DivideFail) {
     ASSERT_THROW({ Value val = numVal / boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, Greater) {
+TEST(ValueTest, Greater) {
     ASSERT_EQ(Value(true), numVal > Value(2.0));
 }
 
-TEST_F(ValueTest, GreaterFail) {
+TEST(ValueTest, GreaterFail) {
     ASSERT_THROW({ Value val = numVal > boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, GreaterEqual) {
+TEST(ValueTest, GreaterEqual) {
     ASSERT_EQ(Value(true), numVal >= Value(3.14));
 }
 
-TEST_F(ValueTest, GreaterEqualFail) {
+TEST(ValueTest, GreaterEqualFail) {
     ASSERT_THROW({ Value val = numVal >= boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, Less) {
+TEST(ValueTest, Less) {
     ASSERT_EQ(Value(true), numVal < Value(4.0));
 }
 
-TEST_F(ValueTest, LessFail) {
+TEST(ValueTest, LessFail) {
     ASSERT_THROW({ Value val = numVal < boolVal; }, RunTimeException);
 }
 
-TEST_F(ValueTest, LessEqual) {
+TEST(ValueTest, LessEqual) {
     ASSERT_EQ(Value(true), numVal <= Value(3.14));
 }
 
-TEST_F(ValueTest, LessEqualFail) {
+TEST(ValueTest, LessEqualFail) {
     ASSERT_THROW({ Value val = numVal <= boolVal; }, RunTimeException);
 }

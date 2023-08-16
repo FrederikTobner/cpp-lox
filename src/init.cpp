@@ -15,7 +15,7 @@
 #include <iostream>
 #include <memory>
 
-static void run(std::string const & source);
+static void run(std::string & source);
 
 void repl() {
     std::string line;
@@ -41,13 +41,17 @@ void runFile(char const * path) {
     run(source);
 }
 
-static void run(std::string const & source) {
+static void run(std::string & source) {
     VM vm;
     Lexer lexer;
     Compiler compiler;
     try {
         std::vector<Token> tokens = lexer.tokenize(source);
+        // Source file is not needed after the tokens are generated
+        source.clear();
         std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+        // Tokens are not needed after the chunk is generated
+        tokens.clear();
         vm.interpret(*chunk.get());
     } catch (CompileTimeException e) {
         std::cout << e.what() << std::endl;

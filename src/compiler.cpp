@@ -130,8 +130,8 @@ void Compiler::unary(std::vector<Token> const & tokens) {
     }
 }
 
-Compiler::ParseRule const * Compiler::getRule(Token::Type type) {
-    return &(m_rules.rules[type]);
+ParseRule const * Compiler::getRule(Token::Type type) {
+    return &(m_rules[type]);
 }
 
 void Compiler::binary(std::vector<Token> const & tokens) {

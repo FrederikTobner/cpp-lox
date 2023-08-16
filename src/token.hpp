@@ -84,6 +84,7 @@ class Token {
         VAR,
         /// @brief A while keyword
         WHILE,
+        AMOUNT
     };
     /// @brief Construct a new Token object
     /// @param type The type of the token
@@ -99,13 +100,13 @@ class Token {
 
     /// @brief Get the type of the token
     /// @return The type of the token
-    [[nodiscard]] Type type() const {
+    [[nodiscard]] inline Type type() const {
         return this->m_type;
     }
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
-    [[nodiscard]] std::string const & lexeme() const {
+    [[nodiscard]] inline std::string const & lexeme() const {
         return this->m_lexeme;
     }
 

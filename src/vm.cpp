@@ -110,6 +110,6 @@ template <class... Args> void VM::runTimeError(std::string_view fmt, Args &&... 
     std::string errorMessage = std::vformat(fmt, std::make_format_args(args...));
     errorMessage += "\n";
     size_t instruction = m_instruction_index - 1;
-    errorMessage.append(std::format("[line {}] in script\n", this->m_chunk->getLine(instruction)));
+    errorMessage.append(std::format("[line {}] in script\n", m_chunk->getLine(instruction)));
     throw RunTimeException(errorMessage);
 }

@@ -5,7 +5,7 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for Lexer integration tests
+// Test fixture for Lexer tests
 class LexerTest : public ::testing::Test {
   public:
     Lexer lexer;
