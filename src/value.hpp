@@ -121,3 +121,16 @@ class Value {
         double m_number;
     } m_underlying_value;
 };
+
+template <> struct std::formatter<Value> : std::formatter<std::string> {
+    auto format(Value value, format_context & ctx) const {
+        switch (value.getType()) {
+        case Value::VAL_BOOL:
+            return formatter<string>::format(std::format("{}", value.asBool()), ctx);
+        case Value::VAL_NULL:
+            return formatter<string>::format(std::format("{}", value.asString()), ctx);
+        case Value::VAL_NUMBER:
+            return formatter<string>::format(std::format("{}", value.asNumber()), ctx);
+        }
+    }
+};
