@@ -1,5 +1,9 @@
 #pragma once
 
+#include <format>
+#include <ostream>
+#include <string>
+
 /// @brief The opcodes of the intermidiate language
 typedef enum {
     OP_ADD,
@@ -20,4 +24,16 @@ typedef enum {
     OP_RETURN,
     OP_SUBTRACT,
     OP_TRUE,
+    // Amount of opcodes in the enum has to be last entry
+    COUNT
 } Opcode;
+
+std::string const & opcode_as_string(Opcode value);
+
+std::ostream & operator<<(std::ostream & out, Opcode value);
+
+template <> struct std::formatter<Opcode> : std::formatter<std::string> {
+    auto format(Opcode opcode, format_context & ctx) const {
+        return formatter<string>::format(std::format("{}", opcode_as_string(opcode)), ctx);
+    }
+};

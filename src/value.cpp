@@ -30,29 +30,27 @@ Value::Value(double value) {
     return this->m_underlying_value.m_number;
 }
 
-[[nodiscard]] std::string Value::asString() const {
-    switch (this->m_type) {
-    case VAL_BOOL:
-        return this->m_underlying_value.m_bool ? "true" : "false";
-    case VAL_NULL:
-        return "null";
-    case VAL_NUMBER:
-        {
-            // Remove trailing zeros and decimal point if there are no fractional digits
-            std::string str = std::to_string(this->m_underlying_value.m_number);
-            str.erase(str.find_last_not_of('0') + 1, std::string::npos);
-            return str.erase(str.find_last_not_of('.') + 1, std::string::npos);
-        }
-    }
-    return "";
-}
-
 [[nodiscard]] Value::Type Value::getType() const {
     return this->m_type;
 }
 
 std::ostream & operator<<(std::ostream & os, Value const & value) {
-    return os << value.asString();
+    switch (value.m_type) {
+    case Value::Type::VAL_BOOL:
+        return os << (value.m_underlying_value.m_bool ? "true" : "false");
+    case Value::Type::VAL_NULL:
+        return os << "null";
+    case Value::Type::VAL_NUMBER:
+        {
+            // Remove trailing zeros and decimal point if there are no fractional digits
+            std::string str = std::to_string(value.m_underlying_value.m_number);
+            str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+            str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+            return os << str;
+        }
+    }
+    // should be be unreachable
+    return os << "undefined";
 }
 
 [[nodiscard]] bool Value::operator==(Value const & other) const {

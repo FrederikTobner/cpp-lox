@@ -43,8 +43,6 @@ class Value {
     /// @return The value as a number
     [[nodiscard]] double asNumber() const;
 
-    [[nodiscard]] std::string asString() const;
-
     /// @brief Prints the value to the given output stream
     /// @param os The output stream to print to
     /// @param dt The value to print
@@ -128,9 +126,11 @@ template <> struct std::formatter<Value> : std::formatter<std::string> {
         case Value::VAL_BOOL:
             return formatter<string>::format(std::format("{}", value.asBool()), ctx);
         case Value::VAL_NULL:
-            return formatter<string>::format(std::format("{}", value.asString()), ctx);
+            return formatter<string>::format(std::format("null"), ctx);
         case Value::VAL_NUMBER:
             return formatter<string>::format(std::format("{}", value.asNumber()), ctx);
         }
+        // should be be unreachable
+        return formatter<string>::format(std::format("undefined"), ctx);
     }
 };

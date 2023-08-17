@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+#include "opcode.hpp"
 #include "value.hpp"
 
 class Chunk {
@@ -20,8 +21,8 @@ class Chunk {
     [[nodiscard]] size_t disassembleInstruction(size_t offset) const;
 
   private:
-    [[nodiscard]] size_t simpleInstruction(std::string const & name, size_t offset) const;
-    [[nodiscard]] size_t constantInstruction(std::string const & name, size_t offset) const;
+    [[nodiscard]] size_t simpleInstruction(Opcode opcode, size_t offset) const;
+    [[nodiscard]] size_t constantInstruction(Opcode opcode, size_t offset) const;
     std::vector<uint8_t> m_code;
     std::vector<int> m_lines;
     std::vector<Value> m_constants;

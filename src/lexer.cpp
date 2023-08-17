@@ -94,7 +94,8 @@ void Lexer::scanToken(std::string const & source) {
 }
 
 void Lexer::skipWhitespace(std::string const & source) {
-    while (peek(source) == ' ' || peek(source) == '\r' || peek(source) == '\t') {
+    while (!isAtEnd(source) &&
+           (peek(source) == ' ' || peek(source) == '\r' || peek(source) == '\t' || peek(source) == '\n')) {
         advance(source);
     }
 }

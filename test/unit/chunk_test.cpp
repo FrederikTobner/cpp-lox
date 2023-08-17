@@ -1,5 +1,4 @@
 #include "../../src/chunk.hpp"
-#include "../../src/opcode.hpp"
 #include "../../src/value.hpp"
 
 #include <gtest/gtest.h>
@@ -111,5 +110,5 @@ TEST_P(ChunkParameterizedConstantInstructionTestFixture, WriteOpCode) {
     std::string output = testing::internal::GetCapturedStdout();
 
     // Assert
-    EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} '{}'\n", expected, 0, value.asString()));
+    EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} '{}'\n", expected, 0, value));
 }
