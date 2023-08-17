@@ -27,7 +27,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     ] ],
     [ "token.cpp", "token_8cpp.html", "token_8cpp" ],
     [ "token.hpp", "token_8hpp.html", [
-      [ "Token", "classToken.html", "classToken" ]
+      [ "Token", "classToken.html", "classToken" ],
+      [ "formatter< Token >", "structstd_1_1formatter_3_01Token_01_4.html", "structstd_1_1formatter_3_01Token_01_4" ]
     ] ],
     [ "value.cpp", "value_8cpp.html", "value_8cpp" ],
     [ "value.hpp", "value_8hpp.html", [

@@ -14,6 +14,8 @@ var NAVTREEINDEX1 =
 "precedence_8hpp_source.html":[2,0,0,12],
 "runtime__exception_8hpp.html":[2,0,0,13],
 "runtime__exception_8hpp_source.html":[2,0,0,13],
+"structstd_1_1formatter_3_01Token_01_4.html":[1,0,0,0],
+"structstd_1_1formatter_3_01Token_01_4.html#ab99ebc5ad705113f15b369a9ec3c4383":[1,0,0,0,0],
 "token_8cpp.html":[2,0,0,14],
 "token_8cpp.html#a20974da93a6a8643a652fa1cdb46c1ee":[2,0,0,14,0],
 "token_8hpp.html":[2,0,0,15],

@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['repl_310',['repl',['../init_8cpp.html#a34fa27b192f788b6c3f8386f3d9383b1',1,'repl():&#160;init.cpp'],['../init_8hpp.html#a34fa27b192f788b6c3f8386f3d9383b1',1,'repl():&#160;init.cpp']]],
-  ['run_311',['run',['../init_8cpp.html#ad309abe28b5dbe2f2b7b5d21d4e63089',1,'init.cpp']]],
-  ['runfile_312',['runFile',['../init_8cpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9',1,'runFile(char const *path):&#160;init.cpp'],['../init_8hpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9',1,'runFile(char const *path):&#160;init.cpp']]],
-  ['runtimeerror_313',['runTimeError',['../classVM.html#a1220a1439147aac29d4d6dd510fd15bc',1,'VM']]],
-  ['runtimeexception_314',['RunTimeException',['../classRunTimeException.html#a829bf95acdc318f7da86343a99f52e1f',1,'RunTimeException']]]
+  ['parseprecedence_305',['parsePrecedence',['../classCompiler.html#aa7fca480a1317d692566e92ca1a81b93',1,'Compiler']]],
+  ['parserule_306',['ParseRule',['../classParseRule.html#a54715a6eb7c36d225c75ab5abe49be77',1,'ParseRule::ParseRule()'],['../classParseRule.html#a9341499f4d08d642ceb262fd70e2654c',1,'ParseRule::ParseRule(std::optional&lt; void(Compiler::*)(std::vector&lt; Token &gt; const &amp;tokens)&gt; prefix, std::optional&lt; void(Compiler::*)(std::vector&lt; Token &gt; const &amp;tokens)&gt; infix, Precedence precedence)']]],
+  ['peek_307',['peek',['../classLexer.html#a8a92172bf1fecd7f39d8cf7756cca4f4',1,'Lexer']]],
+  ['peeknext_308',['peekNext',['../classLexer.html#aafa266a298cb79976e038d82e59ed985',1,'Lexer']]],
+  ['pop_309',['pop',['../classVM.html#a182b10dd85413185aed3c2e3db794041',1,'VM']]],
+  ['precedence_310',['precedence',['../classParseRule.html#ac0350fd13769a71b092ec1eb98b18042',1,'ParseRule']]],
+  ['prefix_311',['prefix',['../classParseRule.html#a6e8a2003fd286bef369ac2651df4fd2b',1,'ParseRule']]],
+  ['printstatement_312',['printStatement',['../classCompiler.html#a467470ea7086630af99e64f45c6b160e',1,'Compiler']]],
+  ['push_313',['push',['../classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b',1,'VM']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['token_319',['Token',['../classToken.html#a3836d4e84d9b1a5aa95bfe71bc147537',1,'Token']]],
-  ['tokenize_320',['tokenize',['../classLexer.html#a857c313bf4ad61059de72adb918b7c6b',1,'Lexer']]],
-  ['type_321',['type',['../classToken.html#adf4a6727c689e0038cf2cdd158d5ed2c',1,'Token']]]
+  ['scantoken_319',['scanToken',['../classLexer.html#a73a69de77b50640acd606c6a3d388f07',1,'Lexer']]],
+  ['simpleinstruction_320',['simpleInstruction',['../classChunk.html#a8f7fe7431442f3a4675e62fbcda0d356',1,'Chunk']]],
+  ['skipwhitespace_321',['skipWhitespace',['../classLexer.html#a609aef6cd7a21b60ed05688e20b43cf7',1,'Lexer']]],
+  ['string_322',['string',['../classLexer.html#ad89816483323d1841602cedf2b6d76e1',1,'Lexer']]]
 ];
