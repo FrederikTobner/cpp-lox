@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stack_5fmax_440',['STACK_MAX',['../vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e',1,'vm.hpp']]]
+  ['assert_450',['ASSERT',['../assert_8hpp.html#aa06eedd6f738a415870e97a375337d51',1,'assert.hpp']]]
 ];

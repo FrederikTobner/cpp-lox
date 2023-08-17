@@ -1,5 +1,6 @@
 var opcode_8hpp =
 [
+    [ "formatter< Opcode >", "structstd_1_1formatter_3_01Opcode_01_4.html", "structstd_1_1formatter_3_01Opcode_01_4" ],
     [ "Opcode", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7", [
       [ "OP_ADD", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a96186829480e5b34b1373288e956b1c8", null ],
       [ "OP_CONSTANT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a0aae8bd3e44dcbe18dcd011ea16f7d3c", null ],
@@ -18,6 +19,9 @@ var opcode_8hpp =
       [ "OP_PRINT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a8064a796d29992a8e4042a55d34d69ab", null ],
       [ "OP_RETURN", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7ad436c18b194473f5ec64c28b774e41b3", null ],
       [ "OP_SUBTRACT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7adedf7e5a9b5ff1438fc168f1ceb9acc2", null ],
-      [ "OP_TRUE", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a804f1324daff5d2d04639a57ce6b8ec3", null ]
-    ] ]
+      [ "OP_TRUE", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a804f1324daff5d2d04639a57ce6b8ec3", null ],
+      [ "COUNT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a2addb49878f50c95dc669e5fdbd130a2", null ]
+    ] ],
+    [ "opcode_as_string", "opcode_8hpp.html#a92dfdcc09d149f7bb33d2ab6001cccb2", null ],
+    [ "operator<<", "opcode_8hpp.html#a3a6dc474cfdcb56e66b8c227c4c885ab", null ]
 ];

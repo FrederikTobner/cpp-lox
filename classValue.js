@@ -10,7 +10,6 @@ var classValue =
     [ "Value", "classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f", null ],
     [ "asBool", "classValue.html#aa89e0884952cab63a940c6626ed9a5d6", null ],
     [ "asNumber", "classValue.html#a684d55e631b4bbbe89931b2140978fbc", null ],
-    [ "asString", "classValue.html#a21aed6732ef1c8a17601d42e53959781", null ],
     [ "getType", "classValue.html#a1a06e50a917baccb055a0a2e7f617c17", null ],
     [ "is", "classValue.html#abeb90e9a35a902d0c2c5950e7f4ac9cb", null ],
     [ "operator!", "classValue.html#a2c106df7102b8c4f78c07e2caf3506a7", null ],
