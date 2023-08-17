@@ -1,2 +1,6 @@
+# CMake
 build/
+# VSCode
 .vscode/
+# Clangd
+.cache

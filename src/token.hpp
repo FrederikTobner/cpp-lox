@@ -1,5 +1,6 @@
 #pragma once
 
+#include <format>
 #include <string>
 
 class Token {
@@ -125,4 +126,9 @@ class Token {
 
     /// @brief The line number where the token was found
     size_t m_line;
+};
+template <> struct std::formatter<Token> : std::formatter<std::string> {
+    auto format(Token token, format_context & ctx) const {
+        return formatter<string>::format(std::format("[{}, {}]", token.lexeme(), token.line()), ctx);
+    }
 };
