@@ -4,7 +4,7 @@
 
 #include "assert.hpp"
 
-[[nodiscard]] constexpr std::string_view opcode_as_string(const Opcode value) {
+[[nodiscard]] std::string_view opcode_as_string(const Opcode value) {
     switch (value) {
     case OP_ADD:
         return "OP_ADD";

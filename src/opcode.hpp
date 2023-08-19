@@ -30,7 +30,7 @@ typedef enum {
     AMOUNT
 } Opcode;
 
-constexpr std::string_view opcode_as_string(const Opcode value);
+std::string_view opcode_as_string(const Opcode value);
 
 std::ostream & operator<<(std::ostream & out, Opcode value);
 
