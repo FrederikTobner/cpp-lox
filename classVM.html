@@ -92,19 +92,27 @@ $(document).ready(function(){initNavTree('classVM.html',''); initResizable(); })
 </div><!--header-->
 <div class="contents">
 
+<p>The virtual machine used by the cpplox interpreter.  
+ <a href="classVM.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="vm_8hpp_source.html">vm.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a19427bc666639787ab1a4f1c1da56c65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a19427bc666639787ab1a4f1c1da56c65">VM</a> ()</td></tr>
+<tr class="memdesc:a19427bc666639787ab1a4f1c1da56c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new virtual machine.  <a href="classVM.html#a19427bc666639787ab1a4f1c1da56c65">More...</a><br /></td></tr>
 <tr class="separator:a19427bc666639787ab1a4f1c1da56c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">~VM</a> ()</td></tr>
+<tr class="memdesc:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the virtual machine.  <a href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">More...</a><br /></td></tr>
 <tr class="separator:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af02c8f56cfaa1ec065d5c4c9e4f62fbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd">interpret</a> (<a class="el" href="classChunk.html">Chunk</a> &amp;chunk)</td></tr>
+<tr class="memdesc:af02c8f56cfaa1ec065d5c4c9e4f62fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the given chunk.  <a href="classVM.html#af02c8f56cfaa1ec065d5c4c9e4f62fbd">More...</a><br /></td></tr>
 <tr class="separator:af02c8f56cfaa1ec065d5c4c9e4f62fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac56a5c5a8a90b5fac03dd9d59d2de40b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b">push</a> (<a class="el" href="classValue.html">Value</a> value)</td></tr>
+<tr class="memdesc:ac56a5c5a8a90b5fac03dd9d59d2de40b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the given value onto the stack.  <a href="classVM.html#ac56a5c5a8a90b5fac03dd9d59d2de40b">More...</a><br /></td></tr>
 <tr class="separator:ac56a5c5a8a90b5fac03dd9d59d2de40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a182b10dd85413185aed3c2e3db794041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a182b10dd85413185aed3c2e3db794041">pop</a> ()</td></tr>
+<tr class="memdesc:a182b10dd85413185aed3c2e3db794041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classVM.html#a182b10dd85413185aed3c2e3db794041">More...</a><br /></td></tr>
 <tr class="separator:a182b10dd85413185aed3c2e3db794041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -129,7 +137,9 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk to execute.  <a href="classVM.html#a1e20b8878edf298a7be3fb7ceb82bd8b">More...</a><br /></td></tr>
 <tr class="separator:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The virtual machine used by the cpplox interpreter. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a19427bc666639787ab1a4f1c1da56c65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19427bc666639787ab1a4f1c1da56c65">&#9670;&nbsp;</a></span>VM()</h2>
 
@@ -144,6 +154,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructs a new virtual machine. </p>
 
 </div>
 </div>
@@ -161,6 +173,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor of the virtual machine. </p>
 
 </div>
 </div>
@@ -181,6 +195,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Interprets the given chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunk</td><td>The chunk to interpret </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a182b10dd85413185aed3c2e3db794041"></a>
@@ -197,6 +219,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pops the top value from the stack. </p>
 
 </div>
 </div>
@@ -215,6 +239,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pushes the given value onto the stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to push onto the stack </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

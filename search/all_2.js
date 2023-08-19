@@ -1,20 +1,19 @@
 var searchData=
 [
-  ['call_13',['CALL',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006abd0ebc08c262bab82a1882256d2d66e8',1,'precedence.hpp']]],
+  ['call_13',['CALL',['../precedence_8hpp.html#af5e272dc9bc498661184c41f4907852eaca3547acb9162b49fb4a6594ed9b3030',1,'precedence.hpp']]],
   ['chunk_14',['Chunk',['../classChunk.html',1,'Chunk'],['../classChunk.html#a9b6d483f2d4284db0933f85aa636653b',1,'Chunk::Chunk()']]],
   ['chunk_2ecpp_15',['chunk.cpp',['../chunk_8cpp.html',1,'']]],
   ['chunk_2ehpp_16',['chunk.hpp',['../chunk_8hpp.html',1,'']]],
   ['class_17',['CLASS',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a8dabc58c34c5df57f2151d6f233d6c15',1,'Token']]],
   ['comma_18',['COMMA',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7af81277bcd86412fe04bb68718ea09392',1,'Token']]],
-  ['comparison_19',['COMPARISON',['../precedence_8hpp.html#aa4e7d1a473d0280792d98ddb184d3006a195d45c0c030939920d8a2aad646216e',1,'precedence.hpp']]],
+  ['comparison_19',['COMPARISON',['../precedence_8hpp.html#af5e272dc9bc498661184c41f4907852ea4fd4da223d344be375847dcacc013d7f',1,'precedence.hpp']]],
   ['compile_20',['compile',['../classCompiler.html#ab7c6ecd200843babca4d504adb290217',1,'Compiler']]],
-  ['compiler_21',['Compiler',['../classCompiler.html',1,'Compiler'],['../classCompiler.html#a3493831cad915284240d6d6b67251a6a',1,'Compiler::Compiler()']]],
+  ['compiler_21',['Compiler',['../classCompiler.html#a3493831cad915284240d6d6b67251a6a',1,'Compiler::Compiler()'],['../classCompiler.html',1,'Compiler']]],
   ['compiler_2ecpp_22',['compiler.cpp',['../compiler_8cpp.html',1,'']]],
   ['compiler_2ehpp_23',['compiler.hpp',['../compiler_8hpp.html',1,'']]],
   ['compiletime_5fexception_2ehpp_24',['compiletime_exception.hpp',['../compiletime__exception_8hpp.html',1,'']]],
   ['compiletimeexception_25',['CompileTimeException',['../classCompileTimeException.html#a58172a4c386e2b6ffa8066e32b8d37dd',1,'CompileTimeException::CompileTimeException()'],['../classCompileTimeException.html',1,'CompileTimeException']]],
-  ['constantinstruction_26',['constantInstruction',['../classChunk.html#a4d9048f6cf59f076e2ecf8073d016747',1,'Chunk']]],
+  ['constantinstruction_26',['constantInstruction',['../classChunk.html#a5794330c3801c01d35159d9158dfab83',1,'Chunk']]],
   ['consume_27',['consume',['../classCompiler.html#a0c8a6ddc45347c0d5f7a28c2b148d24f',1,'Compiler']]],
-  ['count_28',['COUNT',['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a2addb49878f50c95dc669e5fdbd130a2',1,'opcode.hpp']]],
-  ['currentchunk_29',['currentChunk',['../classCompiler.html#acd961881d38a39318504666d8c4ba574',1,'Compiler']]]
+  ['currentchunk_28',['currentChunk',['../classCompiler.html#acd961881d38a39318504666d8c4ba574',1,'Compiler']]]
 ];

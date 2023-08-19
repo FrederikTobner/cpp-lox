@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insert_5felement_451',['INSERT_ELEMENT',['../opcode_8cpp.html#a2a49c0bd942509d9f12f8c7833568a14',1,'opcode.cpp']]]
+  ['stack_5fmax_448',['STACK_MAX',['../vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e',1,'vm.hpp']]]
 ];

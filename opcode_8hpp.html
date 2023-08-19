@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('opcode_8hpp.html',''); initResizable()
 <div class="textblock"><code>#include &lt;format&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 </div>
 <p><a href="opcode_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -126,16 +127,16 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7adedf7e5a9b5ff1438fc168f1ceb9acc2">OP_SUBTRACT</a>
 , <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a804f1324daff5d2d04639a57ce6b8ec3">OP_TRUE</a>
-, <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a2addb49878f50c95dc669e5fdbd130a2">COUNT</a>
+, <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97">AMOUNT</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The opcodes of the intermidiate language.  <a href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">More...</a><br /></td></tr>
+<tr class="memdesc:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The opcodes of the intermediate language.  <a href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">More...</a><br /></td></tr>
 <tr class="separator:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a92dfdcc09d149f7bb33d2ab6001cccb2"><td class="memItemLeft" align="right" valign="top">std::string const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcode_8hpp.html#a92dfdcc09d149f7bb33d2ab6001cccb2">opcode_as_string</a> (<a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> value)</td></tr>
-<tr class="separator:a92dfdcc09d149f7bb33d2ab6001cccb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3174c7807a7515c0253fe5c34ee6fd7d"><td class="memItemLeft" align="right" valign="top">constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcode_8hpp.html#a3174c7807a7515c0253fe5c34ee6fd7d">opcode_as_string</a> (const <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> value)</td></tr>
+<tr class="separator:a3174c7807a7515c0253fe5c34ee6fd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a6dc474cfdcb56e66b8c227c4c885ab"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcode_8hpp.html#a3a6dc474cfdcb56e66b8c227c4c885ab">operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> value)</td></tr>
 <tr class="separator:a3a6dc474cfdcb56e66b8c227c4c885ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -152,7 +153,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The opcodes of the intermidiate language. </p>
+<p>The opcodes of the intermediate language. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a96186829480e5b34b1373288e956b1c8"></a>OP_ADD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a0aae8bd3e44dcbe18dcd011ea16f7d3c"></a>OP_CONSTANT&#160;</td><td class="fielddoc"></td></tr>
@@ -172,26 +173,34 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ad436c18b194473f5ec64c28b774e41b3"></a>OP_RETURN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7adedf7e5a9b5ff1438fc168f1ceb9acc2"></a>OP_SUBTRACT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a804f1324daff5d2d04639a57ce6b8ec3"></a>OP_TRUE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a2addb49878f50c95dc669e5fdbd130a2"></a>COUNT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97"></a>AMOUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a92dfdcc09d149f7bb33d2ab6001cccb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92dfdcc09d149f7bb33d2ab6001cccb2">&#9670;&nbsp;</a></span>opcode_as_string()</h2>
+<a id="a3174c7807a7515c0253fe5c34ee6fd7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3174c7807a7515c0253fe5c34ee6fd7d">&#9670;&nbsp;</a></span>opcode_as_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string const&amp; opcode_as_string </td>
+          <td class="memname">constexpr std::string_view opcode_as_string </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

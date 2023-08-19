@@ -20,8 +20,8 @@ var opcode_8hpp =
       [ "OP_RETURN", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7ad436c18b194473f5ec64c28b774e41b3", null ],
       [ "OP_SUBTRACT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7adedf7e5a9b5ff1438fc168f1ceb9acc2", null ],
       [ "OP_TRUE", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a804f1324daff5d2d04639a57ce6b8ec3", null ],
-      [ "COUNT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a2addb49878f50c95dc669e5fdbd130a2", null ]
+      [ "AMOUNT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97", null ]
     ] ],
-    [ "opcode_as_string", "opcode_8hpp.html#a92dfdcc09d149f7bb33d2ab6001cccb2", null ],
+    [ "opcode_as_string", "opcode_8hpp.html#a3174c7807a7515c0253fe5c34ee6fd7d", null ],
     [ "operator<<", "opcode_8hpp.html#a3a6dc474cfdcb56e66b8c227c4c885ab", null ]
 ];
