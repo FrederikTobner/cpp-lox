@@ -99,9 +99,9 @@ $(document).ready(function(){initNavTree('classVM.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19427bc666639787ab1a4f1c1da56c65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a19427bc666639787ab1a4f1c1da56c65">VM</a> ()</td></tr>
-<tr class="memdesc:a19427bc666639787ab1a4f1c1da56c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new virtual machine.  <a href="classVM.html#a19427bc666639787ab1a4f1c1da56c65">More...</a><br /></td></tr>
-<tr class="separator:a19427bc666639787ab1a4f1c1da56c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acabea3ac5ca4ea76ab147db17758986b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#acabea3ac5ca4ea76ab147db17758986b">VM</a> (<a class="el" href="classMemoryManager.html">MemoryManager</a> *memoryManager)</td></tr>
+<tr class="memdesc:acabea3ac5ca4ea76ab147db17758986b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new virtual machine.  <a href="classVM.html#acabea3ac5ca4ea76ab147db17758986b">More...</a><br /></td></tr>
+<tr class="separator:acabea3ac5ca4ea76ab147db17758986b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">~VM</a> ()</td></tr>
 <tr class="memdesc:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the virtual machine.  <a href="classVM.html#ad7d70bb5c2a0d54ddb42bac1aab93c1f">More...</a><br /></td></tr>
 <tr class="separator:ad7d70bb5c2a0d54ddb42bac1aab93c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,6 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a182b10dd85413185aed3c2e3db794041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a182b10dd85413185aed3c2e3db794041">pop</a> ()</td></tr>
 <tr class="memdesc:a182b10dd85413185aed3c2e3db794041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classVM.html#a182b10dd85413185aed3c2e3db794041">More...</a><br /></td></tr>
 <tr class="separator:a182b10dd85413185aed3c2e3db794041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9caa88cf7f9589c15869306928601233"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a9caa88cf7f9589c15869306928601233">resetStack</a> ()</td></tr>
+<tr class="separator:a9caa88cf7f9589c15869306928601233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -136,12 +138,15 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classChunk.html">Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#a1e20b8878edf298a7be3fb7ceb82bd8b">m_chunk</a></td></tr>
 <tr class="memdesc:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk to execute.  <a href="classVM.html#a1e20b8878edf298a7be3fb7ceb82bd8b">More...</a><br /></td></tr>
 <tr class="separator:a1e20b8878edf298a7be3fb7ceb82bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43ddc097591454e8cd08dd9f32fc50c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemoryManager.html">MemoryManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVM.html#ac43ddc097591454e8cd08dd9f32fc50c">m_memoryManager</a></td></tr>
+<tr class="memdesc:ac43ddc097591454e8cd08dd9f32fc50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory manager.  <a href="classVM.html#ac43ddc097591454e8cd08dd9f32fc50c">More...</a><br /></td></tr>
+<tr class="separator:ac43ddc097591454e8cd08dd9f32fc50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The virtual machine used by the cpplox interpreter. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a19427bc666639787ab1a4f1c1da56c65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19427bc666639787ab1a4f1c1da56c65">&#9670;&nbsp;</a></span>VM()</h2>
+<a id="acabea3ac5ca4ea76ab147db17758986b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acabea3ac5ca4ea76ab147db17758986b">&#9670;&nbsp;</a></span>VM()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +154,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classVM.html">VM</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classMemoryManager.html">MemoryManager</a> *&#160;</td>
+          <td class="paramname"><em>memoryManager</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -250,6 +256,23 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a9caa88cf7f9589c15869306928601233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9caa88cf7f9589c15869306928601233">&#9670;&nbsp;</a></span>resetStack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resetStack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1220a1439147aac29d4d6dd510fd15bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1220a1439147aac29d4d6dd510fd15bc">&#9670;&nbsp;</a></span>runTimeError()</h2>
 
@@ -347,6 +370,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The index of the currently executed instruction. </p>
+
+</div>
+</div>
+<a id="ac43ddc097591454e8cd08dd9f32fc50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43ddc097591454e8cd08dd9f32fc50c">&#9670;&nbsp;</a></span>m_memoryManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMemoryManager.html">MemoryManager</a>* m_memoryManager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The memory manager. </p>
 
 </div>
 </div>

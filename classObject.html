@@ -86,9 +86,10 @@ $(document).ready(function(){initNavTree('classObject.html',''); initResizable()
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classObject-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Object Class Reference</div>  </div>
+<div class="title">Object Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -130,12 +131,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa4cdefb81ca8c583f1c2ef0d20d8feeb"><td class="memTemplParams" colspan="2">template&lt;IsDerivedFromObject T&gt; </td></tr>
 <tr class="memitem:aa4cdefb81ca8c583f1c2ef0d20d8feeb"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classObject.html#aa4cdefb81ca8c583f1c2ef0d20d8feeb">as</a> ()</td></tr>
 <tr class="separator:aa4cdefb81ca8c583f1c2ef0d20d8feeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac228210080b9761956290ec8c787d316"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#ac228210080b9761956290ec8c787d316">print</a> (std::ostream &amp;os) const =0</td></tr>
+<tr class="separator:ac228210080b9761956290ec8c787d316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a052de381c96953b4e5206272c00cbfd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classObject.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a052de381c96953b4e5206272c00cbfd1">m_type</a></td></tr>
 <tr class="memdesc:a052de381c96953b4e5206272c00cbfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the object.  <a href="classObject.html#a052de381c96953b4e5206272c00cbfd1">More...</a><br /></td></tr>
 <tr class="separator:a052de381c96953b4e5206272c00cbfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:aef28ec0cd5931727739db8d0a1a1b27d"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#aef28ec0cd5931727739db8d0a1a1b27d">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classObject.html">Object</a> const &amp;dt)</td></tr>
+<tr class="memdesc:aef28ec0cd5931727739db8d0a1a1b27d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the value to the given output stream.  <a href="classObject.html#aef28ec0cd5931727739db8d0a1a1b27d">More...</a><br /></td></tr>
+<tr class="separator:aef28ec0cd5931727739db8d0a1a1b27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47830762a2684ad21435a45324489846"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classObject.html#a47830762a2684ad21435a45324489846">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classObject.html">Object</a> *dt)</td></tr>
+<tr class="memdesc:a47830762a2684ad21435a45324489846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the value to the given output stream.  <a href="classObject.html#a47830762a2684ad21435a45324489846">More...</a><br /></td></tr>
+<tr class="separator:a47830762a2684ad21435a45324489846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The base class for all objects. </p>
@@ -275,6 +287,34 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac228210080b9761956290ec8c787d316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac228210080b9761956290ec8c787d316">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classObjectString.html#af1add27f39a37cacfc1560c2fa7d189b">ObjectString</a>.</p>
+
+</div>
+</div>
 <a id="adf4a6727c689e0038cf2cdd158d5ed2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf4a6727c689e0038cf2cdd158d5ed2c">&#9670;&nbsp;</a></span>type()</h2>
 
@@ -300,6 +340,99 @@ Protected Attributes</h2></td></tr>
 
 <p>Gets the type of the object. </p>
 <dl class="section return"><dt>Returns</dt><dd>The type of the object. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a47830762a2684ad21435a45324489846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47830762a2684ad21435a45324489846">&#9670;&nbsp;</a></span>operator&lt;&lt; <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classObject.html">Object</a> *&#160;</td>
+          <td class="paramname"><em>dt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the value to the given output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>The output stream to print to </td></tr>
+    <tr><td class="paramname">dt</td><td>The value to print </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The output stream </dd></dl>
+
+</div>
+</div>
+<a id="aef28ec0cd5931727739db8d0a1a1b27d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef28ec0cd5931727739db8d0a1a1b27d">&#9670;&nbsp;</a></span>operator&lt;&lt; <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classObject.html">Object</a> const &amp;&#160;</td>
+          <td class="paramname"><em>dt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the value to the given output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>The output stream to print to </td></tr>
+    <tr><td class="paramname">dt</td><td>The value to print </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The output stream </dd></dl>
 
 </div>
 </div>

@@ -103,6 +103,7 @@ Public Types</h2></td></tr>
 <tr class="memitem:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> { <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a0f0f6f8ec1389872c13b69a7ee1cb1b0">VAL_BOOL</a>
 , <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a6150dd0e3b6b5e2efb2fda1e72d15557">VAL_NULL</a>
 , <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a92c4e89ee247ed0b07e8920bbba1a718">VAL_NUMBER</a>
+, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7aab36c99ec46874e15b4136b940820c1b">VAL_OBJECT</a>
  }</td></tr>
 <tr class="memdesc:a1d1cfd8ffb84e947f82999c682b666a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The possible types of a value.  <a href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">More...</a><br /></td></tr>
 <tr class="separator:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,6 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f">Value</a> (double value)</td></tr>
 <tr class="memdesc:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NUMBER.  <a href="classValue.html#a35cacb12b494ecd3015a0aa99ee71f1f">More...</a><br /></td></tr>
 <tr class="separator:a35cacb12b494ecd3015a0aa99ee71f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5a32777c50fe5a30d362b8c8b46c55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ada5a32777c50fe5a30d362b8c8b46c55">Value</a> (<a class="el" href="classObject.html">Object</a> *value)</td></tr>
+<tr class="memdesc:ada5a32777c50fe5a30d362b8c8b46c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_OBJECT.  <a href="classValue.html#ada5a32777c50fe5a30d362b8c8b46c55">More...</a><br /></td></tr>
+<tr class="separator:ada5a32777c50fe5a30d362b8c8b46c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a06e50a917baccb055a0a2e7f617c17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">getType</a> () const</td></tr>
 <tr class="memdesc:a1a06e50a917baccb055a0a2e7f617c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the value.  <a href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">More...</a><br /></td></tr>
 <tr class="separator:a1a06e50a917baccb055a0a2e7f617c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,6 +134,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a684d55e631b4bbbe89931b2140978fbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">asNumber</a> () const</td></tr>
 <tr class="memdesc:a684d55e631b4bbbe89931b2140978fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a number.  <a href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">More...</a><br /></td></tr>
 <tr class="separator:a684d55e631b4bbbe89931b2140978fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f1958536212f5853101b06288ae038"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classObject.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ab1f1958536212f5853101b06288ae038">asObject</a> () const</td></tr>
+<tr class="memdesc:ab1f1958536212f5853101b06288ae038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a object.  <a href="classValue.html#ab1f1958536212f5853101b06288ae038">More...</a><br /></td></tr>
+<tr class="separator:ab1f1958536212f5853101b06288ae038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9768defdaea525f067163ea056885b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aa9768defdaea525f067163ea056885b2">operator==</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
 <tr class="memdesc:aa9768defdaea525f067163ea056885b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#aa9768defdaea525f067163ea056885b2">More...</a><br /></td></tr>
 <tr class="separator:aa9768defdaea525f067163ea056885b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +186,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad0603410ad21c532b613ebeed38e5295"><td class="memItemLeft" >&#160;&#160;&#160;double&#160;&#160;&#160;<a class="el" href="classValue.html#ad0603410ad21c532b613ebeed38e5295">m_number</a></td></tr>
 <tr class="memdesc:ad0603410ad21c532b613ebeed38e5295"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying number value.  <a href="unionValue_1_1_0d0.html#ad0603410ad21c532b613ebeed38e5295">More...</a><br /></td></tr>
 <tr class="separator:ad0603410ad21c532b613ebeed38e5295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20053104f753964b43f864c0df0f67ee"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="classObject.html">Object</a> *&#160;&#160;&#160;<a class="el" href="classValue.html#a20053104f753964b43f864c0df0f67ee">m_object</a></td></tr>
+<tr class="memdesc:a20053104f753964b43f864c0df0f67ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying object value.  <a href="unionValue_1_1_0d0.html#a20053104f753964b43f864c0df0f67ee">More...</a><br /></td></tr>
+<tr class="separator:a20053104f753964b43f864c0df0f67ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829dc06aeebb03e89b6e9ad4720420fa"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a829dc06aeebb03e89b6e9ad4720420fa">m_underlying_value</a></td></tr>
 <tr class="memdesc:a829dc06aeebb03e89b6e9ad4720420fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying value.  <a href="classValue.html#a829dc06aeebb03e89b6e9ad4720420fa">More...</a><br /></td></tr>
 <tr class="separator:a829dc06aeebb03e89b6e9ad4720420fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,13 +222,15 @@ Friends</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a92c4e89ee247ed0b07e8920bbba1a718"></a>VAL_NUMBER&#160;</td><td class="fielddoc"><p>A numeric value. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7aab36c99ec46874e15b4136b940820c1b"></a>VAL_OBJECT&#160;</td><td class="fielddoc"><p>An object value. </p>
+</td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abe8b5f7eee6b178c99c13b92f7ce85d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe8b5f7eee6b178c99c13b92f7ce85d4">&#9670;&nbsp;</a></span>Value() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abe8b5f7eee6b178c99c13b92f7ce85d4">&#9670;&nbsp;</a></span>Value() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,7 +249,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="ad7a6ddd22c84ae38cb303a4917f3d654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7a6ddd22c84ae38cb303a4917f3d654">&#9670;&nbsp;</a></span>Value() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a6ddd22c84ae38cb303a4917f3d654">&#9670;&nbsp;</a></span>Value() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +269,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a35cacb12b494ecd3015a0aa99ee71f1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35cacb12b494ecd3015a0aa99ee71f1f">&#9670;&nbsp;</a></span>Value() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a35cacb12b494ecd3015a0aa99ee71f1f">&#9670;&nbsp;</a></span>Value() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,6 +285,26 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_NUMBER. </p>
+
+</div>
+</div>
+<a id="ada5a32777c50fe5a30d362b8c8b46c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5a32777c50fe5a30d362b8c8b46c55">&#9670;&nbsp;</a></span>Value() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classValue.html">Value</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classObject.html">Object</a> *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_OBJECT. </p>
 
 </div>
 </div>
@@ -314,6 +346,26 @@ Friends</h2></td></tr>
 
 <p>Gets the value as a number. </p>
 <dl class="section return"><dt>Returns</dt><dd>The value as a number </dd></dl>
+
+</div>
+</div>
+<a id="ab1f1958536212f5853101b06288ae038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1f1958536212f5853101b06288ae038">&#9670;&nbsp;</a></span>asObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classObject.html">Object</a> * asObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the value as a object. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value as a object </dd></dl>
 
 </div>
 </div>
@@ -759,6 +811,22 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The underlying number value. </p>
+
+</div>
+</div>
+<a id="a20053104f753964b43f864c0df0f67ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20053104f753964b43f864c0df0f67ee">&#9670;&nbsp;</a></span>m_object</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classObject.html">Object</a>* m_object</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The underlying object value. </p>
 
 </div>
 </div>

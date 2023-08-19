@@ -7,6 +7,9 @@ var classObject =
     [ "~Object", "classObject.html#abbb277a2e0e9dbe1f9510f2bd0dd03bc", null ],
     [ "as", "classObject.html#aa4cdefb81ca8c583f1c2ef0d20d8feeb", null ],
     [ "is", "classObject.html#abd6c663bccff2494f931d9bf0a4ea67c", null ],
+    [ "print", "classObject.html#ac228210080b9761956290ec8c787d316", null ],
     [ "type", "classObject.html#adf4a6727c689e0038cf2cdd158d5ed2c", null ],
+    [ "operator<<", "classObject.html#a47830762a2684ad21435a45324489846", null ],
+    [ "operator<<", "classObject.html#aef28ec0cd5931727739db8d0a1a1b27d", null ],
     [ "m_type", "classObject.html#a052de381c96953b4e5206272c00cbfd1", null ]
 ];

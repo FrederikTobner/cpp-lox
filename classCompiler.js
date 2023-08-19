@@ -1,6 +1,6 @@
 var classCompiler =
 [
-    [ "Compiler", "classCompiler.html#a3493831cad915284240d6d6b67251a6a", null ],
+    [ "Compiler", "classCompiler.html#a189e1df10d3dd900328cb50491658ed4", null ],
     [ "~Compiler", "classCompiler.html#acf166c9448a67e8c58923e93d4798aaf", null ],
     [ "advance", "classCompiler.html#a8feb586534e6d77e1617c1622f97264e", null ],
     [ "binary", "classCompiler.html#a46a929ee0ad89c9b0cdaf42d4b077795", null ],
@@ -14,7 +14,7 @@ var classCompiler =
     [ "error", "classCompiler.html#ade28e18a6a61d3eb3bef687699234ad4", null ],
     [ "errorAtCurrent", "classCompiler.html#a97f89dfb9616d8a741bec858593a0f5a", null ],
     [ "expression", "classCompiler.html#a8e1dcf94b61ddf4c8a70f7ce2333b4ac", null ],
-    [ "getRule", "classCompiler.html#a31a876b90ee44700bb135c5e8cd5c49f", null ],
+    [ "getRule", "classCompiler.html#afeac8307b087d8ded1deaa612d4a6eaf", null ],
     [ "grouping", "classCompiler.html#af5841d68e1fc21a30faaa340828d9e7c", null ],
     [ "literal", "classCompiler.html#a60bdb25f5995c534d6280ea9c026303c", null ],
     [ "makeConstant", "classCompiler.html#a09eb8063449783add2285960153dacd5", null ],
@@ -22,10 +22,12 @@ var classCompiler =
     [ "number", "classCompiler.html#a1bfb8ac58fcf183f26ca362664d67827", null ],
     [ "parsePrecedence", "classCompiler.html#aa7fca480a1317d692566e92ca1a81b93", null ],
     [ "printStatement", "classCompiler.html#a467470ea7086630af99e64f45c6b160e", null ],
+    [ "string", "classCompiler.html#a6722e224622933cb21b6b173195d4633", null ],
     [ "unary", "classCompiler.html#a812bb81b7ca2d5d79ce8364c768ba9c5", null ],
     [ "m_chunk", "classCompiler.html#a1e20b8878edf298a7be3fb7ceb82bd8b", null ],
     [ "m_current", "classCompiler.html#ac332007a6139a87217c08b3cf3a4be9d", null ],
     [ "m_currentTokenIndex", "classCompiler.html#ab36625d400fdb9914c13582ac9f9b177", null ],
+    [ "m_memoryManager", "classCompiler.html#ac43ddc097591454e8cd08dd9f32fc50c", null ],
     [ "m_previous", "classCompiler.html#a737eb262dbf2baabad30f5774865d7dd", null ],
     [ "m_rules", "classCompiler.html#a86d163155b74b206da2680230ba01f31", null ]
 ];
