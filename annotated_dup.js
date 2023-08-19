@@ -9,6 +9,8 @@ var annotated_dup =
     [ "Compiler", "classCompiler.html", "classCompiler" ],
     [ "CompileTimeException", "classCompileTimeException.html", "classCompileTimeException" ],
     [ "Lexer", "classLexer.html", "classLexer" ],
+    [ "Object", "classObject.html", "classObject" ],
+    [ "ObjectString", "classObjectString.html", "classObjectString" ],
     [ "ParseRule", "classParseRule.html", "classParseRule" ],
     [ "RunTimeException", "classRunTimeException.html", "classRunTimeException" ],
     [ "Token", "classToken.html", "classToken" ],

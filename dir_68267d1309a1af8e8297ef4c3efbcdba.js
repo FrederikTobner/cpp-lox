@@ -21,6 +21,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
       [ "Lexer", "classLexer.html", "classLexer" ]
     ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
+    [ "object.hpp", "object_8hpp.html", "object_8hpp" ],
     [ "opcode.cpp", "opcode_8cpp.html", "opcode_8cpp" ],
     [ "opcode.hpp", "opcode_8hpp.html", "opcode_8hpp" ],
     [ "precedence.hpp", "precedence_8hpp.html", "precedence_8hpp" ],

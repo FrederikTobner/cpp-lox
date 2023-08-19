@@ -12,6 +12,9 @@ var hierarchy =
       [ "formatter< Value >", "structstd_1_1formatter_3_01Value_01_4.html", null ]
     ] ],
     [ "Lexer", "classLexer.html", null ],
+    [ "Object", "classObject.html", [
+      [ "ObjectString", "classObjectString.html", null ]
+    ] ],
     [ "ParseRule", "classParseRule.html", null ],
     [ "Token", "classToken.html", null ],
     [ "Value", "classValue.html", null ],
