@@ -100,10 +100,10 @@ $(document).ready(function(){initNavTree('classValue.html',''); initResizable();
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> { <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a0f0f6f8ec1389872c13b69a7ee1cb1b0">VAL_BOOL</a>
-, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a6150dd0e3b6b5e2efb2fda1e72d15557">VAL_NULL</a>
-, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a92c4e89ee247ed0b07e8920bbba1a718">VAL_NUMBER</a>
-, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7aab36c99ec46874e15b4136b940820c1b">VAL_OBJECT</a>
+<tr class="memitem:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> { <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>
+, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a6d67bdfe4ae19f38aff8f363bca42892">NULL_</a>
+, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a34f55eca38e0605a84f169ff61a2a396">NUMBER</a>
+, <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a8eee8e217391199668cbac89472ace53">OBJECT</a>
  }</td></tr>
 <tr class="memdesc:a1d1cfd8ffb84e947f82999c682b666a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The possible types of a value.  <a href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">More...</a><br /></td></tr>
 <tr class="separator:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,57 +122,57 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada5a32777c50fe5a30d362b8c8b46c55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ada5a32777c50fe5a30d362b8c8b46c55">Value</a> (<a class="el" href="classObject.html">Object</a> *value)</td></tr>
 <tr class="memdesc:ada5a32777c50fe5a30d362b8c8b46c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> object with type VAL_OBJECT.  <a href="classValue.html#ada5a32777c50fe5a30d362b8c8b46c55">More...</a><br /></td></tr>
 <tr class="separator:ada5a32777c50fe5a30d362b8c8b46c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a06e50a917baccb055a0a2e7f617c17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">getType</a> () const</td></tr>
-<tr class="memdesc:a1a06e50a917baccb055a0a2e7f617c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the value.  <a href="classValue.html#a1a06e50a917baccb055a0a2e7f617c17">More...</a><br /></td></tr>
-<tr class="separator:a1a06e50a917baccb055a0a2e7f617c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeb90e9a35a902d0c2c5950e7f4ac9cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#abeb90e9a35a902d0c2c5950e7f4ac9cb">is</a> (<a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> type) noexcept</td></tr>
-<tr class="memdesc:abeb90e9a35a902d0c2c5950e7f4ac9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the value is of the given type.  <a href="classValue.html#abeb90e9a35a902d0c2c5950e7f4ac9cb">More...</a><br /></td></tr>
-<tr class="separator:abeb90e9a35a902d0c2c5950e7f4ac9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa89e0884952cab63a940c6626ed9a5d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aa89e0884952cab63a940c6626ed9a5d6">asBool</a> () const</td></tr>
-<tr class="memdesc:aa89e0884952cab63a940c6626ed9a5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a bool.  <a href="classValue.html#aa89e0884952cab63a940c6626ed9a5d6">More...</a><br /></td></tr>
-<tr class="separator:aa89e0884952cab63a940c6626ed9a5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684d55e631b4bbbe89931b2140978fbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">asNumber</a> () const</td></tr>
-<tr class="memdesc:a684d55e631b4bbbe89931b2140978fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a number.  <a href="classValue.html#a684d55e631b4bbbe89931b2140978fbc">More...</a><br /></td></tr>
-<tr class="separator:a684d55e631b4bbbe89931b2140978fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1f1958536212f5853101b06288ae038"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classObject.html">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ab1f1958536212f5853101b06288ae038">asObject</a> () const</td></tr>
-<tr class="memdesc:ab1f1958536212f5853101b06288ae038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a object.  <a href="classValue.html#ab1f1958536212f5853101b06288ae038">More...</a><br /></td></tr>
-<tr class="separator:ab1f1958536212f5853101b06288ae038"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9768defdaea525f067163ea056885b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aa9768defdaea525f067163ea056885b2">operator==</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:aa9768defdaea525f067163ea056885b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#aa9768defdaea525f067163ea056885b2">More...</a><br /></td></tr>
-<tr class="separator:aa9768defdaea525f067163ea056885b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb6abaa0c75bccbc23cb72835945ecc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a0fb6abaa0c75bccbc23cb72835945ecc">operator!=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a0fb6abaa0c75bccbc23cb72835945ecc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#a0fb6abaa0c75bccbc23cb72835945ecc">More...</a><br /></td></tr>
-<tr class="separator:a0fb6abaa0c75bccbc23cb72835945ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affcb8442b22dec35a6063bcb9e6e0279"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#affcb8442b22dec35a6063bcb9e6e0279">operator+</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:affcb8442b22dec35a6063bcb9e6e0279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two values.  <a href="classValue.html#affcb8442b22dec35a6063bcb9e6e0279">More...</a><br /></td></tr>
-<tr class="separator:affcb8442b22dec35a6063bcb9e6e0279"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5766c564416914f1d046486b95ac6de3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a5766c564416914f1d046486b95ac6de3">operator-</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a5766c564416914f1d046486b95ac6de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts two values.  <a href="classValue.html#a5766c564416914f1d046486b95ac6de3">More...</a><br /></td></tr>
-<tr class="separator:a5766c564416914f1d046486b95ac6de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bb9fd9f4be2b636a4325efba1b1a087"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a0bb9fd9f4be2b636a4325efba1b1a087">operator*</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a0bb9fd9f4be2b636a4325efba1b1a087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two values.  <a href="classValue.html#a0bb9fd9f4be2b636a4325efba1b1a087">More...</a><br /></td></tr>
-<tr class="separator:a0bb9fd9f4be2b636a4325efba1b1a087"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1163de3c62c46adad8a2e36c47d05d8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1163de3c62c46adad8a2e36c47d05d8e">operator/</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a1163de3c62c46adad8a2e36c47d05d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides two values.  <a href="classValue.html#a1163de3c62c46adad8a2e36c47d05d8e">More...</a><br /></td></tr>
-<tr class="separator:a1163de3c62c46adad8a2e36c47d05d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a496607aeb43026c28268f18d6b3034cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a496607aeb43026c28268f18d6b3034cd">operator&lt;</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a496607aeb43026c28268f18d6b3034cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is less than another.  <a href="classValue.html#a496607aeb43026c28268f18d6b3034cd">More...</a><br /></td></tr>
-<tr class="separator:a496607aeb43026c28268f18d6b3034cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae21113a55e505fae20dfa1d855b1e543"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ae21113a55e505fae20dfa1d855b1e543">operator&lt;=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:ae21113a55e505fae20dfa1d855b1e543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is less than or equal to another.  <a href="classValue.html#ae21113a55e505fae20dfa1d855b1e543">More...</a><br /></td></tr>
-<tr class="separator:ae21113a55e505fae20dfa1d855b1e543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a02bef01967780441071e67cf465ce9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a7a02bef01967780441071e67cf465ce9">operator&gt;</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a7a02bef01967780441071e67cf465ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is greater than or equal to another.  <a href="classValue.html#a7a02bef01967780441071e67cf465ce9">More...</a><br /></td></tr>
-<tr class="separator:a7a02bef01967780441071e67cf465ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68ad99ec54b2bef580feadc6fc4b0266"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a68ad99ec54b2bef580feadc6fc4b0266">operator&gt;=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const</td></tr>
-<tr class="memdesc:a68ad99ec54b2bef580feadc6fc4b0266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is greater than another.  <a href="classValue.html#a68ad99ec54b2bef580feadc6fc4b0266">More...</a><br /></td></tr>
-<tr class="separator:a68ad99ec54b2bef580feadc6fc4b0266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd80def02358d038584820917dbf250"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aafd80def02358d038584820917dbf250">operator-</a> () const</td></tr>
-<tr class="memdesc:aafd80def02358d038584820917dbf250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negates the value.  <a href="classValue.html#aafd80def02358d038584820917dbf250">More...</a><br /></td></tr>
-<tr class="separator:aafd80def02358d038584820917dbf250"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c106df7102b8c4f78c07e2caf3506a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classValue.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a2c106df7102b8c4f78c07e2caf3506a7">operator!</a> () const</td></tr>
-<tr class="memdesc:a2c106df7102b8c4f78c07e2caf3506a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverts a boolean value.  <a href="classValue.html#a2c106df7102b8c4f78c07e2caf3506a7">More...</a><br /></td></tr>
-<tr class="separator:a2c106df7102b8c4f78c07e2caf3506a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624092da3de731da5d05cca0cda8d138"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a624092da3de731da5d05cca0cda8d138">getType</a> () const -&gt; <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value::Type</a></td></tr>
+<tr class="memdesc:a624092da3de731da5d05cca0cda8d138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the value.  <a href="classValue.html#a624092da3de731da5d05cca0cda8d138">More...</a><br /></td></tr>
+<tr class="separator:a624092da3de731da5d05cca0cda8d138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8733d79f1833923bc6e4a21961fb67f6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8733d79f1833923bc6e4a21961fb67f6">is</a> (<a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> type) noexcept -&gt; bool</td></tr>
+<tr class="memdesc:a8733d79f1833923bc6e4a21961fb67f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the value is of the given type.  <a href="classValue.html#a8733d79f1833923bc6e4a21961fb67f6">More...</a><br /></td></tr>
+<tr class="separator:a8733d79f1833923bc6e4a21961fb67f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a2f2c436ef39cd4e6077ff66c81e91d84">asBool</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a bool.  <a href="classValue.html#a2f2c436ef39cd4e6077ff66c81e91d84">More...</a><br /></td></tr>
+<tr class="separator:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1e49fcea9b0a7daf6c40e45b2d102e75">asNumber</a> () const -&gt; double</td></tr>
+<tr class="memdesc:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a number.  <a href="classValue.html#a1e49fcea9b0a7daf6c40e45b2d102e75">More...</a><br /></td></tr>
+<tr class="separator:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ae8c6a5c8320ffb587a134cb9195a06fe">asObject</a> () const -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
+<tr class="memdesc:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a object.  <a href="classValue.html#ae8c6a5c8320ffb587a134cb9195a06fe">More...</a><br /></td></tr>
+<tr class="separator:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec94c3e0637c696364487cd3405fe6e7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aec94c3e0637c696364487cd3405fe6e7">operator==</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; bool</td></tr>
+<tr class="memdesc:aec94c3e0637c696364487cd3405fe6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#aec94c3e0637c696364487cd3405fe6e7">More...</a><br /></td></tr>
+<tr class="separator:aec94c3e0637c696364487cd3405fe6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13335d90fd27e279f9a57c0ae0d2d13e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a13335d90fd27e279f9a57c0ae0d2d13e">operator!=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; bool</td></tr>
+<tr class="memdesc:a13335d90fd27e279f9a57c0ae0d2d13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#a13335d90fd27e279f9a57c0ae0d2d13e">More...</a><br /></td></tr>
+<tr class="separator:a13335d90fd27e279f9a57c0ae0d2d13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3b1e19b922b37613083bc5ff640520"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8f3b1e19b922b37613083bc5ff640520">operator+</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:a8f3b1e19b922b37613083bc5ff640520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds two values.  <a href="classValue.html#a8f3b1e19b922b37613083bc5ff640520">More...</a><br /></td></tr>
+<tr class="separator:a8f3b1e19b922b37613083bc5ff640520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d79f5c206096e84afb4345b3e731f33"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a4d79f5c206096e84afb4345b3e731f33">operator-</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:a4d79f5c206096e84afb4345b3e731f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts two values.  <a href="classValue.html#a4d79f5c206096e84afb4345b3e731f33">More...</a><br /></td></tr>
+<tr class="separator:a4d79f5c206096e84afb4345b3e731f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f56740e591aae431d7a3d3871b61a8b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a7f56740e591aae431d7a3d3871b61a8b">operator*</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:a7f56740e591aae431d7a3d3871b61a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two values.  <a href="classValue.html#a7f56740e591aae431d7a3d3871b61a8b">More...</a><br /></td></tr>
+<tr class="separator:a7f56740e591aae431d7a3d3871b61a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942b4606cb0630efe2823265b80a6097"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a942b4606cb0630efe2823265b80a6097">operator/</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:a942b4606cb0630efe2823265b80a6097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides two values.  <a href="classValue.html#a942b4606cb0630efe2823265b80a6097">More...</a><br /></td></tr>
+<tr class="separator:a942b4606cb0630efe2823265b80a6097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ac2535c768e2ce0d42a8eebd34b34e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ad7ac2535c768e2ce0d42a8eebd34b34e">operator&lt;</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:ad7ac2535c768e2ce0d42a8eebd34b34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is less than another.  <a href="classValue.html#ad7ac2535c768e2ce0d42a8eebd34b34e">More...</a><br /></td></tr>
+<tr class="separator:ad7ac2535c768e2ce0d42a8eebd34b34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18c0cc535f3168c17b644ecd1b63f688"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a18c0cc535f3168c17b644ecd1b63f688">operator&lt;=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:a18c0cc535f3168c17b644ecd1b63f688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is less than or equal to another.  <a href="classValue.html#a18c0cc535f3168c17b644ecd1b63f688">More...</a><br /></td></tr>
+<tr class="separator:a18c0cc535f3168c17b644ecd1b63f688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0cf6cede7dda363080b4724c92cca6e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ac0cf6cede7dda363080b4724c92cca6e">operator&gt;</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:ac0cf6cede7dda363080b4724c92cca6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is greater than or equal to another.  <a href="classValue.html#ac0cf6cede7dda363080b4724c92cca6e">More...</a><br /></td></tr>
+<tr class="separator:ac0cf6cede7dda363080b4724c92cca6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9826fee8c612d25c0430dbb9cc9d104"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aa9826fee8c612d25c0430dbb9cc9d104">operator&gt;=</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:aa9826fee8c612d25c0430dbb9cc9d104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if one value is greater than another.  <a href="classValue.html#aa9826fee8c612d25c0430dbb9cc9d104">More...</a><br /></td></tr>
+<tr class="separator:aa9826fee8c612d25c0430dbb9cc9d104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7ca8628637bbc814b6bbd2fe89c12eb"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ad7ca8628637bbc814b6bbd2fe89c12eb">operator-</a> () const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:ad7ca8628637bbc814b6bbd2fe89c12eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negates the value.  <a href="classValue.html#ad7ca8628637bbc814b6bbd2fe89c12eb">More...</a><br /></td></tr>
+<tr class="separator:ad7ca8628637bbc814b6bbd2fe89c12eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61f9d16e034ae87a1ba672665afe768"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ab61f9d16e034ae87a1ba672665afe768">operator!</a> () const -&gt; <a class="el" href="classValue.html">Value</a></td></tr>
+<tr class="memdesc:ab61f9d16e034ae87a1ba672665afe768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverts a boolean value.  <a href="classValue.html#ab61f9d16e034ae87a1ba672665afe768">More...</a><br /></td></tr>
+<tr class="separator:ab61f9d16e034ae87a1ba672665afe768"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -195,9 +195,9 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ac945198d4e5a7e0cc3819266e85c8a3b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ac945198d4e5a7e0cc3819266e85c8a3b">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classValue.html">Value</a> const &amp;dt)</td></tr>
-<tr class="memdesc:ac945198d4e5a7e0cc3819266e85c8a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the value to the given output stream.  <a href="classValue.html#ac945198d4e5a7e0cc3819266e85c8a3b">More...</a><br /></td></tr>
-<tr class="separator:ac945198d4e5a7e0cc3819266e85c8a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a452fc16e0f9989f4633f4bb05a2ba6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8a452fc16e0f9989f4633f4bb05a2ba6">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classValue.html">Value</a> const &amp;dt) -&gt; std::ostream &amp;</td></tr>
+<tr class="memdesc:a8a452fc16e0f9989f4633f4bb05a2ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the value to the given output stream.  <a href="classValue.html#a8a452fc16e0f9989f4633f4bb05a2ba6">More...</a><br /></td></tr>
+<tr class="separator:a8a452fc16e0f9989f4633f4bb05a2ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A value that can be stored in a variable or on the stack. </p>
@@ -207,22 +207,30 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">enum <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>The possible types of a value. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a0f0f6f8ec1389872c13b69a7ee1cb1b0"></a>VAL_BOOL&#160;</td><td class="fielddoc"><p>A boolean value. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"><p>A boolean value. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a6150dd0e3b6b5e2efb2fda1e72d15557"></a>VAL_NULL&#160;</td><td class="fielddoc"><p>A null value. </p>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a6d67bdfe4ae19f38aff8f363bca42892"></a>NULL_&#160;</td><td class="fielddoc"><p>A null value. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a92c4e89ee247ed0b07e8920bbba1a718"></a>VAL_NUMBER&#160;</td><td class="fielddoc"><p>A numeric value. </p>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a34f55eca38e0605a84f169ff61a2a396"></a>NUMBER&#160;</td><td class="fielddoc"><p>A numeric value. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7aab36c99ec46874e15b4136b940820c1b"></a>VAL_OBJECT&#160;</td><td class="fielddoc"><p>An object value. </p>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a8eee8e217391199668cbac89472ace53"></a>OBJECT&#160;</td><td class="fielddoc"><p>An object value. </p>
 </td></tr>
 </table>
 
@@ -309,17 +317,17 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa89e0884952cab63a940c6626ed9a5d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa89e0884952cab63a940c6626ed9a5d6">&#9670;&nbsp;</a></span>asBool()</h2>
+<a id="a2f2c436ef39cd4e6077ff66c81e91d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f2c436ef39cd4e6077ff66c81e91d84">&#9670;&nbsp;</a></span>asBool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool asBool </td>
+          <td class="memname">auto asBool </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -329,17 +337,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a684d55e631b4bbbe89931b2140978fbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a684d55e631b4bbbe89931b2140978fbc">&#9670;&nbsp;</a></span>asNumber()</h2>
+<a id="a1e49fcea9b0a7daf6c40e45b2d102e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e49fcea9b0a7daf6c40e45b2d102e75">&#9670;&nbsp;</a></span>asNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double asNumber </td>
+          <td class="memname">auto asNumber </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; double</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -349,17 +357,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ab1f1958536212f5853101b06288ae038"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1f1958536212f5853101b06288ae038">&#9670;&nbsp;</a></span>asObject()</h2>
+<a id="ae8c6a5c8320ffb587a134cb9195a06fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8c6a5c8320ffb587a134cb9195a06fe">&#9670;&nbsp;</a></span>asObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classObject.html">Object</a> * asObject </td>
+          <td class="memname">auto asObject </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classObject.html">Object</a> *</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -369,17 +377,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a1a06e50a917baccb055a0a2e7f617c17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a06e50a917baccb055a0a2e7f617c17">&#9670;&nbsp;</a></span>getType()</h2>
+<a id="a624092da3de731da5d05cca0cda8d138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a624092da3de731da5d05cca0cda8d138">&#9670;&nbsp;</a></span>getType()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value::Type</a> getType </td>
+          <td class="memname">auto getType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value::Type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -389,8 +397,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="abeb90e9a35a902d0c2c5950e7f4ac9cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abeb90e9a35a902d0c2c5950e7f4ac9cb">&#9670;&nbsp;</a></span>is()</h2>
+<a id="a8733d79f1833923bc6e4a21961fb67f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8733d79f1833923bc6e4a21961fb67f6">&#9670;&nbsp;</a></span>is()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -399,11 +407,11 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool is </td>
+          <td class="memname">auto is </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Value::Type</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; bool</td>
         </tr>
       </table>
   </td>
@@ -424,17 +432,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a2c106df7102b8c4f78c07e2caf3506a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c106df7102b8c4f78c07e2caf3506a7">&#9670;&nbsp;</a></span>operator!()</h2>
+<a id="ab61f9d16e034ae87a1ba672665afe768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61f9d16e034ae87a1ba672665afe768">&#9670;&nbsp;</a></span>operator!()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator! </td>
+          <td class="memname">auto operator! </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -444,18 +452,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a0fb6abaa0c75bccbc23cb72835945ecc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fb6abaa0c75bccbc23cb72835945ecc">&#9670;&nbsp;</a></span>operator!=()</h2>
+<a id="a13335d90fd27e279f9a57c0ae0d2d13e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13335d90fd27e279f9a57c0ae0d2d13e">&#9670;&nbsp;</a></span>operator!=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classValue.html#a2c106df7102b8c4f78c07e2caf3506a7">operator!</a>= </td>
+          <td class="memname">auto <a class="el" href="classValue.html#ab61f9d16e034ae87a1ba672665afe768">operator!</a>= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -471,18 +479,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a0bb9fd9f4be2b636a4325efba1b1a087"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bb9fd9f4be2b636a4325efba1b1a087">&#9670;&nbsp;</a></span>operator*()</h2>
+<a id="a7f56740e591aae431d7a3d3871b61a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f56740e591aae431d7a3d3871b61a8b">&#9670;&nbsp;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator* </td>
+          <td class="memname">auto operator* </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -498,18 +506,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="affcb8442b22dec35a6063bcb9e6e0279"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affcb8442b22dec35a6063bcb9e6e0279">&#9670;&nbsp;</a></span>operator+()</h2>
+<a id="a8f3b1e19b922b37613083bc5ff640520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f3b1e19b922b37613083bc5ff640520">&#9670;&nbsp;</a></span>operator+()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator+ </td>
+          <td class="memname">auto operator+ </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -525,17 +533,17 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="aafd80def02358d038584820917dbf250"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafd80def02358d038584820917dbf250">&#9670;&nbsp;</a></span>operator-() <span class="overload">[1/2]</span></h2>
+<a id="ad7ca8628637bbc814b6bbd2fe89c12eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ca8628637bbc814b6bbd2fe89c12eb">&#9670;&nbsp;</a></span>operator-() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator- </td>
+          <td class="memname">auto operator- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -545,18 +553,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a5766c564416914f1d046486b95ac6de3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5766c564416914f1d046486b95ac6de3">&#9670;&nbsp;</a></span>operator-() <span class="overload">[2/2]</span></h2>
+<a id="a4d79f5c206096e84afb4345b3e731f33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d79f5c206096e84afb4345b3e731f33">&#9670;&nbsp;</a></span>operator-() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator- </td>
+          <td class="memname">auto operator- </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -572,18 +580,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a1163de3c62c46adad8a2e36c47d05d8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1163de3c62c46adad8a2e36c47d05d8e">&#9670;&nbsp;</a></span>operator/()</h2>
+<a id="a942b4606cb0630efe2823265b80a6097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942b4606cb0630efe2823265b80a6097">&#9670;&nbsp;</a></span>operator/()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator/ </td>
+          <td class="memname">auto operator/ </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -599,18 +607,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a496607aeb43026c28268f18d6b3034cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a496607aeb43026c28268f18d6b3034cd">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+<a id="ad7ac2535c768e2ce0d42a8eebd34b34e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ac2535c768e2ce0d42a8eebd34b34e">&#9670;&nbsp;</a></span>operator&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator&lt; </td>
+          <td class="memname">auto operator&lt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -626,18 +634,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ae21113a55e505fae20dfa1d855b1e543"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae21113a55e505fae20dfa1d855b1e543">&#9670;&nbsp;</a></span>operator&lt;=()</h2>
+<a id="a18c0cc535f3168c17b644ecd1b63f688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18c0cc535f3168c17b644ecd1b63f688">&#9670;&nbsp;</a></span>operator&lt;=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator&lt;= </td>
+          <td class="memname">auto operator&lt;= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -653,18 +661,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="aa9768defdaea525f067163ea056885b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9768defdaea525f067163ea056885b2">&#9670;&nbsp;</a></span>operator==()</h2>
+<a id="aec94c3e0637c696364487cd3405fe6e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec94c3e0637c696364487cd3405fe6e7">&#9670;&nbsp;</a></span>operator==()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool operator== </td>
+          <td class="memname">auto operator== </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -680,18 +688,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a02bef01967780441071e67cf465ce9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a02bef01967780441071e67cf465ce9">&#9670;&nbsp;</a></span>operator&gt;()</h2>
+<a id="ac0cf6cede7dda363080b4724c92cca6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0cf6cede7dda363080b4724c92cca6e">&#9670;&nbsp;</a></span>operator&gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator&gt; </td>
+          <td class="memname">auto operator&gt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -707,18 +715,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a68ad99ec54b2bef580feadc6fc4b0266"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68ad99ec54b2bef580feadc6fc4b0266">&#9670;&nbsp;</a></span>operator&gt;=()</h2>
+<a id="aa9826fee8c612d25c0430dbb9cc9d104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9826fee8c612d25c0430dbb9cc9d104">&#9670;&nbsp;</a></span>operator&gt;=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classValue.html">Value</a> operator&gt;= </td>
+          <td class="memname">auto operator&gt;= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classValue.html">Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; <a class="el" href="classValue.html">Value</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -735,8 +743,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="ac945198d4e5a7e0cc3819266e85c8a3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac945198d4e5a7e0cc3819266e85c8a3b">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+<a id="a8a452fc16e0f9989f4633f4bb05a2ba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a452fc16e0f9989f4633f4bb05a2ba6">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -745,7 +753,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td class="memname">auto operator&lt;&lt; </td>
           <td>(</td>
           <td class="paramtype">std::ostream &amp;&#160;</td>
           <td class="paramname"><em>os</em>, </td>
@@ -759,7 +767,7 @@ Friends</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; std::ostream &amp;</td>
         </tr>
       </table>
   </td>

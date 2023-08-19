@@ -94,10 +94,8 @@ $(document).ready(function(){initNavTree('init_8cpp.html',''); initResizable(); 
 <code>#include &quot;<a class="el" href="compiletime__exception_8hpp_source.html">compiletime_exception.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="exit__code_8hpp_source.html">exit_code.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="lexer_8hpp_source.html">lexer.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="opcode_8hpp_source.html">opcode.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="runtime__exception_8hpp_source.html">runtime_exception.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="token_8hpp_source.html">token.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="value_8hpp_source.html">value.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vm_8hpp_source.html">vm.hpp</a>&quot;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -105,27 +103,27 @@ $(document).ready(function(){initNavTree('init_8cpp.html',''); initResizable(); 
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad309abe28b5dbe2f2b7b5d21d4e63089"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#ad309abe28b5dbe2f2b7b5d21d4e63089">run</a> (std::string &amp;source)</td></tr>
-<tr class="separator:ad309abe28b5dbe2f2b7b5d21d4e63089"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34fa27b192f788b6c3f8386f3d9383b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#a34fa27b192f788b6c3f8386f3d9383b1">repl</a> ()</td></tr>
-<tr class="memdesc:a34fa27b192f788b6c3f8386f3d9383b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the REPL.  <a href="init_8cpp.html#a34fa27b192f788b6c3f8386f3d9383b1">More...</a><br /></td></tr>
-<tr class="separator:a34fa27b192f788b6c3f8386f3d9383b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7529eafcf765c1dfe8e3bf3ee59b1ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9">runFile</a> (char const *path)</td></tr>
-<tr class="memdesc:a7529eafcf765c1dfe8e3bf3ee59b1ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the program declared in the given file.  <a href="init_8cpp.html#a7529eafcf765c1dfe8e3bf3ee59b1ec9">More...</a><br /></td></tr>
-<tr class="separator:a7529eafcf765c1dfe8e3bf3ee59b1ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7371007eaff1c5d71be0fdc688400a2"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#ab7371007eaff1c5d71be0fdc688400a2">run</a> (std::string &amp;source) -&gt; void</td></tr>
+<tr class="separator:ab7371007eaff1c5d71be0fdc688400a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ffae0d38fc012bc00f64364d766809"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#ab9ffae0d38fc012bc00f64364d766809">repl</a> () -&gt; void</td></tr>
+<tr class="memdesc:ab9ffae0d38fc012bc00f64364d766809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the REPL.  <a href="init_8cpp.html#ab9ffae0d38fc012bc00f64364d766809">More...</a><br /></td></tr>
+<tr class="separator:ab9ffae0d38fc012bc00f64364d766809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9585b91eec25b99abc10d992d21072"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#a7a9585b91eec25b99abc10d992d21072">runFile</a> (char const *path) -&gt; void</td></tr>
+<tr class="memdesc:a7a9585b91eec25b99abc10d992d21072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the program declared in the given file.  <a href="init_8cpp.html#a7a9585b91eec25b99abc10d992d21072">More...</a><br /></td></tr>
+<tr class="separator:a7a9585b91eec25b99abc10d992d21072"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a34fa27b192f788b6c3f8386f3d9383b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34fa27b192f788b6c3f8386f3d9383b1">&#9670;&nbsp;</a></span>repl()</h2>
+<a id="ab9ffae0d38fc012bc00f64364d766809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ffae0d38fc012bc00f64364d766809">&#9670;&nbsp;</a></span>repl()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void repl </td>
+          <td class="memname">auto repl </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> -&gt; void </td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -134,8 +132,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad309abe28b5dbe2f2b7b5d21d4e63089"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad309abe28b5dbe2f2b7b5d21d4e63089">&#9670;&nbsp;</a></span>run()</h2>
+<a id="ab7371007eaff1c5d71be0fdc688400a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7371007eaff1c5d71be0fdc688400a2">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,11 +142,11 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void run </td>
+          <td class="memname">static auto run </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -160,18 +158,18 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7529eafcf765c1dfe8e3bf3ee59b1ec9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7529eafcf765c1dfe8e3bf3ee59b1ec9">&#9670;&nbsp;</a></span>runFile()</h2>
+<a id="a7a9585b91eec25b99abc10d992d21072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a9585b91eec25b99abc10d992d21072">&#9670;&nbsp;</a></span>runFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void runFile </td>
+          <td class="memname">auto runFile </td>
           <td>(</td>
           <td class="paramtype">char const *&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
+          <td> -&gt;  void</td>
         </tr>
       </table>
 </div><div class="memdoc">

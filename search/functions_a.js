@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['number_334',['number',['../classCompiler.html#a1bfb8ac58fcf183f26ca362664d67827',1,'Compiler::number()'],['../classLexer.html#a5dbaa3a752697794ad66b5ad25edd73f',1,'Lexer::number()']]]
+  ['number_319',['number',['../classCompiler.html#a0eece4ed9fba46dcdb9fb195bc7c24bb',1,'Compiler::number()'],['../classLexer.html#a33872fae629fd4b36c9536e8be55f6e5',1,'Lexer::number()']]]
 ];

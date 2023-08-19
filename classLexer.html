@@ -101,37 +101,39 @@ $(document).ready(function(){initNavTree('classLexer.html',''); initResizable();
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf30014452cefcea8594d264459a72fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#aaf30014452cefcea8594d264459a72fa">Lexer</a> ()</td></tr>
 <tr class="separator:aaf30014452cefcea8594d264459a72fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a857c313bf4ad61059de72adb918b7c6b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a857c313bf4ad61059de72adb918b7c6b">tokenize</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a857c313bf4ad61059de72adb918b7c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2b83a25b5d8ea7ad5c2e7d0e4553d1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a6d2b83a25b5d8ea7ad5c2e7d0e4553d1">tokenize</a> (std::string const &amp;source) -&gt; std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt;</td></tr>
+<tr class="separator:a6d2b83a25b5d8ea7ad5c2e7d0e4553d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a73a69de77b50640acd606c6a3d388f07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a73a69de77b50640acd606c6a3d388f07">scanToken</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a73a69de77b50640acd606c6a3d388f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ea91fbdf3cb569281c63ff09110ea3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a9ea91fbdf3cb569281c63ff09110ea3f">isAtEnd</a> (std::string const &amp;source) const</td></tr>
-<tr class="separator:a9ea91fbdf3cb569281c63ff09110ea3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e792d844620cad82bd539c31d45fda0"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a0e792d844620cad82bd539c31d45fda0">advance</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a0e792d844620cad82bd539c31d45fda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e2aa71d36cd775c46eafda3f402e3ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a9e2aa71d36cd775c46eafda3f402e3ea">addToken</a> (<a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a> type, std::string const &amp;lexeme)</td></tr>
-<tr class="separator:a9e2aa71d36cd775c46eafda3f402e3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb35d5d56f105b99878c60478000836a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#acb35d5d56f105b99878c60478000836a">match</a> (char c, std::string const &amp;source)</td></tr>
-<tr class="separator:acb35d5d56f105b99878c60478000836a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a92172bf1fecd7f39d8cf7756cca4f4"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a8a92172bf1fecd7f39d8cf7756cca4f4">peek</a> (std::string const &amp;source) const</td></tr>
-<tr class="separator:a8a92172bf1fecd7f39d8cf7756cca4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafa266a298cb79976e038d82e59ed985"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#aafa266a298cb79976e038d82e59ed985">peekNext</a> (std::string const &amp;source) const</td></tr>
-<tr class="separator:aafa266a298cb79976e038d82e59ed985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad89816483323d1841602cedf2b6d76e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#ad89816483323d1841602cedf2b6d76e1">string</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:ad89816483323d1841602cedf2b6d76e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ff0aa9a84ef59c2e1a7025d2d79474e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a6ff0aa9a84ef59c2e1a7025d2d79474e">isDigit</a> (char c) const</td></tr>
-<tr class="separator:a6ff0aa9a84ef59c2e1a7025d2d79474e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac655e87a555bc2d278eb63b8f2493375"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#ac655e87a555bc2d278eb63b8f2493375">isAlpha</a> (char c) const</td></tr>
-<tr class="separator:ac655e87a555bc2d278eb63b8f2493375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dbaa3a752697794ad66b5ad25edd73f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a5dbaa3a752697794ad66b5ad25edd73f">number</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a5dbaa3a752697794ad66b5ad25edd73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0673291a2fb0b20d243e5387102f7b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a0673291a2fb0b20d243e5387102f7b53">identifier</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a0673291a2fb0b20d243e5387102f7b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a609aef6cd7a21b60ed05688e20b43cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a609aef6cd7a21b60ed05688e20b43cf7">skipWhitespace</a> (std::string const &amp;source)</td></tr>
-<tr class="separator:a609aef6cd7a21b60ed05688e20b43cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75ad47175de6a0c4abe0965b680bd07"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#ab75ad47175de6a0c4abe0965b680bd07">scanToken</a> (std::string const &amp;source) -&gt; void</td></tr>
+<tr class="separator:ab75ad47175de6a0c4abe0965b680bd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7374e58f7534a5f139aa94279fa045ac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a7374e58f7534a5f139aa94279fa045ac">isAtEnd</a> () const -&gt; bool</td></tr>
+<tr class="separator:a7374e58f7534a5f139aa94279fa045ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146d4f4bf89f7a8b200377c2b95a4c03"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a146d4f4bf89f7a8b200377c2b95a4c03">isAtEnd</a> (std::string const &amp;source) const -&gt; bool</td></tr>
+<tr class="separator:a146d4f4bf89f7a8b200377c2b95a4c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec9d80d1d45c6f82b6e6d0640ab4b346"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#aec9d80d1d45c6f82b6e6d0640ab4b346">advance</a> (std::string const &amp;source) -&gt; char</td></tr>
+<tr class="separator:aec9d80d1d45c6f82b6e6d0640ab4b346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab36bf81fdaae087186234f58ebe9a1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a6ab36bf81fdaae087186234f58ebe9a1">addToken</a> (<a class="el" href="classToken.html#a5f787df9cdf370248382504196841479">Token::Type</a> type, std::string const &amp;lexeme) -&gt; void</td></tr>
+<tr class="separator:a6ab36bf81fdaae087186234f58ebe9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f6ed99016b6703ab80650e90338fc4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a94f6ed99016b6703ab80650e90338fc4">match</a> (char c, std::string const &amp;source) -&gt; bool</td></tr>
+<tr class="separator:a94f6ed99016b6703ab80650e90338fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b541db0d39dcb32e0fc09c180274f68"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a3b541db0d39dcb32e0fc09c180274f68">peek</a> (std::string const &amp;source) const -&gt; char</td></tr>
+<tr class="separator:a3b541db0d39dcb32e0fc09c180274f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e2f88f318dce13432e0afb4457ca9b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a26e2f88f318dce13432e0afb4457ca9b">peekNext</a> (std::string const &amp;source) const -&gt; char</td></tr>
+<tr class="separator:a26e2f88f318dce13432e0afb4457ca9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63161ad873364d92ee8e849b4dbaade5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a63161ad873364d92ee8e849b4dbaade5">string</a> (std::string const &amp;source) -&gt; void</td></tr>
+<tr class="separator:a63161ad873364d92ee8e849b4dbaade5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d38ad9fd42e3d9172a67387900ad69"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a06d38ad9fd42e3d9172a67387900ad69">isDigit</a> (char c) const -&gt; bool</td></tr>
+<tr class="separator:a06d38ad9fd42e3d9172a67387900ad69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bcc07dac3792e75f7a7d5cb0d2119e9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a1bcc07dac3792e75f7a7d5cb0d2119e9">isAlpha</a> (char c) const -&gt; bool</td></tr>
+<tr class="separator:a1bcc07dac3792e75f7a7d5cb0d2119e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33872fae629fd4b36c9536e8be55f6e5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a33872fae629fd4b36c9536e8be55f6e5">number</a> (std::string const &amp;source) -&gt; void</td></tr>
+<tr class="separator:a33872fae629fd4b36c9536e8be55f6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2472dbb626a5df4315c5ac954c2497f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#ac2472dbb626a5df4315c5ac954c2497f">identifier</a> (std::string const &amp;source) -&gt; void</td></tr>
+<tr class="separator:ac2472dbb626a5df4315c5ac954c2497f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf5f2dbe1b0aa3e27f3d205601e3019"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexer.html#a6cf5f2dbe1b0aa3e27f3d205601e3019">skipWhitespace</a> (std::string const &amp;source) -&gt; void</td></tr>
+<tr class="separator:a6cf5f2dbe1b0aa3e27f3d205601e3019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -165,8 +167,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9e2aa71d36cd775c46eafda3f402e3ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e2aa71d36cd775c46eafda3f402e3ea">&#9670;&nbsp;</a></span>addToken()</h2>
+<a id="a6ab36bf81fdaae087186234f58ebe9a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab36bf81fdaae087186234f58ebe9a1">&#9670;&nbsp;</a></span>addToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,9 +177,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void addToken </td>
+          <td class="memname">auto addToken </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classToken.html#a1d1cfd8ffb84e947f82999c682b666a7">Token::Type</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classToken.html#a5f787df9cdf370248382504196841479">Token::Type</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
@@ -189,7 +191,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -201,8 +203,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0e792d844620cad82bd539c31d45fda0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e792d844620cad82bd539c31d45fda0">&#9670;&nbsp;</a></span>advance()</h2>
+<a id="aec9d80d1d45c6f82b6e6d0640ab4b346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec9d80d1d45c6f82b6e6d0640ab4b346">&#9670;&nbsp;</a></span>advance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,11 +213,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char advance </td>
+          <td class="memname">auto advance </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; char</td>
         </tr>
       </table>
   </td>
@@ -227,8 +229,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0673291a2fb0b20d243e5387102f7b53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0673291a2fb0b20d243e5387102f7b53">&#9670;&nbsp;</a></span>identifier()</h2>
+<a id="ac2472dbb626a5df4315c5ac954c2497f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2472dbb626a5df4315c5ac954c2497f">&#9670;&nbsp;</a></span>identifier()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,11 +239,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void identifier </td>
+          <td class="memname">auto identifier </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -253,8 +255,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac655e87a555bc2d278eb63b8f2493375"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac655e87a555bc2d278eb63b8f2493375">&#9670;&nbsp;</a></span>isAlpha()</h2>
+<a id="a1bcc07dac3792e75f7a7d5cb0d2119e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bcc07dac3792e75f7a7d5cb0d2119e9">&#9670;&nbsp;</a></span>isAlpha()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,11 +265,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool isAlpha </td>
+          <td class="memname">auto isAlpha </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
   </td>
@@ -279,8 +281,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ea91fbdf3cb569281c63ff09110ea3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ea91fbdf3cb569281c63ff09110ea3f">&#9670;&nbsp;</a></span>isAtEnd()</h2>
+<a id="a7374e58f7534a5f139aa94279fa045ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7374e58f7534a5f139aa94279fa045ac">&#9670;&nbsp;</a></span>isAtEnd() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,11 +291,36 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool isAtEnd </td>
+          <td class="memname">auto isAtEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  bool</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a146d4f4bf89f7a8b200377c2b95a4c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a146d4f4bf89f7a8b200377c2b95a4c03">&#9670;&nbsp;</a></span>isAtEnd() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto isAtEnd </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
   </td>
@@ -305,8 +332,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ff0aa9a84ef59c2e1a7025d2d79474e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ff0aa9a84ef59c2e1a7025d2d79474e">&#9670;&nbsp;</a></span>isDigit()</h2>
+<a id="a06d38ad9fd42e3d9172a67387900ad69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d38ad9fd42e3d9172a67387900ad69">&#9670;&nbsp;</a></span>isDigit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,11 +342,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool isDigit </td>
+          <td class="memname">auto isDigit </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
   </td>
@@ -331,8 +358,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acb35d5d56f105b99878c60478000836a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb35d5d56f105b99878c60478000836a">&#9670;&nbsp;</a></span>match()</h2>
+<a id="a94f6ed99016b6703ab80650e90338fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f6ed99016b6703ab80650e90338fc4">&#9670;&nbsp;</a></span>match()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,7 +368,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool match </td>
+          <td class="memname">auto match </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -355,7 +382,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; bool</td>
         </tr>
       </table>
   </td>
@@ -367,8 +394,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dbaa3a752697794ad66b5ad25edd73f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dbaa3a752697794ad66b5ad25edd73f">&#9670;&nbsp;</a></span>number()</h2>
+<a id="a33872fae629fd4b36c9536e8be55f6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33872fae629fd4b36c9536e8be55f6e5">&#9670;&nbsp;</a></span>number()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -377,11 +404,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void number </td>
+          <td class="memname">auto number </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -393,8 +420,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8a92172bf1fecd7f39d8cf7756cca4f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a92172bf1fecd7f39d8cf7756cca4f4">&#9670;&nbsp;</a></span>peek()</h2>
+<a id="a3b541db0d39dcb32e0fc09c180274f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b541db0d39dcb32e0fc09c180274f68">&#9670;&nbsp;</a></span>peek()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,11 +430,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char peek </td>
+          <td class="memname">auto peek </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; char</td>
         </tr>
       </table>
   </td>
@@ -419,8 +446,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aafa266a298cb79976e038d82e59ed985"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafa266a298cb79976e038d82e59ed985">&#9670;&nbsp;</a></span>peekNext()</h2>
+<a id="a26e2f88f318dce13432e0afb4457ca9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26e2f88f318dce13432e0afb4457ca9b">&#9670;&nbsp;</a></span>peekNext()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,11 +456,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char peekNext </td>
+          <td class="memname">auto peekNext </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; char</td>
         </tr>
       </table>
   </td>
@@ -445,8 +472,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a73a69de77b50640acd606c6a3d388f07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73a69de77b50640acd606c6a3d388f07">&#9670;&nbsp;</a></span>scanToken()</h2>
+<a id="ab75ad47175de6a0c4abe0965b680bd07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab75ad47175de6a0c4abe0965b680bd07">&#9670;&nbsp;</a></span>scanToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -455,11 +482,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void scanToken </td>
+          <td class="memname">auto scanToken </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -471,8 +498,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a609aef6cd7a21b60ed05688e20b43cf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609aef6cd7a21b60ed05688e20b43cf7">&#9670;&nbsp;</a></span>skipWhitespace()</h2>
+<a id="a6cf5f2dbe1b0aa3e27f3d205601e3019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf5f2dbe1b0aa3e27f3d205601e3019">&#9670;&nbsp;</a></span>skipWhitespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -481,11 +508,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void skipWhitespace </td>
+          <td class="memname">auto skipWhitespace </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -497,8 +524,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad89816483323d1841602cedf2b6d76e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad89816483323d1841602cedf2b6d76e1">&#9670;&nbsp;</a></span>string()</h2>
+<a id="a63161ad873364d92ee8e849b4dbaade5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63161ad873364d92ee8e849b4dbaade5">&#9670;&nbsp;</a></span>string()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -507,11 +534,11 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void string </td>
+          <td class="memname">auto string </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; void</td>
         </tr>
       </table>
   </td>
@@ -523,18 +550,18 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a857c313bf4ad61059de72adb918b7c6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a857c313bf4ad61059de72adb918b7c6b">&#9670;&nbsp;</a></span>tokenize()</h2>
+<a id="a6d2b83a25b5d8ea7ad5c2e7d0e4553d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d2b83a25b5d8ea7ad5c2e7d0e4553d1">&#9670;&nbsp;</a></span>tokenize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; tokenize </td>
+          <td class="memname">auto tokenize </td>
           <td>(</td>
           <td class="paramtype">std::string const &amp;&#160;</td>
           <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; std::vector&lt;<a class="el" href="classToken.html">Token</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">

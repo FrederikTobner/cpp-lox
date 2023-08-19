@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['bang_12',['BANG',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a220fa389cdbdc1e8cd33f70c1f793d3c',1,'Token']]],
-  ['bang_5fequal_13',['BANG_EQUAL',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a783d53dd60297984dc8336d5f80cb275',1,'Token']]],
-  ['binary_14',['binary',['../classCompiler.html#a46a929ee0ad89c9b0cdaf42d4b077795',1,'Compiler']]]
+  ['bang_11',['BANG',['../classToken.html#a5f787df9cdf370248382504196841479a489b3c14da5e92c8b256b195e92ae93a',1,'Token']]],
+  ['bang_5fequal_12',['BANG_EQUAL',['../classToken.html#a5f787df9cdf370248382504196841479a62f38cfb27e89ed4c4c8617fe3b7007a',1,'Token']]],
+  ['binary_13',['binary',['../classCompiler.html#a290d4a4d4910c33afec289213d737abe',1,'Compiler']]],
+  ['bool_14',['BOOL',['../classValue.html#a1d1cfd8ffb84e947f82999c682b666a7aa97b2c144243b2b9d2c593ec268b62f5',1,'Value']]]
 ];

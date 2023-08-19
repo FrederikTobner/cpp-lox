@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['return_477',['RETURN',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a520e09ffec033636dba711f3441cc600',1,'Token']]],
-  ['right_5fbrace_478',['RIGHT_BRACE',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a720e33700869f857881e7f50bdfb6943',1,'Token']]],
-  ['right_5fparentheses_479',['RIGHT_PARENTHESES',['../classToken.html#a1d1cfd8ffb84e947f82999c682b666a7a99f5cfe9f2e0a2880af8cd535bdf1a0a',1,'Token']]]
+  ['return_452',['RETURN',['../classToken.html#a5f787df9cdf370248382504196841479aa2bec276a54439fe011eb523b845dac5',1,'Token::RETURN()'],['../opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aa2bec276a54439fe011eb523b845dac5',1,'RETURN():&#160;opcode.hpp']]],
+  ['right_5fbrace_453',['RIGHT_BRACE',['../classToken.html#a5f787df9cdf370248382504196841479a262bd36c5946e1483a7036f8635e2be5',1,'Token']]],
+  ['right_5fparentheses_454',['RIGHT_PARENTHESES',['../classToken.html#a5f787df9cdf370248382504196841479a87ba0d1335263817ee7dcf36717006d6',1,'Token']]]
 ];

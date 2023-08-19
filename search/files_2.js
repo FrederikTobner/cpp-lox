@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['exit_5fcode_2ehpp_265',['exit_code.hpp',['../exit__code_8hpp.html',1,'']]]
+  ['init_2ecpp_251',['init.cpp',['../init_8cpp.html',1,'']]],
+  ['init_2ehpp_252',['init.hpp',['../init_8hpp.html',1,'']]]
 ];

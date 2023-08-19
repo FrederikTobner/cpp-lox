@@ -1,6 +1,5 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
-    [ "assert.hpp", "assert_8hpp.html", "assert_8hpp" ],
     [ "chunk.cpp", "chunk_8cpp.html", null ],
     [ "chunk.hpp", "chunk_8hpp.html", [
       [ "Chunk", "classChunk.html", "classChunk" ]
