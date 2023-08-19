@@ -13,8 +13,8 @@ concept IsDerivedFromObject = std::is_base_of<Object, T>::value;
 class Object {
   public:
     /// @brief The type of an object.
-    enum Type {
-        OBJ_STRING
+    enum class Type {
+        STRING
     };
     /// @brief Constructs a new object.
     Object() = default;
@@ -24,18 +24,18 @@ class Object {
 
     /// @brief Gets the type of the object.
     /// @return The type of the object.
-    Type type() const {
+    auto type() const -> Object::Type {
         return m_type;
     }
 
     /// @brief Checks if the object is of the given type.
     /// @param type The type to check against.
     /// @return True if the object is of the given type, false otherwise.
-    bool is(Type type) const {
+    auto is(Type type) const -> bool {
         return m_type == type;
     }
 
-    template <IsDerivedFromObject T> T * as() {
+    template <IsDerivedFromObject T> auto as() -> T * {
         return static_cast<T *>(this);
     }
 
@@ -43,7 +43,7 @@ class Object {
     /// @param os The output stream to print to
     /// @param dt The value to print
     /// @return The output stream
-    friend std::ostream & operator<<(std::ostream & os, Object const & dt) {
+    friend auto operator<<(std::ostream & os, Object const & dt) -> std::ostream & {
         dt.print(os);
         return os;
     }
@@ -51,7 +51,7 @@ class Object {
     /// @param os The output stream to print to
     /// @param dt The value to print
     /// @return The output stream
-    friend std::ostream & operator<<(std::ostream & os, Object * dt) {
+    friend auto operator<<(std::ostream & os, Object * dt) -> std::ostream & {
         dt->print(os);
         return os;
     }
@@ -69,7 +69,7 @@ class ObjectString : public Object {
     /// @param value The value of the string object.
     ObjectString(std::string const & string) {
         m_string = new std::string(string);
-        m_type = Object::Type::OBJ_STRING;
+        m_type = Object::Type::STRING;
     }
 
     ~ObjectString() {
@@ -78,7 +78,7 @@ class ObjectString : public Object {
 
     /// @brief Gets the value of the string object.
     /// @return The value of the string object.
-    std::string const & string() const {
+    auto string() const -> std::string const & {
         return *m_string;
     }
 
@@ -95,7 +95,7 @@ class ObjectString : public Object {
 template <> struct std::formatter<Object *> : std::formatter<std::string> {
     auto format(Object * object, format_context & ctx) const {
         switch (object->type()) {
-        case Object::Type::OBJ_STRING:
+        case Object::Type::STRING:
             return formatter<string>::format(std::format("{}", object->as<ObjectString>()->string()), ctx);
         }
         // should be be unreachable

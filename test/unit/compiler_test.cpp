@@ -8,7 +8,6 @@
 #include "../../src/opcode.hpp"
 #include "../../src/token.hpp"
 
-
 // Test fixture for Compiler integration tests
 class CompilerTest : public ::testing::Test {
   public:
@@ -38,12 +37,12 @@ TEST_F(CompilerTest, AdditionExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(3), 1);
-    ASSERT_EQ(chunk->getByte(4), OP_ADD);
-    ASSERT_EQ(chunk->getByte(5), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(4), static_cast<uint8_t>(Opcode::ADD));
+    ASSERT_EQ(chunk->getByte(5), static_cast<uint8_t>(Opcode::RETURN));
 }
 
 TEST_F(CompilerTest, SubtractionExpression) {
@@ -58,12 +57,12 @@ TEST_F(CompilerTest, SubtractionExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(3), 1);
-    ASSERT_EQ(chunk->getByte(4), OP_SUBTRACT);
-    ASSERT_EQ(chunk->getByte(5), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(4), static_cast<uint8_t>(Opcode::SUBTRACT));
+    ASSERT_EQ(chunk->getByte(5), static_cast<uint8_t>(Opcode::RETURN));
 }
 
 TEST_F(CompilerTest, MultiplicationExpression) {
@@ -78,12 +77,12 @@ TEST_F(CompilerTest, MultiplicationExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(3), 1);
-    ASSERT_EQ(chunk->getByte(4), OP_MULTIPLY);
-    ASSERT_EQ(chunk->getByte(5), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(4), static_cast<uint8_t>(Opcode::MULTIPLY));
+    ASSERT_EQ(chunk->getByte(5), static_cast<uint8_t>(Opcode::RETURN));
 }
 
 TEST_F(CompilerTest, DivisionExpression) {
@@ -98,12 +97,12 @@ TEST_F(CompilerTest, DivisionExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(3), 1);
-    ASSERT_EQ(chunk->getByte(4), OP_DIVIDE);
-    ASSERT_EQ(chunk->getByte(5), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(4), static_cast<uint8_t>(Opcode::DIVIDE));
+    ASSERT_EQ(chunk->getByte(5), static_cast<uint8_t>(Opcode::RETURN));
 }
 
 TEST_F(CompilerTest, NegateExpression) {
@@ -117,10 +116,10 @@ TEST_F(CompilerTest, NegateExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 4);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_NEGATE);
-    ASSERT_EQ(chunk->getByte(3), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::NEGATE));
+    ASSERT_EQ(chunk->getByte(3), static_cast<uint8_t>(Opcode::RETURN));
 }
 
 TEST_F(CompilerTest, GroupingExpression) {
@@ -139,13 +138,13 @@ TEST_F(CompilerTest, GroupingExpression) {
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 9);
-    ASSERT_EQ(chunk->getByte(0), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(0), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(1), 0);
-    ASSERT_EQ(chunk->getByte(2), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(2), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(3), 1);
-    ASSERT_EQ(chunk->getByte(4), OP_ADD);
-    ASSERT_EQ(chunk->getByte(5), OP_CONSTANT);
+    ASSERT_EQ(chunk->getByte(4), static_cast<uint8_t>(Opcode::ADD));
+    ASSERT_EQ(chunk->getByte(5), static_cast<uint8_t>(Opcode::CONSTANT));
     ASSERT_EQ(chunk->getByte(6), 2);
-    ASSERT_EQ(chunk->getByte(7), OP_MULTIPLY);
-    ASSERT_EQ(chunk->getByte(8), OP_RETURN);
+    ASSERT_EQ(chunk->getByte(7), static_cast<uint8_t>(Opcode::MULTIPLY));
+    ASSERT_EQ(chunk->getByte(8), static_cast<uint8_t>(Opcode::RETURN));
 }

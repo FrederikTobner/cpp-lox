@@ -1,8 +1,8 @@
 #pragma once
 
 /// @brief Starts the REPL
-void repl();
+auto repl() -> void;
 
 /// @brief Executes the program declared in the given file
 /// @param path The path to the file
-void runFile(char const * path);
+auto runFile(char const * path) -> void;

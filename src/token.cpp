@@ -9,7 +9,7 @@ Token::Token(Type type, std::string lexeme, size_t line) {
     this->m_line = line;
 }
 
-std::ostream & operator<<(std::ostream & os, Token const & token) {
+auto operator<<(std::ostream & os, Token const & token) -> std::ostream & {
     os << std::format("Token({}, {})", token.m_lexeme, token.m_line);
     return os;
 }

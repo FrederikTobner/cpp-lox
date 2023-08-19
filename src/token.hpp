@@ -1,12 +1,13 @@
 #pragma once
 
+#include <cstdint>
 #include <format>
 #include <string>
 
 class Token {
   public:
     /// @brief The possible types of a token
-    enum Type {
+    enum class Type : uint8_t {
         /// @brief An and keyword
         AND,
         /// @brief A bang operator
@@ -97,23 +98,23 @@ class Token {
     /// @param os The output stream to append to
     /// @param token The token to append
     /// @return The output stream
-    friend std::ostream & operator<<(std::ostream & os, Token const & token);
+    friend auto operator<<(std::ostream & os, Token const & token) -> std::ostream &;
 
     /// @brief Get the type of the token
     /// @return The type of the token
-    [[nodiscard]] inline Type type() const {
+    [[nodiscard]] inline auto type() const -> Type {
         return this->m_type;
     }
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
-    [[nodiscard]] inline std::string const & lexeme() const {
+    [[nodiscard]] inline auto lexeme() const -> std::string const & {
         return this->m_lexeme;
     }
 
     /// @brief Get the line number where the token was found
     /// @return The line number where the token was found
-    [[nodiscard]] inline size_t line() const {
+    [[nodiscard]] inline auto line() const -> size_t {
         return this->m_line;
     }
 

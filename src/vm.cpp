@@ -15,7 +15,7 @@ VM::VM(MemoryManager * memoryManager) {
 VM::~VM() {
 }
 
-void VM::interpret(Chunk & chunk) {
+auto VM::interpret(Chunk & chunk) -> void {
     this->m_instruction_index = 0;
     this->m_chunk = &chunk;
     for (;;) {
@@ -28,17 +28,17 @@ void VM::interpret(Chunk & chunk) {
 #endif
 
         uint8_t instruction = chunk.getByte(m_instruction_index++);
-        switch (instruction) {
-        case OP_ADD:
+        switch (static_cast<Opcode>(instruction)) {
+        case Opcode::ADD:
             {
                 Value a = pop();
                 Value b = pop();
-                if (a.is(Value::Type::VAL_NUMBER) && b.is(Value::Type::VAL_NUMBER)) {
+                if (a.is(Value::Type::NUMBER) && b.is(Value::Type::NUMBER)) {
                     push(a + b);
-                } else if (a.is(Value::Type::VAL_OBJECT) && b.is(Value::Type::VAL_OBJECT)) {
+                } else if (a.is(Value::Type::OBJECT) && b.is(Value::Type::OBJECT)) {
                     Object * aObject = a.asObject();
                     Object * bObject = b.asObject();
-                    if (aObject->is(Object::Type::OBJ_STRING) && bObject->is(Object::Type::OBJ_STRING)) {
+                    if (aObject->is(Object::Type::STRING) && bObject->is(Object::Type::STRING)) {
                         push(Value(
                             m_memoryManager->concatenate(bObject->as<ObjectString>(), aObject->as<ObjectString>())));
                     } else {
@@ -47,57 +47,57 @@ void VM::interpret(Chunk & chunk) {
                 }
                 break;
             }
-        case OP_CONSTANT:
+        case Opcode::CONSTANT:
             {
                 uint8_t constant = chunk.getByte(m_instruction_index++);
                 push(chunk.getConstant(constant));
                 break;
             }
-        case OP_DIVIDE:
+        case Opcode::DIVIDE:
             push(pop() / pop());
             break;
-        case OP_EQUAL:
+        case Opcode::EQUAL:
             push(pop() == pop());
             break;
-        case OP_FALSE:
+        case Opcode::FALSE:
             push(Value(false));
             break;
-        case OP_GREATER:
+        case Opcode::GREATER:
             push(pop() > pop());
             break;
-        case OP_GREATER_EQUAL:
+        case Opcode::GREATER_EQUAL:
             push(pop() >= pop());
             break;
-        case OP_LESS:
+        case Opcode::LESS:
             push(pop() < pop());
             break;
-        case OP_LESS_EQUAL:
+        case Opcode::LESS_EQUAL:
             push(pop() <= pop());
             break;
-        case OP_MULTIPLY:
+        case Opcode::MULTIPLY:
             push(pop() * pop());
             break;
-        case OP_NEGATE:
+        case Opcode::NEGATE:
             push(-pop());
             break;
-        case OP_NOT:
+        case Opcode::NOT:
             push(!pop());
             break;
-        case OP_NOT_EQUAL:
+        case Opcode::NOT_EQUAL:
             push(pop() != pop());
             break;
-        case OP_NULL:
+        case Opcode::NULL_:
             push(Value());
             break;
-        case OP_RETURN:
+        case Opcode::RETURN:
             return;
-        case OP_PRINT:
+        case Opcode::PRINT:
             std::cout << pop() << std::endl;
             break;
-        case OP_SUBTRACT:
+        case Opcode::SUBTRACT:
             push(pop() - pop());
             break;
-        case OP_TRUE:
+        case Opcode::TRUE:
             push(Value(true));
             break;
         }
@@ -106,7 +106,7 @@ void VM::interpret(Chunk & chunk) {
     return;
 }
 
-void VM::push(Value value) {
+auto VM::push(Value value) -> void {
     if (m_stack_top == STACK_MAX) {
         runTimeError("Stack overflow");
     }
@@ -114,19 +114,19 @@ void VM::push(Value value) {
     m_stack_top++;
 }
 
-[[nodiscard]] Value VM::pop() {
+[[nodiscard]] auto VM::pop() -> Value {
     if (m_stack_top == 0) {
-        runTimeError("Stack overflow");
+        runTimeError("Stack empty on pop");
     }
     m_stack_top--;
     return m_stack[m_stack_top];
 }
 
-void VM::resetStack() {
+auto VM::resetStack() -> void {
     m_stack_top = 0;
 }
 
-template <class... Args> void VM::runTimeError(std::string_view fmt, Args &&... args) {
+template <class... Args> auto VM::runTimeError(std::string_view fmt, Args &&... args) -> void {
     std::string errorMessage = std::vformat(fmt, std::make_format_args(args...));
     errorMessage += "\n";
     size_t instruction = m_instruction_index - 1;

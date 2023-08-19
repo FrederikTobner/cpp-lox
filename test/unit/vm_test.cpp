@@ -29,12 +29,12 @@ class VMTest : public ::testing::Test {
 TEST_F(VMTest, AddInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_ADD, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::ADD, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -46,9 +46,9 @@ TEST_F(VMTest, AddInstruction) {
 TEST_F(VMTest, ConstantInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -60,12 +60,12 @@ TEST_F(VMTest, ConstantInstruction) {
 TEST_F(VMTest, DivideInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_DIVIDE, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::DIVIDE, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -79,19 +79,19 @@ TEST_F(VMTest, EqualInstruction) {
     Value value(42.0);
     Value value2(43.0);
     Value value3(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 42 == 43
-    chunk.write(OP_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value3), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 == 42
-    chunk.write(OP_EQUAL, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::EQUAL, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -105,8 +105,8 @@ TEST_F(VMTest, EqualInstruction) {
 
 TEST_F(VMTest, FalseInstruction) {
     // Arrange
-    chunk.write(OP_FALSE, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::FALSE, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -119,25 +119,25 @@ TEST_F(VMTest, GreaterInstruction) {
     // Arrange
     Value value(42.0);
     Value value2(43.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 42 > 43
-    chunk.write(OP_GREATER, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::GREATER, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 43 > 42
-    chunk.write(OP_GREATER, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::GREATER, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 > 42
-    chunk.write(OP_GREATER, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::GREATER, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -155,25 +155,25 @@ TEST_F(VMTest, GreaterEqualInstruction) {
     // Arrange
     Value value(42.0);
     Value value2(43.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 43 >= 42
-    chunk.write(OP_GREATER_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::GREATER_EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 >= 43
-    chunk.write(OP_GREATER_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::GREATER_EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 >= 42
-    chunk.write(OP_GREATER_EQUAL, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::GREATER_EQUAL, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -191,25 +191,25 @@ TEST_F(VMTest, LessInstruction) {
     // Arrange
     Value value(42.0);
     Value value2(43.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 42 < 43
-    chunk.write(OP_LESS, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::LESS, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 43 < 42
-    chunk.write(OP_LESS, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::LESS, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 < 42
-    chunk.write(OP_LESS, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::LESS, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -227,25 +227,25 @@ TEST_F(VMTest, LessEqualInstruction) {
     // Arrange
     Value value(42.0);
     Value value2(43.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 43 <= 42
-    chunk.write(OP_LESS_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::LESS_EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 <= 43
-    chunk.write(OP_LESS_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::LESS_EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 <= 42
-    chunk.write(OP_LESS_EQUAL, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::LESS_EQUAL, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -262,12 +262,12 @@ TEST_F(VMTest, LessEqualInstruction) {
 TEST_F(VMTest, MultiplyInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_MULTIPLY, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::MULTIPLY, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -279,10 +279,10 @@ TEST_F(VMTest, MultiplyInstruction) {
 TEST_F(VMTest, NegateInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_NEGATE, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::NEGATE, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -296,19 +296,19 @@ TEST_F(VMTest, NotEqualInstruction) {
     Value value(42.0);
     Value value2(43.0);
     Value value3(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value2), 0);
     // 42 != 43
-    chunk.write(OP_NOT_EQUAL, 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::NOT_EQUAL, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value3), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // 42 != 42
-    chunk.write(OP_NOT_EQUAL, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::NOT_EQUAL, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -322,8 +322,8 @@ TEST_F(VMTest, NotEqualInstruction) {
 
 TEST_F(VMTest, NullInstruction) {
     // Arrange
-    chunk.write(OP_NULL, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::NULL_, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -346,7 +346,7 @@ TEST_F(VMTest, PushAndPop) {
 
 TEST_F(VMTest, ReturnInstruction) {
     // Arrange
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act & Assert
     ASSERT_NO_THROW(vm->interpret(chunk));
@@ -359,7 +359,7 @@ TEST_F(VMTest, StackOverflow) {
         vm->push(value);
     }
     Chunk chunk;
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // Act & Assert
     ASSERT_THROW(vm->interpret(chunk), RunTimeException);
@@ -367,7 +367,7 @@ TEST_F(VMTest, StackOverflow) {
 
 TEST_F(VMTest, StackUnderflow) {
     Chunk chunk;
-    chunk.write(OP_ADD, 0);
+    chunk.write(Opcode::ADD, 0);
     // Act & Assert
     ASSERT_THROW(vm->interpret(chunk), RunTimeException);
 }
@@ -375,12 +375,12 @@ TEST_F(VMTest, StackUnderflow) {
 TEST_F(VMTest, SubtractInstruction) {
     // Arrange
     Value value(42.0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_CONSTANT, 0);
+    chunk.write(Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
-    chunk.write(OP_SUBTRACT, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::SUBTRACT, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);
@@ -391,8 +391,8 @@ TEST_F(VMTest, SubtractInstruction) {
 
 TEST_F(VMTest, TrueInstruction) {
     // Arrange
-    chunk.write(OP_TRUE, 0);
-    chunk.write(OP_RETURN, 0);
+    chunk.write(Opcode::TRUE, 0);
+    chunk.write(Opcode::RETURN, 0);
 
     // Act
     vm->interpret(chunk);

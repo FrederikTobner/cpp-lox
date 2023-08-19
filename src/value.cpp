@@ -5,51 +5,51 @@
 #include "runtime_exception.hpp"
 
 Value::Value() {
-    this->m_type = VAL_NULL;
+    this->m_type = Value::Type::NULL_;
 }
 
 Value::Value(bool value) {
-    this->m_type = VAL_BOOL;
+    this->m_type = Value::Type::BOOL;
     this->m_underlying_value.m_bool = value;
 }
 
 Value::Value(double value) {
-    this->m_type = VAL_NUMBER;
+    this->m_type = Value::Type::NUMBER;
     this->m_underlying_value.m_number = value;
 }
 
 Value::Value(Object * value) {
-    this->m_type = VAL_OBJECT;
+    this->m_type = Value::Type::OBJECT;
     this->m_underlying_value.m_object = value;
 }
 
-[[nodiscard]] bool Value::is(Value::Type type) noexcept {
+[[nodiscard]] auto Value::is(Value::Type type) noexcept -> bool {
     return type == this->m_type;
 }
 
-[[nodiscard]] bool Value::asBool() const {
+[[nodiscard]] auto Value::asBool() const -> bool {
     return this->m_underlying_value.m_bool;
 }
 
-[[nodiscard]] double Value::asNumber() const {
+[[nodiscard]] auto Value::asNumber() const -> double {
     return this->m_underlying_value.m_number;
 }
 
-[[nodiscard]] Object * Value::asObject() const {
+[[nodiscard]] auto Value::asObject() const -> Object * {
     return this->m_underlying_value.m_object;
 }
 
-[[nodiscard]] Value::Type Value::getType() const {
+[[nodiscard]] auto Value::getType() const -> Value::Type {
     return this->m_type;
 }
 
-std::ostream & operator<<(std::ostream & os, Value const & value) {
+auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
     switch (value.m_type) {
-    case Value::Type::VAL_BOOL:
+    case Value::Type::BOOL:
         return os << (value.m_underlying_value.m_bool ? "true" : "false");
-    case Value::Type::VAL_NULL:
+    case Value::Type::NULL_:
         return os << "null";
-    case Value::Type::VAL_NUMBER:
+    case Value::Type::NUMBER:
         {
             // Remove trailing zeros and decimal point if there are no fractional digits
             std::string str = std::to_string(value.m_underlying_value.m_number);
@@ -57,97 +57,99 @@ std::ostream & operator<<(std::ostream & os, Value const & value) {
             str.erase(str.find_last_not_of('.') + 1, std::string::npos);
             return os << str;
         }
-    case Value::Type::VAL_OBJECT:
+    case Value::Type::OBJECT:
         return os << value.m_underlying_value.m_object;
     }
     // should be be unreachable
     return os << "undefined";
 }
 
-[[nodiscard]] bool Value::operator==(Value const & other) const {
+[[nodiscard]] auto Value::operator==(Value const & other) const -> bool {
     if (this->m_type != other.m_type) {
         return false;
     }
     switch (this->m_type) {
-    case VAL_BOOL:
+    case Value::Type::BOOL:
         return this->m_underlying_value.m_bool == other.m_underlying_value.m_bool;
-    case VAL_NULL:
+    case Value::Type::NULL_:
         return true;
-    case VAL_NUMBER:
+    case Value::Type::NUMBER:
         return this->m_underlying_value.m_number == other.m_underlying_value.m_number;
+    case Value::Type::OBJECT:
+        return this->m_underlying_value.m_object == other.m_underlying_value.m_object;
     }
     return false;
 }
 
-[[nodiscard]] bool Value::operator!=(Value const & other) const {
+[[nodiscard]] auto Value::operator!=(Value const & other) const -> bool {
     return !(*this == other);
 }
 
-[[nodiscard]] Value Value::operator-() const {
-    if (this->m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator-() const -> Value {
+    if (this->m_type != Value::Type::NUMBER) {
         throw RunTimeException("Runtime error: unary negation is only defined for numbers");
     }
     return Value(-this->m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator!() const {
-    if (this->m_type != VAL_BOOL) {
+[[nodiscard]] auto Value::operator!() const -> Value {
+    if (this->m_type != Value::Type::BOOL) {
         throw RunTimeException("Runtime error: Unary not is only defined for booleans");
     }
     return Value(!this->m_underlying_value.m_bool);
 }
 
-[[nodiscard]] Value Value::operator+(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator+(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("addition is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number + other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator-(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator-(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("subtraction is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number - other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator*(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator*(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("multiplication is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number * other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator/(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator/(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("division is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number / other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator<(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator<(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number < other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator<=(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator<=(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number <= other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator>(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator>(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number > other.m_underlying_value.m_number);
 }
 
-[[nodiscard]] Value Value::operator>=(Value const & other) const {
-    if (this->m_type != VAL_NUMBER || other.m_type != VAL_NUMBER) {
+[[nodiscard]] auto Value::operator>=(Value const & other) const -> Value {
+    if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
         throw RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number >= other.m_underlying_value.m_number);

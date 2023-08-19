@@ -18,15 +18,15 @@ class ObjectStringTest : public ::testing::Test {
 };
 
 TEST_F(ObjectStringTest, type) {
-    ASSERT_EQ(object->type(), Object::Type::OBJ_STRING);
+    ASSERT_EQ(object->type(), Object::Type::STRING);
 }
 
 TEST_F(ObjectStringTest, is) {
-    ASSERT_TRUE(object->is(Object::Type::OBJ_STRING));
+    ASSERT_TRUE(object->is(Object::Type::STRING));
 }
 
 TEST_F(ObjectStringTest, string) {
-    ASSERT_EQ(object->type(), Object::Type::OBJ_STRING);
+    ASSERT_EQ(object->type(), Object::Type::STRING);
     ASSERT_EQ(object->as<ObjectString>()->string(), "Hello World");
 }
 

@@ -149,7 +149,7 @@ TEST_F(LexerTest, ScanNullKeyword) {
     Token token = tokens[0];
 
     // Assert
-    EXPECT_EQ(token.type(), Token::NULL_);
+    EXPECT_EQ(token.type(), Token::Type::NULL_);
     EXPECT_EQ(token.lexeme(), "null");
     EXPECT_EQ(token.line(), 1);
 }
@@ -163,7 +163,7 @@ TEST_F(LexerTest, ScanOrKeyword) {
     Token token = tokens[0];
 
     // Assert
-    EXPECT_EQ(token.type(), Token::OR);
+    EXPECT_EQ(token.type(), Token::Type::OR);
     EXPECT_EQ(token.lexeme(), "or");
     EXPECT_EQ(token.line(), 1);
 }
@@ -177,7 +177,7 @@ TEST_F(LexerTest, ScanPrintKeyword) {
     Token token = tokens[0];
 
     // Assert
-    EXPECT_EQ(token.type(), Token::PRINT);
+    EXPECT_EQ(token.type(), Token::Type::PRINT);
     EXPECT_EQ(token.lexeme(), "print");
     EXPECT_EQ(token.line(), 1);
 }
@@ -191,7 +191,7 @@ TEST_F(LexerTest, ScanReturnKeyword) {
     Token token = tokens[0];
 
     // Assert
-    EXPECT_EQ(token.type(), Token::RETURN);
+    EXPECT_EQ(token.type(), Token::Type::RETURN);
     EXPECT_EQ(token.lexeme(), "return");
     EXPECT_EQ(token.line(), 1);
 }
@@ -206,7 +206,7 @@ TEST_F(LexerTest, ScanSuperKeyword) {
 
     // Assert
     EXPECT_EQ(token.lexeme(), "super");
-    EXPECT_EQ(token.type(), Token::SUPER);
+    EXPECT_EQ(token.type(), Token::Type::SUPER);
     EXPECT_EQ(token.line(), 1);
 }
 

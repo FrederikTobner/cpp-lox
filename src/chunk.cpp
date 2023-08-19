@@ -11,12 +11,17 @@ Chunk::~Chunk() {
     m_code.clear();
 }
 
-void Chunk::write(uint8_t byte, int line) {
+auto Chunk::write(uint8_t byte, int line) -> void {
     m_code.push_back(byte);
     m_lines.push_back(line);
 }
 
-void Chunk::disassemble(std::string const & name) const {
+auto Chunk::write(Opcode byte, int line) -> void {
+    m_code.push_back(static_cast<uint8_t>(byte));
+    m_lines.push_back(line);
+}
+
+auto Chunk::disassemble(std::string_view const & name) const -> void {
     std::cout << std::format("== {} ==", name) << std::endl;
 
     for (size_t offset = 0; offset < m_code.size();) {
@@ -24,7 +29,7 @@ void Chunk::disassemble(std::string const & name) const {
     }
 }
 
-[[nodiscard]] size_t Chunk::disassembleInstruction(size_t offset) const {
+[[nodiscard]] auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     std::cout << std::format("{:#06X} ", offset);
 
     if (offset > 0 && this->m_lines[offset] == this->m_lines[offset - 1]) {
@@ -34,42 +39,42 @@ void Chunk::disassemble(std::string const & name) const {
     }
 
     uint8_t instruction = this->m_code[offset];
-    switch (instruction) {
-    case OP_ADD:
+    switch (static_cast<Opcode>(instruction)) {
+    case Opcode::ADD:
         return simpleInstruction(instruction, offset);
-    case OP_CONSTANT:
+    case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
-    case OP_DIVIDE:
+    case Opcode::DIVIDE:
         return simpleInstruction(instruction, offset);
-    case OP_EQUAL:
+    case Opcode::EQUAL:
         return simpleInstruction(instruction, offset);
-    case OP_FALSE:
+    case Opcode::FALSE:
         return simpleInstruction(instruction, offset);
-    case OP_GREATER:
+    case Opcode::GREATER:
         return simpleInstruction(instruction, offset);
-    case OP_GREATER_EQUAL:
+    case Opcode::GREATER_EQUAL:
         return simpleInstruction(instruction, offset);
-    case OP_LESS:
+    case Opcode::LESS:
         return simpleInstruction(instruction, offset);
-    case OP_LESS_EQUAL:
+    case Opcode::LESS_EQUAL:
         return simpleInstruction(instruction, offset);
-    case OP_MULTIPLY:
+    case Opcode::MULTIPLY:
         return simpleInstruction(instruction, offset);
-    case OP_NEGATE:
+    case Opcode::NEGATE:
         return simpleInstruction(instruction, offset);
-    case OP_NOT_EQUAL:
+    case Opcode::NOT_EQUAL:
         return simpleInstruction(instruction, offset);
-    case OP_NULL:
+    case Opcode::NULL_:
         return simpleInstruction(instruction, offset);
-    case OP_NOT:
+    case Opcode::NOT:
         return simpleInstruction(instruction, offset);
-    case OP_PRINT:
+    case Opcode::PRINT:
         return simpleInstruction(instruction, offset);
-    case OP_RETURN:
+    case Opcode::RETURN:
         return simpleInstruction(instruction, offset);
-    case OP_SUBTRACT:
+    case Opcode::SUBTRACT:
         return simpleInstruction(instruction, offset);
-    case OP_TRUE:
+    case Opcode::TRUE:
         return simpleInstruction(instruction, offset);
     default:
         std::cout << std::format("Unknown opcode {}", instruction) << std::endl;
@@ -77,17 +82,17 @@ void Chunk::disassemble(std::string const & name) const {
     }
 }
 
-[[nodiscard]] size_t Chunk::simpleInstruction(uint8_t opcode, size_t offset) const {
+[[nodiscard]] auto Chunk::simpleInstruction(uint8_t opcode, size_t offset) const -> size_t {
     std::cout << std::format("{:>16}", static_cast<Opcode>(opcode)) << std::endl;
     return offset + 1;
 }
 
-[[nodiscard]] size_t Chunk::addConstant(Value const & value) {
+[[nodiscard]] auto Chunk::addConstant(Value const & value) -> size_t {
     this->m_constants.push_back(value);
     return this->m_constants.size() - 1;
 }
 
-[[nodiscard]] size_t Chunk::constantInstruction(uint8_t opcode, size_t offset) const {
+[[nodiscard]] auto Chunk::constantInstruction(uint8_t opcode, size_t offset) const -> size_t {
     uint8_t constant = this->m_code[offset + 1];
     std::cout << std::format("{:>16}{:>16} '{}'", static_cast<Opcode>(opcode), unsigned(constant),
                              m_constants[constant])
@@ -95,16 +100,16 @@ void Chunk::disassemble(std::string const & name) const {
     return offset + 2;
 }
 
-[[nodiscard]] uint8_t Chunk::getByte(size_t offset) const {
+[[nodiscard]] auto Chunk::getByte(size_t offset) const -> uint8_t {
     return this->m_code[offset];
 }
 
-[[nodiscard]] size_t Chunk::getLine(size_t offset) const {
+[[nodiscard]] auto Chunk::getLine(size_t offset) const -> size_t {
     return this->m_lines[offset];
 }
-[[nodiscard]] Value const & Chunk::getConstant(size_t offset) const {
+[[nodiscard]] auto Chunk::getConstant(size_t offset) const -> Value const & {
     return this->m_constants[offset];
 }
-[[nodiscard]] size_t Chunk::getSize() const {
+[[nodiscard]] auto Chunk::getSize() const -> size_t {
     return this->m_code.size();
 }

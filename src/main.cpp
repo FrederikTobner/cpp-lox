@@ -6,7 +6,7 @@
 
 #include "cpplox-config.hpp"
 
-int main(int argc, char const * argv[]) {
+auto main(int argc, char const * argv[]) -> int {
     if (argc == 1) {
         repl();
     } else if (argc == 2) {

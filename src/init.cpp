@@ -5,19 +5,17 @@
 #include "compiletime_exception.hpp"
 #include "exit_code.hpp"
 #include "lexer.hpp"
-#include "opcode.hpp"
 #include "runtime_exception.hpp"
 #include "token.hpp"
-#include "value.hpp"
 #include "vm.hpp"
 
 #include <fstream>
 #include <iostream>
 #include <memory>
 
-static void run(std::string & source);
+static auto run(std::string & source) -> void;
 
-void repl() {
+auto repl() -> void {
     std::string line;
     while (true) {
         std::cout << "> ";
@@ -29,7 +27,7 @@ void repl() {
     }
 }
 
-void runFile(char const * path) {
+auto runFile(char const * path) -> void {
     std::string source;
     std::ifstream file;
     file.open(path);
@@ -41,7 +39,7 @@ void runFile(char const * path) {
     run(source);
 }
 
-static void run(std::string & source) {
+static auto run(std::string & source) -> void {
     Lexer lexer;
     MemoryManager * memoryManager = new MemoryManager();
     VM vm(memoryManager);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <string_view>
 #include <vector>
 
 #include "opcode.hpp"
@@ -12,7 +12,8 @@ class Chunk {
     Chunk();
     ~Chunk();
     void write(uint8_t byte, int line);
-    void disassemble(std::string const & name) const;
+    void write(Opcode byte, int line);
+    void disassemble(std::string_view const & name) const;
     [[nodiscard]] size_t addConstant(Value const & value);
     [[nodiscard]] uint8_t getByte(size_t offset) const;
     [[nodiscard]] size_t getLine(size_t offset) const;

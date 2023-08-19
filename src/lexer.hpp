@@ -9,22 +9,23 @@
 class Lexer {
   public:
     Lexer();
-    [[nodiscard]] std::vector<Token> tokenize(std::string const & source);
+    [[nodiscard]] auto tokenize(std::string const & source) -> std::vector<Token>;
 
   private:
-    void scanToken(std::string const & source);
-    [[nodiscard]] bool isAtEnd(std::string const & source) const;
-    char advance(std::string const & source);
-    void addToken(Token::Type type, std::string const & lexeme);
-    [[nodiscard]] bool match(char c, std::string const & source);
-    [[nodiscard]] char peek(std::string const & source) const;
-    [[nodiscard]] char peekNext(std::string const & source) const;
-    void string(std::string const & source);
-    [[nodiscard]] bool isDigit(char c) const;
-    [[nodiscard]] bool isAlpha(char c) const;
-    void number(std::string const & source);
-    void identifier(std::string const & source);
-    void skipWhitespace(std::string const & source);
+    auto scanToken(std::string const & source) -> void;
+    [[nodiscard]] auto isAtEnd() const -> bool;
+    [[nodiscard]] auto isAtEnd(std::string const & source) const -> bool;
+    auto advance(std::string const & source) -> char;
+    auto addToken(Token::Type type, std::string const & lexeme) -> void;
+    [[nodiscard]] auto match(char c, std::string const & source) -> bool;
+    [[nodiscard]] auto peek(std::string const & source) const -> char;
+    [[nodiscard]] auto peekNext(std::string const & source) const -> char;
+    auto string(std::string const & source) -> void;
+    [[nodiscard]] auto isDigit(char c) const -> bool;
+    [[nodiscard]] auto isAlpha(char c) const -> bool;
+    auto number(std::string const & source) -> void;
+    auto identifier(std::string const & source) -> void;
+    auto skipWhitespace(std::string const & source) -> void;
     size_t m_start;
     size_t m_current;
     size_t m_line;

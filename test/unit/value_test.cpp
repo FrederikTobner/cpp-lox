@@ -8,15 +8,15 @@ Value boolVal = Value(true);
 Value nullVal = Value();
 
 TEST(ValueTest, is) {
-    EXPECT_TRUE(numVal.is(Value::VAL_NUMBER));
-    EXPECT_FALSE(numVal.is(Value::VAL_NULL));
-    EXPECT_FALSE(numVal.is(Value::VAL_BOOL));
-    EXPECT_TRUE(boolVal.is(Value::VAL_BOOL));
-    EXPECT_FALSE(boolVal.is(Value::VAL_NULL));
-    EXPECT_FALSE(boolVal.is(Value::VAL_NUMBER));
-    EXPECT_TRUE(nullVal.is(Value::VAL_NULL));
-    EXPECT_FALSE(nullVal.is(Value::VAL_BOOL));
-    EXPECT_FALSE(nullVal.is(Value::VAL_NUMBER));
+    EXPECT_TRUE(numVal.is(Value::Type::NUMBER));
+    EXPECT_FALSE(numVal.is(Value::Type::NULL_));
+    EXPECT_FALSE(numVal.is(Value::Type::BOOL));
+    EXPECT_TRUE(boolVal.is(Value::Type::BOOL));
+    EXPECT_FALSE(boolVal.is(Value::Type::NULL_));
+    EXPECT_FALSE(boolVal.is(Value::Type::NUMBER));
+    EXPECT_TRUE(nullVal.is(Value::Type::NULL_));
+    EXPECT_FALSE(nullVal.is(Value::Type::BOOL));
+    EXPECT_FALSE(nullVal.is(Value::Type::NUMBER));
 }
 
 TEST(ValueTest, as) {
@@ -25,9 +25,9 @@ TEST(ValueTest, as) {
 }
 
 TEST(ValueTest, getType) {
-    EXPECT_EQ(numVal.getType(), Value::VAL_NUMBER);
-    EXPECT_EQ(boolVal.getType(), Value::VAL_BOOL);
-    EXPECT_EQ(nullVal.getType(), Value::VAL_NULL);
+    EXPECT_EQ(numVal.getType(), Value::Type::NUMBER);
+    EXPECT_EQ(boolVal.getType(), Value::Type::BOOL);
+    EXPECT_EQ(nullVal.getType(), Value::Type::NULL_);
 }
 
 TEST(ValueTest, EqualityOperator) {

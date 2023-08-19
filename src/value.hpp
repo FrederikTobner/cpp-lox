@@ -10,15 +10,15 @@
 class Value {
   public:
     /// @brief The possible types of a value
-    enum Type {
+    enum class Type {
         /// @brief A boolean value
-        VAL_BOOL,
+        BOOL,
         /// @brief A null value
-        VAL_NULL,
+        NULL_,
         /// @brief A numeric value
-        VAL_NUMBER,
+        NUMBER,
         /// @brief An object value
-        VAL_OBJECT
+        OBJECT
     };
 
     /// @brief Construct a new Value object with type VAL_NULL
@@ -35,88 +35,88 @@ class Value {
 
     /// @brief Gets the type of the value
     /// @return The type of the value
-    [[nodiscard]] Type getType() const;
+    [[nodiscard]] auto getType() const -> Value::Type;
 
     /// @brief Checks if the value is of the given type
     /// @param type The type to check against
     /// @return true if the value is of the given type, false otherwise
-    [[nodiscard]] bool is(Type type) noexcept;
+    [[nodiscard]] auto is(Type type) noexcept -> bool;
 
     /// @brief Gets the value as a bool
     /// @return The value as a bool
-    [[nodiscard]] bool asBool() const;
+    [[nodiscard]] auto asBool() const -> bool;
 
     /// @brief Gets the value as a number
     /// @return The value as a number
-    [[nodiscard]] double asNumber() const;
+    [[nodiscard]] auto asNumber() const -> double;
 
     /// @brief Gets the value as a object
     /// @return The value as a object
-    [[nodiscard]] Object * asObject() const;
+    [[nodiscard]] auto asObject() const -> Object *;
 
     /// @brief Prints the value to the given output stream
     /// @param os The output stream to print to
     /// @param dt The value to print
     /// @return The output stream
-    friend std::ostream & operator<<(std::ostream & os, Value const & dt);
+    friend auto operator<<(std::ostream & os, Value const & dt) -> std::ostream &;
 
     /// @brief Compares two values
     /// @param other The value to compare against
     /// @return true if the values are equal, false otherwise
-    [[nodiscard]] bool operator==(Value const & other) const;
+    [[nodiscard]] auto operator==(Value const & other) const -> bool;
 
     /// @brief Compares two values
     /// @param other The value to compare against
     /// @return true if the values are not equal, false otherwise
-    [[nodiscard]] bool operator!=(Value const & other) const;
+    [[nodiscard]] auto operator!=(Value const & other) const -> bool;
 
     /// @brief Adds two values
     /// @param other The value to add
     /// @return The sum of the two values
-    [[nodiscard]] Value operator+(Value const & other) const;
+    [[nodiscard]] auto operator+(Value const & other) const -> Value;
 
     /// @brief Subtracts two values
     /// @param other The value to subtract
     /// @return The difference of the two values
-    [[nodiscard]] Value operator-(Value const & other) const;
+    [[nodiscard]] auto operator-(Value const & other) const -> Value;
 
     /// @brief Multiplies two values
     /// @param other The value to multiply
     /// @return The product of the two values
-    [[nodiscard]] Value operator*(Value const & other) const;
+    [[nodiscard]] auto operator*(Value const & other) const -> Value;
 
     /// @brief Divides two values
     /// @param other The value to divide
     /// @return The quotient of the two values
-    [[nodiscard]] Value operator/(Value const & other) const;
+    [[nodiscard]] auto operator/(Value const & other) const -> Value;
 
     /// @brief Determines if one value is less than another
     /// @param other The value to compare against
     /// @return true if the first value is less than the second, false otherwise
-    [[nodiscard]] Value operator<(Value const & other) const;
+    [[nodiscard]] auto operator<(Value const & other) const -> Value;
 
     /// @brief Determines if one value is less than or equal to another
     /// @param other The value to compare against
     /// @return true if the first value is less than or equal to the second, false otherwise
-    [[nodiscard]] Value operator<=(Value const & other) const;
+    [[nodiscard]] auto operator<=(Value const & other) const -> Value;
 
     /// @brief Determines if one value is greater than or equal to another
     /// @param other The value to compare against
     /// @return true if the first value is greater than or equal to the second, false otherwise
-    [[nodiscard]] Value operator>(Value const & other) const;
+    [[nodiscard]] auto operator>(Value const & other) const -> Value;
 
     /// @brief Determines if one value is greater than another
     /// @param other The value to compare against
     /// @return true if the first value is greater than the second, false otherwise
-    [[nodiscard]] Value operator>=(Value const & other) const;
+    [[nodiscard]] auto operator>=(Value const & other) const -> Value;
 
     /// @brief Negates the value
     /// @return The negated value
-    [[nodiscard]] Value operator-() const;
+    [[nodiscard]] auto operator-() const -> Value;
 
     /// @brief Inverts a boolean value
     /// @return The inverted value
-    [[nodiscard]] Value operator!() const;
+    [[nodiscard]] auto operator!() const -> Value;
 
   private:
     /// @brief The type of the value
@@ -137,13 +137,13 @@ class Value {
 template <> struct std::formatter<Value> : std::formatter<std::string> {
     auto format(Value value, format_context & ctx) const {
         switch (value.getType()) {
-        case Value::VAL_BOOL:
+        case Value::Type::BOOL:
             return formatter<string>::format(std::format("{}", value.asBool()), ctx);
-        case Value::VAL_NULL:
+        case Value::Type::NULL_:
             return formatter<string>::format(std::format("null"), ctx);
-        case Value::VAL_NUMBER:
+        case Value::Type::NUMBER:
             return formatter<string>::format(std::format("{}", value.asNumber()), ctx);
-        case Value::VAL_OBJECT:
+        case Value::Type::OBJECT:
             return formatter<string>::format(std::format("{}", value.asObject()), ctx);
         }
         // should be be unreachable

@@ -14,7 +14,7 @@ Compiler::Compiler(MemoryManager * memoryManager) {
 Compiler::~Compiler() {
 }
 
-std::unique_ptr<Chunk> Compiler::compile(std::vector<Token> const & tokens) {
+auto Compiler::compile(std::vector<Token> const & tokens) -> std::unique_ptr<Chunk> {
     m_previous = nullptr;
     m_current = nullptr;
     m_chunk = new Chunk();
@@ -26,15 +26,15 @@ std::unique_ptr<Chunk> Compiler::compile(std::vector<Token> const & tokens) {
     return std::unique_ptr<Chunk>(m_chunk);
 }
 
-void Compiler::error(std::string & message) {
+auto Compiler::error(std::string & message) -> void {
     throw CompileTimeException(std::format("{} at line {}", message, m_previous->line()));
 }
 
-void Compiler::errorAtCurrent(std::string & message) {
+auto Compiler::errorAtCurrent(std::string & message) -> void {
     throw CompileTimeException(std::format("{} at line {}", message, m_current->line()));
 }
 
-void Compiler::advance(std::vector<Token> const & tokens) {
+auto Compiler::advance(std::vector<Token> const & tokens) -> void {
     if (m_current && m_current->type() == Token::Type::END_OF_FILE) {
         return;
     }
@@ -43,7 +43,7 @@ void Compiler::advance(std::vector<Token> const & tokens) {
     m_currentTokenIndex++;
 }
 
-void Compiler::consume(Token::Type type, std::string message, std::vector<Token> const & tokens) {
+auto Compiler::consume(Token::Type type, std::string message, std::vector<Token> const & tokens) -> void {
     if (m_current->type() == type) {
         advance(tokens);
         return;
@@ -51,137 +51,149 @@ void Compiler::consume(Token::Type type, std::string message, std::vector<Token>
     errorAtCurrent(message);
 }
 
-void Compiler::printStatement(std::vector<Token> const & tokens) {
+auto Compiler::printStatement(std::vector<Token> const & tokens) -> void {
     expression(tokens);
     consume(Token::Type::SEMICOLON, "Expect ';' after value", tokens);
-    emitByte(OP_PRINT);
+    emitByte(Opcode::PRINT);
 }
 
-void inline Compiler::emitByte(uint8_t byte) {
+auto inline Compiler::emitByte(uint8_t byte) -> void {
     m_chunk->write(byte, m_previous->line());
 }
 
-void Compiler::emitBytes(uint8_t byte1, uint8_t byte2) {
+auto Compiler::emitBytes(uint8_t byte1, uint8_t byte2) -> void {
     emitByte(byte1);
     emitByte(byte2);
 }
 
-void inline Compiler::emitConstant(Value value) {
-    emitBytes(OP_CONSTANT, m_chunk->addConstant(value));
+auto Compiler::emitBytes(Opcode opcode, uint8_t byte) -> void {
+    emitBytes(static_cast<uint8_t>(opcode), byte);
 }
 
-Chunk * Compiler::currentChunk() const {
+auto inline Compiler::emitByte(Opcode opcode) -> void {
+    emitByte(static_cast<uint8_t>(opcode));
+}
+
+auto Compiler::emitBytes(Opcode opcode1, Opcode opcode2) -> void {
+    emitBytes(static_cast<uint8_t>(opcode1), static_cast<uint8_t>(opcode2));
+}
+
+auto inline Compiler::emitConstant(Value value) -> void {
+    emitBytes(Opcode::CONSTANT, m_chunk->addConstant(value));
+}
+
+auto Compiler::currentChunk() const -> Chunk * {
     return m_chunk;
 }
 
-void Compiler::literal(std::vector<Token> const & tokens) {
+auto Compiler::literal(std::vector<Token> const & tokens) -> void {
     switch (m_previous->type()) {
     case Token::Type::FALSE:
-        emitByte(OP_FALSE);
+        emitByte(Opcode::FALSE);
         break;
     case Token::Type::TRUE:
-        emitByte(OP_TRUE);
+        emitByte(Opcode::TRUE);
         break;
     case Token::Type::NULL_:
-        emitByte(OP_NULL);
+        emitByte(Opcode::NULL_);
         break;
     default:
         return; // Unreachable.
     }
 }
 
-void Compiler::endCompilation() {
-    m_chunk->write(OP_RETURN, m_previous->line());
+auto Compiler::endCompilation() -> void {
+    m_chunk->write(Opcode::RETURN, m_previous->line());
 }
 
-void Compiler::expression(std::vector<Token> const & tokens) {
+auto Compiler::expression(std::vector<Token> const & tokens) -> void {
     parsePrecedence(Precedence::ASSIGNMENT, tokens);
 }
 
-void Compiler::number(std::vector<Token> const & tokens) {
+auto Compiler::number(std::vector<Token> const & tokens) -> void {
     double value = std::stod(m_previous->lexeme());
     emitConstant(value);
 }
 
-void Compiler::makeConstant(Value value) {
+auto Compiler::makeConstant(Value value) -> void {
     int constant = m_chunk->addConstant(value);
     if (constant > UINT8_MAX) {
         throw CompileTimeException("Too many constants in one chunk");
     }
-    emitBytes(OP_CONSTANT, (uint8_t)constant);
+    emitBytes(static_cast<uint8_t>(Opcode::CONSTANT), (uint8_t)constant);
 }
 
-void Compiler::grouping(std::vector<Token> const & tokens) {
+auto Compiler::grouping(std::vector<Token> const & tokens) -> void {
     expression(tokens);
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after expression", tokens);
 }
 
-void Compiler::unary(std::vector<Token> const & tokens) {
+auto Compiler::unary(std::vector<Token> const & tokens) -> void {
     Token::Type operatorType = m_previous->type();
     parsePrecedence(Precedence::UNARY, tokens);
     switch (operatorType) {
     case Token::Type::BANG:
-        emitByte(OP_NOT);
+        emitByte(Opcode::NOT);
         break;
     case Token::Type::MINUS:
-        emitByte(OP_NEGATE);
+        emitByte(Opcode::NEGATE);
         break;
     default:
         return; // Unreachable.
     }
 }
 
-void Compiler::string(std::vector<Token> const & tokens) {
+auto Compiler::string(std::vector<Token> const & tokens) -> void {
     emitConstant(Value(m_memoryManager->create<ObjectString>(m_previous->lexeme())));
 }
 
-ParseRule * Compiler::getRule(Token::Type type) {
-    return &(m_rules[type]);
+auto Compiler::getRule(Token::Type type) -> ParseRule * {
+    return &(m_rules[static_cast<size_t>(type)]);
 }
 
-void Compiler::binary(std::vector<Token> const & tokens) {
+auto Compiler::binary(std::vector<Token> const & tokens) -> void {
     Token::Type operatorType = m_previous->type();
     // Compile the right operand.
     auto rule = getRule(operatorType);
-    parsePrecedence((Precedence)((int)rule->m_precedence + 1), tokens);
+    parsePrecedence((Precedence)((int)rule->precedence() + 1), tokens);
     // Emit the operator instruction.
     switch (operatorType) {
     case Token::Type::BANG_EQUAL:
-        emitByte(OP_NOT_EQUAL);
+        emitByte(Opcode::NOT_EQUAL);
         break;
     case Token::Type::EQUAL_EQUAL:
-        emitByte(OP_EQUAL);
+        emitByte(Opcode::EQUAL);
         break;
     case Token::Type::GREATER:
-        emitByte(OP_GREATER);
+        emitByte(Opcode::GREATER);
         break;
     case Token::Type::GREATER_EQUAL:
-        emitByte(OP_GREATER_EQUAL);
+        emitByte(Opcode::GREATER_EQUAL);
         break;
     case Token::Type::LESS:
-        emitByte(OP_LESS);
+        emitByte(Opcode::LESS);
         break;
     case Token::Type::LESS_EQUAL:
-        emitByte(OP_LESS_EQUAL);
+        emitByte(Opcode::LESS_EQUAL);
         break;
     case Token::Type::MINUS:
-        emitByte(OP_SUBTRACT);
+        emitByte(Opcode::SUBTRACT);
         break;
     case Token::Type::PLUS:
-        emitByte(OP_ADD);
+        emitByte(Opcode::ADD);
         break;
     case Token::Type::STAR:
-        emitByte(OP_MULTIPLY);
+        emitByte(Opcode::MULTIPLY);
         break;
     case Token::Type::SLASH:
-        emitByte(OP_DIVIDE);
+        emitByte(Opcode::DIVIDE);
         break;
     default:
         return; // Unreachable.
     }
 }
 
-void Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) {
+auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) -> void {
     advance(tokens);
     auto prefixRule = getRule(m_previous->type())->prefix();
     if (!prefixRule.has_value()) {
