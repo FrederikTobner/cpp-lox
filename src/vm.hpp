@@ -3,6 +3,7 @@
 #include <format>
 
 #include "chunk.hpp"
+#include "memory_manager.hpp"
 #include "value.hpp"
 
 /// @brief The maximum amount of values that can be stored on the stack
@@ -13,7 +14,7 @@ class VM {
 
   public:
     /// @brief Constructs a new virtual machine
-    VM();
+    VM(MemoryManager * memoryManager);
     /// @brief Destructor of the virtual machine
     ~VM();
     /// @brief Interprets the given chunk
@@ -24,6 +25,8 @@ class VM {
     void push(Value value);
     /// @brief Pops the top value from the stack
     [[nodiscard]] Value pop();
+
+    void resetStack();
 
   private:
     /// @brief Throws a runtime exception with the given message
@@ -43,4 +46,7 @@ class VM {
 
     /// @brief The chunk to execute
     Chunk * m_chunk;
+
+    /// @brief The memory manager.
+    MemoryManager * m_memoryManager;
 };

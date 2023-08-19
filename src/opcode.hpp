@@ -34,6 +34,7 @@ std::string_view opcode_as_string(const Opcode value);
 
 std::ostream & operator<<(std::ostream & out, Opcode value);
 
+/// @brief Formatter for the Opcode enum
 template <> struct std::formatter<Opcode> : std::formatter<std::string> {
     [[nodiscard]] inline auto format(Opcode opcode, format_context & ctx) const {
         return formatter<string>::format(std::format("{}", opcode_as_string(opcode)), ctx);

@@ -5,10 +5,11 @@
 #include "opcode.hpp"
 #include "runtime_exception.hpp"
 
-VM::VM() {
+VM::VM(MemoryManager * memoryManager) {
     m_stack_top = 0;
     m_chunk = nullptr;
     m_instruction_index = 0;
+    m_memoryManager = memoryManager;
 }
 
 VM::~VM() {
@@ -29,8 +30,23 @@ void VM::interpret(Chunk & chunk) {
         uint8_t instruction = chunk.getByte(m_instruction_index++);
         switch (instruction) {
         case OP_ADD:
-            push(pop() + pop());
-            break;
+            {
+                Value a = pop();
+                Value b = pop();
+                if (a.is(Value::Type::VAL_NUMBER) && b.is(Value::Type::VAL_NUMBER)) {
+                    push(a + b);
+                } else if (a.is(Value::Type::VAL_OBJECT) && b.is(Value::Type::VAL_OBJECT)) {
+                    Object * aObject = a.asObject();
+                    Object * bObject = b.asObject();
+                    if (aObject->is(Object::Type::OBJ_STRING) && bObject->is(Object::Type::OBJ_STRING)) {
+                        push(Value(
+                            m_memoryManager->concatenate(bObject->as<ObjectString>(), aObject->as<ObjectString>())));
+                    } else {
+                        throw RunTimeException("Operands must be two numbers or two strings");
+                    }
+                }
+                break;
+            }
         case OP_CONSTANT:
             {
                 uint8_t constant = chunk.getByte(m_instruction_index++);
@@ -91,7 +107,7 @@ void VM::interpret(Chunk & chunk) {
 }
 
 void VM::push(Value value) {
-    if (m_stack_top == (size_t)STACK_MAX) {
+    if (m_stack_top == STACK_MAX) {
         runTimeError("Stack overflow");
     }
     m_stack[m_stack_top] = value;
@@ -104,6 +120,10 @@ void VM::push(Value value) {
     }
     m_stack_top--;
     return m_stack[m_stack_top];
+}
+
+void VM::resetStack() {
+    m_stack_top = 0;
 }
 
 template <class... Args> void VM::runTimeError(std::string_view fmt, Args &&... args) {

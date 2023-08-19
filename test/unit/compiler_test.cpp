@@ -4,16 +4,24 @@
 
 #include <vector>
 
+#include "../../src/memory_manager.hpp"
 #include "../../src/opcode.hpp"
 #include "../../src/token.hpp"
+
 
 // Test fixture for Compiler integration tests
 class CompilerTest : public ::testing::Test {
   public:
-    Compiler compiler;
+    std::unique_ptr<Compiler> compiler;
+    std::unique_ptr<MemoryManager> memory_manager;
     std::vector<Token> tokens;
+
+    CompilerTest() {
+        memory_manager = std::make_unique<MemoryManager>();
+        compiler = std::make_unique<Compiler>(memory_manager.get());
+    }
+
     void SetUp() override {
-        compiler = Compiler();
         tokens = std::vector<Token>();
     }
 };
@@ -26,7 +34,7 @@ TEST_F(CompilerTest, AdditionExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
@@ -46,7 +54,7 @@ TEST_F(CompilerTest, SubtractionExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
@@ -66,7 +74,7 @@ TEST_F(CompilerTest, MultiplicationExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
@@ -86,7 +94,7 @@ TEST_F(CompilerTest, DivisionExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 6);
@@ -105,7 +113,7 @@ TEST_F(CompilerTest, NegateExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 4);
@@ -127,7 +135,7 @@ TEST_F(CompilerTest, GroupingExpression) {
     tokens.push_back(Token(Token::Type::END_OF_FILE, "", 1));
 
     // Act
-    std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+    std::unique_ptr<Chunk> chunk = compiler->compile(tokens);
 
     // Assert
     ASSERT_EQ(chunk->getSize(), 9);

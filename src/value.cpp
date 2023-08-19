@@ -18,6 +18,11 @@ Value::Value(double value) {
     this->m_underlying_value.m_number = value;
 }
 
+Value::Value(Object * value) {
+    this->m_type = VAL_OBJECT;
+    this->m_underlying_value.m_object = value;
+}
+
 [[nodiscard]] bool Value::is(Value::Type type) noexcept {
     return type == this->m_type;
 }
@@ -28,6 +33,10 @@ Value::Value(double value) {
 
 [[nodiscard]] double Value::asNumber() const {
     return this->m_underlying_value.m_number;
+}
+
+[[nodiscard]] Object * Value::asObject() const {
+    return this->m_underlying_value.m_object;
 }
 
 [[nodiscard]] Value::Type Value::getType() const {
@@ -48,6 +57,8 @@ std::ostream & operator<<(std::ostream & os, Value const & value) {
             str.erase(str.find_last_not_of('.') + 1, std::string::npos);
             return os << str;
         }
+    case Value::Type::VAL_OBJECT:
+        return os << value.m_underlying_value.m_object;
     }
     // should be be unreachable
     return os << "undefined";

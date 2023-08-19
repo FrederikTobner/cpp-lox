@@ -4,3 +4,5 @@ build/
 .vscode/
 # Clangd
 .cache
+# Test programs
+testprograms/

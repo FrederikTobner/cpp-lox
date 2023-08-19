@@ -7,9 +7,11 @@
 #include <vector>
 
 #include "chunk.hpp"
+#include "memory_manager.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
+// Forward declaration of the compiler.
 class Compiler;
 
 class ParseRule {
@@ -25,16 +27,21 @@ class ParseRule {
         m_infix = infix;
         m_precedence = precedence;
     }
-    ~ParseRule() {
-    }
+    ~ParseRule() = default;
+    /// @brief Gets the prefix function of the rule.
+    /// @return An optional containing the prefix function of the rule.
     std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> prefix() const {
         return m_prefix;
     }
+    /// @brief Gets the infix function of the rule.
+    /// @return An optional containing the infix function of the rule.
     std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> infix() const {
         return m_infix;
     }
-    Precedence * precedence() {
-        return &m_precedence;
+    /// @brief Gets the precedence of the rule.
+    /// @return The precedence of the rule.
+    Precedence const & precedence() {
+        return m_precedence;
     }
     /// @brief  What the actual fuck
     Precedence m_precedence;
@@ -48,7 +55,7 @@ class Compiler {
 
   public:
     /// @brief Constructs a new compiler.
-    Compiler();
+    Compiler(MemoryManager * memoryManager);
 
     /// @brief Destructor of the compiler.
     ~Compiler();
@@ -111,7 +118,7 @@ class Compiler {
     /// @brief Gets the rule for the given token type.
     /// @param type The type of the token.
     /// @return The rule for the given token type.
-    ParseRule const * getRule(Token::Type type);
+    ParseRule * getRule(Token::Type type);
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
@@ -138,6 +145,8 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     void unary(std::vector<Token> const & tokens);
 
+    void string(std::vector<Token> const & tokens);
+
     static std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
         std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
         rules[Token::Type::LEFT_PARENTHESES] = ParseRule(&Compiler::grouping, std::nullopt, Precedence::NONE);
@@ -160,7 +169,7 @@ class Compiler {
         rules[Token::Type::LESS] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
         rules[Token::Type::LESS_EQUAL] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
         rules[Token::Type::IDENTIFIER] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[Token::Type::STRING] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[Token::Type::STRING] = ParseRule(&Compiler::string, std::nullopt, Precedence::NONE);
         rules[Token::Type::NUMBER] = ParseRule(&Compiler::number, std::nullopt, Precedence::NONE);
         rules[Token::Type::AND] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
         rules[Token::Type::CLASS] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
@@ -190,6 +199,8 @@ class Compiler {
     size_t m_currentTokenIndex;
     /// @brief The chunk that is currently compiled.
     Chunk * m_chunk;
+    /// @brief The memory manager.
+    MemoryManager * m_memoryManager;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
 };

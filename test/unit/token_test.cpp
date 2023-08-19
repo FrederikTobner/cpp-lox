@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include <format>
+
 Token token(Token::Type::NUMBER, "3.14", 1);
 
 TEST(TokenTest, Type) {
@@ -14,4 +16,17 @@ TEST(TokenTest, Lexeme) {
 
 TEST(TokenTest, Line) {
     ASSERT_EQ(token.line(), 1);
+}
+
+TEST(TokenTest, ExtractionOperator) {
+    // Arrange
+    testing::internal::CaptureStdout();
+    // Act
+    std::cout << token;
+    // Assert
+    ASSERT_EQ("Token(3.14, 1)", testing::internal::GetCapturedStdout());
+}
+
+TEST(TokenTest, Formatter) {
+    ASSERT_EQ("Token(3.14, 1)", std::format("{}", token));
 }

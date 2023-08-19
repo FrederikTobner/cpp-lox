@@ -11,11 +11,18 @@
 // Test fixture for VM unit tests
 class VMTest : public ::testing::Test {
   public:
-    VM vm;
+    std::unique_ptr<VM> vm;
+    std::unique_ptr<MemoryManager> memory_manager;
     Chunk chunk;
+
+    VMTest() {
+        memory_manager = std::make_unique<MemoryManager>();
+        vm = std::make_unique<VM>(memory_manager.get());
+    }
+
     void SetUp() override {
+        vm->resetStack();
         chunk = Chunk();
-        vm = VM();
     }
 };
 
@@ -30,10 +37,10 @@ TEST_F(VMTest, AddInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value + value, vm.pop());
+    EXPECT_EQ(value + value, vm->pop());
 }
 
 TEST_F(VMTest, ConstantInstruction) {
@@ -44,10 +51,10 @@ TEST_F(VMTest, ConstantInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value, vm.pop());
+    EXPECT_EQ(value, vm->pop());
 }
 
 TEST_F(VMTest, DivideInstruction) {
@@ -61,10 +68,10 @@ TEST_F(VMTest, DivideInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value / value, vm.pop());
+    EXPECT_EQ(value / value, vm->pop());
 }
 
 TEST_F(VMTest, EqualInstruction) {
@@ -87,13 +94,13 @@ TEST_F(VMTest, EqualInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 == 42
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
     // 42 == 43
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
 }
 
 TEST_F(VMTest, FalseInstruction) {
@@ -102,10 +109,10 @@ TEST_F(VMTest, FalseInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(Value(false), vm.pop());
+    EXPECT_EQ(Value(false), vm->pop());
 }
 
 TEST_F(VMTest, GreaterInstruction) {
@@ -133,15 +140,15 @@ TEST_F(VMTest, GreaterInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 > 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
     // 43 > 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
     // 42 > 43
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
 }
 
 TEST_F(VMTest, GreaterEqualInstruction) {
@@ -169,15 +176,15 @@ TEST_F(VMTest, GreaterEqualInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 >= 42
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
     // 42 >= 43
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
     // 43 >= 42
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
 }
 
 TEST_F(VMTest, LessInstruction) {
@@ -205,15 +212,15 @@ TEST_F(VMTest, LessInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 < 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
     // 42 < 43
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
     // 43 < 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
 }
 
 TEST_F(VMTest, LessEqualInstruction) {
@@ -241,15 +248,15 @@ TEST_F(VMTest, LessEqualInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 <= 42
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
     // 42 <= 43
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
     // 43 <= 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
 }
 
 TEST_F(VMTest, MultiplyInstruction) {
@@ -263,10 +270,10 @@ TEST_F(VMTest, MultiplyInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value * value, vm.pop());
+    EXPECT_EQ(value * value, vm->pop());
 }
 
 TEST_F(VMTest, NegateInstruction) {
@@ -278,10 +285,10 @@ TEST_F(VMTest, NegateInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(-value, vm.pop());
+    EXPECT_EQ(-value, vm->pop());
 }
 
 TEST_F(VMTest, NotEqualInstruction) {
@@ -304,13 +311,13 @@ TEST_F(VMTest, NotEqualInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
     // 42 != 42
-    EXPECT_EQ(false, vm.pop());
+    EXPECT_EQ(false, vm->pop());
     // 42 != 43
-    EXPECT_EQ(true, vm.pop());
+    EXPECT_EQ(true, vm->pop());
 }
 
 TEST_F(VMTest, NullInstruction) {
@@ -319,10 +326,10 @@ TEST_F(VMTest, NullInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(Value(), vm.pop());
+    EXPECT_EQ(Value(), vm->pop());
 }
 
 TEST_F(VMTest, PushAndPop) {
@@ -330,8 +337,8 @@ TEST_F(VMTest, PushAndPop) {
     Value value(42.0);
 
     // Act
-    vm.push(value);
-    Value result = vm.pop();
+    vm->push(value);
+    Value result = vm->pop();
 
     // Assert
     ASSERT_EQ(value, result);
@@ -342,27 +349,27 @@ TEST_F(VMTest, ReturnInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act & Assert
-    ASSERT_NO_THROW(vm.interpret(chunk));
+    ASSERT_NO_THROW(vm->interpret(chunk));
 }
 
 TEST_F(VMTest, StackOverflow) {
     // Arrange
     Value value(42.0);
     for (int i = 0; i < 256; i++) {
-        vm.push(value);
+        vm->push(value);
     }
     Chunk chunk;
     chunk.write(OP_CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     // Act & Assert
-    ASSERT_THROW(vm.interpret(chunk), RunTimeException);
+    ASSERT_THROW(vm->interpret(chunk), RunTimeException);
 }
 
 TEST_F(VMTest, StackUnderflow) {
     Chunk chunk;
     chunk.write(OP_ADD, 0);
     // Act & Assert
-    ASSERT_THROW(vm.interpret(chunk), RunTimeException);
+    ASSERT_THROW(vm->interpret(chunk), RunTimeException);
 }
 
 TEST_F(VMTest, SubtractInstruction) {
@@ -376,10 +383,10 @@ TEST_F(VMTest, SubtractInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value - value, vm.pop());
+    EXPECT_EQ(value - value, vm->pop());
 }
 
 TEST_F(VMTest, TrueInstruction) {
@@ -388,8 +395,8 @@ TEST_F(VMTest, TrueInstruction) {
     chunk.write(OP_RETURN, 0);
 
     // Act
-    vm.interpret(chunk);
+    vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(Value(true), vm.pop());
+    EXPECT_EQ(Value(true), vm->pop());
 }

@@ -42,9 +42,10 @@ void runFile(char const * path) {
 }
 
 static void run(std::string & source) {
-    VM vm;
     Lexer lexer;
-    Compiler compiler;
+    MemoryManager * memoryManager = new MemoryManager();
+    VM vm(memoryManager);
+    Compiler compiler(memoryManager);
     try {
         std::vector<Token> tokens = lexer.tokenize(source);
         // Source file is not needed after the tokens are generated
@@ -60,4 +61,5 @@ static void run(std::string & source) {
         std::cout << e.what() << std::endl;
         exit(EXIT_CODE_RUNTIME_ERROR);
     }
+    delete memoryManager;
 }

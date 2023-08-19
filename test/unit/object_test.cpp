@@ -29,3 +29,12 @@ TEST_F(ObjectStringTest, string) {
     ASSERT_EQ(object->type(), Object::Type::OBJ_STRING);
     ASSERT_EQ(object->as<ObjectString>()->string(), "Hello World");
 }
+
+TEST_F(ObjectStringTest, ExtractionOperator) {
+    // Arrange
+    testing::internal::CaptureStdout();
+    // Act
+    std::cout << object;
+    // Assert
+    ASSERT_EQ("Hello World", testing::internal::GetCapturedStdout());
+}

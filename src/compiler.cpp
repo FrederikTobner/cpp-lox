@@ -7,7 +7,8 @@
 #include "lexer.hpp"
 #include "opcode.hpp"
 
-Compiler::Compiler() {
+Compiler::Compiler(MemoryManager * memoryManager) {
+    m_memoryManager = memoryManager;
 }
 
 Compiler::~Compiler() {
@@ -130,7 +131,11 @@ void Compiler::unary(std::vector<Token> const & tokens) {
     }
 }
 
-ParseRule const * Compiler::getRule(Token::Type type) {
+void Compiler::string(std::vector<Token> const & tokens) {
+    emitConstant(Value(m_memoryManager->create<ObjectString>(m_previous->lexeme())));
+}
+
+ParseRule * Compiler::getRule(Token::Type type) {
     return &(m_rules[type]);
 }
 
@@ -179,15 +184,15 @@ void Compiler::binary(std::vector<Token> const & tokens) {
 void Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) {
     advance(tokens);
     auto prefixRule = getRule(m_previous->type())->prefix();
-    if (prefixRule == std::nullopt) {
+    if (!prefixRule.has_value()) {
         throw CompileTimeException("Expect expression");
         return;
     }
     (this->*prefixRule.value())(tokens);
-    while (precedence <= getRule(m_current->type())->m_precedence) {
+    while (precedence <= getRule(m_current->type())->precedence()) {
         advance(tokens);
         auto infixRule = getRule(m_previous->type())->infix();
-        if (infixRule == std::nullopt) {
+        if (!infixRule.has_value()) {
             throw CompileTimeException("Expect expression");
             return;
         }
