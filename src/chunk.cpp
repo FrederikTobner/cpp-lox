@@ -32,13 +32,13 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
 [[nodiscard]] auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     std::cout << std::format("{:#06X} ", offset);
 
-    if (offset > 0 && this->m_lines[offset] == this->m_lines[offset - 1]) {
+    if (offset > 0 && m_lines[offset] == m_lines[offset - 1]) {
         std::cout << "   | ";
     } else {
         std::cout << std::format(" {:<4}", m_lines[offset]);
     }
 
-    uint8_t instruction = this->m_code[offset];
+    uint8_t instruction = m_code[offset];
     switch (static_cast<Opcode>(instruction)) {
     case Opcode::ADD:
         return simpleInstruction(instruction, offset);
@@ -88,12 +88,12 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
 }
 
 [[nodiscard]] auto Chunk::addConstant(Value const & value) -> size_t {
-    this->m_constants.push_back(value);
-    return this->m_constants.size() - 1;
+    m_constants.push_back(value);
+    return m_constants.size() - 1;
 }
 
 [[nodiscard]] auto Chunk::constantInstruction(uint8_t opcode, size_t offset) const -> size_t {
-    uint8_t constant = this->m_code[offset + 1];
+    uint8_t constant = m_code[offset + 1];
     std::cout << std::format("{:>16}{:>16} '{}'", static_cast<Opcode>(opcode), unsigned(constant),
                              m_constants[constant])
               << std::endl;
@@ -101,15 +101,15 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
 }
 
 [[nodiscard]] auto Chunk::getByte(size_t offset) const -> uint8_t {
-    return this->m_code[offset];
+    return m_code[offset];
 }
 
 [[nodiscard]] auto Chunk::getLine(size_t offset) const -> size_t {
-    return this->m_lines[offset];
+    return m_lines[offset];
 }
 [[nodiscard]] auto Chunk::getConstant(size_t offset) const -> Value const & {
-    return this->m_constants[offset];
+    return m_constants[offset];
 }
 [[nodiscard]] auto Chunk::getSize() const -> size_t {
-    return this->m_code.size();
+    return m_code.size();
 }

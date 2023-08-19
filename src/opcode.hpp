@@ -7,7 +7,7 @@
 #include <string_view>
 
 /// @brief The opcodes of the intermediate language
-enum class Opcode : uint8_t {
+enum Opcode : uint8_t {
     ADD,
     CONSTANT,
     DIVIDE,
