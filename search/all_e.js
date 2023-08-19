@@ -9,6 +9,6 @@ var searchData=
   ['star_196',['STAR',['../classToken.html#a5f787df9cdf370248382504196841479a8ab2630ada18b94a005a0c5399d9d483',1,'Token']]],
   ['string_197',['string',['../classCompiler.html#a999ea0eaabe3f30bcc0bb2ea67d54c67',1,'Compiler::string()'],['../classLexer.html#a63161ad873364d92ee8e849b4dbaade5',1,'Lexer::string()'],['../classObjectString.html#adce3860231aa2e159250200a5ff0413a',1,'ObjectString::string()']]],
   ['string_198',['STRING',['../classObject.html#a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949',1,'Object::STRING()'],['../classToken.html#a5f787df9cdf370248382504196841479a63b588d5559f64f89a416e656880b949',1,'Token::STRING()']]],
-  ['subtract_199',['SUBTRACT',['../opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aad8ff967f143b54da6d2112fb5858e8c',1,'opcode.hpp']]],
+  ['subtract_199',['SUBTRACT',['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7aad8ff967f143b54da6d2112fb5858e8c',1,'opcode.hpp']]],
   ['super_200',['SUPER',['../classToken.html#a5f787df9cdf370248382504196841479afc91b14eef9c58c4cad8fdf87b4c0bea',1,'Token']]]
 ];
