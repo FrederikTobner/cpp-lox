@@ -4,7 +4,9 @@
 #include <ostream>
 #include <string>
 
-/// @brief The opcodes of the intermidiate language
+#include <string_view>
+
+/// @brief The opcodes of the intermediate language
 typedef enum {
     OP_ADD,
     OP_CONSTANT,
@@ -25,15 +27,15 @@ typedef enum {
     OP_SUBTRACT,
     OP_TRUE,
     // Amount of opcodes in the enum has to be last entry
-    COUNT
+    AMOUNT
 } Opcode;
 
-std::string const & opcode_as_string(Opcode value);
+constexpr std::string_view opcode_as_string(const Opcode value);
 
 std::ostream & operator<<(std::ostream & out, Opcode value);
 
 template <> struct std::formatter<Opcode> : std::formatter<std::string> {
-    auto format(Opcode opcode, format_context & ctx) const {
+    [[nodiscard]] inline auto format(Opcode opcode, format_context & ctx) const {
         return formatter<string>::format(std::format("{}", opcode_as_string(opcode)), ctx);
     }
 };

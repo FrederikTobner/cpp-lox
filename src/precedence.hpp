@@ -1,7 +1,9 @@
 #pragma once
 
+#include <cstdint>
+
 /// @brief The precedence of the expressions and statements of the language
-enum Precedence {
+enum class Precedence : uint8_t {
     NONE,
     ASSIGNMENT, // =
     OR,         // or

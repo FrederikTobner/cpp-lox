@@ -5,6 +5,7 @@
 
 #include "token.hpp"
 
+/// @brief The lexer of the language.
 class Lexer {
   public:
     Lexer();

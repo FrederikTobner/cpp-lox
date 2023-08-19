@@ -1,34 +1,49 @@
 #include "opcode.hpp"
 
-#include "assert.hpp"
-#include <map>
+#include <unordered_map>
 
-std::string const & opcode_as_string(Opcode value) {
-    static std::map<Opcode, std::string> opcodeNames;
-    if (opcodeNames.size() == 0) {
-#define INSERT_ELEMENT(p) opcodeNames[p] = #p
-        INSERT_ELEMENT(OP_ADD);
-        INSERT_ELEMENT(OP_CONSTANT);
-        INSERT_ELEMENT(OP_DIVIDE);
-        INSERT_ELEMENT(OP_EQUAL);
-        INSERT_ELEMENT(OP_FALSE);
-        INSERT_ELEMENT(OP_GREATER);
-        INSERT_ELEMENT(OP_GREATER_EQUAL);
-        INSERT_ELEMENT(OP_LESS);
-        INSERT_ELEMENT(OP_LESS_EQUAL);
-        INSERT_ELEMENT(OP_MULTIPLY);
-        INSERT_ELEMENT(OP_NEGATE);
-        INSERT_ELEMENT(OP_NOT);
-        INSERT_ELEMENT(OP_NOT_EQUAL);
-        INSERT_ELEMENT(OP_NULL);
-        INSERT_ELEMENT(OP_PRINT);
-        INSERT_ELEMENT(OP_RETURN);
-        INSERT_ELEMENT(OP_SUBTRACT);
-        INSERT_ELEMENT(OP_TRUE);
-#undef INSERT_ELEMENT
-        ASSERT(opcodeNames.size() == COUNT, "Not all opcodes have been added to the map");
+#include "assert.hpp"
+
+[[nodiscard]] constexpr std::string_view opcode_as_string(const Opcode value) {
+    switch (value) {
+    case OP_ADD:
+        return "OP_ADD";
+    case OP_CONSTANT:
+        return "OP_CONSTANT";
+    case OP_DIVIDE:
+        return "OP_DIVIDE";
+    case OP_EQUAL:
+        return "OP_EQUAL";
+    case OP_FALSE:
+        return "OP_FALSE";
+    case OP_GREATER:
+        return "OP_GREATER";
+    case OP_GREATER_EQUAL:
+        return "OP_GREATER_EQUAL";
+    case OP_LESS:
+        return "OP_LESS";
+    case OP_LESS_EQUAL:
+        return "OP_LESS_EQUAL";
+    case OP_MULTIPLY:
+        return "OP_MULTIPLY";
+    case OP_NEGATE:
+        return "OP_NEGATE";
+    case OP_NOT:
+        return "OP_NOT";
+    case OP_NOT_EQUAL:
+        return "OP_NOT_EQUAL";
+    case OP_NULL:
+        return "OP_NULL";
+    case OP_PRINT:
+        return "OP_PRINT";
+    case OP_RETURN:
+        return "OP_RETURN";
+    case OP_SUBTRACT:
+        return "OP_SUBTRACT";
+    case OP_TRUE:
+        return "OP_TRUE";
     }
-    return opcodeNames[value];
+    return "Unknown opcode";
 }
 
 std::ostream & operator<<(std::ostream & out, Opcode value) {
