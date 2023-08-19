@@ -6,7 +6,7 @@ var searchData=
   ['emitconstant_41',['emitConstant',['../classCompiler.html#aa4a717425f6d0ab1d6f77f730ca0ea0a',1,'Compiler']]],
   ['end_5fof_5ffile_42',['END_OF_FILE',['../classToken.html#a5f787df9cdf370248382504196841479a581953f6b20ad7f993b64b1dc632032e',1,'Token']]],
   ['endcompilation_43',['endCompilation',['../classCompiler.html#abb03d5964bb994207f81bab17ae46847',1,'Compiler']]],
-  ['equal_44',['EQUAL',['../classToken.html#a5f787df9cdf370248382504196841479a969f331a87d8c958473c32b4d0e61a44',1,'Token::EQUAL()'],['../opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a969f331a87d8c958473c32b4d0e61a44',1,'EQUAL():&#160;opcode.hpp']]],
+  ['equal_44',['EQUAL',['../classToken.html#a5f787df9cdf370248382504196841479a969f331a87d8c958473c32b4d0e61a44',1,'Token::EQUAL()'],['../opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a59a84258a4cb9025b567ee5139455029',1,'EQUAL():&#160;opcode.hpp']]],
   ['equal_5fequal_45',['EQUAL_EQUAL',['../classToken.html#a5f787df9cdf370248382504196841479aafd4f88cfc7b441ca082201cdb7b7f22',1,'Token']]],
   ['equality_46',['EQUALITY',['../precedence_8hpp.html#af5e272dc9bc498661184c41f4907852ea22d77b4f36283fa15f20867ad3f2a30e',1,'precedence.hpp']]],
   ['error_47',['error',['../classCompiler.html#a52c441628b81c88ca34b9d8155dddedb',1,'Compiler']]],
