@@ -1,6 +1,5 @@
 var opcode_8hpp =
 [
-    [ "formatter< Opcode >", "structstd_1_1formatter_3_01Opcode_01_4.html", "structstd_1_1formatter_3_01Opcode_01_4" ],
     [ "Opcode", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7", [
       [ "ADD", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7acfcf145f2788bf340ff3f3098bc54909", null ],
       [ "CONSTANT", "opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a83972670b57415508523b5641bb46116", null ],

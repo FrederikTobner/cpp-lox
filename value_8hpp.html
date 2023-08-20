@@ -83,15 +83,16 @@ $(document).ready(function(){initNavTree('value_8hpp.html',''); initResizable();
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">value.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;format&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="object_8hpp_source.html">object.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="object__formatter_8hpp_source.html">object_formatter.hpp</a>&quot;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div>
 <p><a href="value_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -100,10 +101,28 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html">Value</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A value that can be stored in a variable or on the stack.  <a href="classValue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1formatter_3_01Value_01_4.html">formatter&lt; Value &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatter for the <a class="el" href="classValue.html" title="A value that can be stored in a variable or on the stack.">Value</a> class.  <a href="structstd_1_1formatter_3_01Value_01_4.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aceea059294c51d166ebe5772f0e35e10"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aceea059294c51d166ebe5772f0e35e10"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="value_8hpp.html#aceea059294c51d166ebe5772f0e35e10">IsAnUnderLyingValueType</a> = std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, <a class="el" href="classObject.html">Object</a> *&gt;</td></tr>
+<tr class="separator:aceea059294c51d166ebe5772f0e35e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aceea059294c51d166ebe5772f0e35e10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceea059294c51d166ebe5772f0e35e10">&#9670;&nbsp;</a></span>IsAnUnderLyingValueType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">concept IsAnUnderLyingValueType = std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, <a class="el" href="classObject.html">Object</a> *&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

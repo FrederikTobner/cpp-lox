@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cpp-lox: MemoryManager Class Reference</title>
+<title>cpp-lox: MemoryMutator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('classMemoryManager.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classMemoryMutator.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,39 +85,39 @@ $(document).ready(function(){initNavTree('classMemoryManager.html',''); initResi
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="classMemoryManager-members.html">List of all members</a>  </div>
+<a href="classMemoryMutator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">MemoryManager Class Reference</div>  </div>
+<div class="title">MemoryMutator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="memory__manager_8hpp_source.html">memory_manager.hpp</a>&gt;</code></p>
+<p>The memory manager that manages all objects.  
+ <a href="classMemoryMutator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="memory__mutator_8hpp_source.html">memory_mutator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a683c4fb9ce026fee861d584b3d31cff1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#a683c4fb9ce026fee861d584b3d31cff1">MemoryManager</a> ()=default</td></tr>
-<tr class="separator:a683c4fb9ce026fee861d584b3d31cff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc6e3a5212511459cbd29f2d2284b9c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#abc6e3a5212511459cbd29f2d2284b9c8">~MemoryManager</a> ()=default</td></tr>
-<tr class="separator:abc6e3a5212511459cbd29f2d2284b9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a569c64067f749ddb6be55d6c65753fa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a569c64067f749ddb6be55d6c65753fa7">MemoryMutator</a> ()=default</td></tr>
+<tr class="separator:a569c64067f749ddb6be55d6c65753fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6af825e4e7fee045849a6cf4c9c5a2b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a6af825e4e7fee045849a6cf4c9c5a2b5">~MemoryMutator</a> ()=default</td></tr>
+<tr class="separator:a6af825e4e7fee045849a6cf4c9c5a2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5cec7f874cfd325b1305eb02721ff90"><td class="memTemplParams" colspan="2">template&lt;typename T , class... Args&gt; </td></tr>
-<tr class="memitem:ac5cec7f874cfd325b1305eb02721ff90"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#ac5cec7f874cfd325b1305eb02721ff90">create</a> (Args &amp;&amp;... args) -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
-<tr class="memdesc:ac5cec7f874cfd325b1305eb02721ff90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new object of the given type.  <a href="classMemoryManager.html#ac5cec7f874cfd325b1305eb02721ff90">More...</a><br /></td></tr>
+<tr class="memitem:ac5cec7f874cfd325b1305eb02721ff90"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#ac5cec7f874cfd325b1305eb02721ff90">create</a> (Args &amp;&amp;... args) -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
+<tr class="memdesc:ac5cec7f874cfd325b1305eb02721ff90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new object of the given type.  <a href="classMemoryMutator.html#ac5cec7f874cfd325b1305eb02721ff90">More...</a><br /></td></tr>
 <tr class="separator:ac5cec7f874cfd325b1305eb02721ff90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b5a1353cc2978baab1defaab650d49c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#a0b5a1353cc2978baab1defaab650d49c">concatenate</a> (<a class="el" href="classObjectString.html">ObjectString</a> *left, <a class="el" href="classObjectString.html">ObjectString</a> *right) -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
-<tr class="separator:a0b5a1353cc2978baab1defaab650d49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6242654eab1c9033903585643cb57a92"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#a6242654eab1c9033903585643cb57a92">m_objects</a></td></tr>
-<tr class="memdesc:a6242654eab1c9033903585643cb57a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all objects that are currently allocated.  <a href="classMemoryManager.html#a6242654eab1c9033903585643cb57a92">More...</a><br /></td></tr>
+<tr class="memitem:a6242654eab1c9033903585643cb57a92"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a6242654eab1c9033903585643cb57a92">m_objects</a></td></tr>
+<tr class="memdesc:a6242654eab1c9033903585643cb57a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all objects that are currently allocated.  <a href="classMemoryMutator.html#a6242654eab1c9033903585643cb57a92">More...</a><br /></td></tr>
 <tr class="separator:a6242654eab1c9033903585643cb57a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c751dae9068bdb864af14129bbe0fa1"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryManager.html#a5c751dae9068bdb864af14129bbe0fa1">m_mutex</a></td></tr>
-<tr class="memdesc:a5c751dae9068bdb864af14129bbe0fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mutex to lock the memory manager, to make sure no new objects are created while the garbage collector is running.  <a href="classMemoryManager.html#a5c751dae9068bdb864af14129bbe0fa1">More...</a><br /></td></tr>
-<tr class="separator:a5c751dae9068bdb864af14129bbe0fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a683c4fb9ce026fee861d584b3d31cff1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a683c4fb9ce026fee861d584b3d31cff1">&#9670;&nbsp;</a></span>MemoryManager()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The memory manager that manages all objects. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a569c64067f749ddb6be55d6c65753fa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a569c64067f749ddb6be55d6c65753fa7">&#9670;&nbsp;</a></span>MemoryMutator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,7 +126,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMemoryManager.html">MemoryManager</a> </td>
+          <td class="memname"><a class="el" href="classMemoryMutator.html">MemoryMutator</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -141,8 +141,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abc6e3a5212511459cbd29f2d2284b9c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc6e3a5212511459cbd29f2d2284b9c8">&#9670;&nbsp;</a></span>~MemoryManager()</h2>
+<a id="a6af825e4e7fee045849a6cf4c9c5a2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6af825e4e7fee045849a6cf4c9c5a2b5">&#9670;&nbsp;</a></span>~MemoryMutator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +151,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">~<a class="el" href="classMemoryManager.html">MemoryManager</a> </td>
+          <td class="memname">~<a class="el" href="classMemoryMutator.html">MemoryMutator</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -167,50 +167,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0b5a1353cc2978baab1defaab650d49c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b5a1353cc2978baab1defaab650d49c">&#9670;&nbsp;</a></span>concatenate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto concatenate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classObjectString.html">ObjectString</a> *&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classObjectString.html">ObjectString</a> *&#160;</td>
-          <td class="paramname"><em>right</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> -&gt; <a class="el" href="classObject.html">Object</a> * </td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Concatenates the given strings. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">left</td><td>The left string. </td></tr>
-    <tr><td class="paramname">right</td><td>The right string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The concatenated string. </dd></dl>
-
-</div>
-</div>
 <a id="ac5cec7f874cfd325b1305eb02721ff90"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5cec7f874cfd325b1305eb02721ff90">&#9670;&nbsp;</a></span>create()</h2>
 
@@ -254,30 +210,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5c751dae9068bdb864af14129bbe0fa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c751dae9068bdb864af14129bbe0fa1">&#9670;&nbsp;</a></span>m_mutex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::mutex m_mutex</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The mutex to lock the memory manager, to make sure no new objects are created while the garbage collector is running. </p>
-
-</div>
-</div>
 <a id="a6242654eab1c9033903585643cb57a92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6242654eab1c9033903585643cb57a92">&#9670;&nbsp;</a></span>m_objects</h2>
 
@@ -303,14 +235,14 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="memory__manager_8hpp_source.html">memory_manager.hpp</a></li>
+<li>src/<a class="el" href="memory__mutator_8hpp_source.html">memory_mutator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="classMemoryManager.html">MemoryManager</a></li>
+    <li class="navelem"><a class="el" href="classMemoryMutator.html">MemoryMutator</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

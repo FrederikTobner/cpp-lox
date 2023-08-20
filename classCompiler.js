@@ -1,6 +1,6 @@
 var classCompiler =
 [
-    [ "Compiler", "classCompiler.html#a189e1df10d3dd900328cb50491658ed4", null ],
+    [ "Compiler", "classCompiler.html#ad09543d64012b61966b9502e306902a4", null ],
     [ "~Compiler", "classCompiler.html#acf166c9448a67e8c58923e93d4798aaf", null ],
     [ "advance", "classCompiler.html#a9024439cdcddb3188a4c50afbb6fbe5c", null ],
     [ "binary", "classCompiler.html#a290d4a4d4910c33afec289213d737abe", null ],
@@ -30,7 +30,7 @@ var classCompiler =
     [ "m_chunk", "classCompiler.html#a1e20b8878edf298a7be3fb7ceb82bd8b", null ],
     [ "m_current", "classCompiler.html#ac332007a6139a87217c08b3cf3a4be9d", null ],
     [ "m_currentTokenIndex", "classCompiler.html#ab36625d400fdb9914c13582ac9f9b177", null ],
-    [ "m_memoryManager", "classCompiler.html#ac43ddc097591454e8cd08dd9f32fc50c", null ],
+    [ "m_memoryMutator", "classCompiler.html#a7b6546c48ad7a0d14394ccb6f4035645", null ],
     [ "m_previous", "classCompiler.html#a737eb262dbf2baabad30f5774865d7dd", null ],
     [ "m_rules", "classCompiler.html#a86d163155b74b206da2680230ba01f31", null ]
 ];

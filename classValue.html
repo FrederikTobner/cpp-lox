@@ -128,15 +128,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8733d79f1833923bc6e4a21961fb67f6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a8733d79f1833923bc6e4a21961fb67f6">is</a> (<a class="el" href="classValue.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> type) noexcept -&gt; bool</td></tr>
 <tr class="memdesc:a8733d79f1833923bc6e4a21961fb67f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the value is of the given type.  <a href="classValue.html#a8733d79f1833923bc6e4a21961fb67f6">More...</a><br /></td></tr>
 <tr class="separator:a8733d79f1833923bc6e4a21961fb67f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a2f2c436ef39cd4e6077ff66c81e91d84">asBool</a> () const -&gt; bool</td></tr>
-<tr class="memdesc:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a bool.  <a href="classValue.html#a2f2c436ef39cd4e6077ff66c81e91d84">More...</a><br /></td></tr>
-<tr class="separator:a2f2c436ef39cd4e6077ff66c81e91d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#a1e49fcea9b0a7daf6c40e45b2d102e75">asNumber</a> () const -&gt; double</td></tr>
-<tr class="memdesc:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a number.  <a href="classValue.html#a1e49fcea9b0a7daf6c40e45b2d102e75">More...</a><br /></td></tr>
-<tr class="separator:a1e49fcea9b0a7daf6c40e45b2d102e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#ae8c6a5c8320ffb587a134cb9195a06fe">asObject</a> () const -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
-<tr class="memdesc:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value as a object.  <a href="classValue.html#ae8c6a5c8320ffb587a134cb9195a06fe">More...</a><br /></td></tr>
-<tr class="separator:ae8c6a5c8320ffb587a134cb9195a06fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccd940accc4224d969e07e61bb91ce0"><td class="memTemplParams" colspan="2">template&lt;IsAnUnderLyingValueType T&gt; </td></tr>
+<tr class="memitem:a1ccd940accc4224d969e07e61bb91ce0"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classValue.html#a1ccd940accc4224d969e07e61bb91ce0">as</a> () -&gt; T</td></tr>
+<tr class="memdesc:a1ccd940accc4224d969e07e61bb91ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the underlying value as the given type.  <a href="classValue.html#a1ccd940accc4224d969e07e61bb91ce0">More...</a><br /></td></tr>
+<tr class="separator:a1ccd940accc4224d969e07e61bb91ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec94c3e0637c696364487cd3405fe6e7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classValue.html#aec94c3e0637c696364487cd3405fe6e7">operator==</a> (<a class="el" href="classValue.html">Value</a> const &amp;other) const -&gt; bool</td></tr>
 <tr class="memdesc:aec94c3e0637c696364487cd3405fe6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two values.  <a href="classValue.html#aec94c3e0637c696364487cd3405fe6e7">More...</a><br /></td></tr>
 <tr class="separator:aec94c3e0637c696364487cd3405fe6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -317,63 +312,37 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2f2c436ef39cd4e6077ff66c81e91d84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f2c436ef39cd4e6077ff66c81e91d84">&#9670;&nbsp;</a></span>asBool()</h2>
+<a id="a1ccd940accc4224d969e07e61bb91ce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ccd940accc4224d969e07e61bb91ce0">&#9670;&nbsp;</a></span>as()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto asBool </td>
+          <td class="memname">auto as </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; bool</td>
+          <td> -&gt; T </td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Gets the value as a bool. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value as a bool </dd></dl>
-
-</div>
-</div>
-<a id="a1e49fcea9b0a7daf6c40e45b2d102e75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e49fcea9b0a7daf6c40e45b2d102e75">&#9670;&nbsp;</a></span>asNumber()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto asNumber </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const -&gt; double</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the value as a number. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value as a number </dd></dl>
-
-</div>
-</div>
-<a id="ae8c6a5c8320ffb587a134cb9195a06fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8c6a5c8320ffb587a134cb9195a06fe">&#9670;&nbsp;</a></span>asObject()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto asObject </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const -&gt; <a class="el" href="classObject.html">Object</a> *</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the value as a object. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value as a object </dd></dl>
+<p>Gets the underlying value as the given type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type to get the underlying value as </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The underlying value as the given type </dd></dl>
 
 </div>
 </div>
