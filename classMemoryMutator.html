@@ -102,16 +102,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a569c64067f749ddb6be55d6c65753fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6af825e4e7fee045849a6cf4c9c5a2b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a6af825e4e7fee045849a6cf4c9c5a2b5">~MemoryMutator</a> ()=default</td></tr>
 <tr class="separator:a6af825e4e7fee045849a6cf4c9c5a2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5cec7f874cfd325b1305eb02721ff90"><td class="memTemplParams" colspan="2">template&lt;typename T , class... Args&gt; </td></tr>
-<tr class="memitem:ac5cec7f874cfd325b1305eb02721ff90"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#ac5cec7f874cfd325b1305eb02721ff90">create</a> (Args &amp;&amp;... args) -&gt; <a class="el" href="classObject.html">Object</a> *</td></tr>
-<tr class="memdesc:ac5cec7f874cfd325b1305eb02721ff90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new object of the given type.  <a href="classMemoryMutator.html#ac5cec7f874cfd325b1305eb02721ff90">More...</a><br /></td></tr>
-<tr class="separator:ac5cec7f874cfd325b1305eb02721ff90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17dfe6a20410d5e4f47701046681a306"><td class="memTemplParams" colspan="2">template&lt;typename T , class... Args&gt; </td></tr>
+<tr class="memitem:a17dfe6a20410d5e4f47701046681a306"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a17dfe6a20410d5e4f47701046681a306">create</a> (Args &amp;&amp;... args) -&gt; <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a> *</td></tr>
+<tr class="memdesc:a17dfe6a20410d5e4f47701046681a306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new object of the given type.  <a href="classMemoryMutator.html#a17dfe6a20410d5e4f47701046681a306">More...</a><br /></td></tr>
+<tr class="separator:a17dfe6a20410d5e4f47701046681a306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6242654eab1c9033903585643cb57a92"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classObject.html">Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a6242654eab1c9033903585643cb57a92">m_objects</a></td></tr>
-<tr class="memdesc:a6242654eab1c9033903585643cb57a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all objects that are currently allocated.  <a href="classMemoryMutator.html#a6242654eab1c9033903585643cb57a92">More...</a><br /></td></tr>
-<tr class="separator:a6242654eab1c9033903585643cb57a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#ae3f7f939fbefae7ea0ade6f52c601bac">m_objects</a></td></tr>
+<tr class="memdesc:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all objects that are currently allocated.  <a href="classMemoryMutator.html#ae3f7f939fbefae7ea0ade6f52c601bac">More...</a><br /></td></tr>
+<tr class="separator:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The memory manager that manages all objects. </p>
@@ -167,8 +167,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac5cec7f874cfd325b1305eb02721ff90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5cec7f874cfd325b1305eb02721ff90">&#9670;&nbsp;</a></span>create()</h2>
+<a id="a17dfe6a20410d5e4f47701046681a306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17dfe6a20410d5e4f47701046681a306">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +181,7 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">Args &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
-          <td> -&gt; <a class="el" href="classObject.html">Object</a> * </td>
+          <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a> * </td>
         </tr>
       </table>
   </td>
@@ -210,8 +210,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6242654eab1c9033903585643cb57a92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6242654eab1c9033903585643cb57a92">&#9670;&nbsp;</a></span>m_objects</h2>
+<a id="ae3f7f939fbefae7ea0ade6f52c601bac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3f7f939fbefae7ea0ade6f52c601bac">&#9670;&nbsp;</a></span>m_objects</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,7 +220,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classObject.html">Object</a>&gt; &gt; m_objects</td>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a>&gt; &gt; m_objects</td>
         </tr>
       </table>
   </td>

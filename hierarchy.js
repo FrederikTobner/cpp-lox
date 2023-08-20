@@ -1,24 +1,24 @@
 var hierarchy =
 [
-    [ "Chunk", "classChunk.html", null ],
-    [ "Compiler", "classCompiler.html", null ],
+    [ "Chunk", "classcppLox_1_1ByteCode_1_1Chunk.html", null ],
+    [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", null ],
     [ "exception", null, [
-      [ "CompileTimeException", "classCompileTimeException.html", null ],
-      [ "RunTimeException", "classRunTimeException.html", null ]
+      [ "CompileTimeException", "classcppLox_1_1Error_1_1CompileTimeException.html", null ],
+      [ "RunTimeException", "classcppLox_1_1Error_1_1RunTimeException.html", null ]
     ] ],
     [ "formatter", null, [
-      [ "formatter< Object * >", "structstd_1_1formatter_3_01Object_01_5_01_4.html", null ],
-      [ "formatter< Opcode >", "structstd_1_1formatter_3_01Opcode_01_4.html", null ],
-      [ "formatter< Token >", "structstd_1_1formatter_3_01Token_01_4.html", null ],
-      [ "formatter< Value >", "structstd_1_1formatter_3_01Value_01_4.html", null ]
+      [ "formatter< cppLox::ByteCode::Opcode >", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4.html", null ],
+      [ "formatter< cppLox::Frontend::Token >", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4.html", null ],
+      [ "formatter< cppLox::Types::Object * >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4.html", null ],
+      [ "formatter< cppLox::Types::Value >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html", null ]
     ] ],
-    [ "Lexer", "classLexer.html", null ],
+    [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", null ],
     [ "MemoryMutator", "classMemoryMutator.html", null ],
-    [ "Object", "classObject.html", [
-      [ "ObjectString", "classObjectString.html", null ]
+    [ "Object", "classcppLox_1_1Types_1_1Object.html", [
+      [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", null ]
     ] ],
-    [ "ParseRule", "classParseRule.html", null ],
-    [ "Token", "classToken.html", null ],
-    [ "Value", "classValue.html", null ],
-    [ "VM", "classVM.html", null ]
+    [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", null ],
+    [ "Token", "classcppLox_1_1Frontend_1_1Token.html", null ],
+    [ "Value", "classcppLox_1_1Types_1_1Value.html", null ],
+    [ "VM", "classcppLox_1_1Backend_1_1VM.html", null ]
 ];

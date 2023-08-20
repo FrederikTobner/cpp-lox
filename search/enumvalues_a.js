@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['negate_442',['NEGATE',['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a6e03f275c09bc302b861e86c19ca70a1',1,'opcode.hpp']]],
-  ['none_443',['NONE',['../precedence_8hpp.html#af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693',1,'precedence.hpp']]],
-  ['not_444',['NOT',['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a0378ebc895849163b249d0b330257dd6',1,'opcode.hpp']]],
-  ['not_5fequal_445',['NOT_EQUAL',['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7aee522b0a37857a8fdd19f82ad1b9b1d6',1,'opcode.hpp']]],
-  ['null_5f_446',['NULL_',['../classToken.html#a5f787df9cdf370248382504196841479a6d67bdfe4ae19f38aff8f363bca42892',1,'Token::NULL_()'],['../classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a6d67bdfe4ae19f38aff8f363bca42892',1,'Value::NULL_()'],['../opcode_8hpp.html#a2112dbdb049f53df83b3ba6fcbf13dc7a76f4c395d6532d906407afb2ac511e54',1,'NULL_():&#160;opcode.hpp']]],
-  ['number_447',['NUMBER',['../classToken.html#a5f787df9cdf370248382504196841479a34f55eca38e0605a84f169ff61a2a396',1,'Token::NUMBER()'],['../classValue.html#a1d1cfd8ffb84e947f82999c682b666a7a34f55eca38e0605a84f169ff61a2a396',1,'Value::NUMBER()']]]
+  ['negate_453',['NEGATE',['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a6e03f275c09bc302b861e86c19ca70a1',1,'cppLox::ByteCode']]],
+  ['none_454',['NONE',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693',1,'cppLox::Frontend']]],
+  ['not_455',['NOT',['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a0378ebc895849163b249d0b330257dd6',1,'cppLox::ByteCode']]],
+  ['not_5fequal_456',['NOT_EQUAL',['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aee522b0a37857a8fdd19f82ad1b9b1d6',1,'cppLox::ByteCode']]],
+  ['null_5f_457',['NULL_',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a6d67bdfe4ae19f38aff8f363bca42892',1,'cppLox::Frontend::Token::NULL_()'],['../classcppLox_1_1Types_1_1Value.html#a1d1cfd8ffb84e947f82999c682b666a7a6d67bdfe4ae19f38aff8f363bca42892',1,'cppLox::Types::Value::NULL_()'],['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a76f4c395d6532d906407afb2ac511e54',1,'cppLox::ByteCode::NULL_()']]],
+  ['number_458',['NUMBER',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a34f55eca38e0605a84f169ff61a2a396',1,'cppLox::Frontend::Token::NUMBER()'],['../classcppLox_1_1Types_1_1Value.html#a1d1cfd8ffb84e947f82999c682b666a7a34f55eca38e0605a84f169ff61a2a396',1,'cppLox::Types::Value::NUMBER()']]]
 ];

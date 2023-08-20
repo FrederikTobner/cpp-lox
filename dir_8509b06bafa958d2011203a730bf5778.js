@@ -2,19 +2,19 @@ var dir_8509b06bafa958d2011203a730bf5778 =
 [
     [ "compiler.cpp", "compiler_8cpp.html", null ],
     [ "compiler.hpp", "compiler_8hpp.html", [
-      [ "ParseRule", "classParseRule.html", "classParseRule" ],
-      [ "Compiler", "classCompiler.html", "classCompiler" ]
+      [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
+      [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ]
     ] ],
     [ "lexer.cpp", "lexer_8cpp.html", null ],
     [ "lexer.hpp", "lexer_8hpp.html", [
-      [ "Lexer", "classLexer.html", "classLexer" ]
+      [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ]
     ] ],
     [ "precedence.hpp", "precedence_8hpp.html", "precedence_8hpp" ],
-    [ "token.cpp", "token_8cpp.html", "token_8cpp" ],
+    [ "token.cpp", "token_8cpp.html", null ],
     [ "token.hpp", "token_8hpp.html", [
-      [ "Token", "classToken.html", "classToken" ]
+      [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ]
     ] ],
     [ "token_formatter.hpp", "token__formatter_8hpp.html", [
-      [ "formatter< Token >", "structstd_1_1formatter_3_01Token_01_4.html", "structstd_1_1formatter_3_01Token_01_4" ]
+      [ "formatter< cppLox::Frontend::Token >", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4" ]
     ] ]
 ];

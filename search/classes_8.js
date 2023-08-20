@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value_243',['Value',['../classValue.html',1,'']]],
-  ['vm_244',['VM',['../classVM.html',1,'']]]
+  ['value_249',['Value',['../classcppLox_1_1Types_1_1Value.html',1,'cppLox::Types']]],
+  ['vm_250',['VM',['../classcppLox_1_1Backend_1_1VM.html',1,'cppLox::Backend']]]
 ];

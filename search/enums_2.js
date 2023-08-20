@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['precedence_402',['Precedence',['../precedence_8hpp.html#af5e272dc9bc498661184c41f4907852e',1,'precedence.hpp']]]
+  ['precedence_413',['Precedence',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e',1,'cppLox::Frontend']]]
 ];

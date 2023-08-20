@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['formatter_3c_20object_20_2a_20_3e_232',['formatter&lt; Object * &gt;',['../structstd_1_1formatter_3_01Object_01_5_01_4.html',1,'std']]],
-  ['formatter_3c_20opcode_20_3e_233',['formatter&lt; Opcode &gt;',['../structstd_1_1formatter_3_01Opcode_01_4.html',1,'std']]],
-  ['formatter_3c_20token_20_3e_234',['formatter&lt; Token &gt;',['../structstd_1_1formatter_3_01Token_01_4.html',1,'std']]],
-  ['formatter_3c_20value_20_3e_235',['formatter&lt; Value &gt;',['../structstd_1_1formatter_3_01Value_01_4.html',1,'std']]]
+  ['formatter_3c_20cpplox_3a_3abytecode_3a_3aopcode_20_3e_238',['formatter&lt; cppLox::ByteCode::Opcode &gt;',['../structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4.html',1,'std']]],
+  ['formatter_3c_20cpplox_3a_3afrontend_3a_3atoken_20_3e_239',['formatter&lt; cppLox::Frontend::Token &gt;',['../structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4.html',1,'std']]],
+  ['formatter_3c_20cpplox_3a_3atypes_3a_3aobject_20_2a_20_3e_240',['formatter&lt; cppLox::Types::Object * &gt;',['../structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4.html',1,'std']]],
+  ['formatter_3c_20cpplox_3a_3atypes_3a_3avalue_20_3e_241',['formatter&lt; cppLox::Types::Value &gt;',['../structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html',1,'std']]]
 ];
