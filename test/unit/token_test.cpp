@@ -5,10 +5,10 @@
 #include "../../src/frontend/token.hpp"
 #include "../../src/frontend/token_formatter.hpp"
 
-Token token(Token::Type::NUMBER, "3.14", 1);
+cppLox::Frontend::Token token(cppLox::Frontend::Token::Type::NUMBER, "3.14", 1);
 
 TEST(TokenTest, Type) {
-    ASSERT_EQ(token.type(), Token::Type::NUMBER);
+    ASSERT_EQ(token.type(), cppLox::Frontend::Token::Type::NUMBER);
 }
 
 TEST(TokenTest, Lexeme) {

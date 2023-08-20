@@ -5,8 +5,9 @@
 #include "object.hpp"
 #include "object_formatter.hpp"
 
-
 #include <type_traits>
+
+namespace cppLox::Types {
 
 template <typename T>
 concept IsAnUnderLyingValueType = std::is_same_v<T, bool> || std::is_same_v<T, double> || std::is_same_v<T, Object *>;
@@ -64,7 +65,26 @@ class Value {
     /// @param os The output stream to print to
     /// @param dt The value to print
     /// @return The output stream
-    friend auto operator<<(std::ostream & os, Value const & dt) -> std::ostream &;
+    friend auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
+        switch (value.m_type) {
+        case Value::Type::BOOL:
+            return os << (value.m_underlying_value.m_bool ? "true" : "false");
+        case Value::Type::NULL_:
+            return os << "null";
+        case Value::Type::NUMBER:
+            {
+                // Remove trailing zeros and decimal point if there are no fractional digits
+                std::string str = std::to_string(value.m_underlying_value.m_number);
+                str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+                str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+                return os << str;
+            }
+        case Value::Type::OBJECT:
+            return os << value.m_underlying_value.m_object;
+        }
+        // should be be unreachable
+        return os << "undefined";
+    }
 
     /// @brief Compares two values
     /// @param other The value to compare against
@@ -138,3 +158,4 @@ class Value {
         Object * m_object;
     } m_underlying_value;
 };
+} // namespace cppLox::Types

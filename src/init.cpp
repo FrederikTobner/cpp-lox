@@ -9,19 +9,18 @@
 #include "frontend/lexer.hpp"
 #include "frontend/token.hpp"
 
-
 #include <fstream>
 #include <iostream>
 #include <memory>
 
-static auto run(std::string & source, Lexer & lexer, MemoryMutator * memoryMutator, VM & vm, Compiler & compiler)
-    -> void;
+static auto run(std::string & source, cppLox::Frontend::Lexer & lexer, MemoryMutator * memoryMutator,
+                cppLox::Backend::VM & vm, cppLox::Frontend::Compiler & compiler) -> void;
 
 auto repl() -> void {
-    Lexer lexer;
+    cppLox::Frontend::Lexer lexer;
     MemoryMutator * memoryMutator = new MemoryMutator();
-    VM vm(memoryMutator);
-    Compiler compiler(memoryMutator);
+    cppLox::Backend::VM vm(memoryMutator);
+    cppLox::Frontend::Compiler compiler(memoryMutator);
     std::string line;
     while (true) {
         std::cout << "> ";
@@ -35,10 +34,10 @@ auto repl() -> void {
 }
 
 auto runFile(char const * path) -> void {
-    Lexer lexer;
+    cppLox::Frontend::Lexer lexer;
     MemoryMutator * memoryMutator = new MemoryMutator();
-    VM vm(memoryMutator);
-    Compiler compiler(memoryMutator);
+    cppLox::Backend::VM vm(memoryMutator);
+    cppLox::Frontend::Compiler compiler(memoryMutator);
     std::string source;
     std::ifstream file;
     file.open(path);
@@ -51,20 +50,20 @@ auto runFile(char const * path) -> void {
     delete memoryMutator;
 }
 
-static auto run(std::string & source, Lexer & lexer, MemoryMutator * memoryMutator, VM & vm, Compiler & compiler)
-    -> void {
+static auto run(std::string & source, cppLox::Frontend::Lexer & lexer, MemoryMutator * memoryMutator,
+                cppLox::Backend::VM & vm, cppLox::Frontend::Compiler & compiler) -> void {
     try {
-        std::vector<Token> tokens = lexer.tokenize(source);
+        std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
         // Source file is not needed after the tokens are generated
         source.clear();
-        std::unique_ptr<Chunk> chunk = compiler.compile(tokens);
+        std::unique_ptr<cppLox::ByteCode::Chunk> chunk = compiler.compile(tokens);
         // Tokens are not needed after the chunk is generated
         tokens.clear();
         vm.interpret(*chunk.get());
-    } catch (CompileTimeException e) {
+    } catch (cppLox::Error::CompileTimeException e) {
         std::cout << e.what() << std::endl;
         exit(EXIT_CODE_COMPILATION_ERROR);
-    } catch (RunTimeException e) {
+    } catch (cppLox::Error::RunTimeException e) {
         std::cout << e.what() << std::endl;
         exit(EXIT_CODE_RUNTIME_ERROR);
     }

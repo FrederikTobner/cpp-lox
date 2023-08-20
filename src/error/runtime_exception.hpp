@@ -3,6 +3,8 @@
 #include <exception>
 #include <string>
 
+namespace cppLox::Error {
+
 class RunTimeException : public std::exception {
   public:
     RunTimeException(std::string message) : m_message(message) {
@@ -14,3 +16,5 @@ class RunTimeException : public std::exception {
   private:
     std::string m_message;
 };
+
+} // namespace cppLox::Error

@@ -4,6 +4,8 @@
 
 #include "../error/runtime_exception.hpp"
 
+using namespace cppLox::Types;
+
 Value::Value() {
     this->m_type = Value::Type::NULL_;
 }
@@ -31,27 +33,6 @@ Value::Value(Object * value) {
     return this->m_type;
 }
 
-auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
-    switch (value.m_type) {
-    case Value::Type::BOOL:
-        return os << (value.m_underlying_value.m_bool ? "true" : "false");
-    case Value::Type::NULL_:
-        return os << "null";
-    case Value::Type::NUMBER:
-        {
-            // Remove trailing zeros and decimal point if there are no fractional digits
-            std::string str = std::to_string(value.m_underlying_value.m_number);
-            str.erase(str.find_last_not_of('0') + 1, std::string::npos);
-            str.erase(str.find_last_not_of('.') + 1, std::string::npos);
-            return os << str;
-        }
-    case Value::Type::OBJECT:
-        return os << value.m_underlying_value.m_object;
-    }
-    // should be be unreachable
-    return os << "undefined";
-}
-
 [[nodiscard]] auto Value::operator==(Value const & other) const -> bool {
     if (this->m_type != other.m_type) {
         return false;
@@ -75,7 +56,7 @@ auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
 
 [[nodiscard]] auto Value::operator-() const -> Value {
     if (this->m_type != Value::Type::NUMBER) {
-        throw RunTimeException("Runtime error: unary negation is only defined for numbers");
+        throw cppLox::Error::RunTimeException("Runtime error: unary negation is only defined for numbers");
     }
     return Value(-this->m_underlying_value.m_number);
 }
@@ -95,56 +76,56 @@ auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
 
 [[nodiscard]] auto Value::operator+(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("addition is only defined for numbers");
+        throw cppLox::Error::RunTimeException("addition is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number + other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator-(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("subtraction is only defined for numbers");
+        throw cppLox::Error::RunTimeException("subtraction is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number - other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator*(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("multiplication is only defined for numbers");
+        throw cppLox::Error::RunTimeException("multiplication is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number * other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator/(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("division is only defined for numbers");
+        throw cppLox::Error::RunTimeException("division is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number / other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator<(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("less than is only defined for numbers");
+        throw cppLox::Error::RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number < other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator<=(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("less than is only defined for numbers");
+        throw cppLox::Error::RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number <= other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator>(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("less than is only defined for numbers");
+        throw cppLox::Error::RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number > other.m_underlying_value.m_number);
 }
 
 [[nodiscard]] auto Value::operator>=(Value const & other) const -> Value {
     if (this->m_type != Value::Type::NUMBER || other.m_type != Value::Type::NUMBER) {
-        throw RunTimeException("less than is only defined for numbers");
+        throw cppLox::Error::RunTimeException("less than is only defined for numbers");
     }
     return Value(this->m_underlying_value.m_number >= other.m_underlying_value.m_number);
 }

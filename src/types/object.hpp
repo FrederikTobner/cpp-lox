@@ -3,6 +3,8 @@
 #include <iostream>
 #include <type_traits>
 
+namespace cppLox::Types {
+
 class Object;
 
 template <typename T>
@@ -61,3 +63,4 @@ class Object {
     /// @brief The type of the object.
     Type m_type;
 };
+} // namespace cppLox::Types

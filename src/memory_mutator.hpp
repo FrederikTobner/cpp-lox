@@ -17,13 +17,13 @@ class MemoryMutator {
     /// @tparam T The type of the object to create.
     /// @param ...args The arguments to pass to the constructor.
     /// @return A pointer to the newly created object.
-    template <typename T, class... Args> auto create(Args &&... args) -> Object * {
-        Object * object = static_cast<Object *>(new T(std::forward<Args>(args)...));
-        m_objects.push_back(std::unique_ptr<Object>(object));
+    template <typename T, class... Args> auto create(Args &&... args) -> cppLox::Types::Object * {
+        cppLox::Types::Object * object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
+        m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
     }
 
   private:
     /// @brief The list of all objects that are currently allocated.
-    std::vector<std::unique_ptr<Object>> m_objects;
+    std::vector<std::unique_ptr<cppLox::Types::Object>> m_objects;
 };

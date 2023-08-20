@@ -7,6 +7,8 @@
 #include "../types/object_formatter.hpp"
 #include "../types/object_string.hpp"
 
+using namespace cppLox::Backend;
+
 VM::VM(MemoryMutator * memoryMutator) {
     m_stack_top = 0;
     m_chunk = nullptr;
@@ -17,7 +19,7 @@ VM::VM(MemoryMutator * memoryMutator) {
 VM::~VM() {
 }
 
-auto VM::interpret(Chunk & chunk) -> void {
+auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
     this->m_instruction_index = 0;
     this->m_chunk = &chunk;
     for (;;) {
@@ -30,77 +32,81 @@ auto VM::interpret(Chunk & chunk) -> void {
 #endif
 
         uint8_t instruction = chunk.getByte(m_instruction_index++);
-        switch (static_cast<Opcode>(instruction)) {
-        case Opcode::ADD:
+        switch (static_cast<cppLox::ByteCode::Opcode>(instruction)) {
+        case cppLox::ByteCode::Opcode::ADD:
             {
-                Value a = pop();
-                Value b = pop();
-                if (a.is(Value::Type::NUMBER) && b.is(Value::Type::NUMBER)) {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                if (a.is(cppLox::Types::Value::Type::NUMBER) && b.is(cppLox::Types::Value::Type::NUMBER)) {
                     push(a + b);
-                } else if (a.is(Value::Type::OBJECT) && b.is(Value::Type::OBJECT)) {
-                    Object * aObject = a.as<Object *>();
-                    Object * bObject = b.as<Object *>();
-                    if (aObject->is(Object::Type::STRING) && bObject->is(Object::Type::STRING)) {
-                        push(Value(m_memoryMutator->create<ObjectString>(bObject->as<ObjectString>()->string() +
-                                                                         aObject->as<ObjectString>()->string())));
+                } else if (a.is(cppLox::Types::Value::Type::OBJECT) && b.is(cppLox::Types::Value::Type::OBJECT)) {
+                    cppLox::Types::Object * aObject = a.as<cppLox::Types::Object *>();
+                    cppLox::Types::Object * bObject = b.as<cppLox::Types::Object *>();
+                    if (aObject->is(cppLox::Types::Object::Type::STRING) &&
+                        bObject->is(cppLox::Types::Object::Type::STRING)) {
+                        push(cppLox::Types::Value(m_memoryMutator->create<cppLox::Types::ObjectString>(
+                            bObject->as<cppLox::Types::ObjectString>()->string() +
+                            aObject->as<cppLox::Types::ObjectString>()->string())));
                     } else {
-                        throw RunTimeException("Operands must be two numbers or two strings");
+                        throw cppLox::Error::RunTimeException("Operands must be two numbers or two strings");
                     }
+                } else {
+                    throw cppLox::Error::RunTimeException("Operands must be two numbers or two strings");
                 }
                 break;
             }
-        case Opcode::CONSTANT:
+        case cppLox::ByteCode::Opcode::CONSTANT:
             {
                 uint8_t constant = chunk.getByte(m_instruction_index++);
                 push(chunk.getConstant(constant));
                 break;
             }
-        case Opcode::DIVIDE:
+        case cppLox::ByteCode::Opcode::DIVIDE:
             push(pop() / pop());
             break;
-        case Opcode::EQUAL:
+        case cppLox::ByteCode::Opcode::EQUAL:
             push(pop() == pop());
             break;
-        case Opcode::FALSE:
-            push(Value(false));
+        case cppLox::ByteCode::Opcode::FALSE:
+            push(cppLox::Types::Value(false));
             break;
-        case Opcode::GREATER:
+        case cppLox::ByteCode::Opcode::GREATER:
             push(pop() > pop());
             break;
-        case Opcode::GREATER_EQUAL:
+        case cppLox::ByteCode::Opcode::GREATER_EQUAL:
             push(pop() >= pop());
             break;
-        case Opcode::LESS:
+        case cppLox::ByteCode::Opcode::LESS:
             push(pop() < pop());
             break;
-        case Opcode::LESS_EQUAL:
+        case cppLox::ByteCode::Opcode::LESS_EQUAL:
             push(pop() <= pop());
             break;
-        case Opcode::MULTIPLY:
+        case cppLox::ByteCode::Opcode::MULTIPLY:
             push(pop() * pop());
             break;
-        case Opcode::NEGATE:
+        case cppLox::ByteCode::Opcode::NEGATE:
             push(-pop());
             break;
-        case Opcode::NOT:
+        case cppLox::ByteCode::Opcode::NOT:
             push(!pop());
             break;
-        case Opcode::NOT_EQUAL:
+        case cppLox::ByteCode::Opcode::NOT_EQUAL:
             push(pop() != pop());
             break;
-        case Opcode::NULL_:
-            push(Value());
+        case cppLox::ByteCode::Opcode::NULL_:
+            push(cppLox::Types::Value());
             break;
-        case Opcode::RETURN:
+        case cppLox::ByteCode::Opcode::RETURN:
             return;
-        case Opcode::PRINT:
+        case cppLox::ByteCode::Opcode::PRINT:
             std::cout << pop() << std::endl;
             break;
-        case Opcode::SUBTRACT:
+        case cppLox::ByteCode::Opcode::SUBTRACT:
             push(pop() - pop());
             break;
-        case Opcode::TRUE:
-            push(Value(true));
+        case cppLox::ByteCode::Opcode::TRUE:
+            push(cppLox::Types::Value(true));
             break;
         }
     }
@@ -108,7 +114,7 @@ auto VM::interpret(Chunk & chunk) -> void {
     return;
 }
 
-auto VM::push(Value value) -> void {
+auto VM::push(cppLox::Types::Value value) -> void {
     if (m_stack_top == STACK_MAX) {
         runTimeError("Stack overflow");
     }
@@ -116,7 +122,7 @@ auto VM::push(Value value) -> void {
     m_stack_top++;
 }
 
-[[nodiscard]] auto VM::pop() -> Value {
+[[nodiscard]] auto VM::pop() -> cppLox::Types::Value {
     if (m_stack_top == 0) {
         runTimeError("Stack empty on pop");
     }
@@ -133,5 +139,5 @@ template <class... Args> auto VM::runTimeError(std::string_view fmt, Args &&... 
     errorMessage += "\n";
     size_t instruction = m_instruction_index - 1;
     errorMessage.append(std::format("[line {}] in script\n", m_chunk->getLine(instruction)));
-    throw RunTimeException(errorMessage);
+    throw cppLox::Error::RunTimeException(errorMessage);
 }

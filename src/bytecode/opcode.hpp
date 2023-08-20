@@ -6,6 +6,8 @@
 
 #include <string_view>
 
+namespace cppLox::ByteCode {
+
 /// @brief The opcodes of the intermediate language
 enum Opcode {
     ADD,
@@ -30,4 +32,4 @@ enum Opcode {
 
 auto opcode_as_string(const Opcode value) -> std::string_view;
 
-auto operator<<(std::ostream & out, Opcode value) -> std::ostream &;
+} // namespace cppLox::ByteCode

@@ -11,6 +11,8 @@
 #include "precedence.hpp"
 #include "token.hpp"
 
+namespace cppLox::Frontend {
+
 // Forward declaration of the compiler.
 class Compiler;
 
@@ -62,7 +64,7 @@ class Compiler {
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<Chunk>;
+    auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk>;
 
   private:
     /// @brief Advances to the next token.
@@ -81,7 +83,7 @@ class Compiler {
 
     /// @brief Gets the current chunk.
     /// @return The current chunk.
-    auto currentChunk() const -> Chunk *;
+    auto currentChunk() const -> cppLox::ByteCode::Chunk *;
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
@@ -95,19 +97,19 @@ class Compiler {
     /// @brief Emits an opcode and a byte.
     /// @param opcode1 The opcode to emit.
     /// @param opcode2 The byte to emit.
-    auto emitBytes(Opcode opcode, uint8_t byte) -> void;
+    auto emitBytes(cppLox::ByteCode::Opcode opcode, uint8_t byte) -> void;
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
-    auto inline emitByte(Opcode byte) -> void;
+    auto inline emitByte(cppLox::ByteCode::Opcode byte) -> void;
 
     /// @brief Emits two bytes.
     /// @param byte1 The first byte.
     /// @param byte2 The second byte.
-    auto emitBytes(Opcode byte1, Opcode byte2) -> void;
+    auto emitBytes(cppLox::ByteCode::Opcode byte1, cppLox::ByteCode::Opcode byte2) -> void;
 
     /// @brief Emits a constant.
-    auto inline emitConstant(Value value) -> void;
+    auto inline emitConstant(cppLox::Types::Value value) -> void;
 
     /// @brief Ends the compilation.
     auto endCompilation() -> void;
@@ -139,7 +141,7 @@ class Compiler {
 
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
-    auto makeConstant(Value value) -> void;
+    auto makeConstant(cppLox::Types::Value value) -> void;
 
     /// @brief Compiles a numerical constant.
     /// @param tokens The tokens that are compiled.
@@ -221,9 +223,10 @@ class Compiler {
     /// @brief The index of the current token.
     size_t m_currentTokenIndex;
     /// @brief The chunk that is currently compiled.
-    Chunk * m_chunk;
+    cppLox::ByteCode::Chunk * m_chunk;
     /// @brief The memory manager.
     MemoryMutator * m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
 };
+} // namespace cppLox::Frontend

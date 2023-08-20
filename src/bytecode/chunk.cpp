@@ -7,6 +7,7 @@
 #include "../types/value_formatter.hpp"
 #include "opcode_formatter.hpp"
 
+using namespace cppLox::ByteCode;
 
 Chunk::Chunk() {
 }
@@ -91,7 +92,7 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
     return offset + 1;
 }
 
-[[nodiscard]] auto Chunk::addConstant(Value const & value) -> size_t {
+[[nodiscard]] auto Chunk::addConstant(cppLox::Types::Value const & value) -> size_t {
     m_constants.push_back(value);
     return m_constants.size() - 1;
 }
@@ -111,7 +112,7 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
 [[nodiscard]] auto Chunk::getLine(size_t offset) const -> size_t {
     return m_lines[offset];
 }
-[[nodiscard]] auto Chunk::getConstant(size_t offset) const -> Value const & {
+[[nodiscard]] auto Chunk::getConstant(size_t offset) const -> cppLox::Types::Value const & {
     return m_constants[offset];
 }
 [[nodiscard]] auto Chunk::getSize() const -> size_t {

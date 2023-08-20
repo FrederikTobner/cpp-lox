@@ -3,6 +3,8 @@
 #include <format>
 #include <iostream>
 
+using namespace cppLox::Frontend;
+
 Lexer::Lexer() {
     this->m_tokens = std::vector<Token>();
 }

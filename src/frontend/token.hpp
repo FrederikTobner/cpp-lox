@@ -4,6 +4,8 @@
 #include <format>
 #include <string>
 
+namespace cppLox::Frontend {
+
 class Token {
   public:
     /// @brief The possible types of a token
@@ -98,7 +100,10 @@ class Token {
     /// @param os The output stream to append to
     /// @param token The token to append
     /// @return The output stream
-    friend auto operator<<(std::ostream & os, Token const & token) -> std::ostream &;
+    friend auto operator<<(std::ostream & os, Token const & token) -> std::ostream & {
+        os << std::format("Token({}, {})", token.m_lexeme, token.m_line);
+        return os;
+    }
 
     /// @brief Get the type of the token
     /// @return The type of the token
@@ -128,3 +133,4 @@ class Token {
     /// @brief The line number where the token was found
     size_t m_line;
 };
+} // namespace cppLox::Frontend

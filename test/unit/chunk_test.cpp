@@ -10,19 +10,19 @@
 
 class ChunkTest : public ::testing::Test {
   protected:
-    Chunk chunk;
+    cppLox::ByteCode::Chunk chunk;
     void SetUp() override {
-        chunk = Chunk();
+        chunk = cppLox::ByteCode::Chunk();
     }
 };
 
 TEST_F(ChunkTest, AddAndGetConstant) {
     // Arrange
-    Value value(42.0);
+    cppLox::Types::Value value(42.0);
 
     // Act
     uint8_t index = chunk.addConstant(value);
-    Value result = chunk.getConstant(index);
+    cppLox::Types::Value result = chunk.getConstant(index);
 
     // Assert
     EXPECT_EQ(value, result);
@@ -30,7 +30,7 @@ TEST_F(ChunkTest, AddAndGetConstant) {
 
 TEST_F(ChunkTest, GetSize) {
     // Arrange
-    chunk.write(Opcode::CONSTANT, 123);
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 123);
     chunk.write(chunk.addConstant(1.2), 123);
 
     // Act
@@ -42,7 +42,7 @@ TEST_F(ChunkTest, GetSize) {
 
 TEST_F(ChunkTest, GetLine) {
     // Arrange
-    chunk.write(Opcode::CONSTANT, 123);
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 123);
 
     // Act
     int result = chunk.getLine(0);
@@ -52,27 +52,34 @@ TEST_F(ChunkTest, GetLine) {
 }
 
 // Test suite for dissassembling simple instructions using parameterized tests
-class ChunkParameterizedSimpleInstructionTestFixture : public ::testing::TestWithParam<std::pair<Opcode, std::string>> {
+class ChunkParameterizedSimpleInstructionTestFixture
+    : public ::testing::TestWithParam<std::pair<cppLox::ByteCode::Opcode, std::string>> {
   protected:
-    Chunk chunk;
+    cppLox::ByteCode::Chunk chunk;
     void SetUp() override {
-        chunk = Chunk();
+        chunk = cppLox::ByteCode::Chunk();
     }
 };
 
 // The paramiters for this test suite are a pair of Opcode and the expected string output for that opcode
-INSTANTIATE_TEST_SUITE_P(
-    ChunkOpCodeDissassemble, ChunkParameterizedSimpleInstructionTestFixture,
-    ::testing::Values(std::make_pair(Opcode::ADD, "ADD"), std::make_pair(Opcode::DIVIDE, "DIVIDE"),
-                      std::make_pair(Opcode::EQUAL, "EQUAL"), std::make_pair(Opcode::FALSE, "FALSE"),
-                      std::make_pair(Opcode::GREATER, "GREATER"),
-                      std::make_pair(Opcode::GREATER_EQUAL, "GREATER_EQUAL"), std::make_pair(Opcode::LESS, "LESS"),
-                      std::make_pair(Opcode::LESS_EQUAL, "LESS_EQUAL"), std::make_pair(Opcode::MULTIPLY, "MULTIPLY"),
-                      std::make_pair(Opcode::NEGATE, "NEGATE"), std::make_pair(Opcode::NOT, "NOT"),
-                      std::make_pair(Opcode::NOT_EQUAL, "NOT_EQUAL"), std::make_pair(Opcode::NULL_, "NULL_"),
-                      std::make_pair(Opcode::PRINT, "PRINT"), std::make_pair(Opcode::RETURN, "RETURN"),
-                      std::make_pair(Opcode::SUBTRACT, "SUBTRACT"), std::make_pair(Opcode::TRUE, "TRUE")));
-
+INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassemble, ChunkParameterizedSimpleInstructionTestFixture,
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::ADD, "ADD"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::DIVIDE, "DIVIDE"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::EQUAL, "EQUAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::FALSE, "FALSE"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::GREATER, "GREATER"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::GREATER_EQUAL, "GREATER_EQUAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::LESS, "LESS"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::LESS_EQUAL, "LESS_EQUAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::MULTIPLY, "MULTIPLY"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::NEGATE, "NEGATE"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::NOT, "NOT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::NOT_EQUAL, "NOT_EQUAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::NULL_, "NULL_"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::PRINT, "PRINT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::RETURN, "RETURN"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::SUBTRACT, "SUBTRACT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::TRUE, "TRUE")));
 TEST_P(ChunkParameterizedSimpleInstructionTestFixture, WriteOpCode) {
     auto [opcode, expected] = GetParam();
     chunk.write(opcode, 123);
@@ -88,19 +95,19 @@ TEST_P(ChunkParameterizedSimpleInstructionTestFixture, WriteOpCode) {
 
 // Test suite for dissassembling constant instructions
 class ChunkParameterizedConstantInstructionTestFixture
-    : public ::testing::TestWithParam<std::pair<Opcode, std::string>> {
+    : public ::testing::TestWithParam<std::pair<cppLox::ByteCode::Opcode, std::string>> {
   protected:
-    Chunk chunk;
+    cppLox::ByteCode::Chunk chunk;
     void SetUp() override {
-        chunk = Chunk();
+        chunk = cppLox::ByteCode::Chunk();
     }
 };
 
 INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassembleConstantInstruction, ChunkParameterizedConstantInstructionTestFixture,
-                         ::testing::Values(std::make_pair(Opcode::CONSTANT, "CONSTANT")));
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CONSTANT, "CONSTANT")));
 
 TEST_P(ChunkParameterizedConstantInstructionTestFixture, WriteOpCode) {
-    Value value(1.2);
+    cppLox::Types::Value value(1.2);
     auto [opcode, expected] = GetParam();
     chunk.write(opcode, 123);
     chunk.write(chunk.addConstant(value), 123);

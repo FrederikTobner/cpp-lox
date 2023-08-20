@@ -4,6 +4,8 @@
 
 #include "object.hpp"
 
+namespace cppLox::Types {
+
 /// @brief Represents a string object.
 class ObjectString : public Object {
   public:
@@ -32,3 +34,5 @@ class ObjectString : public Object {
     /// @brief The value of the underlying string.
     std::string * m_string;
 };
+
+} // namespace cppLox::Types

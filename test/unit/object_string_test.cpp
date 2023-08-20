@@ -9,26 +9,27 @@
 // Test fixture for ObjectString tests.
 class ObjectStringTest : public ::testing::Test {
   public:
-    std::unique_ptr<Object> object;
+    std::unique_ptr<cppLox::Types::Object> object;
 
   protected:
     // Sets up the test fixture.
     void SetUp() override {
-        object = std::unique_ptr<Object>(static_cast<Object *>(new ObjectString("Hello World")));
+        object = std::unique_ptr<cppLox::Types::Object>(
+            static_cast<cppLox::Types::Object *>(new cppLox::Types::ObjectString("Hello World")));
     }
 };
 
 TEST_F(ObjectStringTest, type) {
-    ASSERT_EQ(object->type(), Object::Type::STRING);
+    ASSERT_EQ(object->type(), cppLox::Types::Object::Type::STRING);
 }
 
 TEST_F(ObjectStringTest, is) {
-    ASSERT_TRUE(object->is(Object::Type::STRING));
+    ASSERT_TRUE(object->is(cppLox::Types::Object::Type::STRING));
 }
 
 TEST_F(ObjectStringTest, string) {
-    ASSERT_EQ(object->type(), Object::Type::STRING);
-    ASSERT_EQ(object->as<ObjectString>()->string(), "Hello World");
+    ASSERT_EQ(object->type(), cppLox::Types::Object::Type::STRING);
+    ASSERT_EQ(object->as<cppLox::Types::ObjectString>()->string(), "Hello World");
 }
 
 TEST_F(ObjectStringTest, ExtractionOperator) {

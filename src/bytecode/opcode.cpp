@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-[[nodiscard]] auto opcode_as_string(const Opcode value) -> std::string_view {
+[[nodiscard]] auto cppLox::ByteCode::opcode_as_string(const cppLox::ByteCode::Opcode value) -> std::string_view {
     switch (value) {
     case Opcode::ADD:
         return "ADD";
@@ -42,8 +42,4 @@
         return "TRUE";
     }
     return "Unknown opcode";
-}
-
-auto operator<<(std::ostream & out, Opcode value) -> std::ostream & {
-    return out << opcode_as_string(value);
 }

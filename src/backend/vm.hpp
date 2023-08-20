@@ -6,6 +6,8 @@
 #include "../memory_mutator.hpp"
 #include "../types/value.hpp"
 
+namespace cppLox::Backend {
+
 /// @brief The maximum amount of values that can be stored on the stack
 #define STACK_MAX 256
 
@@ -19,12 +21,12 @@ class VM {
     ~VM();
     /// @brief Interprets the given chunk
     /// @param chunk The chunk to interpret
-    auto interpret(Chunk & chunk) -> void;
+    auto interpret(cppLox::ByteCode::Chunk & chunk) -> void;
     /// @brief Pushes the given value onto the stack
     /// @param value The value to push onto the stack
-    auto push(Value value) -> void;
+    auto push(cppLox::Types::Value value) -> void;
     /// @brief Pops the top value from the stack
-    [[nodiscard]] auto pop() -> Value;
+    [[nodiscard]] auto pop() -> cppLox::Types::Value;
 
     auto resetStack() -> void;
 
@@ -36,7 +38,7 @@ class VM {
     template <class... Args> auto runTimeError(std::string_view fmt, Args &&... args) -> void;
 
     /// @brief The stack
-    Value m_stack[STACK_MAX];
+    cppLox::Types::Value m_stack[STACK_MAX];
 
     /// @brief The index of the top of the stack
     size_t m_stack_top;
@@ -45,8 +47,9 @@ class VM {
     size_t m_instruction_index;
 
     /// @brief The chunk to execute
-    Chunk * m_chunk;
+    cppLox::ByteCode::Chunk * m_chunk;
 
     /// @brief The memory manager.
     MemoryMutator * m_memoryMutator;
 };
+} // namespace cppLox::Backend

@@ -5,6 +5,8 @@
 
 #include "token.hpp"
 
+namespace cppLox::Frontend {
+
 /// @brief The lexer of the language.
 class Lexer {
   public:
@@ -30,3 +32,5 @@ class Lexer {
     size_t m_line;
     std::vector<Token> m_tokens;
 };
+
+} // namespace cppLox::Frontend
