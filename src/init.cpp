@@ -13,9 +13,14 @@
 #include <iostream>
 #include <memory>
 
-static auto run(std::string & source) -> void;
+static auto run(std::string & source, Lexer & lexer, MemoryMutator * memoryMutator, VM & vm, Compiler & compiler)
+    -> void;
 
 auto repl() -> void {
+    Lexer lexer;
+    MemoryMutator * memoryMutator = new MemoryMutator();
+    VM vm(memoryMutator);
+    Compiler compiler(memoryMutator);
     std::string line;
     while (true) {
         std::cout << "> ";
@@ -23,11 +28,16 @@ auto repl() -> void {
         if (line == "exit" || line == "") {
             break;
         }
-        run(line);
+        run(line, lexer, memoryMutator, vm, compiler);
     }
+    delete memoryMutator;
 }
 
 auto runFile(char const * path) -> void {
+    Lexer lexer;
+    MemoryMutator * memoryMutator = new MemoryMutator();
+    VM vm(memoryMutator);
+    Compiler compiler(memoryMutator);
     std::string source;
     std::ifstream file;
     file.open(path);
@@ -36,14 +46,12 @@ auto runFile(char const * path) -> void {
         std::getline(file, line);
         source.append(line);
     }
-    run(source);
+    run(source, lexer, memoryMutator, vm, compiler);
+    delete memoryMutator;
 }
 
-static auto run(std::string & source) -> void {
-    Lexer lexer;
-    MemoryManager * memoryManager = new MemoryManager();
-    VM vm(memoryManager);
-    Compiler compiler(memoryManager);
+static auto run(std::string & source, Lexer & lexer, MemoryMutator * memoryMutator, VM & vm, Compiler & compiler)
+    -> void {
     try {
         std::vector<Token> tokens = lexer.tokenize(source);
         // Source file is not needed after the tokens are generated
@@ -59,5 +67,4 @@ static auto run(std::string & source) -> void {
         std::cout << e.what() << std::endl;
         exit(EXIT_CODE_RUNTIME_ERROR);
     }
-    delete memoryManager;
 }

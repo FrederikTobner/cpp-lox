@@ -2,14 +2,18 @@
 
 #include <iostream>
 
+#include "object_formatter.hpp"
+#include "object_string.hpp"
 #include "opcode.hpp"
 #include "runtime_exception.hpp"
+#include "string_operations.hpp"
 
-VM::VM(MemoryManager * memoryManager) {
+
+VM::VM(MemoryMutator * memoryMutator) {
     m_stack_top = 0;
     m_chunk = nullptr;
     m_instruction_index = 0;
-    m_memoryManager = memoryManager;
+    m_memoryMutator = memoryMutator;
 }
 
 VM::~VM() {
@@ -36,11 +40,11 @@ auto VM::interpret(Chunk & chunk) -> void {
                 if (a.is(Value::Type::NUMBER) && b.is(Value::Type::NUMBER)) {
                     push(a + b);
                 } else if (a.is(Value::Type::OBJECT) && b.is(Value::Type::OBJECT)) {
-                    Object * aObject = a.asObject();
-                    Object * bObject = b.asObject();
+                    Object * aObject = a.as<Object *>();
+                    Object * bObject = b.as<Object *>();
                     if (aObject->is(Object::Type::STRING) && bObject->is(Object::Type::STRING)) {
-                        push(Value(
-                            m_memoryManager->concatenate(bObject->as<ObjectString>(), aObject->as<ObjectString>())));
+                        push(Value(concatenate_strings(bObject->as<ObjectString>(), aObject->as<ObjectString>(),
+                                                       m_memoryMutator)));
                     } else {
                         throw RunTimeException("Operands must be two numbers or two strings");
                     }

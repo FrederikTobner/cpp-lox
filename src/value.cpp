@@ -27,18 +27,6 @@ Value::Value(Object * value) {
     return type == this->m_type;
 }
 
-[[nodiscard]] auto Value::asBool() const -> bool {
-    return this->m_underlying_value.m_bool;
-}
-
-[[nodiscard]] auto Value::asNumber() const -> double {
-    return this->m_underlying_value.m_number;
-}
-
-[[nodiscard]] auto Value::asObject() const -> Object * {
-    return this->m_underlying_value.m_object;
-}
-
 [[nodiscard]] auto Value::getType() const -> Value::Type {
     return this->m_type;
 }
@@ -93,10 +81,16 @@ auto operator<<(std::ostream & os, Value const & value) -> std::ostream & {
 }
 
 [[nodiscard]] auto Value::operator!() const -> Value {
-    if (this->m_type != Value::Type::BOOL) {
-        throw RunTimeException("Runtime error: Unary not is only defined for booleans");
+    if (this->m_type == Value::Type::BOOL) {
+        return Value(!this->m_underlying_value.m_bool);
+    } else if (this->m_type == Value::Type::NUMBER) {
+        return Value(!this->m_underlying_value.m_number);
+    } else if (this->m_type == Value::Type::OBJECT) {
+        // Objects are not nullable so invert to false
+        return Value(false);
     }
-    return Value(!this->m_underlying_value.m_bool);
+    // Null values are falsy so invert to true
+    return Value(true);
 }
 
 [[nodiscard]] auto Value::operator+(Value const & other) const -> Value {

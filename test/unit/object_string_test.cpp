@@ -1,4 +1,6 @@
-#include "../../src/object.hpp"
+#include "../../src/object_formatter.hpp"
+#include "../../src/object_string.hpp"
+
 
 #include <memory>
 #include <string>
@@ -37,4 +39,8 @@ TEST_F(ObjectStringTest, ExtractionOperator) {
     std::cout << object;
     // Assert
     ASSERT_EQ("Hello World", testing::internal::GetCapturedStdout());
+}
+
+TEST_F(ObjectStringTest, Formatter) {
+    ASSERT_EQ(std::format("{}", object.get()), "Hello World");
 }

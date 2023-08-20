@@ -1,10 +1,14 @@
 #pragma once
 
-#include <format>
 #include <iostream>
-#include <string>
 
 #include "object.hpp"
+#include "object_formatter.hpp"
+
+#include <type_traits>
+
+template <typename T>
+concept IsAnUnderLyingValueType = std::is_same_v<T, bool> || std::is_same_v<T, double> || std::is_same_v<T, Object *>;
 
 /// @brief A value that can be stored in a variable or on the stack
 class Value {
@@ -42,17 +46,18 @@ class Value {
     /// @return true if the value is of the given type, false otherwise
     [[nodiscard]] auto is(Type type) noexcept -> bool;
 
-    /// @brief Gets the value as a bool
-    /// @return The value as a bool
-    [[nodiscard]] auto asBool() const -> bool;
-
-    /// @brief Gets the value as a number
-    /// @return The value as a number
-    [[nodiscard]] auto asNumber() const -> double;
-
-    /// @brief Gets the value as a object
-    /// @return The value as a object
-    [[nodiscard]] auto asObject() const -> Object *;
+    /// @brief Gets the underlying value as the given type
+    /// @tparam T The type to get the underlying value as
+    /// @return The underlying value as the given type
+    template <IsAnUnderLyingValueType T> [[nodiscard]] auto as() -> T {
+        if constexpr (std::is_same_v<T, bool>) {
+            return m_underlying_value.m_bool;
+        } else if constexpr (std::is_same_v<T, double>) {
+            return m_underlying_value.m_number;
+        } else if constexpr (std::is_same_v<T, Object *>) {
+            return m_underlying_value.m_object;
+        }
+    }
 
     /// @brief Prints the value to the given output stream
     /// @param os The output stream to print to
@@ -131,22 +136,4 @@ class Value {
         /// @brief The underlying object value
         Object * m_object;
     } m_underlying_value;
-};
-
-/// @brief Formatter for the Value class
-template <> struct std::formatter<Value> : std::formatter<std::string> {
-    auto format(Value value, format_context & ctx) const {
-        switch (value.getType()) {
-        case Value::Type::BOOL:
-            return formatter<string>::format(std::format("{}", value.asBool()), ctx);
-        case Value::Type::NULL_:
-            return formatter<string>::format(std::format("null"), ctx);
-        case Value::Type::NUMBER:
-            return formatter<string>::format(std::format("{}", value.asNumber()), ctx);
-        case Value::Type::OBJECT:
-            return formatter<string>::format(std::format("{}", value.asObject()), ctx);
-        }
-        // should be be unreachable
-        return formatter<string>::format(std::format("undefined"), ctx);
-    }
 };

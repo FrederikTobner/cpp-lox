@@ -31,10 +31,3 @@ enum Opcode {
 auto opcode_as_string(const Opcode value) -> std::string_view;
 
 auto operator<<(std::ostream & out, Opcode value) -> std::ostream &;
-
-/// @brief Formatter for the Opcode enum
-template <> struct std::formatter<Opcode> : std::formatter<std::string> {
-    [[nodiscard]] inline auto format(Opcode opcode, format_context & ctx) const {
-        return formatter<string>::format(std::format("{}", opcode_as_string(opcode)), ctx);
-    }
-};

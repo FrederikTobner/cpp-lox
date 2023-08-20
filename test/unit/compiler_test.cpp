@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "../../src/memory_manager.hpp"
+#include "../../src/memory_mutator.hpp"
 #include "../../src/opcode.hpp"
 #include "../../src/token.hpp"
 
@@ -12,12 +12,12 @@
 class CompilerTest : public ::testing::Test {
   public:
     std::unique_ptr<Compiler> compiler;
-    std::unique_ptr<MemoryManager> memory_manager;
+    std::unique_ptr<MemoryMutator> memoryMutator;
     std::vector<Token> tokens;
 
     CompilerTest() {
-        memory_manager = std::make_unique<MemoryManager>();
-        compiler = std::make_unique<Compiler>(memory_manager.get());
+        memoryMutator = std::make_unique<MemoryMutator>();
+        compiler = std::make_unique<Compiler>(memoryMutator.get());
     }
 
     void SetUp() override {

@@ -5,10 +5,12 @@
 
 #include "compiletime_exception.hpp"
 #include "lexer.hpp"
+#include "object_string.hpp"
 #include "opcode.hpp"
 
-Compiler::Compiler(MemoryManager * memoryManager) {
-    m_memoryManager = memoryManager;
+
+Compiler::Compiler(MemoryMutator * memoryMutator) {
+    m_memoryMutator = memoryMutator;
 }
 
 Compiler::~Compiler() {
@@ -144,7 +146,7 @@ auto Compiler::unary(std::vector<Token> const & tokens) -> void {
 }
 
 auto Compiler::string(std::vector<Token> const & tokens) -> void {
-    emitConstant(Value(m_memoryManager->create<ObjectString>(m_previous->lexeme())));
+    emitConstant(Value(m_memoryMutator->create<ObjectString>(m_previous->lexeme())));
 }
 
 auto Compiler::getRule(Token::Type type) -> ParseRule * {

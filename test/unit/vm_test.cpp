@@ -12,12 +12,12 @@
 class VMTest : public ::testing::Test {
   public:
     std::unique_ptr<VM> vm;
-    std::unique_ptr<MemoryManager> memory_manager;
+    std::unique_ptr<MemoryMutator> memoryMutator;
     Chunk chunk;
 
     VMTest() {
-        memory_manager = std::make_unique<MemoryManager>();
-        vm = std::make_unique<VM>(memory_manager.get());
+        memoryMutator = std::make_unique<MemoryMutator>();
+        vm = std::make_unique<VM>(memoryMutator.get());
     }
 
     void SetUp() override {

@@ -1,8 +1,9 @@
-#include "../../src/token.hpp"
-
 #include <gtest/gtest.h>
 
 #include <format>
+
+#include "../../src/token.hpp"
+#include "../../src/token_formatter.hpp"
 
 Token token(Token::Type::NUMBER, "3.14", 1);
 

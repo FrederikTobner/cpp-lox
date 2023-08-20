@@ -1,11 +1,13 @@
 #include "../../src/runtime_exception.hpp"
 #include "../../src/value.hpp"
+#include "../../src/value_formatter.hpp"
 
 #include <gtest/gtest.h>
 
 Value numVal = Value(3.14);
 Value boolVal = Value(true);
 Value nullVal = Value();
+Value objectVal = Value((Object *)nullptr);
 
 TEST(ValueTest, is) {
     EXPECT_TRUE(numVal.is(Value::Type::NUMBER));
@@ -20,8 +22,9 @@ TEST(ValueTest, is) {
 }
 
 TEST(ValueTest, as) {
-    EXPECT_EQ(numVal.asNumber(), 3.14);
-    EXPECT_EQ(boolVal.asBool(), true);
+    EXPECT_EQ(numVal.as<double>(), 3.14);
+    EXPECT_EQ(boolVal.as<bool>(), true);
+    EXPECT_EQ(nullVal.as<Object *>(), nullptr);
 }
 
 TEST(ValueTest, getType) {
@@ -53,6 +56,13 @@ TEST(ValueTest, ExtractionOperator) {
     std::cout << nullVal;
     output = testing::internal::GetCapturedStdout();
     EXPECT_EQ(output, "null");
+}
+
+TEST(ValueTest, Formatter) {
+    // Formatting objects is tested in test\unit\object_test.cpp
+    EXPECT_EQ(std::format("{}", numVal), "3.14");
+    EXPECT_EQ(std::format("{}", boolVal), "true");
+    EXPECT_EQ(std::format("{}", nullVal), "null");
 }
 
 TEST(ValueTest, Negate) {

@@ -3,7 +3,7 @@
 #include <format>
 
 #include "chunk.hpp"
-#include "memory_manager.hpp"
+#include "memory_mutator.hpp"
 #include "value.hpp"
 
 /// @brief The maximum amount of values that can be stored on the stack
@@ -14,7 +14,7 @@ class VM {
 
   public:
     /// @brief Constructs a new virtual machine
-    VM(MemoryManager * memoryManager);
+    VM(MemoryMutator * memoryMutator);
     /// @brief Destructor of the virtual machine
     ~VM();
     /// @brief Interprets the given chunk
@@ -48,5 +48,5 @@ class VM {
     Chunk * m_chunk;
 
     /// @brief The memory manager.
-    MemoryManager * m_memoryManager;
+    MemoryMutator * m_memoryMutator;
 };

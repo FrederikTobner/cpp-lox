@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "chunk.hpp"
-#include "memory_manager.hpp"
+#include "memory_mutator.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
@@ -54,7 +54,7 @@ class Compiler {
 
   public:
     /// @brief Constructs a new compiler.
-    Compiler(MemoryManager * memoryManager);
+    Compiler(MemoryMutator * memoryMutator);
 
     /// @brief Destructor of the compiler.
     ~Compiler();
@@ -221,7 +221,7 @@ class Compiler {
     /// @brief The chunk that is currently compiled.
     Chunk * m_chunk;
     /// @brief The memory manager.
-    MemoryManager * m_memoryManager;
+    MemoryMutator * m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
 };

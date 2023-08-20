@@ -1,7 +1,6 @@
 #pragma once
 
-#include <format>
-#include <string>
+#include <iostream>
 #include <type_traits>
 
 class Object;
@@ -44,7 +43,7 @@ class Object {
     /// @param dt The value to print
     /// @return The output stream
     friend auto operator<<(std::ostream & os, Object const & dt) -> std::ostream & {
-        dt.print(os);
+        dt.writeToOutputStream(os);
         return os;
     }
     /// @brief Prints the value to the given output stream
@@ -52,53 +51,13 @@ class Object {
     /// @param dt The value to print
     /// @return The output stream
     friend auto operator<<(std::ostream & os, Object * dt) -> std::ostream & {
-        dt->print(os);
+        dt->writeToOutputStream(os);
         return os;
     }
 
-    virtual void print(std::ostream & os) const = 0;
+    virtual void writeToOutputStream(std::ostream & os) const = 0;
 
   protected:
     /// @brief The type of the object.
     Type m_type;
-};
-/// @brief Represents a string object.
-class ObjectString : public Object {
-  public:
-    /// @brief Constructs a new string object.
-    /// @param value The value of the string object.
-    ObjectString(std::string const & string) {
-        m_string = new std::string(string);
-        m_type = Object::Type::STRING;
-    }
-
-    ~ObjectString() {
-        delete m_string;
-    }
-
-    /// @brief Gets the value of the string object.
-    /// @return The value of the string object.
-    auto string() const -> std::string const & {
-        return *m_string;
-    }
-
-    virtual void print(std::ostream & os) const override {
-        os << *m_string;
-    }
-
-  private:
-    /// @brief The value of the underlying string.
-    std::string * m_string;
-};
-
-/// @brief Formatter for the Object class.
-template <> struct std::formatter<Object *> : std::formatter<std::string> {
-    auto format(Object * object, format_context & ctx) const {
-        switch (object->type()) {
-        case Object::Type::STRING:
-            return formatter<string>::format(std::format("{}", object->as<ObjectString>()->string()), ctx);
-        }
-        // should be be unreachable
-        return formatter<string>::format(std::format("undefined"), ctx);
-    }
 };
