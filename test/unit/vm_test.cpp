@@ -1,8 +1,8 @@
-#include "../../src/chunk.hpp"
-#include "../../src/opcode.hpp"
-#include "../../src/runtime_exception.hpp"
-#include "../../src/value.hpp"
-#include "../../src/vm.hpp"
+#include "../../src/backend/vm.hpp"
+#include "../../src/bytecode/chunk.hpp"
+#include "../../src/bytecode/opcode.hpp"
+#include "../../src/error/runtime_exception.hpp"
+#include "../../src/types/value.hpp"
 
 #include <iostream>
 

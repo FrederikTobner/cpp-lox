@@ -3,11 +3,10 @@
 #include <format>
 #include <iostream>
 
-#include "compiletime_exception.hpp"
+#include "../bytecode/opcode.hpp"
+#include "../error/compiletime_exception.hpp"
+#include "../types/object_string.hpp"
 #include "lexer.hpp"
-#include "object_string.hpp"
-#include "opcode.hpp"
-
 
 Compiler::Compiler(MemoryMutator * memoryMutator) {
     m_memoryMutator = memoryMutator;

@@ -1,13 +1,14 @@
 #include "init.hpp"
 
-#include "chunk.hpp"
-#include "compiler.hpp"
-#include "compiletime_exception.hpp"
+#include "backend/vm.hpp"
+#include "bytecode/chunk.hpp"
+#include "error/compiletime_exception.hpp"
+#include "error/runtime_exception.hpp"
 #include "exit_code.hpp"
-#include "lexer.hpp"
-#include "runtime_exception.hpp"
-#include "token.hpp"
-#include "vm.hpp"
+#include "frontend/compiler.hpp"
+#include "frontend/lexer.hpp"
+#include "frontend/token.hpp"
+
 
 #include <fstream>
 #include <iostream>

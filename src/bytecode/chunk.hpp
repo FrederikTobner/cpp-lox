@@ -4,8 +4,9 @@
 #include <string_view>
 #include <vector>
 
+#include "../types/value.hpp"
 #include "opcode.hpp"
-#include "value.hpp"
+
 
 class Chunk {
   public:

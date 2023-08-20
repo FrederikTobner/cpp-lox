@@ -1,6 +1,6 @@
-#include "../../src/chunk.hpp"
-#include "../../src/value.hpp"
-#include "../../src/value_formatter.hpp"
+#include "../../src/bytecode/chunk.hpp"
+#include "../../src/types/value.hpp"
+#include "../../src/types/value_formatter.hpp"
 
 #include <gtest/gtest.h>
 

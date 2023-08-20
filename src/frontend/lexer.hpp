@@ -13,7 +13,6 @@ class Lexer {
 
   private:
     auto scanToken(std::string const & source) -> void;
-    [[nodiscard]] auto isAtEnd() const -> bool;
     [[nodiscard]] auto isAtEnd(std::string const & source) const -> bool;
     auto advance(std::string const & source) -> char;
     auto addToken(Token::Type type, std::string const & lexeme) -> void;

@@ -4,8 +4,9 @@
 #include <iomanip>
 #include <iostream>
 
+#include "../types/value_formatter.hpp"
 #include "opcode_formatter.hpp"
-#include "value_formatter.hpp"
+
 
 Chunk::Chunk() {
 }

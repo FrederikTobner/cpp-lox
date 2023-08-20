@@ -2,10 +2,9 @@
 
 #include <iostream>
 #include <memory>
-#include <mutex>
 #include <vector>
 
-#include "object.hpp"
+#include "types/object.hpp"
 
 /// @brief The memory manager that manages all objects.
 class MemoryMutator {

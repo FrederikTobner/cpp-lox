@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "runtime_exception.hpp"
+#include "../error/runtime_exception.hpp"
 
 Value::Value() {
     this->m_type = Value::Type::NULL_;

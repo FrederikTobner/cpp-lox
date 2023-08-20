@@ -2,9 +2,9 @@
 
 #include <format>
 
-#include "chunk.hpp"
-#include "memory_mutator.hpp"
-#include "value.hpp"
+#include "../bytecode/chunk.hpp"
+#include "../memory_mutator.hpp"
+#include "../types/value.hpp"
 
 /// @brief The maximum amount of values that can be stored on the stack
 #define STACK_MAX 256

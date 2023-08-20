@@ -1,6 +1,6 @@
-#include "../../src/runtime_exception.hpp"
-#include "../../src/value.hpp"
-#include "../../src/value_formatter.hpp"
+#include "../../src/error/runtime_exception.hpp"
+#include "../../src/types/value.hpp"
+#include "../../src/types/value_formatter.hpp"
 
 #include <gtest/gtest.h>
 

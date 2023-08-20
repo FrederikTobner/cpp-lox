@@ -1,6 +1,5 @@
-#include "../../src/object_formatter.hpp"
-#include "../../src/object_string.hpp"
-
+#include "../../src/types/object_formatter.hpp"
+#include "../../src/types/object_string.hpp"
 
 #include <memory>
 #include <string>

@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
-#include "chunk.hpp"
-#include "memory_mutator.hpp"
+#include "../bytecode/chunk.hpp"
+#include "../memory_mutator.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
@@ -181,13 +181,15 @@ class Compiler {
             ParseRule(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
         rules[static_cast<size_t>(Token::Type::EQUAL)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::EQUAL_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::GREATER)] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+            ParseRule(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
+        rules[static_cast<size_t>(Token::Type::GREATER)] =
+            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::GREATER_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::LESS)] = ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
+        rules[static_cast<size_t>(Token::Type::LESS)] =
+            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::LESS_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::NONE);
+            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::IDENTIFIER)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::STRING)] = ParseRule(&Compiler::string, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::NUMBER)] = ParseRule(&Compiler::number, std::nullopt, Precedence::NONE);
