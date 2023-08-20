@@ -5,7 +5,6 @@ var classLexer =
     [ "advance", "classLexer.html#aec9d80d1d45c6f82b6e6d0640ab4b346", null ],
     [ "identifier", "classLexer.html#ac2472dbb626a5df4315c5ac954c2497f", null ],
     [ "isAlpha", "classLexer.html#a1bcc07dac3792e75f7a7d5cb0d2119e9", null ],
-    [ "isAtEnd", "classLexer.html#a7374e58f7534a5f139aa94279fa045ac", null ],
     [ "isAtEnd", "classLexer.html#a146d4f4bf89f7a8b200377c2b95a4c03", null ],
     [ "isDigit", "classLexer.html#a06d38ad9fd42e3d9172a67387900ad69", null ],
     [ "match", "classLexer.html#a94f6ed99016b6703ab80650e90338fc4", null ],

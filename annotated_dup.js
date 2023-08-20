@@ -1,9 +1,9 @@
 var annotated_dup =
 [
     [ "std", null, [
-      [ "formatter< Object * >", "structstd_1_1formatter_3_01Object_01_5_01_4.html", "structstd_1_1formatter_3_01Object_01_5_01_4" ],
       [ "formatter< Opcode >", "structstd_1_1formatter_3_01Opcode_01_4.html", "structstd_1_1formatter_3_01Opcode_01_4" ],
       [ "formatter< Token >", "structstd_1_1formatter_3_01Token_01_4.html", "structstd_1_1formatter_3_01Token_01_4" ],
+      [ "formatter< Object * >", "structstd_1_1formatter_3_01Object_01_5_01_4.html", "structstd_1_1formatter_3_01Object_01_5_01_4" ],
       [ "formatter< Value >", "structstd_1_1formatter_3_01Value_01_4.html", "structstd_1_1formatter_3_01Value_01_4" ]
     ] ],
     [ "Chunk", "classChunk.html", "classChunk" ],
