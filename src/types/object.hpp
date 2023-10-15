@@ -7,6 +7,7 @@ namespace cppLox::Types {
 
 class Object;
 
+/// @brief Checks if the given type is derived from Object.
 template <typename T>
 concept IsDerivedFromObject = std::is_base_of<Object, T>::value;
 
@@ -25,18 +26,21 @@ class Object {
 
     /// @brief Gets the type of the object.
     /// @return The type of the object.
-    auto type() const -> Object::Type {
+    [[nodiscard]] auto type() const -> Object::Type {
         return m_type;
     }
 
     /// @brief Checks if the object is of the given type.
     /// @param type The type to check against.
     /// @return True if the object is of the given type, false otherwise.
-    auto is(Type type) const -> bool {
+    [[nodiscard]] auto is(Type type) const -> bool {
         return m_type == type;
     }
 
-    template <IsDerivedFromObject T> auto as() -> T * {
+    /// @brief Casts the object to the given type.
+    /// @tparam T The type to cast to.
+    /// @return The object cast to the given type.
+    template <IsDerivedFromObject T> [[nodiscard]] auto as() -> T * {
         return static_cast<T *>(this);
     }
 

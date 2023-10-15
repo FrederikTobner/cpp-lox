@@ -6,6 +6,7 @@
 
 namespace cppLox::Frontend {
 
+/// @brief Represents a token in the source code
 class Token {
   public:
     /// @brief The possible types of a token
@@ -88,6 +89,7 @@ class Token {
         VAR,
         /// @brief A while keyword
         WHILE,
+        /// @brief The number of token types - used for initializing the array of parse rules
         AMOUNT
     };
     /// @brief Construct a new Token object
@@ -95,6 +97,9 @@ class Token {
     /// @param lexeme The string representation of the token
     /// @param line The line number where the token was found
     Token(Type type, std::string lexeme, size_t line);
+
+    /// @brief Destroy the Token object
+    ~Token() = default;
 
     /// @brief Appends the string representation of the token to the output stream
     /// @param os The output stream to append to

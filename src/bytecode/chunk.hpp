@@ -11,8 +11,8 @@ namespace cppLox::ByteCode {
 
 class Chunk {
   public:
-    Chunk();
-    ~Chunk();
+    Chunk() = default;
+    ~Chunk() = default;
     void write(uint8_t byte, int line);
     void write(Opcode byte, int line);
     void disassemble(std::string_view const & name) const;

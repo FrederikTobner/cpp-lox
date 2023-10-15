@@ -14,9 +14,6 @@ Compiler::Compiler(MemoryMutator * memoryMutator) {
     m_memoryMutator = memoryMutator;
 }
 
-Compiler::~Compiler() {
-}
-
 auto Compiler::compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk> {
     m_previous = nullptr;
     m_current = nullptr;

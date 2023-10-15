@@ -39,6 +39,9 @@ class Value {
     /// @brief Construct a new Value object with type VAL_OBJECT
     Value(Object * value);
 
+    /// @brief Destroy a Value object
+    ~Value() = default;
+
     /// @brief Gets the type of the value
     /// @return The type of the value
     [[nodiscard]] auto getType() const -> Value::Type;

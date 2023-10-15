@@ -7,7 +7,7 @@
 
 /// @brief Formatter for the Value class
 template <> struct std::formatter<cppLox::Types::Value> : std::formatter<std::string> {
-    auto format(cppLox::Types::Value value, format_context & ctx) const {
+    [[nodiscard]] auto format(cppLox::Types::Value value, format_context & ctx) const {
         switch (value.getType()) {
         case cppLox::Types::Value::Type::BOOL:
             return formatter<string>::format(std::format("{}", value.as<bool>()), ctx);

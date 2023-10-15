@@ -32,17 +32,17 @@ class ParseRule {
     ~ParseRule() = default;
     /// @brief Gets the prefix function of the rule.
     /// @return An optional containing the prefix function of the rule.
-    auto prefix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
+    [[nodiscard]] auto prefix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
         return m_prefix;
     }
     /// @brief Gets the infix function of the rule.
     /// @return An optional containing the infix function of the rule.
-    auto infix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
+    [[nodiscard]] auto infix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
         return m_infix;
     }
     /// @brief Gets the precedence of the rule.
     /// @return The precedence of the rule.
-    auto precedence() -> Precedence const & {
+    [[nodiscard]] auto precedence() -> Precedence const & {
         return m_precedence;
     }
 
@@ -59,12 +59,12 @@ class Compiler {
     Compiler(MemoryMutator * memoryMutator);
 
     /// @brief Destructor of the compiler.
-    ~Compiler();
+    ~Compiler() = default;
 
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk>;
+    [[nodiscard]] auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk>;
 
   private:
     /// @brief Advances to the next token.
@@ -83,7 +83,7 @@ class Compiler {
 
     /// @brief Gets the current chunk.
     /// @return The current chunk.
-    auto currentChunk() const -> cppLox::ByteCode::Chunk *;
+    [[nodiscard]] auto currentChunk() const -> cppLox::ByteCode::Chunk *;
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
@@ -133,7 +133,7 @@ class Compiler {
     /// @brief Gets the rule for the given token type.
     /// @param type The type of the token.
     /// @return The rule for the given token type.
-    auto getRule(Token::Type type) -> ParseRule *;
+    [[nodiscard]] auto getRule(Token::Type type) -> ParseRule *;
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.

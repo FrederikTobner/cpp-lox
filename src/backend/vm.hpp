@@ -18,7 +18,7 @@ class VM {
     /// @brief Constructs a new virtual machine
     VM(MemoryMutator * memoryMutator);
     /// @brief Destructor of the virtual machine
-    ~VM();
+    ~VM() = default;
     /// @brief Interprets the given chunk
     /// @param chunk The chunk to interpret
     auto interpret(cppLox::ByteCode::Chunk & chunk) -> void;

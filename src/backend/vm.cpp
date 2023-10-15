@@ -16,9 +16,6 @@ VM::VM(MemoryMutator * memoryMutator) {
     m_memoryMutator = memoryMutator;
 }
 
-VM::~VM() {
-}
-
 auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
     this->m_instruction_index = 0;
     this->m_chunk = &chunk;

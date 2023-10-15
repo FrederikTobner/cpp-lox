@@ -10,7 +10,8 @@ namespace cppLox::Frontend {
 /// @brief The lexer of the language.
 class Lexer {
   public:
-    Lexer();
+    Lexer() = default;
+    ~Lexer() = default;
     [[nodiscard]] auto tokenize(std::string const & source) -> std::vector<Token>;
 
   private:

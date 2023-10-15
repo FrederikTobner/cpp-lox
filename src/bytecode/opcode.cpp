@@ -43,3 +43,7 @@
     }
     return "Unknown opcode";
 }
+
+auto cppLox::ByteCode::operator<<(std::ostream & os, Opcode const & opcode) -> std::ostream & {
+    return os << cppLox::ByteCode::opcode_as_string(opcode);
+}

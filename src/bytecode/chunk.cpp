@@ -9,13 +9,6 @@
 
 using namespace cppLox::ByteCode;
 
-Chunk::Chunk() {
-}
-
-Chunk::~Chunk() {
-    m_code.clear();
-}
-
 auto Chunk::write(uint8_t byte, int line) -> void {
     m_code.push_back(byte);
     m_lines.push_back(line);
@@ -112,9 +105,11 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
 [[nodiscard]] auto Chunk::getLine(size_t offset) const -> size_t {
     return m_lines[offset];
 }
+
 [[nodiscard]] auto Chunk::getConstant(size_t offset) const -> cppLox::Types::Value const & {
     return m_constants[offset];
 }
+
 [[nodiscard]] auto Chunk::getSize() const -> size_t {
     return m_code.size();
 }

@@ -5,10 +5,6 @@
 
 using namespace cppLox::Frontend;
 
-Lexer::Lexer() {
-    this->m_tokens = std::vector<Token>();
-}
-
 [[nodiscard]] auto Lexer::tokenize(std::string const & source) -> std::vector<Token> {
     // Reset the lexer
     this->m_start = 0;

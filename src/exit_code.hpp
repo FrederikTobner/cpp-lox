@@ -2,6 +2,8 @@
 
 /// @brief Exit codes based on the sysexits from UNIX
 typedef enum {
+    /// Signals a successful exit
+    EXIT_CODE_SUCCESS = 0,
     /// Signals a command line error usage
     EXIT_CODE_COMMAND_LINE_USAGE_ERROR = 64,
     /// Signals an error that occured during compile time

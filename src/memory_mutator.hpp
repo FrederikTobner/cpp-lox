@@ -2,22 +2,49 @@
 
 #include <iostream>
 #include <memory>
+#include <unordered_set>
 #include <vector>
 
 #include "types/object.hpp"
+#include "types/object_string.hpp"
+
+namespace std {
+
+template <> struct hash<cppLox::Types::ObjectString> {
+
+    std::size_t operator()(cppLox::Types::ObjectString * s) const {
+        return std::hash<std::string_view>{}(s->string());
+    }
+};
+} // namespace std
 
 /// @brief The memory manager that manages all objects.
 class MemoryMutator {
 
   public:
     MemoryMutator() = default;
-    ~MemoryMutator() = default;
+    ~MemoryMutator() {
+        for (auto string : m_strings) {
+            delete string;
+        }
+    }
+
     /// @brief Creates a new object of the given type.
     /// @tparam ...Args The types of the arguments to pass to the constructor.
     /// @tparam T The type of the object to create.
     /// @param ...args The arguments to pass to the constructor.
     /// @return A pointer to the newly created object.
     template <typename T, class... Args> auto create(Args &&... args) -> cppLox::Types::Object * {
+        if constexpr (std::is_same_v<T, cppLox::Types::ObjectString>) {
+            cppLox::Types::ObjectString * string = new cppLox::Types::ObjectString(std::forward<Args>(args)...);
+            std::unordered_set<cppLox::Types::ObjectString *>::iterator it = this->m_strings.find(string);
+            if (it != m_strings.end()) {
+                delete string;
+                return static_cast<cppLox::Types::Object *>(*it);
+            }
+            m_strings.insert(string);
+            return static_cast<cppLox::Types::Object *>(string);
+        }
         cppLox::Types::Object * object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
@@ -26,4 +53,6 @@ class MemoryMutator {
   private:
     /// @brief The list of all objects that are currently allocated.
     std::vector<std::unique_ptr<cppLox::Types::Object>> m_objects;
+    /// @brief The set of all strings that are currently allocated.
+    std::unordered_set<cppLox::Types::ObjectString *> m_strings;
 };
