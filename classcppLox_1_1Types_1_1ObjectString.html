@@ -110,8 +110,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3401a44d4a40ca9d7629e70faacfe742"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#a3401a44d4a40ca9d7629e70faacfe742">ObjectString</a> (std::string const &amp;<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a">string</a>)</td></tr>
 <tr class="memdesc:a3401a44d4a40ca9d7629e70faacfe742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new string object.  <a href="classcppLox_1_1Types_1_1ObjectString.html#a3401a44d4a40ca9d7629e70faacfe742">More...</a><br /></td></tr>
 <tr class="separator:a3401a44d4a40ca9d7629e70faacfe742"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff2c88d58c61f6d10a7a20fbeb5f9792"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#aff2c88d58c61f6d10a7a20fbeb5f9792">~ObjectString</a> ()</td></tr>
-<tr class="separator:aff2c88d58c61f6d10a7a20fbeb5f9792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00ca0292912e83b4f20515d95f1d7a86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#a00ca0292912e83b4f20515d95f1d7a86">~ObjectString</a> () override=default</td></tr>
+<tr class="separator:a00ca0292912e83b4f20515d95f1d7a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adce3860231aa2e159250200a5ff0413a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a">string</a> () const -&gt; std::string const &amp;</td></tr>
 <tr class="memdesc:adce3860231aa2e159250200a5ff0413a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the string object.  <a href="classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a">More...</a><br /></td></tr>
 <tr class="separator:adce3860231aa2e159250200a5ff0413a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,13 +132,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a98543bf6f8dcfb402cd9b763d1a1f789 inherit pub_methods_classcppLox_1_1Types_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a368bea6b0136551b9d4390c2fa759045 inherit pub_methods_classcppLox_1_1Types_1_1Object"><td class="memTemplParams" colspan="2">template&lt;IsDerivedFromObject T&gt; </td></tr>
 <tr class="memitem:a368bea6b0136551b9d4390c2fa759045 inherit pub_methods_classcppLox_1_1Types_1_1Object"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1Object.html#a368bea6b0136551b9d4390c2fa759045">as</a> () -&gt; T *</td></tr>
+<tr class="memdesc:a368bea6b0136551b9d4390c2fa759045 inherit pub_methods_classcppLox_1_1Types_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Casts the object to the given type.  <a href="classcppLox_1_1Types_1_1Object.html#a368bea6b0136551b9d4390c2fa759045">More...</a><br /></td></tr>
 <tr class="separator:a368bea6b0136551b9d4390c2fa759045 inherit pub_methods_classcppLox_1_1Types_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa05a4515bbabcdd5af713d22c2a98b40"><td class="memItemLeft" align="right" valign="top">std::string *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#aa05a4515bbabcdd5af713d22c2a98b40">m_string</a></td></tr>
-<tr class="memdesc:aa05a4515bbabcdd5af713d22c2a98b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value of the underlying string.  <a href="classcppLox_1_1Types_1_1ObjectString.html#aa05a4515bbabcdd5af713d22c2a98b40">More...</a><br /></td></tr>
-<tr class="separator:aa05a4515bbabcdd5af713d22c2a98b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f65a9e96d0de6d1f2a108d221151d2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#aa9f65a9e96d0de6d1f2a108d221151d2">m_string</a></td></tr>
+<tr class="memdesc:aa9f65a9e96d0de6d1f2a108d221151d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value of the underlying string.  <a href="classcppLox_1_1Types_1_1ObjectString.html#aa9f65a9e96d0de6d1f2a108d221151d2">More...</a><br /></td></tr>
+<tr class="separator:aa9f65a9e96d0de6d1f2a108d221151d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -189,8 +190,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aff2c88d58c61f6d10a7a20fbeb5f9792"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff2c88d58c61f6d10a7a20fbeb5f9792">&#9670;&nbsp;</a></span>~ObjectString()</h2>
+<a id="a00ca0292912e83b4f20515d95f1d7a86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00ca0292912e83b4f20515d95f1d7a86">&#9670;&nbsp;</a></span>~ObjectString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +208,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -272,8 +273,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa05a4515bbabcdd5af713d22c2a98b40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa05a4515bbabcdd5af713d22c2a98b40">&#9670;&nbsp;</a></span>m_string</h2>
+<a id="aa9f65a9e96d0de6d1f2a108d221151d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f65a9e96d0de6d1f2a108d221151d2">&#9670;&nbsp;</a></span>m_string</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,7 +283,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string* m_string</td>
+          <td class="memname">std::unique_ptr&lt;std::string&gt; m_string</td>
         </tr>
       </table>
   </td>

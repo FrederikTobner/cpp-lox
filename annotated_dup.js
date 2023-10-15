@@ -7,6 +7,9 @@ var annotated_dup =
       [ "ByteCode", "namespacecppLox_1_1ByteCode.html", [
         [ "Chunk", "classcppLox_1_1ByteCode_1_1Chunk.html", "classcppLox_1_1ByteCode_1_1Chunk" ]
       ] ],
+      [ "Common", "namespacecppLox_1_1Common.html", [
+        [ "StringHash", "structcppLox_1_1Common_1_1StringHash.html", "structcppLox_1_1Common_1_1StringHash" ]
+      ] ],
       [ "Error", "namespacecppLox_1_1Error.html", [
         [ "CompileTimeException", "classcppLox_1_1Error_1_1CompileTimeException.html", "classcppLox_1_1Error_1_1CompileTimeException" ],
         [ "RunTimeException", "classcppLox_1_1Error_1_1RunTimeException.html", "classcppLox_1_1Error_1_1RunTimeException" ]
@@ -23,9 +26,10 @@ var annotated_dup =
         [ "Value", "classcppLox_1_1Types_1_1Value.html", "classcppLox_1_1Types_1_1Value" ]
       ] ]
     ] ],
-    [ "std", null, [
+    [ "std", "namespacestd.html", [
       [ "formatter< cppLox::ByteCode::Opcode >", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4" ],
       [ "formatter< cppLox::Frontend::Token >", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4" ],
+      [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ],
       [ "formatter< cppLox::Types::Object * >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4" ],
       [ "formatter< cppLox::Types::Value >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4" ]
     ] ],

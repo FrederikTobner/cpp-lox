@@ -103,8 +103,9 @@ $(document).ready(function(){initNavTree('init_8cpp.html',''); initResizable(); 
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acf85de2768d2353db0631c733db2a196"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#acf85de2768d2353db0631c733db2a196">run</a> (std::string &amp;source, <a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a> &amp;lexer, <a class="el" href="classMemoryMutator.html">MemoryMutator</a> *memoryMutator, <a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;vm, <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;compiler) -&gt; void</td></tr>
-<tr class="separator:acf85de2768d2353db0631c733db2a196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e42a6730fdf027d3ac1448d53152bb6"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#a8e42a6730fdf027d3ac1448d53152bb6">run</a> (std::string &amp;source, <a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a> &amp;lexer, <a class="el" href="classMemoryMutator.html">MemoryMutator</a> *memoryMutator, <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;compiler, <a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;vm) -&gt; void</td></tr>
+<tr class="memdesc:a8e42a6730fdf027d3ac1448d53152bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main entry point of the program.  <a href="init_8cpp.html#a8e42a6730fdf027d3ac1448d53152bb6">More...</a><br /></td></tr>
+<tr class="separator:a8e42a6730fdf027d3ac1448d53152bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9ffae0d38fc012bc00f64364d766809"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8cpp.html#ab9ffae0d38fc012bc00f64364d766809">repl</a> () -&gt; void</td></tr>
 <tr class="memdesc:ab9ffae0d38fc012bc00f64364d766809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the REPL.  <a href="init_8cpp.html#ab9ffae0d38fc012bc00f64364d766809">More...</a><br /></td></tr>
 <tr class="separator:ab9ffae0d38fc012bc00f64364d766809"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,8 +133,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acf85de2768d2353db0631c733db2a196"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf85de2768d2353db0631c733db2a196">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a8e42a6730fdf027d3ac1448d53152bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e42a6730fdf027d3ac1448d53152bb6">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,14 +163,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;&#160;</td>
-          <td class="paramname"><em>vm</em>, </td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;&#160;</td>
+          <td class="paramname"><em>compiler</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;&#160;</td>
-          <td class="paramname"><em>compiler</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;&#160;</td>
+          <td class="paramname"><em>vm</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -183,6 +184,19 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The main entry point of the program. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source code to run. </td></tr>
+    <tr><td class="paramname">lexer</td><td>The lexer that will tokenize the source code. </td></tr>
+    <tr><td class="paramname">memoryMutator</td><td>The memory mutator that will be used by the VM and the compiler to allocate memory. </td></tr>
+    <tr><td class="paramname">compiler</td><td>The compiler that will compile the source code into bytecode. </td></tr>
+    <tr><td class="paramname">vm</td><td>The VM that will interpret the bytecode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit code of the program. </dd></dl>
 
 </div>
 </div>

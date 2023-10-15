@@ -1,7 +1,7 @@
 var classcppLox_1_1Frontend_1_1Compiler =
 [
     [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html#ad09543d64012b61966b9502e306902a4", null ],
-    [ "~Compiler", "classcppLox_1_1Frontend_1_1Compiler.html#acf166c9448a67e8c58923e93d4798aaf", null ],
+    [ "~Compiler", "classcppLox_1_1Frontend_1_1Compiler.html#a5164d894bb6a230015000dcc48b4b114", null ],
     [ "advance", "classcppLox_1_1Frontend_1_1Compiler.html#a9024439cdcddb3188a4c50afbb6fbe5c", null ],
     [ "binary", "classcppLox_1_1Frontend_1_1Compiler.html#a290d4a4d4910c33afec289213d737abe", null ],
     [ "compile", "classcppLox_1_1Frontend_1_1Compiler.html#ac27b0fe774950149142f3efb076df2b0", null ],

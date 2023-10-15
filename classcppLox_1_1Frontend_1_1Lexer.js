@@ -1,6 +1,7 @@
 var classcppLox_1_1Frontend_1_1Lexer =
 [
-    [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html#aaf30014452cefcea8594d264459a72fa", null ],
+    [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html#a44757b6ee945bc0b79add16d32b59bce", null ],
+    [ "~Lexer", "classcppLox_1_1Frontend_1_1Lexer.html#ac4d1ece325fa1627d3b913dfab4e8219", null ],
     [ "addToken", "classcppLox_1_1Frontend_1_1Lexer.html#a6ab36bf81fdaae087186234f58ebe9a1", null ],
     [ "advance", "classcppLox_1_1Frontend_1_1Lexer.html#aec9d80d1d45c6f82b6e6d0640ab4b346", null ],
     [ "identifier", "classcppLox_1_1Frontend_1_1Lexer.html#ac2472dbb626a5df4315c5ac954c2497f", null ],

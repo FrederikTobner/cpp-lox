@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['what_224',['what',['../classcppLox_1_1Error_1_1CompileTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86',1,'cppLox::Error::CompileTimeException::what()'],['../classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86',1,'cppLox::Error::RunTimeException::what()']]],
-  ['while_225',['WHILE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac0ca84371abbc18f52fd48e32195cd15',1,'cppLox::Frontend::Token']]],
-  ['write_226',['write',['../classcppLox_1_1ByteCode_1_1Chunk.html#a9e1a52a16a19013b800ac2a5726645e6',1,'cppLox::ByteCode::Chunk::write(uint8_t byte, int line)'],['../classcppLox_1_1ByteCode_1_1Chunk.html#a6a590b68f123808e8a3a8fd33cb05e24',1,'cppLox::ByteCode::Chunk::write(Opcode byte, int line)']]],
-  ['writetooutputstream_227',['writeToOutputStream',['../classcppLox_1_1Types_1_1Object.html#ab5704d9df08c8a8a9224f297df957e20',1,'cppLox::Types::Object::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectString.html#a909e3657219447760f5195739f3750ce',1,'cppLox::Types::ObjectString::writeToOutputStream()']]]
+  ['value_228',['Value',['../classcppLox_1_1Types_1_1Value.html',1,'Value'],['../classcppLox_1_1Types_1_1Value.html#abe8b5f7eee6b178c99c13b92f7ce85d4',1,'cppLox::Types::Value::Value()'],['../classcppLox_1_1Types_1_1Value.html#ad7a6ddd22c84ae38cb303a4917f3d654',1,'cppLox::Types::Value::Value(bool value)'],['../classcppLox_1_1Types_1_1Value.html#a35cacb12b494ecd3015a0aa99ee71f1f',1,'cppLox::Types::Value::Value(double value)'],['../classcppLox_1_1Types_1_1Value.html#ada5a32777c50fe5a30d362b8c8b46c55',1,'cppLox::Types::Value::Value(Object *value)']]],
+  ['value_2ecpp_229',['value.cpp',['../value_8cpp.html',1,'']]],
+  ['value_2ehpp_230',['value.hpp',['../value_8hpp.html',1,'']]],
+  ['value_5fformatter_2ehpp_231',['value_formatter.hpp',['../value__formatter_8hpp.html',1,'']]],
+  ['var_232',['VAR',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ad6f4440b8633f973d33c78928bdac2e1',1,'cppLox::Frontend::Token']]],
+  ['vm_233',['VM',['../classcppLox_1_1Backend_1_1VM.html',1,'VM'],['../classcppLox_1_1Backend_1_1VM.html#acc1dbcb918d4be117612f5e69fecead5',1,'cppLox::Backend::VM::VM()']]],
+  ['vm_2ecpp_234',['vm.cpp',['../vm_8cpp.html',1,'']]],
+  ['vm_2ehpp_235',['vm.hpp',['../vm_8hpp.html',1,'']]]
 ];

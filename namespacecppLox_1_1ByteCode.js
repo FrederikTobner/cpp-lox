@@ -21,5 +21,6 @@ var namespacecppLox_1_1ByteCode =
       [ "SUBTRACT", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aad8ff967f143b54da6d2112fb5858e8c", null ],
       [ "TRUE", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa82764c3079aea4e60c80e45befbb839", null ]
     ] ],
-    [ "opcode_as_string", "namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12", null ]
+    [ "opcode_as_string", "namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12", null ],
+    [ "operator<<", "namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2", null ]
 ];

@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('classcppLox_1_1Frontend_1_1Token.html'
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a token in the source code.  
+ <a href="classcppLox_1_1Frontend_1_1Token.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="token_8hpp_source.html">token.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -155,8 +158,11 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3836d4e84d9b1a5aa95bfe71bc147537"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a3836d4e84d9b1a5aa95bfe71bc147537">Token</a> (<a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479">Type</a> <a class="el" href="classcppLox_1_1Frontend_1_1Token.html#af82206bb73fc41d95a035740760d40a2">type</a>, std::string <a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a1270fba20d03fb5a03982e64275f9893">lexeme</a>, size_t <a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a08ef59f0ccea60586542cfd0beea09f1">line</a>)</td></tr>
-<tr class="memdesc:a3836d4e84d9b1a5aa95bfe71bc147537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> object.  <a href="classcppLox_1_1Frontend_1_1Token.html#a3836d4e84d9b1a5aa95bfe71bc147537">More...</a><br /></td></tr>
+<tr class="memdesc:a3836d4e84d9b1a5aa95bfe71bc147537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classcppLox_1_1Frontend_1_1Token.html" title="Represents a token in the source code.">Token</a> object.  <a href="classcppLox_1_1Frontend_1_1Token.html#a3836d4e84d9b1a5aa95bfe71bc147537">More...</a><br /></td></tr>
 <tr class="separator:a3836d4e84d9b1a5aa95bfe71bc147537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7add93c081384656a6aadf8e524fe88f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a7add93c081384656a6aadf8e524fe88f">~Token</a> ()=default</td></tr>
+<tr class="memdesc:a7add93c081384656a6aadf8e524fe88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classcppLox_1_1Frontend_1_1Token.html" title="Represents a token in the source code.">Token</a> object.  <a href="classcppLox_1_1Frontend_1_1Token.html#a7add93c081384656a6aadf8e524fe88f">More...</a><br /></td></tr>
+<tr class="separator:a7add93c081384656a6aadf8e524fe88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af82206bb73fc41d95a035740760d40a2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Token.html#af82206bb73fc41d95a035740760d40a2">type</a> () const -&gt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479">Type</a></td></tr>
 <tr class="memdesc:af82206bb73fc41d95a035740760d40a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the token.  <a href="classcppLox_1_1Frontend_1_1Token.html#af82206bb73fc41d95a035740760d40a2">More...</a><br /></td></tr>
 <tr class="separator:af82206bb73fc41d95a035740760d40a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,7 +191,9 @@ Friends</h2></td></tr>
 <tr class="memdesc:a367117fb1c05192731744fe79670d0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends the string representation of the token to the output stream.  <a href="classcppLox_1_1Frontend_1_1Token.html#a367117fb1c05192731744fe79670d0b7">More...</a><br /></td></tr>
 <tr class="separator:a367117fb1c05192731744fe79670d0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a token in the source code. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5f787df9cdf370248382504196841479"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f787df9cdf370248382504196841479">&#9670;&nbsp;</a></span>Type</h2>
 
@@ -286,7 +294,8 @@ Friends</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a5f787df9cdf370248382504196841479ac0ca84371abbc18f52fd48e32195cd15"></a>WHILE&#160;</td><td class="fielddoc"><p>A while keyword. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5f787df9cdf370248382504196841479ad01105a464390b87eab3d6c69be43a08"></a>AMOUNT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5f787df9cdf370248382504196841479ad01105a464390b87eab3d6c69be43a08"></a>AMOUNT&#160;</td><td class="fielddoc"><p>The number of token types - used for initializing the array of parse rules. </p>
+</td></tr>
 </table>
 
 </div>
@@ -324,7 +333,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> object. </p>
+<p>Construct a new <a class="el" href="classcppLox_1_1Frontend_1_1Token.html" title="Represents a token in the source code.">Token</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>The type of the token </td></tr>
@@ -333,6 +342,33 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7add93c081384656a6aadf8e524fe88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7add93c081384656a6aadf8e524fe88f">&#9670;&nbsp;</a></span>~Token()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">~<a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroy the <a class="el" href="classcppLox_1_1Frontend_1_1Token.html" title="Represents a token in the source code.">Token</a> object. </p>
 
 </div>
 </div>

@@ -100,6 +100,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lexer of the language.  <a href="classcppLox_1_1Frontend_1_1Lexer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a token in the source code.  <a href="classcppLox_1_1Frontend_1_1Token.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -146,17 +147,28 @@ Enumerations</h2></td></tr>
 
 <p>The precedence of the expressions and statements of the language. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83"></a>ASSIGNMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea1d00e7dce692e8dc3f6877f035e3a616"></a>OR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea558ffc8f5770d8e4f95f51d822685532"></a>AND&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea22d77b4f36283fa15f20867ad3f2a30e"></a>EQUALITY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea4fd4da223d344be375847dcacc013d7f"></a>COMPARISON&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea8baeec6d282f1791ea9954d0c514ed8d"></a>TERM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eaec66d48bdd7a5171d7eb5d60840db165"></a>FACTOR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4"></a>UNARY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eaca3547acb9162b49fb4a6594ed9b3030"></a>CALL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc"></a>PRIMARY&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>The lowest precedence. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83"></a>ASSIGNMENT&#160;</td><td class="fielddoc"><p>The precedence of the assignment operator. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea1d00e7dce692e8dc3f6877f035e3a616"></a>OR&#160;</td><td class="fielddoc"><p>The precedence of the or operator. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea558ffc8f5770d8e4f95f51d822685532"></a>AND&#160;</td><td class="fielddoc"><p>The precedence of the and operator. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea22d77b4f36283fa15f20867ad3f2a30e"></a>EQUALITY&#160;</td><td class="fielddoc"><p>The precedence of equality operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea4fd4da223d344be375847dcacc013d7f"></a>COMPARISON&#160;</td><td class="fielddoc"><p>The precedence of comparison operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea8baeec6d282f1791ea9954d0c514ed8d"></a>TERM&#160;</td><td class="fielddoc"><p>The precedence of term operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eaec66d48bdd7a5171d7eb5d60840db165"></a>FACTOR&#160;</td><td class="fielddoc"><p>The precedence of factor operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4"></a>UNARY&#160;</td><td class="fielddoc"><p>The precedence of unary operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852eaca3547acb9162b49fb4a6594ed9b3030"></a>CALL&#160;</td><td class="fielddoc"><p>The precedence of call and primary operators. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc"></a>PRIMARY&#160;</td><td class="fielddoc"><p>The precedence of primary operators. </p>
+</td></tr>
 </table>
 
 </div>
