@@ -1,14 +1,21 @@
 cmake_minimum_required(VERSION 3.24)
 
 set(INTERPRETER_TESTS ${PROJECT_NAME}-tests)
-
-#Fetches google-test framework from the github repo
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.14.0
-)
+find_library(GTEST_LIB gtest)
+if(NOT GTEST_LIB)
+  #Fetches google-test framework from the github repo
+  include(FetchContent)
+  FetchContent_Declare(
+    gtest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG v1.14.0
+  )
+  #Fetches google test
+  FetchContent_MakeAvailable(gtest)
+else()
+  message(STATUS "Found GTest: ${GTEST_LIB}")
+  find_package(GTest REQUIRED)
+endif()
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
@@ -46,14 +53,13 @@ if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
 endif()
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-#Fetches google test
-FetchContent_MakeAvailable(googletest)
+if(WIN32)
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif()
 
 #Links googletest and googlemock to the test executable
 target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)
 
-include(googletest)
+include(GoogleTest)
 
 gtest_discover_tests(${INTERPRETER_TESTS})
