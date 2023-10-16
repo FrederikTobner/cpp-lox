@@ -7,25 +7,54 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{matrix.operatingsystems}}
     env:
       BUILD_TYPE: ${{matrix.buildtypes}}
     strategy:  
       matrix:
+        operatingsystems: [windows-latest, ubuntu-latest, macos-latest]
         buildtypes: [Debug, Release]
     steps:
     - uses: actions/checkout@v3
 
     - name: Setup Ninja
+      if: runner.os == 'Windows'
       uses: ashutoshvarma/setup-ninja@master
       with:
         version: 1.10.2
 
     - name: Setup MSVC under Windows
+      if: runner.os == 'Windows'
       uses: ilammy/msvc-dev-cmd@v1
 
-    - name: Configure CMake        
+      # Schlinux setup
+    - name: Setup Dependencies under Linux
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install \
+          cmake \
+          ninja-build \
+          gcc-13 \
+          g++-13 \
+          ${NULL+}
+
+  # SchmockOS setup
+    - name: Setup Dependencies under MacOS
+      if: runner.os == 'macOS'
+      run: |
+        brew install \
+          gcc@13 \
+          ninja \
+          ${NULL+}
+
+    - name: Configure CMake under Windows
+      if: runner.os == 'Windows'       
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja -DCLX_BUILD_TESTS=ON
+
+    - name: Configure Cmake under Linux or MacOS
+      if: runner.os == 'Linux' || runner.os == 'macOS'
+      run: cmake -D CMAKE_C_COMPILER=gcc-13 -D CMAKE_CXX_COMPILER=g++-13 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja -DCLX_BUILD_TESTS=ON
 
     - name: Build tests
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
@@ -35,15 +64,18 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
     
     - name: Setup OpenCppCoverage and add to Path
+      if: runner.os == 'Windows' && matrix.buildtypes == 'Release'
       id: setup_opencppcoverage
       run: |
         choco install OpenCppCoverage -y
         echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
     - name: Generate Report
+      if: runner.os == 'Windows' && matrix.buildtypes == 'Release'
       id: generate_test_report
       shell: cmd
       run: OpenCppCoverage.exe --verbose --sources src --export_type cobertura:cpplox.xml -- build/test/cpplox-tests.exe
     - name: Upload Report to Codecov
+      if: runner.os == 'Windows' && matrix.buildtypes == 'Release'
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
