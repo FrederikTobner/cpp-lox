@@ -98,9 +98,9 @@ TEST_F(VMTest, EqualInstruction) {
 
     // Assert
     // 42 == 42
-    EXPECT_EQ(true, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
     // 42 == 43
-    EXPECT_EQ(false, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
 TEST_F(VMTest, FalseInstruction) {
