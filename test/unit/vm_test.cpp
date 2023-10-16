@@ -180,11 +180,11 @@ TEST_F(VMTest, GreaterEqualInstruction) {
 
     // Assert
     // 42 >= 42
-    EXPECT_EQ(true, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
     // 42 >= 43
-    EXPECT_EQ(false, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
     // 43 >= 42
-    EXPECT_EQ(true, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
 }
 
 TEST_F(VMTest, LessInstruction) {
