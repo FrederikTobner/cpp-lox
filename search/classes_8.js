@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stringhash_264',['StringHash',['../structcppLox_1_1Common_1_1StringHash.html',1,'cppLox::Common']]]
+  ['simplecomperator_262',['SimpleComperator',['../structcppLox_1_1Types_1_1SimpleComperator.html',1,'cppLox::Types']]]
 ];

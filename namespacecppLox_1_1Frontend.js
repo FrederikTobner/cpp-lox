@@ -1,8 +1,8 @@
 var namespacecppLox_1_1Frontend =
 [
-    [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
     [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ],
     [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ],
+    [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
     [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ],
     [ "Precedence", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e", [
       [ "NONE", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693", null ],

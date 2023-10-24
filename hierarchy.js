@@ -18,8 +18,8 @@ var hierarchy =
     [ "Object", "classcppLox_1_1Types_1_1Object.html", [
       [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", null ]
     ] ],
-    [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", null ],
-    [ "StringHash", "structcppLox_1_1Common_1_1StringHash.html", null ],
+    [ "ParseRule< T >", "classcppLox_1_1Frontend_1_1ParseRule.html", null ],
+    [ "SimpleComperator< T >", "structcppLox_1_1Types_1_1SimpleComperator.html", null ],
     [ "Token", "classcppLox_1_1Frontend_1_1Token.html", null ],
     [ "Value", "classcppLox_1_1Types_1_1Value.html", null ],
     [ "VM", "classcppLox_1_1Backend_1_1VM.html", null ]

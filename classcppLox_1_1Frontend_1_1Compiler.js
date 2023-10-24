@@ -17,11 +17,11 @@ var classcppLox_1_1Frontend_1_1Compiler =
     [ "error", "classcppLox_1_1Frontend_1_1Compiler.html#a52c441628b81c88ca34b9d8155dddedb", null ],
     [ "errorAtCurrent", "classcppLox_1_1Frontend_1_1Compiler.html#a441193e88975b3fc47e03c86d533167f", null ],
     [ "expression", "classcppLox_1_1Frontend_1_1Compiler.html#ab973e51b504c7f2b2d75490cddc807a5", null ],
-    [ "getRule", "classcppLox_1_1Frontend_1_1Compiler.html#aea2d122482df57849d4a3301ae304d59", null ],
+    [ "getRule", "classcppLox_1_1Frontend_1_1Compiler.html#a03eb2eb9b1f2eb07f8f7e5ea3c83ce80", null ],
     [ "grouping", "classcppLox_1_1Frontend_1_1Compiler.html#acf504c5cc79cb707021858693378a0c3", null ],
     [ "literal", "classcppLox_1_1Frontend_1_1Compiler.html#af9729f1e5455dc9b7ec4f21d164799e9", null ],
     [ "makeConstant", "classcppLox_1_1Frontend_1_1Compiler.html#aff95433969b76a84c03a82319cd58ad0", null ],
-    [ "makeRules", "classcppLox_1_1Frontend_1_1Compiler.html#a845f7d46c28c11a3d28cc2944b2ecb6f", null ],
+    [ "makeRules", "classcppLox_1_1Frontend_1_1Compiler.html#a6d3f14e374f68817e283193062d2dc68", null ],
     [ "number", "classcppLox_1_1Frontend_1_1Compiler.html#a0eece4ed9fba46dcdb9fb195bc7c24bb", null ],
     [ "parsePrecedence", "classcppLox_1_1Frontend_1_1Compiler.html#ae8ed1cf8635aff95870ea5c6582142a4", null ],
     [ "printStatement", "classcppLox_1_1Frontend_1_1Compiler.html#a6f00fa873e97092a7a794e926996a0df", null ],
@@ -32,5 +32,5 @@ var classcppLox_1_1Frontend_1_1Compiler =
     [ "m_currentTokenIndex", "classcppLox_1_1Frontend_1_1Compiler.html#ab36625d400fdb9914c13582ac9f9b177", null ],
     [ "m_memoryMutator", "classcppLox_1_1Frontend_1_1Compiler.html#a7b6546c48ad7a0d14394ccb6f4035645", null ],
     [ "m_previous", "classcppLox_1_1Frontend_1_1Compiler.html#a737eb262dbf2baabad30f5774865d7dd", null ],
-    [ "m_rules", "classcppLox_1_1Frontend_1_1Compiler.html#a86d163155b74b206da2680230ba01f31", null ]
+    [ "m_rules", "classcppLox_1_1Frontend_1_1Compiler.html#ab39607aa723e7e30af3c0f1cc47a6b26", null ]
 ];

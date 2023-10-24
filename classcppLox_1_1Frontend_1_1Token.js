@@ -42,7 +42,7 @@ var classcppLox_1_1Frontend_1_1Token =
       [ "WHILE", "classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac0ca84371abbc18f52fd48e32195cd15", null ],
       [ "AMOUNT", "classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ad01105a464390b87eab3d6c69be43a08", null ]
     ] ],
-    [ "Token", "classcppLox_1_1Frontend_1_1Token.html#a3836d4e84d9b1a5aa95bfe71bc147537", null ],
+    [ "Token", "classcppLox_1_1Frontend_1_1Token.html#aef596dc2130cd06f05761f6dc5284846", null ],
     [ "~Token", "classcppLox_1_1Frontend_1_1Token.html#a7add93c081384656a6aadf8e524fe88f", null ],
     [ "lexeme", "classcppLox_1_1Frontend_1_1Token.html#a1270fba20d03fb5a03982e64275f9893", null ],
     [ "line", "classcppLox_1_1Frontend_1_1Token.html#a08ef59f0ccea60586542cfd0beea09f1", null ],

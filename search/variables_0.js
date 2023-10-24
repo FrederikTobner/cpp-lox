@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['isanunderlyingvaluetype_408',['IsAnUnderLyingValueType',['../namespacecppLox_1_1Types.html#aceea059294c51d166ebe5772f0e35e10',1,'cppLox::Types']]],
-  ['isderivedfromobject_409',['IsDerivedFromObject',['../namespacecppLox_1_1Types.html#a8df55ff95ed5f44b0f1b504d1b9e7466',1,'cppLox::Types']]]
+  ['isanunderlyingvaluetype_406',['IsAnUnderLyingValueType',['../namespacecppLox_1_1Types.html#aceea059294c51d166ebe5772f0e35e10',1,'cppLox::Types']]],
+  ['isderivedfromobject_407',['IsDerivedFromObject',['../namespacecppLox_1_1Types.html#a8df55ff95ed5f44b0f1b504d1b9e7466',1,'cppLox::Types']]]
 ];

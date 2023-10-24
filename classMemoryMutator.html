@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('classMemoryMutator.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>The memory manager that manages all objects.  
+<p>The memory manager that manages the creation and deletion of all objects.  
  <a href="classMemoryMutator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="memory__mutator_8hpp_source.html">memory_mutator.hpp</a>&gt;</code></p>
@@ -112,12 +112,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#ae3f7f939fbefae7ea0ade6f52c601bac">m_objects</a></td></tr>
 <tr class="memdesc:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all objects that are currently allocated.  <a href="classMemoryMutator.html#ae3f7f939fbefae7ea0ade6f52c601bac">More...</a><br /></td></tr>
 <tr class="separator:ae3f7f939fbefae7ea0ade6f52c601bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2f887fbe3b7c9d33206c4bf3c3a579d"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#ab2f887fbe3b7c9d33206c4bf3c3a579d">m_strings</a></td></tr>
-<tr class="memdesc:ab2f887fbe3b7c9d33206c4bf3c3a579d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of all strings that are currently allocated.  <a href="classMemoryMutator.html#ab2f887fbe3b7c9d33206c4bf3c3a579d">More...</a><br /></td></tr>
-<tr class="separator:ab2f887fbe3b7c9d33206c4bf3c3a579d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bff13a8aa5eedf89baaffe76c77c5b7"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> *, std::hash&lt; <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> &gt;, <a class="el" href="structcppLox_1_1Types_1_1SimpleComperator.html">cppLox::Types::SimpleComperator</a>&lt; <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryMutator.html#a5bff13a8aa5eedf89baaffe76c77c5b7">m_strings</a></td></tr>
+<tr class="memdesc:a5bff13a8aa5eedf89baaffe76c77c5b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set of all strings that are currently allocated.  <a href="classMemoryMutator.html#a5bff13a8aa5eedf89baaffe76c77c5b7">More...</a><br /></td></tr>
+<tr class="separator:a5bff13a8aa5eedf89baaffe76c77c5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The memory manager that manages all objects. </p>
+<div class="textblock"><p>The memory manager that manages the creation and deletion of all objects. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a569c64067f749ddb6be55d6c65753fa7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a569c64067f749ddb6be55d6c65753fa7">&#9670;&nbsp;</a></span>MemoryMutator()</h2>
@@ -237,8 +237,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab2f887fbe3b7c9d33206c4bf3c3a579d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f887fbe3b7c9d33206c4bf3c3a579d">&#9670;&nbsp;</a></span>m_strings</h2>
+<a id="a5bff13a8aa5eedf89baaffe76c77c5b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bff13a8aa5eedf89baaffe76c77c5b7">&#9670;&nbsp;</a></span>m_strings</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +247,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_set&lt;<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> *&gt; m_strings</td>
+          <td class="memname">std::unordered_set&lt;<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> *, std::hash&lt;<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a>&gt;, <a class="el" href="structcppLox_1_1Types_1_1SimpleComperator.html">cppLox::Types::SimpleComperator</a>&lt;<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a>&gt; &gt; m_strings</td>
         </tr>
       </table>
   </td>

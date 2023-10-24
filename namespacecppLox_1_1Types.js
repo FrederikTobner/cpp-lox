@@ -1,5 +1,6 @@
 var namespacecppLox_1_1Types =
 [
+    [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ],
     [ "Object", "classcppLox_1_1Types_1_1Object.html", "classcppLox_1_1Types_1_1Object" ],
     [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", "classcppLox_1_1Types_1_1ObjectString" ],
     [ "Value", "classcppLox_1_1Types_1_1Value.html", "classcppLox_1_1Types_1_1Value" ],

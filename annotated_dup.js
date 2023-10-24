@@ -7,20 +7,18 @@ var annotated_dup =
       [ "ByteCode", "namespacecppLox_1_1ByteCode.html", [
         [ "Chunk", "classcppLox_1_1ByteCode_1_1Chunk.html", "classcppLox_1_1ByteCode_1_1Chunk" ]
       ] ],
-      [ "Common", "namespacecppLox_1_1Common.html", [
-        [ "StringHash", "structcppLox_1_1Common_1_1StringHash.html", "structcppLox_1_1Common_1_1StringHash" ]
-      ] ],
       [ "Error", "namespacecppLox_1_1Error.html", [
         [ "CompileTimeException", "classcppLox_1_1Error_1_1CompileTimeException.html", "classcppLox_1_1Error_1_1CompileTimeException" ],
         [ "RunTimeException", "classcppLox_1_1Error_1_1RunTimeException.html", "classcppLox_1_1Error_1_1RunTimeException" ]
       ] ],
       [ "Frontend", "namespacecppLox_1_1Frontend.html", [
-        [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
         [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ],
         [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ],
+        [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
         [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ]
       ] ],
       [ "Types", "namespacecppLox_1_1Types.html", [
+        [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ],
         [ "Object", "classcppLox_1_1Types_1_1Object.html", "classcppLox_1_1Types_1_1Object" ],
         [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", "classcppLox_1_1Types_1_1ObjectString" ],
         [ "Value", "classcppLox_1_1Types_1_1Value.html", "classcppLox_1_1Types_1_1Value" ]

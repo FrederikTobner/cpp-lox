@@ -10,11 +10,12 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "init.hpp", "init_8hpp.html", "init_8hpp" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "memory_mutator.hpp", "memory__mutator_8hpp.html", [
-      [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ],
       [ "MemoryMutator", "classMemoryMutator.html", "classMemoryMutator" ]
     ] ],
-    [ "string_hash.cpp", "string__hash_8cpp.html", null ],
+    [ "simple_comperator.hpp", "simple__comperator_8hpp.html", [
+      [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ]
+    ] ],
     [ "string_hash.hpp", "string__hash_8hpp.html", [
-      [ "StringHash", "structcppLox_1_1Common_1_1StringHash.html", "structcppLox_1_1Common_1_1StringHash" ]
+      [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ]
     ] ]
 ];
