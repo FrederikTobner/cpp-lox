@@ -8,49 +8,11 @@
 
 #include "../bytecode/chunk.hpp"
 #include "../memory_mutator.hpp"
+#include "parse_rule.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
 namespace cppLox::Frontend {
-
-// Forward declaration of the compiler.
-class Compiler;
-
-class ParseRule {
-  public:
-    ParseRule() {
-        m_prefix = std::nullopt;
-        m_infix = std::nullopt;
-        m_precedence = Precedence::NONE;
-    }
-    ParseRule(std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> prefix,
-              std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> infix, Precedence precedence) {
-        m_prefix = prefix;
-        m_infix = infix;
-        m_precedence = precedence;
-    }
-    ~ParseRule() = default;
-    /// @brief Gets the prefix function of the rule.
-    /// @return An optional containing the prefix function of the rule.
-    [[nodiscard]] auto prefix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
-        return m_prefix;
-    }
-    /// @brief Gets the infix function of the rule.
-    /// @return An optional containing the infix function of the rule.
-    [[nodiscard]] auto infix() const -> std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> {
-        return m_infix;
-    }
-    /// @brief Gets the precedence of the rule.
-    /// @return The precedence of the rule.
-    [[nodiscard]] auto precedence() -> Precedence const & {
-        return m_precedence;
-    }
-
-  private:
-    Precedence m_precedence;
-    std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> m_prefix;
-    std::optional<void (Compiler::*)(std::vector<Token> const & tokens)> m_infix;
-};
 
 class Compiler {
 
@@ -133,7 +95,7 @@ class Compiler {
     /// @brief Gets the rule for the given token type.
     /// @param type The type of the token.
     /// @return The rule for the given token type.
-    [[nodiscard]] auto getRule(Token::Type type) -> ParseRule *;
+    [[nodiscard]] auto getRule(Token::Type type) -> ParseRule<Compiler> *;
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
@@ -162,57 +124,84 @@ class Compiler {
 
     auto string(std::vector<Token> const & tokens) -> void;
 
-    static std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
-        std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
+    static std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
+        std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
         rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
-            ParseRule(&Compiler::grouping, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::grouping, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::RIGHT_PARENTHESES)] =
-            ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::LEFT_BRACE)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::RIGHT_BRACE)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::COMMA)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::DOT)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::LEFT_BRACE)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::RIGHT_BRACE)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::COMMA)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::DOT)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::MINUS)] =
-            ParseRule(&Compiler::unary, &Compiler::binary, Precedence::TERM);
-        rules[static_cast<size_t>(Token::Type::PLUS)] = ParseRule(std::nullopt, &Compiler::binary, Precedence::TERM);
-        rules[static_cast<size_t>(Token::Type::SEMICOLON)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::SLASH)] = ParseRule(std::nullopt, &Compiler::binary, Precedence::FACTOR);
-        rules[static_cast<size_t>(Token::Type::STAR)] = ParseRule(std::nullopt, &Compiler::binary, Precedence::FACTOR);
-        rules[static_cast<size_t>(Token::Type::BANG)] = ParseRule(&Compiler::unary, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::unary, &Compiler::binary, Precedence::TERM);
+        rules[static_cast<size_t>(Token::Type::PLUS)] =
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::TERM);
+        rules[static_cast<size_t>(Token::Type::SEMICOLON)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::SLASH)] =
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::FACTOR);
+        rules[static_cast<size_t>(Token::Type::STAR)] =
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::FACTOR);
+        rules[static_cast<size_t>(Token::Type::BANG)] =
+            ParseRule<Compiler>(&Compiler::unary, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::BANG_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
-        rules[static_cast<size_t>(Token::Type::EQUAL)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
+        rules[static_cast<size_t>(Token::Type::EQUAL)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::EQUAL_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
         rules[static_cast<size_t>(Token::Type::GREATER)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::GREATER_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::LESS)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::LESS_EQUAL)] =
-            ParseRule(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
-        rules[static_cast<size_t>(Token::Type::IDENTIFIER)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::STRING)] = ParseRule(&Compiler::string, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::NUMBER)] = ParseRule(&Compiler::number, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::AND)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::CLASS)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::ELSE)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FALSE)] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FUN)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FOR)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::IF)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::NULL_)] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::OR)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
+        rules[static_cast<size_t>(Token::Type::IDENTIFIER)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::STRING)] =
+            ParseRule<Compiler>(&Compiler::string, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::NUMBER)] =
+            ParseRule<Compiler>(&Compiler::number, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::AND)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::CLASS)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::ELSE)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::FALSE)] =
+            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::FUN)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::FOR)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::IF)] = ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::NULL_)] =
+            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::OR)] = ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::PRINT)] =
-            ParseRule(&Compiler::printStatement, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::RETURN)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::SUPER)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::THIS)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::TRUE)] = ParseRule(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::VAR)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::WHILE)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::END_OF_FILE)] = ParseRule(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::printStatement, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::RETURN)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::SUPER)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::THIS)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::TRUE)] =
+            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::VAR)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::WHILE)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::END_OF_FILE)] =
+            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         return rules;
     }
 
@@ -227,6 +216,6 @@ class Compiler {
     /// @brief The memory manager.
     MemoryMutator * m_memoryMutator;
     /// @brief The rules for the different token types.
-    static inline std::array<ParseRule, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
+    static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
 };
 } // namespace cppLox::Frontend

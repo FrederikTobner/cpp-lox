@@ -3,27 +3,22 @@ cmake_minimum_required(VERSION 3.24)
 set(INTERPRETER_TESTS ${PROJECT_NAME}-tests)
 
 #Fetches google-test framework from the github repo
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.14.0
-)
+include(AddDependency)
+add_github_dependency(googletest google/googletest v1.14.0)
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.hpp)
 
 add_compile_definitions(
-# Flag that indicates that test are executed
-CELLOX_TESTS_RUNNING
-# Directory of the cellox e2e tests
-TEST_PROGRAM_BASE_PATH="${PROJECT_SOURCE_DIR}/test/"
+  # Flag that indicates that test are executed
+  CELLOX_TESTS_RUNNING
+  # Directory of the cellox e2e tests
+  TEST_PROGRAM_BASE_PATH="${PROJECT_SOURCE_DIR}/test/"
 )
 
 # Builds tests
-add_executable(${INTERPRETER_TESTS} 
-${TEST_SOURCES} ${INTERPRETER_SOURCES})
+add_executable(${INTERPRETER_TESTS} ${TEST_SOURCES} ${INTERPRETER_SOURCES})
 
 # Includes SourcePath of the compiler for shorter includes and the config file
 target_include_directories(${INTERPRETER_TESTS} PUBLIC ${SOURCEPATH} ${PROJECT_BINARY_DIR}/src)
@@ -47,9 +42,6 @@ endif()
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
-#Fetches google test
-FetchContent_MakeAvailable(googletest)
 
 #Links googletest and googlemock to the test executable
 target_link_libraries(${INTERPRETER_TESTS} GTest::gtest_main GTest::gmock_main)

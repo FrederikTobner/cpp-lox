@@ -5,8 +5,5 @@
 
 using namespace cppLox::Frontend;
 
-Token::Token(Type type, std::string lexeme, size_t line) {
-    this->m_type = type;
-    this->m_lexeme = lexeme;
-    this->m_line = line;
+Token::Token(Token::Type type, std::string lexeme, std::size_t line) : m_type(type), m_lexeme(lexeme), m_line(line) {
 }

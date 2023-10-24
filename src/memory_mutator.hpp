@@ -8,17 +8,10 @@
 #include "types/object.hpp"
 #include "types/object_string.hpp"
 
-namespace std {
+#include "simple_comperator.hpp"
+#include "string_hash.hpp"
 
-template <> struct hash<cppLox::Types::ObjectString> {
-
-    std::size_t operator()(cppLox::Types::ObjectString * s) const {
-        return std::hash<std::string_view>{}(s->string());
-    }
-};
-} // namespace std
-
-/// @brief The memory manager that manages all objects.
+/// @brief The memory manager that manages the creation and deletion of all objects.
 class MemoryMutator {
 
   public:
@@ -36,11 +29,11 @@ class MemoryMutator {
     /// @return A pointer to the newly created object.
     template <typename T, class... Args> auto create(Args &&... args) -> cppLox::Types::Object * {
         if constexpr (std::is_same_v<T, cppLox::Types::ObjectString>) {
-            cppLox::Types::ObjectString * string = new cppLox::Types::ObjectString(std::forward<Args>(args)...);
-            std::unordered_set<cppLox::Types::ObjectString *>::iterator it = this->m_strings.find(string);
-            if (it != m_strings.end()) {
+            auto string = new T(std::forward<Args>(args)...);
+            std::unordered_set<cppLox::Types::ObjectString *>::iterator iterator = this->m_strings.find(string);
+            if (iterator != m_strings.end()) {
                 delete string;
-                return static_cast<cppLox::Types::Object *>(*it);
+                return static_cast<cppLox::Types::Object *>(*iterator);
             }
             m_strings.insert(string);
             return static_cast<cppLox::Types::Object *>(string);
@@ -54,5 +47,7 @@ class MemoryMutator {
     /// @brief The list of all objects that are currently allocated.
     std::vector<std::unique_ptr<cppLox::Types::Object>> m_objects;
     /// @brief The set of all strings that are currently allocated.
-    std::unordered_set<cppLox::Types::ObjectString *> m_strings;
+    std::unordered_set<cppLox::Types::ObjectString *, std::hash<cppLox::Types::ObjectString>,
+                       cppLox::Types::SimpleComperator<cppLox::Types::ObjectString>>
+        m_strings;
 };

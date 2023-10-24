@@ -29,6 +29,14 @@ class ObjectString : public Object {
         os << *m_string.get();
     }
 
+    auto operator==(ObjectString const & other) const -> bool {
+        return *m_string.get() == other.string();
+    }
+
+    auto operator==(ObjectString const * other) const -> bool {
+        return *m_string.get() == other->string();
+    }
+
   private:
     /// @brief The value of the underlying string.
     std::unique_ptr<std::string> m_string;

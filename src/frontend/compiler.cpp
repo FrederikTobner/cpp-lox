@@ -10,8 +10,7 @@
 
 using namespace cppLox::Frontend;
 
-Compiler::Compiler(MemoryMutator * memoryMutator) {
-    m_memoryMutator = memoryMutator;
+Compiler::Compiler(MemoryMutator * memoryMutator) : m_memoryMutator(memoryMutator) {
 }
 
 auto Compiler::compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk> {
@@ -147,7 +146,7 @@ auto Compiler::string(std::vector<Token> const & tokens) -> void {
     emitConstant(cppLox::Types::Value(m_memoryMutator->create<cppLox::Types::ObjectString>(m_previous->lexeme())));
 }
 
-auto Compiler::getRule(Token::Type type) -> ParseRule * {
+auto Compiler::getRule(Token::Type type) -> ParseRule<Compiler> * {
     return &(m_rules[static_cast<size_t>(type)]);
 }
 

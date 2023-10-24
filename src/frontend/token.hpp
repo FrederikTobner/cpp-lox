@@ -96,7 +96,7 @@ class Token {
     /// @param type The type of the token
     /// @param lexeme The string representation of the token
     /// @param line The line number where the token was found
-    Token(Type type, std::string lexeme, size_t line);
+    Token(Token::Type type, std::string lexeme, std::size_t line);
 
     /// @brief Destroy the Token object
     ~Token() = default;
