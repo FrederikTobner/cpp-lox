@@ -17,9 +17,6 @@ class MemoryMutator {
   public:
     MemoryMutator() = default;
     ~MemoryMutator() {
-        for (auto string : m_strings) {
-            delete string;
-        }
     }
 
     /// @brief Creates a new object of the given type.
@@ -27,7 +24,9 @@ class MemoryMutator {
     /// @tparam T The type of the object to create.
     /// @param ...args The arguments to pass to the constructor.
     /// @return A pointer to the newly created object.
-    template <typename T, class... Args> auto create(Args &&... args) -> cppLox::Types::Object * {
+    template <cppLox::Types::DerivedFromObject T, class... Args>
+    auto create(Args &&... args) -> cppLox::Types::Object * {
+        cppLox::Types::Object * object;
         if constexpr (std::is_same_v<T, cppLox::Types::ObjectString>) {
             auto string = new T(std::forward<Args>(args)...);
             std::unordered_set<cppLox::Types::ObjectString *>::iterator iterator = this->m_strings.find(string);
@@ -36,9 +35,10 @@ class MemoryMutator {
                 return static_cast<cppLox::Types::Object *>(*iterator);
             }
             m_strings.insert(string);
-            return static_cast<cppLox::Types::Object *>(string);
+            object = static_cast<cppLox::Types::Object *>(string);
+        } else {
+            cppLox::Types::Object * object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         }
-        cppLox::Types::Object * object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
     }

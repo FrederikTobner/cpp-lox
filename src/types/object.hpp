@@ -9,7 +9,7 @@ class Object;
 
 /// @brief Checks if the given type is derived from Object.
 template <typename T>
-concept IsDerivedFromObject = std::is_base_of<Object, T>::value;
+concept DerivedFromObject = std::derived_from<T, cppLox::Types::Object>;
 
 /// @brief The base class for all objects.
 class Object {
@@ -40,7 +40,7 @@ class Object {
     /// @brief Casts the object to the given type.
     /// @tparam T The type to cast to.
     /// @return The object cast to the given type.
-    template <IsDerivedFromObject T> [[nodiscard]] auto as() -> T * {
+    template <DerivedFromObject T> [[nodiscard]] auto as() -> T * {
         return static_cast<T *>(this);
     }
 

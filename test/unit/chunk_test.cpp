@@ -62,7 +62,7 @@ class ChunkParameterizedSimpleInstructionTestFixture
 };
 
 // The paramiters for this test suite are a pair of Opcode and the expected string output for that opcode
-INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassemble, ChunkParameterizedSimpleInstructionTestFixture,
+INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassembleSimpleInstruction, ChunkParameterizedSimpleInstructionTestFixture,
                          ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::ADD, "ADD"),
                                            std::make_pair(cppLox::ByteCode::Opcode::DIVIDE, "DIVIDE"),
                                            std::make_pair(cppLox::ByteCode::Opcode::EQUAL, "EQUAL"),
