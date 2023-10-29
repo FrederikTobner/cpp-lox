@@ -16,8 +16,7 @@ class MemoryMutator {
 
   public:
     MemoryMutator() = default;
-    ~MemoryMutator() {
-    }
+    ~MemoryMutator() = default;
 
     /// @brief Creates a new object of the given type.
     /// @tparam ...Args The types of the arguments to pass to the constructor.
@@ -29,7 +28,7 @@ class MemoryMutator {
         cppLox::Types::Object * object;
         if constexpr (std::is_same_v<T, cppLox::Types::ObjectString>) {
             auto string = new T(std::forward<Args>(args)...);
-            std::unordered_set<cppLox::Types::ObjectString *>::iterator iterator = this->m_strings.find(string);
+            auto iterator = this->m_strings.find(string);
             if (iterator != m_strings.end()) {
                 delete string;
                 return static_cast<cppLox::Types::Object *>(*iterator);
