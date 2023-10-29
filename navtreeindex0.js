@@ -8,7 +8,7 @@ var NAVTREEINDEX0 =
 "classMemoryMutator.html#a17dfe6a20410d5e4f47701046681a306":[2,0,2,2],
 "classMemoryMutator.html#a569c64067f749ddb6be55d6c65753fa7":[2,0,2,0],
 "classMemoryMutator.html#a5bff13a8aa5eedf89baaffe76c77c5b7":[2,0,2,4],
-"classMemoryMutator.html#a97420b3c89c19815aabb075f1fa6d86d":[2,0,2,1],
+"classMemoryMutator.html#a6af825e4e7fee045849a6cf4c9c5a2b5":[2,0,2,1],
 "classMemoryMutator.html#ae3f7f939fbefae7ea0ade6f52c601bac":[2,0,2,3],
 "classcppLox_1_1Backend_1_1VM.html":[2,0,0,0,0],
 "classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b":[2,0,0,0,0,7],
