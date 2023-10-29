@@ -106,15 +106,31 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a8df55ff95ed5f44b0f1b504d1b9e7466"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a8df55ff95ed5f44b0f1b504d1b9e7466"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Types.html#a8df55ff95ed5f44b0f1b504d1b9e7466">IsDerivedFromObject</a> = std::is_base_of&lt;<a class="el" href="classcppLox_1_1Types_1_1Object.html">Object</a>, T&gt;::value</td></tr>
-<tr class="memdesc:a8df55ff95ed5f44b0f1b504d1b9e7466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given type is derived from <a class="el" href="classcppLox_1_1Types_1_1Object.html" title="The base class for all objects.">Object</a>.  <a href="namespacecppLox_1_1Types.html#a8df55ff95ed5f44b0f1b504d1b9e7466">More...</a><br /></td></tr>
-<tr class="separator:a8df55ff95ed5f44b0f1b504d1b9e7466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c37a0eb0a78ac5770e681513046fcc2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1c37a0eb0a78ac5770e681513046fcc2"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Types.html#a1c37a0eb0a78ac5770e681513046fcc2">DerivedFromObject</a> = std::derived_from&lt;T, <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a>&gt;</td></tr>
+<tr class="memdesc:a1c37a0eb0a78ac5770e681513046fcc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given type is derived from <a class="el" href="classcppLox_1_1Types_1_1Object.html" title="The base class for all objects.">Object</a>.  <a href="namespacecppLox_1_1Types.html#a1c37a0eb0a78ac5770e681513046fcc2">More...</a><br /></td></tr>
+<tr class="separator:a1c37a0eb0a78ac5770e681513046fcc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceea059294c51d166ebe5772f0e35e10"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aceea059294c51d166ebe5772f0e35e10"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Types.html#aceea059294c51d166ebe5772f0e35e10">IsAnUnderLyingValueType</a> = std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, double&gt; || std::is_same_v&lt;T, <a class="el" href="classcppLox_1_1Types_1_1Object.html">Object</a> *&gt;</td></tr>
 <tr class="separator:aceea059294c51d166ebe5772f0e35e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a1c37a0eb0a78ac5770e681513046fcc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c37a0eb0a78ac5770e681513046fcc2">&#9670;&nbsp;</a></span>DerivedFromObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">concept DerivedFromObject = std::derived_from&lt;T, <a class="el" href="classcppLox_1_1Types_1_1Object.html">cppLox::Types::Object</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the given type is derived from <a class="el" href="classcppLox_1_1Types_1_1Object.html" title="The base class for all objects.">Object</a>. </p>
+
+</div>
+</div>
 <a id="aceea059294c51d166ebe5772f0e35e10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aceea059294c51d166ebe5772f0e35e10">&#9670;&nbsp;</a></span>IsAnUnderLyingValueType</h2>
 
@@ -126,22 +142,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8df55ff95ed5f44b0f1b504d1b9e7466"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8df55ff95ed5f44b0f1b504d1b9e7466">&#9670;&nbsp;</a></span>IsDerivedFromObject</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">concept IsDerivedFromObject = std::is_base_of&lt;<a class="el" href="classcppLox_1_1Types_1_1Object.html">Object</a>, T&gt;::value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks if the given type is derived from <a class="el" href="classcppLox_1_1Types_1_1Object.html" title="The base class for all objects.">Object</a>. </p>
 
 </div>
 </div>
