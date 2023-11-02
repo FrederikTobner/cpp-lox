@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"hierarchy.html":[2,2],
+"index.html":[0],
 "index.html":[],
 "index.html#building_sec":[0,2],
 "index.html#intro_sec":[0,0],
