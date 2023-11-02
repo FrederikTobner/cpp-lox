@@ -9,7 +9,7 @@ template <typename T> struct SimpleComperator {
     }
 
     [[nodiscard]] auto operator()(T const * a, T const * b) const -> bool {
-        return a->operator==(b);
+        return (*a) == b;
     }
 };
 } // namespace cppLox::Types

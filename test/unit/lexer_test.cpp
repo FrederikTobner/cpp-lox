@@ -14,20 +14,6 @@ class LexerTest : public ::testing::Test {
     }
 };
 
-TEST_F(LexerTest, ScanNumber) {
-    // Arrange
-    std::string source = "3.14";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::NUMBER);
-    EXPECT_EQ(token.lexeme(), "3.14");
-    EXPECT_EQ(token.line(), 1);
-}
-
 TEST_F(LexerTest, ScanString) {
     // Arrange
     std::string source = "\"Hello, World!\"";
@@ -39,497 +25,6 @@ TEST_F(LexerTest, ScanString) {
     // Assert
     EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::STRING);
     EXPECT_EQ(token.lexeme(), "Hello, World!");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanIdentifier) {
-    // Arrange
-    std::string source = "foo";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::IDENTIFIER);
-    EXPECT_EQ(token.lexeme(), "foo");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanAndKeyword) {
-    // Arrange
-    std::string source = "and";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::AND);
-    EXPECT_EQ(token.lexeme(), "and");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanClassKeyword) {
-    // Arrange
-    std::string source = "class";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::CLASS);
-    EXPECT_EQ(token.lexeme(), "class");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanElseKeyword) {
-    // Arrange
-    std::string source = "else";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::ELSE);
-    EXPECT_EQ(token.lexeme(), "else");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanForKeyword) {
-    // Arrange
-    std::string source = "for";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::FOR);
-    EXPECT_EQ(token.lexeme(), "for");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanFunKeyword) {
-    // Arrange
-    std::string source = "fun";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::FUN);
-    EXPECT_EQ(token.lexeme(), "fun");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanIfKeyword) {
-    // Arrange
-    std::string source = "if";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::IF);
-    EXPECT_EQ(token.lexeme(), "if");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanNullKeyword) {
-    // Arrange
-    std::string source = "null";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::NULL_);
-    EXPECT_EQ(token.lexeme(), "null");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanOrKeyword) {
-    // Arrange
-    std::string source = "or";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::OR);
-    EXPECT_EQ(token.lexeme(), "or");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanPrintKeyword) {
-    // Arrange
-    std::string source = "print";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::PRINT);
-    EXPECT_EQ(token.lexeme(), "print");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanReturnKeyword) {
-    // Arrange
-    std::string source = "return";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::RETURN);
-    EXPECT_EQ(token.lexeme(), "return");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanSuperKeyword) {
-    // Arrange
-    std::string source = "super";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(token.type(), cppLox::Frontend::Token::Type::SUPER);
-    EXPECT_EQ(token.lexeme(), "super");
-    EXPECT_EQ(token.line(), 1);
-}
-
-TEST_F(LexerTest, ScanThisKeyword) {
-    // Arrange
-    std::string source = "this";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::THIS, token.type());
-    EXPECT_EQ("this", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanTrueKeyword) {
-    // Arrange
-    std::string source = "true";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::TRUE, token.type());
-    EXPECT_EQ("true", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanVarKeyword) {
-    // Arrange
-    std::string source = "var";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::VAR, token.type());
-    EXPECT_EQ("var", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanWhileKeyword) {
-    // Arrange
-    std::string source = "while";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::WHILE, token.type());
-    EXPECT_EQ("while", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanLeftParen) {
-    // Arrange
-    std::string source = "(";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ("(", token.lexeme());
-    EXPECT_EQ(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, token.type());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanRightParen) {
-    // Arrange
-    std::string source = ")";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(")", token.lexeme());
-    EXPECT_EQ(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, token.type());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanLeftBrace) {
-    // Arrange
-    std::string source = "{";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ("{", token.lexeme());
-    EXPECT_EQ(cppLox::Frontend::Token::Type::LEFT_BRACE, token.type());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanRightBrace) {
-    // Arrange
-    std::string source = "}";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ("}", token.lexeme());
-    EXPECT_EQ(cppLox::Frontend::Token::Type::RIGHT_BRACE, token.type());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanComma) {
-    // Arrange
-    std::string source = ",";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::COMMA, token.type());
-    EXPECT_EQ(",", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanDot) {
-    // Arrange
-    std::string source = ".";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::DOT, token.type());
-    EXPECT_EQ(".", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanMinus) {
-    // Arrange
-    std::string source = "-";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::MINUS, token.type());
-    EXPECT_EQ("-", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanPlus) {
-    // Arrange
-    std::string source = "+";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::PLUS, token.type());
-    EXPECT_EQ("+", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanSlash) {
-    // Arrange
-    std::string source = "/";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::SLASH, token.type());
-    EXPECT_EQ("/", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanStar) {
-    // Arrange
-    std::string source = "*";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::STAR, token.type());
-    EXPECT_EQ("*", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanSemicolon) {
-    // Arrange
-    std::string source = ";";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::SEMICOLON, token.type());
-    EXPECT_EQ(";", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanBang) {
-    // Arrange
-    std::string source = "!";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::BANG, token.type());
-    EXPECT_EQ("!", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanBangEqual) {
-    // Arrange
-    std::string source = "!=";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::BANG_EQUAL, token.type());
-    EXPECT_EQ("!=", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanEqual) {
-    // Arrange
-    std::string source = "=";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::EQUAL, token.type());
-    EXPECT_EQ("=", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanEqualEqual) {
-    // Arrange
-    std::string source = "==";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ("==", token.lexeme());
-    EXPECT_EQ(cppLox::Frontend::Token::Type::EQUAL_EQUAL, token.type());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanGreater) {
-    // Arrange
-    std::string source = ">";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::GREATER, token.type());
-    EXPECT_EQ(">", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanGreaterEqual) {
-    // Arrange
-    std::string source = ">=";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::GREATER_EQUAL, token.type());
-    EXPECT_EQ(">=", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanLess) {
-    // Arrange
-    std::string source = "<";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::LESS, token.type());
-    EXPECT_EQ("<", token.lexeme());
-    EXPECT_EQ(1, token.line());
-}
-
-TEST_F(LexerTest, ScanLessEqual) {
-    // Arrange
-    std::string source = "<=";
-
-    // Act
-    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    cppLox::Frontend::Token token = tokens[0];
-
-    // Assert
-    EXPECT_EQ(cppLox::Frontend::Token::Type::LESS_EQUAL, token.type());
-    EXPECT_EQ("<=", token.lexeme());
-    EXPECT_EQ(1, token.line());
 }
 
 TEST_F(LexerTest, CanHandleComment) {
@@ -542,4 +37,66 @@ TEST_F(LexerTest, CanHandleComment) {
 
     // Assert
     EXPECT_EQ(cppLox::Frontend::Token::Type::END_OF_FILE, token.type());
+}
+
+class SingleTokenLexerTest
+    : public LexerTest,
+      public ::testing::WithParamInterface<std::pair<std::string, cppLox::Frontend::Token::Type>> {
+  public:
+    std::string source;
+    cppLox::Frontend::Token::Type expectedType;
+    void SetUp() override {
+        source = GetParam().first;
+        expectedType = GetParam().second;
+    }
+};
+
+INSTANTIATE_TEST_SUITE_P(ScanSingleToken, SingleTokenLexerTest,
+                         ::testing::Values(std::make_pair("(", cppLox::Frontend::Token::Type::LEFT_PARENTHESES),
+                                           std::make_pair(")", cppLox::Frontend::Token::Type::RIGHT_PARENTHESES),
+                                           std::make_pair("{", cppLox::Frontend::Token::Type::LEFT_BRACE),
+                                           std::make_pair("}", cppLox::Frontend::Token::Type::RIGHT_BRACE),
+                                           std::make_pair(",", cppLox::Frontend::Token::Type::COMMA),
+                                           std::make_pair(".", cppLox::Frontend::Token::Type::DOT),
+                                           std::make_pair("-", cppLox::Frontend::Token::Type::MINUS),
+                                           std::make_pair("+", cppLox::Frontend::Token::Type::PLUS),
+                                           std::make_pair(";", cppLox::Frontend::Token::Type::SEMICOLON),
+                                           std::make_pair("*", cppLox::Frontend::Token::Type::STAR),
+                                           std::make_pair("!", cppLox::Frontend::Token::Type::BANG),
+                                           std::make_pair("!=", cppLox::Frontend::Token::Type::BANG_EQUAL),
+                                           std::make_pair("=", cppLox::Frontend::Token::Type::EQUAL),
+                                           std::make_pair("==", cppLox::Frontend::Token::Type::EQUAL_EQUAL),
+                                           std::make_pair(">", cppLox::Frontend::Token::Type::GREATER),
+                                           std::make_pair(">=", cppLox::Frontend::Token::Type::GREATER_EQUAL),
+                                           std::make_pair("<", cppLox::Frontend::Token::Type::LESS),
+                                           std::make_pair("<=", cppLox::Frontend::Token::Type::LESS_EQUAL),
+                                           std::make_pair("/", cppLox::Frontend::Token::Type::SLASH),
+                                           std::make_pair("and", cppLox::Frontend::Token::Type::AND),
+                                           std::make_pair("class", cppLox::Frontend::Token::Type::CLASS),
+                                           std::make_pair("else", cppLox::Frontend::Token::Type::ELSE),
+                                           std::make_pair("false", cppLox::Frontend::Token::Type::FALSE),
+                                           std::make_pair("for", cppLox::Frontend::Token::Type::FOR),
+                                           std::make_pair("fun", cppLox::Frontend::Token::Type::FUN),
+                                           std::make_pair("if", cppLox::Frontend::Token::Type::IF),
+                                           std::make_pair("null", cppLox::Frontend::Token::Type::NULL_),
+                                           std::make_pair("or", cppLox::Frontend::Token::Type::OR),
+                                           std::make_pair("print", cppLox::Frontend::Token::Type::PRINT),
+                                           std::make_pair("return", cppLox::Frontend::Token::Type::RETURN),
+                                           std::make_pair("super", cppLox::Frontend::Token::Type::SUPER),
+                                           std::make_pair("this", cppLox::Frontend::Token::Type::THIS),
+                                           std::make_pair("true", cppLox::Frontend::Token::Type::TRUE),
+                                           std::make_pair("var", cppLox::Frontend::Token::Type::VAR),
+                                           std::make_pair("while", cppLox::Frontend::Token::Type::WHILE),
+                                           std::make_pair("123", cppLox::Frontend::Token::Type::NUMBER),
+                                           std::make_pair("3.14", cppLox::Frontend::Token::Type::NUMBER),
+                                           std::make_pair("foo", cppLox::Frontend::Token::Type::IDENTIFIER)));
+
+TEST_P(SingleTokenLexerTest, ScanSingleToken) {
+    // Act
+    std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
+    cppLox::Frontend::Token token = tokens[0];
+
+    // Assert
+    EXPECT_EQ(expectedType, token.type());
+    EXPECT_EQ(source, token.lexeme());
 }

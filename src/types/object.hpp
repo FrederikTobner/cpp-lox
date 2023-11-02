@@ -18,8 +18,6 @@ class Object {
     enum class Type {
         STRING
     };
-    /// @brief Constructs a new object.
-    Object() = default;
 
     /// @brief Destructor of the object.
     virtual ~Object() = default;
@@ -66,5 +64,8 @@ class Object {
   protected:
     /// @brief The type of the object.
     Type m_type;
+
+    /// @brief Constructs a new object.
+    Object() = default;
 };
 } // namespace cppLox::Types
