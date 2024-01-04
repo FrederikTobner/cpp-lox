@@ -5,17 +5,18 @@
 
 class MemoryMutatorTest : public ::testing::Test {
   public:
-    std::unique_ptr<MemoryMutator> memoryMutator;
+    std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
 
     MemoryMutatorTest() {
-        memoryMutator = std::make_unique<MemoryMutator>();
+        memoryMutator = std::make_unique<cppLox::MemoryMutator>();
     }
 };
 
 TEST_F(MemoryMutatorTest, DoesNotCreateDuplicateStrings) {
-    // Arrange & Act
+    // Act
     cppLox::Types::Object * string1 = memoryMutator->create<cppLox::Types::ObjectString>("test");
     cppLox::Types::Object * string2 = memoryMutator->create<cppLox::Types::ObjectString>("test");
+
     // Assert
     EXPECT_EQ((void *)string1, (void *)string2);
 }

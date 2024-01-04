@@ -5,18 +5,19 @@
 #include "../../src/types/value.hpp"
 
 #include <iostream>
+#include <ranges>
 
 #include <gtest/gtest.h>
 
-// Test fixture for VM unit tests
-class VMTest : public ::testing::Test {
+// Test fixture for VM integration tests
+class VMIntegrationTest : public ::testing::Test {
   public:
     std::unique_ptr<cppLox::Backend::VM> vm;
-    std::unique_ptr<MemoryMutator> memoryMutator;
+    std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
     cppLox::ByteCode::Chunk chunk;
 
-    VMTest() {
-        memoryMutator = std::make_unique<MemoryMutator>();
+    VMIntegrationTest() {
+        memoryMutator = std::make_unique<cppLox::MemoryMutator>();
         vm = std::make_unique<cppLox::Backend::VM>(memoryMutator.get());
     }
 
@@ -26,7 +27,7 @@ class VMTest : public ::testing::Test {
     }
 };
 
-TEST_F(VMTest, AddInstruction) {
+TEST_F(VMIntegrationTest, AddInstructionUsingNumbers) {
     // Arrange
     cppLox::Types::Value value(42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
@@ -40,10 +41,31 @@ TEST_F(VMTest, AddInstruction) {
     vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value + value, vm->pop());
+    EXPECT_EQ(cppLox::Types::Value(42.0 + 42.0), vm->pop());
 }
 
-TEST_F(VMTest, ConstantInstruction) {
+TEST_F(VMIntegrationTest, AddInstructionUsingStrings) {
+    // Arrange
+    auto firstObjectString = std::make_unique<cppLox::Types::ObjectString>("Hello ");
+    auto secondObjectString = std::make_unique<cppLox::Types::ObjectString>("World!");
+    cppLox::Types::Value value(firstObjectString.get());
+    cppLox::Types::Value value2(secondObjectString.get());
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+    chunk.write(chunk.addConstant(value), 0);
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+    chunk.write(chunk.addConstant(value2), 0);
+    chunk.write(cppLox::ByteCode::Opcode::ADD, 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+    char const * result = vm->pop().as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>()->string().c_str();
+
+    // Assert
+    ASSERT_STREQ("Hello World!", result);
+}
+
+TEST_F(VMIntegrationTest, ConstantInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
@@ -57,7 +79,7 @@ TEST_F(VMTest, ConstantInstruction) {
     EXPECT_EQ(value, vm->pop());
 }
 
-TEST_F(VMTest, DivideInstruction) {
+TEST_F(VMIntegrationTest, DivideInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
@@ -74,7 +96,7 @@ TEST_F(VMTest, DivideInstruction) {
     EXPECT_EQ(value / value, vm->pop());
 }
 
-TEST_F(VMTest, EqualInstruction) {
+TEST_F(VMIntegrationTest, EqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -103,7 +125,7 @@ TEST_F(VMTest, EqualInstruction) {
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
-TEST_F(VMTest, FalseInstruction) {
+TEST_F(VMIntegrationTest, FalseInstruction) {
     // Arrange
     chunk.write(cppLox::ByteCode::Opcode::FALSE, 0);
     chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
@@ -115,7 +137,7 @@ TEST_F(VMTest, FalseInstruction) {
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
-TEST_F(VMTest, GreaterInstruction) {
+TEST_F(VMIntegrationTest, GreaterInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -145,13 +167,13 @@ TEST_F(VMTest, GreaterInstruction) {
     // Assert
     // 42 > 42
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
-    // 43 > 42
-    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
     // 42 > 43
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
+    // 43 > 42
+    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
-TEST_F(VMTest, GreaterEqualInstruction) {
+TEST_F(VMIntegrationTest, GreaterEqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -181,13 +203,13 @@ TEST_F(VMTest, GreaterEqualInstruction) {
     // Assert
     // 42 >= 42
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
-    // 42 >= 43
-    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
     // 43 >= 42
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
+    // 42 >= 43
+    EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
-TEST_F(VMTest, LessInstruction) {
+TEST_F(VMIntegrationTest, LessInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -217,13 +239,13 @@ TEST_F(VMTest, LessInstruction) {
     // Assert
     // 42 < 42
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
-    // 42 < 43
-    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
     // 43 < 42
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
+    // 42 < 43
+    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
 }
 
-TEST_F(VMTest, LessEqualInstruction) {
+TEST_F(VMIntegrationTest, LessEqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -253,13 +275,13 @@ TEST_F(VMTest, LessEqualInstruction) {
     // Assert
     // 42 <= 42
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
-    // 42 <= 43
-    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
     // 43 <= 42
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
+    // 42 <= 43
+    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
 }
 
-TEST_F(VMTest, MultiplyInstruction) {
+TEST_F(VMIntegrationTest, MultiplyInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
@@ -276,9 +298,10 @@ TEST_F(VMTest, MultiplyInstruction) {
     EXPECT_EQ(value * value, vm->pop());
 }
 
-TEST_F(VMTest, NegateInstruction) {
+TEST_F(VMIntegrationTest, NegateInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
+    cppLox::Types::Value negatedValue(-42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
     chunk.write(cppLox::ByteCode::Opcode::NEGATE, 0);
@@ -288,10 +311,10 @@ TEST_F(VMTest, NegateInstruction) {
     vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(-value, vm->pop());
+    ASSERT_EQ(negatedValue, vm->pop());
 }
 
-TEST_F(VMTest, NotEqualInstruction) {
+TEST_F(VMIntegrationTest, NotEqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
@@ -320,7 +343,7 @@ TEST_F(VMTest, NotEqualInstruction) {
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
 }
 
-TEST_F(VMTest, NullInstruction) {
+TEST_F(VMIntegrationTest, NullInstruction) {
     // Arrange
     chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
     chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
@@ -332,7 +355,7 @@ TEST_F(VMTest, NullInstruction) {
     EXPECT_EQ(cppLox::Types::Value(), vm->pop());
 }
 
-TEST_F(VMTest, PushAndPop) {
+TEST_F(VMIntegrationTest, PushAndPop) {
     // Arrange
     cppLox::Types::Value value(42.0);
 
@@ -344,7 +367,7 @@ TEST_F(VMTest, PushAndPop) {
     ASSERT_EQ(value, result);
 }
 
-TEST_F(VMTest, ReturnInstruction) {
+TEST_F(VMIntegrationTest, ReturnInstruction) {
     // Arrange
     chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
 
@@ -352,27 +375,28 @@ TEST_F(VMTest, ReturnInstruction) {
     ASSERT_NO_THROW(vm->interpret(chunk));
 }
 
-TEST_F(VMTest, StackOverflow) {
+TEST_F(VMIntegrationTest, StackOverflow) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    for (int i = 0; i < 256; i++) {
+    for (size_t i : std::ranges::iota_view(0, 256)) {
         vm->push(value);
     }
     cppLox::ByteCode::Chunk chunk;
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
     chunk.write(chunk.addConstant(value), 0);
+
     // Act & Assert
     ASSERT_THROW(vm->interpret(chunk), cppLox::Error::RunTimeException);
 }
 
-TEST_F(VMTest, StackUnderflow) {
+TEST_F(VMIntegrationTest, StackUnderflow) {
     cppLox::ByteCode::Chunk chunk;
     chunk.write(cppLox::ByteCode::Opcode::ADD, 0);
     // Act & Assert
     ASSERT_THROW(vm->interpret(chunk), cppLox::Error::RunTimeException);
 }
 
-TEST_F(VMTest, SubtractInstruction) {
+TEST_F(VMIntegrationTest, SubtractInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
@@ -386,10 +410,42 @@ TEST_F(VMTest, SubtractInstruction) {
     vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(value - value, vm->pop());
+    ASSERT_EQ(value - value, vm->pop());
 }
 
-TEST_F(VMTest, TrueInstruction) {
+TEST_F(VMIntegrationTest, VariableDeclaration) {
+    // Arrange
+    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
+    chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
+    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
+    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_TRUE(memoryMutator->setGlobal(variableNameObjectString.get(), cppLox::Types::Value()));
+}
+
+TEST_F(VMIntegrationTest, VariableDeclarationAndAssignment) {
+    // Arrange
+    auto value = std::make_unique<cppLox::Types::Value>(42.0);
+    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+    chunk.write(chunk.addConstant(*value), 0);
+    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
+    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(cppLox::Types::Value(42.0), memoryMutator->getGlobal(variableNameObjectString.get()));
+}
+
+TEST_F(VMIntegrationTest, TrueInstruction) {
     // Arrange
     chunk.write(cppLox::ByteCode::Opcode::TRUE, 0);
     chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
@@ -398,5 +454,5 @@ TEST_F(VMTest, TrueInstruction) {
     vm->interpret(chunk);
 
     // Assert
-    EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
+    ASSERT_EQ(cppLox::Types::Value(true), vm->pop());
 }

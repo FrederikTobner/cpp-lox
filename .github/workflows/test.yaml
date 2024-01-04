@@ -41,15 +41,15 @@ jobs:
         choco install OpenCppCoverage -y
         echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
     - name: Generate Report
-      if: matrix.buildtypes == 'Release'
+      if: ${{env.BUILD_TYPE}} == 'Release'
       id: generate_test_report
       shell: cmd
       run: OpenCppCoverage.exe --verbose --sources src --export_type cobertura:cpplox.xml -- build/test/cpplox-tests.exe
     - name: Upload Report to Codecov
-      if: matrix.buildtypes == 'Release'
+      if: ${{env.BUILD_TYPE}} == 'Release'
       uses: codecov/codecov-action@v3
       env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
       with:
         files: ./cpplox.xml
         fail_ci_if_error: true

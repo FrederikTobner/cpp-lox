@@ -16,7 +16,7 @@ class VM {
 
   public:
     /// @brief Constructs a new virtual machine
-    VM(MemoryMutator * memoryMutator);
+    VM(cppLox::MemoryMutator * memoryMutator);
     /// @brief Destructor of the virtual machine
     ~VM() = default;
     /// @brief Interprets the given chunk
@@ -27,6 +27,8 @@ class VM {
     auto push(cppLox::Types::Value value) -> void;
     /// @brief Pops the top value from the stack
     [[nodiscard]] auto pop() -> cppLox::Types::Value;
+    /// @brief Peeks at the top value of the stack
+    [[nodiscard]] auto peek() -> cppLox::Types::Value;
 
     auto resetStack() -> void;
 
@@ -50,6 +52,6 @@ class VM {
     cppLox::ByteCode::Chunk * m_chunk;
 
     /// @brief The memory manager.
-    MemoryMutator * m_memoryMutator;
+    cppLox::MemoryMutator * m_memoryMutator;
 };
 } // namespace cppLox::Backend

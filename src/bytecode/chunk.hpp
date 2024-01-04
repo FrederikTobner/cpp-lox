@@ -19,7 +19,7 @@ class Chunk {
     [[nodiscard]] size_t addConstant(cppLox::Types::Value const & value);
     [[nodiscard]] uint8_t getByte(size_t offset) const;
     [[nodiscard]] size_t getLine(size_t offset) const;
-    [[nodiscard]] cppLox::Types::Value const & getConstant(size_t offset) const;
+    [[nodiscard]] cppLox::Types::Value & getConstant(size_t offset);
     [[nodiscard]] size_t getSize() const;
     [[nodiscard]] size_t disassembleInstruction(size_t offset) const;
 

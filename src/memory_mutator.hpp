@@ -2,20 +2,27 @@
 
 #include <iostream>
 #include <memory>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
 #include "types/object.hpp"
 #include "types/object_string.hpp"
+#include "types/value.hpp"
 
 #include "simple_comperator.hpp"
 #include "string_hash.hpp"
+
+namespace cppLox {
 
 /// @brief The memory manager that manages the creation and deletion of all objects.
 class MemoryMutator {
 
   public:
+    /// @brief Creates a new memory mutator.
     MemoryMutator() = default;
+
+    /// @brief Destroys the memory mutator.
     ~MemoryMutator() = default;
 
     /// @brief Creates a new object of the given type.
@@ -36,17 +43,57 @@ class MemoryMutator {
             m_strings.insert(string);
             object = static_cast<cppLox::Types::Object *>(string);
         } else {
-            cppLox::Types::Object * object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
+            object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         }
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
     }
 
+    /// @brief Sets the global variable with the given name to the given value.
+    /// @param key The name of the global variable to set.
+    /// @param value The value to set the global variable to.
+    /// @return True if the variable already existed, false if it was created.
+    auto setGlobal(cppLox::Types::ObjectString * key, cppLox::Types::Value value) -> bool {
+        auto valueBucket = m_globals.find(key);
+        m_globals[key] = value;
+        return valueBucket != m_globals.end();
+    }
+
+    /// @brief Gets the global variable with the given name.
+    /// @param key The name of the global variable to get.
+    /// @return The value of the global variable.
+    auto getGlobal(cppLox::Types::ObjectString * key) -> cppLox::Types::Value {
+        auto iterator = m_globals.find(key);
+        if (iterator != m_globals.end()) {
+            return iterator->second;
+        }
+        return cppLox::Types::Value();
+    }
+
+    /// @brief Deletes the global variable with the given name.
+    /// @param key The name of the global variable to delete.
+    /// @return True if the variable was deleted, false if it didn't exist.
+    auto deleteGlobal(cppLox::Types::ObjectString * key) -> bool {
+        auto iterator = m_globals.find(key);
+        if (iterator != m_globals.end()) {
+            m_globals.erase(iterator);
+            return true;
+        }
+        return false;
+    }
+
   private:
     /// @brief The list of all objects that are currently allocated.
     std::vector<std::unique_ptr<cppLox::Types::Object>> m_objects;
+
     /// @brief The set of all strings that are currently allocated.
     std::unordered_set<cppLox::Types::ObjectString *, std::hash<cppLox::Types::ObjectString>,
                        cppLox::Types::SimpleComperator<cppLox::Types::ObjectString>>
         m_strings;
+
+    /// @brief The map of all global variables.
+    std::unordered_map<cppLox::Types::ObjectString *, cppLox::Types::Value, std::hash<cppLox::Types::ObjectString>,
+                       cppLox::Types::SimpleComperator<cppLox::Types::ObjectString>>
+        m_globals;
 };
+} // namespace cppLox

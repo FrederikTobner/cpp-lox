@@ -1,5 +1,7 @@
 #pragma once
 
+namespace cppLox {
+
 /// @brief Exit codes based on the sysexits from UNIX
 typedef enum {
     /// Signals a successful exit
@@ -15,3 +17,5 @@ typedef enum {
     /// Signals an error regarding the input or the output
     EXIT_CODE_INPUT_OUTPUT_ERROR = 74
 } exit_code_t;
+
+} // namespace cppLox

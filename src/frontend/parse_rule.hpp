@@ -11,12 +11,12 @@ namespace cppLox::Frontend {
 template <typename T> class ParseRule {
   public:
     ParseRule();
-    ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens)> prefix,
+    ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> prefix,
               std::optional<void (T::*)(std::vector<Token> const & tokens)> infix, Precedence precedence);
     ~ParseRule() = default;
     /// @brief Gets the prefix function of the rule.
     /// @return An optional containing the prefix function of the rule.
-    [[nodiscard]] auto prefix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens)>;
+    [[nodiscard]] auto prefix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)>;
     /// @brief Gets the infix function of the rule.
     /// @return An optional containing the infix function of the rule.
     [[nodiscard]] auto infix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens)>;
@@ -26,7 +26,7 @@ template <typename T> class ParseRule {
 
   private:
     Precedence m_precedence;
-    std::optional<void (T::*)(std::vector<Token> const & tokens)> m_prefix;
+    std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> m_prefix;
     std::optional<void (T::*)(std::vector<Token> const & tokens)> m_infix;
 };
 
@@ -35,7 +35,7 @@ ParseRule<T>::ParseRule() : m_prefix(std::nullopt), m_infix(std::nullopt), m_pre
 }
 
 template <typename T>
-ParseRule<T>::ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens)> prefix,
+ParseRule<T>::ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> prefix,
                         std::optional<void (T::*)(std::vector<Token> const & tokens)> infix, Precedence precedence)
     : m_prefix(prefix), m_infix(infix), m_precedence(precedence) {
 }
@@ -43,7 +43,8 @@ ParseRule<T>::ParseRule(std::optional<void (T::*)(std::vector<Token> const & tok
 /// @brief Gets the prefix function of the rule.
 /// @return An optional containing the prefix function of the rule.
 template <typename T>
-[[nodiscard]] auto ParseRule<T>::prefix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens)> {
+[[nodiscard]] auto ParseRule<T>::prefix() const
+    -> std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> {
     return m_prefix;
 }
 /// @brief Gets the infix function of the rule.

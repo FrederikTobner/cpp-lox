@@ -6,7 +6,7 @@ namespace cppLox::Frontend {
 
 /// @brief The precedence of the expressions and statements of the language
 enum class Precedence : uint8_t {
-    /// @brief The lowest precedence
+    /// @brief The lowest precedence, default value
     NONE,
     /// @brief The precedence of the assignment operator
     ASSIGNMENT, // =
