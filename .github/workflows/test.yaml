@@ -32,8 +32,7 @@ jobs:
 
     - name: Run tests
       working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{env.BUILD_TYPE}}
-    
+      run: ctest -C ${{env.BUILD_TYPE}}    
     - name: Setup OpenCppCoverage and add to Path
       if: ${{env.BUILD_TYPE == 'Release'}}
       id: setup_opencppcoverage
@@ -44,7 +43,7 @@ jobs:
       if: ${{env.BUILD_TYPE == 'Release'}}
       id: generate_test_report
       shell: cmd
-      run: OpenCppCoverage.exe --verbose --sources src --export_type cobertura:cpplox.xml -- build/test/cpplox-tests.exe
+      run: OpenCppCoverage.exe --verbose --sources ${{github.workspace}}/src --export_type cobertura:cpplox.xml -- ${{github.workspace}}/build/test/cpplox-tests.exe
     - name: Upload Report to Codecov
       if: ${{env.BUILD_TYPE == 'Release'}}
       uses: codecov/codecov-action@v3
