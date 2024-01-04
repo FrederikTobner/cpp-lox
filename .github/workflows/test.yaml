@@ -43,7 +43,7 @@ jobs:
       if: ${{env.BUILD_TYPE == 'Release'}}
       id: generate_test_report
       shell: cmd
-      run: OpenCppCoverage.exe --verbose --sources ${{github.workspace}}\src --export_type cobertura:cpplox.xml -- ${{github.workspace}}\build\test\cpplox-tests.exe
+      run: OpenCppCoverage.exe --verbose --sources ${{github.workspace}}\src --modules ${{github.workspace}}\src --export_type cobertura:cpplox.xml -- ${{github.workspace}}\build\test\cpplox-tests.exe
     - name: Upload Report to Codecov
       if: ${{env.BUILD_TYPE == 'Release'}}
       uses: codecov/codecov-action@v3
