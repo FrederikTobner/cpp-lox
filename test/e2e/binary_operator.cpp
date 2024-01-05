@@ -1,5 +1,7 @@
 #include "base_e2e_test_fixture.hpp"
 
+#include "../../src/error/runtime_exception.hpp"
+
 class BinaryOperatorE2ETest : public BaseE2ETestFixture {};
 
 TEST_F(BinaryOperatorE2ETest, Addition) {
@@ -14,46 +16,30 @@ TEST_F(BinaryOperatorE2ETest, Addition) {
     ASSERT_EQ(expected, output);
 }
 
-TEST_F(BinaryOperatorE2ETest, StringConcatenation) {
-    // Arrange
-    std::string source = "print \"a\" + \"b\";";
-    std::string expected = "ab\n";
-
-    // Act
-    std::string output = runAndCaptureStdout(source);
-
-    // Assert
-    ASSERT_EQ(expected, output);
-}
-
-TEST_F(BinaryOperatorE2ETest, Subtraction) {
-    // Arrange
-    std::string source = "print 1 - 2;";
-    std::string expected = "-1\n";
-
-    // Act
-    std::string output = runAndCaptureStdout(source);
-
-    // Assert
-    ASSERT_EQ(expected, output);
-}
-
-TEST_F(BinaryOperatorE2ETest, Multiplication) {
-    // Arrange
-    std::string source = "print 1 * 2;";
-    std::string expected = "2\n";
-
-    // Act
-    std::string output = runAndCaptureStdout(source);
-
-    // Assert
-    ASSERT_EQ(expected, output);
-}
-
 TEST_F(BinaryOperatorE2ETest, Division) {
     // Arrange
     std::string source = "print 1 / 2;";
     std::string expected = "0.5\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}
+
+TEST_F(BinaryOperatorE2ETest, DivisionOfStrings) {
+    // Arrange
+    std::string source = "\"a\" / \"b\";";
+
+    // Act & Assert
+    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+}
+
+TEST_F(BinaryOperatorE2ETest, Equal) {
+    // Arrange
+    std::string source = "print 1 == 2;";
+    std::string expected = "false\n";
 
     // Act
     std::string output = runAndCaptureStdout(source);
@@ -110,16 +96,24 @@ TEST_F(BinaryOperatorE2ETest, LessEqual) {
     ASSERT_EQ(expected, output);
 }
 
-TEST_F(BinaryOperatorE2ETest, Equal) {
+TEST_F(BinaryOperatorE2ETest, Multiplication) {
     // Arrange
-    std::string source = "print 1 == 2;";
-    std::string expected = "false\n";
+    std::string source = "print 1 * 2;";
+    std::string expected = "2\n";
 
     // Act
     std::string output = runAndCaptureStdout(source);
 
     // Assert
     ASSERT_EQ(expected, output);
+}
+
+TEST_F(BinaryOperatorE2ETest, MultiplicationOfStrings) {
+    // Arrange
+    std::string source = "\"a\" * \"b\";";
+
+    // Act & Assert
+    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(BinaryOperatorE2ETest, NotEqual) {
@@ -132,4 +126,36 @@ TEST_F(BinaryOperatorE2ETest, NotEqual) {
 
     // Assert
     ASSERT_EQ(expected, output);
+}
+
+TEST_F(BinaryOperatorE2ETest, StringConcatenation) {
+    // Arrange
+    std::string source = "print \"a\" + \"b\";";
+    std::string expected = "ab\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}
+
+TEST_F(BinaryOperatorE2ETest, Subtraction) {
+    // Arrange
+    std::string source = "print 1 - 2;";
+    std::string expected = "-1\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}
+
+TEST_F(BinaryOperatorE2ETest, SubtractionOfStrings) {
+    // Arrange
+    std::string source = "\"a\" - \"b\";";
+
+    // Act & Assert
+    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
 }

@@ -3,6 +3,9 @@
 #include "types/object_string.hpp"
 
 namespace cppLox::Types {
+
+/// @brief Simple comperator for comparing two references or two pointers.
+/// @tparam T The type of the references / pointers.
 template <typename T> struct SimpleComperator {
     /// @brief Compares two references.
     /// @param a The first reference.

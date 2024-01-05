@@ -15,7 +15,7 @@
 
 namespace cppLox {
 
-/// @brief The memory manager that manages the creation and deletion of all objects.
+/// @brief The memory mutator that manages the creation and deletion of all objects.
 class MemoryMutator {
 
   public:
@@ -62,7 +62,7 @@ class MemoryMutator {
     /// @brief Gets the global variable with the given name.
     /// @param key The name of the global variable to get.
     /// @return The value of the global variable.
-    auto getGlobal(cppLox::Types::ObjectString * key) -> cppLox::Types::Value {
+    auto getGlobal(cppLox::Types::ObjectString * key) const -> cppLox::Types::Value {
         auto iterator = m_globals.find(key);
         if (iterator != m_globals.end()) {
             return iterator->second;

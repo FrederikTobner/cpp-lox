@@ -8,6 +8,7 @@
 
 namespace std {
 
+/// @brief Hashes the given ObjectString reference or pointer.
 template <> struct hash<cppLox::Types::ObjectString> {
 
     /// @brief Hashes the given ObjectString reference.

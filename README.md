@@ -3,7 +3,7 @@
 [![Build Interpreter](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/build.yaml)
 [![Test](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/test.yaml)
 [![CodeQL](https://github.com/FrederikTobner/cpp-lox/actions/workflows/codeql.yaml/badge.svg)](https://github.com/FrederikTobner/cpp-lox/actions/workflows/codeql.yaml)
-[![codecov](https://codecov.io/gh/FrederikTobner/cpp-lox/branch/main/graph/badge.svg?token=APJ1NXKOTG)](https://codecov.io/gh/FrederikTobner/cpp-lox)
+[![codecov](https://codecov.io/gh/FrederikTobner/cpp-lox/branch/main/graph/badge.svg)](https://codecov.io/gh/FrederikTobner/cpp-lox)
 
 A C++ implementation of everybody's favorite learning language, Lox!
 

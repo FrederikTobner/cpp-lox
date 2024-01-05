@@ -1,7 +1,5 @@
 #include "opcode.hpp"
 
-#include <unordered_map>
-
 [[nodiscard]] auto cppLox::ByteCode::opcode_as_string(const cppLox::ByteCode::Opcode value) -> std::string_view {
     switch (value) {
     case Opcode::ADD:

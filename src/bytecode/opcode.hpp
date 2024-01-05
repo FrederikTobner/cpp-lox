@@ -57,8 +57,15 @@ enum Opcode {
     TRUE
 };
 
+/// @brief Converts the given opcode to a string
+/// @param value The opcode to convert.
+/// @return The string representation of the given opcode.
 [[nodiscard]] auto opcode_as_string(const Opcode value) -> std::string_view;
 
+/// @brief Prints the given opcode to the given output stream.
+/// @param os The output stream to print to.
+/// @param opcode The opcode to print.
+/// @return The output stream.
 auto operator<<(std::ostream & os, cppLox::ByteCode::Opcode const & opcode) -> std::ostream &;
 
 } // namespace cppLox::ByteCode

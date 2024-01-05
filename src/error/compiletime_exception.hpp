@@ -5,6 +5,7 @@
 
 namespace cppLox::Error {
 
+/// @brief Exception that is thrown when an error occurs during compile time.
 class CompileTimeException : public std::exception {
   public:
     CompileTimeException(std::string_view message) : m_message(message) {

@@ -14,6 +14,7 @@
 
 namespace cppLox::Frontend {
 
+/// @brief The compiler used by the cpplox interpreter.
 class Compiler {
 
   public:

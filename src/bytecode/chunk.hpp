@@ -9,25 +9,76 @@
 
 namespace cppLox::ByteCode {
 
+/// @brief A chunk of bytecode.
 class Chunk {
   public:
+    /// @brief Constructs a new chunk.
     Chunk() = default;
+
+    /// @brief Destructor of the chunk.
     ~Chunk() = default;
-    void write(uint8_t byte, int line);
-    void write(Opcode byte, int line);
-    void disassemble(std::string_view const & name) const;
-    [[nodiscard]] size_t addConstant(cppLox::Types::Value const & value);
-    [[nodiscard]] uint8_t getByte(size_t offset) const;
-    [[nodiscard]] size_t getLine(size_t offset) const;
-    [[nodiscard]] cppLox::Types::Value & getConstant(size_t offset);
-    [[nodiscard]] size_t getSize() const;
-    [[nodiscard]] size_t disassembleInstruction(size_t offset) const;
+
+    /// @brief Writes a byte to the chunk.
+    /// @param byte The byte to write.
+    /// @param line The line number where the byte originates from the source code.
+    auto write(uint8_t byte, int line) -> void;
+
+    /// @brief Writes an opcode to the chunk.
+    /// @param byte The opcode to write.
+    /// @param line The line number where the opcode originates from the source code.
+    auto write(Opcode byte, int line) -> void;
+
+    /// @brief Disassembles the chunk.
+    /// @param name The name of the chunk.
+    auto disassemble(std::string_view const & name) const -> void;
+
+    /// @brief Adds a constant to the chunk.
+    /// @param value The value to add.
+    /// @return The index of the added constant.
+    [[nodiscard]] auto addConstant(cppLox::Types::Value const & value) -> size_t;
+
+    /// @brief Gets the byte at the given index.
+    /// @param index The index of the byte.
+    /// @return The byte at the given index.
+    [[nodiscard]] auto getByte(size_t index) const -> uint8_t;
+
+    /// @brief Gets the line number of the given index.
+    /// @param index The index of the opcode.
+    /// @return The line number of the opcode at the given index.
+    [[nodiscard]] auto getLine(size_t index) const -> size_t;
+
+    /// @brief Gets the constant at the given index.
+    /// @param index The index of the constant.
+    /// @return The constant at the given index.
+    [[nodiscard]] auto getConstant(size_t index) -> cppLox::Types::Value &;
+
+    /// @brief Gets the size of the chunk.
+    /// @return The size of the chunk.
+    [[nodiscard]] auto getSize() const -> size_t;
+
+    /// @brief Disassembles the instruction at the given offset.
+    /// @param index The index of the instruction.
+    /// @return The index of the next instruction.
+    [[nodiscard]] auto disassembleInstruction(size_t index) const -> size_t;
 
   private:
-    [[nodiscard]] size_t simpleInstruction(uint8_t opcode, size_t offset) const;
-    [[nodiscard]] size_t constantInstruction(uint8_t opcode, size_t offset) const;
+    /// @brief Disassembles a simple instruction.
+    /// @param opcode The opcode of the instruction.
+    /// @param index The index of the instruction.
+    [[nodiscard]] auto simpleInstruction(uint8_t opcode, size_t index) const -> size_t;
+
+    /// @brief Disassembles a constant instruction.
+    /// @param opcode The opcode of the instruction.
+    /// @param index The index of the instruction.
+    [[nodiscard]] auto constantInstruction(uint8_t opcode, size_t index) const -> size_t;
+
+    /// @brief The bytecode stored in the chunk.
     std::vector<uint8_t> m_code;
+
+    /// @brief The line numbers of the opcodes, stored in the chunk.
     std::vector<int> m_lines;
+
+    /// @brief The value constants stored in the chunk.
     std::vector<cppLox::Types::Value> m_constants;
 };
 } // namespace cppLox::ByteCode

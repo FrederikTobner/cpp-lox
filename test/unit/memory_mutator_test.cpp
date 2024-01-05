@@ -20,3 +20,16 @@ TEST_F(MemoryMutatorTest, DoesNotCreateDuplicateStrings) {
     // Assert
     EXPECT_EQ((void *)string1, (void *)string2);
 }
+
+TEST_F(MemoryMutatorTest, CanGetGlobal) {
+    // Arrange
+    auto globalName = std::make_unique<cppLox::Types::ObjectString>("foo");
+    auto globalValue = cppLox::Types::Value(1.0);
+    memoryMutator->setGlobal(globalName.get(), globalValue);
+
+    // Act
+    auto gottenValue = memoryMutator->getGlobal(globalName.get());
+
+    // Assert
+    EXPECT_EQ(globalValue, gottenValue);
+}
