@@ -7,6 +7,7 @@
 
 /// @brief Formatter for the Object class.
 template <> struct std::formatter<cppLox::Types::Object *> : std::formatter<std::string_view> {
+
     /// @brief Formats the object as a string.
     /// @param object The object to format.
     /// @param ctx The format context.

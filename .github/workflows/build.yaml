@@ -58,4 +58,3 @@ jobs:
 
     - name: Building Interpreter
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --target cpplox
-    

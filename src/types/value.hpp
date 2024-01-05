@@ -1,11 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <type_traits>
 
 #include "object.hpp"
 #include "object_formatter.hpp"
-
-#include <type_traits>
 
 namespace cppLox::Types {
 

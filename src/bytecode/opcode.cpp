@@ -1,13 +1,13 @@
 #include "opcode.hpp"
 
-#include <unordered_map>
-
 [[nodiscard]] auto cppLox::ByteCode::opcode_as_string(const cppLox::ByteCode::Opcode value) -> std::string_view {
     switch (value) {
     case Opcode::ADD:
         return "ADD";
     case Opcode::CONSTANT:
         return "CONSTANT";
+    case Opcode::DEFINE_GLOBAL:
+        return "DEFINE_GLOBAL";
     case Opcode::DIVIDE:
         return "DIVIDE";
     case Opcode::EQUAL:
@@ -32,6 +32,8 @@
         return "NOT_EQUAL";
     case Opcode::NULL_:
         return "NULL_";
+    case Opcode::POP:
+        return "POP";
     case Opcode::PRINT:
         return "PRINT";
     case Opcode::RETURN:
@@ -44,6 +46,6 @@
     return "Unknown opcode";
 }
 
-auto cppLox::ByteCode::operator<<(std::ostream & os, Opcode const & opcode) -> std::ostream & {
+[[nodiscard]] auto cppLox::ByteCode::operator<<(std::ostream & os, Opcode const & opcode) -> std::ostream & {
     return os << cppLox::ByteCode::opcode_as_string(opcode);
 }

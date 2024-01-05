@@ -25,7 +25,7 @@ class ObjectString : public Object {
         return *m_string.get();
     }
 
-    virtual void writeToOutputStream(std::ostream & os) const override {
+    virtual auto writeToOutputStream(std::ostream & os) const -> void override {
         os << *m_string.get();
     }
 

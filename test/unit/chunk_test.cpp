@@ -81,6 +81,7 @@ INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassembleSimpleInstruction, ChunkParamete
                                            std::make_pair(cppLox::ByteCode::Opcode::SUBTRACT, "SUBTRACT"),
                                            std::make_pair(cppLox::ByteCode::Opcode::TRUE, "TRUE")));
 TEST_P(ChunkParameterizedSimpleInstructionTestFixture, WriteOpCode) {
+    // Arrange
     auto [opcode, expected] = GetParam();
     chunk.write(opcode, 123);
     testing::internal::CaptureStdout();
@@ -107,6 +108,7 @@ INSTANTIATE_TEST_SUITE_P(ChunkOpCodeDissassembleConstantInstruction, ChunkParame
                          ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CONSTANT, "CONSTANT")));
 
 TEST_P(ChunkParameterizedConstantInstructionTestFixture, WriteOpCode) {
+    // Arrange
     cppLox::Types::Value value(1.2);
     auto [opcode, expected] = GetParam();
     chunk.write(opcode, 123);

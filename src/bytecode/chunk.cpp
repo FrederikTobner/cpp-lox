@@ -42,12 +42,16 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
         return simpleInstruction(instruction, offset);
     case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
+    case Opcode::DEFINE_GLOBAL:
+        return constantInstruction(instruction, offset);
     case Opcode::DIVIDE:
         return simpleInstruction(instruction, offset);
     case Opcode::EQUAL:
         return simpleInstruction(instruction, offset);
     case Opcode::FALSE:
         return simpleInstruction(instruction, offset);
+    case Opcode::GET_GLOBAL:
+        return constantInstruction(instruction, offset);
     case Opcode::GREATER:
         return simpleInstruction(instruction, offset);
     case Opcode::GREATER_EQUAL:
@@ -66,10 +70,14 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
         return simpleInstruction(instruction, offset);
     case Opcode::NOT:
         return simpleInstruction(instruction, offset);
+    case Opcode::POP:
+        return simpleInstruction(instruction, offset);
     case Opcode::PRINT:
         return simpleInstruction(instruction, offset);
     case Opcode::RETURN:
         return simpleInstruction(instruction, offset);
+    case Opcode::SET_GLOBAL:
+        return constantInstruction(instruction, offset);
     case Opcode::SUBTRACT:
         return simpleInstruction(instruction, offset);
     case Opcode::TRUE:
@@ -106,7 +114,7 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
     return m_lines[offset];
 }
 
-[[nodiscard]] auto Chunk::getConstant(size_t offset) const -> cppLox::Types::Value const & {
+[[nodiscard]] auto Chunk::getConstant(size_t offset) -> cppLox::Types::Value & {
     return m_constants[offset];
 }
 

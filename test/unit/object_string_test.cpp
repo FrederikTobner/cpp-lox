@@ -20,14 +20,23 @@ class ObjectStringTest : public ::testing::Test {
 };
 
 TEST_F(ObjectStringTest, type) {
-    ASSERT_EQ(object->type(), cppLox::Types::Object::Type::STRING);
+    // Act
+    auto type = object->type();
+
+    // Assert
+    ASSERT_EQ(type, cppLox::Types::Object::Type::STRING);
 }
 
 TEST_F(ObjectStringTest, is) {
-    ASSERT_TRUE(object->is(cppLox::Types::Object::Type::STRING));
+    // Act
+    auto result = object->is(cppLox::Types::Object::Type::STRING);
+
+    // Assert
+    ASSERT_TRUE(result);
 }
 
 TEST_F(ObjectStringTest, string) {
+    // Assert
     ASSERT_EQ(object->type(), cppLox::Types::Object::Type::STRING);
     ASSERT_EQ(object->as<cppLox::Types::ObjectString>()->string(), "Hello World");
 }
@@ -35,12 +44,18 @@ TEST_F(ObjectStringTest, string) {
 TEST_F(ObjectStringTest, ExtractionOperator) {
     // Arrange
     testing::internal::CaptureStdout();
+
     // Act
     std::cout << object;
+
     // Assert
     ASSERT_EQ("Hello World", testing::internal::GetCapturedStdout());
 }
 
 TEST_F(ObjectStringTest, Formatter) {
-    ASSERT_EQ(std::format("{}", object.get()), "Hello World");
+    // Act
+    auto result = std::format("{}", object.get());
+
+    // Assert
+    ASSERT_EQ(result, "Hello World");
 }

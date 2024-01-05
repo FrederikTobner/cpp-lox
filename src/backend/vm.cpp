@@ -9,7 +9,7 @@
 
 using namespace cppLox::Backend;
 
-VM::VM(MemoryMutator * memoryMutator) {
+VM::VM(cppLox::MemoryMutator * memoryMutator) {
     m_stack_top = 0;
     m_chunk = nullptr;
     m_instruction_index = 0;
@@ -27,7 +27,6 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
         std::cout << std::endl;
         chunk_disassemble_instruction(chunk, m_instruction_index);
 #endif
-
         uint8_t instruction = chunk.getByte(m_instruction_index++);
         switch (static_cast<cppLox::ByteCode::Opcode>(instruction)) {
         case cppLox::ByteCode::Opcode::ADD:
@@ -58,27 +57,65 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                 push(chunk.getConstant(constant));
                 break;
             }
+        case cppLox::ByteCode::Opcode::DEFINE_GLOBAL:
+            {
+                uint8_t constant = chunk.getByte(m_instruction_index++);
+                cppLox::Types::Value value = pop();
+                m_memoryMutator->setGlobal(
+                    chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
+                    value);
+                push(value);
+                break;
+            }
         case cppLox::ByteCode::Opcode::DIVIDE:
-            push(pop() / pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b / a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::EQUAL:
             push(pop() == pop());
             break;
         case cppLox::ByteCode::Opcode::FALSE:
             push(cppLox::Types::Value(false));
             break;
+        case cppLox::ByteCode::Opcode::GET_GLOBAL:
+            {
+                uint8_t constant = chunk.getByte(m_instruction_index++);
+                cppLox::Types::Value value = m_memoryMutator->getGlobal(
+                    chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>());
+                push(value);
+                break;
+            }
         case cppLox::ByteCode::Opcode::GREATER:
-            push(pop() > pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b > a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::GREATER_EQUAL:
-            push(pop() >= pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b >= a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::LESS:
-            push(pop() < pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b < a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::LESS_EQUAL:
-            push(pop() <= pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b <= a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::MULTIPLY:
             push(pop() * pop());
             break;
@@ -99,9 +136,25 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
         case cppLox::ByteCode::Opcode::PRINT:
             std::cout << pop() << std::endl;
             break;
+        case cppLox::ByteCode::Opcode::SET_GLOBAL:
+            {
+                uint8_t constant = chunk.getByte(m_instruction_index++);
+                cppLox::Types::Value value = pop();
+                cppLox::Types::ObjectString * name =
+                    chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>();
+                if (!m_memoryMutator->setGlobal(name, value)) {
+                    m_memoryMutator->deleteGlobal(name);
+                    runTimeError("Undefined variable '%s'", name->string().c_str());
+                };
+                break;
+            }
         case cppLox::ByteCode::Opcode::SUBTRACT:
-            push(pop() - pop());
-            break;
+            {
+                cppLox::Types::Value a = pop();
+                cppLox::Types::Value b = pop();
+                push(b - a);
+                break;
+            }
         case cppLox::ByteCode::Opcode::TRUE:
             push(cppLox::Types::Value(true));
             break;
@@ -125,6 +178,13 @@ auto VM::push(cppLox::Types::Value value) -> void {
     }
     m_stack_top--;
     return m_stack[m_stack_top];
+}
+
+[[nodiscard]] auto VM::peek() -> cppLox::Types::Value {
+    if (m_stack_top == 0) {
+        runTimeError("Stack empty on peek");
+    }
+    return m_stack[m_stack_top - 1];
 }
 
 auto VM::resetStack() -> void {

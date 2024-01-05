@@ -5,6 +5,7 @@
 
 namespace cppLox::Types {
 
+// Forward declaration of Object type.
 class Object;
 
 /// @brief Checks if the given type is derived from Object.
@@ -16,6 +17,7 @@ class Object {
   public:
     /// @brief The type of an object.
     enum class Type {
+        /// @brief An ObjectString.
         STRING
     };
 
@@ -59,6 +61,8 @@ class Object {
         return os;
     }
 
+    /// @brief Writes the value to the given output stream
+    /// @param os The output stream to write to
     virtual void writeToOutputStream(std::ostream & os) const = 0;
 
   protected:
