@@ -51,7 +51,7 @@ class SingleTokenLexerTest
     }
 };
 
-INSTANTIATE_TEST_SUITE_P(ScanSingleToken, SingleTokenLexerTest,
+INSTANTIATE_TEST_SUITE_P(LexerTest, SingleTokenLexerTest,
                          ::testing::Values(std::make_pair("(", cppLox::Frontend::Token::Type::LEFT_PARENTHESES),
                                            std::make_pair(")", cppLox::Frontend::Token::Type::RIGHT_PARENTHESES),
                                            std::make_pair("{", cppLox::Frontend::Token::Type::LEFT_BRACE),

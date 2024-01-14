@@ -27,7 +27,7 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
         std::cout << std::endl;
         chunk_disassemble_instruction(chunk, m_instruction_index);
 #endif
-        uint8_t instruction = chunk.getByte(m_instruction_index++);
+        uint8_t const instruction = chunk.getByte(m_instruction_index++);
         switch (static_cast<cppLox::ByteCode::Opcode>(instruction)) {
         case cppLox::ByteCode::Opcode::ADD:
             {
@@ -53,14 +53,14 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             }
         case cppLox::ByteCode::Opcode::CONSTANT:
             {
-                uint8_t constant = chunk.getByte(m_instruction_index++);
+                uint8_t const constant = chunk.getByte(m_instruction_index++);
                 push(chunk.getConstant(constant));
                 break;
             }
         case cppLox::ByteCode::Opcode::DEFINE_GLOBAL:
             {
-                uint8_t constant = chunk.getByte(m_instruction_index++);
-                cppLox::Types::Value value = pop();
+                uint8_t const constant = chunk.getByte(m_instruction_index++);
+                cppLox::Types::Value const value = pop();
                 m_memoryMutator->setGlobal(
                     chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
                     value);
@@ -69,8 +69,8 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             }
         case cppLox::ByteCode::Opcode::DIVIDE:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b / a);
                 break;
             }
@@ -82,37 +82,37 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             break;
         case cppLox::ByteCode::Opcode::GET_GLOBAL:
             {
-                uint8_t constant = chunk.getByte(m_instruction_index++);
-                cppLox::Types::Value value = m_memoryMutator->getGlobal(
+                uint8_t const constant = chunk.getByte(m_instruction_index++);
+                cppLox::Types::Value const value = m_memoryMutator->getGlobal(
                     chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>());
                 push(value);
                 break;
             }
         case cppLox::ByteCode::Opcode::GREATER:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b > a);
                 break;
             }
         case cppLox::ByteCode::Opcode::GREATER_EQUAL:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b >= a);
                 break;
             }
         case cppLox::ByteCode::Opcode::LESS:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b < a);
                 break;
             }
         case cppLox::ByteCode::Opcode::LESS_EQUAL:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b <= a);
                 break;
             }
@@ -138,7 +138,7 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             break;
         case cppLox::ByteCode::Opcode::SET_GLOBAL:
             {
-                uint8_t constant = chunk.getByte(m_instruction_index++);
+                uint8_t const constant = chunk.getByte(m_instruction_index++);
                 cppLox::Types::Value value = pop();
                 cppLox::Types::ObjectString * name =
                     chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>();
@@ -150,8 +150,8 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             }
         case cppLox::ByteCode::Opcode::SUBTRACT:
             {
-                cppLox::Types::Value a = pop();
-                cppLox::Types::Value b = pop();
+                cppLox::Types::Value const a = pop();
+                cppLox::Types::Value const b = pop();
                 push(b - a);
                 break;
             }
@@ -192,9 +192,8 @@ auto VM::resetStack() -> void {
 }
 
 template <class... Args> auto VM::runTimeError(std::string_view fmt, Args &&... args) -> void {
-    std::string errorMessage = std::vformat(fmt, std::make_format_args(args...));
-    errorMessage += "\n";
-    size_t instruction = m_instruction_index - 1;
-    errorMessage.append(std::format("[line {}] in script\n", m_chunk->getLine(instruction)));
-    throw cppLox::Error::RunTimeException(errorMessage);
+    std::string const errorMessage = std::vformat(fmt, std::make_format_args(args...));
+    size_t const instructionIndex = m_instruction_index - 1;
+    throw cppLox::Error::RunTimeException(
+        std::format("{}\n[line {}] in script\n", errorMessage, m_chunk->getLine(instructionIndex)));
 }

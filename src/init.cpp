@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <string>
 
 #include "bytecode/chunk.hpp"
 #include "error/compiletime_exception.hpp"

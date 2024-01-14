@@ -2,6 +2,7 @@
 #include "../../src/types/object_string.hpp"
 
 #include <memory>
+#include <sstream>
 #include <string>
 
 #include <gtest/gtest.h>
@@ -43,13 +44,13 @@ TEST_F(ObjectStringTest, string) {
 
 TEST_F(ObjectStringTest, ExtractionOperator) {
     // Arrange
-    testing::internal::CaptureStdout();
+    std::ostringstream oss;
 
     // Act
-    std::cout << object;
+    oss << object;
 
     // Assert
-    ASSERT_EQ("Hello World", testing::internal::GetCapturedStdout());
+    ASSERT_EQ("Hello World", oss.str());
 }
 
 TEST_F(ObjectStringTest, Formatter) {

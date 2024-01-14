@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <format>
+#include <sstream>
 
 #include "../../src/frontend/token.hpp"
 #include "../../src/frontend/token_formatter.hpp"
@@ -33,13 +34,13 @@ TEST(TokenTest, Line) {
 
 TEST(TokenTest, ExtractionOperator) {
     // Arrange
-    testing::internal::CaptureStdout();
+    std::ostringstream oss;
 
     // Act
-    std::cout << token;
+    oss << token;
 
     // Assert
-    ASSERT_EQ("Token(3.14, 1)", testing::internal::GetCapturedStdout());
+    ASSERT_EQ("Token(3.14, 1)", oss.str());
 }
 
 TEST(TokenTest, Formatter) {

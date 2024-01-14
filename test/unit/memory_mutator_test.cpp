@@ -18,7 +18,7 @@ TEST_F(MemoryMutatorTest, DoesNotCreateDuplicateStrings) {
     cppLox::Types::Object * string2 = memoryMutator->create<cppLox::Types::ObjectString>("test");
 
     // Assert
-    EXPECT_EQ((void *)string1, (void *)string2);
+    EXPECT_EQ(static_cast<void *>(string1), static_cast<void *>(string2));
 }
 
 TEST_F(MemoryMutatorTest, CanGetGlobal) {
