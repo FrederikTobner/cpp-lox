@@ -10,13 +10,6 @@ set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.hpp)
 
-add_compile_definitions(
-  # Flag that indicates that test are executed
-  CELLOX_TESTS_RUNNING
-  # Directory of the cellox e2e tests
-  TEST_PROGRAM_BASE_PATH="${PROJECT_SOURCE_DIR}/test/"
-)
-
 # Builds tests
 add_executable(${INTERPRETER_TESTS} ${TEST_SOURCES} ${INTERPRETER_SOURCES})
 
@@ -24,19 +17,6 @@ add_executable(${INTERPRETER_TESTS} ${TEST_SOURCES} ${INTERPRETER_SOURCES})
 target_include_directories(${INTERPRETER_TESTS} PUBLIC ${SOURCEPATH} ${PROJECT_BINARY_DIR}/src)
 
 if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
-  # Debug options
-  if(CLX_DEBUG_PRINT_BYTECODE)
-    add_compile_definitions(DEBUG_PRINT_CODE)
-  endif()
-  if(CLX_DEBUG_TRACE_EXECUTION)
-    add_compile_definitions(DEBUG_TRACE_EXECUTION)
-  endif()
-  if(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR)
-    add_compile_definitions(DEBUG_STRESS_GC)
-  endif()
-  if(CLX_DEBUG_LOG_GARBAGE_COLLECTOIN)
-    add_compile_definitions(DEBUG_LOG_GC)
-  endif()
   add_compile_definitions(BUILD_TYPE_DEBUG)
 endif()
 

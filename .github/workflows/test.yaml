@@ -32,24 +32,26 @@ jobs:
 
     - name: Run tests
       working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{env.BUILD_TYPE}}
-    
+      run: ctest -C ${{env.BUILD_TYPE}} 
+
     - name: Setup OpenCppCoverage and add to Path
-      if: matrix.buildtypes == 'Release'
+      if: ${{env.BUILD_TYPE == 'Debug'}}
       id: setup_opencppcoverage
       run: |
         choco install OpenCppCoverage -y
         echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+        
     - name: Generate Report
-      if: matrix.buildtypes == 'Release'
+      if: ${{env.BUILD_TYPE == 'Debug'}}
       id: generate_test_report
       shell: cmd
-      run: OpenCppCoverage.exe --verbose --sources src --export_type cobertura:cpplox.xml -- build/test/cpplox-tests.exe
+      run: OpenCppCoverage.exe --verbose --sources=src --export_type cobertura:cpplox.xml -- build/test/cpplox-tests.exe
+
     - name: Upload Report to Codecov
-      if: matrix.buildtypes == 'Release'
+      if: ${{env.BUILD_TYPE == 'Debug'}}
       uses: codecov/codecov-action@v3
       env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
       with:
         files: ./cpplox.xml
         fail_ci_if_error: true

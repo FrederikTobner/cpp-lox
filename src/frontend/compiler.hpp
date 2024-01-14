@@ -14,11 +14,12 @@
 
 namespace cppLox::Frontend {
 
+/// @brief The compiler used by the cpplox interpreter.
 class Compiler {
 
   public:
     /// @brief Constructs a new compiler.
-    Compiler(MemoryMutator * memoryMutator);
+    Compiler(cppLox::MemoryMutator * memoryMutator);
 
     /// @brief Destructor of the compiler.
     ~Compiler() = default;
@@ -46,6 +47,14 @@ class Compiler {
     /// @brief Gets the current chunk.
     /// @return The current chunk.
     [[nodiscard]] auto currentChunk() const -> cppLox::ByteCode::Chunk *;
+
+    /// @brief Compiles a declaration.
+    /// @param tokens The tokens that are compiled.
+    auto declaration(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Emits a DEFINE_GLOBAL opcode and the index of the variable in the chunk.
+    /// @param global The index of the variable in the chunk.
+    auto defineVariable(uint8_t global) -> void;
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
@@ -88,42 +97,92 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto expression(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles an expression statement.
+    /// @param tokens The tokens that are compiled.
+    /// @return The expression statement.
+    auto expressionStatement(std::vector<Token> const & tokens) -> void;
+
     /// @brief Compiles a grouping expression.
     /// @param tokens The tokens that are compiled.
-    auto grouping(std::vector<Token> const & tokens) -> void;
+    auto grouping(std::vector<Token> const & tokens, bool canAssign) -> void;
 
     /// @brief Gets the rule for the given token type.
     /// @param type The type of the token.
     /// @return The rule for the given token type.
     [[nodiscard]] auto getRule(Token::Type type) -> ParseRule<Compiler> *;
 
+    /// @brief Compiles an identifier expression.
+    /// @param name The name of the identifier.
+    /// @return The index of the identifier in the chunk.
+    [[nodiscard]] auto identifierConstant(Token const & name) -> uint8_t;
+
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
-    auto literal(std::vector<Token> const & tokens) -> void;
+    auto literal(std::vector<Token> const & tokens, bool canAssign) -> void;
 
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
     auto makeConstant(cppLox::Types::Value value) -> void;
 
+    /// @brief Matches the current token with the given type and advances to the next token if it matches.
+    /// @param type The type of the token.
+    /// @param tokens The tokens that are compiled.
+    /// @return Whether the current token matches the given type.
+    [[nodiscard]] auto match(Token::Type type, std::vector<Token> const & tokens) -> bool;
+
+    /// @brief Compiles variable name
+    /// @param name The name of the variable.
+    /// @param tokens The tokens that are compiled.
+    /// @param canAssign Whether the variable can be assigned.
+    auto namedVariable(Token const & name, std::vector<Token> const & tokens, bool canAssign) -> void;
+
     /// @brief Compiles a numerical constant.
     /// @param tokens The tokens that are compiled.
-    auto number(std::vector<Token> const & tokens) -> void;
+    auto number(std::vector<Token> const & tokens, bool canAssign) -> void;
 
     /// @brief Parses the precedence of the current token.
     /// @param precedence The precedence to parse.
     /// @param tokens The tokens that are compiled.
     auto parsePrecedence(Precedence precedence, std::vector<Token> const & tokens) -> void;
 
+    /// @brief Parses a variable.
+    /// @param errorMessage The error message to display if no identifier is detected.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the variable in the chunk.
+    [[nodiscard]] auto parseVariable(std::string errorMessage, std::vector<Token> const & tokens) -> uint8_t;
+
     /// @brief Compiles a print statement.
     /// @param tokens The tokens that are compiled.
-    auto printStatement(std::vector<Token> const & tokens) -> void;
+    auto printStatement(std::vector<Token> const & tokens, bool canAssign) -> void;
+
+    /// @brief Compiles a statement.
+    /// @param tokens The tokens that are compiled.
+    /// @return The statement.
+    auto statement(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Compiles a string constant.
+    /// @param tokens The tokens that are compiled.
+    auto string(std::vector<Token> const & tokens, bool canAssign) -> void;
+
+    /// @brief Synchronizes the compiler after an error.
+    /// @param tokens The tokens that are compiled.
+    auto synchronize(std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a unary expression.
     /// @param tokens The tokens that are compiled.
-    auto unary(std::vector<Token> const & tokens) -> void;
+    auto unary(std::vector<Token> const & tokens, bool canAssign) -> void;
 
-    auto string(std::vector<Token> const & tokens) -> void;
+    /// @brief Compiles a variable name
+    /// @param tokens The tokens that are compiled.
+    /// @param canAssign Whether the variable can be assigned.
+    auto variable(std::vector<Token> const & tokens, bool canAssign) -> void;
 
+    /// @brief Compiles a variable declaration.
+    /// @param tokens The tokens that are compiled.
+    auto variableDeclaration(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Creates the parsing rules for the different token types.
+    /// @return The rules for the different token types.
     static std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
         std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
         rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
@@ -165,7 +224,7 @@ class Compiler {
         rules[static_cast<size_t>(Token::Type::LESS_EQUAL)] =
             ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
         rules[static_cast<size_t>(Token::Type::IDENTIFIER)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::variable, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::STRING)] =
             ParseRule<Compiler>(&Compiler::string, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::NUMBER)] =
@@ -214,8 +273,10 @@ class Compiler {
     /// @brief The chunk that is currently compiled.
     cppLox::ByteCode::Chunk * m_chunk;
     /// @brief The memory manager.
-    MemoryMutator * m_memoryMutator;
+    cppLox::MemoryMutator * m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
+    /// @brief Whether the compiler is in panic mode.
+    bool m_panicMode;
 };
 } // namespace cppLox::Frontend

@@ -7,6 +7,7 @@
 
 /// @brief Formatter for the Opcode enum
 template <> struct std::formatter<cppLox::ByteCode::Opcode> : std::formatter<std::string_view> {
+
     /// @brief Formats the opcode as a string.
     /// @param opcode The opcode to format.
     /// @param ctx The format context.
