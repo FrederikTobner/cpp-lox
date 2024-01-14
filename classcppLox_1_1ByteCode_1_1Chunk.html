@@ -92,50 +92,71 @@ $(document).ready(function(){initNavTree('classcppLox_1_1ByteCode_1_1Chunk.html'
 </div><!--header-->
 <div class="contents">
 
+<p>A chunk of bytecode.  
+ <a href="classcppLox_1_1ByteCode_1_1Chunk.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="chunk_8hpp_source.html">chunk.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a67c05e74457c5188378bd70a1889b31b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a67c05e74457c5188378bd70a1889b31b">Chunk</a> ()=default</td></tr>
+<tr class="memdesc:a67c05e74457c5188378bd70a1889b31b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a67c05e74457c5188378bd70a1889b31b">More...</a><br /></td></tr>
 <tr class="separator:a67c05e74457c5188378bd70a1889b31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed2f42065e5584f0dad876414273a90c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#aed2f42065e5584f0dad876414273a90c">~Chunk</a> ()=default</td></tr>
+<tr class="memdesc:aed2f42065e5584f0dad876414273a90c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#aed2f42065e5584f0dad876414273a90c">More...</a><br /></td></tr>
 <tr class="separator:aed2f42065e5584f0dad876414273a90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e1a52a16a19013b800ac2a5726645e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a9e1a52a16a19013b800ac2a5726645e6">write</a> (uint8_t byte, int line)</td></tr>
-<tr class="separator:a9e1a52a16a19013b800ac2a5726645e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a590b68f123808e8a3a8fd33cb05e24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a6a590b68f123808e8a3a8fd33cb05e24">write</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> byte, int line)</td></tr>
-<tr class="separator:a6a590b68f123808e8a3a8fd33cb05e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed1d04ee829e86b213b40fa3e97d9b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a6ed1d04ee829e86b213b40fa3e97d9b9">disassemble</a> (std::string_view const &amp;name) const</td></tr>
-<tr class="separator:a6ed1d04ee829e86b213b40fa3e97d9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f4a90bd1b4eebf60dff03903352ac7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a42f4a90bd1b4eebf60dff03903352ac7">addConstant</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> const &amp;value)</td></tr>
-<tr class="separator:a42f4a90bd1b4eebf60dff03903352ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a646edc8ac5e94d7a41af383deb24dc72"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a646edc8ac5e94d7a41af383deb24dc72">getByte</a> (size_t offset) const</td></tr>
-<tr class="separator:a646edc8ac5e94d7a41af383deb24dc72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05435bdca96729ff6a63f038e9b0b4c0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a05435bdca96729ff6a63f038e9b0b4c0">getLine</a> (size_t offset) const</td></tr>
-<tr class="separator:a05435bdca96729ff6a63f038e9b0b4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62fe0bb4f173c1868c3f4b39ae4137de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a62fe0bb4f173c1868c3f4b39ae4137de">getConstant</a> (size_t offset) const</td></tr>
-<tr class="separator:a62fe0bb4f173c1868c3f4b39ae4137de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c1d89d2d5cd83b98e9053def9afdc99"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a5c1d89d2d5cd83b98e9053def9afdc99">getSize</a> () const</td></tr>
-<tr class="separator:a5c1d89d2d5cd83b98e9053def9afdc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a911d16467283e7721418cca404ea0bb9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a911d16467283e7721418cca404ea0bb9">disassembleInstruction</a> (size_t offset) const</td></tr>
-<tr class="separator:a911d16467283e7721418cca404ea0bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af391cb7e1d4649f40cabe0624775667a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a">write</a> (uint8_t byte, int line) -&gt; void</td></tr>
+<tr class="memdesc:af391cb7e1d4649f40cabe0624775667a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a byte to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a">More...</a><br /></td></tr>
+<tr class="separator:af391cb7e1d4649f40cabe0624775667a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8e9708ca333f2f6faa4a31536132fac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">write</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> byte, int line) -&gt; void</td></tr>
+<tr class="memdesc:ab8e9708ca333f2f6faa4a31536132fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes an opcode to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">More...</a><br /></td></tr>
+<tr class="separator:ab8e9708ca333f2f6faa4a31536132fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3cda14536ca513905ee0deca5279ca"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a1b3cda14536ca513905ee0deca5279ca">disassemble</a> (std::string_view const &amp;name) const -&gt; void</td></tr>
+<tr class="memdesc:a1b3cda14536ca513905ee0deca5279ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a1b3cda14536ca513905ee0deca5279ca">More...</a><br /></td></tr>
+<tr class="separator:a1b3cda14536ca513905ee0deca5279ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd6d75487b244bcdbba61ed5b9e57b7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a5dd6d75487b244bcdbba61ed5b9e57b7">addConstant</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> const &amp;value) -&gt; size_t</td></tr>
+<tr class="memdesc:a5dd6d75487b244bcdbba61ed5b9e57b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a constant to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a5dd6d75487b244bcdbba61ed5b9e57b7">More...</a><br /></td></tr>
+<tr class="separator:a5dd6d75487b244bcdbba61ed5b9e57b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa030aec1d34eedaf43d99c5beb170b3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#afa030aec1d34eedaf43d99c5beb170b3">getByte</a> (size_t index) const -&gt; uint8_t</td></tr>
+<tr class="memdesc:afa030aec1d34eedaf43d99c5beb170b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the byte at the given index.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#afa030aec1d34eedaf43d99c5beb170b3">More...</a><br /></td></tr>
+<tr class="separator:afa030aec1d34eedaf43d99c5beb170b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e9ac09b55c1777e44558ad47af0d4a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a41e9ac09b55c1777e44558ad47af0d4a">getLine</a> (size_t index) const -&gt; size_t</td></tr>
+<tr class="memdesc:a41e9ac09b55c1777e44558ad47af0d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the line number of the given index.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a41e9ac09b55c1777e44558ad47af0d4a">More...</a><br /></td></tr>
+<tr class="separator:a41e9ac09b55c1777e44558ad47af0d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbce6d6d22c09afedb5724a1eb36ac7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a4bbce6d6d22c09afedb5724a1eb36ac7">getConstant</a> (size_t index) -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> &amp;</td></tr>
+<tr class="memdesc:a4bbce6d6d22c09afedb5724a1eb36ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the constant at the given index.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a4bbce6d6d22c09afedb5724a1eb36ac7">More...</a><br /></td></tr>
+<tr class="separator:a4bbce6d6d22c09afedb5724a1eb36ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd23348bc00dbebde3c54751f5bcf7b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#aedd23348bc00dbebde3c54751f5bcf7b">getSize</a> () const -&gt; size_t</td></tr>
+<tr class="memdesc:aedd23348bc00dbebde3c54751f5bcf7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the size of the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#aedd23348bc00dbebde3c54751f5bcf7b">More...</a><br /></td></tr>
+<tr class="separator:aedd23348bc00dbebde3c54751f5bcf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#acd1a9ae7a51288e3970a1f9cb0ab479a">disassembleInstruction</a> (size_t index) const -&gt; size_t</td></tr>
+<tr class="memdesc:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles the instruction at the given offset.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#acd1a9ae7a51288e3970a1f9cb0ab479a">More...</a><br /></td></tr>
+<tr class="separator:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ae470ae4eb88940c772fa1beb5c8aed43"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ae470ae4eb88940c772fa1beb5c8aed43">simpleInstruction</a> (uint8_t opcode, size_t offset) const</td></tr>
-<tr class="separator:ae470ae4eb88940c772fa1beb5c8aed43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc1a8f58dca60742eb78a767a2984671"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#adc1a8f58dca60742eb78a767a2984671">constantInstruction</a> (uint8_t opcode, size_t offset) const</td></tr>
-<tr class="separator:adc1a8f58dca60742eb78a767a2984671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a4b8f895f9bb76de02a51fd7611cec"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a09a4b8f895f9bb76de02a51fd7611cec">simpleInstruction</a> (uint8_t opcode, size_t index) const -&gt; size_t</td></tr>
+<tr class="memdesc:a09a4b8f895f9bb76de02a51fd7611cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles a simple instruction.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a09a4b8f895f9bb76de02a51fd7611cec">More...</a><br /></td></tr>
+<tr class="separator:a09a4b8f895f9bb76de02a51fd7611cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af18643ec9162c7bddb4e23f3e863ed53"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#af18643ec9162c7bddb4e23f3e863ed53">constantInstruction</a> (uint8_t opcode, size_t index) const -&gt; size_t</td></tr>
+<tr class="memdesc:af18643ec9162c7bddb4e23f3e863ed53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles a constant instruction.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#af18643ec9162c7bddb4e23f3e863ed53">More...</a><br /></td></tr>
+<tr class="separator:af18643ec9162c7bddb4e23f3e863ed53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ab289222042edf9fb2b6f44a34b187e37"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab289222042edf9fb2b6f44a34b187e37">m_code</a></td></tr>
+<tr class="memdesc:ab289222042edf9fb2b6f44a34b187e37"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bytecode stored in the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#ab289222042edf9fb2b6f44a34b187e37">More...</a><br /></td></tr>
 <tr class="separator:ab289222042edf9fb2b6f44a34b187e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c5ffa4ab9295677e5dc1d5e7ee4edc9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a7c5ffa4ab9295677e5dc1d5e7ee4edc9">m_lines</a></td></tr>
+<tr class="memdesc:a7c5ffa4ab9295677e5dc1d5e7ee4edc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The line numbers of the opcodes, stored in the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a7c5ffa4ab9295677e5dc1d5e7ee4edc9">More...</a><br /></td></tr>
 <tr class="separator:a7c5ffa4ab9295677e5dc1d5e7ee4edc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8beb6d28bb84389e06672f6b03ff1154"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a8beb6d28bb84389e06672f6b03ff1154">m_constants</a></td></tr>
+<tr class="memdesc:a8beb6d28bb84389e06672f6b03ff1154"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value constants stored in the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a8beb6d28bb84389e06672f6b03ff1154">More...</a><br /></td></tr>
 <tr class="separator:a8beb6d28bb84389e06672f6b03ff1154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A chunk of bytecode. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a67c05e74457c5188378bd70a1889b31b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67c05e74457c5188378bd70a1889b31b">&#9670;&nbsp;</a></span>Chunk()</h2>
 
@@ -158,6 +179,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructs a new chunk. </p>
 
 </div>
 </div>
@@ -184,11 +207,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Destructor of the chunk. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a42f4a90bd1b4eebf60dff03903352ac7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42f4a90bd1b4eebf60dff03903352ac7">&#9670;&nbsp;</a></span>addConstant()</h2>
+<a id="a5dd6d75487b244bcdbba61ed5b9e57b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd6d75487b244bcdbba61ed5b9e57b7">&#9670;&nbsp;</a></span>addConstant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,15 +223,24 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> const &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; size_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds a constant to the chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the added constant. </dd></dl>
+
 </div>
 </div>
-<a id="adc1a8f58dca60742eb78a767a2984671"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc1a8f58dca60742eb78a767a2984671">&#9670;&nbsp;</a></span>constantInstruction()</h2>
+<a id="af18643ec9162c7bddb4e23f3e863ed53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af18643ec9162c7bddb4e23f3e863ed53">&#9670;&nbsp;</a></span>constantInstruction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,12 +258,12 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td> const -&gt; size_t</td>
         </tr>
       </table>
   </td>
@@ -239,10 +273,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Disassembles a constant instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>The opcode of the instruction. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a6ed1d04ee829e86b213b40fa3e97d9b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ed1d04ee829e86b213b40fa3e97d9b9">&#9670;&nbsp;</a></span>disassemble()</h2>
+<a id="a1b3cda14536ca513905ee0deca5279ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3cda14536ca513905ee0deca5279ca">&#9670;&nbsp;</a></span>disassemble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,15 +295,23 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::string_view const &amp;&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; void</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Disassembles the chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the chunk. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a911d16467283e7721418cca404ea0bb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a911d16467283e7721418cca404ea0bb9">&#9670;&nbsp;</a></span>disassembleInstruction()</h2>
+<a id="acd1a9ae7a51288e3970a1f9cb0ab479a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1a9ae7a51288e3970a1f9cb0ab479a">&#9670;&nbsp;</a></span>disassembleInstruction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,16 +320,25 @@ Private Attributes</h2></td></tr>
           <td class="memname">auto disassembleInstruction </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const -&gt; size_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Disassembles the instruction at the given offset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the next instruction. </dd></dl>
+
 </div>
 </div>
-<a id="a646edc8ac5e94d7a41af383deb24dc72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a646edc8ac5e94d7a41af383deb24dc72">&#9670;&nbsp;</a></span>getByte()</h2>
+<a id="afa030aec1d34eedaf43d99c5beb170b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa030aec1d34eedaf43d99c5beb170b3">&#9670;&nbsp;</a></span>getByte()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -287,16 +347,25 @@ Private Attributes</h2></td></tr>
           <td class="memname">auto getByte </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const -&gt; uint8_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the byte at the given index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the byte. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The byte at the given index. </dd></dl>
+
 </div>
 </div>
-<a id="a62fe0bb4f173c1868c3f4b39ae4137de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62fe0bb4f173c1868c3f4b39ae4137de">&#9670;&nbsp;</a></span>getConstant()</h2>
+<a id="a4bbce6d6d22c09afedb5724a1eb36ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bbce6d6d22c09afedb5724a1eb36ac7">&#9670;&nbsp;</a></span>getConstant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,16 +374,25 @@ Private Attributes</h2></td></tr>
           <td class="memname">auto getConstant </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> &amp;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the constant at the given index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the constant. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The constant at the given index. </dd></dl>
+
 </div>
 </div>
-<a id="a05435bdca96729ff6a63f038e9b0b4c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05435bdca96729ff6a63f038e9b0b4c0">&#9670;&nbsp;</a></span>getLine()</h2>
+<a id="a41e9ac09b55c1777e44558ad47af0d4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e9ac09b55c1777e44558ad47af0d4a">&#9670;&nbsp;</a></span>getLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,16 +401,25 @@ Private Attributes</h2></td></tr>
           <td class="memname">auto getLine </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const -&gt; size_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the line number of the given index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the opcode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The line number of the opcode at the given index. </dd></dl>
+
 </div>
 </div>
-<a id="a5c1d89d2d5cd83b98e9053def9afdc99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c1d89d2d5cd83b98e9053def9afdc99">&#9670;&nbsp;</a></span>getSize()</h2>
+<a id="aedd23348bc00dbebde3c54751f5bcf7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd23348bc00dbebde3c54751f5bcf7b">&#9670;&nbsp;</a></span>getSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -341,15 +428,18 @@ Private Attributes</h2></td></tr>
           <td class="memname">auto getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; size_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the size of the chunk. </p>
+<dl class="section return"><dt>Returns</dt><dd>The size of the chunk. </dd></dl>
+
 </div>
 </div>
-<a id="ae470ae4eb88940c772fa1beb5c8aed43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae470ae4eb88940c772fa1beb5c8aed43">&#9670;&nbsp;</a></span>simpleInstruction()</h2>
+<a id="a09a4b8f895f9bb76de02a51fd7611cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a4b8f895f9bb76de02a51fd7611cec">&#9670;&nbsp;</a></span>simpleInstruction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,12 +457,12 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> const</td>
+          <td></td><td> const -&gt; size_t</td>
         </tr>
       </table>
   </td>
@@ -382,10 +472,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Disassembles a simple instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>The opcode of the instruction. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a6a590b68f123808e8a3a8fd33cb05e24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a590b68f123808e8a3a8fd33cb05e24">&#9670;&nbsp;</a></span>write() <span class="overload">[1/2]</span></h2>
+<a id="ab8e9708ca333f2f6faa4a31536132fac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8e9708ca333f2f6faa4a31536132fac">&#9670;&nbsp;</a></span>write() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,15 +504,24 @@ Private Attributes</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; void</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Writes an opcode to the chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">byte</td><td>The opcode to write. </td></tr>
+    <tr><td class="paramname">line</td><td>The line number where the opcode originates from the source code. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a9e1a52a16a19013b800ac2a5726645e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e1a52a16a19013b800ac2a5726645e6">&#9670;&nbsp;</a></span>write() <span class="overload">[2/2]</span></h2>
+<a id="af391cb7e1d4649f40cabe0624775667a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af391cb7e1d4649f40cabe0624775667a">&#9670;&nbsp;</a></span>write() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -433,10 +541,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; void</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Writes a byte to the chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">byte</td><td>The byte to write. </td></tr>
+    <tr><td class="paramname">line</td><td>The line number where the byte originates from the source code. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -461,6 +578,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The bytecode stored in the chunk. </p>
+
 </div>
 </div>
 <a id="a8beb6d28bb84389e06672f6b03ff1154"></a>
@@ -483,6 +602,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The value constants stored in the chunk. </p>
+
 </div>
 </div>
 <a id="a7c5ffa4ab9295677e5dc1d5e7ee4edc9"></a>
@@ -504,6 +625,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The line numbers of the opcodes, stored in the chunk. </p>
 
 </div>
 </div>

@@ -5,6 +5,6 @@ var classcppLox_1_1Types_1_1ObjectString =
     [ "operator==", "classcppLox_1_1Types_1_1ObjectString.html#a673fe865d55bb386c6e4e49c84c3bd5d", null ],
     [ "operator==", "classcppLox_1_1Types_1_1ObjectString.html#a8b9363e975f103e05347c9e2ac57cd3f", null ],
     [ "string", "classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a", null ],
-    [ "writeToOutputStream", "classcppLox_1_1Types_1_1ObjectString.html#a909e3657219447760f5195739f3750ce", null ],
+    [ "writeToOutputStream", "classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e", null ],
     [ "m_string", "classcppLox_1_1Types_1_1ObjectString.html#aa9f65a9e96d0de6d1f2a108d221151d2", null ]
 ];

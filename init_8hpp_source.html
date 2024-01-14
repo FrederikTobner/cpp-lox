@@ -88,11 +88,34 @@ $(document).ready(function(){initNavTree('init_8hpp_source.html',''); initResiza
 <div class="contents">
 <a href="init_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">auto</span> <a class="code" href="init_8hpp.html#ab9ffae0d38fc012bc00f64364d766809">repl</a>() -&gt; void;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">auto</span> <a class="code" href="init_8hpp.html#a7a9585b91eec25b99abc10d992d21072">runFile</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> * path) -&gt; void;</div>
-<div class="ttc" id="ainit_8hpp_html_a7a9585b91eec25b99abc10d992d21072"><div class="ttname"><a href="init_8hpp.html#a7a9585b91eec25b99abc10d992d21072">runFile</a></div><div class="ttdeci">auto runFile(char const *path) -&gt; void</div><div class="ttdoc">Executes the program declared in the given file.</div><div class="ttdef"><b>Definition:</b> init.cpp:48</div></div>
-<div class="ttc" id="ainit_8hpp_html_ab9ffae0d38fc012bc00f64364d766809"><div class="ttname"><a href="init_8hpp.html#ab9ffae0d38fc012bc00f64364d766809">repl</a></div><div class="ttdeci">auto repl() -&gt; void</div><div class="ttdoc">Starts the REPL.</div><div class="ttdef"><b>Definition:</b> init.cpp:26</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vm_8hpp.html">backend/vm.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="compiler_8hpp.html">frontend/compiler.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lexer_8hpp.html">frontend/lexer.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="token_8hpp.html">frontend/token.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecppLox.html">cppLox</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809">repl</a>() -&gt; void;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072">runFile</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> * path) -&gt; void;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">auto</span> <a class="code" href="namespacecppLox.html#a2683164434b3da19cca09fae026d6bf9">run</a>(std::string &amp; source, <a class="code" href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a> &amp; lexer, MemoryMutator * memoryMutator,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;         <a class="code" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp; compiler, <a class="code" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp; vm) -&gt; void;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <span class="comment">// namespace cppLox</span></div>
+<div class="ttc" id="aclasscppLox_1_1Backend_1_1VM_html"><div class="ttname"><a href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a></div><div class="ttdoc">The virtual machine used by the cpplox interpreter.</div><div class="ttdef"><b>Definition:</b> vm.hpp:15</div></div>
+<div class="ttc" id="aclasscppLox_1_1Frontend_1_1Compiler_html"><div class="ttname"><a href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a></div><div class="ttdoc">The compiler used by the cpplox interpreter.</div><div class="ttdef"><b>Definition:</b> compiler.hpp:18</div></div>
+<div class="ttc" id="aclasscppLox_1_1Frontend_1_1Lexer_html"><div class="ttname"><a href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a></div><div class="ttdoc">The lexer of the language.</div><div class="ttdef"><b>Definition:</b> lexer.hpp:11</div></div>
+<div class="ttc" id="acompiler_8hpp_html"><div class="ttname"><a href="compiler_8hpp.html">compiler.hpp</a></div></div>
+<div class="ttc" id="alexer_8hpp_html"><div class="ttname"><a href="lexer_8hpp.html">lexer.hpp</a></div></div>
+<div class="ttc" id="anamespacecppLox_html"><div class="ttname"><a href="namespacecppLox.html">cppLox</a></div><div class="ttdef"><b>Definition:</b> vm.hpp:9</div></div>
+<div class="ttc" id="anamespacecppLox_html_a2683164434b3da19cca09fae026d6bf9"><div class="ttname"><a href="namespacecppLox.html#a2683164434b3da19cca09fae026d6bf9">cppLox::run</a></div><div class="ttdeci">auto run(std::string &amp;source, cppLox::Frontend::Lexer &amp;lexer, MemoryMutator *memoryMutator, cppLox::Frontend::Compiler &amp;compiler, cppLox::Backend::VM &amp;vm) -&gt; void</div><div class="ttdoc">The main entry point of the program.</div><div class="ttdef"><b>Definition:</b> init.cpp:59</div></div>
+<div class="ttc" id="anamespacecppLox_html_a7a9585b91eec25b99abc10d992d21072"><div class="ttname"><a href="namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072">cppLox::runFile</a></div><div class="ttdeci">auto runFile(char const *path) -&gt; void</div><div class="ttdoc">Executes the program declared in the given file.</div><div class="ttdef"><b>Definition:</b> init.cpp:35</div></div>
+<div class="ttc" id="anamespacecppLox_html_ab9ffae0d38fc012bc00f64364d766809"><div class="ttname"><a href="namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809">cppLox::repl</a></div><div class="ttdeci">auto repl() -&gt; void</div><div class="ttdoc">Starts the REPL.</div><div class="ttdef"><b>Definition:</b> init.cpp:13</div></div>
+<div class="ttc" id="atoken_8hpp_html"><div class="ttname"><a href="token_8hpp.html">token.hpp</a></div></div>
+<div class="ttc" id="avm_8hpp_html"><div class="ttname"><a href="vm_8hpp.html">vm.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

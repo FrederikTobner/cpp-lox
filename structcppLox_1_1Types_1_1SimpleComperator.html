@@ -90,16 +90,32 @@ $(document).ready(function(){initNavTree('structcppLox_1_1Types_1_1SimpleCompera
 </div><!--header-->
 <div class="contents">
 
+<p>Simple comperator for comparing two references or two pointers.  
+ <a href="structcppLox_1_1Types_1_1SimpleComperator.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="simple__comperator_8hpp_source.html">simple_comperator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0f00a5cb26c5f74e64d9908e01c13713"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcppLox_1_1Types_1_1SimpleComperator.html#a0f00a5cb26c5f74e64d9908e01c13713">operator()</a> (T const &amp;a, T const &amp;b) const -&gt; bool</td></tr>
+<tr class="memdesc:a0f00a5cb26c5f74e64d9908e01c13713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two references.  <a href="structcppLox_1_1Types_1_1SimpleComperator.html#a0f00a5cb26c5f74e64d9908e01c13713">More...</a><br /></td></tr>
 <tr class="separator:a0f00a5cb26c5f74e64d9908e01c13713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a617d07ec146d3508e93e05f4eccf4686"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcppLox_1_1Types_1_1SimpleComperator.html#a617d07ec146d3508e93e05f4eccf4686">operator()</a> (T const *a, T const *b) const -&gt; bool</td></tr>
+<tr class="memdesc:a617d07ec146d3508e93e05f4eccf4686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two pointers.  <a href="structcppLox_1_1Types_1_1SimpleComperator.html#a617d07ec146d3508e93e05f4eccf4686">More...</a><br /></td></tr>
 <tr class="separator:a617d07ec146d3508e93e05f4eccf4686"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+struct cppLox::Types::SimpleComperator&lt; T &gt;</h3>
+
+<p>Simple comperator for comparing two references or two pointers. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the references / pointers. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0f00a5cb26c5f74e64d9908e01c13713"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f00a5cb26c5f74e64d9908e01c13713">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
@@ -133,6 +149,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Compares two references. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The first reference. </td></tr>
+    <tr><td class="paramname">b</td><td>The second reference. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the references are equal, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -169,6 +195,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Compares two pointers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The first pointer. </td></tr>
+    <tr><td class="paramname">b</td><td>The second pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the pointers are equal, false otherwise. </dd></dl>
 
 </div>
 </div>

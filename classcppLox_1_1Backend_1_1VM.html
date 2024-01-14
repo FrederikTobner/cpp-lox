@@ -99,9 +99,9 @@ $(document).ready(function(){initNavTree('classcppLox_1_1Backend_1_1VM.html','')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acc1dbcb918d4be117612f5e69fecead5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#acc1dbcb918d4be117612f5e69fecead5">VM</a> (<a class="el" href="classMemoryMutator.html">MemoryMutator</a> *memoryMutator)</td></tr>
-<tr class="memdesc:acc1dbcb918d4be117612f5e69fecead5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new virtual machine.  <a href="classcppLox_1_1Backend_1_1VM.html#acc1dbcb918d4be117612f5e69fecead5">More...</a><br /></td></tr>
-<tr class="separator:acc1dbcb918d4be117612f5e69fecead5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c03bde68ac4960b6a68037987c83e5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a7c03bde68ac4960b6a68037987c83e5d">VM</a> (<a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a> *memoryMutator)</td></tr>
+<tr class="memdesc:a7c03bde68ac4960b6a68037987c83e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new virtual machine.  <a href="classcppLox_1_1Backend_1_1VM.html#a7c03bde68ac4960b6a68037987c83e5d">More...</a><br /></td></tr>
+<tr class="separator:a7c03bde68ac4960b6a68037987c83e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">~VM</a> ()=default</td></tr>
 <tr class="memdesc:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the virtual machine.  <a href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">More...</a><br /></td></tr>
 <tr class="separator:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,7 +114,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32359dc5661d241d0b718d58537e7979"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">pop</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
 <tr class="memdesc:a32359dc5661d241d0b718d58537e7979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">More...</a><br /></td></tr>
 <tr class="separator:a32359dc5661d241d0b718d58537e7979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bafeacb99863dcf291de32b211d269a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">peek</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
+<tr class="memdesc:a4bafeacb99863dcf291de32b211d269a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the top value of the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">More...</a><br /></td></tr>
+<tr class="separator:a4bafeacb99863dcf291de32b211d269a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">resetStack</a> () -&gt; void</td></tr>
+<tr class="memdesc:a2ad52f60fbe2f0f92ccca306afe69065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">More...</a><br /></td></tr>
 <tr class="separator:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
@@ -138,15 +142,15 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b">m_chunk</a></td></tr>
 <tr class="memdesc:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk to execute.  <a href="classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b">More...</a><br /></td></tr>
 <tr class="separator:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b6546c48ad7a0d14394ccb6f4035645"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemoryMutator.html">MemoryMutator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a7b6546c48ad7a0d14394ccb6f4035645">m_memoryMutator</a></td></tr>
-<tr class="memdesc:a7b6546c48ad7a0d14394ccb6f4035645"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory manager.  <a href="classcppLox_1_1Backend_1_1VM.html#a7b6546c48ad7a0d14394ccb6f4035645">More...</a><br /></td></tr>
-<tr class="separator:a7b6546c48ad7a0d14394ccb6f4035645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e24fb6c180a7757beb2f2f6bde36080"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a6e24fb6c180a7757beb2f2f6bde36080">m_memoryMutator</a></td></tr>
+<tr class="memdesc:a6e24fb6c180a7757beb2f2f6bde36080"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory manager.  <a href="classcppLox_1_1Backend_1_1VM.html#a6e24fb6c180a7757beb2f2f6bde36080">More...</a><br /></td></tr>
+<tr class="separator:a6e24fb6c180a7757beb2f2f6bde36080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The virtual machine used by the cpplox interpreter. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acc1dbcb918d4be117612f5e69fecead5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc1dbcb918d4be117612f5e69fecead5">&#9670;&nbsp;</a></span>VM()</h2>
+<a id="a7c03bde68ac4960b6a68037987c83e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c03bde68ac4960b6a68037987c83e5d">&#9670;&nbsp;</a></span>VM()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +158,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classcppLox_1_1Backend_1_1VM.html">VM</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classMemoryMutator.html">MemoryMutator</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a> *&#160;</td>
           <td class="paramname"><em>memoryMutator</em></td><td>)</td>
           <td></td>
         </tr>
@@ -162,6 +166,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs a new virtual machine. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">memoryMutator</td><td>The memory mutator that is used by the virtual machine </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -219,6 +229,26 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4bafeacb99863dcf291de32b211d269a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bafeacb99863dcf291de32b211d269a">&#9670;&nbsp;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto peek </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Peeks at the top value of the stack. </p>
+<dl class="section return"><dt>Returns</dt><dd>The top value of the stack </dd></dl>
+
+</div>
+</div>
 <a id="a32359dc5661d241d0b718d58537e7979"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a32359dc5661d241d0b718d58537e7979">&#9670;&nbsp;</a></span>pop()</h2>
 
@@ -235,6 +265,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pops the top value from the stack. </p>
+<dl class="section return"><dt>Returns</dt><dd>The top value of the stack </dd></dl>
 
 </div>
 </div>
@@ -278,6 +309,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Resets the stack. </p>
 
 </div>
 </div>
@@ -381,8 +414,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7b6546c48ad7a0d14394ccb6f4035645"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b6546c48ad7a0d14394ccb6f4035645">&#9670;&nbsp;</a></span>m_memoryMutator</h2>
+<a id="a6e24fb6c180a7757beb2f2f6bde36080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e24fb6c180a7757beb2f2f6bde36080">&#9670;&nbsp;</a></span>m_memoryMutator</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,7 +424,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMemoryMutator.html">MemoryMutator</a>* m_memoryMutator</td>
+          <td class="memname"><a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a>* m_memoryMutator</td>
         </tr>
       </table>
   </td>

@@ -6,11 +6,11 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "frontend", "dir_8509b06bafa958d2011203a730bf5778.html", "dir_8509b06bafa958d2011203a730bf5778" ],
     [ "types", "dir_0c0c9fa8a58db41e576adc3ce68c5ee9.html", "dir_0c0c9fa8a58db41e576adc3ce68c5ee9" ],
     [ "exit_code.hpp", "exit__code_8hpp.html", "exit__code_8hpp" ],
-    [ "init.cpp", "init_8cpp.html", "init_8cpp" ],
+    [ "init.cpp", "init_8cpp.html", null ],
     [ "init.hpp", "init_8hpp.html", "init_8hpp" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "memory_mutator.hpp", "memory__mutator_8hpp.html", [
-      [ "MemoryMutator", "classMemoryMutator.html", "classMemoryMutator" ]
+      [ "MemoryMutator", "classcppLox_1_1MemoryMutator.html", "classcppLox_1_1MemoryMutator" ]
     ] ],
     [ "simple_comperator.hpp", "simple__comperator_8hpp.html", [
       [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ]

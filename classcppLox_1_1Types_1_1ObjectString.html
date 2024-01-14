@@ -115,8 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adce3860231aa2e159250200a5ff0413a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a">string</a> () const -&gt; std::string const &amp;</td></tr>
 <tr class="memdesc:adce3860231aa2e159250200a5ff0413a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the string object.  <a href="classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a">More...</a><br /></td></tr>
 <tr class="separator:adce3860231aa2e159250200a5ff0413a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a909e3657219447760f5195739f3750ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#a909e3657219447760f5195739f3750ce">writeToOutputStream</a> (std::ostream &amp;os) const override</td></tr>
-<tr class="separator:a909e3657219447760f5195739f3750ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af777c1ddfe8e6864b24f62a4dce3609e"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e">writeToOutputStream</a> (std::ostream &amp;os) const -&gt; void override</td></tr>
+<tr class="memdesc:af777c1ddfe8e6864b24f62a4dce3609e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the value to the given output stream.  <a href="classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e">More...</a><br /></td></tr>
+<tr class="separator:af777c1ddfe8e6864b24f62a4dce3609e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a673fe865d55bb386c6e4e49c84c3bd5d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#a673fe865d55bb386c6e4e49c84c3bd5d">operator==</a> (<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">ObjectString</a> const &amp;other) const -&gt; bool</td></tr>
 <tr class="separator:a673fe865d55bb386c6e4e49c84c3bd5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b9363e975f103e05347c9e2ac57cd3f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#a8b9363e975f103e05347c9e2ac57cd3f">operator==</a> (<a class="el" href="classcppLox_1_1Types_1_1ObjectString.html">ObjectString</a> const *other) const -&gt; bool</td></tr>
@@ -301,8 +302,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a909e3657219447760f5195739f3750ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a909e3657219447760f5195739f3750ce">&#9670;&nbsp;</a></span>writeToOutputStream()</h2>
+<a id="af777c1ddfe8e6864b24f62a4dce3609e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af777c1ddfe8e6864b24f62a4dce3609e">&#9670;&nbsp;</a></span>writeToOutputStream()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,11 +312,11 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void writeToOutputStream </td>
+          <td class="memname">virtual auto writeToOutputStream </td>
           <td>(</td>
           <td class="paramtype">std::ostream &amp;&#160;</td>
           <td class="paramname"><em>os</em></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt;  void</td>
         </tr>
       </table>
   </td>
@@ -324,6 +325,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Writes the value to the given output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>The output stream to write to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classcppLox_1_1Types_1_1Object.html#ab5704d9df08c8a8a9224f297df957e20">Object</a>.</p>
 

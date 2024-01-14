@@ -22,7 +22,8 @@ var annotated_dup =
         [ "Object", "classcppLox_1_1Types_1_1Object.html", "classcppLox_1_1Types_1_1Object" ],
         [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", "classcppLox_1_1Types_1_1ObjectString" ],
         [ "Value", "classcppLox_1_1Types_1_1Value.html", "classcppLox_1_1Types_1_1Value" ]
-      ] ]
+      ] ],
+      [ "MemoryMutator", "classcppLox_1_1MemoryMutator.html", "classcppLox_1_1MemoryMutator" ]
     ] ],
     [ "std", "namespacestd.html", [
       [ "formatter< cppLox::ByteCode::Opcode >", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4" ],
@@ -30,6 +31,5 @@ var annotated_dup =
       [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ],
       [ "formatter< cppLox::Types::Object * >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4" ],
       [ "formatter< cppLox::Types::Value >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4" ]
-    ] ],
-    [ "MemoryMutator", "classMemoryMutator.html", "classMemoryMutator" ]
+    ] ]
 ];

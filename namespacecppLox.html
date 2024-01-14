@@ -83,7 +83,10 @@ $(document).ready(function(){initNavTree('namespacecppLox.html',''); initResizab
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cppLox Namespace Reference</div>  </div>
 </div><!--header-->
@@ -101,7 +104,176 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecppLox_1_1Types"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Types.html">Types</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1MemoryMutator.html">MemoryMutator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory mutator that manages the creation and deletion of all objects.  <a href="classcppLox_1_1MemoryMutator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a2d967eed409413b06a8450ff977ab52a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52a">exit_code_t</a> { <br />
+&#160;&#160;<a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aa3b6f3043ccb737e298ab6f23a30194de">EXIT_CODE_SUCCESS</a> = 0
+, <a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aa98e0c27ad21c8b40a761cb64447ae6db">EXIT_CODE_COMMAND_LINE_USAGE_ERROR</a> = 64
+, <a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aadb83b83bca8f75ff2266b9760a66bd14">EXIT_CODE_COMPILATION_ERROR</a> = 65
+, <a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aab46ca1d32c5845d516dfc744d3c9b381">EXIT_CODE_RUNTIME_ERROR</a> = 70
+, <br />
+&#160;&#160;<a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aa11d65c27a9297140b1822730e777e336">EXIT_CODE_SYSTEM_ERROR</a> = 71
+, <a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aaa89869f27a1d1de61bba55507a26d676">EXIT_CODE_INPUT_OUTPUT_ERROR</a> = 74
+<br />
+ }</td></tr>
+<tr class="memdesc:a2d967eed409413b06a8450ff977ab52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit codes based on the sysexits from UNIX.  <a href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52a">More...</a><br /></td></tr>
+<tr class="separator:a2d967eed409413b06a8450ff977ab52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab9ffae0d38fc012bc00f64364d766809"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809">repl</a> () -&gt; void</td></tr>
+<tr class="memdesc:ab9ffae0d38fc012bc00f64364d766809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the REPL.  <a href="namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809">More...</a><br /></td></tr>
+<tr class="separator:ab9ffae0d38fc012bc00f64364d766809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9585b91eec25b99abc10d992d21072"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072">runFile</a> (char const *path) -&gt; void</td></tr>
+<tr class="memdesc:a7a9585b91eec25b99abc10d992d21072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the program declared in the given file.  <a href="namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072">More...</a><br /></td></tr>
+<tr class="separator:a7a9585b91eec25b99abc10d992d21072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2683164434b3da19cca09fae026d6bf9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox.html#a2683164434b3da19cca09fae026d6bf9">run</a> (std::string &amp;source, <a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a> &amp;lexer, <a class="el" href="classcppLox_1_1MemoryMutator.html">MemoryMutator</a> *memoryMutator, <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;compiler, <a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;vm) -&gt; void</td></tr>
+<tr class="memdesc:a2683164434b3da19cca09fae026d6bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main entry point of the program.  <a href="namespacecppLox.html#a2683164434b3da19cca09fae026d6bf9">More...</a><br /></td></tr>
+<tr class="separator:a2683164434b3da19cca09fae026d6bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2d967eed409413b06a8450ff977ab52a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d967eed409413b06a8450ff977ab52a">&#9670;&nbsp;</a></span>exit_code_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacecppLox.html#a2d967eed409413b06a8450ff977ab52a">exit_code_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Exit codes based on the sysexits from UNIX. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aa3b6f3043ccb737e298ab6f23a30194de"></a>EXIT_CODE_SUCCESS&#160;</td><td class="fielddoc"><p>Signals a successful exit. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aa98e0c27ad21c8b40a761cb64447ae6db"></a>EXIT_CODE_COMMAND_LINE_USAGE_ERROR&#160;</td><td class="fielddoc"><p>Signals a command line error usage. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aadb83b83bca8f75ff2266b9760a66bd14"></a>EXIT_CODE_COMPILATION_ERROR&#160;</td><td class="fielddoc"><p>Signals an error that occured during compile time. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aab46ca1d32c5845d516dfc744d3c9b381"></a>EXIT_CODE_RUNTIME_ERROR&#160;</td><td class="fielddoc"><p>Signals an error that occured during runtime time. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aa11d65c27a9297140b1822730e777e336"></a>EXIT_CODE_SYSTEM_ERROR&#160;</td><td class="fielddoc"><p>Signals an error that occured during system time. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2d967eed409413b06a8450ff977ab52aaa89869f27a1d1de61bba55507a26d676"></a>EXIT_CODE_INPUT_OUTPUT_ERROR&#160;</td><td class="fielddoc"><p>Signals an error regarding the input or the output. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab9ffae0d38fc012bc00f64364d766809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ffae0d38fc012bc00f64364d766809">&#9670;&nbsp;</a></span>repl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto repl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the REPL. </p>
+
+</div>
+</div>
+<a id="a2683164434b3da19cca09fae026d6bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2683164434b3da19cca09fae026d6bf9">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto run </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html">cppLox::Frontend::Lexer</a> &amp;&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1MemoryMutator.html">MemoryMutator</a> *&#160;</td>
+          <td class="paramname"><em>memoryMutator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">cppLox::Frontend::Compiler</a> &amp;&#160;</td>
+          <td class="paramname"><em>compiler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1VM.html">cppLox::Backend::VM</a> &amp;&#160;</td>
+          <td class="paramname"><em>vm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The main entry point of the program. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source code to run. </td></tr>
+    <tr><td class="paramname">lexer</td><td>The lexer that will tokenize the source code. </td></tr>
+    <tr><td class="paramname">memoryMutator</td><td>The memory mutator that will be used by the VM and the compiler to allocate memory. </td></tr>
+    <tr><td class="paramname">compiler</td><td>The compiler that will compile the source code into bytecode. </td></tr>
+    <tr><td class="paramname">vm</td><td>The VM that will interpret the bytecode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit code of the program. </dd></dl>
+
+</div>
+</div>
+<a id="a7a9585b91eec25b99abc10d992d21072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a9585b91eec25b99abc10d992d21072">&#9670;&nbsp;</a></span>runFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto runFile </td>
+          <td>(</td>
+          <td class="paramtype">char const *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Executes the program declared in the given file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
