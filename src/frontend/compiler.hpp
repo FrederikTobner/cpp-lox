@@ -4,22 +4,27 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <variant>
 #include <vector>
 
 #include "../bytecode/chunk.hpp"
 #include "../memory_mutator.hpp"
+#include "compilation_scope.hpp"
 #include "parse_rule.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
 namespace cppLox::Frontend {
 
+template <typename T1, typename T2, class... Args>
+concept IsPackOfEitherOf = (... && (std::is_same_v<Args, T1> || std::is_same_v<Args, T2>));
+
 /// @brief The compiler used by the cpplox interpreter.
 class Compiler {
 
   public:
     /// @brief Constructs a new compiler.
-    Compiler(cppLox::MemoryMutator * memoryMutator);
+    Compiler(std::shared_ptr<cppLox::MemoryMutator> memoryMutator);
 
     /// @brief Destructor of the compiler.
     ~Compiler() = default;
@@ -34,9 +39,18 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto advance(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Begins a new scope.
+    auto beginScope() -> void;
+
+    /// @brief Compiles a block.
+    /// @param tokens The tokens that are compiled.
+    auto block(std::vector<Token> const & tokens) -> void;
+
     /// @brief Compiles a binary expression.
     /// @param tokens The tokens that are compiled.
     auto binary(std::vector<Token> const & tokens) -> void;
+
+    [[nodiscard]] auto inline check(Token::Type type) const -> bool;
 
     /// @brief Consumes a token.
     /// @param type The type of the token.
@@ -52,6 +66,10 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto declaration(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles a function declaration.
+    /// @param tokens The tokens that are compiled.
+    auto declareVariable(std::vector<Token> const & tokens) -> void;
+
     /// @brief Emits a DEFINE_GLOBAL opcode and the index of the variable in the chunk.
     /// @param global The index of the variable in the chunk.
     auto defineVariable(uint8_t global) -> void;
@@ -60,30 +78,42 @@ class Compiler {
     /// @param byte The byte to emit.
     auto inline emitByte(uint8_t byte) -> void;
 
-    /// @brief Emits two bytes.
-    /// @param byte1 The first byte.
-    /// @param byte2 The second byte.
-    auto emitBytes(uint8_t byte1, uint8_t byte2) -> void;
-
-    /// @brief Emits an opcode and a byte.
-    /// @param opcode1 The opcode to emit.
-    /// @param opcode2 The byte to emit.
-    auto emitBytes(cppLox::ByteCode::Opcode opcode, uint8_t byte) -> void;
+    /// @brief Emits several bytes.
+    /// @param opcodes The bytes to emit.
+    template <class... Opcodes>
+        requires IsPackOfEitherOf<uint8_t, cppLox::ByteCode::Opcode, Opcodes...>
+    auto emitBytes(Opcodes... opcodes) -> void {
+        std::initializer_list<std::variant<uint8_t, cppLox::ByteCode::Opcode>> bytes = {opcodes...};
+        for (auto byte : bytes) {
+            std::visit(
+                [this](auto && arg) {
+                    using T = std::decay_t<decltype(arg)>;
+                    if constexpr (std::is_same_v<T, cppLox::ByteCode::Opcode>) {
+                        this->emitByte(static_cast<uint8_t>(arg));
+                    } else {
+                        this->emitByte(arg);
+                    }
+                },
+                byte);
+        }
+    }
 
     /// @brief Emits a byte.
     /// @param byte The byte to emit.
     auto inline emitByte(cppLox::ByteCode::Opcode byte) -> void;
 
-    /// @brief Emits two bytes.
-    /// @param byte1 The first byte.
-    /// @param byte2 The second byte.
-    auto emitBytes(cppLox::ByteCode::Opcode byte1, cppLox::ByteCode::Opcode byte2) -> void;
-
     /// @brief Emits a constant.
     auto inline emitConstant(cppLox::Types::Value value) -> void;
 
+    /// @brief Ends the current scope.
+    auto endScope() -> void;
+
     /// @brief Ends the compilation.
     auto endCompilation() -> void;
+
+    /// @brief Throws an exception at the previous token.
+    /// @param message The message to display.
+    auto error(char const * message) -> void;
 
     /// @brief Throws an exception at the previous token.
     /// @param message The message to display.
@@ -115,6 +145,9 @@ class Compiler {
     /// @param name The name of the identifier.
     /// @return The index of the identifier in the chunk.
     [[nodiscard]] auto identifierConstant(Token const & name) -> uint8_t;
+
+    /// @brief Initializes the compiler scope.
+    auto initCompiler() -> void;
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
@@ -154,6 +187,12 @@ class Compiler {
     /// @brief Compiles a print statement.
     /// @param tokens The tokens that are compiled.
     auto printStatement(std::vector<Token> const & tokens, bool canAssign) -> void;
+
+    /// @brief Resolves a local variable.
+    /// @param name The name of the variable.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the variable in the chunk.
+    [[nodiscard]] auto resolveLocal(Token const & name, std::vector<Token> const & tokens) -> int;
 
     /// @brief Compiles a statement.
     /// @param tokens The tokens that are compiled.
@@ -273,10 +312,14 @@ class Compiler {
     /// @brief The chunk that is currently compiled.
     cppLox::ByteCode::Chunk * m_chunk;
     /// @brief The memory manager.
-    cppLox::MemoryMutator * m_memoryMutator;
+    std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
     /// @brief Whether the compiler is in panic mode.
     bool m_panicMode;
+    /// @brief The current compiler context.
+    std::shared_ptr<CompilationScope> m_current_scope;
+    /// The scope depth.
+    uint16_t m_scopeDepth;
 };
 } // namespace cppLox::Frontend

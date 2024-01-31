@@ -13,12 +13,12 @@
 class VMIntegrationTest : public ::testing::Test {
   public:
     std::unique_ptr<cppLox::Backend::VM> vm;
-    std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
+    std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     cppLox::ByteCode::Chunk chunk;
 
     VMIntegrationTest() {
-        memoryMutator = std::make_unique<cppLox::MemoryMutator>();
-        vm = std::make_unique<cppLox::Backend::VM>(memoryMutator.get());
+        memoryMutator = std::make_shared<cppLox::MemoryMutator>();
+        vm = std::make_unique<cppLox::Backend::VM>(memoryMutator);
     }
 
     void SetUp() override {
@@ -135,6 +135,38 @@ TEST_F(VMIntegrationTest, FalseInstruction) {
 
     // Assert
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
+}
+
+TEST_F(VMIntegrationTest, GlobalVariableDeclaration) {
+    // Arrange
+    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
+    chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
+    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
+    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_TRUE(memoryMutator->setGlobal(variableNameObjectString.get(), cppLox::Types::Value()));
+}
+
+TEST_F(VMIntegrationTest, GlobalVariableDeclarationAndAssignment) {
+    // Arrange
+    auto value = std::make_unique<cppLox::Types::Value>(42.0);
+    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+    chunk.write(chunk.addConstant(*value), 0);
+    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
+    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(cppLox::Types::Value(42.0), memoryMutator->getGlobal(variableNameObjectString.get()));
 }
 
 TEST_F(VMIntegrationTest, GreaterInstruction) {
@@ -281,6 +313,19 @@ TEST_F(VMIntegrationTest, LessEqualInstruction) {
     EXPECT_EQ(cppLox::Types::Value(true), vm->pop());
 }
 
+TEST_F(VMIntegrationTest, LocalVariableAssignement) {
+    cppLox::Types::Value value(42.0);
+    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+    chunk.write(chunk.addConstant(value), 0);
+    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(value, vm->pop());
+}
+
 TEST_F(VMIntegrationTest, MultiplyInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
@@ -378,7 +423,7 @@ TEST_F(VMIntegrationTest, ReturnInstruction) {
 TEST_F(VMIntegrationTest, StackOverflow) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    for (size_t i : std::ranges::iota_view(0, 256)) {
+    for (auto i : std::views::iota(0, 256)) {
         vm->push(value);
     }
     cppLox::ByteCode::Chunk chunk;
@@ -411,38 +456,6 @@ TEST_F(VMIntegrationTest, SubtractInstruction) {
 
     // Assert
     ASSERT_EQ(value - value, vm->pop());
-}
-
-TEST_F(VMIntegrationTest, VariableDeclaration) {
-    // Arrange
-    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
-    chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
-    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
-    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
-
-    // Act
-    vm->interpret(chunk);
-
-    // Assert
-    ASSERT_TRUE(memoryMutator->setGlobal(variableNameObjectString.get(), cppLox::Types::Value()));
-}
-
-TEST_F(VMIntegrationTest, VariableDeclarationAndAssignment) {
-    // Arrange
-    auto value = std::make_unique<cppLox::Types::Value>(42.0);
-    auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(*value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
-    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
-
-    // Act
-    vm->interpret(chunk);
-
-    // Assert
-    ASSERT_EQ(cppLox::Types::Value(42.0), memoryMutator->getGlobal(variableNameObjectString.get()));
 }
 
 TEST_F(VMIntegrationTest, TrueInstruction) {

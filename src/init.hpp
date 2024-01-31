@@ -23,7 +23,7 @@ auto runFile(char const * path) -> void;
 /// @param compiler The compiler that will compile the source code into bytecode.
 /// @param vm The VM that will interpret the bytecode.
 /// @return The exit code of the program.
-auto run(std::string & source, cppLox::Frontend::Lexer & lexer, MemoryMutator * memoryMutator,
-         cppLox::Frontend::Compiler & compiler, cppLox::Backend::VM & vm) -> void;
+auto run(std::string & source, cppLox::Frontend::Lexer & lexer, cppLox::Frontend::Compiler & compiler,
+         cppLox::Backend::VM & vm) -> void;
 
 } // namespace cppLox

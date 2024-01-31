@@ -72,6 +72,8 @@ class Chunk {
     /// @param index The index of the instruction.
     [[nodiscard]] auto constantInstruction(uint8_t opcode, size_t index) const -> size_t;
 
+    [[nodiscard]] auto byteInstruction(uint8_t opcode, size_t offset) const -> size_t;
+
     /// @brief The bytecode stored in the chunk.
     std::vector<uint8_t> m_code;
 

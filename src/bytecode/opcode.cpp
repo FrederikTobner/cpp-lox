@@ -14,6 +14,10 @@
         return "EQUAL";
     case Opcode::FALSE:
         return "FALSE";
+    case Opcode::GET_GLOBAL:
+        return "GET_GLOBAL";
+    case Opcode::GET_LOCAL:
+        return "GET_LOCAL";
     case Opcode::GREATER:
         return "GREATER";
     case Opcode::GREATER_EQUAL:
@@ -38,6 +42,10 @@
         return "PRINT";
     case Opcode::RETURN:
         return "RETURN";
+    case Opcode::SET_GLOBAL:
+        return "SET_GLOBAL";
+    case Opcode::SET_LOCAL:
+        return "SET_LOCAL";
     case Opcode::SUBTRACT:
         return "SUBTRACT";
     case Opcode::TRUE:

@@ -12,9 +12,9 @@
 
 auto cppLox::repl() -> void {
     cppLox::Frontend::Lexer lexer;
-    std::unique_ptr<MemoryMutator> memoryMutator = std::make_unique<MemoryMutator>();
-    cppLox::Backend::VM vm(memoryMutator.get());
-    cppLox::Frontend::Compiler compiler(memoryMutator.get());
+    std::shared_ptr<MemoryMutator> memoryMutator = std::make_shared<MemoryMutator>();
+    cppLox::Backend::VM vm(memoryMutator);
+    cppLox::Frontend::Compiler compiler(memoryMutator);
     std::string line;
     while (true) {
         std::cout << "> ";
@@ -23,7 +23,7 @@ auto cppLox::repl() -> void {
             break;
         }
         try {
-            cppLox::run(line, lexer, memoryMutator.get(), compiler, vm);
+            cppLox::run(line, lexer, compiler, vm);
         } catch (cppLox::Error::CompileTimeException e) {
             std::cout << e.what() << std::endl;
         } catch (cppLox::Error::RunTimeException e) {
@@ -34,9 +34,9 @@ auto cppLox::repl() -> void {
 
 auto cppLox::runFile(char const * path) -> void {
     cppLox::Frontend::Lexer lexer;
-    std::unique_ptr<MemoryMutator> memoryMutator = std::make_unique<MemoryMutator>();
-    cppLox::Backend::VM vm(memoryMutator.get());
-    cppLox::Frontend::Compiler compiler(memoryMutator.get());
+    std::shared_ptr<MemoryMutator> memoryMutator = std::make_shared<MemoryMutator>();
+    cppLox::Backend::VM vm(memoryMutator);
+    cppLox::Frontend::Compiler compiler(memoryMutator);
     std::string source;
     std::ifstream file;
     file.open(path);
@@ -46,7 +46,7 @@ auto cppLox::runFile(char const * path) -> void {
         source.append(line);
     }
     try {
-        cppLox::run(source, lexer, memoryMutator.get(), compiler, vm);
+        cppLox::run(source, lexer, compiler, vm);
     } catch (cppLox::Error::CompileTimeException e) {
         std::cout << e.what() << std::endl;
         exit(cppLox::EXIT_CODE_COMPILATION_ERROR);
@@ -56,8 +56,8 @@ auto cppLox::runFile(char const * path) -> void {
     }
 }
 
-auto cppLox::run(std::string & source, cppLox::Frontend::Lexer & lexer, MemoryMutator * memoryMutator,
-                 cppLox::Frontend::Compiler & compiler, cppLox::Backend::VM & vm) -> void {
+auto cppLox::run(std::string & source, cppLox::Frontend::Lexer & lexer, cppLox::Frontend::Compiler & compiler,
+                 cppLox::Backend::VM & vm) -> void {
     std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
     // Source file is not needed after the tokens are generated
     source.clear();

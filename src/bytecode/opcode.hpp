@@ -1,6 +1,5 @@
 #pragma once
 
-#include <format>
 #include <iostream>
 #include <string>
 
@@ -25,6 +24,8 @@ enum Opcode {
     /// @brief Gets the value of the global variable with the name of the given index on the stack and pushes it onto
     /// the stack.
     GET_GLOBAL,
+    /// @brief Gets the value of the local variable with the given index on the stack and pushes it onto the stack.
+    GET_LOCAL,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
     GREATER,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
@@ -49,12 +50,15 @@ enum Opcode {
     PRINT,
     /// @brief Pops the top value off the stack and returns it.
     RETURN,
-    /// @brief  Sets the global variable with the given name at the given index from the stack.
+    /// @brief  Sets the global variable with the given name at the given index on the stack.
     SET_GLOBAL,
+    /// @brief Sets the local variable with the given index on the stack.
+    SET_LOCAL,
     /// @brief Pops the top two values off the stack, subtracts them, and pushes the result back on the stack.
     SUBTRACT,
     /// @brief Pushes the true value onto the stack.
-    TRUE
+    TRUE,
+    AMOUNT
 };
 
 /// @brief Converts the given opcode to a string

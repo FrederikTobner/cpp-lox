@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <format>
+#include <iostream>
 #include <string>
 
 namespace cppLox::Frontend {
@@ -97,6 +98,10 @@ class Token {
     /// @param lexeme The string representation of the token
     /// @param line The line number where the token was found
     Token(Token::Type type, std::string lexeme, std::size_t line);
+
+    /// @brief Copy construct a new Token object
+    /// @param token The token to copy
+    Token(Token const &) = default;
 
     /// @brief Destroy the Token object
     ~Token() = default;

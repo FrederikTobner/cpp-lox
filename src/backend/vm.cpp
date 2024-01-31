@@ -9,7 +9,7 @@
 
 using namespace cppLox::Backend;
 
-VM::VM(cppLox::MemoryMutator * memoryMutator) {
+VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
     m_stack_top = 0;
     m_chunk = nullptr;
     m_instruction_index = 0;
@@ -88,6 +88,12 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                 push(value);
                 break;
             }
+        case cppLox::ByteCode::Opcode::GET_LOCAL:
+            {
+                uint8_t const slot = chunk.getByte(m_instruction_index++);
+                push(m_stack[slot]);
+                break;
+            }
         case cppLox::ByteCode::Opcode::GREATER:
             {
                 cppLox::Types::Value const a = pop();
@@ -146,6 +152,12 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                     m_memoryMutator->deleteGlobal(name);
                     runTimeError("Undefined variable '%s'", name->string().c_str());
                 };
+                break;
+            }
+        case cppLox::ByteCode::Opcode::SET_LOCAL:
+            {
+                uint8_t const slot = chunk.getByte(m_instruction_index++);
+                m_stack[slot] = peek();
                 break;
             }
         case cppLox::ByteCode::Opcode::SUBTRACT:
