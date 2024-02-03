@@ -28,28 +28,6 @@ class CompilerIntegrationTest : public ::testing::Test {
         chunk = nullptr;
     }
 
-    class OpcodeContainer {
-        uint8_t opcode;
-
-      public:
-        OpcodeContainer(int opcode) : opcode(opcode) {
-        }
-
-        OpcodeContainer(uint8_t opcode) : opcode(opcode) {
-        }
-
-        OpcodeContainer(cppLox::ByteCode::Opcode opcode) : opcode(static_cast<uint8_t>(opcode)) {
-        }
-
-        uint8_t getOpCode() const {
-            return opcode;
-        }
-
-        cppLox::ByteCode::Opcode getOpCodeAsEnum() const {
-            return static_cast<cppLox::ByteCode::Opcode>(opcode);
-        }
-    };
-
     template <class... Opcodes>
         requires cppLox::Frontend::IsPackOfEitherOf<int, cppLox::ByteCode::Opcode, Opcodes...>
     void assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) {

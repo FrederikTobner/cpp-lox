@@ -2,10 +2,12 @@
 #include "../../src/bytecode/chunk.hpp"
 #include "../../src/bytecode/opcode.hpp"
 #include "../../src/error/runtime_exception.hpp"
+#include "../../src/frontend/compiler.hpp"
 #include "../../src/types/value.hpp"
 
 #include <iostream>
 #include <ranges>
+#include <variant>
 
 #include <gtest/gtest.h>
 
@@ -25,17 +27,25 @@ class VMIntegrationTest : public ::testing::Test {
         vm->resetStack();
         chunk = cppLox::ByteCode::Chunk();
     }
+
+    template <class... Opcodes>
+        requires cppLox::Frontend::IsPackOfEitherOf<size_t, cppLox::ByteCode::Opcode, Opcodes...>
+    void writeMultipleToChunk(Opcodes... expectedOpCodes) {
+        constexpr size_t amountOfOpcodesToWrite = sizeof...(expectedOpCodes);
+        std::array<std::variant<size_t, cppLox::ByteCode::Opcode>, amountOfOpcodesToWrite> opcodes = {
+            expectedOpCodes...};
+        for (auto index : std::views::iota(0u, amountOfOpcodesToWrite)) {
+            std::visit([this, index](auto && arg) { chunk.write(arg, 0); }, opcodes[index]);
+        }
+    }
 };
 
 TEST_F(VMIntegrationTest, AddInstructionUsingNumbers) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::ADD, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value), cppLox::ByteCode::Opcode::ADD,
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -50,12 +60,9 @@ TEST_F(VMIntegrationTest, AddInstructionUsingStrings) {
     auto secondObjectString = std::make_unique<cppLox::Types::ObjectString>("World!");
     cppLox::Types::Value value(firstObjectString.get());
     cppLox::Types::Value value2(secondObjectString.get());
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(cppLox::ByteCode::Opcode::ADD, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2), cppLox::ByteCode::Opcode::ADD,
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -68,9 +75,8 @@ TEST_F(VMIntegrationTest, AddInstructionUsingStrings) {
 TEST_F(VMIntegrationTest, ConstantInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -82,12 +88,9 @@ TEST_F(VMIntegrationTest, ConstantInstruction) {
 TEST_F(VMIntegrationTest, DivideInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::DIVIDE, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value), cppLox::ByteCode::Opcode::DIVIDE,
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -101,19 +104,13 @@ TEST_F(VMIntegrationTest, EqualInstruction) {
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
     cppLox::Types::Value value3(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 42 == 43
-    chunk.write(cppLox::ByteCode::Opcode::EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value3), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 == 42
-    chunk.write(cppLox::ByteCode::Opcode::EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 == 43
+                         cppLox::ByteCode::Opcode::EQUAL, cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value3),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 == 42
+                         cppLox::ByteCode::Opcode::EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -127,8 +124,7 @@ TEST_F(VMIntegrationTest, EqualInstruction) {
 
 TEST_F(VMIntegrationTest, FalseInstruction) {
     // Arrange
-    chunk.write(cppLox::ByteCode::Opcode::FALSE, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::FALSE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -140,10 +136,9 @@ TEST_F(VMIntegrationTest, FalseInstruction) {
 TEST_F(VMIntegrationTest, GlobalVariableDeclaration) {
     // Arrange
     auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
-    chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
-    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
-    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::DEFINE_GLOBAL,
+                         chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())),
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -154,13 +149,11 @@ TEST_F(VMIntegrationTest, GlobalVariableDeclaration) {
 
 TEST_F(VMIntegrationTest, GlobalVariableDeclarationAndAssignment) {
     // Arrange
-    auto value = std::make_unique<cppLox::Types::Value>(42.0);
+    cppLox::Types::Value value(42.0);
     auto variableNameObjectString = std::make_unique<cppLox::Types::ObjectString>("a");
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(*value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0);
-    chunk.write(chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(
+        cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value), cppLox::ByteCode::Opcode::DEFINE_GLOBAL,
+        chunk.addConstant(cppLox::Types::Value(variableNameObjectString.get())), cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -173,25 +166,16 @@ TEST_F(VMIntegrationTest, GreaterInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 42 > 43
-    chunk.write(cppLox::ByteCode::Opcode::GREATER, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 43 > 42
-    chunk.write(cppLox::ByteCode::Opcode::GREATER, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 > 42
-    chunk.write(cppLox::ByteCode::Opcode::GREATER, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 > 43
+                         cppLox::ByteCode::Opcode::GREATER, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value2), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 43 > 42
+                         cppLox::ByteCode::Opcode::GREATER, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 > 42
+                         cppLox::ByteCode::Opcode::GREATER, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -209,25 +193,16 @@ TEST_F(VMIntegrationTest, GreaterEqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 43 >= 42
-    chunk.write(cppLox::ByteCode::Opcode::GREATER_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 >= 43
-    chunk.write(cppLox::ByteCode::Opcode::GREATER_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 >= 42
-    chunk.write(cppLox::ByteCode::Opcode::GREATER_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 >= 43
+                         cppLox::ByteCode::Opcode::GREATER_EQUAL, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value2), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 43 >= 42
+                         cppLox::ByteCode::Opcode::GREATER_EQUAL, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 >= 42
+                         cppLox::ByteCode::Opcode::GREATER_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -245,25 +220,16 @@ TEST_F(VMIntegrationTest, LessInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 42 < 43
-    chunk.write(cppLox::ByteCode::Opcode::LESS, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 43 < 42
-    chunk.write(cppLox::ByteCode::Opcode::LESS, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 < 42
-    chunk.write(cppLox::ByteCode::Opcode::LESS, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 < 43
+                         cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 43 < 42
+                         cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 < 42
+                         cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -281,25 +247,16 @@ TEST_F(VMIntegrationTest, LessEqualInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 43 <= 42
-    chunk.write(cppLox::ByteCode::Opcode::LESS_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 <= 43
-    chunk.write(cppLox::ByteCode::Opcode::LESS_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 <= 42
-    chunk.write(cppLox::ByteCode::Opcode::LESS_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 <= 43
+                         cppLox::ByteCode::Opcode::LESS_EQUAL, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value2), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 43 <= 42
+                         cppLox::ByteCode::Opcode::LESS_EQUAL, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 <= 42
+                         cppLox::ByteCode::Opcode::LESS_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -315,9 +272,8 @@ TEST_F(VMIntegrationTest, LessEqualInstruction) {
 
 TEST_F(VMIntegrationTest, LocalVariableAssignement) {
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -329,12 +285,9 @@ TEST_F(VMIntegrationTest, LocalVariableAssignement) {
 TEST_F(VMIntegrationTest, MultiplyInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::MULTIPLY, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::MULTIPLY, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -347,10 +300,8 @@ TEST_F(VMIntegrationTest, NegateInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value negatedValue(-42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::NEGATE, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value), cppLox::ByteCode::Opcode::NEGATE,
+                         cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -364,19 +315,13 @@ TEST_F(VMIntegrationTest, NotEqualInstruction) {
     cppLox::Types::Value value(42.0);
     cppLox::Types::Value value2(43.0);
     cppLox::Types::Value value3(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value2), 0);
-    // 42 != 43
-    chunk.write(cppLox::ByteCode::Opcode::NOT_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value3), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    // 42 != 42
-    chunk.write(cppLox::ByteCode::Opcode::NOT_EQUAL, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value2),
+                         // 42 != 43
+                         cppLox::ByteCode::Opcode::NOT_EQUAL, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(value3), cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         // 42 != 42
+                         cppLox::ByteCode::Opcode::NOT_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -390,8 +335,7 @@ TEST_F(VMIntegrationTest, NotEqualInstruction) {
 
 TEST_F(VMIntegrationTest, NullInstruction) {
     // Arrange
-    chunk.write(cppLox::ByteCode::Opcode::NULL_, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -426,9 +370,7 @@ TEST_F(VMIntegrationTest, StackOverflow) {
     for (auto i : std::views::iota(0, 256)) {
         vm->push(value);
     }
-    cppLox::ByteCode::Chunk chunk;
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value));
 
     // Act & Assert
     ASSERT_THROW(vm->interpret(chunk), cppLox::Error::RunTimeException);
@@ -444,12 +386,9 @@ TEST_F(VMIntegrationTest, StackUnderflow) {
 TEST_F(VMIntegrationTest, SubtractInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::CONSTANT, 0);
-    chunk.write(chunk.addConstant(value), 0);
-    chunk.write(cppLox::ByteCode::Opcode::SUBTRACT, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(value),
+                         cppLox::ByteCode::Opcode::SUBTRACT, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);
@@ -460,8 +399,7 @@ TEST_F(VMIntegrationTest, SubtractInstruction) {
 
 TEST_F(VMIntegrationTest, TrueInstruction) {
     // Arrange
-    chunk.write(cppLox::ByteCode::Opcode::TRUE, 0);
-    chunk.write(cppLox::ByteCode::Opcode::RETURN, 0);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
     vm->interpret(chunk);

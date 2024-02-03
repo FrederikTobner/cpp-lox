@@ -19,7 +19,6 @@ TEST_F(GlobalVariableE2ETest, Assignment) {
 TEST_F(GlobalVariableE2ETest, AssignmentToUndefinedVariable) {
     // Arrange
     std::string source = "a = 1;";
-    std::string expected = "1\n";
 
     // Act & Assert
     ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);

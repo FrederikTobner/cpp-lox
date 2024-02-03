@@ -6,6 +6,7 @@
 class CompilationScopeTest : public ::testing::Test {
   protected:
     std::shared_ptr<cppLox::Frontend::CompilationScope> compilationScope;
+
     void SetUp() override {
         compilationScope = std::make_shared<cppLox::Frontend::CompilationScope>();
     }
@@ -23,6 +24,17 @@ TEST_F(CompilationScopeTest, AddLocal) {
     EXPECT_EQ(local.getToken().lexeme(), "test");
     EXPECT_EQ(local.getToken().line(), 123);
     EXPECT_EQ(local.getDepth(), -1);
+}
+
+TEST_F(CompilationScopeTest, Enclosing) {
+    // Arrange
+    auto nestedCompilationScope = cppLox::Frontend::CompilationScope(compilationScope);
+
+    // Act
+    auto result = nestedCompilationScope.enclosing().value().get();
+
+    // Assert
+    ASSERT_EQ(result, compilationScope.get());
 }
 
 TEST_F(CompilationScopeTest, MarkInitialized) {
@@ -49,12 +61,4 @@ TEST_F(CompilationScopeTest, PopLocal) {
 
     // Assert
     ASSERT_EQ(compilationScope->localCount(), 0);
-}
-
-TEST_F(CompilationScopeTest, Enclosing) {
-    // Arrange
-    auto nestedCompilationScope = cppLox::Frontend::CompilationScope(compilationScope);
-
-    // Act & Assert
-    ASSERT_EQ(nestedCompilationScope.enclosing().value().get(), compilationScope.get());
 }
