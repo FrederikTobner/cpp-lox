@@ -6,9 +6,15 @@
 #include "../../src/frontend/token.hpp"
 #include "../../src/frontend/token_formatter.hpp"
 
-cppLox::Frontend::Token token(cppLox::Frontend::Token::Type::NUMBER, "3.14", 1);
+class TokenTest : public ::testing::Test {
+  protected:
+    TokenTest() : token(cppLox::Frontend::Token::Type::NUMBER, "3.14", 1) {
+    }
 
-TEST(TokenTest, Type) {
+    cppLox::Frontend::Token token;
+};
+
+TEST_F(TokenTest, Type) {
     // Act
     auto type = token.type();
 
@@ -16,7 +22,7 @@ TEST(TokenTest, Type) {
     ASSERT_EQ(type, cppLox::Frontend::Token::Type::NUMBER);
 }
 
-TEST(TokenTest, Lexeme) {
+TEST_F(TokenTest, Lexeme) {
     // Act
     auto lexeme = token.lexeme();
 
@@ -24,7 +30,7 @@ TEST(TokenTest, Lexeme) {
     ASSERT_EQ(lexeme, "3.14");
 }
 
-TEST(TokenTest, Line) {
+TEST_F(TokenTest, Line) {
     // Act
     auto line = token.line();
 
@@ -32,7 +38,7 @@ TEST(TokenTest, Line) {
     ASSERT_EQ(line, token.line());
 }
 
-TEST(TokenTest, ExtractionOperator) {
+TEST_F(TokenTest, ExtractionOperator) {
     // Arrange
     std::ostringstream oss;
 
@@ -43,7 +49,7 @@ TEST(TokenTest, ExtractionOperator) {
     ASSERT_EQ("Token(3.14, 1)", oss.str());
 }
 
-TEST(TokenTest, Formatter) {
+TEST_F(TokenTest, Formatter) {
     // Act
     auto result = std::format("{}", token);
 

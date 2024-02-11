@@ -1,24 +1,26 @@
-#include "../../src/error/runtime_exception.hpp"
+#include <gtest/gtest.h>
+
+#include <sstream>
+#include <string>
+#include <utility>
+
 #include "../../src/types/value.hpp"
+
+#include "../../src/error/runtime_exception.hpp"
 #include "../../src/types/value_formatter.hpp"
 
-#include <gtest/gtest.h>
-#include <sstream>
-
 class ValueTest : public ::testing::Test {
-  public:
+  protected:
+    ValueTest();
+
     cppLox::Types::Value numVal;
     cppLox::Types::Value boolVal;
     cppLox::Types::Value nullVal;
     cppLox::Types::Value objectVal;
-
-    ValueTest() {
-        numVal = cppLox::Types::Value(3.14);
-        boolVal = cppLox::Types::Value(true);
-        nullVal = cppLox::Types::Value();
-        objectVal = cppLox::Types::Value((cppLox::Types::Object *)nullptr);
-    }
 };
+
+ValueTest::ValueTest() : numVal(3.14), boolVal(true), nullVal(), objectVal((cppLox::Types::Object *)nullptr) {
+}
 
 TEST_F(ValueTest, is) {
     // Act

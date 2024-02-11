@@ -13,11 +13,6 @@
 // Test fixture for Compiler integration tests
 class CompilerIntegrationTest : public ::testing::Test {
   protected:
-    std::unique_ptr<cppLox::Frontend::Compiler> compiler;
-    std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
-    std::vector<cppLox::Frontend::Token> tokens;
-    std::unique_ptr<cppLox::ByteCode::Chunk> chunk;
-
     CompilerIntegrationTest() {
         memoryMutator = std::make_shared<cppLox::MemoryMutator>();
         compiler = std::make_unique<cppLox::Frontend::Compiler>(memoryMutator);
@@ -55,6 +50,11 @@ class CompilerIntegrationTest : public ::testing::Test {
                 opcodes[index]);
         }
     }
+
+    std::unique_ptr<cppLox::Frontend::Compiler> compiler;
+    std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
+    std::vector<cppLox::Frontend::Token> tokens;
+    std::unique_ptr<cppLox::ByteCode::Chunk> chunk;
 };
 
 TEST_F(CompilerIntegrationTest, AdditionExpression) {

@@ -2,11 +2,16 @@
 
 #include "../../src/frontend/local.hpp"
 
-static cppLox::Frontend::Token token = cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "test", 123);
+class LocalTest : public ::testing::Test {
+  protected:
+    LocalTest() : token(cppLox::Frontend::Token::Type::IDENTIFIER, "test", 123), local(token, 321) {
+    }
 
-static cppLox::Frontend::Local local = cppLox::Frontend::Local(token, 321);
+    cppLox::Frontend::Token token;
+    cppLox::Frontend::Local local;
+};
 
-TEST(LocalTest, GetToken) {
+TEST_F(LocalTest, GetToken) {
     // Act
     auto result = local.getToken();
 
@@ -15,7 +20,7 @@ TEST(LocalTest, GetToken) {
     ASSERT_EQ(result.line(), 123);
 }
 
-TEST(LocalTest, GetDepth) {
+TEST_F(LocalTest, GetDepth) {
     // Act
     auto result = local.getDepth();
 

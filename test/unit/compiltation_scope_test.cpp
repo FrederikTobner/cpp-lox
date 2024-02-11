@@ -5,11 +5,11 @@
 
 class CompilationScopeTest : public ::testing::Test {
   protected:
-    std::shared_ptr<cppLox::Frontend::CompilationScope> compilationScope;
-
     void SetUp() override {
         compilationScope = std::make_shared<cppLox::Frontend::CompilationScope>();
     }
+
+    std::shared_ptr<cppLox::Frontend::CompilationScope> compilationScope;
 };
 
 TEST_F(CompilationScopeTest, AddLocal) {

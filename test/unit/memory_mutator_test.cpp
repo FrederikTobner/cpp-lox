@@ -4,10 +4,9 @@
 #include <gtest/gtest.h>
 
 class MemoryMutatorTest : public ::testing::Test {
-  public:
+  protected:
     std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
-
-    MemoryMutatorTest() {
+    void SetUp() override {
         memoryMutator = std::make_unique<cppLox::MemoryMutator>();
     }
 };

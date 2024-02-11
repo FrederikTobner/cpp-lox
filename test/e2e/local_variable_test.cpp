@@ -47,3 +47,15 @@ TEST_F(LocalVariableE2ETest, DeclarationAndAssignmentStatement) {
     // Assert
     ASSERT_EQ(expected, output);
 }
+
+TEST_F(LocalVariableE2ETest, SameNameWithinDifferentScopesDoNotClash) {
+    // Arrange
+    std::string source = "{var a; a = 1; print a;} {var a; a = 2; print a;}";
+    std::string expected = "1\n2\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}

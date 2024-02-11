@@ -10,10 +10,11 @@
 
 class ChunkTest : public ::testing::Test {
   protected:
-    cppLox::ByteCode::Chunk chunk;
     void SetUp() override {
         chunk = cppLox::ByteCode::Chunk();
     }
+
+    cppLox::ByteCode::Chunk chunk;
 };
 
 TEST_F(ChunkTest, AddAndGetConstant) {

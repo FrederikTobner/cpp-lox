@@ -85,16 +85,7 @@ class Compiler {
     auto emitBytes(Opcodes... opcodes) -> void {
         std::initializer_list<std::variant<uint8_t, cppLox::ByteCode::Opcode>> bytes = {opcodes...};
         for (auto byte : bytes) {
-            std::visit(
-                [this](auto && arg) {
-                    using T = std::decay_t<decltype(arg)>;
-                    if constexpr (std::is_same_v<T, cppLox::ByteCode::Opcode>) {
-                        this->emitByte(static_cast<uint8_t>(arg));
-                    } else {
-                        this->emitByte(arg);
-                    }
-                },
-                byte);
+            std::visit([this](auto && arg) { this->emitByte(arg); }, byte);
         }
     }
 

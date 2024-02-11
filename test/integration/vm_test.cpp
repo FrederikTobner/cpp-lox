@@ -13,7 +13,7 @@
 
 // Test fixture for VM integration tests
 class VMIntegrationTest : public ::testing::Test {
-  public:
+  protected:
     std::unique_ptr<cppLox::Backend::VM> vm;
     std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     cppLox::ByteCode::Chunk chunk;

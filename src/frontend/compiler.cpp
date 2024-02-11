@@ -26,6 +26,7 @@ auto Compiler::advance(std::vector<Token> const & tokens) -> void {
 
 auto Compiler::beginScope() -> void {
     m_scopeDepth++;
+    m_current_scope = std::make_shared<CompilationScope>(m_current_scope);
 }
 
 auto Compiler::binary(std::vector<Token> const & tokens) -> void {
@@ -161,12 +162,16 @@ auto inline Compiler::emitConstant(cppLox::Types::Value value) -> void {
 }
 
 auto Compiler::endScope() -> void {
+    if (m_scopeDepth == 0) {
+        throw cppLox::Error::CompileTimeException("No enclosing scope found for endScope() call");
+    }
     m_scopeDepth--;
     while (m_current_scope->localCount() > 0 &&
            m_current_scope->local(m_current_scope->localCount() - 1).getDepth() > m_scopeDepth) {
         emitByte(cppLox::ByteCode::Opcode::POP);
         m_current_scope->popLocal();
     }
+    m_current_scope = m_current_scope->enclosing().value();
 }
 
 auto Compiler::endCompilation() -> void {
