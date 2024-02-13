@@ -47,3 +47,11 @@ TEST_F(GlobalVariableE2ETest, DeclarationAndAssignmentStatement) {
     // Assert
     ASSERT_EQ(expected, output);
 }
+
+TEST_F(GlobalVariableE2ETest, SameNameWithinSameScopeDoClash) {
+    // Arrange
+    std::string source = "var a; var a;";
+
+    // Act & Assert
+    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+}

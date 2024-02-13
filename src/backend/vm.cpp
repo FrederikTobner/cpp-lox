@@ -61,9 +61,11 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             {
                 uint8_t const constant = chunk.getByte(m_instruction_index++);
                 cppLox::Types::Value const value = pop();
-                m_memoryMutator->setGlobal(
-                    chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
-                    value);
+                if (m_memoryMutator->setGlobal(
+                        chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
+                        value)) {
+                    throw cppLox::Error::RunTimeException("Variable already defined");
+                }
                 push(value);
                 break;
             }
