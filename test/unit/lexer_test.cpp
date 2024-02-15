@@ -7,11 +7,12 @@
 
 // Test fixture for Lexer tests
 class LexerTest : public ::testing::Test {
-  public:
-    cppLox::Frontend::Lexer lexer;
+  protected:
     void SetUp() override {
         lexer = cppLox::Frontend::Lexer();
     }
+
+    cppLox::Frontend::Lexer lexer;
 };
 
 TEST_F(LexerTest, ScanString) {

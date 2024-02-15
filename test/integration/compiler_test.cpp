@@ -2,6 +2,7 @@
 
 #include <array>
 #include <ranges>
+#include <variant>
 #include <vector>
 
 #include "../../src/bytecode/opcode.hpp"
@@ -12,14 +13,9 @@
 // Test fixture for Compiler integration tests
 class CompilerIntegrationTest : public ::testing::Test {
   protected:
-    std::unique_ptr<cppLox::Frontend::Compiler> compiler;
-    std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
-    std::vector<cppLox::Frontend::Token> tokens;
-    std::unique_ptr<cppLox::ByteCode::Chunk> chunk;
-
     CompilerIntegrationTest() {
-        memoryMutator = std::make_unique<cppLox::MemoryMutator>();
-        compiler = std::make_unique<cppLox::Frontend::Compiler>(memoryMutator.get());
+        memoryMutator = std::make_shared<cppLox::MemoryMutator>();
+        compiler = std::make_unique<cppLox::Frontend::Compiler>(memoryMutator);
     }
 
     void SetUp() override {
@@ -27,34 +23,38 @@ class CompilerIntegrationTest : public ::testing::Test {
         chunk = nullptr;
     }
 
-    class OpcodeContainer {
-        uint8_t opcode;
-
-      public:
-        OpcodeContainer(int opcode) : opcode(opcode) {
-        }
-
-        OpcodeContainer(uint8_t opcode) : opcode(opcode) {
-        }
-
-        OpcodeContainer(cppLox::ByteCode::Opcode opcode) : opcode(static_cast<uint8_t>(opcode)) {
-        }
-
-        uint8_t getOpCode() const {
-            return opcode;
-        }
-    };
-
     template <class... Opcodes>
-        requires(std::is_convertible_v<Opcodes, OpcodeContainer> && ...)
+        requires cppLox::Frontend::IsPackOfEitherOf<int, cppLox::ByteCode::Opcode, Opcodes...>
     void assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) {
         constexpr size_t expectedOpCodeAmount = sizeof...(expectedOpCodes);
         ASSERT_EQ(expectedOpCodeAmount, chunk->getSize());
-        std::array<OpcodeContainer, expectedOpCodeAmount> opcodes = {expectedOpCodes...};
-        for (size_t const i : std::views::iota(0u, expectedOpCodeAmount)) {
-            ASSERT_EQ(opcodes[i].getOpCode(), chunk->getByte(i));
+        std::array<std::variant<int, cppLox::ByteCode::Opcode>, expectedOpCodeAmount> opcodes = {expectedOpCodes...};
+        for (auto index : std::views::iota(0u, expectedOpCodeAmount)) {
+            std::visit(
+                [this, index](auto && arg) {
+                    using T = std::decay_t<decltype(arg)>;
+                    if constexpr (std::is_same_v<T, cppLox::ByteCode::Opcode>) {
+                        EXPECT_EQ(arg, chunk->getByte(index))
+                            << "Expected " << cppLox::ByteCode::opcode_as_string(arg) << " at index " << index
+                            << " but got "
+                            << (chunk->getByte(index) < cppLox::ByteCode::AMOUNT
+                                    ? cppLox::ByteCode::opcode_as_string(
+                                          static_cast<cppLox::ByteCode::Opcode>(chunk->getByte(index)))
+                                    : std::to_string(chunk->getByte(index)))
+                            << " instead.";
+                    } else {
+                        EXPECT_EQ(arg, chunk->getByte(index)) << "Expected " << arg << " at index " << index
+                                                              << " but got " << chunk->getByte(index) << " instead.";
+                    }
+                },
+                opcodes[index]);
         }
     }
+
+    std::unique_ptr<cppLox::Frontend::Compiler> compiler;
+    std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
+    std::vector<cppLox::Frontend::Token> tokens;
+    std::unique_ptr<cppLox::ByteCode::Chunk> chunk;
 };
 
 TEST_F(CompilerIntegrationTest, AdditionExpression) {
@@ -350,6 +350,25 @@ TEST_F(CompilerIntegrationTest, VariableAssignmentExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::SET_GLOBAL, 0,
                                        cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, LocalVariableAssignmentExpression) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_BRACE, "{", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::VAR, "var", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "a", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::EQUAL, "=", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "1", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_BRACE, "}", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    chunk = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::POP,
+                                       cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, VariableDeclarationAndAssignmentExpression) {

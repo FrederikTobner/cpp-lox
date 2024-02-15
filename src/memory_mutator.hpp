@@ -54,9 +54,14 @@ class MemoryMutator {
     /// @param value The value to set the global variable to.
     /// @return True if the variable already existed, false if it was created.
     auto setGlobal(cppLox::Types::ObjectString * key, cppLox::Types::Value value) -> bool {
-        auto valueBucket = m_globals.find(key);
-        m_globals[key] = value;
-        return valueBucket != m_globals.end();
+        auto bucket = m_globals.find(key);
+        bool exists = bucket != m_globals.end();
+        if (exists) {
+            bucket->second = value;
+        } else {
+            m_globals[key] = value;
+        }
+        return exists;
     }
 
     /// @brief Gets the global variable with the given name.

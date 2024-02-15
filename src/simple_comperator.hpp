@@ -4,9 +4,12 @@
 
 namespace cppLox::Types {
 
+template <typename T>
+concept HasEqualOperator = requires(T & a, T & b) { a == b; };
+
 /// @brief Simple comperator for comparing two references or two pointers.
 /// @tparam T The type of the references / pointers.
-template <typename T> struct SimpleComperator {
+template <HasEqualOperator T> struct SimpleComperator {
     /// @brief Compares two references.
     /// @param a The first reference.
     /// @param b The second reference.

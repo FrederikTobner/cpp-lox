@@ -8,7 +8,7 @@ add_github_dependency(googletest google/googletest v1.14.0)
 
 set(SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
 
-file(GLOB_RECURSE TEST_SOURCES *.cpp *.hpp)
+file(GLOB_RECURSE TEST_SOURCES *.cpp)
 
 # Builds tests
 add_executable(${INTERPRETER_TESTS} ${TEST_SOURCES} ${INTERPRETER_SOURCES})

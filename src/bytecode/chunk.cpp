@@ -27,7 +27,7 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
     }
 }
 
-[[nodiscard]] auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
+auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     std::cout << std::format("{:#06X} ", offset);
 
     if (offset > 0 && m_lines[offset] == m_lines[offset - 1]) {
@@ -52,6 +52,8 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
         return simpleInstruction(instruction, offset);
     case Opcode::GET_GLOBAL:
         return constantInstruction(instruction, offset);
+    case Opcode::GET_LOCAL:
+        return byteInstruction(instruction, offset);
     case Opcode::GREATER:
         return simpleInstruction(instruction, offset);
     case Opcode::GREATER_EQUAL:
@@ -78,6 +80,8 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
         return simpleInstruction(instruction, offset);
     case Opcode::SET_GLOBAL:
         return constantInstruction(instruction, offset);
+    case Opcode::SET_LOCAL:
+        return byteInstruction(instruction, offset);
     case Opcode::SUBTRACT:
         return simpleInstruction(instruction, offset);
     case Opcode::TRUE:
@@ -88,17 +92,23 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
     }
 }
 
-[[nodiscard]] auto Chunk::simpleInstruction(uint8_t opcode, size_t offset) const -> size_t {
+auto Chunk::simpleInstruction(uint8_t opcode, size_t offset) const -> size_t {
     std::cout << std::format("{:>16}", static_cast<Opcode>(opcode)) << std::endl;
     return offset + 1;
 }
 
-[[nodiscard]] auto Chunk::addConstant(cppLox::Types::Value const & value) -> size_t {
+auto Chunk::addConstant(cppLox::Types::Value const & value) -> size_t {
     m_constants.push_back(value);
     return m_constants.size() - 1;
 }
 
-[[nodiscard]] auto Chunk::constantInstruction(uint8_t opcode, size_t offset) const -> size_t {
+auto Chunk::byteInstruction(uint8_t opcode, size_t offset) const -> size_t {
+    uint8_t slot = m_code[offset + 1];
+    std::cout << std::format("{:>16}{:>16}", static_cast<Opcode>(opcode), unsigned(slot)) << std::endl;
+    return offset + 2;
+}
+
+auto Chunk::constantInstruction(uint8_t opcode, size_t offset) const -> size_t {
     uint8_t constant = m_code[offset + 1];
     std::cout << std::format("{:>16}{:>16} '{}'", static_cast<Opcode>(opcode), unsigned(constant),
                              m_constants[constant])
@@ -106,18 +116,18 @@ auto Chunk::disassemble(std::string_view const & name) const -> void {
     return offset + 2;
 }
 
-[[nodiscard]] auto Chunk::getByte(size_t offset) const -> uint8_t {
+auto Chunk::getByte(size_t offset) const -> uint8_t {
     return m_code[offset];
 }
 
-[[nodiscard]] auto Chunk::getLine(size_t offset) const -> size_t {
+auto Chunk::getLine(size_t offset) const -> size_t {
     return m_lines[offset];
 }
 
-[[nodiscard]] auto Chunk::getConstant(size_t offset) -> cppLox::Types::Value & {
+auto Chunk::getConstant(size_t offset) -> cppLox::Types::Value & {
     return m_constants[offset];
 }
 
-[[nodiscard]] auto Chunk::getSize() const -> size_t {
+auto Chunk::getSize() const -> size_t {
     return m_code.size();
 }

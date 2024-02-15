@@ -17,7 +17,7 @@ class BaseE2ETestFixture : public ::testing::Test {
 
   private:
     std::unique_ptr<cppLox::Frontend::Lexer> lexer;
-    std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
+    std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     std::unique_ptr<cppLox::Frontend::Compiler> compiler;
     std::unique_ptr<cppLox::Backend::VM> vm;
 };

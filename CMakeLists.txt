@@ -14,8 +14,8 @@ clx_option(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR "Determines whether the garbage co
 clx_option(CLX_DEBUG_LOG_GARBAGE_COLLECTION "Determines whether the garbage collection be logged" OFF)
 clx_option(CLX_BUILD_TESTS "Determines whether the tests shall be built" OFF)
 
-# Looks up all the files in the src directory that end with .cpp or .hpp (Recursively)
-file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp src/*.hpp)
+# Looks up all the files in the src directory that end with .cpp (Recursively)
+file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp)
 
 add_subdirectory(src)
 

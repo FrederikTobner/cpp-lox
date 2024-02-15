@@ -1,7 +1,9 @@
 #include "compiler.hpp"
 
 #include <format>
+#include <functional>
 #include <iostream>
+#include <ranges>
 
 #include "../bytecode/opcode.hpp"
 #include "../error/compiletime_exception.hpp"
@@ -10,7 +12,7 @@
 
 using namespace cppLox::Frontend;
 
-Compiler::Compiler(cppLox::MemoryMutator * memoryMutator) : m_memoryMutator(memoryMutator) {
+Compiler::Compiler(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) : m_memoryMutator(memoryMutator) {
 }
 
 auto Compiler::advance(std::vector<Token> const & tokens) -> void {
@@ -20,6 +22,11 @@ auto Compiler::advance(std::vector<Token> const & tokens) -> void {
     m_previous = m_current;
     m_current = &tokens[m_currentTokenIndex];
     m_currentTokenIndex++;
+}
+
+auto Compiler::beginScope() -> void {
+    m_scopeDepth++;
+    m_current_scope = std::make_shared<CompilationScope>(m_current_scope);
 }
 
 auto Compiler::binary(std::vector<Token> const & tokens) -> void {
@@ -64,12 +71,25 @@ auto Compiler::binary(std::vector<Token> const & tokens) -> void {
     }
 }
 
+auto Compiler::block(std::vector<Token> const & tokens) -> void {
+    while (!check(Token::Type::RIGHT_BRACE) && !check(Token::Type::END_OF_FILE)) {
+        declaration(tokens);
+    }
+    consume(Token::Type::RIGHT_BRACE, "Expect '}' after block", tokens);
+}
+
+auto Compiler::check(Token::Type type) const -> bool {
+    return m_current->type() == type;
+}
+
 auto Compiler::compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk> {
     m_previous = nullptr;
     m_current = nullptr;
     m_chunk = new cppLox::ByteCode::Chunk();
     m_currentTokenIndex = 0;
     m_panicMode = false;
+    m_current_scope = std::make_shared<CompilationScope>();
+    m_scopeDepth = 0;
     advance(tokens);
     while (m_current->type() != Token::Type::END_OF_FILE) {
         declaration(tokens);
@@ -103,7 +123,29 @@ auto Compiler::declaration(std::vector<Token> const & tokens) -> void {
     }
 }
 
+auto Compiler::declareVariable(std::vector<Token> const & tokens) -> void {
+    // Global variables are implicitly declared.
+    if (m_scopeDepth == 0) {
+        return;
+    }
+    std::string const & name = m_previous->lexeme();
+    for (auto i : std::views::iota(0u, m_current_scope->localCount()) | std::views::reverse) {
+        auto local = m_current_scope->local(i);
+        if (local.getDepth() != -1 && local.getDepth() < m_scopeDepth) {
+            break;
+        }
+        if (name == local.getToken().lexeme()) {
+            error("Variable with this name already declared in this scope");
+        }
+    }
+    m_current_scope->addLocal(*m_previous, [&](std::string & message) { error(message); });
+}
+
 auto Compiler::defineVariable(uint8_t global) -> void {
+    if (m_scopeDepth > 0) {
+        m_current_scope->markInitialized(m_scopeDepth);
+        return;
+    }
     emitBytes(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, global);
 }
 
@@ -111,29 +153,33 @@ auto inline Compiler::emitByte(uint8_t byte) -> void {
     m_chunk->write(byte, m_previous->line());
 }
 
-auto Compiler::emitBytes(uint8_t byte1, uint8_t byte2) -> void {
-    emitByte(byte1);
-    emitByte(byte2);
-}
-
 auto inline Compiler::emitByte(cppLox::ByteCode::Opcode opcode) -> void {
     emitByte(static_cast<uint8_t>(opcode));
 }
 
-auto Compiler::emitBytes(cppLox::ByteCode::Opcode opcode, uint8_t byte) -> void {
-    emitBytes(static_cast<uint8_t>(opcode), byte);
-}
-
-auto Compiler::emitBytes(cppLox::ByteCode::Opcode opcode1, cppLox::ByteCode::Opcode opcode2) -> void {
-    emitBytes(static_cast<uint8_t>(opcode1), static_cast<uint8_t>(opcode2));
-}
-
 auto inline Compiler::emitConstant(cppLox::Types::Value value) -> void {
-    emitBytes(cppLox::ByteCode::Opcode::CONSTANT, m_chunk->addConstant(value));
+    emitBytes(cppLox::ByteCode::Opcode::CONSTANT, (uint8_t)m_chunk->addConstant(value));
+}
+
+auto Compiler::endScope() -> void {
+    if (m_scopeDepth == 0) {
+        throw cppLox::Error::CompileTimeException("No enclosing scope found for endScope() call");
+    }
+    m_scopeDepth--;
+    while (m_current_scope->localCount() > 0 &&
+           m_current_scope->local(m_current_scope->localCount() - 1).getDepth() > m_scopeDepth) {
+        emitByte(cppLox::ByteCode::Opcode::POP);
+        m_current_scope->popLocal();
+    }
+    m_current_scope = m_current_scope->enclosing().value();
 }
 
 auto Compiler::endCompilation() -> void {
     m_chunk->write(cppLox::ByteCode::Opcode::RETURN, m_previous->line());
+}
+
+auto Compiler::error(char const * message) -> void {
+    throw cppLox::Error::CompileTimeException(std::format("{} at line {}", message, m_previous->line()));
 }
 
 auto Compiler::error(std::string & message) -> void {
@@ -161,6 +207,10 @@ auto Compiler::getRule(Token::Type type) -> ParseRule<Compiler> * {
 auto Compiler::identifierConstant(Token const & name) -> uint8_t {
     return m_chunk->addConstant(
         cppLox::Types::Value(m_memoryMutator->create<cppLox::Types::ObjectString>(name.lexeme())));
+}
+
+auto Compiler::initCompiler() -> void {
+    m_current_scope = std::make_shared<CompilationScope>(m_current_scope);
 }
 
 auto Compiler::literal(std::vector<Token> const & tokens, bool canAssign) -> void {
@@ -200,6 +250,25 @@ auto Compiler::match(Token::Type type, std::vector<Token> const & tokens) -> boo
     return true;
 }
 
+auto Compiler::namedVariable(Token const & name, std::vector<Token> const & tokens, bool canAssign) -> void {
+    uint8_t getOp, setOp;
+    int32_t arg = resolveLocal(name, tokens);
+    if (arg != -1) {
+        getOp = cppLox::ByteCode::Opcode::GET_LOCAL;
+        setOp = cppLox::ByteCode::Opcode::SET_LOCAL;
+    } else {
+        arg = identifierConstant(name);
+        getOp = cppLox::ByteCode::Opcode::GET_GLOBAL;
+        setOp = cppLox::ByteCode::Opcode::SET_GLOBAL;
+    }
+    if (canAssign && match(Token::Type::EQUAL, tokens)) {
+        expression(tokens);
+        emitBytes(setOp, (uint8_t)arg);
+    } else {
+        emitBytes(getOp, (uint8_t)arg);
+    }
+}
+
 auto Compiler::number(std::vector<Token> const & tokens, bool canAssign) -> void {
     double value = std::stod(m_previous->lexeme());
     emitConstant(value);
@@ -230,6 +299,10 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
 
 auto Compiler::parseVariable(std::string message, std::vector<Token> const & tokens) -> uint8_t {
     consume(Token::Type::IDENTIFIER, message, tokens);
+    declareVariable(tokens);
+    if (m_scopeDepth > 0) {
+        return 0;
+    }
     return identifierConstant(*m_previous);
 }
 
@@ -243,9 +316,26 @@ auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign)
 auto Compiler::statement(std::vector<Token> const & tokens) -> void {
     if (m_current->type() == Token::Type::PRINT) {
         printStatement(tokens, false);
+    } else if (match(Token::Type::LEFT_BRACE, tokens)) {
+        beginScope();
+        block(tokens);
+        endScope();
     } else {
         expressionStatement(tokens);
     }
+}
+
+auto Compiler::resolveLocal(Token const & name, std::vector<Token> const & tokens) -> int {
+    for (auto i : std::views::iota(0u, m_current_scope->localCount()) | std::views::reverse) {
+        auto local = m_current_scope->local(i);
+        if (name.lexeme() == local.getToken().lexeme()) {
+            if (local.getDepth() == -1) {
+                throw cppLox::Error::CompileTimeException("Cannot read local variable in its own initializer");
+            }
+            return i;
+        }
+    }
+    return -1;
 }
 
 auto Compiler::string(std::vector<Token> const & tokens, bool canAssign) -> void {
@@ -279,19 +369,6 @@ auto Compiler::synchronize(std::vector<Token> const & tokens) -> void {
 
 auto Compiler::variable(std::vector<Token> const & tokens, bool canAssign) -> void {
     namedVariable(*m_previous, tokens, canAssign);
-}
-
-auto Compiler::namedVariable(Token const & name, std::vector<Token> const & tokens, bool canAssign) -> void {
-    uint8_t arg = identifierConstant(name);
-    if (match(Token::Type::EQUAL, tokens)) {
-        if (canAssign == false) {
-            return;
-        }
-        expression(tokens);
-        emitBytes(cppLox::ByteCode::Opcode::SET_GLOBAL, arg);
-    } else {
-        emitBytes(cppLox::ByteCode::Opcode::GET_GLOBAL, arg);
-    }
 }
 
 auto Compiler::variableDeclaration(std::vector<Token> const & tokens) -> void {

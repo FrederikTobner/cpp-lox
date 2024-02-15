@@ -17,7 +17,7 @@ class VM {
   public:
     /// @brief Constructs a new virtual machine
     /// @param memoryMutator The memory mutator that is used by the virtual machine
-    VM(cppLox::MemoryMutator * memoryMutator);
+    VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator);
 
     /// @brief Destructor of the virtual machine
     ~VM() = default;
@@ -61,6 +61,6 @@ class VM {
     cppLox::ByteCode::Chunk * m_chunk;
 
     /// @brief The memory manager.
-    cppLox::MemoryMutator * m_memoryMutator;
+    std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
 };
 } // namespace cppLox::Backend

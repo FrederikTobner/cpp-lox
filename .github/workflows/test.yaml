@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  test:
     runs-on: windows-latest
     env:
       BUILD_TYPE: ${{matrix.buildtypes}}
@@ -14,12 +14,10 @@ jobs:
       matrix:
         buildtypes: [Debug, Release]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup Ninja
-      uses: ashutoshvarma/setup-ninja@master
-      with:
-        version: 1.10.2
+      run: choco install ninja -y
 
     - name: Setup MSVC under Windows
       uses: ilammy/msvc-dev-cmd@v1

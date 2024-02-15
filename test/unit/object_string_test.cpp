@@ -9,11 +9,8 @@
 
 // Test fixture for ObjectString tests.
 class ObjectStringTest : public ::testing::Test {
-  public:
-    std::unique_ptr<cppLox::Types::Object> object;
-
   protected:
-    // Sets up the test fixture.
+    std::unique_ptr<cppLox::Types::Object> object;
     void SetUp() override {
         object = std::unique_ptr<cppLox::Types::Object>(
             static_cast<cppLox::Types::Object *>(new cppLox::Types::ObjectString("Hello World")));

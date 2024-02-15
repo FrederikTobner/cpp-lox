@@ -9,7 +9,7 @@
 
 using namespace cppLox::Backend;
 
-VM::VM(cppLox::MemoryMutator * memoryMutator) {
+VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
     m_stack_top = 0;
     m_chunk = nullptr;
     m_instruction_index = 0;
@@ -61,9 +61,11 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
             {
                 uint8_t const constant = chunk.getByte(m_instruction_index++);
                 cppLox::Types::Value const value = pop();
-                m_memoryMutator->setGlobal(
-                    chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
-                    value);
+                if (m_memoryMutator->setGlobal(
+                        chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>(),
+                        value)) {
+                    throw cppLox::Error::RunTimeException("Variable already defined");
+                }
                 push(value);
                 break;
             }
@@ -86,6 +88,12 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                 cppLox::Types::Value const value = m_memoryMutator->getGlobal(
                     chunk.getConstant(constant).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>());
                 push(value);
+                break;
+            }
+        case cppLox::ByteCode::Opcode::GET_LOCAL:
+            {
+                uint8_t const slot = chunk.getByte(m_instruction_index++);
+                push(m_stack[slot]);
                 break;
             }
         case cppLox::ByteCode::Opcode::GREATER:
@@ -146,6 +154,12 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                     m_memoryMutator->deleteGlobal(name);
                     runTimeError("Undefined variable '%s'", name->string().c_str());
                 };
+                break;
+            }
+        case cppLox::ByteCode::Opcode::SET_LOCAL:
+            {
+                uint8_t const slot = chunk.getByte(m_instruction_index++);
+                m_stack[slot] = peek();
                 break;
             }
         case cppLox::ByteCode::Opcode::SUBTRACT:

@@ -10,10 +10,11 @@
 
 class ChunkTest : public ::testing::Test {
   protected:
-    cppLox::ByteCode::Chunk chunk;
     void SetUp() override {
         chunk = cppLox::ByteCode::Chunk();
     }
+
+    cppLox::ByteCode::Chunk chunk;
 };
 
 TEST_F(ChunkTest, AddAndGetConstant) {
@@ -56,7 +57,7 @@ class ChunkParameterizedSimpleInstructionTestFixture
     : public ChunkTest,
       public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
 
-// The paramiters for this test suite are a pair of Opcode and the expected string output for that opcode
+// The parameters for this test suite are a pair of Opcode and the expected string output for that opcode
 INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedSimpleInstructionTestFixture,
                          ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::ADD, "ADD"),
                                            std::make_pair(cppLox::ByteCode::Opcode::DIVIDE, "DIVIDE"),
@@ -72,6 +73,7 @@ INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedSimpleInstructionTestFixtu
                                            std::make_pair(cppLox::ByteCode::Opcode::NOT_EQUAL, "NOT_EQUAL"),
                                            std::make_pair(cppLox::ByteCode::Opcode::NULL_, "NULL_"),
                                            std::make_pair(cppLox::ByteCode::Opcode::PRINT, "PRINT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::POP, "POP"),
                                            std::make_pair(cppLox::ByteCode::Opcode::RETURN, "RETURN"),
                                            std::make_pair(cppLox::ByteCode::Opcode::SUBTRACT, "SUBTRACT"),
                                            std::make_pair(cppLox::ByteCode::Opcode::TRUE, "TRUE")));
@@ -95,7 +97,9 @@ class ChunkParameterizedConstantInstructionTestFixture
       public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
 
 INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedConstantInstructionTestFixture,
-                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CONSTANT, "CONSTANT")));
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CONSTANT, "CONSTANT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::GET_GLOBAL, "GET_GLOBAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::SET_GLOBAL, "SET_GLOBAL")));
 
 TEST_P(ChunkParameterizedConstantInstructionTestFixture, WriteOpCode) {
     // Arrange
@@ -111,4 +115,28 @@ TEST_P(ChunkParameterizedConstantInstructionTestFixture, WriteOpCode) {
 
     // Assert
     EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} '{}'\n", expected, 0, value));
+}
+
+class ChunkParameterizedByteInstructionTestFixture
+    : public ChunkTest,
+      public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
+
+INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedByteInstructionTestFixture,
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::GET_LOCAL, "GET_LOCAL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::SET_LOCAL, "SET_LOCAL")));
+
+TEST_P(ChunkParameterizedByteInstructionTestFixture, WriteOpCode) {
+    // Arrange
+    uint8_t slot = 1;
+    auto [opcode, expected] = GetParam();
+    chunk.write(opcode, 123);
+    chunk.write(slot, 123);
+    testing::internal::CaptureStdout();
+
+    // Act
+    chunk.disassemble("test chunk");
+    std::string output = testing::internal::GetCapturedStdout();
+
+    // Assert
+    EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16}\n", expected, slot));
 }
