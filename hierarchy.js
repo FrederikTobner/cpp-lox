@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "Chunk", "classcppLox_1_1ByteCode_1_1Chunk.html", null ],
+    [ "CompilationScope", "classcppLox_1_1Frontend_1_1CompilationScope.html", null ],
     [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", null ],
     [ "exception", null, [
       [ "CompileTimeException", "classcppLox_1_1Error_1_1CompileTimeException.html", null ],
@@ -14,6 +15,7 @@ var hierarchy =
     ] ],
     [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", null ],
     [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", null ],
+    [ "Local", "classcppLox_1_1Frontend_1_1Local.html", null ],
     [ "MemoryMutator", "classcppLox_1_1MemoryMutator.html", null ],
     [ "Object", "classcppLox_1_1Types_1_1Object.html", [
       [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", null ]

@@ -15,6 +15,6 @@ var namespacecppLox =
       [ "EXIT_CODE_INPUT_OUTPUT_ERROR", "namespacecppLox.html#a2d967eed409413b06a8450ff977ab52aaa89869f27a1d1de61bba55507a26d676", null ]
     ] ],
     [ "repl", "namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809", null ],
-    [ "run", "namespacecppLox.html#a2683164434b3da19cca09fae026d6bf9", null ],
+    [ "run", "namespacecppLox.html#a5a842db15852690525fa4fa8cd32c6bf", null ],
     [ "runFile", "namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072", null ]
 ];

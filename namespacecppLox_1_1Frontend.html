@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('namespacecppLox_1_1Frontend.html','');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">cppLox::Frontend Namespace Reference</div>  </div>
 </div><!--header-->
@@ -92,11 +93,17 @@ $(document).ready(function(){initNavTree('namespacecppLox_1_1Frontend.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compilation scope.  <a href="classcppLox_1_1Frontend_1_1CompilationScope.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">Compiler</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compiler used by the cpplox interpreter.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html">Lexer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lexer of the language.  <a href="classcppLox_1_1Frontend_1_1Lexer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Local.html">Local</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Models a local variable.  <a href="classcppLox_1_1Frontend_1_1Local.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1ParseRule.html">ParseRule</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A parserule for the Pratt parser.  <a href="classcppLox_1_1Frontend_1_1ParseRule.html#details">More...</a><br /></td></tr>
@@ -125,6 +132,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:af5e272dc9bc498661184c41f4907852e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The precedence of the expressions and statements of the language.  <a href="namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e">More...</a><br /></td></tr>
 <tr class="separator:af5e272dc9bc498661184c41f4907852e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4190535f5e72e70d70623d9a41e088f1"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , class... Args&gt; </td></tr>
+<tr class="memitem:a4190535f5e72e70d70623d9a41e088f1"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a> = (... &amp;&amp; (std::is_same_v&lt;Args, T1&gt; || std::is_same_v&lt;Args, T2&gt;))</td></tr>
+<tr class="separator:a4190535f5e72e70d70623d9a41e088f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="af5e272dc9bc498661184c41f4907852e"></a>
@@ -172,6 +185,21 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc"></a>PRIMARY&#160;</td><td class="fielddoc"><p>The precedence of primary operators. </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4190535f5e72e70d70623d9a41e088f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4190535f5e72e70d70623d9a41e088f1">&#9670;&nbsp;</a></span>IsPackOfEitherOf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">concept IsPackOfEitherOf = (... &amp;&amp; (std::is_same_v&lt;Args, T1&gt; || std::is_same_v&lt;Args, T2&gt;))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

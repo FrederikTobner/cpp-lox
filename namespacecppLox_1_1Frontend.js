@@ -1,7 +1,9 @@
 var namespacecppLox_1_1Frontend =
 [
+    [ "CompilationScope", "classcppLox_1_1Frontend_1_1CompilationScope.html", "classcppLox_1_1Frontend_1_1CompilationScope" ],
     [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ],
     [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ],
+    [ "Local", "classcppLox_1_1Frontend_1_1Local.html", "classcppLox_1_1Frontend_1_1Local" ],
     [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
     [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ],
     [ "Precedence", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e", [
@@ -16,5 +18,6 @@ var namespacecppLox_1_1Frontend =
       [ "UNARY", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4", null ],
       [ "CALL", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eaca3547acb9162b49fb4a6594ed9b3030", null ],
       [ "PRIMARY", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc", null ]
-    ] ]
+    ] ],
+    [ "IsPackOfEitherOf", "namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1", null ]
 ];

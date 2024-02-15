@@ -12,8 +12,10 @@ var annotated_dup =
         [ "RunTimeException", "classcppLox_1_1Error_1_1RunTimeException.html", "classcppLox_1_1Error_1_1RunTimeException" ]
       ] ],
       [ "Frontend", "namespacecppLox_1_1Frontend.html", [
+        [ "CompilationScope", "classcppLox_1_1Frontend_1_1CompilationScope.html", "classcppLox_1_1Frontend_1_1CompilationScope" ],
         [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ],
         [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ],
+        [ "Local", "classcppLox_1_1Frontend_1_1Local.html", "classcppLox_1_1Frontend_1_1Local" ],
         [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
         [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ]
       ] ],

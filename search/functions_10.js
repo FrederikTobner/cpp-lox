@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unary_421',['unary',['../classcppLox_1_1Frontend_1_1Compiler.html#aee81a59097d2909dfd7c3a49a31e3718',1,'cppLox::Frontend::Compiler']]]
+  ['unary_480',['unary',['../classcppLox_1_1Frontend_1_1Compiler.html#aee81a59097d2909dfd7c3a49a31e3718',1,'cppLox::Frontend::Compiler']]]
 ];

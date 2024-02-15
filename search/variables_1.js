@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isanunderlyingvaluetype_440',['IsAnUnderLyingValueType',['../namespacecppLox_1_1Types.html#aceea059294c51d166ebe5772f0e35e10',1,'cppLox::Types']]]
+  ['hasequaloperator_500',['HasEqualOperator',['../namespacecppLox_1_1Types.html#a52380217699ac794db718667678ec031',1,'cppLox::Types']]]
 ];

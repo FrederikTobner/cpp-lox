@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('compiler_8hpp.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">compiler.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -93,9 +94,11 @@ $(document).ready(function(){initNavTree('compiler_8hpp.html',''); initResizable
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;variant&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="chunk_8hpp_source.html">../bytecode/chunk.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memory__mutator_8hpp_source.html">../memory_mutator.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="compilation__scope_8hpp_source.html">compilation_scope.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="parse__rule_8hpp_source.html">parse_rule.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="precedence_8hpp_source.html">precedence.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="token_8hpp_source.html">token.hpp</a>&quot;</code><br />
@@ -114,6 +117,12 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecppLox_1_1Frontend"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Frontend.html">cppLox::Frontend</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4190535f5e72e70d70623d9a41e088f1"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , class... Args&gt; </td></tr>
+<tr class="memitem:a4190535f5e72e70d70623d9a41e088f1"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a> = (... &amp;&amp; (std::is_same_v&lt;Args, T1&gt; || std::is_same_v&lt;Args, T2&gt;))</td></tr>
+<tr class="separator:a4190535f5e72e70d70623d9a41e088f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

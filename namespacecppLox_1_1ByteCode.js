@@ -9,6 +9,7 @@ var namespacecppLox_1_1ByteCode =
       [ "EQUAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a59a84258a4cb9025b567ee5139455029", null ],
       [ "FALSE", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa1e095cc966dbecf6a0d8aad75348d1a", null ],
       [ "GET_GLOBAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a10b5df8d40666efe5aba98e6ef6fd8b6", null ],
+      [ "GET_LOCAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a7aa60f21755c843ce1060fbe49856a14", null ],
       [ "GREATER", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a25b5ca2f56d99ba6ffcb5316adac34c1", null ],
       [ "GREATER_EQUAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4495f63771aa2060042a31363e16d4f9", null ],
       [ "LESS", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a95c736070f99b99eb80d1eac1f4ca60f", null ],
@@ -22,8 +23,10 @@ var namespacecppLox_1_1ByteCode =
       [ "PRINT", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab107229d44d042caa8ab8df4c8acaa1f", null ],
       [ "RETURN", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a520e09ffec033636dba711f3441cc600", null ],
       [ "SET_GLOBAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a1f0d8ddea21f001cd9464b3820fcdc0d", null ],
+      [ "SET_LOCAL", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab025f0a80a00922b7205a49f79e7e825", null ],
       [ "SUBTRACT", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aad8ff967f143b54da6d2112fb5858e8c", null ],
-      [ "TRUE", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa82764c3079aea4e60c80e45befbb839", null ]
+      [ "TRUE", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa82764c3079aea4e60c80e45befbb839", null ],
+      [ "AMOUNT", "namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97", null ]
     ] ],
     [ "opcode_as_string", "namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12", null ],
     [ "operator<<", "namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2", null ]
