@@ -140,3 +140,29 @@ TEST_P(ChunkParameterizedByteInstructionTestFixture, WriteOpCode) {
     // Assert
     EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16}\n", expected, slot));
 }
+
+class ChunkParameterizedJumpInstructionTestFixture
+    : public ChunkTest,
+      public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
+
+INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedJumpInstructionTestFixture,
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::JUMP, "JUMP"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::JUMP_IF_FALSE, "JUMP_IF_FALSE")));
+
+TEST_P(ChunkParameterizedJumpInstructionTestFixture, WriteOpCode) {
+    // Arrange
+    uint16_t offset = 1;
+    auto [opcode, expected] = GetParam();
+    chunk.write(opcode, 123);
+    chunk.write(offset << 8, 123);
+    chunk.write(offset, 123);
+    testing::internal::CaptureStdout();
+
+    // Act
+    chunk.disassemble("test chunk");
+    std::string output = testing::internal::GetCapturedStdout();
+
+    // Assert
+    EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} -> {}\n", expected, offset,
+                                  offset + chunk.getSize()));
+}

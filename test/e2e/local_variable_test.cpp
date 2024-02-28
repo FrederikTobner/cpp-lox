@@ -59,3 +59,27 @@ TEST_F(LocalVariableE2ETest, SameNameWithinDifferentScopesDoNotClash) {
     // Assert
     ASSERT_EQ(expected, output);
 }
+
+TEST_F(LocalVariableE2ETest, CanGetLocalVariableFromOuterScopeWithOtherVariables) {
+    // Arrange
+    std::string source = "{var a = 1; var b = 2; { var c = 3; var d = 4; var e = 5; print a; }}";
+    std::string expected = "1\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}
+
+TEST_F(LocalVariableE2ETest, CanGetLocalVariableFromOuterScopeWithoutOtherVariables) {
+    // Arrange
+    std::string source = "{var a = 1; { print a; }}";
+    std::string expected = "1\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}

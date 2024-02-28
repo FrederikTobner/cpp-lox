@@ -16,3 +16,8 @@
 * Using more modern C++ features
 * Improve testing using mocks and maybe parametrized tests
 * Parsing command line arguments
+
+## Potential Bugs
+
+* After decaclaring a global variable, the value is not popped from the stack
+* The lexer does not handle some input properly. Trailing whitespace characters are breaking the lexical analysis

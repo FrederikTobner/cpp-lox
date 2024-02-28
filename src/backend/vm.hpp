@@ -22,21 +22,27 @@ class VM {
     /// @brief Destructor of the virtual machine
     ~VM() = default;
 
+    /// @brief Gets two bytes from the chunk and returns them as a 16-bit integer
+    /// @param chunk The chunk to get the bytes from
+    /// @param offset The offset to get the bytes from
+    /// @return The 16-bit integer
+    [[nodiscard]] auto getShort(cppLox::ByteCode::Chunk & chunk, size_t offset) -> uint16_t;
+
     /// @brief Interprets the given chunk
     /// @param chunk The chunk to interpret
     auto interpret(cppLox::ByteCode::Chunk & chunk) -> void;
 
-    /// @brief Pushes the given value onto the stack
-    /// @param value The value to push onto the stack
-    auto push(cppLox::Types::Value value) -> void;
+    /// @brief Peeks at the top value of the stack
+    /// @return The top value of the stack
+    [[nodiscard]] auto peek() -> cppLox::Types::Value;
 
     /// @brief Pops the top value from the stack
     /// @return The top value of the stack
     [[nodiscard]] auto pop() -> cppLox::Types::Value;
 
-    /// @brief Peeks at the top value of the stack
-    /// @return The top value of the stack
-    [[nodiscard]] auto peek() -> cppLox::Types::Value;
+    /// @brief Pushes the given value onto the stack
+    /// @param value The value to push onto the stack
+    auto push(cppLox::Types::Value value) -> void;
 
     /// @brief Resets the stack
     auto resetStack() -> void;

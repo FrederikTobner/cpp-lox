@@ -6,6 +6,7 @@
 #include "../error/runtime_exception.hpp"
 #include "../types/object_formatter.hpp"
 #include "../types/object_string.hpp"
+#include "../types/value_formatter.hpp"
 
 using namespace cppLox::Backend;
 
@@ -19,13 +20,16 @@ VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
 auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
     this->m_instruction_index = 0;
     this->m_chunk = &chunk;
+#ifdef DEBUG_PRINT_BYTECODE
+    chunk.disassemble("script");
+#endif
     for (;;) {
 #ifdef DEBUG_TRACE_EXECUTION
-        for (Value * slot = m_stack; slot < m_stack_top; slot++) {
+        for (cppLox::Types::Value * slot = m_stack; (size_t)slot < m_stack_top; slot++) {
             std::cout << std::format("[ {} ]", *slot);
         }
         std::cout << std::endl;
-        chunk_disassemble_instruction(chunk, m_instruction_index);
+        chunk.disassembleInstruction(m_instruction_index);
 #endif
         uint8_t const instruction = chunk.getByte(m_instruction_index++);
         switch (static_cast<cppLox::ByteCode::Opcode>(instruction)) {
@@ -110,6 +114,20 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                 push(b >= a);
                 break;
             }
+        case cppLox::ByteCode::Opcode::JUMP:
+            {
+                uint16_t const offset = getShort(chunk, m_instruction_index);
+                m_instruction_index += offset;
+                break;
+            }
+        case cppLox::ByteCode::Opcode::JUMP_IF_FALSE:
+            {
+                uint16_t const offset = getShort(chunk, m_instruction_index);
+                if ((!peek()).as<bool>()) {
+                    m_instruction_index += offset;
+                }
+                break;
+            }
         case cppLox::ByteCode::Opcode::LESS:
             {
                 cppLox::Types::Value const a = pop();
@@ -122,6 +140,12 @@ auto VM::interpret(cppLox::ByteCode::Chunk & chunk) -> void {
                 cppLox::Types::Value const a = pop();
                 cppLox::Types::Value const b = pop();
                 push(b <= a);
+                break;
+            }
+        case cppLox::ByteCode::Opcode::LOOP:
+            {
+                uint16_t const offset = getShort(chunk, m_instruction_index);
+                m_instruction_index -= offset;
                 break;
             }
         case cppLox::ByteCode::Opcode::MULTIPLY:
@@ -203,6 +227,11 @@ auto VM::push(cppLox::Types::Value value) -> void {
 
 auto VM::resetStack() -> void {
     m_stack_top = 0;
+}
+
+[[nodiscard]] auto VM::getShort(cppLox::ByteCode::Chunk & chunk, size_t offset) -> uint16_t {
+    m_instruction_index += 2;
+    return static_cast<uint16_t>(chunk.getByte(offset) << 8 | chunk.getByte(offset + 1));
 }
 
 template <class... Args> auto VM::runTimeError(std::string_view fmt, Args &&... args) -> void {

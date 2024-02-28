@@ -22,10 +22,16 @@
         return "GREATER";
     case Opcode::GREATER_EQUAL:
         return "GREATER_EQUAL";
+    case Opcode::JUMP_IF_FALSE:
+        return "JUMP_IF_FALSE";
+    case Opcode::JUMP:
+        return "JUMP";
     case Opcode::LESS:
         return "LESS";
     case Opcode::LESS_EQUAL:
         return "LESS_EQUAL";
+    case Opcode::LOOP:
+        return "LOOP";
     case Opcode::MULTIPLY:
         return "MULTIPLY";
     case Opcode::NEGATE:

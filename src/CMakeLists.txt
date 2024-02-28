@@ -7,16 +7,27 @@ add_executable(${PROJECT_NAME} ${INTERPRETER_SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/src)
 
 # Install configuration
-if(NOT CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
+if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
+    if(CLX_DEBUG_PRINT_BYTECODE) 
+        target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_PRINT_BYTECODE)
+    endif()
+    if(DEBUG_TRACE_EXECUTION)
+        target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_TRACE_EXECUTION)
+    endif()
+    if(CLX_DEBUG_STRESS_GARBAGE_COLLECTOR)
+        target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_STRESS_GARBAGE_COLLECTOR)
+    endif()
+    if(CLX_DEBUG_LOG_GARBAGE_COLLECTION)
+        target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_LOG_GARBAGE_COLLECTION)
+    endif()    
+else()
     # CPack metadata
     set(PROJECT_VERSIONED_NAME "${PROJECT_NAME}_${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}") 
     set(PROJECT_PAGE "https://github.com/FrederikTobner/cpp-lox")
     set(PROJECT_HELP_PAGE "https://github.com/FrederikTobner/cpp-lox/wiki")
     set(PROJECT_VENDOR "Frederik Tobner")
     set(PROJECT_CONTACT "f.tobner@gmail.com")
-    
     # Sets properties for the package created using cpack - https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
-    
     # Setting source directory
     set(CPACK_BUILD_SOURCE_DIRS "${PROJECT_BINARY_DIR}/src")
     # Creates a desktop shortcut
@@ -35,10 +46,8 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
     set(CPACK_PACKAGE_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}")
     # Add license as resouce
     set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE")
-
     
     # Sets properties for NSIS (nullsoft scriptable install system - https://sourceforge.net/projects/nsis/)
-    
     # Setting the branding text that is displayed at the bottom of the install window.   
     set(CPACK_NSIS_BRANDING_TEXT ${PROJECT_NAME})
     # Setting contact info
@@ -53,7 +62,6 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
     set(CPACK_NSIS_PACKAGE_NAME ${PROJECT_NAME})
     # About URL provided in the installer
     set(CPACK_NSIS_URL_INFO_ABOUT ${PROJECT_PAGE})    
-
     # Includes the CPack module 
     include(CPack)    
     # Configure install destination of the interpreter

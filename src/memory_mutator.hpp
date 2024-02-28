@@ -79,12 +79,7 @@ class MemoryMutator {
     /// @param key The name of the global variable to delete.
     /// @return True if the variable was deleted, false if it didn't exist.
     auto deleteGlobal(cppLox::Types::ObjectString * key) -> bool {
-        auto iterator = m_globals.find(key);
-        if (iterator != m_globals.end()) {
-            m_globals.erase(iterator);
-            return true;
-        }
-        return false;
+        return m_globals.erase(key);
     }
 
   private:

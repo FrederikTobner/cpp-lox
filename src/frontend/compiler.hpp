@@ -39,6 +39,8 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto advance(std::vector<Token> const & tokens) -> void;
 
+    auto and_(std::vector<Token> const & tokens) -> void;
+
     /// @brief Begins a new scope.
     auto beginScope() -> void;
 
@@ -50,6 +52,9 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto binary(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Checks whether the current token is of the given type.
+    /// @param type The given type of the token.
+    /// @return Whether the current token is of the given type.
     [[nodiscard]] auto inline check(Token::Type type) const -> bool;
 
     /// @brief Consumes a token.
@@ -94,7 +99,17 @@ class Compiler {
     auto inline emitByte(cppLox::ByteCode::Opcode byte) -> void;
 
     /// @brief Emits a constant.
+    /// @param value The value to emit.
     auto inline emitConstant(cppLox::Types::Value value) -> void;
+
+    /// @brief Emits a jump instruction.
+    /// @param opcode The opcode of the jump instruction.
+    /// @return The index of the jump instruction in the chunk.
+    auto inline emitJump(cppLox::ByteCode::Opcode opcode) -> int32_t;
+
+    /// @brief Emits a loop instruction.
+    /// @param loopStart The index of the loop start.
+    auto inline emitLoop(int32_t loopStart) -> void;
 
     /// @brief Ends the current scope.
     auto endScope() -> void;
@@ -120,8 +135,11 @@ class Compiler {
 
     /// @brief Compiles an expression statement.
     /// @param tokens The tokens that are compiled.
-    /// @return The expression statement.
     auto expressionStatement(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Compiles a for statement.
+    /// @param tokens The tokens that are compiled.
+    auto forStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a grouping expression.
     /// @param tokens The tokens that are compiled.
@@ -136,6 +154,11 @@ class Compiler {
     /// @param name The name of the identifier.
     /// @return The index of the identifier in the chunk.
     [[nodiscard]] auto identifierConstant(Token const & name) -> uint8_t;
+
+    /// @brief Compiles an if statement.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the variable in the chunk.
+    auto ifStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Initializes the compiler scope.
     auto initCompiler() -> void;
@@ -164,6 +187,11 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto number(std::vector<Token> const & tokens, bool canAssign) -> void;
 
+    /// @brief Compiles an or expression.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the variable in the chunk.
+    auto or_(std::vector<Token> const & tokens) -> void;
+
     /// @brief Parses the precedence of the current token.
     /// @param precedence The precedence to parse.
     /// @param tokens The tokens that are compiled.
@@ -175,6 +203,10 @@ class Compiler {
     /// @return The index of the variable in the chunk.
     [[nodiscard]] auto parseVariable(std::string errorMessage, std::vector<Token> const & tokens) -> uint8_t;
 
+    /// @brief Changes the size of the jump offset at the given offset in the chunk.
+    /// @param offset The offset of the jump instruction.
+    auto patchJump(int32_t offset) -> void;
+
     /// @brief Compiles a print statement.
     /// @param tokens The tokens that are compiled.
     auto printStatement(std::vector<Token> const & tokens, bool canAssign) -> void;
@@ -183,7 +215,7 @@ class Compiler {
     /// @param name The name of the variable.
     /// @param tokens The tokens that are compiled.
     /// @return The index of the variable in the chunk.
-    [[nodiscard]] auto resolveLocal(Token const & name, std::vector<Token> const & tokens) -> int;
+    [[nodiscard]] auto resolveLocal(Token const & name, CompilationScope const & scope) -> int;
 
     /// @brief Compiles a statement.
     /// @param tokens The tokens that are compiled.
@@ -210,6 +242,10 @@ class Compiler {
     /// @brief Compiles a variable declaration.
     /// @param tokens The tokens that are compiled.
     auto variableDeclaration(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Compiles a while statement.
+    /// @param tokens The tokens that are compiled.
+    auto whileStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Creates the parsing rules for the different token types.
     /// @return The rules for the different token types.
@@ -260,7 +296,7 @@ class Compiler {
         rules[static_cast<size_t>(Token::Type::NUMBER)] =
             ParseRule<Compiler>(&Compiler::number, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::AND)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(std::nullopt, &Compiler::and_, Precedence::AND);
         rules[static_cast<size_t>(Token::Type::CLASS)] =
             ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::ELSE)] =
@@ -274,7 +310,7 @@ class Compiler {
         rules[static_cast<size_t>(Token::Type::IF)] = ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::NULL_)] =
             ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::OR)] = ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
+        rules[static_cast<size_t>(Token::Type::OR)] = ParseRule<Compiler>(std::nullopt, &Compiler::or_, Precedence::OR);
         rules[static_cast<size_t>(Token::Type::PRINT)] =
             ParseRule<Compiler>(&Compiler::printStatement, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::RETURN)] =

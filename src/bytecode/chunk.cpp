@@ -19,6 +19,10 @@ auto Chunk::write(Opcode byte, int line) -> void {
     m_lines.push_back(line);
 }
 
+auto Chunk::writeAt(size_t offset, uint8_t byte) -> void {
+    m_code[offset] = byte;
+}
+
 auto Chunk::disassemble(std::string_view const & name) const -> void {
     std::cout << std::format("== {} ==", name) << std::endl;
 
@@ -58,10 +62,16 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
         return simpleInstruction(instruction, offset);
     case Opcode::GREATER_EQUAL:
         return simpleInstruction(instruction, offset);
+    case Opcode::JUMP:
+        return jumpInstruction(instruction, 1, offset);
+    case Opcode::JUMP_IF_FALSE:
+        return jumpInstruction(instruction, 1, offset);
     case Opcode::LESS:
         return simpleInstruction(instruction, offset);
     case Opcode::LESS_EQUAL:
         return simpleInstruction(instruction, offset);
+    case Opcode::LOOP:
+        return jumpInstruction(instruction, -1, offset);
     case Opcode::MULTIPLY:
         return simpleInstruction(instruction, offset);
     case Opcode::NEGATE:
@@ -87,7 +97,7 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     case Opcode::TRUE:
         return simpleInstruction(instruction, offset);
     default:
-        std::cout << std::format("Unknown opcode {}", instruction) << std::endl;
+        std::cout << std::format("Unknown opcode {}", unsigned(instruction)) << std::endl;
         return offset + 1;
     }
 }
@@ -130,4 +140,12 @@ auto Chunk::getConstant(size_t offset) -> cppLox::Types::Value & {
 
 auto Chunk::getSize() const -> size_t {
     return m_code.size();
+}
+
+auto Chunk::jumpInstruction(uint8_t opcode, int sign, int offset) const -> size_t {
+    uint16_t const jump = static_cast<uint16_t>(m_code[offset + 1] << 8 | m_code[offset + 2]);
+    std::cout << std::format("{:>16}{:>16} -> {}", static_cast<Opcode>(opcode), unsigned(jump),
+                             offset + 3 + sign * jump)
+              << std::endl;
+    return offset + 3;
 }

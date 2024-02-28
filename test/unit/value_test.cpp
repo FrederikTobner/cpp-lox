@@ -216,6 +216,10 @@ TEST_F(ValueTest, NegateWithObject) {
     ASSERT_THROW({ cppLox::Types::Value val = -objectVal; }, cppLox::Error::RunTimeException);
 }
 
+TEST_F(ValueTest, Not) {
+    ASSERT_EQ(cppLox::Types::Value(false), !boolVal);
+}
+
 TEST_F(ValueTest, Subtract) {
     ASSERT_EQ(cppLox::Types::Value(0.0), numVal - numVal);
 }
