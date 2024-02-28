@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['var_613',['VAR',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ad6f4440b8633f973d33c78928bdac2e1',1,'cppLox::Frontend::Token']]]
+  ['unary_640',['UNARY',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4',1,'cppLox::Frontend']]]
 ];

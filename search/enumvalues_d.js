@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['return_598',['RETURN',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479aa2bec276a54439fe011eb523b845dac5',1,'cppLox::Frontend::Token::RETURN()'],['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a520e09ffec033636dba711f3441cc600',1,'cppLox::ByteCode::RETURN()']]],
-  ['right_5fbrace_599',['RIGHT_BRACE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a262bd36c5946e1483a7036f8635e2be5',1,'cppLox::Frontend::Token']]],
-  ['right_5fparentheses_600',['RIGHT_PARENTHESES',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a87ba0d1335263817ee7dcf36717006d6',1,'cppLox::Frontend::Token']]]
+  ['plus_622',['PLUS',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a883acd43c77567e1c3baced84ccf6ed7',1,'cppLox::Frontend::Token']]],
+  ['pop_623',['POP',['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a061dcf4785583d8653942f2d252174fa',1,'cppLox::ByteCode']]],
+  ['primary_624',['PRIMARY',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc',1,'cppLox::Frontend']]],
+  ['print_625',['PRINT',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479af96eee4e48ee90430f17fb3a8388507b',1,'cppLox::Frontend::Token::PRINT()'],['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab107229d44d042caa8ab8df4c8acaa1f',1,'cppLox::ByteCode::PRINT()']]]
 ];

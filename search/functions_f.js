@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['token_477',['Token',['../classcppLox_1_1Frontend_1_1Token.html#aef596dc2130cd06f05761f6dc5284846',1,'cppLox::Frontend::Token::Token(Token::Type type, std::string lexeme, std::size_t line)'],['../classcppLox_1_1Frontend_1_1Token.html#abbc44c1e7bee2f62ce5305ba4940b8b8',1,'cppLox::Frontend::Token::Token(Token const &amp;)=default']]],
-  ['tokenize_478',['tokenize',['../classcppLox_1_1Frontend_1_1Lexer.html#a6d2b83a25b5d8ea7ad5c2e7d0e4553d1',1,'cppLox::Frontend::Lexer']]],
-  ['type_479',['type',['../classcppLox_1_1Frontend_1_1Token.html#af82206bb73fc41d95a035740760d40a2',1,'cppLox::Frontend::Token::type()'],['../classcppLox_1_1Types_1_1Object.html#aa25a4859997783f67485eecf9f9c1e8b',1,'cppLox::Types::Object::type()']]]
+  ['scantoken_493',['scanToken',['../classcppLox_1_1Frontend_1_1Lexer.html#ab75ad47175de6a0c4abe0965b680bd07',1,'cppLox::Frontend::Lexer']]],
+  ['setglobal_494',['setGlobal',['../classcppLox_1_1MemoryMutator.html#a7b8b37344a4c185598d20e030699278e',1,'cppLox::MemoryMutator']]],
+  ['simpleinstruction_495',['simpleInstruction',['../classcppLox_1_1ByteCode_1_1Chunk.html#a09a4b8f895f9bb76de02a51fd7611cec',1,'cppLox::ByteCode::Chunk']]],
+  ['skipwhitespace_496',['skipWhitespace',['../classcppLox_1_1Frontend_1_1Lexer.html#a6cf5f2dbe1b0aa3e27f3d205601e3019',1,'cppLox::Frontend::Lexer']]],
+  ['statement_497',['statement',['../classcppLox_1_1Frontend_1_1Compiler.html#a3648ef6c91db2cef71ce5c73b5b94333',1,'cppLox::Frontend::Compiler']]],
+  ['string_498',['string',['../classcppLox_1_1Frontend_1_1Compiler.html#ad1af38c41df360a5d9384281388eeff2',1,'cppLox::Frontend::Compiler::string()'],['../classcppLox_1_1Frontend_1_1Lexer.html#a63161ad873364d92ee8e849b4dbaade5',1,'cppLox::Frontend::Lexer::string()'],['../classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a',1,'cppLox::Types::ObjectString::string()']]],
+  ['synchronize_499',['synchronize',['../classcppLox_1_1Frontend_1_1Compiler.html#a281575aaf203b2af1d69468b08b35b2e',1,'cppLox::Frontend::Compiler']]]
 ];

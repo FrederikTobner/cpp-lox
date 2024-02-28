@@ -2,6 +2,7 @@ var classcppLox_1_1Backend_1_1VM =
 [
     [ "VM", "classcppLox_1_1Backend_1_1VM.html#a070737366b4e17d14b3b9fad2671e5a6", null ],
     [ "~VM", "classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f", null ],
+    [ "getShort", "classcppLox_1_1Backend_1_1VM.html#a77a085c313bafd56192dcdbdc434feaf", null ],
     [ "interpret", "classcppLox_1_1Backend_1_1VM.html#abafc7092b97b2d1d25df883d2065d735", null ],
     [ "peek", "classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a", null ],
     [ "pop", "classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979", null ],

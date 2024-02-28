@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['main_427',['main',['../main_8cpp.html#a1ccaf445ae0595169ab29b06031ea89c',1,'main.cpp']]],
-  ['makeconstant_428',['makeConstant',['../classcppLox_1_1Frontend_1_1Compiler.html#aff95433969b76a84c03a82319cd58ad0',1,'cppLox::Frontend::Compiler']]],
-  ['makerules_429',['makeRules',['../classcppLox_1_1Frontend_1_1Compiler.html#a6d3f14e374f68817e283193062d2dc68',1,'cppLox::Frontend::Compiler']]],
-  ['markinitialized_430',['markInitialized',['../classcppLox_1_1Frontend_1_1CompilationScope.html#aab315b9ba9f58d6c0e76d29135f29a21',1,'cppLox::Frontend::CompilationScope']]],
-  ['match_431',['match',['../classcppLox_1_1Frontend_1_1Compiler.html#a0997f593aefe43cab8fc8be7ccf4e8ad',1,'cppLox::Frontend::Compiler::match()'],['../classcppLox_1_1Frontend_1_1Lexer.html#a94f6ed99016b6703ab80650e90338fc4',1,'cppLox::Frontend::Lexer::match()']]],
-  ['memorymutator_432',['MemoryMutator',['../classcppLox_1_1MemoryMutator.html#a569c64067f749ddb6be55d6c65753fa7',1,'cppLox::MemoryMutator']]]
+  ['lexeme_441',['lexeme',['../classcppLox_1_1Frontend_1_1Token.html#a1270fba20d03fb5a03982e64275f9893',1,'cppLox::Frontend::Token']]],
+  ['lexer_442',['Lexer',['../classcppLox_1_1Frontend_1_1Lexer.html#a44757b6ee945bc0b79add16d32b59bce',1,'cppLox::Frontend::Lexer']]],
+  ['line_443',['line',['../classcppLox_1_1Frontend_1_1Token.html#a08ef59f0ccea60586542cfd0beea09f1',1,'cppLox::Frontend::Token']]],
+  ['literal_444',['literal',['../classcppLox_1_1Frontend_1_1Compiler.html#acab5463ca32c065208ad587860405a32',1,'cppLox::Frontend::Compiler']]],
+  ['local_445',['Local',['../classcppLox_1_1Frontend_1_1Local.html#adb419a182b34f7f8e6042cd7494f940a',1,'cppLox::Frontend::Local']]],
+  ['local_446',['local',['../classcppLox_1_1Frontend_1_1CompilationScope.html#ad9b5e4be72e216e026c7e6ca4973f875',1,'cppLox::Frontend::CompilationScope']]],
+  ['localcount_447',['localCount',['../classcppLox_1_1Frontend_1_1CompilationScope.html#ae3b1193d2b5552b778d8aabda3e03c92',1,'cppLox::Frontend::CompilationScope']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['what_485',['what',['../classcppLox_1_1Error_1_1CompileTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86',1,'cppLox::Error::CompileTimeException::what()'],['../classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86',1,'cppLox::Error::RunTimeException::what()']]],
-  ['write_486',['write',['../classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a',1,'cppLox::ByteCode::Chunk::write(uint8_t byte, int line) -&gt; void'],['../classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac',1,'cppLox::ByteCode::Chunk::write(Opcode byte, int line) -&gt; void']]],
-  ['writetooutputstream_487',['writeToOutputStream',['../classcppLox_1_1Types_1_1Object.html#ab5704d9df08c8a8a9224f297df957e20',1,'cppLox::Types::Object::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectString::writeToOutputStream()']]]
+  ['value_504',['Value',['../classcppLox_1_1Types_1_1Value.html#abe8b5f7eee6b178c99c13b92f7ce85d4',1,'cppLox::Types::Value::Value()'],['../classcppLox_1_1Types_1_1Value.html#ad7a6ddd22c84ae38cb303a4917f3d654',1,'cppLox::Types::Value::Value(bool value)'],['../classcppLox_1_1Types_1_1Value.html#a35cacb12b494ecd3015a0aa99ee71f1f',1,'cppLox::Types::Value::Value(double value)'],['../classcppLox_1_1Types_1_1Value.html#ada5a32777c50fe5a30d362b8c8b46c55',1,'cppLox::Types::Value::Value(Object *value)']]],
+  ['variable_505',['variable',['../classcppLox_1_1Frontend_1_1Compiler.html#a3bca2bffecfe4c15c42786c6638fda8b',1,'cppLox::Frontend::Compiler']]],
+  ['variabledeclaration_506',['variableDeclaration',['../classcppLox_1_1Frontend_1_1Compiler.html#a5e793b8988652379b925e02cdb113100',1,'cppLox::Frontend::Compiler']]],
+  ['vm_507',['VM',['../classcppLox_1_1Backend_1_1VM.html#a070737366b4e17d14b3b9fad2671e5a6',1,'cppLox::Backend::VM']]]
 ];

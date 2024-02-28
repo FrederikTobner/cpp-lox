@@ -111,6 +111,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab8e9708ca333f2f6faa4a31536132fac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">write</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> byte, int line) -&gt; void</td></tr>
 <tr class="memdesc:ab8e9708ca333f2f6faa4a31536132fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes an opcode to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">More...</a><br /></td></tr>
 <tr class="separator:ab8e9708ca333f2f6faa4a31536132fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b20e13e18c2fb2d8421e273fa44b1ff"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a8b20e13e18c2fb2d8421e273fa44b1ff">writeAt</a> (size_t offset, uint8_t byte) -&gt; void</td></tr>
+<tr class="memdesc:a8b20e13e18c2fb2d8421e273fa44b1ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a byte to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a8b20e13e18c2fb2d8421e273fa44b1ff">More...</a><br /></td></tr>
+<tr class="separator:a8b20e13e18c2fb2d8421e273fa44b1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b3cda14536ca513905ee0deca5279ca"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a1b3cda14536ca513905ee0deca5279ca">disassemble</a> (std::string_view const &amp;name) const -&gt; void</td></tr>
 <tr class="memdesc:a1b3cda14536ca513905ee0deca5279ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a1b3cda14536ca513905ee0deca5279ca">More...</a><br /></td></tr>
 <tr class="separator:a1b3cda14536ca513905ee0deca5279ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,7 +145,11 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:af18643ec9162c7bddb4e23f3e863ed53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles a constant instruction.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#af18643ec9162c7bddb4e23f3e863ed53">More...</a><br /></td></tr>
 <tr class="separator:af18643ec9162c7bddb4e23f3e863ed53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e35d20912a457304294823f3ed76d6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a66e35d20912a457304294823f3ed76d6">byteInstruction</a> (uint8_t opcode, size_t offset) const -&gt; size_t</td></tr>
+<tr class="memdesc:a66e35d20912a457304294823f3ed76d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles a byte instruction.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a66e35d20912a457304294823f3ed76d6">More...</a><br /></td></tr>
 <tr class="separator:a66e35d20912a457304294823f3ed76d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5daacb7520c31ed4e30599c4325482"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a1e5daacb7520c31ed4e30599c4325482">jumpInstruction</a> (uint8_t opcode, int sign, int offset) const -&gt; size_t</td></tr>
+<tr class="memdesc:a1e5daacb7520c31ed4e30599c4325482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles a jump instruction.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a1e5daacb7520c31ed4e30599c4325482">More...</a><br /></td></tr>
+<tr class="separator:a1e5daacb7520c31ed4e30599c4325482"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -274,6 +281,16 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Disassembles a byte instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>The opcode of the instruction. </td></tr>
+    <tr><td class="paramname">offset</td><td>The offset of the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the next instruction. </dd></dl>
 
 </div>
 </div>
@@ -476,6 +493,59 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1e5daacb7520c31ed4e30599c4325482"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5daacb7520c31ed4e30599c4325482">&#9670;&nbsp;</a></span>jumpInstruction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto jumpInstruction </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opcode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sign</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const -&gt; size_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Disassembles a jump instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>The opcode of the instruction. </td></tr>
+    <tr><td class="paramname">sign</td><td>Whether the jump is forward or backward. </td></tr>
+    <tr><td class="paramname">offset</td><td>The offset of the jump. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the next instruction. </dd></dl>
+
+</div>
+</div>
 <a id="a09a4b8f895f9bb76de02a51fd7611cec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a09a4b8f895f9bb76de02a51fd7611cec">&#9670;&nbsp;</a></span>simpleInstruction()</h2>
 
@@ -589,6 +659,43 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">byte</td><td>The byte to write. </td></tr>
     <tr><td class="paramname">line</td><td>The line number where the byte originates from the source code. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b20e13e18c2fb2d8421e273fa44b1ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b20e13e18c2fb2d8421e273fa44b1ff">&#9670;&nbsp;</a></span>writeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto writeAt </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>byte</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes a byte to the chunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>The offset to write the byte at. </td></tr>
+    <tr><td class="paramname">byte</td><td>The byte to write. </td></tr>
   </table>
   </dd>
 </dl>

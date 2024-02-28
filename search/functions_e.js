@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['scantoken_470',['scanToken',['../classcppLox_1_1Frontend_1_1Lexer.html#ab75ad47175de6a0c4abe0965b680bd07',1,'cppLox::Frontend::Lexer']]],
-  ['setglobal_471',['setGlobal',['../classcppLox_1_1MemoryMutator.html#a7b8b37344a4c185598d20e030699278e',1,'cppLox::MemoryMutator']]],
-  ['simpleinstruction_472',['simpleInstruction',['../classcppLox_1_1ByteCode_1_1Chunk.html#a09a4b8f895f9bb76de02a51fd7611cec',1,'cppLox::ByteCode::Chunk']]],
-  ['skipwhitespace_473',['skipWhitespace',['../classcppLox_1_1Frontend_1_1Lexer.html#a6cf5f2dbe1b0aa3e27f3d205601e3019',1,'cppLox::Frontend::Lexer']]],
-  ['statement_474',['statement',['../classcppLox_1_1Frontend_1_1Compiler.html#a3648ef6c91db2cef71ce5c73b5b94333',1,'cppLox::Frontend::Compiler']]],
-  ['string_475',['string',['../classcppLox_1_1Frontend_1_1Compiler.html#ad1af38c41df360a5d9384281388eeff2',1,'cppLox::Frontend::Compiler::string()'],['../classcppLox_1_1Frontend_1_1Lexer.html#a63161ad873364d92ee8e849b4dbaade5',1,'cppLox::Frontend::Lexer::string()'],['../classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a',1,'cppLox::Types::ObjectString::string()']]],
-  ['synchronize_476',['synchronize',['../classcppLox_1_1Frontend_1_1Compiler.html#a281575aaf203b2af1d69468b08b35b2e',1,'cppLox::Frontend::Compiler']]]
+  ['repl_486',['repl',['../namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809',1,'cppLox']]],
+  ['resetstack_487',['resetStack',['../classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065',1,'cppLox::Backend::VM']]],
+  ['resolvelocal_488',['resolveLocal',['../classcppLox_1_1Frontend_1_1Compiler.html#ac1ff2744c9a89684e463dd8b5de421c5',1,'cppLox::Frontend::Compiler']]],
+  ['run_489',['run',['../namespacecppLox.html#a5a842db15852690525fa4fa8cd32c6bf',1,'cppLox']]],
+  ['runfile_490',['runFile',['../namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072',1,'cppLox']]],
+  ['runtimeerror_491',['runTimeError',['../classcppLox_1_1Backend_1_1VM.html#a60688136824967e1728bb19603938292',1,'cppLox::Backend::VM']]],
+  ['runtimeexception_492',['RunTimeException',['../classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da',1,'cppLox::Error::RunTimeException']]]
 ];

@@ -1,14 +1,21 @@
 var searchData=
 [
-  ['parseprecedence_452',['parsePrecedence',['../classcppLox_1_1Frontend_1_1Compiler.html#ae8ed1cf8635aff95870ea5c6582142a4',1,'cppLox::Frontend::Compiler']]],
-  ['parserule_453',['ParseRule',['../classcppLox_1_1Frontend_1_1ParseRule.html#a54715a6eb7c36d225c75ab5abe49be77',1,'cppLox::Frontend::ParseRule::ParseRule()'],['../classcppLox_1_1Frontend_1_1ParseRule.html#a04dbbe00768aa76d7e3cc287a82c7bd4',1,'cppLox::Frontend::ParseRule::ParseRule(std::optional&lt; void(T::*)(std::vector&lt; Token &gt; const &amp;tokens, bool canAssign)&gt; prefix, std::optional&lt; void(T::*)(std::vector&lt; Token &gt; const &amp;tokens)&gt; infix, Precedence precedence)']]],
-  ['parsevariable_454',['parseVariable',['../classcppLox_1_1Frontend_1_1Compiler.html#a180d7ebd171305a0aba474645ac506f3',1,'cppLox::Frontend::Compiler']]],
-  ['peek_455',['peek',['../classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a',1,'cppLox::Backend::VM::peek()'],['../classcppLox_1_1Frontend_1_1Lexer.html#a3b541db0d39dcb32e0fc09c180274f68',1,'cppLox::Frontend::Lexer::peek(std::string const &amp;source) const -&gt; char']]],
-  ['peeknext_456',['peekNext',['../classcppLox_1_1Frontend_1_1Lexer.html#a26e2f88f318dce13432e0afb4457ca9b',1,'cppLox::Frontend::Lexer']]],
-  ['pop_457',['pop',['../classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979',1,'cppLox::Backend::VM']]],
-  ['poplocal_458',['popLocal',['../classcppLox_1_1Frontend_1_1CompilationScope.html#a787699a20621e0829e611ee2036efa86',1,'cppLox::Frontend::CompilationScope']]],
-  ['precedence_459',['precedence',['../classcppLox_1_1Frontend_1_1ParseRule.html#a608910e94dd4182402b657f7dda84171',1,'cppLox::Frontend::ParseRule']]],
-  ['prefix_460',['prefix',['../classcppLox_1_1Frontend_1_1ParseRule.html#a13deabab5b66cf86d179bd073e8c7d95',1,'cppLox::Frontend::ParseRule']]],
-  ['printstatement_461',['printStatement',['../classcppLox_1_1Frontend_1_1Compiler.html#af34a0f97525faf2bf90e262cf56d1b7c',1,'cppLox::Frontend::Compiler']]],
-  ['push_462',['push',['../classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe',1,'cppLox::Backend::VM']]]
+  ['object_456',['Object',['../classcppLox_1_1Types_1_1Object.html#ac819e28dab341fad06201328dfdec5b8',1,'cppLox::Types::Object']]],
+  ['objectstring_457',['ObjectString',['../classcppLox_1_1Types_1_1ObjectString.html#a3401a44d4a40ca9d7629e70faacfe742',1,'cppLox::Types::ObjectString']]],
+  ['opcode_5fas_5fstring_458',['opcode_as_string',['../namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12',1,'cppLox::ByteCode']]],
+  ['operator_21_459',['operator!',['../classcppLox_1_1Types_1_1Value.html#ab61f9d16e034ae87a1ba672665afe768',1,'cppLox::Types::Value']]],
+  ['operator_21_3d_460',['operator!=',['../classcppLox_1_1Types_1_1Value.html#a13335d90fd27e279f9a57c0ae0d2d13e',1,'cppLox::Types::Value']]],
+  ['operator_28_29_461',['operator()',['../structcppLox_1_1Types_1_1SimpleComperator.html#a0f00a5cb26c5f74e64d9908e01c13713',1,'cppLox::Types::SimpleComperator::operator()(T const &amp;a, T const &amp;b) const -&gt; bool'],['../structcppLox_1_1Types_1_1SimpleComperator.html#a617d07ec146d3508e93e05f4eccf4686',1,'cppLox::Types::SimpleComperator::operator()(T const *a, T const *b) const -&gt; bool'],['../structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e',1,'std::hash&lt; cppLox::Types::ObjectString &gt;::operator()(cppLox::Types::ObjectString &amp;s) const -&gt; std::size_t'],['../structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948',1,'std::hash&lt; cppLox::Types::ObjectString &gt;::operator()(cppLox::Types::ObjectString *s) const -&gt; std::size_t']]],
+  ['operator_2a_462',['operator*',['../classcppLox_1_1Types_1_1Value.html#a7f56740e591aae431d7a3d3871b61a8b',1,'cppLox::Types::Value']]],
+  ['operator_2b_463',['operator+',['../classcppLox_1_1Types_1_1Value.html#a8f3b1e19b922b37613083bc5ff640520',1,'cppLox::Types::Value']]],
+  ['operator_2d_464',['operator-',['../classcppLox_1_1Types_1_1Value.html#a4d79f5c206096e84afb4345b3e731f33',1,'cppLox::Types::Value::operator-(Value const &amp;other) const -&gt; Value'],['../classcppLox_1_1Types_1_1Value.html#ad7ca8628637bbc814b6bbd2fe89c12eb',1,'cppLox::Types::Value::operator-() const -&gt; Value']]],
+  ['operator_2f_465',['operator/',['../classcppLox_1_1Types_1_1Value.html#a942b4606cb0630efe2823265b80a6097',1,'cppLox::Types::Value']]],
+  ['operator_3c_466',['operator&lt;',['../classcppLox_1_1Types_1_1Value.html#ad7ac2535c768e2ce0d42a8eebd34b34e',1,'cppLox::Types::Value']]],
+  ['operator_3c_3c_467',['operator&lt;&lt;',['../namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2',1,'cppLox::ByteCode']]],
+  ['operator_3c_3d_468',['operator&lt;=',['../classcppLox_1_1Types_1_1Value.html#a18c0cc535f3168c17b644ecd1b63f688',1,'cppLox::Types::Value']]],
+  ['operator_3d_469',['operator=',['../classcppLox_1_1Frontend_1_1CompilationScope.html#af1cac474736529f950fa08809ed4b44a',1,'cppLox::Frontend::CompilationScope']]],
+  ['operator_3d_3d_470',['operator==',['../classcppLox_1_1Types_1_1ObjectString.html#a673fe865d55bb386c6e4e49c84c3bd5d',1,'cppLox::Types::ObjectString::operator==(ObjectString const &amp;other) const -&gt; bool'],['../classcppLox_1_1Types_1_1ObjectString.html#a8b9363e975f103e05347c9e2ac57cd3f',1,'cppLox::Types::ObjectString::operator==(ObjectString const *other) const -&gt; bool'],['../classcppLox_1_1Types_1_1Value.html#aec94c3e0637c696364487cd3405fe6e7',1,'cppLox::Types::Value::operator==(Value const &amp;other) const -&gt; bool']]],
+  ['operator_3e_471',['operator&gt;',['../classcppLox_1_1Types_1_1Value.html#ac0cf6cede7dda363080b4724c92cca6e',1,'cppLox::Types::Value']]],
+  ['operator_3e_3d_472',['operator&gt;=',['../classcppLox_1_1Types_1_1Value.html#aa9826fee8c612d25c0430dbb9cc9d104',1,'cppLox::Types::Value']]],
+  ['or_5f_473',['or_',['../classcppLox_1_1Frontend_1_1Compiler.html#ab5f8e94d0882abb8cc6c4d6230698902',1,'cppLox::Frontend::Compiler']]]
 ];

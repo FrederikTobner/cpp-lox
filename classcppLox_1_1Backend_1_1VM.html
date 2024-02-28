@@ -105,18 +105,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">~VM</a> ()=default</td></tr>
 <tr class="memdesc:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the virtual machine.  <a href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">More...</a><br /></td></tr>
 <tr class="separator:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77a085c313bafd56192dcdbdc434feaf"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a77a085c313bafd56192dcdbdc434feaf">getShort</a> (<a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;chunk, size_t offset) -&gt; uint16_t</td></tr>
+<tr class="memdesc:a77a085c313bafd56192dcdbdc434feaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets two bytes from the chunk and returns them as a 16-bit integer.  <a href="classcppLox_1_1Backend_1_1VM.html#a77a085c313bafd56192dcdbdc434feaf">More...</a><br /></td></tr>
+<tr class="separator:a77a085c313bafd56192dcdbdc434feaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abafc7092b97b2d1d25df883d2065d735"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#abafc7092b97b2d1d25df883d2065d735">interpret</a> (<a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;chunk) -&gt; void</td></tr>
 <tr class="memdesc:abafc7092b97b2d1d25df883d2065d735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the given chunk.  <a href="classcppLox_1_1Backend_1_1VM.html#abafc7092b97b2d1d25df883d2065d735">More...</a><br /></td></tr>
 <tr class="separator:abafc7092b97b2d1d25df883d2065d735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">push</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
-<tr class="memdesc:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the given value onto the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">More...</a><br /></td></tr>
-<tr class="separator:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32359dc5661d241d0b718d58537e7979"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">pop</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
-<tr class="memdesc:a32359dc5661d241d0b718d58537e7979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">More...</a><br /></td></tr>
-<tr class="separator:a32359dc5661d241d0b718d58537e7979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bafeacb99863dcf291de32b211d269a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">peek</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
 <tr class="memdesc:a4bafeacb99863dcf291de32b211d269a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the top value of the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">More...</a><br /></td></tr>
 <tr class="separator:a4bafeacb99863dcf291de32b211d269a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32359dc5661d241d0b718d58537e7979"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">pop</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
+<tr class="memdesc:a32359dc5661d241d0b718d58537e7979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">More...</a><br /></td></tr>
+<tr class="separator:a32359dc5661d241d0b718d58537e7979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">push</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
+<tr class="memdesc:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the given value onto the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">More...</a><br /></td></tr>
+<tr class="separator:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">resetStack</a> () -&gt; void</td></tr>
 <tr class="memdesc:a2ad52f60fbe2f0f92ccca306afe69065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">More...</a><br /></td></tr>
 <tr class="separator:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,6 +206,44 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a77a085c313bafd56192dcdbdc434feaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77a085c313bafd56192dcdbdc434feaf">&#9670;&nbsp;</a></span>getShort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto getShort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;&#160;</td>
+          <td class="paramname"><em>chunk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; uint16_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets two bytes from the chunk and returns them as a 16-bit integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunk</td><td>The chunk to get the bytes from </td></tr>
+    <tr><td class="paramname">offset</td><td>The offset to get the bytes from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The 16-bit integer </dd></dl>
+
+</div>
+</div>
 <a id="abafc7092b97b2d1d25df883d2065d735"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abafc7092b97b2d1d25df883d2065d735">&#9670;&nbsp;</a></span>interpret()</h2>
 
