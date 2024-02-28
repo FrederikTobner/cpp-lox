@@ -53,13 +53,15 @@ class Value {
     /// @brief Gets the underlying value as the given type
     /// @tparam T The type to get the underlying value as
     /// @return The underlying value as the given type
-    template <IsAnUnderLyingValueType T> [[nodiscard]] auto as() -> T {
+    template <IsAnUnderLyingValueType T> [[nodiscard]] auto as() const -> T const & {
         if constexpr (std::is_same_v<T, bool>) {
             return m_underlying_value.m_bool;
         } else if constexpr (std::is_same_v<T, double>) {
             return m_underlying_value.m_number;
         } else if constexpr (std::is_same_v<T, Object *>) {
             return m_underlying_value.m_object;
+        } else {
+            throw std::runtime_error("Type not supported");
         }
     }
 

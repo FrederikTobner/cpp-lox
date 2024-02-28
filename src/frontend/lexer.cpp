@@ -16,7 +16,7 @@ using namespace cppLox::Frontend;
         m_start = m_current;
         scanToken(source);
     }
-    m_tokens.push_back(Token(Token::Type::END_OF_FILE, "", m_line));
+    m_tokens.push_back(Token(Token::Type::END_OF_FILE, "", std::move(m_line)));
     return m_tokens;
 }
 
@@ -119,7 +119,7 @@ auto Lexer::advance(std::string const & source) -> char {
 }
 
 auto Lexer::addToken(Token::Type type, std::string const & lexeme) -> void {
-    m_tokens.push_back(Token(type, lexeme, m_line));
+    m_tokens.push_back(Token(type, lexeme, std::move(m_line)));
 }
 
 [[nodiscard]] auto Lexer::peek(std::string const & source) const -> char {

@@ -28,6 +28,11 @@ class Chunk {
     /// @param line The line number where the opcode originates from the source code.
     auto write(Opcode byte, int line) -> void;
 
+    /// @brief Writes a byte to the chunk.
+    /// @param offset The offset to write the byte at.
+    /// @param byte The byte to write.
+    auto writeAt(size_t offset, uint8_t byte) -> void;
+
     /// @brief Disassembles the chunk.
     /// @param name The name of the chunk.
     auto disassemble(std::string_view const & name) const -> void;
@@ -59,7 +64,7 @@ class Chunk {
     /// @brief Disassembles the instruction at the given offset.
     /// @param index The index of the instruction.
     /// @return The index of the next instruction.
-    [[nodiscard]] auto disassembleInstruction(size_t index) const -> size_t;
+    auto disassembleInstruction(size_t index) const -> size_t;
 
   private:
     /// @brief Disassembles a simple instruction.
@@ -72,7 +77,18 @@ class Chunk {
     /// @param index The index of the instruction.
     [[nodiscard]] auto constantInstruction(uint8_t opcode, size_t index) const -> size_t;
 
+    /// @brief Disassembles a byte instruction.
+    /// @param opcode The opcode of the instruction.
+    /// @param offset The offset of the instruction.
+    /// @return The index of the next instruction.
     [[nodiscard]] auto byteInstruction(uint8_t opcode, size_t offset) const -> size_t;
+
+    /// @brief Disassembles a jump instruction.
+    /// @param opcode The opcode of the instruction.
+    /// @param sign Whether the jump is forward or backward.
+    /// @param offset The offset of the jump.
+    /// @return The index of the next instruction.
+    [[nodiscard]] auto jumpInstruction(uint8_t opcode, int sign, int offset) const -> size_t;
 
     /// @brief The bytecode stored in the chunk.
     std::vector<uint8_t> m_code;

@@ -30,10 +30,16 @@ enum Opcode {
     GREATER,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
     GREATER_EQUAL,
+    /// @brief Jumps to the given offset.
+    JUMP,
+    /// @brief Jumps to the given offset if the top value on the stack is false.
+    JUMP_IF_FALSE,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
     LESS,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
     LESS_EQUAL,
+    /// @brief Adds an offset to the instruction pointer, like JUMP
+    LOOP,
     /// @brief Pops the top two values off the stack, multiplies them, and pushes the result back on the stack.
     MULTIPLY,
     /// @brief Pops the top value off the stack, negates it, and pushes the result back on the stack.

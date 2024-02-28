@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <array>
+#include <format>
 #include <ranges>
 #include <variant>
 #include <vector>
@@ -40,7 +41,7 @@ class CompilerIntegrationTest : public ::testing::Test {
                             << (chunk->getByte(index) < cppLox::ByteCode::AMOUNT
                                     ? cppLox::ByteCode::opcode_as_string(
                                           static_cast<cppLox::ByteCode::Opcode>(chunk->getByte(index)))
-                                    : std::to_string(chunk->getByte(index)))
+                                    : std::format("{}", chunk->getByte(index)))
                             << " instead.";
                     } else {
                         EXPECT_EQ(arg, chunk->getByte(index)) << "Expected " << arg << " at index " << index
@@ -122,6 +123,43 @@ TEST_F(CompilerIntegrationTest, FalseLiteralExpression) {
                                        cppLox::ByteCode::Opcode::RETURN);
 }
 
+TEST_F(CompilerIntegrationTest, ForLoop) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::FOR, "for", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::VAR, "var", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "i", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::EQUAL, "=", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "0", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "i", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LESS, "<", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "10", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "i", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::EQUAL, "=", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "i", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::PLUS, "+", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "1", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_BRACE, "{", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_BRACE, "}", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    chunk = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(
+        cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::GET_LOCAL, 0,
+        cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::JUMP_IF_FALSE,
+        0, 18, cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::JUMP, 0, 11,
+        cppLox::ByteCode::Opcode::GET_LOCAL, 0, cppLox::ByteCode::Opcode::CONSTANT, 2, cppLox::ByteCode::Opcode::ADD,
+        cppLox::ByteCode::Opcode::SET_LOCAL, 0, cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::LOOP, 0, 23,
+        cppLox::ByteCode::Opcode::LOOP, 0, 14, cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::POP,
+        cppLox::ByteCode::Opcode::RETURN);
+}
+
 TEST_F(CompilerIntegrationTest, GreaterThanExpression) {
     // Arrange
     tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "1", 1),
@@ -176,6 +214,45 @@ TEST_F(CompilerIntegrationTest, GroupingExpression) {
                                        cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::CONSTANT, 2,
                                        cppLox::ByteCode::Opcode::MULTIPLY, cppLox::ByteCode::Opcode::POP,
                                        cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, IfStatement) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IF, "if", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::TRUE, "true", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    chunk = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 1,
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::POP,
+                                       cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, IfElseStatement) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IF, "if", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::TRUE, "true", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::PRINT, "print", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "2", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::ELSE, "else", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    chunk = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 8,
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::CONSTANT, 0,
+                                       cppLox::ByteCode::Opcode::PRINT, cppLox::ByteCode::Opcode::POP,
+                                       cppLox::ByteCode::Opcode::JUMP, 0, 0, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, LessThanExpression) {
@@ -388,4 +465,23 @@ TEST_F(CompilerIntegrationTest, VariableDeclarationAndAssignmentExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::DEFINE_GLOBAL,
                                        0, cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, WhileLoopExpression) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::WHILE, "while", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::TRUE, "true", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_BRACE, "{", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_BRACE, "}", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    chunk = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 4,
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::LOOP, 0, 8,
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
 }

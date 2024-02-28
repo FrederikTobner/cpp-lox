@@ -97,7 +97,7 @@ class Token {
     /// @param type The type of the token
     /// @param lexeme The string representation of the token
     /// @param line The line number where the token was found
-    Token(Token::Type type, std::string lexeme, std::size_t line);
+    Token(Token::Type type, std::string lexeme, std::size_t && line);
 
     /// @brief Copy construct a new Token object
     /// @param token The token to copy
@@ -118,19 +118,19 @@ class Token {
     /// @brief Get the type of the token
     /// @return The type of the token
     [[nodiscard]] inline auto type() const -> Type {
-        return this->m_type;
+        return m_type;
     }
 
     /// @brief Get the string representation of the token
     /// @return The string representation of the token
     [[nodiscard]] inline auto lexeme() const -> std::string const & {
-        return this->m_lexeme;
+        return m_lexeme;
     }
 
     /// @brief Get the line number where the token was found
     /// @return The line number where the token was found
     [[nodiscard]] inline auto line() const -> size_t {
-        return this->m_line;
+        return m_line;
     }
 
   private:

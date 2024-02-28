@@ -216,6 +216,45 @@ TEST_F(VMIntegrationTest, GreaterEqualInstruction) {
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop());
 }
 
+TEST_F(VMIntegrationTest, JumpIfFalseInstruction_shouldJumpWhenFalsy) {
+    // Arrange
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::FALSE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, (size_t)0x00,
+                         (size_t)0x02, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(cppLox::Types::Value(42.0)), cppLox::ByteCode::Opcode::RETURN);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(cppLox::Types::Value(false), vm->pop());
+}
+
+TEST_F(VMIntegrationTest, JumpIfFalseInstruction_shouldNotJumpWhenTruthy) {
+    // Arrange
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, (size_t)0x00,
+                         (size_t)0x02, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(cppLox::Types::Value(42.0)), cppLox::ByteCode::Opcode::RETURN);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(cppLox::Types::Value(42.0), vm->pop());
+}
+
+TEST_F(VMIntegrationTest, JumpInstruction) {
+    // Arrange
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, chunk.addConstant(cppLox::Types::Value(42.0)),
+                         cppLox::ByteCode::Opcode::JUMP, (size_t)0x00, (size_t)0x02, cppLox::ByteCode::Opcode::CONSTANT,
+                         chunk.addConstant(cppLox::Types::Value(43.0)), cppLox::ByteCode::Opcode::RETURN);
+
+    // Act
+    vm->interpret(chunk);
+
+    // Assert
+    ASSERT_EQ(cppLox::Types::Value(42.0), vm->pop());
+}
+
 TEST_F(VMIntegrationTest, LessInstruction) {
     // Arrange
     cppLox::Types::Value value(42.0);
