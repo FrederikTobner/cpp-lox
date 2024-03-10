@@ -9,7 +9,9 @@
 
 #include "../bytecode/chunk.hpp"
 #include "../memory_mutator.hpp"
+#include "../types/object_function.hpp"
 #include "compilation_scope.hpp"
+#include "function_type.hpp"
 #include "parse_rule.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
@@ -32,7 +34,8 @@ class Compiler {
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    [[nodiscard]] auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk>;
+    [[nodiscard]] auto compile(std::vector<Token> const & tokens)
+        -> std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>>;
 
   private:
     /// @brief Advances to the next token.
@@ -111,11 +114,13 @@ class Compiler {
     /// @param loopStart The index of the loop start.
     auto inline emitLoop(int32_t loopStart) -> void;
 
+    auto inline emitReturn() -> void;
+
     /// @brief Ends the current scope.
     auto endScope() -> void;
 
     /// @brief Ends the compilation.
-    auto endCompilation() -> void;
+    auto endCompilation() -> cppLox::Types::ObjectFunction *;
 
     /// @brief Throws an exception at the previous token.
     /// @param message The message to display.
@@ -161,7 +166,7 @@ class Compiler {
     auto ifStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Initializes the compiler scope.
-    auto initCompiler() -> void;
+    auto initCompiler(FunctionType type) -> void;
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
@@ -336,8 +341,10 @@ class Compiler {
     Token const * m_current;
     /// @brief The index of the current token.
     size_t m_currentTokenIndex;
-    /// @brief The chunk that is currently compiled.
-    cppLox::ByteCode::Chunk * m_chunk;
+    /// @brief The current function.
+    cppLox::Types::ObjectFunction * m_currentFunction;
+    /// @brief The type of the current function.
+    FunctionType m_currentFunctionType;
     /// @brief The memory manager.
     std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
     /// @brief The rules for the different token types.
@@ -348,5 +355,6 @@ class Compiler {
     std::shared_ptr<CompilationScope> m_current_scope;
     /// The scope depth.
     uint16_t m_scopeDepth;
+    bool m_hadError;
 };
 } // namespace cppLox::Frontend

@@ -8,7 +8,6 @@
 
 #include <cstdint>
 
-#include "../error/compiletime_exception.hpp"
 #include "local.hpp"
 
 namespace cppLox::Frontend {

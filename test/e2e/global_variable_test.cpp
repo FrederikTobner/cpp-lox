@@ -21,7 +21,7 @@ TEST_F(GlobalVariableE2ETest, AssignmentToUndefinedVariable) {
     std::string source = "a = 1;";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(GlobalVariableE2ETest, Declaration) {
@@ -53,5 +53,5 @@ TEST_F(GlobalVariableE2ETest, SameNameWithinSameScopeDoClash) {
     std::string source = "var a; var a;";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }

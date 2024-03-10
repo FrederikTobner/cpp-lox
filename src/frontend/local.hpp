@@ -23,10 +23,10 @@ class Local {
     Local(cppLox::Frontend::Token & token, std::int32_t depth);
 
     /// @brief Gets the token of the name of the local variable.
-    auto getToken() -> cppLox::Frontend::Token &;
+    auto getToken() const noexcept -> cppLox::Frontend::Token const &;
 
     /// @brief Gets the depth of the local variable.
-    auto getDepth() const -> std::int32_t;
+    auto getDepth() const noexcept -> std::int32_t;
 
   private:
     /// @brief The token of the name of the local variable.

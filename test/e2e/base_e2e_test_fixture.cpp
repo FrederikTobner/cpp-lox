@@ -4,11 +4,15 @@
 
 std::string BaseE2ETestFixture::runAndCaptureStdout(std::string & source) {
     testing::internal::CaptureStdout();
-    cppLox::run(source, *lexer, *compiler, *vm);
+    runProgramm(source);
     return testing::internal::GetCapturedStdout();
 }
 
 void BaseE2ETestFixture::runProgramm(std::string & source) {
+    EXPECT_NO_THROW(cppLox::run(source, *lexer, *compiler, *vm)) << "Running the programm resulted in an exception";
+}
+
+void BaseE2ETestFixture::runProgrammThrowingException(std::string & source) {
     cppLox::run(source, *lexer, *compiler, *vm);
 }
 

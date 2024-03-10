@@ -6,7 +6,6 @@
 #include <ranges>
 
 #include "../bytecode/opcode.hpp"
-#include "../error/compiletime_exception.hpp"
 #include "../types/object_string.hpp"
 #include "lexer.hpp"
 
@@ -89,21 +88,23 @@ auto Compiler::check(Token::Type type) const -> bool {
     return m_current->type() == type;
 }
 
-auto Compiler::compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk> {
+auto Compiler::compile(std::vector<Token> const & tokens)
+    -> std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> {
     m_previous = nullptr;
     m_current = nullptr;
-    m_chunk = new cppLox::ByteCode::Chunk();
     m_currentTokenIndex = 0;
     m_panicMode = false;
-    m_current_scope = std::make_shared<CompilationScope>();
+    m_hadError = false;
     m_scopeDepth = 0;
+    initCompiler(FunctionType::SCRIPT);
     advance(tokens);
     while (m_current->type() != Token::Type::END_OF_FILE) {
         declaration(tokens);
     }
     consume(Token::Type::END_OF_FILE, "Expect end of expression", tokens);
-    endCompilation();
-    return std::unique_ptr<cppLox::ByteCode::Chunk>(m_chunk);
+    return m_hadError == true ? std::nullopt
+                              : std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>>(
+                                    std::unique_ptr<cppLox::Types::ObjectFunction>(endCompilation()));
 }
 
 auto Compiler::consume(Token::Type type, std::string message, std::vector<Token> const & tokens) -> void {
@@ -115,7 +116,7 @@ auto Compiler::consume(Token::Type type, std::string message, std::vector<Token>
 }
 
 auto Compiler::currentChunk() const -> cppLox::ByteCode::Chunk * {
-    return m_chunk;
+    return m_currentFunction->chunk();
 }
 
 auto Compiler::declaration(std::vector<Token> const & tokens) -> void {
@@ -157,7 +158,7 @@ auto Compiler::defineVariable(uint8_t global) -> void {
 }
 
 auto inline Compiler::emitByte(uint8_t byte) -> void {
-    m_chunk->write(byte, m_previous->line());
+    currentChunk()->write(byte, m_previous->line());
 }
 
 auto inline Compiler::emitByte(cppLox::ByteCode::Opcode opcode) -> void {
@@ -165,29 +166,33 @@ auto inline Compiler::emitByte(cppLox::ByteCode::Opcode opcode) -> void {
 }
 
 auto inline Compiler::emitConstant(cppLox::Types::Value value) -> void {
-    emitBytes(cppLox::ByteCode::Opcode::CONSTANT, (uint8_t)m_chunk->addConstant(value));
+    emitBytes(cppLox::ByteCode::Opcode::CONSTANT, (uint8_t)currentChunk()->addConstant(value));
 }
 
 auto inline Compiler::emitJump(cppLox::ByteCode::Opcode opcode) -> int32_t {
     emitByte(opcode);
     emitByte(0xff);
     emitByte(0xff);
-    return m_chunk->getSize() - 2;
+    return currentChunk()->getSize() - 2;
 }
 
 auto inline Compiler::emitLoop(int32_t loopStart) -> void {
     emitByte(cppLox::ByteCode::Opcode::LOOP);
-    int32_t offset = m_chunk->getSize() - loopStart + 2;
+    int32_t offset = currentChunk()->getSize() - loopStart + 2;
     if (offset > UINT16_MAX) {
-        throw cppLox::Error::CompileTimeException("Loop body too large");
+        error("Loop body too large");
     }
     emitByte((offset >> 8) & 0xff);
     emitByte(offset & 0xff);
 }
 
+auto inline Compiler::emitReturn() -> void {
+    emitByte(cppLox::ByteCode::Opcode::RETURN);
+}
+
 auto Compiler::endScope() -> void {
     if (m_scopeDepth == 0) {
-        throw cppLox::Error::CompileTimeException("No enclosing scope found for endScope() call");
+        error("No enclosing scope found for endScope() call");
     }
     m_scopeDepth--;
     while (m_current_scope->localCount() > 0 &&
@@ -198,20 +203,31 @@ auto Compiler::endScope() -> void {
     m_current_scope = m_current_scope->enclosing().value();
 }
 
-auto Compiler::endCompilation() -> void {
-    m_chunk->write(cppLox::ByteCode::Opcode::RETURN, m_previous->line());
+auto Compiler::endCompilation() -> cppLox::Types::ObjectFunction * {
+    emitReturn();
+    cppLox::Types::ObjectFunction * function = m_currentFunction;
+#ifdef DEBUG_PRINT_CODE
+    function->chunk()->disassemble(function->name() != nullptr ? function->name()->string() : "<script>");
+#endif
+    return function;
 }
 
 auto Compiler::error(char const * message) -> void {
-    throw cppLox::Error::CompileTimeException(std::format("{} at line {}", message, m_previous->line()));
+    m_hadError = true;
+    m_panicMode = true;
+    std::cerr << std::format("{} at line {}", message, m_previous->line()) << std::endl;
 }
 
 auto Compiler::error(std::string & message) -> void {
-    throw cppLox::Error::CompileTimeException(std::format("{} at line {}", message, m_previous->line()));
+    m_hadError = true;
+    m_panicMode = true;
+    std::cerr << std::format("{} at line {}", message, m_previous->line()) << std::endl;
 }
 
 auto Compiler::errorAtCurrent(std::string & message) -> void {
-    throw cppLox::Error::CompileTimeException(std::format("{} at line {}", message, m_current->line()));
+    m_hadError = true;
+    m_panicMode = true;
+    std::cerr << std::format("{} at line {}", message, m_current->line()) << std::endl;
 }
 
 auto Compiler::expression(std::vector<Token> const & tokens) -> void {
@@ -234,7 +250,7 @@ auto Compiler::forStatement(std::vector<Token> const & tokens) -> void {
     } else {
         expressionStatement(tokens);
     }
-    int loopStart = m_chunk->getSize();
+    int loopStart = currentChunk()->getSize();
     int exitJump = -1;
     if (!match(Token::Type::SEMICOLON, tokens)) {
         expression(tokens);
@@ -244,7 +260,7 @@ auto Compiler::forStatement(std::vector<Token> const & tokens) -> void {
     }
     if (!match(Token::Type::RIGHT_PARENTHESES, tokens)) {
         int bodyJump = emitJump(cppLox::ByteCode::Opcode::JUMP);
-        int incrementStart = m_chunk->getSize();
+        int incrementStart = currentChunk()->getSize();
         expression(tokens);
         emitByte(cppLox::ByteCode::Opcode::POP);
         consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after for clauses", tokens);
@@ -266,7 +282,7 @@ auto Compiler::getRule(Token::Type type) -> ParseRule<Compiler> * {
 }
 
 auto Compiler::identifierConstant(Token const & name) -> uint8_t {
-    return m_chunk->addConstant(
+    return currentChunk()->addConstant(
         cppLox::Types::Value(m_memoryMutator->create<cppLox::Types::ObjectString>(name.lexeme())));
 }
 
@@ -291,8 +307,12 @@ auto Compiler::ifStatement(std::vector<Token> const & tokens) -> void {
     }
 }
 
-auto Compiler::initCompiler() -> void {
-    m_current_scope = std::make_shared<CompilationScope>(m_current_scope);
+auto Compiler::initCompiler(FunctionType type) -> void {
+    m_current_scope = std::make_shared<CompilationScope>();
+    m_currentFunction = new cppLox::Types::ObjectFunction(
+        0, m_memoryMutator->create<cppLox::Types::ObjectString>("main")->as<cppLox::Types::ObjectString>());
+    m_currentFunctionType = type;
+    m_current_scope->addLocal(Token(Token::Type::IDENTIFIER, "", 0), [&](std::string & message) { error(message); });
 }
 
 auto Compiler::literal(std::vector<Token> const & tokens, bool canAssign) -> void {
@@ -317,9 +337,9 @@ auto Compiler::grouping(std::vector<Token> const & tokens, bool canAssign) -> vo
 }
 
 auto Compiler::makeConstant(cppLox::Types::Value value) -> void {
-    auto constant = m_chunk->addConstant(value);
+    auto constant = currentChunk()->addConstant(value);
     if (constant > UINT8_MAX) {
-        throw cppLox::Error::CompileTimeException("Too many constants in one chunk");
+        error("Too many constants in one chunk");
     }
     emitBytes(static_cast<uint8_t>(cppLox::ByteCode::Opcode::CONSTANT), (uint8_t)constant);
 }
@@ -370,7 +390,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
     auto canAssign = precedence <= Precedence::ASSIGNMENT;
     auto prefixRule = getRule(m_previous->type())->prefix();
     if (!prefixRule.has_value()) {
-        throw cppLox::Error::CompileTimeException("Expect expression");
+        error("Expect expression");
         return;
     }
     (this->*prefixRule.value())(tokens, canAssign);
@@ -378,13 +398,13 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
         advance(tokens);
         auto infixRule = getRule(m_previous->type())->infix();
         if (!infixRule.has_value()) {
-            throw cppLox::Error::CompileTimeException("Expect expression");
+            error("Expect expression");
             return;
         }
         (this->*infixRule.value())(tokens);
     }
     if (canAssign && match(Token::Type::EQUAL, tokens)) {
-        throw cppLox::Error::CompileTimeException("Invalid assignment target");
+        error("Invalid assignment target");
     }
 }
 
@@ -399,12 +419,12 @@ auto Compiler::parseVariable(std::string message, std::vector<Token> const & tok
 
 auto Compiler::patchJump(int32_t offset) -> void {
     // -2 to adjust for the bytecode for the jump offset itself.
-    int32_t jump = m_chunk->getSize() - offset - 2;
+    int32_t jump = currentChunk()->getSize() - offset - 2;
     if (jump > UINT16_MAX) {
-        throw cppLox::Error::CompileTimeException("Too much code to jump over");
+        error("Too much code to jump over");
     }
-    m_chunk->writeAt(offset, (jump >> 8) & 0xff);
-    m_chunk->writeAt(offset + 1, jump & 0xff);
+    currentChunk()->writeAt(offset, (jump >> 8) & 0xff);
+    currentChunk()->writeAt(offset + 1, jump & 0xff);
 }
 
 auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign) -> void {
@@ -437,7 +457,7 @@ auto Compiler::resolveLocal(Token const & name, CompilationScope const & scope) 
         auto local = scope.local(i);
         if (name.lexeme() == local.getToken().lexeme()) {
             if (local.getDepth() == -1) {
-                throw cppLox::Error::CompileTimeException("Cannot read local variable in its own initializer");
+                error("Cannot read local variable in its own initializer");
             }
             return i;
         }
@@ -509,7 +529,7 @@ auto Compiler::unary(std::vector<Token> const & tokens, bool canAssign) -> void 
 }
 
 auto Compiler::whileStatement(std::vector<Token> const & tokens) -> void {
-    int loopStart = m_chunk->getSize();
+    int loopStart = currentChunk()->getSize();
     consume(Token::Type::LEFT_PARENTHESES, "Expect '(' after 'while'", tokens);
     expression(tokens);
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after condition", tokens);

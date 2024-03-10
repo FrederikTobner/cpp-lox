@@ -6,7 +6,6 @@
 #include <string>
 
 #include "bytecode/chunk.hpp"
-#include "error/compiletime_exception.hpp"
 #include "error/runtime_exception.hpp"
 #include "exit_code.hpp"
 
@@ -24,8 +23,6 @@ auto cppLox::repl() -> void {
         }
         try {
             cppLox::run(line, lexer, compiler, vm);
-        } catch (cppLox::Error::CompileTimeException e) {
-            std::cout << e.what() << std::endl;
         } catch (cppLox::Error::RunTimeException e) {
             std::cout << e.what() << std::endl;
         }
@@ -47,9 +44,6 @@ auto cppLox::runFile(char const * path) -> void {
     }
     try {
         cppLox::run(source, lexer, compiler, vm);
-    } catch (cppLox::Error::CompileTimeException e) {
-        std::cout << e.what() << std::endl;
-        exit(cppLox::EXIT_CODE_COMPILATION_ERROR);
     } catch (cppLox::Error::RunTimeException e) {
         std::cout << e.what() << std::endl;
         exit(cppLox::EXIT_CODE_RUNTIME_ERROR);
@@ -59,10 +53,11 @@ auto cppLox::runFile(char const * path) -> void {
 auto cppLox::run(std::string & source, cppLox::Frontend::Lexer & lexer, cppLox::Frontend::Compiler & compiler,
                  cppLox::Backend::VM & vm) -> void {
     std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
-    // Source file is not needed after the tokens are generated
     source.clear();
-    std::unique_ptr<cppLox::ByteCode::Chunk> chunk = compiler.compile(tokens);
-    // Tokens are not needed after the chunk is generated
+    std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> main_fun = compiler.compile(tokens);
     tokens.clear();
-    vm.interpret(*chunk.get());
+    if (!main_fun.has_value()) {
+        return;
+    }
+    vm.interpret(*(main_fun.value()));
 }

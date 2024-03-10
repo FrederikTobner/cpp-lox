@@ -17,6 +17,8 @@ class Object {
   public:
     /// @brief The type of an object.
     enum class Type {
+        /// @brief An ObjectFunction.
+        FUNCTION,
         /// @brief An ObjectString.
         STRING
     };

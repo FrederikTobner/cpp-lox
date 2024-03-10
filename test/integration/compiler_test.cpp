@@ -10,6 +10,7 @@
 #include "../../src/frontend/compiler.hpp"
 #include "../../src/frontend/token.hpp"
 #include "../../src/memory_mutator.hpp"
+#include "../../src/types/object_function.hpp"
 
 // Test fixture for Compiler integration tests
 class CompilerIntegrationTest : public ::testing::Test {
@@ -21,18 +22,20 @@ class CompilerIntegrationTest : public ::testing::Test {
 
     void SetUp() override {
         tokens.clear();
-        chunk = nullptr;
+        objectFunction = nullptr;
     }
 
     template <class... Opcodes>
         requires cppLox::Frontend::IsPackOfEitherOf<int, cppLox::ByteCode::Opcode, Opcodes...>
     void assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) {
+        ASSERT_TRUE(objectFunction.has_value()) << "Expected compiled function to have a value but it was empty.";
+        cppLox::ByteCode::Chunk * chunk = objectFunction->get()->chunk();
         constexpr size_t expectedOpCodeAmount = sizeof...(expectedOpCodes);
         ASSERT_EQ(expectedOpCodeAmount, chunk->getSize());
         std::array<std::variant<int, cppLox::ByteCode::Opcode>, expectedOpCodeAmount> opcodes = {expectedOpCodes...};
         for (auto index : std::views::iota(0u, expectedOpCodeAmount)) {
             std::visit(
-                [this, index](auto && arg) {
+                [chunk, index](auto && arg) {
                     using T = std::decay_t<decltype(arg)>;
                     if constexpr (std::is_same_v<T, cppLox::ByteCode::Opcode>) {
                         EXPECT_EQ(arg, chunk->getByte(index))
@@ -55,7 +58,7 @@ class CompilerIntegrationTest : public ::testing::Test {
     std::unique_ptr<cppLox::Frontend::Compiler> compiler;
     std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     std::vector<cppLox::Frontend::Token> tokens;
-    std::unique_ptr<cppLox::ByteCode::Chunk> chunk;
+    std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> objectFunction;
 };
 
 TEST_F(CompilerIntegrationTest, AdditionExpression) {
@@ -67,7 +70,7 @@ TEST_F(CompilerIntegrationTest, AdditionExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -84,7 +87,7 @@ TEST_F(CompilerIntegrationTest, DivisionExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -101,7 +104,7 @@ TEST_F(CompilerIntegrationTest, EqualExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -116,7 +119,7 @@ TEST_F(CompilerIntegrationTest, FalseLiteralExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::FALSE, cppLox::ByteCode::Opcode::POP,
@@ -147,7 +150,7 @@ TEST_F(CompilerIntegrationTest, ForLoop) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(
@@ -169,7 +172,7 @@ TEST_F(CompilerIntegrationTest, GreaterThanExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -186,7 +189,7 @@ TEST_F(CompilerIntegrationTest, GreaterThanEqualExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -207,7 +210,7 @@ TEST_F(CompilerIntegrationTest, GroupingExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -225,7 +228,7 @@ TEST_F(CompilerIntegrationTest, IfStatement) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 1,
@@ -246,7 +249,7 @@ TEST_F(CompilerIntegrationTest, IfElseStatement) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 8,
@@ -264,7 +267,7 @@ TEST_F(CompilerIntegrationTest, LessThanExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -281,7 +284,7 @@ TEST_F(CompilerIntegrationTest, LessThanEqualExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -298,7 +301,7 @@ TEST_F(CompilerIntegrationTest, MultiplicationExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -314,7 +317,7 @@ TEST_F(CompilerIntegrationTest, NegateExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::NEGATE,
@@ -329,7 +332,7 @@ TEST_F(CompilerIntegrationTest, NotExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::NOT,
@@ -345,7 +348,7 @@ TEST_F(CompilerIntegrationTest, NotEqualExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -360,7 +363,7 @@ TEST_F(CompilerIntegrationTest, NullLiteralExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::POP,
@@ -376,7 +379,7 @@ TEST_F(CompilerIntegrationTest, SubtractionExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
@@ -391,7 +394,7 @@ TEST_F(CompilerIntegrationTest, TrueLiteralExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::POP,
@@ -406,7 +409,7 @@ TEST_F(CompilerIntegrationTest, VariableDeclarationExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0,
@@ -422,7 +425,7 @@ TEST_F(CompilerIntegrationTest, VariableAssignmentExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::SET_GLOBAL, 0,
@@ -441,7 +444,7 @@ TEST_F(CompilerIntegrationTest, LocalVariableAssignmentExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::POP,
@@ -460,7 +463,7 @@ TEST_F(CompilerIntegrationTest, VariableDeclarationAndAssignmentExpression) {
     };
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::DEFINE_GLOBAL,
@@ -478,7 +481,7 @@ TEST_F(CompilerIntegrationTest, WhileLoopExpression) {
               cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
 
     // Act
-    chunk = compiler->compile(tokens);
+    objectFunction = compiler->compile(tokens);
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 4,

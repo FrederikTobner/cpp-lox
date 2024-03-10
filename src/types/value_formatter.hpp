@@ -3,6 +3,7 @@
 #include <format>
 #include <string>
 
+#include "object_formatter.hpp"
 #include "value.hpp"
 
 /// @brief Formatter for the Value class

@@ -66,6 +66,10 @@ class Chunk {
     /// @return The index of the next instruction.
     auto disassembleInstruction(size_t index) const -> size_t;
 
+    auto code() -> std::vector<uint8_t> & {
+        return m_code;
+    }
+
   private:
     /// @brief Disassembles a simple instruction.
     /// @param opcode The opcode of the instruction.
