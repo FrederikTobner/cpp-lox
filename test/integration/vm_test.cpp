@@ -42,6 +42,13 @@ class VMIntegrationTest : public ::testing::Test {
     cppLox::Backend::CallFrame & getTopFrame() {
         return vm->m_frames[0];
     }
+
+    void interpret() {
+        vm->interpret(function);
+        // The value on top of the stack is popped when the function returns,
+        // so we need to increment the stack top to get the value that was on top of the stack
+        vm->m_stack_top++;
+    }
 };
 
 TEST_F(VMIntegrationTest, AddInstructionUsingNumbers) {
@@ -52,9 +59,9 @@ TEST_F(VMIntegrationTest, AddInstructionUsingNumbers) {
                          cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
-    // Assert
+    //  Assert
     EXPECT_EQ(cppLox::Types::Value(42.0 + 42.0), vm->pop(getTopFrame()));
 }
 
@@ -69,7 +76,7 @@ TEST_F(VMIntegrationTest, AddInstructionUsingStrings) {
                          cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
     char const * result =
         vm->pop(getTopFrame()).as<cppLox::Types::Object *>()->as<cppLox::Types::ObjectString>()->string().c_str();
 
@@ -84,7 +91,7 @@ TEST_F(VMIntegrationTest, ConstantInstruction) {
                          cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     EXPECT_EQ(value, vm->pop(getTopFrame()));
@@ -98,7 +105,7 @@ TEST_F(VMIntegrationTest, DivideInstruction) {
                          cppLox::ByteCode::Opcode::DIVIDE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     EXPECT_EQ(value / value, vm->pop(getTopFrame()));
@@ -119,7 +126,7 @@ TEST_F(VMIntegrationTest, EqualInstruction) {
                          cppLox::ByteCode::Opcode::EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 == 42
@@ -133,7 +140,7 @@ TEST_F(VMIntegrationTest, FalseInstruction) {
     writeMultipleToChunk(cppLox::ByteCode::Opcode::FALSE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     EXPECT_EQ(cppLox::Types::Value(false), vm->pop(getTopFrame()));
@@ -147,7 +154,7 @@ TEST_F(VMIntegrationTest, GlobalVariableDeclaration) {
                          cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_TRUE(memoryMutator->setGlobal(variableNameObjectString.get(), cppLox::Types::Value()));
@@ -163,7 +170,7 @@ TEST_F(VMIntegrationTest, GlobalVariableDeclarationAndAssignment) {
                          cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(cppLox::Types::Value(42.0), memoryMutator->getGlobal(variableNameObjectString.get()));
@@ -186,7 +193,7 @@ TEST_F(VMIntegrationTest, GreaterInstruction) {
         cppLox::ByteCode::Opcode::GREATER, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 > 42
@@ -214,7 +221,7 @@ TEST_F(VMIntegrationTest, GreaterEqualInstruction) {
         cppLox::ByteCode::Opcode::GREATER_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 >= 42
@@ -232,7 +239,7 @@ TEST_F(VMIntegrationTest, JumpIfFalseInstruction_shouldJumpWhenFalsy) {
                          function.chunk()->addConstant(cppLox::Types::Value(42.0)), cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(cppLox::Types::Value(false), vm->pop(getTopFrame()));
@@ -245,7 +252,7 @@ TEST_F(VMIntegrationTest, JumpIfFalseInstruction_shouldNotJumpWhenTruthy) {
                          function.chunk()->addConstant(cppLox::Types::Value(42.0)), cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(cppLox::Types::Value(42.0), vm->pop(getTopFrame()));
@@ -258,7 +265,7 @@ TEST_F(VMIntegrationTest, JumpInstruction) {
                          function.chunk()->addConstant(cppLox::Types::Value(43.0)), cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(cppLox::Types::Value(42.0), vm->pop(getTopFrame()));
@@ -281,7 +288,7 @@ TEST_F(VMIntegrationTest, LessInstruction) {
         cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 < 42
@@ -309,7 +316,7 @@ TEST_F(VMIntegrationTest, LessEqualInstruction) {
         cppLox::ByteCode::Opcode::LESS_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 <= 42
@@ -326,7 +333,7 @@ TEST_F(VMIntegrationTest, LocalVariableAssignement) {
                          cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(value, vm->pop(getTopFrame()));
@@ -340,7 +347,7 @@ TEST_F(VMIntegrationTest, MultiplyInstruction) {
                          cppLox::ByteCode::Opcode::MULTIPLY, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     EXPECT_EQ(value * value, vm->pop(getTopFrame()));
@@ -354,7 +361,7 @@ TEST_F(VMIntegrationTest, NegateInstruction) {
                          cppLox::ByteCode::Opcode::NEGATE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(negatedValue, vm->pop(getTopFrame()));
@@ -375,7 +382,7 @@ TEST_F(VMIntegrationTest, NotEqualInstruction) {
                          cppLox::ByteCode::Opcode::NOT_EQUAL, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     // 42 != 42
@@ -389,7 +396,7 @@ TEST_F(VMIntegrationTest, NullInstruction) {
     writeMultipleToChunk(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     EXPECT_EQ(cppLox::Types::Value(), vm->pop(getTopFrame()));
@@ -443,7 +450,7 @@ TEST_F(VMIntegrationTest, SubtractInstruction) {
                          cppLox::ByteCode::Opcode::SUBTRACT, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(value - value, vm->pop(getTopFrame()));
@@ -454,7 +461,7 @@ TEST_F(VMIntegrationTest, TrueInstruction) {
     writeMultipleToChunk(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::RETURN);
 
     // Act
-    vm->interpret(function);
+    interpret();
 
     // Assert
     ASSERT_EQ(cppLox::Types::Value(true), vm->pop(getTopFrame()));

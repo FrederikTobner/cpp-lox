@@ -31,6 +31,8 @@ namespace cppLox::ByteCode {
 enum Opcode {
     /// @brief Pops the top two values off the stack, adds them, and pushes the result back on the stack.
     ADD,
+    /// @brief Calls the function at the given index on the stack.
+    CALL,
     /// @brief Pushes the given constant onto the stack.
     CONSTANT,
     /// @brief Defines a global variable

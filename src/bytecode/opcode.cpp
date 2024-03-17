@@ -24,6 +24,8 @@
     switch (value) {
     case Opcode::ADD:
         return "ADD";
+    case Opcode::CALL:
+        return "CALL";
     case Opcode::CONSTANT:
         return "CONSTANT";
     case Opcode::DEFINE_GLOBAL:

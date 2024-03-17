@@ -75,7 +75,7 @@ TEST_F(CompilerIntegrationTest, AdditionExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, DivisionExpression) {
@@ -92,7 +92,7 @@ TEST_F(CompilerIntegrationTest, DivisionExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::DIVIDE, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, EqualExpression) {
@@ -109,7 +109,7 @@ TEST_F(CompilerIntegrationTest, EqualExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::EQUAL, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, FalseLiteralExpression) {
@@ -123,7 +123,7 @@ TEST_F(CompilerIntegrationTest, FalseLiteralExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::FALSE, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, ForLoop) {
@@ -160,7 +160,7 @@ TEST_F(CompilerIntegrationTest, ForLoop) {
         cppLox::ByteCode::Opcode::GET_LOCAL, 0, cppLox::ByteCode::Opcode::CONSTANT, 2, cppLox::ByteCode::Opcode::ADD,
         cppLox::ByteCode::Opcode::SET_LOCAL, 0, cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::LOOP, 0, 23,
         cppLox::ByteCode::Opcode::LOOP, 0, 14, cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::POP,
-        cppLox::ByteCode::Opcode::RETURN);
+        cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, GreaterThanExpression) {
@@ -177,7 +177,7 @@ TEST_F(CompilerIntegrationTest, GreaterThanExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::GREATER, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, GreaterThanEqualExpression) {
@@ -194,7 +194,7 @@ TEST_F(CompilerIntegrationTest, GreaterThanEqualExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::GREATER_EQUAL, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, GroupingExpression) {
@@ -216,7 +216,7 @@ TEST_F(CompilerIntegrationTest, GroupingExpression) {
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::CONSTANT, 2,
                                        cppLox::ByteCode::Opcode::MULTIPLY, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, IfStatement) {
@@ -233,7 +233,7 @@ TEST_F(CompilerIntegrationTest, IfStatement) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 1,
                                        cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, IfElseStatement) {
@@ -252,10 +252,10 @@ TEST_F(CompilerIntegrationTest, IfElseStatement) {
     objectFunction = compiler->compile(tokens);
 
     // Assert
-    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 8,
-                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::CONSTANT, 0,
-                                       cppLox::ByteCode::Opcode::PRINT, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::JUMP, 0, 0, cppLox::ByteCode::Opcode::RETURN);
+    assertChunkContaintsExactlyInOrder(
+        cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 8, cppLox::ByteCode::Opcode::POP,
+        cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::PRINT, cppLox::ByteCode::Opcode::POP,
+        cppLox::ByteCode::Opcode::JUMP, 0, 0, cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, LessThanExpression) {
@@ -272,7 +272,7 @@ TEST_F(CompilerIntegrationTest, LessThanExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::LESS, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, LessThanEqualExpression) {
@@ -289,7 +289,7 @@ TEST_F(CompilerIntegrationTest, LessThanEqualExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::LESS_EQUAL, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, MultiplicationExpression) {
@@ -306,7 +306,7 @@ TEST_F(CompilerIntegrationTest, MultiplicationExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::MULTIPLY, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, NegateExpression) {
@@ -321,7 +321,8 @@ TEST_F(CompilerIntegrationTest, NegateExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::NEGATE,
-                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::NULL_,
+                                       cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, NotExpression) {
@@ -336,7 +337,8 @@ TEST_F(CompilerIntegrationTest, NotExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::NOT,
-                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::NULL_,
+                                       cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, NotEqualExpression) {
@@ -353,7 +355,7 @@ TEST_F(CompilerIntegrationTest, NotEqualExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::NOT_EQUAL, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, NullLiteralExpression) {
@@ -367,7 +369,7 @@ TEST_F(CompilerIntegrationTest, NullLiteralExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, SubtractionExpression) {
@@ -384,7 +386,7 @@ TEST_F(CompilerIntegrationTest, SubtractionExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::SUBTRACT, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, TrueLiteralExpression) {
@@ -398,7 +400,7 @@ TEST_F(CompilerIntegrationTest, TrueLiteralExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, VariableDeclarationExpression) {
@@ -413,7 +415,7 @@ TEST_F(CompilerIntegrationTest, VariableDeclarationExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::DEFINE_GLOBAL, 0,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, VariableAssignmentExpression) {
@@ -429,7 +431,8 @@ TEST_F(CompilerIntegrationTest, VariableAssignmentExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::SET_GLOBAL, 0,
-                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::NULL_,
+                                       cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, LocalVariableAssignmentExpression) {
@@ -448,7 +451,7 @@ TEST_F(CompilerIntegrationTest, LocalVariableAssignmentExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::POP,
-                                       cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, VariableDeclarationAndAssignmentExpression) {
@@ -467,7 +470,7 @@ TEST_F(CompilerIntegrationTest, VariableDeclarationAndAssignmentExpression) {
 
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 1, cppLox::ByteCode::Opcode::DEFINE_GLOBAL,
-                                       0, cppLox::ByteCode::Opcode::RETURN);
+                                       0, cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, WhileLoopExpression) {
@@ -486,5 +489,6 @@ TEST_F(CompilerIntegrationTest, WhileLoopExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::TRUE, cppLox::ByteCode::Opcode::JUMP_IF_FALSE, 0, 4,
                                        cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::LOOP, 0, 8,
-                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::RETURN);
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::NULL_,
+                                       cppLox::ByteCode::Opcode::RETURN);
 }

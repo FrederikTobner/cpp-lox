@@ -64,6 +64,8 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     switch (static_cast<Opcode>(instruction)) {
     case Opcode::ADD:
         return simpleInstruction(instruction, offset);
+    case Opcode::CALL:
+        return byteInstruction(instruction, offset);
     case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
     case Opcode::DEFINE_GLOBAL:

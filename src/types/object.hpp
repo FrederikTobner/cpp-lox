@@ -39,6 +39,8 @@ class Object {
     enum class Type {
         /// @brief An ObjectFunction.
         FUNCTION,
+        /// @brief A native function.
+        NATIVE_FUNCTION,
         /// @brief An ObjectString.
         STRING
     };

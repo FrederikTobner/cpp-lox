@@ -46,7 +46,12 @@ template <> struct std::formatter<cppLox::Types::Object *> : std::formatter<std:
                 }
                 return formatter<string_view>::format(std::format("<script>"), ctx);
             }
+        case cppLox::Types::Object::Type::NATIVE_FUNCTION:
+            {
+                return formatter<string_view>::format(std::format("<native fn>"), ctx);
+            }
         }
+
         // should be be unreachable
         return formatter<string_view>::format(std::format("undefined"), ctx);
     }

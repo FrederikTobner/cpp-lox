@@ -44,10 +44,25 @@ auto Compiler::advance(std::vector<Token> const & tokens) -> void {
 }
 
 auto Compiler::and_(std::vector<Token> const & tokens) -> void {
-    int endJump = emitJump(cppLox::ByteCode::Opcode::JUMP_IF_FALSE);
+    int32_t endJump = emitJump(cppLox::ByteCode::Opcode::JUMP_IF_FALSE);
     emitByte(cppLox::ByteCode::Opcode::POP);
     parsePrecedence(Precedence::AND, tokens);
     patchJump(endJump);
+}
+
+auto Compiler::argumentList(std::vector<Token> const & tokens) -> uint8_t {
+    uint8_t argCount = 0;
+    if (!check(Token::Type::RIGHT_PARENTHESES)) {
+        do {
+            expression(tokens);
+            if (argCount == 255) {
+                error("Cannot have more than 255 arguments");
+            }
+            argCount++;
+        } while (match(Token::Type::COMMA, tokens));
+    }
+    consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after arguments", tokens);
+    return argCount;
 }
 
 auto Compiler::beginScope() -> void {
@@ -101,6 +116,11 @@ auto Compiler::block(std::vector<Token> const & tokens) -> void {
         declaration(tokens);
     }
     consume(Token::Type::RIGHT_BRACE, "Expect '}' after block", tokens);
+}
+
+auto Compiler::call(std::vector<Token> const & tokens) -> void {
+    uint8_t argCount = argumentList(tokens);
+    emitBytes(cppLox::ByteCode::Opcode::CALL, argCount);
 }
 
 auto Compiler::check(Token::Type type) const -> bool {
@@ -204,6 +224,7 @@ auto inline Compiler::emitLoop(int32_t loopStart) -> void {
 }
 
 auto inline Compiler::emitReturn() -> void {
+    emitByte(cppLox::ByteCode::Opcode::NULL_);
     emitByte(cppLox::ByteCode::Opcode::RETURN);
 }
 
@@ -493,6 +514,19 @@ auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign)
     emitByte(cppLox::ByteCode::Opcode::PRINT);
 }
 
+auto Compiler::returnStatement(std::vector<Token> const & tokens) -> void {
+    if (!m_currentScope->enclosing().has_value()) {
+        error("Cannot return from top-level code");
+    }
+    if (match(Token::Type::SEMICOLON, tokens)) {
+        emitReturn();
+    } else {
+        expression(tokens);
+        consume(Token::Type::SEMICOLON, "Expect ';' after return value", tokens);
+        emitByte(cppLox::ByteCode::Opcode::RETURN);
+    }
+}
+
 auto Compiler::statement(std::vector<Token> const & tokens) -> void {
     if (m_current->type() == Token::Type::PRINT) {
         printStatement(tokens, false);
@@ -500,6 +534,8 @@ auto Compiler::statement(std::vector<Token> const & tokens) -> void {
         forStatement(tokens);
     } else if (match(Token::Type::IF, tokens)) {
         ifStatement(tokens);
+    } else if (match(Token::Type::RETURN, tokens)) {
+        returnStatement(tokens);
     } else if (match(Token::Type::WHILE, tokens)) {
         whileStatement(tokens);
     } else if (match(Token::Type::LEFT_BRACE, tokens)) {

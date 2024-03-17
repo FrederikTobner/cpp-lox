@@ -27,6 +27,7 @@
 #include <vector>
 
 #include "types/object.hpp"
+#include "types/object_native_fuction.hpp"
 #include "types/object_string.hpp"
 #include "types/value.hpp"
 
@@ -65,6 +66,7 @@ class MemoryMutator {
         } else {
             object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         }
+
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
     }

@@ -22,6 +22,7 @@
 
 #include <array>
 #include <format>
+#include <functional>
 
 #include "../bytecode/chunk.hpp"
 #include "../memory_mutator.hpp"
@@ -66,7 +67,7 @@ class VM {
 
     /// @brief Pops the top value from the stack
     /// @return The top value of the stack
-    [[nodiscard]] auto pop(CallFrame & frame) -> cppLox::Types::Value;
+    auto pop(CallFrame & frame) -> cppLox::Types::Value;
 
     /// @brief Pushes the given value onto the stack
     /// @param value The value to push onto the stack
@@ -82,7 +83,16 @@ class VM {
     /// @param ...args The arguments to the format string
     template <class... Args> auto runTimeError(CallFrame & frame, std::string_view fmt, Args &&... args) -> void;
 
+    auto callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void;
+
+    auto call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> void;
+
     auto run(cppLox::Types::ObjectFunction & function) -> void;
+
+    auto defineNative(std::string const & name,
+                      std::function<cppLox::Types::Value(int, cppLox::Types::Value *, CallFrame &,
+                                                         std::function<void(CallFrame &, std::string_view fmt)>)>
+                          function) -> void;
 
     /// @brief The stack
     cppLox::Types::Value m_stack[STACK_MAX];

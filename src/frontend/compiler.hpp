@@ -63,6 +63,8 @@ class Compiler {
 
     auto and_(std::vector<Token> const & tokens) -> void;
 
+    auto argumentList(std::vector<Token> const & tokens) -> uint8_t;
+
     /// @brief Begins a new scope.
     auto beginScope() -> void;
 
@@ -73,6 +75,10 @@ class Compiler {
     /// @brief Compiles a binary expression.
     /// @param tokens The tokens that are compiled.
     auto binary(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Compiles a call expression.
+    /// @param tokens The tokens that are compiled.
+    auto call(std::vector<Token> const & tokens) -> void;
 
     /// @brief Checks whether the current token is of the given type.
     /// @param type The given type of the token.
@@ -247,6 +253,8 @@ class Compiler {
     /// @return The index of the variable in the chunk.
     [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
 
+    auto returnStatement(std::vector<Token> const & tokens) -> void;
+
     /// @brief Compiles a statement.
     /// @param tokens The tokens that are compiled.
     /// @return The statement.
@@ -282,7 +290,7 @@ class Compiler {
     static std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
         std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
         rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
-            ParseRule<Compiler>(&Compiler::grouping, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::grouping, &Compiler::call, Precedence::CALL);
         rules[static_cast<size_t>(Token::Type::RIGHT_PARENTHESES)] =
             ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::LEFT_BRACE)] =
