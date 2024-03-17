@@ -16,6 +16,7 @@
 * Improve testing using mocks and maybe parametrized tests
 * Parsing command line arguments
 * Weird mixture of c inheritance and c++ inheritance in the objects (e.g. ObjectString and ObjectFunction)
+* Add void to functions that have no parameters
 
 ## Potential Bugs
 

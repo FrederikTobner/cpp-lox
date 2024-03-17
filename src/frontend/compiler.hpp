@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file compiler.hpp
+ * @brief This file contains the declaration of the Compiler class.
+ */
+
 #pragma once
 
 #include <array>
@@ -34,8 +54,7 @@ class Compiler {
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    [[nodiscard]] auto compile(std::vector<Token> const & tokens)
-        -> std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>>;
+    [[nodiscard]] auto compile(std::vector<Token> const & tokens) -> std::optional<cppLox::Types::ObjectFunction *>;
 
   private:
     /// @brief Advances to the next token.
@@ -146,6 +165,10 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto forStatement(std::vector<Token> const & tokens) -> void;
 
+    auto funDeclaration(std::vector<Token> const & tokens) -> void;
+
+    auto function(FunctionType type, std::vector<Token> const & tokens) -> void;
+
     /// @brief Compiles a grouping expression.
     /// @param tokens The tokens that are compiled.
     auto grouping(std::vector<Token> const & tokens, bool canAssign) -> void;
@@ -175,6 +198,8 @@ class Compiler {
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
     auto makeConstant(cppLox::Types::Value value) -> void;
+
+    auto markInitialized() -> void;
 
     /// @brief Matches the current token with the given type and advances to the next token if it matches.
     /// @param type The type of the token.
@@ -220,7 +245,7 @@ class Compiler {
     /// @param name The name of the variable.
     /// @param tokens The tokens that are compiled.
     /// @return The index of the variable in the chunk.
-    [[nodiscard]] auto resolveLocal(Token const & name, CompilationScope const & scope) -> int;
+    [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
 
     /// @brief Compiles a statement.
     /// @param tokens The tokens that are compiled.
@@ -341,20 +366,14 @@ class Compiler {
     Token const * m_current;
     /// @brief The index of the current token.
     size_t m_currentTokenIndex;
-    /// @brief The current function.
-    cppLox::Types::ObjectFunction * m_currentFunction;
-    /// @brief The type of the current function.
-    FunctionType m_currentFunctionType;
     /// @brief The memory manager.
     std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
     /// @brief Whether the compiler is in panic mode.
     bool m_panicMode;
-    /// @brief The current compiler context.
-    std::shared_ptr<CompilationScope> m_current_scope;
-    /// The scope depth.
-    uint16_t m_scopeDepth;
+    /// Whether the compilation resulted in an error.
     bool m_hadError;
+    std::shared_ptr<CompilationScope> m_currentScope;
 };
 } // namespace cppLox::Frontend

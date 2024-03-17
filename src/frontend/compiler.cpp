@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file compiler.cpp
+ * @brief This file contains the implementation of the Compiler class.
+ */
+
 #include "compiler.hpp"
 
 #include <format>
@@ -31,8 +51,7 @@ auto Compiler::and_(std::vector<Token> const & tokens) -> void {
 }
 
 auto Compiler::beginScope() -> void {
-    m_scopeDepth++;
-    m_current_scope = std::make_shared<CompilationScope>(m_current_scope);
+    m_currentScope->beginNewScope();
 }
 
 auto Compiler::binary(std::vector<Token> const & tokens) -> void {
@@ -88,23 +107,19 @@ auto Compiler::check(Token::Type type) const -> bool {
     return m_current->type() == type;
 }
 
-auto Compiler::compile(std::vector<Token> const & tokens)
-    -> std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> {
+auto Compiler::compile(std::vector<Token> const & tokens) -> std::optional<cppLox::Types::ObjectFunction *> {
     m_previous = nullptr;
     m_current = nullptr;
     m_currentTokenIndex = 0;
     m_panicMode = false;
     m_hadError = false;
-    m_scopeDepth = 0;
     initCompiler(FunctionType::SCRIPT);
     advance(tokens);
     while (m_current->type() != Token::Type::END_OF_FILE) {
         declaration(tokens);
     }
     consume(Token::Type::END_OF_FILE, "Expect end of expression", tokens);
-    return m_hadError == true ? std::nullopt
-                              : std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>>(
-                                    std::unique_ptr<cppLox::Types::ObjectFunction>(endCompilation()));
+    return m_hadError == true ? std::nullopt : std::optional<cppLox::Types::ObjectFunction *>(endCompilation());
 }
 
 auto Compiler::consume(Token::Type type, std::string message, std::vector<Token> const & tokens) -> void {
@@ -116,11 +131,13 @@ auto Compiler::consume(Token::Type type, std::string message, std::vector<Token>
 }
 
 auto Compiler::currentChunk() const -> cppLox::ByteCode::Chunk * {
-    return m_currentFunction->chunk();
+    return m_currentScope->function()->chunk();
 }
 
 auto Compiler::declaration(std::vector<Token> const & tokens) -> void {
-    if (match(Token::Type::VAR, tokens)) {
+    if (match(Token::Type::FUN, tokens)) {
+        funDeclaration(tokens);
+    } else if (match(Token::Type::VAR, tokens)) {
         variableDeclaration(tokens);
     } else {
         statement(tokens);
@@ -133,25 +150,25 @@ auto Compiler::declaration(std::vector<Token> const & tokens) -> void {
 
 auto Compiler::declareVariable(std::vector<Token> const & tokens) -> void {
     // Global variables are implicitly declared.
-    if (m_scopeDepth == 0) {
+    if (m_currentScope->scopeDepth() == 0) {
         return;
     }
     std::string const & name = m_previous->lexeme();
-    for (auto i : std::views::iota(0u, m_current_scope->localCount()) | std::views::reverse) {
-        auto local = m_current_scope->local(i);
-        if (local.getDepth() != -1 && local.getDepth() < m_scopeDepth) {
+    for (auto i : std::views::iota(0u, m_currentScope->localScope()->localCount()) | std::views::reverse) {
+        auto local = m_currentScope->localScope()->local(i);
+        if (local.getDepth() != -1 && local.getDepth() < m_currentScope->scopeDepth()) {
             break;
         }
         if (name == local.getToken().lexeme()) {
             error("Variable with this name already declared in this scope");
         }
     }
-    m_current_scope->addLocal(*m_previous, [&](std::string & message) { error(message); });
+    m_currentScope->localScope()->addLocal(*m_previous, [&](std::string & message) { error(message); });
 }
 
 auto Compiler::defineVariable(uint8_t global) -> void {
-    if (m_scopeDepth > 0) {
-        m_current_scope->markInitialized(m_scopeDepth);
+    if (m_currentScope->scopeDepth() > 0) {
+        m_currentScope->localScope()->markInitialized(m_currentScope->scopeDepth());
         return;
     }
     emitBytes(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, global);
@@ -191,24 +208,27 @@ auto inline Compiler::emitReturn() -> void {
 }
 
 auto Compiler::endScope() -> void {
-    if (m_scopeDepth == 0) {
+    if (m_currentScope->scopeDepth() == 0) {
         error("No enclosing scope found for endScope() call");
     }
-    m_scopeDepth--;
-    while (m_current_scope->localCount() > 0 &&
-           m_current_scope->local(m_current_scope->localCount() - 1).getDepth() > m_scopeDepth) {
+    while (m_currentScope->localScope()->localCount() > 0 &&
+           m_currentScope->localScope()->local(m_currentScope->localScope()->localCount() - 1).getDepth() >=
+               m_currentScope->scopeDepth()) {
         emitByte(cppLox::ByteCode::Opcode::POP);
-        m_current_scope->popLocal();
+        m_currentScope->localScope()->popLocal();
     }
-    m_current_scope = m_current_scope->enclosing().value();
+    m_currentScope->endScope();
 }
 
 auto Compiler::endCompilation() -> cppLox::Types::ObjectFunction * {
     emitReturn();
-    cppLox::Types::ObjectFunction * function = m_currentFunction;
+    cppLox::Types::ObjectFunction * function = m_currentScope->function();
 #ifdef DEBUG_PRINT_CODE
     function->chunk()->disassemble(function->name() != nullptr ? function->name()->string() : "<script>");
 #endif
+    if (m_currentScope->enclosing().has_value()) {
+        m_currentScope = m_currentScope->enclosing().value();
+    }
     return function;
 }
 
@@ -277,6 +297,34 @@ auto Compiler::forStatement(std::vector<Token> const & tokens) -> void {
     endScope();
 }
 
+auto Compiler::funDeclaration(std::vector<Token> const & tokens) -> void {
+    uint8_t global = parseVariable("Expect function name", tokens);
+    markInitialized();
+    function(FunctionType::FUNCTION, tokens);
+    defineVariable(global);
+}
+
+auto Compiler::function(FunctionType type, std::vector<Token> const & tokens) -> void {
+    initCompiler(type);
+    beginScope();
+    consume(Token::Type::LEFT_PARENTHESES, "Expect '(' after function name", tokens);
+    if (!check(Token::Type::RIGHT_PARENTHESES)) {
+        do {
+            m_currentScope->function()->incrementArity();
+            if (m_currentScope->function()->arity() > 255) {
+                error("Cannot have more than 255 parameters");
+            }
+            uint8_t constant = parseVariable("Expect parameter name", tokens);
+            defineVariable(constant);
+        } while (match(Token::Type::COMMA, tokens));
+    }
+    consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after parameters", tokens);
+    consume(Token::Type::LEFT_BRACE, "Expect '{' before function body", tokens);
+    block(tokens);
+    auto function = endCompilation();
+    emitConstant(cppLox::Types::Value(static_cast<cppLox::Types::Object *>(function)));
+}
+
 auto Compiler::getRule(Token::Type type) -> ParseRule<Compiler> * {
     return &(m_rules[static_cast<size_t>(type)]);
 }
@@ -308,11 +356,15 @@ auto Compiler::ifStatement(std::vector<Token> const & tokens) -> void {
 }
 
 auto Compiler::initCompiler(FunctionType type) -> void {
-    m_current_scope = std::make_shared<CompilationScope>();
-    m_currentFunction = new cppLox::Types::ObjectFunction(
-        0, m_memoryMutator->create<cppLox::Types::ObjectString>("main")->as<cppLox::Types::ObjectString>());
-    m_currentFunctionType = type;
-    m_current_scope->addLocal(Token(Token::Type::IDENTIFIER, "", 0), [&](std::string & message) { error(message); });
+    auto name = type == FunctionType::SCRIPT
+                    ? m_memoryMutator->create<cppLox::Types::ObjectString>("main")->as<cppLox::Types::ObjectString>()
+                    : m_memoryMutator->create<cppLox::Types::ObjectString>(m_previous->lexeme())
+                          ->as<cppLox::Types::ObjectString>();
+    auto function =
+        m_memoryMutator->create<cppLox::Types::ObjectFunction>(0, name)->as<cppLox::Types::ObjectFunction>();
+    m_currentScope = std::make_shared<CompilationScope>(m_currentScope, function, type);
+    m_currentScope->localScope()->addLocal(Token(Token::Type::IDENTIFIER, "", 0),
+                                           [&](std::string & message) { error(message); });
 }
 
 auto Compiler::literal(std::vector<Token> const & tokens, bool canAssign) -> void {
@@ -344,6 +396,13 @@ auto Compiler::makeConstant(cppLox::Types::Value value) -> void {
     emitBytes(static_cast<uint8_t>(cppLox::ByteCode::Opcode::CONSTANT), (uint8_t)constant);
 }
 
+auto Compiler::markInitialized() -> void {
+    if (m_currentScope->scopeDepth() == 0) {
+        return;
+    }
+    m_currentScope->localScope()->markInitialized(m_currentScope->scopeDepth());
+}
+
 auto Compiler::match(Token::Type type, std::vector<Token> const & tokens) -> bool {
     if (m_current->type() != type) {
         return false;
@@ -354,7 +413,7 @@ auto Compiler::match(Token::Type type, std::vector<Token> const & tokens) -> boo
 
 auto Compiler::namedVariable(Token const & name, std::vector<Token> const & tokens, bool canAssign) -> void {
     uint8_t getOp, setOp;
-    int32_t arg = resolveLocal(name, *m_current_scope.get());
+    int32_t arg = resolveLocal(name, *m_currentScope->localScope().get());
     if (arg != -1) {
         getOp = cppLox::ByteCode::Opcode::GET_LOCAL;
         setOp = cppLox::ByteCode::Opcode::SET_LOCAL;
@@ -411,7 +470,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
 auto Compiler::parseVariable(std::string message, std::vector<Token> const & tokens) -> uint8_t {
     consume(Token::Type::IDENTIFIER, message, tokens);
     declareVariable(tokens);
-    if (m_scopeDepth > 0) {
+    if (m_currentScope->scopeDepth() > 0) {
         return 0;
     }
     return identifierConstant(*m_previous);
@@ -452,7 +511,7 @@ auto Compiler::statement(std::vector<Token> const & tokens) -> void {
     }
 }
 
-auto Compiler::resolveLocal(Token const & name, CompilationScope const & scope) -> int {
+auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int {
     for (auto i : std::views::iota(0u, scope.localCount()) | std::views::reverse) {
         auto local = scope.local(i);
         if (name.lexeme() == local.getToken().lexeme()) {
@@ -529,11 +588,11 @@ auto Compiler::unary(std::vector<Token> const & tokens, bool canAssign) -> void 
 }
 
 auto Compiler::whileStatement(std::vector<Token> const & tokens) -> void {
-    int loopStart = currentChunk()->getSize();
+    int32_t loopStart = currentChunk()->getSize();
     consume(Token::Type::LEFT_PARENTHESES, "Expect '(' after 'while'", tokens);
     expression(tokens);
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after condition", tokens);
-    int exitJump = emitJump(cppLox::ByteCode::Opcode::JUMP_IF_FALSE);
+    int32_t exitJump = emitJump(cppLox::ByteCode::Opcode::JUMP_IF_FALSE);
     emitByte(cppLox::ByteCode::Opcode::POP);
     statement(tokens);
     emitLoop(loopStart);

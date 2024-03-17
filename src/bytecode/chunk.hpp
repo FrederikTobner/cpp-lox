@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file chunk.hpp
+ * @brief This file contains the declaration of the bytecode chunk.
+ */
+
 #pragma once
 
 #include <cstdint>
@@ -66,9 +86,9 @@ class Chunk {
     /// @return The index of the next instruction.
     auto disassembleInstruction(size_t index) const -> size_t;
 
-    auto code() -> std::vector<uint8_t> & {
-        return m_code;
-    }
+    /// @brief Gets the bytecode stored in the chunk.
+    /// @return The bytecode stored in the chunk.
+    [[nodiscard]] auto code() -> std::vector<uint8_t> &;
 
   private:
     /// @brief Disassembles a simple instruction.

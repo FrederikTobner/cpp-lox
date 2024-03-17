@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file vm.cpp
+ * @details This file contains the implementation of the virtual machine used by the cpplox interpreter
+ */
+
 #include "vm.hpp"
 
 #include <iostream>
@@ -249,7 +269,7 @@ auto VM::resetStack() noexcept -> void {
 
 template <class... Args> auto VM::runTimeError(CallFrame & frame, std::string_view fmt, Args &&... args) -> void {
     std::string const errorMessage = std::vformat(fmt, std::make_format_args(args...));
-    size_t const index = frame.m_instruction_pointer - frame.m_function->chunk()->code().data();
+    size_t const index = (frame.m_instruction_pointer - 1) - frame.m_function->chunk()->code().data();
     throw cppLox::Error::RunTimeException(
         std::format("{}\n[line {}] in script\n", errorMessage, frame.m_function->chunk()->getLine(index)));
 }

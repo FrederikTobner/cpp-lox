@@ -14,25 +14,27 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file object_string.cpp
+ * @brief This file contains the implementation of the ObjectString class.
  */
 
-#pragma once
+#include "object_string.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Types;
 
-#include "token.hpp"
+ObjectString::ObjectString(std::string const & string) {
+    m_string = std::make_unique<std::string>(string);
+    m_type = Object::Type::STRING;
+}
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
+[[nodiscard]] auto ObjectString::string() const -> std::string const & {
+    return *m_string.get();
+}
 
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
-};
+auto ObjectString::operator==(ObjectString const & other) const -> bool {
+    return *m_string.get() == other.string();
+}
+
+auto ObjectString::operator==(ObjectString const * other) const -> bool {
+    return *m_string.get() == other->string();
+}

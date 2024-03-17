@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file init.cpp
+ * @brief This file contains the implementation of the init functions.
+ */
+
 #include "init.hpp"
 
 #include <fstream>
@@ -54,7 +74,7 @@ auto cppLox::run(std::string & source, cppLox::Frontend::Lexer & lexer, cppLox::
                  cppLox::Backend::VM & vm) -> void {
     std::vector<cppLox::Frontend::Token> tokens = lexer.tokenize(source);
     source.clear();
-    std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> main_fun = compiler.compile(tokens);
+    std::optional<cppLox::Types::ObjectFunction *> main_fun = compiler.compile(tokens);
     tokens.clear();
     if (!main_fun.has_value()) {
         return;

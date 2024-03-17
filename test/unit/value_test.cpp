@@ -19,7 +19,8 @@ class ValueTest : public ::testing::Test {
     cppLox::Types::Value objectVal;
 };
 
-ValueTest::ValueTest() : numVal(3.14), boolVal(true), nullVal(), objectVal((cppLox::Types::Object *)nullptr) {
+ValueTest::ValueTest()
+    : numVal(3.14), boolVal(true), nullVal(), objectVal(static_cast<cppLox::Types::Object *>(nullptr)) {
 }
 
 TEST_F(ValueTest, is) {

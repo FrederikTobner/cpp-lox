@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file chunk.cpp
+ * @brief This file contains the implementation of the Chunk class.
+ */
+
 #include "chunk.hpp"
 
 #include <format>
@@ -140,6 +160,10 @@ auto Chunk::getConstant(size_t offset) -> cppLox::Types::Value & {
 
 auto Chunk::getSize() const -> size_t {
     return m_code.size();
+}
+
+[[nodiscard]] auto Chunk::code() -> std::vector<uint8_t> & {
+    return m_code;
 }
 
 auto Chunk::jumpInstruction(uint8_t opcode, int sign, int offset) const -> size_t {

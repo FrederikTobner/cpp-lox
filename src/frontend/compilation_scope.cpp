@@ -1,39 +1,69 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file compilation_scope.cpp
+ * @brief This file contains the implementation of the CompilationScope class.
+ */
+
 #include "compilation_scope.hpp"
 
 using namespace cppLox::Frontend;
 
-CompilationScope::CompilationScope() : m_localCount(0) {
+CompilationScope::CompilationScope(cppLox::Types::ObjectFunction * function, FunctionType type) {
+    m_enclosing = std::nullopt;
+    m_function = function;
+    m_scopeDepth = 0;
+    m_currentFunctionType = type;
+    m_localScope = std::make_shared<LocalScope>();
 }
-
-CompilationScope::CompilationScope(std::shared_ptr<CompilationScope> enclosing)
-    : m_enclosing(enclosing), m_localCount(0) {
+CompilationScope::CompilationScope(std::shared_ptr<CompilationScope> enclosing,
+                                   cppLox::Types::ObjectFunction * function, FunctionType type) {
+    m_enclosing = enclosing;
+    m_function = function;
+    m_scopeDepth = 0;
+    m_currentFunctionType = type;
+    m_localScope = std::make_shared<LocalScope>();
 }
 
 auto CompilationScope::enclosing() const -> std::optional<std::shared_ptr<CompilationScope>> const & {
     return m_enclosing;
 }
 
-auto CompilationScope::local(uint16_t index) const -> Local const & {
-    return *m_locals[index];
+auto CompilationScope::function() const -> cppLox::Types::ObjectFunction * {
+    return m_function;
 }
 
-auto CompilationScope::localCount() const -> uint16_t const & {
-    return m_localCount;
+auto CompilationScope::currentFunctionType() const -> FunctionType const & {
+    return m_currentFunctionType;
 }
 
-auto CompilationScope::addLocal(cppLox::Frontend::Token name, std::function<void(std::string &)> onError) -> void {
-    if (m_localCount == 256) {
-        std::string message = "Too many local variables in function";
-        onError(message);
-    }
-    m_locals[m_localCount] = std::make_unique<Local>(name, -1);
-    m_localCount++;
+auto CompilationScope::scopeDepth() const -> uint16_t const & {
+    return m_scopeDepth;
 }
 
-auto CompilationScope::markInitialized(uint16_t depth) -> void {
-    m_locals[m_localCount - 1]->m_depth = depth;
+auto CompilationScope::localScope() const -> std::shared_ptr<LocalScope> const & {
+    return m_localScope;
 }
 
-auto CompilationScope::popLocal() -> void {
-    m_localCount--;
+auto CompilationScope::beginNewScope() -> void {
+    m_scopeDepth++;
+    m_localScope = std::make_shared<LocalScope>(m_localScope);
+}
+
+auto CompilationScope::endScope() -> void {
+    m_scopeDepth--;
+    m_localScope = m_localScope->enclosing().value();
 }

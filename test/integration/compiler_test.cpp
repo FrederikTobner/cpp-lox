@@ -29,7 +29,7 @@ class CompilerIntegrationTest : public ::testing::Test {
         requires cppLox::Frontend::IsPackOfEitherOf<int, cppLox::ByteCode::Opcode, Opcodes...>
     void assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) {
         ASSERT_TRUE(objectFunction.has_value()) << "Expected compiled function to have a value but it was empty.";
-        cppLox::ByteCode::Chunk * chunk = objectFunction->get()->chunk();
+        cppLox::ByteCode::Chunk * chunk = objectFunction.value()->chunk();
         constexpr size_t expectedOpCodeAmount = sizeof...(expectedOpCodes);
         ASSERT_EQ(expectedOpCodeAmount, chunk->getSize());
         std::array<std::variant<int, cppLox::ByteCode::Opcode>, expectedOpCodeAmount> opcodes = {expectedOpCodes...};
@@ -58,7 +58,7 @@ class CompilerIntegrationTest : public ::testing::Test {
     std::unique_ptr<cppLox::Frontend::Compiler> compiler;
     std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     std::vector<cppLox::Frontend::Token> tokens;
-    std::optional<std::unique_ptr<cppLox::Types::ObjectFunction>> objectFunction;
+    std::optional<cppLox::Types::ObjectFunction *> objectFunction;
 };
 
 TEST_F(CompilerIntegrationTest, AdditionExpression) {

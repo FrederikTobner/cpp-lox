@@ -418,7 +418,7 @@ TEST_F(VMIntegrationTest, ReturnInstruction) {
 TEST_F(VMIntegrationTest, StackOverflow) {
     // Arrange
     cppLox::Types::Value value(42.0);
-    for (auto i : std::views::iota(0, STACK_MAX)) {
+    for (auto i : std::views::iota(0, STACK_MAX - 1)) {
         vm->push(getTopFrame(), value);
     }
     writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, function.chunk()->addConstant(value));
@@ -429,8 +429,8 @@ TEST_F(VMIntegrationTest, StackOverflow) {
 
 TEST_F(VMIntegrationTest, StackUnderflow) {
     // Arrange
-    // TODO: The retrun should be not needed the line seems to be missaligned to the executed opcode
-    writeMultipleToChunk(cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::RETURN);
+    writeMultipleToChunk(cppLox::ByteCode::Opcode::ADD);
+
     // Act & Assert
     ASSERT_THROW(vm->interpret(function), cppLox::Error::RunTimeException);
 }

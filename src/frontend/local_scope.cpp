@@ -14,25 +14,45 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file local_scope.cpp
+ * @brief This file contains the implementation of the LocalScope class.
  */
 
-#pragma once
+#include "local_scope.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Frontend;
 
-#include "token.hpp"
+LocalScope::LocalScope() : m_localCount(0) {
+}
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
+LocalScope::LocalScope(std::shared_ptr<LocalScope> enclosing) : m_enclosing(enclosing), m_localCount(0) {
+}
 
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
+auto LocalScope::enclosing() const -> std::optional<std::shared_ptr<LocalScope>> const & {
+    return m_enclosing;
+}
+
+auto LocalScope::local(uint16_t index) const -> Local const & {
+    return *m_locals[index];
+}
+
+auto LocalScope::localCount() const -> uint16_t const & {
+    return m_localCount;
+}
+
+auto LocalScope::addLocal(cppLox::Frontend::Token name, std::function<void(std::string &)> onError) -> void {
+    if (m_localCount == 256) {
+        std::string message = "Too many local variables in function";
+        onError(message);
     }
-};
+    m_locals[m_localCount] = std::make_unique<Local>(name, -1);
+    m_localCount++;
+}
+
+auto LocalScope::markInitialized(uint16_t depth) -> void {
+    m_locals[m_localCount - 1]->m_depth = depth;
+}
+
+auto LocalScope::popLocal() -> void {
+    m_localCount--;
+}
