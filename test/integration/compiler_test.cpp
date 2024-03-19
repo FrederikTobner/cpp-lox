@@ -22,12 +22,12 @@ class CompilerIntegrationTest : public ::testing::Test {
 
     void SetUp() override {
         tokens.clear();
-        objectFunction = nullptr;
+        objectFunction = std::nullopt;
     }
 
     template <class... Opcodes>
         requires cppLox::Frontend::IsPackOfEitherOf<int, cppLox::ByteCode::Opcode, Opcodes...>
-    void assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) {
+    auto assertChunkContaintsExactlyInOrder(Opcodes... expectedOpCodes) -> void {
         ASSERT_TRUE(objectFunction.has_value()) << "Expected compiled function to have a value but it was empty.";
         cppLox::ByteCode::Chunk * chunk = objectFunction.value()->chunk();
         constexpr size_t expectedOpCodeAmount = sizeof...(expectedOpCodes);
@@ -55,6 +55,10 @@ class CompilerIntegrationTest : public ::testing::Test {
         }
     }
 
+    auto getObjectAt(size_t index) -> cppLox::Types::Object * {
+        return memoryMutator->m_objects[index].get();
+    }
+
     std::unique_ptr<cppLox::Frontend::Compiler> compiler;
     std::shared_ptr<cppLox::MemoryMutator> memoryMutator;
     std::vector<cppLox::Frontend::Token> tokens;
@@ -76,6 +80,45 @@ TEST_F(CompilerIntegrationTest, AdditionExpression) {
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::CONSTANT, 0, cppLox::ByteCode::Opcode::CONSTANT, 1,
                                        cppLox::ByteCode::Opcode::ADD, cppLox::ByteCode::Opcode::POP,
                                        cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, CallExpression) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "a", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    objectFunction = compiler->compile(tokens);
+
+    // Assert
+    assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::GET_GLOBAL, 0, cppLox::ByteCode::Opcode::CALL, 0,
+                                       cppLox::ByteCode::Opcode::POP, cppLox::ByteCode::Opcode::NULL_,
+                                       cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, FunctionDefinition) {
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::FUN, "fun", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::IDENTIFIER, "a", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_PARENTHESES, "(", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_PARENTHESES, ")", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::LEFT_BRACE, "{", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RIGHT_BRACE, "}", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    objectFunction = compiler->compile(tokens);
+
+    // Assert
+    cppLox::Types::ObjectString functionName("a");
+    auto functionObject = getObjectAt(3)->as<cppLox::Types::ObjectFunction>();
+    ASSERT_EQ(functionObject->arity(), 0);
+    ASSERT_EQ(functionObject->name()->string(), "a");
+    ASSERT_EQ(functionObject->chunk()->getSize(), 2);
+    ASSERT_EQ(functionObject->chunk()->getByte(0), cppLox::ByteCode::Opcode::NULL_);
+    ASSERT_EQ(functionObject->chunk()->getByte(1), cppLox::ByteCode::Opcode::RETURN);
 }
 
 TEST_F(CompilerIntegrationTest, DivisionExpression) {

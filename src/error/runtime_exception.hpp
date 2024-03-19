@@ -22,6 +22,7 @@
 
 #include <exception>
 #include <string>
+#include <string_view>
 
 namespace cppLox::Error {
 

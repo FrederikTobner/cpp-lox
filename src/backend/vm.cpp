@@ -21,6 +21,7 @@
 #include "vm.hpp"
 
 #include <iostream>
+#include <optional>
 #include <ranges>
 
 #include "../bytecode/opcode.hpp"
@@ -37,7 +38,7 @@ VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
     m_stack_top = 0;
     m_frame_count = 0;
     m_memoryMutator = memoryMutator;
-    defineNative("clock", &clock);
+    defineNative<0>("clock", &clock);
 }
 
 auto VM::interpret(cppLox::Types::ObjectFunction & function) -> void {
@@ -299,6 +300,10 @@ auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame
         call(*function, arg_count);
     } else if (object->is(cppLox::Types::Object::Type::NATIVE_FUNCTION)) {
         cppLox::Types::ObjectNativeFunction * function = object->as<cppLox::Types::ObjectNativeFunction>();
+        auto arity = function->arity();
+        if (arity != -1 && arity != arg_count) {
+            runTimeError(frame, "Expected %d arguments but got %d", arity, arg_count);
+        }
         cppLox::Types::Value result =
             function->call(arg_count, &m_stack[m_stack_top - arg_count], frame,
                            [&](CallFrame & frame, std::string_view fmt) { runTimeError(frame, fmt); });
@@ -320,17 +325,18 @@ auto VM::call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> vo
     run(function);
 }
 
+template <int16_t ARITY>
 auto VM::defineNative(std::string const & name,
                       std::function<cppLox::Types::Value(int, cppLox::Types::Value *, CallFrame &,
                                                          std::function<void(CallFrame &, std::string_view fmt)>)>
                           function) -> void {
-    auto nameAsObj = m_memoryMutator->create<cppLox::Types::ObjectString>(name);
-    auto nativeFunction = m_memoryMutator->create<cppLox::Types::ObjectNativeFunction>(function);
-    push(m_frames[m_frame_count], cppLox::Types::Value(nameAsObj));
-    push(m_frames[m_frame_count], cppLox::Types::Value(nativeFunction));
-    m_memoryMutator->setGlobal(
-        m_memoryMutator->create<cppLox::Types::ObjectString>(name)->as<cppLox::Types::ObjectString>(),
-        m_memoryMutator->create<cppLox::Types::ObjectNativeFunction>(function));
+    static_assert(ARITY >= -1);
+    auto nameObj = m_memoryMutator->create<cppLox::Types::ObjectString>(name);
+    cppLox::Types::Object * nativeFunctionObj =
+        m_memoryMutator->create<cppLox::Types::ObjectNativeFunction>(function, ARITY);
+    push(m_frames[m_frame_count], cppLox::Types::Value(nameObj));
+    push(m_frames[m_frame_count], cppLox::Types::Value(nativeFunctionObj));
+    m_memoryMutator->setGlobal(nameObj->as<cppLox::Types::ObjectString>(), nativeFunctionObj);
     pop(m_frames[m_frame_count]);
     pop(m_frames[m_frame_count]);
 }

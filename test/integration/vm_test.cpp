@@ -24,13 +24,13 @@ class VMIntegrationTest : public ::testing::Test {
         vm = std::make_unique<cppLox::Backend::VM>(memoryMutator);
     }
 
-    void SetUp() override {
+    auto SetUp() -> void override {
         vm->resetStack();
     }
 
     template <class... Opcodes>
         requires cppLox::Frontend::IsPackOfEitherOf<size_t, cppLox::ByteCode::Opcode, Opcodes...>
-    void writeMultipleToChunk(Opcodes... expectedOpCodes) {
+    auto writeMultipleToChunk(Opcodes... expectedOpCodes) -> void {
         constexpr size_t amountOfOpcodesToWrite = sizeof...(expectedOpCodes);
         std::array<std::variant<size_t, cppLox::ByteCode::Opcode>, amountOfOpcodesToWrite> opcodes = {
             expectedOpCodes...};
@@ -39,11 +39,11 @@ class VMIntegrationTest : public ::testing::Test {
         }
     }
 
-    cppLox::Backend::CallFrame & getTopFrame() {
+    auto getTopFrame() -> cppLox::Backend::CallFrame & {
         return vm->m_frames[0];
     }
 
-    void interpret() {
+    auto interpret() -> void {
         vm->interpret(function);
         // The value on top of the stack is popped when the function returns,
         // so we need to increment the stack top to get the value that was on top of the stack

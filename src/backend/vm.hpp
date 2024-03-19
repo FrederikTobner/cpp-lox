@@ -21,6 +21,7 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <format>
 #include <functional>
 
@@ -83,12 +84,26 @@ class VM {
     /// @param ...args The arguments to the format string
     template <class... Args> auto runTimeError(CallFrame & frame, std::string_view fmt, Args &&... args) -> void;
 
+    /// @brief Calls the given function with the given argument count
+    /// @param value The value to call
+    /// @param arg_count The amount of arguments to pass to the function
+    /// @param frame The call frame
     auto callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void;
 
+    /// @brief Calls the given function with the given argument count
+    /// @param function The function to call
+    /// @param arg_count The amount of arguments to pass to the function
     auto call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> void;
 
+    /// @brief Runs the given function
+    /// @param function The function to run
     auto run(cppLox::Types::ObjectFunction & function) -> void;
 
+    /// @brief Defines a native function with the given name and function
+    /// @tparam ARITY The arity of the function
+    /// @param name The name of the function
+    /// @param function The function that is wrapped in the native function object
+    template <int16_t ARITY>
     auto defineNative(std::string const & name,
                       std::function<cppLox::Types::Value(int, cppLox::Types::Value *, CallFrame &,
                                                          std::function<void(CallFrame &, std::string_view fmt)>)>

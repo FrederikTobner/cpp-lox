@@ -20,9 +20,11 @@
 
 #pragma once
 
+#include <cstdint>
+
 namespace cppLox::Frontend {
 /// @brief The type of a function.
-enum class FunctionType {
+enum class FunctionType : uint8_t {
     /// @brief The type of a function
     FUNCTION,
     /// @brief The type of top-level code

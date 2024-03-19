@@ -1,5 +1,7 @@
 #include "base_e2e_test_fixture.hpp"
 
+#include "../../src/error/runtime_exception.hpp"
+
 class FunctionE2ETest : public BaseE2ETestFixture {};
 
 TEST_F(FunctionE2ETest, PrintFunction) {
@@ -50,10 +52,34 @@ TEST_F(FunctionE2ETest, FunctionReturn) {
     ASSERT_EQ(expected, output);
 }
 
-TEST_F(FunctionE2ETest, NativeFunctionClock) {
+TEST_F(FunctionE2ETest, CallString) {
     // Arrange
-    std::string source = "print clock();";
+    std::string source = R"(var a = \"foo\"; a();)";
 
     // Act & Assert
-    ASSERT_NO_THROW(runAndCaptureStdout(source));
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
+}
+
+TEST_F(FunctionE2ETest, CallNumber) {
+    // Arrange
+    std::string source = R"(var a = 1; a();)";
+
+    // Act & Assert
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
+}
+
+TEST_F(FunctionE2ETest, CallBool) {
+    // Arrange
+    std::string source = R"(var a = true; a();)";
+
+    // Act & Assert
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
+}
+
+TEST_F(FunctionE2ETest, CallNull) {
+    // Arrange
+    std::string source = R"(var a = null; a();)";
+
+    // Act & Assert
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }

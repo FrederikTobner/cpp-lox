@@ -10,7 +10,7 @@
 
 class ChunkTest : public ::testing::Test {
   protected:
-    void SetUp() override {
+    auto SetUp() -> void override {
         chunk = cppLox::ByteCode::Chunk();
     }
 

@@ -20,6 +20,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <iostream>
 #include <string>
 
@@ -28,7 +29,7 @@
 namespace cppLox::ByteCode {
 
 /// @brief The opcodes of the intermediate language
-enum Opcode {
+enum Opcode : uint8_t {
     /// @brief Pops the top two values off the stack, adds them, and pushes the result back on the stack.
     ADD,
     /// @brief Calls the function at the given index on the stack.

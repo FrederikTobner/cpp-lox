@@ -34,10 +34,17 @@
 #include "simple_comperator.hpp"
 #include "string_hash.hpp"
 
+// Forward declaration of the compiler integration test class.
+class CompilerIntegrationTest;
+
 namespace cppLox {
 
 /// @brief The memory mutator that manages the creation and deletion of all objects.
 class MemoryMutator {
+
+    // To access the objects stored in the memory mutator we need to be able to access them. This is done for testing
+    // purposes.
+    friend class CompilerIntegrationTest;
 
   public:
     /// @brief Creates a new memory mutator.
@@ -69,12 +76,6 @@ class MemoryMutator {
 
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
-    }
-
-    template <cppLox::Types::DerivedFromObject T> auto registerObject(T * object) -> cppLox::Types::Object * {
-        auto objWidened = static_cast<cppLox::Types::Object *>(object);
-        m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(objWidened));
-        return objWidened;
     }
 
     /// @brief Sets the global variable with the given name to the given value.

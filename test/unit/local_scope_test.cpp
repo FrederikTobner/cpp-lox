@@ -5,7 +5,7 @@
 
 class LocalScopeTest : public ::testing::Test {
   protected:
-    void SetUp() override {
+    auto SetUp() -> void override {
         localScope = std::make_shared<cppLox::Frontend::LocalScope>();
     }
 

@@ -20,6 +20,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include "../types/object_function.hpp"
 #include "../types/value.hpp"
 

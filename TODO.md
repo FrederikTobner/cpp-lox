@@ -22,3 +22,4 @@
 
 * After decaclaring a global variable, the value is not popped from the stack
 * The lexer does not handle some input properly. Trailing whitespace characters are breaking the lexical analysis
+* Having an implicit return of null adds two return null bytecode equivalent instructions to the end of every function

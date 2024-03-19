@@ -14,7 +14,7 @@ class BaseE2ETestFixture : public ::testing::Test {
     auto SetUp() -> void override;
     auto runAndCaptureStdout(std::string & source) -> std::string;
     auto runProgramm(std::string & source) -> void;
-    void runProgrammThrowingException(std::string & source);
+    auto runProgrammThrowingException(std::string & source) -> void;
 
   private:
     std::unique_ptr<cppLox::Frontend::Lexer> lexer;

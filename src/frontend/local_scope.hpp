@@ -21,12 +21,11 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <functional>
 #include <memory>
 #include <optional>
 #include <string>
-
-#include <cstdint>
 
 #include "local.hpp"
 

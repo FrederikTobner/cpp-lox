@@ -20,9 +20,8 @@
 
 #pragma once
 
+#include <cstdint>
 #include <string>
-
-#include <cstddef>
 
 #include "token.hpp"
 
@@ -40,19 +39,19 @@ class Local {
     /// @brief Constructor of the local variable.
     /// @param token The token of the name of the local variable.
     /// @param depth The depth of the local variable.
-    Local(cppLox::Frontend::Token & token, std::int32_t depth);
+    Local(cppLox::Frontend::Token & token, int32_t depth);
 
     /// @brief Gets the token of the name of the local variable.
     auto getToken() const noexcept -> cppLox::Frontend::Token const &;
 
     /// @brief Gets the depth of the local variable.
-    auto getDepth() const noexcept -> std::int32_t;
+    auto getDepth() const noexcept -> int32_t;
 
   private:
     /// @brief The token of the name of the local variable.
     cppLox::Frontend::Token m_token;
 
     /// @brief The depth of the local variable.
-    std::int32_t m_depth;
+    int32_t m_depth;
 };
 } // namespace cppLox::Frontend
