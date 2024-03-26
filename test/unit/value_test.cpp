@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include <memory>
 #include <sstream>
 #include <string>
 #include <utility>
@@ -257,4 +258,18 @@ TEST_P(ValuePrintedTest, ExtractionOperator) {
 TEST_P(ValuePrintedTest, Formatter) {
     auto [value, expected] = GetParam();
     EXPECT_EQ(std::format("{}", value), expected);
+}
+
+TEST(ValuePrintedTest, ExtractionOperatorOnObject) {
+    auto stringObj = std::make_unique<cppLox::Types::ObjectString>("test");
+    cppLox::Types::Value value(static_cast<cppLox::Types::Object *>(stringObj.get()));
+    std::ostringstream oss;
+    oss << value;
+    EXPECT_EQ(oss.str(), "test");
+}
+
+TEST(ValuePrintedTest, FormatObject) {
+    auto stringObj = std::make_unique<cppLox::Types::ObjectString>("test");
+    cppLox::Types::Value value(static_cast<cppLox::Types::Object *>(stringObj.get()));
+    EXPECT_EQ(std::format("{}", value), "test");
 }

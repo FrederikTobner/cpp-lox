@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../../src/bytecode/opcode.hpp"
+#include "../../src/error/runtime_exception.hpp"
 #include "../../src/frontend/compiler.hpp"
 #include "../../src/frontend/token.hpp"
 #include "../../src/memory_mutator.hpp"
@@ -413,6 +414,23 @@ TEST_F(CompilerIntegrationTest, NullLiteralExpression) {
     // Assert
     assertChunkContaintsExactlyInOrder(cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::POP,
                                        cppLox::ByteCode::Opcode::NULL_, cppLox::ByteCode::Opcode::RETURN);
+}
+
+TEST_F(CompilerIntegrationTest, ReturnFromTopLevelCode) {
+    // Arrange
+    tokens = {cppLox::Frontend::Token(cppLox::Frontend::Token::Type::RETURN, "return", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::NUMBER, "1", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::SEMICOLON, ";", 1),
+              cppLox::Frontend::Token(cppLox::Frontend::Token::Type::END_OF_FILE, "", 1)};
+
+    // Act
+    testing::internal::CaptureStderr();
+    objectFunction = compiler->compile(tokens);
+    auto out = testing::internal::GetCapturedStderr();
+
+    // Assert
+    ASSERT_FALSE(objectFunction.has_value());
+    ASSERT_EQ(out, "Cannot return from top-level code at line 1\n");
 }
 
 TEST_F(CompilerIntegrationTest, SubtractionExpression) {

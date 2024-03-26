@@ -13,13 +13,27 @@
  * License for more details.                                                *
  ****************************************************************************/
 
+/**
+ * @file object_native_function.cpp
+ * @brief This file contains the implementation of the ObjectNativeFunction class.
+ */
+
 #include "object_native_fuction.hpp"
 
 using namespace cppLox::Types;
 
-auto ObjectNativeFunction::call(uint8_t argCount, Value * args, cppLox::Backend::CallFrame & frame,
-                                std::function<void(cppLox::Backend::CallFrame & frame, std::string_view fmt)> onError)
-    -> Value {
+ObjectNativeFunction::ObjectNativeFunction(
+    std::function<Value(int, Value *, cppLox::Backend::CallFrame & frame,
+                        std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError)>
+        function,
+    int16_t arity)
+    : m_function(function), m_arity(arity) {
+    m_type = Object::Type::NATIVE_FUNCTION;
+}
+
+auto ObjectNativeFunction::call(
+    uint8_t argCount, Value * args, cppLox::Backend::CallFrame & frame,
+    std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError) -> Value {
     return m_function(argCount, args, frame, onError);
 }
 

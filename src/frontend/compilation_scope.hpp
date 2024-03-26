@@ -50,7 +50,7 @@ class CompilationScope {
 
     /// @brief Gets the enclosing scope.
     /// @return The enclosing scope.
-    [[nodiscard]] auto enclosing() const -> std::optional<std::shared_ptr<CompilationScope>> const &;
+    [[nodiscard]] auto enclosing() const -> std::shared_ptr<CompilationScope> const &;
 
     /// @brief Gets the function to compile.
     /// @return The function to compile.
@@ -74,7 +74,7 @@ class CompilationScope {
 
   private:
     /// @brief The enclosing scope.
-    std::optional<std::shared_ptr<CompilationScope>> m_enclosing;
+    std::shared_ptr<CompilationScope> m_enclosing;
 
     /// @brief The function to compile.
     cppLox::Types::ObjectFunction * m_function;

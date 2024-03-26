@@ -13,6 +13,11 @@
  * License for more details.                                                *
  ****************************************************************************/
 
+/**
+ * @file object_native_fuction.hpp
+ * @brief This file contains the declaration of the ObjectNativeFunction class.
+ */
+
 #pragma once
 
 #include <cstdint>
@@ -25,17 +30,19 @@
 
 namespace cppLox::Types {
 
+/// @brief The Object Native Function class.
 class ObjectNativeFunction : public Object {
   public:
+    /// @brief Construct a new Object Native Function.
+    /// @param function The function to call.
+    /// @param arity The number of arguments the function takes.
     ObjectNativeFunction(
         std::function<Value(int, Value *, cppLox::Backend::CallFrame & frame,
-                            std::function<void(cppLox::Backend::CallFrame & frame, std::string_view fmt)> onError)>
+                            std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError)>
             function,
-        int16_t arity)
-        : m_function(function), m_arity(arity) {
-        m_type = Object::Type::NATIVE_FUNCTION;
-    }
+        int16_t arity);
 
+    /// @brief Destructor for the Object Native Function class.
     ~ObjectNativeFunction() = default;
 
     /// @brief Writes the native function to the output stream.
@@ -45,15 +52,24 @@ class ObjectNativeFunction : public Object {
         os << "<native fn>";
     }
 
+    /// @brief Calls the underlying function.
+    /// @param argCount The number of arguments passed to the function.
+    /// @param args The arguments passed to the function.
+    /// @param frame The call frame from which the function was called.
+    /// @param onError The error handler.
+    /// @return The result of the function call.
     auto call(uint8_t argCount, Value * args, cppLox::Backend::CallFrame & frame,
               std::function<void(cppLox::Backend::CallFrame & frame, std::string_view fmt)> onError) -> Value;
 
     auto arity() const -> int16_t;
 
   private:
+    /// @brief The function to call.
     std::function<Value(int, Value *, cppLox::Backend::CallFrame & frame,
-                        std::function<void(cppLox::Backend::CallFrame & frame, std::string_view fmt)> onError)>
+                        std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError)>
         m_function;
+
+    /// @brief The number of arguments the function takes.
     int16_t m_arity;
 };
 

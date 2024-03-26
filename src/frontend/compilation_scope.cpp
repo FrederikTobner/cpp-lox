@@ -23,7 +23,7 @@
 using namespace cppLox::Frontend;
 
 CompilationScope::CompilationScope(cppLox::Types::ObjectFunction * function, FunctionType type) {
-    m_enclosing = std::nullopt;
+    m_enclosing = nullptr;
     m_function = function;
     m_scopeDepth = 0;
     m_currentFunctionType = type;
@@ -38,7 +38,7 @@ CompilationScope::CompilationScope(std::shared_ptr<CompilationScope> enclosing,
     m_localScope = std::make_shared<LocalScope>();
 }
 
-auto CompilationScope::enclosing() const -> std::optional<std::shared_ptr<CompilationScope>> const & {
+auto CompilationScope::enclosing() const -> std::shared_ptr<CompilationScope> const & {
     return m_enclosing;
 }
 

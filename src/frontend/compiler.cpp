@@ -247,8 +247,8 @@ auto Compiler::endCompilation() -> cppLox::Types::ObjectFunction * {
 #ifdef DEBUG_PRINT_CODE
     function->chunk()->disassemble(function->name() != nullptr ? function->name()->string() : "<script>");
 #endif
-    if (m_currentScope->enclosing().has_value()) {
-        m_currentScope = m_currentScope->enclosing().value();
+    if (m_currentScope->enclosing().get() != nullptr) {
+        m_currentScope = m_currentScope->enclosing();
     }
     return function;
 }
@@ -515,7 +515,7 @@ auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign)
 }
 
 auto Compiler::returnStatement(std::vector<Token> const & tokens) -> void {
-    if (!m_currentScope->enclosing().has_value()) {
+    if (m_currentScope->enclosing().get() == nullptr) {
         error("Cannot return from top-level code");
     }
     if (match(Token::Type::SEMICOLON, tokens)) {
