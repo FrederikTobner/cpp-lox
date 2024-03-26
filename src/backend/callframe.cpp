@@ -14,25 +14,27 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file callframe.cpp
+ * @brief This file contains the implementation of the CallFrame class.
  */
 
-#pragma once
+#include "callframe.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Backend;
 
-#include "token.hpp"
+CallFrame::CallFrame(cppLox::Types::ObjectFunction * function, cppLox::Types::Value * slots)
+    : m_function(function), m_slots(slots) {
+    m_instruction_pointer = function->chunk()->code().data();
+}
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
+[[nodiscard]] auto CallFrame::function() const noexcept -> cppLox::Types::ObjectFunction * {
+    return m_function;
+}
 
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
-};
+[[nodiscard]] auto CallFrame::instructionPointer() const noexcept -> uint8_t * {
+    return m_instruction_pointer;
+}
+
+[[nodiscard]] auto CallFrame::slots() const noexcept -> cppLox::Types::Value * {
+    return m_slots;
+}

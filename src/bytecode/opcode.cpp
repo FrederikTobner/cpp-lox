@@ -1,9 +1,31 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file opcode.cpp
+ * @brief This file contains the functions for the Opcode enum.
+ */
+
 #include "opcode.hpp"
 
 [[nodiscard]] auto cppLox::ByteCode::opcode_as_string(const cppLox::ByteCode::Opcode value) -> std::string_view {
     switch (value) {
     case Opcode::ADD:
         return "ADD";
+    case Opcode::CALL:
+        return "CALL";
     case Opcode::CONSTANT:
         return "CONSTANT";
     case Opcode::DEFINE_GLOBAL:

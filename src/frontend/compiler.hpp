@@ -1,6 +1,27 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file compiler.hpp
+ * @brief This file contains the declaration of the Compiler class.
+ */
+
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <memory>
 #include <optional>
 #include <string>
@@ -9,7 +30,9 @@
 
 #include "../bytecode/chunk.hpp"
 #include "../memory_mutator.hpp"
+#include "../types/object_function.hpp"
 #include "compilation_scope.hpp"
+#include "function_type.hpp"
 #include "parse_rule.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
@@ -32,7 +55,7 @@ class Compiler {
     /// @brief Compiles the given tokens.
     /// @param tokens The tokens that are compiled.
     /// @return The compiled chunk.
-    [[nodiscard]] auto compile(std::vector<Token> const & tokens) -> std::unique_ptr<cppLox::ByteCode::Chunk>;
+    [[nodiscard]] auto compile(std::vector<Token> const & tokens) -> std::optional<cppLox::Types::ObjectFunction *>;
 
   private:
     /// @brief Advances to the next token.
@@ -40,6 +63,8 @@ class Compiler {
     auto advance(std::vector<Token> const & tokens) -> void;
 
     auto and_(std::vector<Token> const & tokens) -> void;
+
+    auto argumentList(std::vector<Token> const & tokens) -> uint8_t;
 
     /// @brief Begins a new scope.
     auto beginScope() -> void;
@@ -51,6 +76,10 @@ class Compiler {
     /// @brief Compiles a binary expression.
     /// @param tokens The tokens that are compiled.
     auto binary(std::vector<Token> const & tokens) -> void;
+
+    /// @brief Compiles a call expression.
+    /// @param tokens The tokens that are compiled.
+    auto call(std::vector<Token> const & tokens) -> void;
 
     /// @brief Checks whether the current token is of the given type.
     /// @param type The given type of the token.
@@ -111,11 +140,13 @@ class Compiler {
     /// @param loopStart The index of the loop start.
     auto inline emitLoop(int32_t loopStart) -> void;
 
+    auto inline emitReturn() -> void;
+
     /// @brief Ends the current scope.
     auto endScope() -> void;
 
     /// @brief Ends the compilation.
-    auto endCompilation() -> void;
+    auto endCompilation() -> cppLox::Types::ObjectFunction *;
 
     /// @brief Throws an exception at the previous token.
     /// @param message The message to display.
@@ -141,6 +172,10 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto forStatement(std::vector<Token> const & tokens) -> void;
 
+    auto funDeclaration(std::vector<Token> const & tokens) -> void;
+
+    auto function(FunctionType type, std::vector<Token> const & tokens) -> void;
+
     /// @brief Compiles a grouping expression.
     /// @param tokens The tokens that are compiled.
     auto grouping(std::vector<Token> const & tokens, bool canAssign) -> void;
@@ -161,7 +196,7 @@ class Compiler {
     auto ifStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Initializes the compiler scope.
-    auto initCompiler() -> void;
+    auto initCompiler(FunctionType type) -> void;
 
     /// @brief Compiles an literal expression.
     /// @param tokens The tokens that are compiled.
@@ -170,6 +205,8 @@ class Compiler {
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
     auto makeConstant(cppLox::Types::Value value) -> void;
+
+    auto markInitialized() -> void;
 
     /// @brief Matches the current token with the given type and advances to the next token if it matches.
     /// @param type The type of the token.
@@ -215,7 +252,9 @@ class Compiler {
     /// @param name The name of the variable.
     /// @param tokens The tokens that are compiled.
     /// @return The index of the variable in the chunk.
-    [[nodiscard]] auto resolveLocal(Token const & name, CompilationScope const & scope) -> int;
+    [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
+
+    auto returnStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a statement.
     /// @param tokens The tokens that are compiled.
@@ -252,7 +291,7 @@ class Compiler {
     static std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
         std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
         rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
-            ParseRule<Compiler>(&Compiler::grouping, std::nullopt, Precedence::NONE);
+            ParseRule<Compiler>(&Compiler::grouping, &Compiler::call, Precedence::CALL);
         rules[static_cast<size_t>(Token::Type::RIGHT_PARENTHESES)] =
             ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
         rules[static_cast<size_t>(Token::Type::LEFT_BRACE)] =
@@ -336,17 +375,14 @@ class Compiler {
     Token const * m_current;
     /// @brief The index of the current token.
     size_t m_currentTokenIndex;
-    /// @brief The chunk that is currently compiled.
-    cppLox::ByteCode::Chunk * m_chunk;
     /// @brief The memory manager.
     std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
     /// @brief The rules for the different token types.
     static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
     /// @brief Whether the compiler is in panic mode.
     bool m_panicMode;
-    /// @brief The current compiler context.
-    std::shared_ptr<CompilationScope> m_current_scope;
-    /// The scope depth.
-    uint16_t m_scopeDepth;
+    /// Whether the compilation resulted in an error.
+    bool m_hadError;
+    std::shared_ptr<CompilationScope> m_currentScope;
 };
 } // namespace cppLox::Frontend

@@ -6,3 +6,5 @@ build/
 .cache
 # Test programs
 testprograms/
+# dev scripts
+scripts/

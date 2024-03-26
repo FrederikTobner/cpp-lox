@@ -1,3 +1,23 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file memory_mutator.hpp
+ * @brief This file contains the memory mutator that manages the creation and deletion of all objects.
+ */
+
 #pragma once
 
 #include <iostream>
@@ -7,16 +27,24 @@
 #include <vector>
 
 #include "types/object.hpp"
+#include "types/object_native_fuction.hpp"
 #include "types/object_string.hpp"
 #include "types/value.hpp"
 
 #include "simple_comperator.hpp"
 #include "string_hash.hpp"
 
+// Forward declaration of the compiler integration test class.
+class CompilerIntegrationTest;
+
 namespace cppLox {
 
 /// @brief The memory mutator that manages the creation and deletion of all objects.
 class MemoryMutator {
+
+    // To access the objects stored in the memory mutator we need to be able to access them. This is done for testing
+    // purposes.
+    friend class CompilerIntegrationTest;
 
   public:
     /// @brief Creates a new memory mutator.
@@ -45,6 +73,7 @@ class MemoryMutator {
         } else {
             object = static_cast<cppLox::Types::Object *>(new T(std::forward<Args>(args)...));
         }
+
         m_objects.push_back(std::unique_ptr<cppLox::Types::Object>(object));
         return object;
     }

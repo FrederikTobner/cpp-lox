@@ -14,25 +14,21 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file function_type.hpp
+ * @brief This file contains the FunctionType enum.
  */
 
 #pragma once
 
-#include <format>
-#include <string>
+#include <cstdint>
 
-#include "token.hpp"
-
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
-
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
+namespace cppLox::Frontend {
+/// @brief The type of a function.
+enum class FunctionType : uint8_t {
+    /// @brief The type of a function
+    FUNCTION,
+    /// @brief The type of top-level code
+    SCRIPT,
 };
+
+} // namespace cppLox::Frontend

@@ -33,7 +33,7 @@ TEST_F(BinaryOperatorE2ETest, DivisionOfStrings) {
     std::string source = "\"a\" / \"b\";";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(BinaryOperatorE2ETest, Equal) {
@@ -113,7 +113,7 @@ TEST_F(BinaryOperatorE2ETest, MultiplicationOfStrings) {
     std::string source = "\"a\" * \"b\";";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(BinaryOperatorE2ETest, NotEqual) {
@@ -130,7 +130,7 @@ TEST_F(BinaryOperatorE2ETest, NotEqual) {
 
 TEST_F(BinaryOperatorE2ETest, StringConcatenation) {
     // Arrange
-    std::string source = "print \"a\" + \"b\";";
+    std::string source = R"(print "a" + "b";)";
     std::string expected = "ab\n";
 
     // Act
@@ -154,12 +154,12 @@ TEST_F(BinaryOperatorE2ETest, Subtraction) {
 
 TEST_F(BinaryOperatorE2ETest, SubtractionWithString) {
     // Arrange
-    std::string stringFirst = "\"foo\" - 1;";
-    std::string stringSecond = "1 - \"foo\";";
+    std::string stringFirst = R"("foo" - 1;)";
+    std::string stringSecond = R"(1 - "foo";)";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(stringFirst), cppLox::Error::RunTimeException);
-    ASSERT_THROW(runProgramm(stringSecond), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(stringFirst), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(stringSecond), cppLox::Error::RunTimeException);
 }
 
 TEST_F(BinaryOperatorE2ETest, SubtractionWithBoolean) {
@@ -168,8 +168,8 @@ TEST_F(BinaryOperatorE2ETest, SubtractionWithBoolean) {
     std::string booleanSecond = "1 - true;";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(booleanFirst), cppLox::Error::RunTimeException);
-    ASSERT_THROW(runProgramm(booleanSecond), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(booleanFirst), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(booleanSecond), cppLox::Error::RunTimeException);
 }
 
 TEST_F(BinaryOperatorE2ETest, SubtractionWithNil) {
@@ -178,6 +178,6 @@ TEST_F(BinaryOperatorE2ETest, SubtractionWithNil) {
     std::string nullSecond = "1 - null;";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(nullFirst), cppLox::Error::RunTimeException);
-    ASSERT_THROW(runProgramm(nullSecond), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(nullFirst), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(nullSecond), cppLox::Error::RunTimeException);
 }

@@ -18,10 +18,10 @@ TEST_F(UnaryOperatorE2ETest, Negate) {
 
 TEST_F(UnaryOperatorE2ETest, NegateOnString) {
     // Arrange
-    std::string source = "print -\"a\";";
+    std::string source = R"(print -"a";)";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(UnaryOperatorE2ETest, NegateOnBool) {
@@ -29,7 +29,7 @@ TEST_F(UnaryOperatorE2ETest, NegateOnBool) {
     std::string source = "print -true;";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(UnaryOperatorE2ETest, Not) {
@@ -57,11 +57,12 @@ TEST_F(UnaryOperatorE2ETest, NotOnNumber) {
 
 TEST_F(UnaryOperatorE2ETest, NotOnString) {
     // Arrange
-    std::string source = "print !\"a\";";
+    std::string source = R"(print !"a";)";
+    std::string expected = "false\n";
 
     // Act
     std::string output = runAndCaptureStdout(source);
 
     // Assert
-    ASSERT_EQ("false\n", output);
+    ASSERT_EQ(expected, output);
 }

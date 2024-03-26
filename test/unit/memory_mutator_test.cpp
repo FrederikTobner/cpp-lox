@@ -6,7 +6,7 @@
 class MemoryMutatorTest : public ::testing::Test {
   protected:
     std::unique_ptr<cppLox::MemoryMutator> memoryMutator;
-    void SetUp() override {
+    auto SetUp() -> void override {
         memoryMutator = std::make_unique<cppLox::MemoryMutator>();
     }
 };
