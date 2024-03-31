@@ -18,7 +18,6 @@ static auto testFunction(int argCount, cppLox::Types::Value * args, cppLox::Back
     return cppLox::Types::Value();
 }
 
-// Test fixture for ObjectNativeFunction tests.
 class ObjectNativeFunctionTest : public ::testing::Test {
   protected:
     std::unique_ptr<cppLox::Types::Object> object;

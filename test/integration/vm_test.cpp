@@ -5,7 +5,6 @@
 #include "../../src/frontend/compiler.hpp"
 #include "../../src/types/value.hpp"
 
-#include <iostream>
 #include <ranges>
 #include <variant>
 

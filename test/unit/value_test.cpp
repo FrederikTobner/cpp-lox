@@ -1,14 +1,11 @@
 #include <gtest/gtest.h>
 
-#include <memory>
-#include <sstream>
-#include <string>
 #include <utility>
 
-#include "../../src/types/value.hpp"
-
 #include "../../src/error/runtime_exception.hpp"
+#include "../../src/types/value.hpp"
 #include "../../src/types/value_formatter.hpp"
+
 
 class ValueTest : public ::testing::Test {
   protected:

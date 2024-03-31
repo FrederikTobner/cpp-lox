@@ -1,8 +1,5 @@
 #include "../../src/frontend/lexer.hpp"
 
-#include <string>
-#include <vector>
-
 #include <gtest/gtest.h>
 
 // Test fixture for Lexer tests

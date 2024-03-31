@@ -1,15 +1,8 @@
 #include "../../src/types/object_formatter.hpp"
 #include "../../src/types/object_function.hpp"
 
-#include <functional>
-#include <memory>
-#include <sstream>
-#include <string>
-#include <string_view>
-
 #include <gtest/gtest.h>
 
-// Test fixture for ObjectNativeFunction tests.
 class ObjectFunctionTest : public ::testing::Test {
   protected:
     std::unique_ptr<cppLox::Types::Object> object;

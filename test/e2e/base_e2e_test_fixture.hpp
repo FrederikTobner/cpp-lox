@@ -1,8 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <memory>
-#include <string_view>
-
 #include "../../src/backend/vm.hpp"
 #include "../../src/frontend/compiler.hpp"
 #include "../../src/frontend/lexer.hpp"

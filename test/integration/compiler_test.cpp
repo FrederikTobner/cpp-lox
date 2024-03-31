@@ -1,10 +1,8 @@
 #include <gtest/gtest.h>
 
-#include <array>
 #include <format>
 #include <ranges>
 #include <variant>
-#include <vector>
 
 #include "../../src/bytecode/opcode.hpp"
 #include "../../src/error/runtime_exception.hpp"

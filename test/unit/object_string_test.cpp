@@ -7,7 +7,6 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for ObjectString tests.
 class ObjectStringTest : public ::testing::Test {
   protected:
     std::unique_ptr<cppLox::Types::Object> object;
