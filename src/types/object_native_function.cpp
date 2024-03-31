@@ -14,25 +14,29 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file object_native_function.cpp
+ * @brief This file contains the implementation of the ObjectNativeFunction class.
  */
 
-#pragma once
+#include "object_native_fuction.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Types;
 
-#include "token.hpp"
+ObjectNativeFunction::ObjectNativeFunction(
+    std::function<Value(int, Value *, cppLox::Backend::CallFrame & frame,
+                        std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError)>
+        function,
+    int16_t arity)
+    : m_function(function), m_arity(arity) {
+    m_type = Object::Type::NATIVE_FUNCTION;
+}
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
+auto ObjectNativeFunction::call(
+    uint8_t argCount, Value * args, cppLox::Backend::CallFrame & frame,
+    std::function<void(cppLox::Backend::CallFrame & frame, std::string_view format)> onError) -> Value {
+    return m_function(argCount, args, frame, onError);
+}
 
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
-};
+auto ObjectNativeFunction::arity() const -> int16_t {
+    return m_arity;
+}

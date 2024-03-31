@@ -1,72 +1,91 @@
+/****************************************************************************
+ * Copyright (C) 2024 by Frederik Tobner                                    *
+ *                                                                          *
+ * This file is part of cpp-lox.                                            *
+ *                                                                          *
+ * Permission to use, copy, modify, and distribute this software and its    *
+ * documentation under the terms of the GNU General Public License is       *
+ * hereby granted.                                                          *
+ * No representations are made about the suitability of this software for   *
+ * any purpose.                                                             *
+ * It is provided "as is" without express or implied warranty.              *
+ * See the <"https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public  *
+ * License for more details.                                                *
+ ****************************************************************************/
+
+/**
+ * @file compilation_scope.hpp
+ * @brief This file contains the declaration of the CompilationScope class.
+ */
+
 #pragma once
 
-#include <array>
-#include <functional>
+#include <cstdint>
 #include <memory>
 #include <optional>
-#include <string>
 
-#include <cstdint>
-
-#include "../error/compiletime_exception.hpp"
-#include "local.hpp"
+#include "../types/object_function.hpp"
+#include "function_type.hpp"
+#include "local_scope.hpp"
 
 namespace cppLox::Frontend {
 
-/// @brief The compilation scope.
+/// @brief Models a compilation scope - meaning a scope in which a function is compiled.
 class CompilationScope {
   public:
-    /// @brief Trivial constructor of the compilation scope.
-    CompilationScope();
+    /// @brief Constructs a new compilation scope.
+    /// @param function The function to compile.
+    /// @param type The type of the function.
+    CompilationScope(cppLox::Types::ObjectFunction * function, FunctionType type);
 
-    /// @brief Constructor of the compilation scope.
-    /// @param enclosing The enclosing compilation scope.
-    CompilationScope(std::shared_ptr<CompilationScope> enclosing);
+    /// @brief Constructs a new compilation scope.
+    /// @param enclosing The enclosing scope.
+    /// @param function The function to compile.
+    /// @param type The type of the function.
+    CompilationScope(std::shared_ptr<CompilationScope> enclosing, cppLox::Types::ObjectFunction * function,
+                     FunctionType type);
 
-    /// @brief Destructor of the compilation scope.
+    /// @brief Destructs the compilation scope.
     ~CompilationScope() = default;
 
-    /// @brief Copy assignment operator of the compilation scope.
-    CompilationScope & operator=(CompilationScope const &) {
-        return *this;
-    };
+    /// @brief Gets the enclosing scope.
+    /// @return The enclosing scope.
+    [[nodiscard]] auto enclosing() const -> std::shared_ptr<CompilationScope> const &;
 
-    /// @brief Gets the enclosing compilation scope.
-    /// @return The enclosing compiler context.
-    [[nodiscard]] auto enclosing() const -> std::optional<std::shared_ptr<CompilationScope>> const &;
+    /// @brief Gets the function to compile.
+    /// @return The function to compile.
+    [[nodiscard]] auto function() const -> cppLox::Types::ObjectFunction *;
 
-    /// @brief Gets the local variable at the given index.
-    /// @param index The index of the local variable.
-    /// @return The local variable at the given index.
-    [[nodiscard]] auto local(uint16_t index) const -> Local const &;
+    /// @brief Gets the type of the current function.
+    /// @return The type of the current function.
+    [[nodiscard]] auto currentFunctionType() const -> FunctionType const &;
 
-    /// @brief Gets the number of local variables.
-    /// @return The number of local variables.
-    [[nodiscard]] auto localCount() const -> uint16_t const &;
+    /// @brief Gets the scope depth.
+    [[nodiscard]] auto scopeDepth() const -> uint16_t const &;
 
-    /// @brief Adds a local variable to the compilation scope.
-    /// @param name The name of the local variable.
-    /// @param depth The depth of the local variable.
-    /// @param onError The error handler.
-    /// @return The index of the local variable.
-    auto addLocal(cppLox::Frontend::Token name, std::function<void(std::string &)> onError) -> void;
+    /// @brief Gets the local scope.
+    [[nodiscard]] auto localScope() const -> std::shared_ptr<LocalScope> const &;
 
-    /// @brief Marks the local variable at the given depth as initialized.
-    /// @param depth The depth of the local variable.
-    /// @return The index of the local variable.
-    auto markInitialized(uint16_t depth) -> void;
+    /// @brief Begins a new scope.
+    auto beginNewScope() -> void;
 
-    /// @brief Pops the local variables from the compilation scope.
-    /// @return The number of local variables popped.
-    auto popLocal() -> void;
+    /// @brief Ends the current scope.
+    auto endScope() -> void;
 
   private:
-    /// The enclosing compiler context.
-    std::optional<std::shared_ptr<CompilationScope>> m_enclosing;
-    /// The local variables.
-    std::array<std::unique_ptr<cppLox::Frontend::Local>, 256> m_locals;
-    /// The number of local variables.
-    uint16_t m_localCount;
-};
+    /// @brief The enclosing scope.
+    std::shared_ptr<CompilationScope> m_enclosing;
 
+    /// @brief The function to compile.
+    cppLox::Types::ObjectFunction * m_function;
+
+    /// @brief The type of the current function.
+    FunctionType m_currentFunctionType;
+
+    /// The scope depth.
+    uint16_t m_scopeDepth;
+
+    /// @brief The current compiler context.
+    std::shared_ptr<LocalScope> m_localScope;
+};
 } // namespace cppLox::Frontend

@@ -14,25 +14,17 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file native_functions.cpp
+ * @brief This file contains the implementation of the native functions that are available to the cpplox interpreter
  */
 
-#pragma once
+#include "native_functions.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Backend;
 
-#include "token.hpp"
-
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
-
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
-};
+cppLox::Types::Value cppLox::Backend::clock(uint8_t argCount, cppLox::Types::Value * args, CallFrame & frame,
+                                            std::function<void(CallFrame & frame, std::string_view fmt)> onError) {
+    return cppLox::Types::Value(static_cast<double>(
+        std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch())
+            .count()));
+}

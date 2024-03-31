@@ -7,11 +7,10 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for ObjectString tests.
 class ObjectStringTest : public ::testing::Test {
   protected:
     std::unique_ptr<cppLox::Types::Object> object;
-    void SetUp() override {
+    auto SetUp() -> void override {
         object = std::unique_ptr<cppLox::Types::Object>(
             static_cast<cppLox::Types::Object *>(new cppLox::Types::ObjectString("Hello World")));
     }

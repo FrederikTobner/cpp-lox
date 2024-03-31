@@ -1,14 +1,11 @@
 #include "../../src/frontend/lexer.hpp"
 
-#include <string>
-#include <vector>
-
 #include <gtest/gtest.h>
 
 // Test fixture for Lexer tests
 class LexerTest : public ::testing::Test {
   protected:
-    void SetUp() override {
+    auto SetUp() -> void override {
         lexer = cppLox::Frontend::Lexer();
     }
 

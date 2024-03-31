@@ -14,25 +14,38 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file object_function.cpp
+ * @brief This file contains the implementation of the ObjectFunction class.
  */
 
-#pragma once
+#include "object_function.hpp"
 
-#include <format>
-#include <string>
+using namespace cppLox::Types;
 
-#include "token.hpp"
+ObjectFunction::ObjectFunction(uint16_t arity, ObjectString * name) : m_arity(arity), m_name(name) {
+    m_type = Object::Type::FUNCTION;
+    m_chunk = std::make_unique<cppLox::ByteCode::Chunk>();
+}
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
-
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
+auto ObjectFunction::operator=(ObjectFunction const & other) -> ObjectFunction & {
+    m_arity = other.m_arity;
+    m_chunk = std::make_unique<cppLox::ByteCode::Chunk>(*other.m_chunk);
+    m_name = other.m_name;
+    return *this;
 };
+
+[[nodiscard]] auto ObjectFunction::arity() const -> uint16_t {
+    return m_arity;
+}
+
+[[nodiscard]] auto ObjectFunction::chunk() -> cppLox::ByteCode::Chunk * {
+    return m_chunk.get();
+}
+
+[[nodiscard]] auto ObjectFunction::name() const -> ObjectString * {
+    return m_name;
+}
+
+auto ObjectFunction::incrementArity() -> void {
+    m_arity++;
+}

@@ -4,13 +4,11 @@
 
 #include <gtest/gtest.h>
 
-#include <format>
-#include <string>
 #include <utility>
 
 class ChunkTest : public ::testing::Test {
   protected:
-    void SetUp() override {
+    auto SetUp() -> void override {
         chunk = cppLox::ByteCode::Chunk();
     }
 
@@ -98,6 +96,7 @@ class ChunkParameterizedConstantInstructionTestFixture
 
 INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedConstantInstructionTestFixture,
                          ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CONSTANT, "CONSTANT"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::DEFINE_GLOBAL, "DEFINE_GLOBAL"),
                                            std::make_pair(cppLox::ByteCode::Opcode::GET_GLOBAL, "GET_GLOBAL"),
                                            std::make_pair(cppLox::ByteCode::Opcode::SET_GLOBAL, "SET_GLOBAL")));
 
@@ -122,7 +121,8 @@ class ChunkParameterizedByteInstructionTestFixture
       public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
 
 INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedByteInstructionTestFixture,
-                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::GET_LOCAL, "GET_LOCAL"),
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::CALL, "CALL"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::GET_LOCAL, "GET_LOCAL"),
                                            std::make_pair(cppLox::ByteCode::Opcode::SET_LOCAL, "SET_LOCAL")));
 
 TEST_P(ChunkParameterizedByteInstructionTestFixture, WriteOpCode) {
@@ -146,7 +146,8 @@ class ChunkParameterizedJumpInstructionTestFixture
       public ::testing::WithParamInterface<std::pair<cppLox::ByteCode::Opcode, std::string>> {};
 
 INSTANTIATE_TEST_SUITE_P(ChunkTest, ChunkParameterizedJumpInstructionTestFixture,
-                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::JUMP, "JUMP"),
+                         ::testing::Values(std::make_pair(cppLox::ByteCode::Opcode::LOOP, "LOOP"),
+                                           std::make_pair(cppLox::ByteCode::Opcode::JUMP, "JUMP"),
                                            std::make_pair(cppLox::ByteCode::Opcode::JUMP_IF_FALSE, "JUMP_IF_FALSE")));
 
 TEST_P(ChunkParameterizedJumpInstructionTestFixture, WriteOpCode) {
@@ -161,8 +162,11 @@ TEST_P(ChunkParameterizedJumpInstructionTestFixture, WriteOpCode) {
     // Act
     chunk.disassemble("test chunk");
     std::string output = testing::internal::GetCapturedStdout();
+    // Loop instructions jumps backwards other instructions jump forwards
+    size_t expectedjump =
+        opcode != cppLox::ByteCode::Opcode::LOOP ? offset + chunk.getSize() : chunk.getSize() - offset;
 
     // Assert
-    EXPECT_EQ(output, std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} -> {}\n", expected, offset,
-                                  offset + chunk.getSize()));
+    EXPECT_EQ(output,
+              std::format("== test chunk ==\n0X0000  123 {:>16}{:>16} -> {}\n", expected, offset, expectedjump));
 }

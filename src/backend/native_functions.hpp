@@ -14,25 +14,26 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file native_functions.hpp
+ * @brief This file contains the declaration of the native functions that are available to the cpplox interpreter
  */
 
 #pragma once
 
-#include <format>
-#include <string>
+#include <chrono>
+#include <functional>
 
-#include "token.hpp"
+#include "../types/value.hpp"
+#include "callframe.hpp"
 
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
+namespace cppLox::Backend {
 
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const {
-        return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
-    }
-};
+/// @brief The clock function.
+/// @param argCount The number of arguments that were passed to the function
+/// @param args The arguments that were passed to the function
+/// @param frame The call frame from which the function was called
+/// @param onError The error function to call if an error occurs
+/// @return The amount of time in milliseconds since the Unix epoch.
+cppLox::Types::Value clock(uint8_t argCount, Types::Value * args, CallFrame & frame,
+                           std::function<void(CallFrame & frame, std::string_view fmt)> onError);
+} // namespace cppLox::Backend

@@ -21,7 +21,7 @@ TEST_F(LocalVariableE2ETest, AssignmentToUndefinedVariable) {
     std::string source = "{a = 1;}";
 
     // Act & Assert
-    ASSERT_THROW(runProgramm(source), cppLox::Error::RunTimeException);
+    ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
 
 TEST_F(LocalVariableE2ETest, Declaration) {
