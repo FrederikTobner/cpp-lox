@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['_7echunk_305',['~Chunk',['../classcppLox_1_1ByteCode_1_1Chunk.html#aed2f42065e5584f0dad876414273a90c',1,'cppLox::ByteCode::Chunk']]],
-  ['_7ecompilationscope_306',['~CompilationScope',['../classcppLox_1_1Frontend_1_1CompilationScope.html#a338f0d189beab5f80029ef3c3af1cdb6',1,'cppLox::Frontend::CompilationScope']]],
-  ['_7ecompiler_307',['~Compiler',['../classcppLox_1_1Frontend_1_1Compiler.html#a5164d894bb6a230015000dcc48b4b114',1,'cppLox::Frontend::Compiler']]],
-  ['_7elexer_308',['~Lexer',['../classcppLox_1_1Frontend_1_1Lexer.html#ac4d1ece325fa1627d3b913dfab4e8219',1,'cppLox::Frontend::Lexer']]],
-  ['_7ememorymutator_309',['~MemoryMutator',['../classcppLox_1_1MemoryMutator.html#a6af825e4e7fee045849a6cf4c9c5a2b5',1,'cppLox::MemoryMutator']]],
-  ['_7eobject_310',['~Object',['../classcppLox_1_1Types_1_1Object.html#abbb277a2e0e9dbe1f9510f2bd0dd03bc',1,'cppLox::Types::Object']]],
-  ['_7eobjectstring_311',['~ObjectString',['../classcppLox_1_1Types_1_1ObjectString.html#a00ca0292912e83b4f20515d95f1d7a86',1,'cppLox::Types::ObjectString']]],
-  ['_7eparserule_312',['~ParseRule',['../classcppLox_1_1Frontend_1_1ParseRule.html#af6d74920e7c2d65093f4b2507398357c',1,'cppLox::Frontend::ParseRule']]],
-  ['_7etoken_313',['~Token',['../classcppLox_1_1Frontend_1_1Token.html#a7add93c081384656a6aadf8e524fe88f',1,'cppLox::Frontend::Token']]],
-  ['_7evalue_314',['~Value',['../classcppLox_1_1Types_1_1Value.html#ac569ccd27ad1adf1eb7d079d9ab21ffa',1,'cppLox::Types::Value']]],
-  ['_7evm_315',['~VM',['../classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f',1,'cppLox::Backend::VM']]]
+  ['what_352',['what',['../classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f',1,'cppLox::Error::RunTimeException']]],
+  ['while_353',['WHILE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac0ca84371abbc18f52fd48e32195cd15',1,'cppLox::Frontend::Token']]],
+  ['whilestatement_354',['whileStatement',['../classcppLox_1_1Frontend_1_1Compiler.html#ae1b09d97c561345e098ace2bcf11c3fb',1,'cppLox::Frontend::Compiler']]],
+  ['write_355',['write',['../classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a',1,'cppLox::ByteCode::Chunk::write(uint8_t byte, int line) -&gt; void'],['../classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac',1,'cppLox::ByteCode::Chunk::write(Opcode byte, int line) -&gt; void']]],
+  ['writeat_356',['writeAt',['../classcppLox_1_1ByteCode_1_1Chunk.html#a8b20e13e18c2fb2d8421e273fa44b1ff',1,'cppLox::ByteCode::Chunk']]],
+  ['writetooutputstream_357',['writeToOutputStream',['../classcppLox_1_1Types_1_1Object.html#ab5704d9df08c8a8a9224f297df957e20',1,'cppLox::Types::Object::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectFunction.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectFunction::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectNativeFunction.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectNativeFunction::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectString::writeToOutputStream()']]]
 ];

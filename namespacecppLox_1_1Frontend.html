@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('namespacecppLox_1_1Frontend.html','');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compilation scope.  <a href="classcppLox_1_1Frontend_1_1CompilationScope.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Models a compilation scope - meaning a scope in which a function is compiled.  <a href="classcppLox_1_1Frontend_1_1CompilationScope.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html">Compiler</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compiler used by the cpplox interpreter.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#details">More...</a><br /></td></tr>
@@ -105,6 +105,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Local.html">Local</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Models a local variable.  <a href="classcppLox_1_1Frontend_1_1Local.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html">LocalScope</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compilation scope.  <a href="classcppLox_1_1Frontend_1_1LocalScope.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1ParseRule.html">ParseRule</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A parserule for the Pratt parser.  <a href="classcppLox_1_1Frontend_1_1ParseRule.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,6 +117,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a27609b2430539b61ea5804a99a66bdd7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a> : uint8_t { <a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7a6a72a6a776662a244f82d31e9274a07b">FUNCTION</a>
+, <a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7abc283a640f11da0ce7f95dd103c0b38f">SCRIPT</a>
+ }</td></tr>
+<tr class="memdesc:a27609b2430539b61ea5804a99a66bdd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of a function.  <a href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">More...</a><br /></td></tr>
+<tr class="separator:a27609b2430539b61ea5804a99a66bdd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5e272dc9bc498661184c41f4907852e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e">Precedence</a> : uint8_t { <br />
 &#160;&#160;<a class="el" href="namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693">NONE</a>
 , <a class="el" href="namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83">ASSIGNMENT</a>
@@ -140,6 +148,36 @@ Variables</h2></td></tr>
 <tr class="separator:a4190535f5e72e70d70623d9a41e088f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a27609b2430539b61ea5804a99a66bdd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27609b2430539b61ea5804a99a66bdd7">&#9670;&nbsp;</a></span>FunctionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The type of a function. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a27609b2430539b61ea5804a99a66bdd7a6a72a6a776662a244f82d31e9274a07b"></a>FUNCTION&#160;</td><td class="fielddoc"><p>The type of a function. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a27609b2430539b61ea5804a99a66bdd7abc283a640f11da0ce7f95dd103c0b38f"></a>SCRIPT&#160;</td><td class="fielddoc"><p>The type of top-level code. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="af5e272dc9bc498661184c41f4907852e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5e272dc9bc498661184c41f4907852e">&#9670;&nbsp;</a></span>Precedence</h2>
 

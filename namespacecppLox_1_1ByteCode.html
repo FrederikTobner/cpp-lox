@@ -99,125 +99,129 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> { <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7acfcf145f2788bf340ff3f3098bc54909">ADD</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a83972670b57415508523b5641bb46116">CONSTANT</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab6a6acf2cfc8d9e02dd3fb33b5a9c41b">DEFINE_GLOBAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a0cb86713ee09fe297dde9ab03d50d5da">DIVIDE</a>
+<tr class="memitem:a7e03c1168c8bc0a433a4cbbab207eec1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1acfcf145f2788bf340ff3f3098bc54909">ADD</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1abd0ebc08c262bab82a1882256d2d66e8">CALL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a83972670b57415508523b5641bb46116">CONSTANT</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ab6a6acf2cfc8d9e02dd3fb33b5a9c41b">DEFINE_GLOBAL</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a59a84258a4cb9025b567ee5139455029">EQUAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a10b5df8d40666efe5aba98e6ef6fd8b6">GET_GLOBAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a7aa60f21755c843ce1060fbe49856a14">GET_LOCAL</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a0cb86713ee09fe297dde9ab03d50d5da">DIVIDE</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a59a84258a4cb9025b567ee5139455029">EQUAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a10b5df8d40666efe5aba98e6ef6fd8b6">GET_GLOBAL</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a1f28d4392b1c1e7da2af2283632d81e1">JUMP</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ae3af81f69f8fe611544e0268220865b8">JUMP_IF_FALSE</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a7aa60f21755c843ce1060fbe49856a14">GET_LOCAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a1f28d4392b1c1e7da2af2283632d81e1">JUMP</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a95c736070f99b99eb80d1eac1f4ca60f">LESS</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a61f7f1587bd5fe978d9ff3ece8d0624c">LOOP</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ae59a728a365f9d6b2643057973cdf4c3">MULTIPLY</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ae3af81f69f8fe611544e0268220865b8">JUMP_IF_FALSE</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a95c736070f99b99eb80d1eac1f4ca60f">LESS</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a61f7f1587bd5fe978d9ff3ece8d0624c">LOOP</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a6e03f275c09bc302b861e86c19ca70a1">NEGATE</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a0378ebc895849163b249d0b330257dd6">NOT</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aee522b0a37857a8fdd19f82ad1b9b1d6">NOT_EQUAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a76f4c395d6532d906407afb2ac511e54">NULL_</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ae59a728a365f9d6b2643057973cdf4c3">MULTIPLY</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a6e03f275c09bc302b861e86c19ca70a1">NEGATE</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a0378ebc895849163b249d0b330257dd6">NOT</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aee522b0a37857a8fdd19f82ad1b9b1d6">NOT_EQUAL</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a061dcf4785583d8653942f2d252174fa">POP</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a520e09ffec033636dba711f3441cc600">RETURN</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a1f0d8ddea21f001cd9464b3820fcdc0d">SET_GLOBAL</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a76f4c395d6532d906407afb2ac511e54">NULL_</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a061dcf4785583d8653942f2d252174fa">POP</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a520e09ffec033636dba711f3441cc600">RETURN</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7ab025f0a80a00922b7205a49f79e7e825">SET_LOCAL</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aad8ff967f143b54da6d2112fb5858e8c">SUBTRACT</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7aa82764c3079aea4e60c80e45befbb839">TRUE</a>
-, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97">AMOUNT</a>
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a1f0d8ddea21f001cd9464b3820fcdc0d">SET_GLOBAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ab025f0a80a00922b7205a49f79e7e825">SET_LOCAL</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aad8ff967f143b54da6d2112fb5858e8c">SUBTRACT</a>
+, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aa82764c3079aea4e60c80e45befbb839">TRUE</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a4ae3ac2b199ac6dd5e7a2622dd408e97">AMOUNT</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The opcodes of the intermediate language.  <a href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">More...</a><br /></td></tr>
-<tr class="separator:a2112dbdb049f53df83b3ba6fcbf13dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a7e03c1168c8bc0a433a4cbbab207eec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The opcodes of the intermediate language.  <a href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">More...</a><br /></td></tr>
+<tr class="separator:a7e03c1168c8bc0a433a4cbbab207eec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0f3e452869e4e2fa35687d7f1b11dd12"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12">opcode_as_string</a> (const <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> value) -&gt; std::string_view</td></tr>
+<tr class="memitem:a0f3e452869e4e2fa35687d7f1b11dd12"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12">opcode_as_string</a> (const <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a> value) -&gt; std::string_view</td></tr>
 <tr class="memdesc:a0f3e452869e4e2fa35687d7f1b11dd12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the given opcode to a string.  <a href="namespacecppLox_1_1ByteCode.html#a0f3e452869e4e2fa35687d7f1b11dd12">More...</a><br /></td></tr>
 <tr class="separator:a0f3e452869e4e2fa35687d7f1b11dd12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5c5cf2303cec2df1cfdca6363bc46a2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a> const &amp;opcode) -&gt; std::ostream &amp;</td></tr>
+<tr class="memitem:aa5c5cf2303cec2df1cfdca6363bc46a2"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a> const &amp;opcode) -&gt; std::ostream &amp;</td></tr>
 <tr class="memdesc:aa5c5cf2303cec2df1cfdca6363bc46a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the given opcode to the given output stream.  <a href="namespacecppLox_1_1ByteCode.html#aa5c5cf2303cec2df1cfdca6363bc46a2">More...</a><br /></td></tr>
 <tr class="separator:aa5c5cf2303cec2df1cfdca6363bc46a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a2112dbdb049f53df83b3ba6fcbf13dc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2112dbdb049f53df83b3ba6fcbf13dc7">&#9670;&nbsp;</a></span>Opcode</h2>
+<a id="a7e03c1168c8bc0a433a4cbbab207eec1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e03c1168c8bc0a433a4cbbab207eec1">&#9670;&nbsp;</a></span>Opcode</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a></td>
+          <td class="memname">enum <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a> : uint8_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The opcodes of the intermediate language. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7acfcf145f2788bf340ff3f3098bc54909"></a>ADD&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, adds them, and pushes the result back on the stack. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1acfcf145f2788bf340ff3f3098bc54909"></a>ADD&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, adds them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a83972670b57415508523b5641bb46116"></a>CONSTANT&#160;</td><td class="fielddoc"><p>Pushes the given constant onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1abd0ebc08c262bab82a1882256d2d66e8"></a>CALL&#160;</td><td class="fielddoc"><p>Calls the function at the given index on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ab6a6acf2cfc8d9e02dd3fb33b5a9c41b"></a>DEFINE_GLOBAL&#160;</td><td class="fielddoc"><p>Defines a global variable. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a83972670b57415508523b5641bb46116"></a>CONSTANT&#160;</td><td class="fielddoc"><p>Pushes the given constant onto the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a0cb86713ee09fe297dde9ab03d50d5da"></a>DIVIDE&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, divides them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ab6a6acf2cfc8d9e02dd3fb33b5a9c41b"></a>DEFINE_GLOBAL&#160;</td><td class="fielddoc"><p>Defines a global variable. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a59a84258a4cb9025b567ee5139455029"></a>EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a0cb86713ee09fe297dde9ab03d50d5da"></a>DIVIDE&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, divides them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7aa1e095cc966dbecf6a0d8aad75348d1a"></a>FALSE&#160;</td><td class="fielddoc"><p>Pushes the false value onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a59a84258a4cb9025b567ee5139455029"></a>EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a10b5df8d40666efe5aba98e6ef6fd8b6"></a>GET_GLOBAL&#160;</td><td class="fielddoc"><p>Gets the value of the global variable with the name of the given index on the stack and pushes it onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1aa1e095cc966dbecf6a0d8aad75348d1a"></a>FALSE&#160;</td><td class="fielddoc"><p>Pushes the false value onto the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a7aa60f21755c843ce1060fbe49856a14"></a>GET_LOCAL&#160;</td><td class="fielddoc"><p>Gets the value of the local variable with the given index on the stack and pushes it onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a10b5df8d40666efe5aba98e6ef6fd8b6"></a>GET_GLOBAL&#160;</td><td class="fielddoc"><p>Gets the value of the global variable with the name of the given index on the stack and pushes it onto the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a25b5ca2f56d99ba6ffcb5316adac34c1"></a>GREATER&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a7aa60f21755c843ce1060fbe49856a14"></a>GET_LOCAL&#160;</td><td class="fielddoc"><p>Gets the value of the local variable with the given index on the stack and pushes it onto the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a4495f63771aa2060042a31363e16d4f9"></a>GREATER_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a25b5ca2f56d99ba6ffcb5316adac34c1"></a>GREATER&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a1f28d4392b1c1e7da2af2283632d81e1"></a>JUMP&#160;</td><td class="fielddoc"><p>Jumps to the given offset. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a4495f63771aa2060042a31363e16d4f9"></a>GREATER_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ae3af81f69f8fe611544e0268220865b8"></a>JUMP_IF_FALSE&#160;</td><td class="fielddoc"><p>Jumps to the given offset if the top value on the stack is false. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a1f28d4392b1c1e7da2af2283632d81e1"></a>JUMP&#160;</td><td class="fielddoc"><p>Jumps to the given offset. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a95c736070f99b99eb80d1eac1f4ca60f"></a>LESS&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ae3af81f69f8fe611544e0268220865b8"></a>JUMP_IF_FALSE&#160;</td><td class="fielddoc"><p>Jumps to the given offset if the top value on the stack is false. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ac7fcbbb467ef6d40ec686d894e26accd"></a>LESS_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a95c736070f99b99eb80d1eac1f4ca60f"></a>LESS&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a61f7f1587bd5fe978d9ff3ece8d0624c"></a>LOOP&#160;</td><td class="fielddoc"><p>Adds an offset to the instruction pointer, like JUMP. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ac7fcbbb467ef6d40ec686d894e26accd"></a>LESS_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ae59a728a365f9d6b2643057973cdf4c3"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, multiplies them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a61f7f1587bd5fe978d9ff3ece8d0624c"></a>LOOP&#160;</td><td class="fielddoc"><p>Adds an offset to the instruction pointer, like JUMP. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a6e03f275c09bc302b861e86c19ca70a1"></a>NEGATE&#160;</td><td class="fielddoc"><p>Pops the top value off the stack, negates it, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ae59a728a365f9d6b2643057973cdf4c3"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, multiplies them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a0378ebc895849163b249d0b330257dd6"></a>NOT&#160;</td><td class="fielddoc"><p>Pops the top value off the stack, negates it, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a6e03f275c09bc302b861e86c19ca70a1"></a>NEGATE&#160;</td><td class="fielddoc"><p>Pops the top value off the stack, negates it, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7aee522b0a37857a8fdd19f82ad1b9b1d6"></a>NOT_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a0378ebc895849163b249d0b330257dd6"></a>NOT&#160;</td><td class="fielddoc"><p>Pops the top value off the stack, negates it, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a76f4c395d6532d906407afb2ac511e54"></a>NULL_&#160;</td><td class="fielddoc"><p>Pushes the null value onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1aee522b0a37857a8fdd19f82ad1b9b1d6"></a>NOT_EQUAL&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, compares them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a061dcf4785583d8653942f2d252174fa"></a>POP&#160;</td><td class="fielddoc"><p>Pops the top value off the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a76f4c395d6532d906407afb2ac511e54"></a>NULL_&#160;</td><td class="fielddoc"><p>Pushes the null value onto the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ab107229d44d042caa8ab8df4c8acaa1f"></a>PRINT&#160;</td><td class="fielddoc"><p>Pops the top value off the stack and prints it. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a061dcf4785583d8653942f2d252174fa"></a>POP&#160;</td><td class="fielddoc"><p>Pops the top value off the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a520e09ffec033636dba711f3441cc600"></a>RETURN&#160;</td><td class="fielddoc"><p>Pops the top value off the stack and returns it. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ab107229d44d042caa8ab8df4c8acaa1f"></a>PRINT&#160;</td><td class="fielddoc"><p>Pops the top value off the stack and prints it. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a1f0d8ddea21f001cd9464b3820fcdc0d"></a>SET_GLOBAL&#160;</td><td class="fielddoc"><p>Sets the global variable with the given name at the given index on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a520e09ffec033636dba711f3441cc600"></a>RETURN&#160;</td><td class="fielddoc"><p>Pops the top value off the stack and returns it. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7ab025f0a80a00922b7205a49f79e7e825"></a>SET_LOCAL&#160;</td><td class="fielddoc"><p>Sets the local variable with the given index on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a1f0d8ddea21f001cd9464b3820fcdc0d"></a>SET_GLOBAL&#160;</td><td class="fielddoc"><p>Sets the global variable with the given name at the given index on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7aad8ff967f143b54da6d2112fb5858e8c"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, subtracts them, and pushes the result back on the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1ab025f0a80a00922b7205a49f79e7e825"></a>SET_LOCAL&#160;</td><td class="fielddoc"><p>Sets the local variable with the given index on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7aa82764c3079aea4e60c80e45befbb839"></a>TRUE&#160;</td><td class="fielddoc"><p>Pushes the true value onto the stack. </p>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1aad8ff967f143b54da6d2112fb5858e8c"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>Pops the top two values off the stack, subtracts them, and pushes the result back on the stack. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2112dbdb049f53df83b3ba6fcbf13dc7a4ae3ac2b199ac6dd5e7a2622dd408e97"></a>AMOUNT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1aa82764c3079aea4e60c80e45befbb839"></a>TRUE&#160;</td><td class="fielddoc"><p>Pushes the true value onto the stack. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7e03c1168c8bc0a433a4cbbab207eec1a4ae3ac2b199ac6dd5e7a2622dd408e97"></a>AMOUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -232,7 +236,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">auto opcode_as_string </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td> -&gt; std::string_view</td>
         </tr>
@@ -265,7 +269,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a> const &amp;&#160;</td>
           <td class="paramname"><em>opcode</em>&#160;</td>
         </tr>
         <tr>

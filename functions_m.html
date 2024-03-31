@@ -85,12 +85,15 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>m_arity
+: <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html#a61a77ac3054e1850a52206e6c5e37500">ObjectFunction</a>
+, <a class="el" href="classcppLox_1_1Types_1_1ObjectNativeFunction.html#a8b38aec92392e350efdda5b6dabdb025">ObjectNativeFunction</a>
+</li>
 <li>m_bool
 : <a class="el" href="classcppLox_1_1Types_1_1Value.html#a19f5c35b0377d034b92435561d5b0b44">Value</a>
 </li>
 <li>m_chunk
-: <a class="el" href="classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b">VM</a>
-, <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a1e41e209d3f047ab694a0c3d0cbde14b">Compiler</a>
+: <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html#aa453ac26013893e9b5186febeb344d46">ObjectFunction</a>
 </li>
 <li>m_code
 : <a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab289222042edf9fb2b6f44a34b187e37">Chunk</a>
@@ -102,26 +105,44 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 : <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac332007a6139a87217c08b3cf3a4be9d">Compiler</a>
 , <a class="el" href="classcppLox_1_1Frontend_1_1Lexer.html#a400d8afbcc890873a97f5608515fa20a">Lexer</a>
 </li>
-<li>m_current_scope
-: <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac09f8c5980186048d87d28838ab2051d">Compiler</a>
+<li>m_currentFunctionType
+: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#a6005494feda491c90492604b383c9356">CompilationScope</a>
+</li>
+<li>m_currentScope
+: <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a2425b134861bd8a0064b79cbd62b8e5b">Compiler</a>
 </li>
 <li>m_currentTokenIndex
 : <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ab36625d400fdb9914c13582ac9f9b177">Compiler</a>
 </li>
 <li>m_depth
-: <a class="el" href="classcppLox_1_1Frontend_1_1Local.html#a0d9499ce8aef031423bc2a13191716b8">Local</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1Local.html#a44b917f68244daab5732fb23f4324772">Local</a>
 </li>
 <li>m_enclosing
-: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#a757f1c8312734f36f0bd891a9f27cdea">CompilationScope</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#a15a60acf5321899ef5cd736adaabf2c0">CompilationScope</a>
+, <a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html#a7453839b780653b2492a318d8028c998">LocalScope</a>
+</li>
+<li>m_frame_count
+: <a class="el" href="classcppLox_1_1Backend_1_1VM.html#a94e3f87fc08317bd3b6b0ae8a42676d7">VM</a>
+</li>
+<li>m_frames
+: <a class="el" href="classcppLox_1_1Backend_1_1VM.html#a6901a0d7e9b9f4e411708d249f555135">VM</a>
+</li>
+<li>m_function
+: <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html#acfef1acea28454c4038d4ccade57b8a8">CallFrame</a>
+, <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#acfef1acea28454c4038d4ccade57b8a8">CompilationScope</a>
+, <a class="el" href="classcppLox_1_1Types_1_1ObjectNativeFunction.html#aca6801cb4a679e3a41470b3482569a80">ObjectNativeFunction</a>
 </li>
 <li>m_globals
 : <a class="el" href="classcppLox_1_1MemoryMutator.html#a424be6bfd2cdc2e781ef540bb4136625">MemoryMutator</a>
 </li>
+<li>m_hadError
+: <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a570270c08062d8c75b298dda4c7065b1">Compiler</a>
+</li>
 <li>m_infix
 : <a class="el" href="classcppLox_1_1Frontend_1_1ParseRule.html#ac25d56184648ec725e2525afdb8fc8a4">ParseRule&lt; T &gt;</a>
 </li>
-<li>m_instruction_index
-: <a class="el" href="classcppLox_1_1Backend_1_1VM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">VM</a>
+<li>m_instruction_pointer
+: <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html#ae5945e7adfe4abfe66299b40377d54b7">CallFrame</a>
 </li>
 <li>m_lexeme
 : <a class="el" href="classcppLox_1_1Frontend_1_1Token.html#afa337010f84607c7ae351df7b74be284">Token</a>
@@ -134,18 +155,23 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 : <a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a7c5ffa4ab9295677e5dc1d5e7ee4edc9">Chunk</a>
 </li>
 <li>m_localCount
-: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#ae7684e35ce6e470570782de10d72d536">CompilationScope</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html#ae7684e35ce6e470570782de10d72d536">LocalScope</a>
 </li>
 <li>m_locals
-: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#a73b2afd149c1dbe5a1316377bdc7ec41">CompilationScope</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html#a73b2afd149c1dbe5a1316377bdc7ec41">LocalScope</a>
+</li>
+<li>m_localScope
+: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#aadbbb12b2804c6fe2f82fd061aa170f2">CompilationScope</a>
 </li>
 <li>m_memoryMutator
 : <a class="el" href="classcppLox_1_1Backend_1_1VM.html#a48d9336c59b4c8f5ff196d1d8fef10c4">VM</a>
 , <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a48d9336c59b4c8f5ff196d1d8fef10c4">Compiler</a>
 </li>
 <li>m_message
-: <a class="el" href="classcppLox_1_1Error_1_1CompileTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">CompileTimeException</a>
-, <a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">RunTimeException</a>
+: <a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">RunTimeException</a>
+</li>
+<li>m_name
+: <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html#a984a2b12e6c7df7e937d4e7e262704af">ObjectFunction</a>
 </li>
 <li>m_number
 : <a class="el" href="classcppLox_1_1Types_1_1Value.html#ad0603410ad21c532b613ebeed38e5295">Value</a>
@@ -172,7 +198,10 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 : <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ab39607aa723e7e30af3c0f1cc47a6b26">Compiler</a>
 </li>
 <li>m_scopeDepth
-: <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a8e6517886a95b669c46ef0a0f2cd15e9">Compiler</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#a8e6517886a95b669c46ef0a0f2cd15e9">CompilationScope</a>
+</li>
+<li>m_slots
+: <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html#abdbf4e7b8c6f8c27a7eedc0d94cb326b">CallFrame</a>
 </li>
 <li>m_stack
 : <a class="el" href="classcppLox_1_1Backend_1_1VM.html#aa517a1d398c7b6246648c3a8e02b02d7">VM</a>
@@ -210,7 +239,8 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 : <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a6d3f14e374f68817e283193062d2dc68">Compiler</a>
 </li>
 <li>markInitialized()
-: <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html#aab315b9ba9f58d6c0e76d29135f29a21">CompilationScope</a>
+: <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a777550a126b712fd5acd2dfedf4581c3">Compiler</a>
+, <a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html#aab315b9ba9f58d6c0e76d29135f29a21">LocalScope</a>
 </li>
 <li>match()
 : <a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a0997f593aefe43cab8fc8be7ccf4e8ad">Compiler</a>

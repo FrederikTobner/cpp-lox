@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opcode_566',['Opcode',['../namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7',1,'cppLox::ByteCode']]]
+  ['functiontype_673',['FunctionType',['../namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7',1,'cppLox::Frontend']]]
 ];

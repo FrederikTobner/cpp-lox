@@ -4,6 +4,7 @@ var classcppLox_1_1ByteCode_1_1Chunk =
     [ "~Chunk", "classcppLox_1_1ByteCode_1_1Chunk.html#aed2f42065e5584f0dad876414273a90c", null ],
     [ "addConstant", "classcppLox_1_1ByteCode_1_1Chunk.html#a5dd6d75487b244bcdbba61ed5b9e57b7", null ],
     [ "byteInstruction", "classcppLox_1_1ByteCode_1_1Chunk.html#a66e35d20912a457304294823f3ed76d6", null ],
+    [ "code", "classcppLox_1_1ByteCode_1_1Chunk.html#a9db536793063c5bd286f5f6b85e0bc22", null ],
     [ "constantInstruction", "classcppLox_1_1ByteCode_1_1Chunk.html#af18643ec9162c7bddb4e23f3e863ed53", null ],
     [ "disassemble", "classcppLox_1_1ByteCode_1_1Chunk.html#a1b3cda14536ca513905ee0deca5279ca", null ],
     [ "disassembleInstruction", "classcppLox_1_1ByteCode_1_1Chunk.html#acd1a9ae7a51288e3970a1f9cb0ab479a", null ],

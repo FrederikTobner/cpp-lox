@@ -83,7 +83,8 @@ $(document).ready(function(){initNavTree('namespacecppLox_1_1Backend.html',''); 
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cppLox::Backend Namespace Reference</div>  </div>
 </div><!--header-->
@@ -91,10 +92,71 @@ $(document).ready(function(){initNavTree('namespacecppLox_1_1Backend.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html">VM</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The virtual machine used by the cpplox interpreter.  <a href="classcppLox_1_1Backend_1_1VM.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a315508e2cc6e49e09051dd0aed9bcfc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecppLox_1_1Backend.html#a315508e2cc6e49e09051dd0aed9bcfc2">clock</a> (uint8_t argCount, <a class="el" href="classcppLox_1_1Types_1_1Value.html">Types::Value</a> *args, <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame, std::function&lt; void(<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame, std::string_view fmt)&gt; onError)</td></tr>
+<tr class="memdesc:a315508e2cc6e49e09051dd0aed9bcfc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clock function.  <a href="namespacecppLox_1_1Backend.html#a315508e2cc6e49e09051dd0aed9bcfc2">More...</a><br /></td></tr>
+<tr class="separator:a315508e2cc6e49e09051dd0aed9bcfc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a315508e2cc6e49e09051dd0aed9bcfc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a315508e2cc6e49e09051dd0aed9bcfc2">&#9670;&nbsp;</a></span>clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> clock </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>argCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1Value.html">Types::Value</a> *&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame, std::string_view fmt)&gt;&#160;</td>
+          <td class="paramname"><em>onError</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The clock function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argCount</td><td>The number of arguments that were passed to the function </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments that were passed to the function </td></tr>
+    <tr><td class="paramname">frame</td><td>The call frame from which the function was called </td></tr>
+    <tr><td class="paramname">onError</td><td>The error function to call if an error occurs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The amount of time in milliseconds since the Unix epoch. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

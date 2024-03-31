@@ -105,13 +105,16 @@ Inheritance diagram for RunTimeException:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a49cfc726aa3dee4855cc8c482d3359da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">RunTimeException</a> (std::string_view message)</td></tr>
+<tr class="memdesc:a49cfc726aa3dee4855cc8c482d3359da"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor of the <a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html" title="Exception that is thrown when an error occurs during run time.">RunTimeException</a> class.  <a href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">More...</a><br /></td></tr>
 <tr class="separator:a49cfc726aa3dee4855cc8c482d3359da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb470308e52d2c0dd658ca5ed8dbff86"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86">what</a> () const -&gt; char const *  throw ()</td></tr>
-<tr class="separator:abb470308e52d2c0dd658ca5ed8dbff86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e353ee84b010f146c2176b59cc945f"><td class="memItemLeft" align="right" valign="top">char const  *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f">what</a> () const noexcept override</td></tr>
+<tr class="memdesc:a70e353ee84b010f146c2176b59cc945f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the message of the exception.  <a href="classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f">More...</a><br /></td></tr>
+<tr class="separator:a70e353ee84b010f146c2176b59cc945f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9b855fc7deef82b2a0ec63750d5330ba"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">m_message</a></td></tr>
+<tr class="memdesc:a9b855fc7deef82b2a0ec63750d5330ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying message of the exception.  <a href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">More...</a><br /></td></tr>
 <tr class="separator:a9b855fc7deef82b2a0ec63750d5330ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -122,9 +125,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html">RunTimeException</a> </td>
@@ -134,18 +134,21 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>The constructor of the <a class="el" href="classcppLox_1_1Error_1_1RunTimeException.html" title="Exception that is thrown when an error occurs during run time.">RunTimeException</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The underlying message of the exception. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abb470308e52d2c0dd658ca5ed8dbff86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb470308e52d2c0dd658ca5ed8dbff86">&#9670;&nbsp;</a></span>what()</h2>
+<a id="a70e353ee84b010f146c2176b59cc945f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e353ee84b010f146c2176b59cc945f">&#9670;&nbsp;</a></span>what()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,24 +157,21 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual auto what </td>
+          <td class="memname">char const  * what </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; char const * </td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets the message of the exception. </p>
+<dl class="section return"><dt>Returns</dt><dd>The underlying message of the exception. </dd></dl>
 
 </div>
 </div>
@@ -196,10 +196,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The underlying message of the exception. </p>
+
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/error/<a class="el" href="runtime__exception_8hpp_source.html">runtime_exception.hpp</a></li>
+<li>src/error/<a class="el" href="runtime__exception_8cpp.html">runtime_exception.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

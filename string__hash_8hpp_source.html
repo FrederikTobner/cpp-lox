@@ -86,33 +86,48 @@ $(document).ready(function(){initNavTree('string__hash_8hpp_source.html',''); in
 <div class="title">string_hash.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="string__hash_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object__string_8hpp.html">types/object_string.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespacestd.html">    9</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacestd.html">std</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html">   12</a></span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>hash&lt;<a class="code" href="namespacecppLox.html">cppLox</a>::Types::ObjectString&gt; {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">   17</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">operator()</a>(<a class="code" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> &amp; s) <span class="keyword">const</span> -&gt; std::size_t {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string_view&gt;{}(s.string());</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">   24</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">operator()</a>(<a class="code" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> * s) <span class="keyword">const</span> -&gt; std::size_t {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string_view&gt;{}(s-&gt;string());</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// namespace std</span></div>
-<div class="ttc" id="aclasscppLox_1_1Types_1_1ObjectString_html"><div class="ttname"><a href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a></div><div class="ttdoc">Represents a string object.</div><div class="ttdef"><b>Definition:</b> object_string.hpp:11</div></div>
-<div class="ttc" id="anamespacecppLox_html"><div class="ttname"><a href="namespacecppLox.html">cppLox</a></div><div class="ttdef"><b>Definition:</b> vm.hpp:9</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> string_hash.hpp:9</div></div>
-<div class="ttc" id="aobject__string_8hpp_html"><div class="ttname"><a href="object__string_8hpp.html">object_string.hpp</a></div></div>
-<div class="ttc" id="astructstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4_html_a628c89296bd559b9461f37ea2cb2d948"><div class="ttname"><a href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">std::hash&lt; cppLox::Types::ObjectString &gt;::operator()</a></div><div class="ttdeci">auto operator()(cppLox::Types::ObjectString *s) const -&gt; std::size_t</div><div class="ttdoc">Hashes the given ObjectString pointer.</div><div class="ttdef"><b>Definition:</b> string_hash.hpp:24</div></div>
-<div class="ttc" id="astructstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4_html_afbf84f409117499d83bafb84ed2c236e"><div class="ttname"><a href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">std::hash&lt; cppLox::Types::ObjectString &gt;::operator()</a></div><div class="ttdeci">auto operator()(cppLox::Types::ObjectString &amp;s) const -&gt; std::size_t</div><div class="ttdoc">Hashes the given ObjectString reference.</div><div class="ttdef"><b>Definition:</b> string_hash.hpp:17</div></div>
+<a href="string__hash_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (C) 2024 by Frederik Tobner                                    *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                          *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This file is part of cpp-lox.                                            *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *                                                                          *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Permission to use, copy, modify, and distribute this software and its    *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * documentation under the terms of the GNU General Public License is       *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * hereby granted.                                                          *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * No representations are made about the suitability of this software for   *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * any purpose.                                                             *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * It is provided &quot;as is&quot; without express or implied warranty.              *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * See the &lt;&quot;https://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public  *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * License for more details.                                                *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="object__string_8hpp.html">types/object_string.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacestd.html">   29</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacestd.html">std</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html">   32</a></span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>hash&lt;<a class="code" href="namespacecppLox.html">cppLox</a>::Types::ObjectString&gt; {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">   37</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">operator()</a>(<a class="code" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> &amp; s) <span class="keyword">const</span> -&gt; std::size_t {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string_view&gt;{}(s.string());</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">   44</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">operator()</a>(<a class="code" href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a> * s) <span class="keyword">const</span> -&gt; std::size_t {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string_view&gt;{}(s-&gt;string());</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <span class="comment">// namespace std</span></div>
+<div class="ttc" id="aclasscppLox_1_1Types_1_1ObjectString_html"><div class="ttname"><a href="classcppLox_1_1Types_1_1ObjectString.html">cppLox::Types::ObjectString</a></div><div class="ttdoc">Represents a string object.</div><div class="ttdef"><b>Definition:</b> object_string.hpp:31</div></div>
+<div class="ttc" id="anamespacecppLox_html"><div class="ttname"><a href="namespacecppLox.html">cppLox</a></div><div class="ttdef"><b>Definition:</b> callframe.hpp:28</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> string_hash.hpp:29</div></div>
+<div class="ttc" id="aobject__string_8hpp_html"><div class="ttname"><a href="object__string_8hpp.html">object_string.hpp</a></div><div class="ttdoc">This file contains the declaration of the ObjectString class.</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4_html_a628c89296bd559b9461f37ea2cb2d948"><div class="ttname"><a href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#a628c89296bd559b9461f37ea2cb2d948">std::hash&lt; cppLox::Types::ObjectString &gt;::operator()</a></div><div class="ttdeci">auto operator()(cppLox::Types::ObjectString *s) const -&gt; std::size_t</div><div class="ttdoc">Hashes the given ObjectString pointer.</div><div class="ttdef"><b>Definition:</b> string_hash.hpp:44</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4_html_afbf84f409117499d83bafb84ed2c236e"><div class="ttname"><a href="structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html#afbf84f409117499d83bafb84ed2c236e">std::hash&lt; cppLox::Types::ObjectString &gt;::operator()</a></div><div class="ttdeci">auto operator()(cppLox::Types::ObjectString &amp;s) const -&gt; std::size_t</div><div class="ttdoc">Hashes the given ObjectString reference.</div><div class="ttdef"><b>Definition:</b> string_hash.hpp:37</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

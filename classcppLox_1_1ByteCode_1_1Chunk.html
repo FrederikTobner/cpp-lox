@@ -108,7 +108,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af391cb7e1d4649f40cabe0624775667a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a">write</a> (uint8_t byte, int line) -&gt; void</td></tr>
 <tr class="memdesc:af391cb7e1d4649f40cabe0624775667a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a byte to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a">More...</a><br /></td></tr>
 <tr class="separator:af391cb7e1d4649f40cabe0624775667a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8e9708ca333f2f6faa4a31536132fac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">write</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a> byte, int line) -&gt; void</td></tr>
+<tr class="memitem:ab8e9708ca333f2f6faa4a31536132fac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">write</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a> byte, int line) -&gt; void</td></tr>
 <tr class="memdesc:ab8e9708ca333f2f6faa4a31536132fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes an opcode to the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac">More...</a><br /></td></tr>
 <tr class="separator:ab8e9708ca333f2f6faa4a31536132fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b20e13e18c2fb2d8421e273fa44b1ff"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a8b20e13e18c2fb2d8421e273fa44b1ff">writeAt</a> (size_t offset, uint8_t byte) -&gt; void</td></tr>
@@ -135,6 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#acd1a9ae7a51288e3970a1f9cb0ab479a">disassembleInstruction</a> (size_t index) const -&gt; size_t</td></tr>
 <tr class="memdesc:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disassembles the instruction at the given offset.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#acd1a9ae7a51288e3970a1f9cb0ab479a">More...</a><br /></td></tr>
 <tr class="separator:acd1a9ae7a51288e3970a1f9cb0ab479a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9db536793063c5bd286f5f6b85e0bc22"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html#a9db536793063c5bd286f5f6b85e0bc22">code</a> () -&gt; std::vector&lt; uint8_t &gt; &amp;</td></tr>
+<tr class="memdesc:a9db536793063c5bd286f5f6b85e0bc22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the bytecode stored in the chunk.  <a href="classcppLox_1_1ByteCode_1_1Chunk.html#a9db536793063c5bd286f5f6b85e0bc22">More...</a><br /></td></tr>
+<tr class="separator:a9db536793063c5bd286f5f6b85e0bc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -291,6 +294,26 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the next instruction. </dd></dl>
+
+</div>
+</div>
+<a id="a9db536793063c5bd286f5f6b85e0bc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9db536793063c5bd286f5f6b85e0bc22">&#9670;&nbsp;</a></span>code()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto code </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; std::vector&lt;uint8_t&gt; &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the bytecode stored in the chunk. </p>
+<dl class="section return"><dt>Returns</dt><dd>The bytecode stored in the chunk. </dd></dl>
 
 </div>
 </div>
@@ -600,7 +623,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto write </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">Opcode</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">Opcode</a>&#160;</td>
           <td class="paramname"><em>byte</em>, </td>
         </tr>
         <tr>

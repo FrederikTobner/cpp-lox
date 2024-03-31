@@ -107,9 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5164d894bb6a230015000dcc48b4b114"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a5164d894bb6a230015000dcc48b4b114">~Compiler</a> ()=default</td></tr>
 <tr class="memdesc:a5164d894bb6a230015000dcc48b4b114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the compiler.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a5164d894bb6a230015000dcc48b4b114">More...</a><br /></td></tr>
 <tr class="separator:a5164d894bb6a230015000dcc48b4b114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac27b0fe774950149142f3efb076df2b0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac27b0fe774950149142f3efb076df2b0">compile</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; std::unique_ptr&lt; <a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &gt;</td></tr>
-<tr class="memdesc:ac27b0fe774950149142f3efb076df2b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the given tokens.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ac27b0fe774950149142f3efb076df2b0">More...</a><br /></td></tr>
-<tr class="separator:ac27b0fe774950149142f3efb076df2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d486a1daaab5b561d9a36d7d45f285"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a42d486a1daaab5b561d9a36d7d45f285">compile</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; std::optional&lt; <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> * &gt;</td></tr>
+<tr class="memdesc:a42d486a1daaab5b561d9a36d7d45f285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the given tokens.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a42d486a1daaab5b561d9a36d7d45f285">More...</a><br /></td></tr>
+<tr class="separator:a42d486a1daaab5b561d9a36d7d45f285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -118,6 +118,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a9024439cdcddb3188a4c50afbb6fbe5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab672ed53ab916bb9310cf8e29a7b502"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#aab672ed53ab916bb9310cf8e29a7b502">and_</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
 <tr class="separator:aab672ed53ab916bb9310cf8e29a7b502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad10a492415c6bfb01678518caa5d9058"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ad10a492415c6bfb01678518caa5d9058">argumentList</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; uint8_t</td></tr>
+<tr class="separator:ad10a492415c6bfb01678518caa5d9058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a496e876e03699093546d74405a0d14b3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a496e876e03699093546d74405a0d14b3">beginScope</a> () -&gt; void</td></tr>
 <tr class="memdesc:a496e876e03699093546d74405a0d14b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins a new scope.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a496e876e03699093546d74405a0d14b3">More...</a><br /></td></tr>
 <tr class="separator:a496e876e03699093546d74405a0d14b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +129,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a290d4a4d4910c33afec289213d737abe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a290d4a4d4910c33afec289213d737abe">binary</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
 <tr class="memdesc:a290d4a4d4910c33afec289213d737abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a binary expression.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a290d4a4d4910c33afec289213d737abe">More...</a><br /></td></tr>
 <tr class="separator:a290d4a4d4910c33afec289213d737abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcc9f169f94d28269c8677c30075262f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#adcc9f169f94d28269c8677c30075262f">call</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
+<tr class="memdesc:adcc9f169f94d28269c8677c30075262f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a call expression.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#adcc9f169f94d28269c8677c30075262f">More...</a><br /></td></tr>
+<tr class="separator:adcc9f169f94d28269c8677c30075262f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6de03addafd3c66191094cbbd89020bb"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a6de03addafd3c66191094cbbd89020bb">check</a> (<a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479">Token::Type</a> type) const -&gt; bool</td></tr>
 <tr class="memdesc:a6de03addafd3c66191094cbbd89020bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the current token is of the given type.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a6de03addafd3c66191094cbbd89020bb">More...</a><br /></td></tr>
 <tr class="separator:a6de03addafd3c66191094cbbd89020bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,27 +154,29 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:ab73dd42c8da96c3d36375c32294f059f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a byte.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ab73dd42c8da96c3d36375c32294f059f">More...</a><br /></td></tr>
 <tr class="separator:ab73dd42c8da96c3d36375c32294f059f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a769cd26b606a2b2a023da0a8b281f0f4"><td class="memTemplParams" colspan="2">template&lt;class... Opcodes&gt; </td></tr>
-<tr class="memitem:a769cd26b606a2b2a023da0a8b281f0f4"><td class="memTemplItemLeft" align="right" valign="top">requires <a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a>&lt; uint8_t, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a>, Opcodes... &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a769cd26b606a2b2a023da0a8b281f0f4">emitBytes</a> (Opcodes... opcodes) -&gt; void</td></tr>
+<tr class="memitem:a769cd26b606a2b2a023da0a8b281f0f4"><td class="memTemplItemLeft" align="right" valign="top">requires <a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a>&lt; uint8_t, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a>, Opcodes... &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a769cd26b606a2b2a023da0a8b281f0f4">emitBytes</a> (Opcodes... opcodes) -&gt; void</td></tr>
 <tr class="memdesc:a769cd26b606a2b2a023da0a8b281f0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits several bytes.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a769cd26b606a2b2a023da0a8b281f0f4">More...</a><br /></td></tr>
 <tr class="separator:a769cd26b606a2b2a023da0a8b281f0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef0d5ea66432b949d8185898b0f78145"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#aef0d5ea66432b949d8185898b0f78145">emitByte</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a> byte) -&gt; void</td></tr>
+<tr class="memitem:aef0d5ea66432b949d8185898b0f78145"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#aef0d5ea66432b949d8185898b0f78145">emitByte</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a> byte) -&gt; void</td></tr>
 <tr class="memdesc:aef0d5ea66432b949d8185898b0f78145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a byte.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#aef0d5ea66432b949d8185898b0f78145">More...</a><br /></td></tr>
 <tr class="separator:aef0d5ea66432b949d8185898b0f78145"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8c9018b40b62072d2d648d7df4b73a4"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#af8c9018b40b62072d2d648d7df4b73a4">emitConstant</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
 <tr class="memdesc:af8c9018b40b62072d2d648d7df4b73a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a constant.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#af8c9018b40b62072d2d648d7df4b73a4">More...</a><br /></td></tr>
 <tr class="separator:af8c9018b40b62072d2d648d7df4b73a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac071c1c9fb38f8e0e6eefdb2ad9f0e3e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac071c1c9fb38f8e0e6eefdb2ad9f0e3e">emitJump</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a> opcode) -&gt; int32_t</td></tr>
+<tr class="memitem:ac071c1c9fb38f8e0e6eefdb2ad9f0e3e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac071c1c9fb38f8e0e6eefdb2ad9f0e3e">emitJump</a> (<a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a> opcode) -&gt; int32_t</td></tr>
 <tr class="memdesc:ac071c1c9fb38f8e0e6eefdb2ad9f0e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a jump instruction.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ac071c1c9fb38f8e0e6eefdb2ad9f0e3e">More...</a><br /></td></tr>
 <tr class="separator:ac071c1c9fb38f8e0e6eefdb2ad9f0e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6646221a275413735a4548773dfe0e1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ab6646221a275413735a4548773dfe0e1">emitLoop</a> (int32_t loopStart) -&gt; void</td></tr>
 <tr class="memdesc:ab6646221a275413735a4548773dfe0e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a loop instruction.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ab6646221a275413735a4548773dfe0e1">More...</a><br /></td></tr>
 <tr class="separator:ab6646221a275413735a4548773dfe0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74850816d2d42821f271134367fee033"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a74850816d2d42821f271134367fee033">emitReturn</a> () -&gt; void</td></tr>
+<tr class="separator:a74850816d2d42821f271134367fee033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a608ac8b55065865d48ff949688c237ce"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a608ac8b55065865d48ff949688c237ce">endScope</a> () -&gt; void</td></tr>
 <tr class="memdesc:a608ac8b55065865d48ff949688c237ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the current scope.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a608ac8b55065865d48ff949688c237ce">More...</a><br /></td></tr>
 <tr class="separator:a608ac8b55065865d48ff949688c237ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb03d5964bb994207f81bab17ae46847"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#abb03d5964bb994207f81bab17ae46847">endCompilation</a> () -&gt; void</td></tr>
-<tr class="memdesc:abb03d5964bb994207f81bab17ae46847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the compilation.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#abb03d5964bb994207f81bab17ae46847">More...</a><br /></td></tr>
-<tr class="separator:abb03d5964bb994207f81bab17ae46847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63f71f9175cb938336a56d5feda2ee69"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a63f71f9175cb938336a56d5feda2ee69">endCompilation</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> *</td></tr>
+<tr class="memdesc:a63f71f9175cb938336a56d5feda2ee69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends the compilation.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a63f71f9175cb938336a56d5feda2ee69">More...</a><br /></td></tr>
+<tr class="separator:a63f71f9175cb938336a56d5feda2ee69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7941ad49a2b938017399c87289b97662"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a7941ad49a2b938017399c87289b97662">error</a> (char const *message) -&gt; void</td></tr>
 <tr class="memdesc:a7941ad49a2b938017399c87289b97662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an exception at the previous token.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a7941ad49a2b938017399c87289b97662">More...</a><br /></td></tr>
 <tr class="separator:a7941ad49a2b938017399c87289b97662"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,6 +195,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a168dc43c114bb54448213d754d17e5c6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a168dc43c114bb54448213d754d17e5c6">forStatement</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
 <tr class="memdesc:a168dc43c114bb54448213d754d17e5c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a for statement.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a168dc43c114bb54448213d754d17e5c6">More...</a><br /></td></tr>
 <tr class="separator:a168dc43c114bb54448213d754d17e5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0dc062cd5182b324ff29d88bbae1ca8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ad0dc062cd5182b324ff29d88bbae1ca8">funDeclaration</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
+<tr class="separator:ad0dc062cd5182b324ff29d88bbae1ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a758cb31caa1f5220ff33bd0502341675"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a758cb31caa1f5220ff33bd0502341675">function</a> (<a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a> type, std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
+<tr class="separator:a758cb31caa1f5220ff33bd0502341675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f1014e8781d5798eca72b8d2d8efbaf"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a5f1014e8781d5798eca72b8d2d8efbaf">grouping</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens, bool canAssign) -&gt; void</td></tr>
 <tr class="memdesc:a5f1014e8781d5798eca72b8d2d8efbaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a grouping expression.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a5f1014e8781d5798eca72b8d2d8efbaf">More...</a><br /></td></tr>
 <tr class="separator:a5f1014e8781d5798eca72b8d2d8efbaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,15 +211,17 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a4bb36dcf7e6ce1994089fb1e69367bd9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a4bb36dcf7e6ce1994089fb1e69367bd9">ifStatement</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
 <tr class="memdesc:a4bb36dcf7e6ce1994089fb1e69367bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an if statement.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a4bb36dcf7e6ce1994089fb1e69367bd9">More...</a><br /></td></tr>
 <tr class="separator:a4bb36dcf7e6ce1994089fb1e69367bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c5ed53da09a84f6f8b8df19b1227dcf"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a1c5ed53da09a84f6f8b8df19b1227dcf">initCompiler</a> () -&gt; void</td></tr>
-<tr class="memdesc:a1c5ed53da09a84f6f8b8df19b1227dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the compiler scope.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a1c5ed53da09a84f6f8b8df19b1227dcf">More...</a><br /></td></tr>
-<tr class="separator:a1c5ed53da09a84f6f8b8df19b1227dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b004433eb51d85a835e9fd4ab0e620c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a1b004433eb51d85a835e9fd4ab0e620c">initCompiler</a> (<a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a> type) -&gt; void</td></tr>
+<tr class="memdesc:a1b004433eb51d85a835e9fd4ab0e620c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the compiler scope.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a1b004433eb51d85a835e9fd4ab0e620c">More...</a><br /></td></tr>
+<tr class="separator:a1b004433eb51d85a835e9fd4ab0e620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acab5463ca32c065208ad587860405a32"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#acab5463ca32c065208ad587860405a32">literal</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens, bool canAssign) -&gt; void</td></tr>
 <tr class="memdesc:acab5463ca32c065208ad587860405a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles an literal expression.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#acab5463ca32c065208ad587860405a32">More...</a><br /></td></tr>
 <tr class="separator:acab5463ca32c065208ad587860405a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff95433969b76a84c03a82319cd58ad0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#aff95433969b76a84c03a82319cd58ad0">makeConstant</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
 <tr class="memdesc:aff95433969b76a84c03a82319cd58ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a constant from the given value.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#aff95433969b76a84c03a82319cd58ad0">More...</a><br /></td></tr>
 <tr class="separator:aff95433969b76a84c03a82319cd58ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a777550a126b712fd5acd2dfedf4581c3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a777550a126b712fd5acd2dfedf4581c3">markInitialized</a> () -&gt; void</td></tr>
+<tr class="separator:a777550a126b712fd5acd2dfedf4581c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0997f593aefe43cab8fc8be7ccf4e8ad"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a0997f593aefe43cab8fc8be7ccf4e8ad">match</a> (<a class="el" href="classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479">Token::Type</a> type, std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; bool</td></tr>
 <tr class="memdesc:a0997f593aefe43cab8fc8be7ccf4e8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matches the current token with the given type and advances to the next token if it matches.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a0997f593aefe43cab8fc8be7ccf4e8ad">More...</a><br /></td></tr>
 <tr class="separator:a0997f593aefe43cab8fc8be7ccf4e8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,9 +246,11 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:af34a0f97525faf2bf90e262cf56d1b7c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#af34a0f97525faf2bf90e262cf56d1b7c">printStatement</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens, bool canAssign) -&gt; void</td></tr>
 <tr class="memdesc:af34a0f97525faf2bf90e262cf56d1b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a print statement.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#af34a0f97525faf2bf90e262cf56d1b7c">More...</a><br /></td></tr>
 <tr class="separator:af34a0f97525faf2bf90e262cf56d1b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1ff2744c9a89684e463dd8b5de421c5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac1ff2744c9a89684e463dd8b5de421c5">resolveLocal</a> (<a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> const &amp;name, <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a> const &amp;scope) -&gt; int</td></tr>
-<tr class="memdesc:ac1ff2744c9a89684e463dd8b5de421c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves a local variable.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ac1ff2744c9a89684e463dd8b5de421c5">More...</a><br /></td></tr>
-<tr class="separator:ac1ff2744c9a89684e463dd8b5de421c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707eddce32b5030c203d8225a4bec998"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a707eddce32b5030c203d8225a4bec998">resolveLocal</a> (<a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> const &amp;name, <a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html">LocalScope</a> const &amp;scope) -&gt; int</td></tr>
+<tr class="memdesc:a707eddce32b5030c203d8225a4bec998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolves a local variable.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a707eddce32b5030c203d8225a4bec998">More...</a><br /></td></tr>
+<tr class="separator:a707eddce32b5030c203d8225a4bec998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762e3a09a32e58c3d31e4775ca5f7cbe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a762e3a09a32e58c3d31e4775ca5f7cbe">returnStatement</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
+<tr class="separator:a762e3a09a32e58c3d31e4775ca5f7cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3648ef6c91db2cef71ce5c73b5b94333"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a3648ef6c91db2cef71ce5c73b5b94333">statement</a> (std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;tokens) -&gt; void</td></tr>
 <tr class="memdesc:a3648ef6c91db2cef71ce5c73b5b94333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles a statement.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a3648ef6c91db2cef71ce5c73b5b94333">More...</a><br /></td></tr>
 <tr class="separator:a3648ef6c91db2cef71ce5c73b5b94333"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -275,21 +290,17 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab36625d400fdb9914c13582ac9f9b177"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ab36625d400fdb9914c13582ac9f9b177">m_currentTokenIndex</a></td></tr>
 <tr class="memdesc:ab36625d400fdb9914c13582ac9f9b177"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the current token.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ab36625d400fdb9914c13582ac9f9b177">More...</a><br /></td></tr>
 <tr class="separator:ab36625d400fdb9914c13582ac9f9b177"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a1e41e209d3f047ab694a0c3d0cbde14b">m_chunk</a></td></tr>
-<tr class="memdesc:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk that is currently compiled.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a1e41e209d3f047ab694a0c3d0cbde14b">More...</a><br /></td></tr>
-<tr class="separator:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a48d9336c59b4c8f5ff196d1d8fef10c4">m_memoryMutator</a></td></tr>
 <tr class="memdesc:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory manager.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a48d9336c59b4c8f5ff196d1d8fef10c4">More...</a><br /></td></tr>
 <tr class="separator:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a893d4d83b3265644da36c184ff48a928"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a893d4d83b3265644da36c184ff48a928">m_panicMode</a></td></tr>
 <tr class="memdesc:a893d4d83b3265644da36c184ff48a928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the compiler is in panic mode.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a893d4d83b3265644da36c184ff48a928">More...</a><br /></td></tr>
 <tr class="separator:a893d4d83b3265644da36c184ff48a928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac09f8c5980186048d87d28838ab2051d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#ac09f8c5980186048d87d28838ab2051d">m_current_scope</a></td></tr>
-<tr class="memdesc:ac09f8c5980186048d87d28838ab2051d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current compiler context.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#ac09f8c5980186048d87d28838ab2051d">More...</a><br /></td></tr>
-<tr class="separator:ac09f8c5980186048d87d28838ab2051d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e6517886a95b669c46ef0a0f2cd15e9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a8e6517886a95b669c46ef0a0f2cd15e9">m_scopeDepth</a></td></tr>
-<tr class="memdesc:a8e6517886a95b669c46ef0a0f2cd15e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The scope depth.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a8e6517886a95b669c46ef0a0f2cd15e9">More...</a><br /></td></tr>
-<tr class="separator:a8e6517886a95b669c46ef0a0f2cd15e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a570270c08062d8c75b298dda4c7065b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a570270c08062d8c75b298dda4c7065b1">m_hadError</a></td></tr>
+<tr class="memdesc:a570270c08062d8c75b298dda4c7065b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the compilation resulted in an error.  <a href="classcppLox_1_1Frontend_1_1Compiler.html#a570270c08062d8c75b298dda4c7065b1">More...</a><br /></td></tr>
+<tr class="separator:a570270c08062d8c75b298dda4c7065b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2425b134861bd8a0064b79cbd62b8e5b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Frontend_1_1Compiler.html#a2425b134861bd8a0064b79cbd62b8e5b">m_currentScope</a></td></tr>
+<tr class="separator:a2425b134861bd8a0064b79cbd62b8e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -408,6 +419,32 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ad10a492415c6bfb01678518caa5d9058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad10a492415c6bfb01678518caa5d9058">&#9670;&nbsp;</a></span>argumentList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto argumentList </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em></td><td>)</td>
+          <td> -&gt; uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a496e876e03699093546d74405a0d14b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a496e876e03699093546d74405a0d14b3">&#9670;&nbsp;</a></span>beginScope()</h2>
 
@@ -503,6 +540,40 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="adcc9f169f94d28269c8677c30075262f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcc9f169f94d28269c8677c30075262f">&#9670;&nbsp;</a></span>call()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto call </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compiles a call expression. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tokens</td><td>The tokens that are compiled. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a6de03addafd3c66191094cbbd89020bb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6de03addafd3c66191094cbbd89020bb">&#9670;&nbsp;</a></span>check()</h2>
 
@@ -538,8 +609,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac27b0fe774950149142f3efb076df2b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac27b0fe774950149142f3efb076df2b0">&#9670;&nbsp;</a></span>compile()</h2>
+<a id="a42d486a1daaab5b561d9a36d7d45f285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42d486a1daaab5b561d9a36d7d45f285">&#9670;&nbsp;</a></span>compile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -549,7 +620,7 @@ Static Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
           <td class="paramname"><em>tokens</em></td><td>)</td>
-          <td> -&gt; std::unique_ptr&lt;<a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a>&gt;</td>
+          <td> -&gt; std::optional&lt;<a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> *&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -759,7 +830,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto emitByte </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a>&#160;</td>
           <td class="paramname"><em>byte</em></td><td>)</td>
           <td> -&gt; void</td>
         </tr>
@@ -825,7 +896,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">requires <a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a>&lt;uint8_t, <a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a>, Opcodes...&gt; auto emitBytes </td>
+          <td class="memname">requires <a class="el" href="namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1">IsPackOfEitherOf</a>&lt;uint8_t, <a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a>, Opcodes...&gt; auto emitBytes </td>
           <td>(</td>
           <td class="paramtype">Opcodes...&#160;</td>
           <td class="paramname"><em>opcodes</em></td><td>)</td>
@@ -895,7 +966,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto emitJump </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a2112dbdb049f53df83b3ba6fcbf13dc7">cppLox::ByteCode::Opcode</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1">cppLox::ByteCode::Opcode</a>&#160;</td>
           <td class="paramname"><em>opcode</em></td><td>)</td>
           <td> -&gt; int32_t</td>
         </tr>
@@ -952,8 +1023,33 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abb03d5964bb994207f81bab17ae46847"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb03d5964bb994207f81bab17ae46847">&#9670;&nbsp;</a></span>endCompilation()</h2>
+<a id="a74850816d2d42821f271134367fee033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74850816d2d42821f271134367fee033">&#9670;&nbsp;</a></span>emitReturn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto emitReturn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63f71f9175cb938336a56d5feda2ee69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63f71f9175cb938336a56d5feda2ee69">&#9670;&nbsp;</a></span>endCompilation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -965,7 +1061,7 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">auto endCompilation </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt; void</td>
+          <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> *</td>
         </tr>
       </table>
   </td>
@@ -1210,6 +1306,68 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a758cb31caa1f5220ff33bd0502341675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a758cb31caa1f5220ff33bd0502341675">&#9670;&nbsp;</a></span>function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto function </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0dc062cd5182b324ff29d88bbae1ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0dc062cd5182b324ff29d88bbae1ca8">&#9670;&nbsp;</a></span>funDeclaration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto funDeclaration </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a03eb2eb9b1f2eb07f8f7e5ea3c83ce80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03eb2eb9b1f2eb07f8f7e5ea3c83ce80">&#9670;&nbsp;</a></span>getRule()</h2>
 
@@ -1359,8 +1517,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1c5ed53da09a84f6f8b8df19b1227dcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c5ed53da09a84f6f8b8df19b1227dcf">&#9670;&nbsp;</a></span>initCompiler()</h2>
+<a id="a1b004433eb51d85a835e9fd4ab0e620c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b004433eb51d85a835e9fd4ab0e620c">&#9670;&nbsp;</a></span>initCompiler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1371,7 +1529,8 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto initCompiler </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7">FunctionType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
           <td> -&gt; void</td>
         </tr>
       </table>
@@ -1489,6 +1648,31 @@ Static Private Attributes</h2></td></tr>
 
 <p>Creates the parsing rules for the different token types. </p>
 <dl class="section return"><dt>Returns</dt><dd>The rules for the different token types. </dd></dl>
+
+</div>
+</div>
+<a id="a777550a126b712fd5acd2dfedf4581c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a777550a126b712fd5acd2dfedf4581c3">&#9670;&nbsp;</a></span>markInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto markInitialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1838,8 +2022,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1ff2744c9a89684e463dd8b5de421c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1ff2744c9a89684e463dd8b5de421c5">&#9670;&nbsp;</a></span>resolveLocal()</h2>
+<a id="a707eddce32b5030c203d8225a4bec998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707eddce32b5030c203d8225a4bec998">&#9670;&nbsp;</a></span>resolveLocal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1856,7 +2040,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Frontend_1_1LocalScope.html">LocalScope</a> const &amp;&#160;</td>
           <td class="paramname"><em>scope</em>&#160;</td>
         </tr>
         <tr>
@@ -1881,6 +2065,32 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the variable in the chunk. </dd></dl>
+
+</div>
+</div>
+<a id="a762e3a09a32e58c3d31e4775ca5f7cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762e3a09a32e58c3d31e4775ca5f7cbe">&#9670;&nbsp;</a></span>returnStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto returnStatement </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classcppLox_1_1Frontend_1_1Token.html">Token</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -2155,30 +2365,6 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1e41e209d3f047ab694a0c3d0cbde14b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e41e209d3f047ab694a0c3d0cbde14b">&#9670;&nbsp;</a></span>m_chunk</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a>* m_chunk</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The chunk that is currently compiled. </p>
-
-</div>
-</div>
 <a id="ac332007a6139a87217c08b3cf3a4be9d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac332007a6139a87217c08b3cf3a4be9d">&#9670;&nbsp;</a></span>m_current</h2>
 
@@ -2203,8 +2389,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac09f8c5980186048d87d28838ab2051d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac09f8c5980186048d87d28838ab2051d">&#9670;&nbsp;</a></span>m_current_scope</h2>
+<a id="a2425b134861bd8a0064b79cbd62b8e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2425b134861bd8a0064b79cbd62b8e5b">&#9670;&nbsp;</a></span>m_currentScope</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2213,7 +2399,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a>&gt; m_current_scope</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classcppLox_1_1Frontend_1_1CompilationScope.html">CompilationScope</a>&gt; m_currentScope</td>
         </tr>
       </table>
   </td>
@@ -2222,8 +2408,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>The current compiler context. </p>
 
 </div>
 </div>
@@ -2248,6 +2432,30 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The index of the current token. </p>
+
+</div>
+</div>
+<a id="a570270c08062d8c75b298dda4c7065b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570270c08062d8c75b298dda4c7065b1">&#9670;&nbsp;</a></span>m_hadError</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool m_hadError</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether the compilation resulted in an error. </p>
 
 </div>
 </div>
@@ -2344,30 +2552,6 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The rules for the different token types. </p>
-
-</div>
-</div>
-<a id="a8e6517886a95b669c46ef0a0f2cd15e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e6517886a95b669c46ef0a0f2cd15e9">&#9670;&nbsp;</a></span>m_scopeDepth</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t m_scopeDepth</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The scope depth. </p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['precedence_567',['Precedence',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e',1,'cppLox::Frontend']]]
+  ['opcode_674',['Opcode',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1',1,'cppLox::ByteCode']]]
 ];

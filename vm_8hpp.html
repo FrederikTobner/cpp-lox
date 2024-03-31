@@ -90,10 +90,14 @@ $(document).ready(function(){initNavTree('vm_8hpp.html',''); initResizable(); })
 <div class="title">vm.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;format&gt;</code><br />
+<div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;format&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &quot;<a class="el" href="chunk_8hpp_source.html">../bytecode/chunk.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memory__mutator_8hpp_source.html">../memory_mutator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="value_8hpp_source.html">../types/value.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="callframe_8hpp_source.html">callframe.hpp</a>&quot;</code><br />
 </div>
 <p><a href="vm_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -112,11 +116,32 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a27b296fccb4da1e9cfcf1f9c810e619e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e">STACK_MAX</a>&#160;&#160;&#160;256</td></tr>
+<tr class="memitem:aafb25112ae329c844aeabfdddae5a152"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">FRAME_MAX</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memdesc:aafb25112ae329c844aeabfdddae5a152"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum amount of call frames that can be stored.  <a href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">More...</a><br /></td></tr>
+<tr class="separator:aafb25112ae329c844aeabfdddae5a152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b296fccb4da1e9cfcf1f9c810e619e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e">STACK_MAX</a>&#160;&#160;&#160;(<a class="el" href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">FRAME_MAX</a> * UINT8_MAX)</td></tr>
 <tr class="memdesc:a27b296fccb4da1e9cfcf1f9c810e619e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum amount of values that can be stored on the stack.  <a href="vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e">More...</a><br /></td></tr>
 <tr class="separator:a27b296fccb4da1e9cfcf1f9c810e619e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file contains the declaration of the virtual machine used by the cpplox interpreter </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aafb25112ae329c844aeabfdddae5a152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafb25112ae329c844aeabfdddae5a152">&#9670;&nbsp;</a></span>FRAME_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FRAME_MAX&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The maximum amount of call frames that can be stored. </p>
+
+</div>
+</div>
 <a id="a27b296fccb4da1e9cfcf1f9c810e619e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27b296fccb4da1e9cfcf1f9c810e619e">&#9670;&nbsp;</a></span>STACK_MAX</h2>
 
@@ -124,7 +149,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define STACK_MAX&#160;&#160;&#160;256</td>
+          <td class="memname">#define STACK_MAX&#160;&#160;&#160;(<a class="el" href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">FRAME_MAX</a> * UINT8_MAX)</td>
         </tr>
       </table>
 </div><div class="memdoc">

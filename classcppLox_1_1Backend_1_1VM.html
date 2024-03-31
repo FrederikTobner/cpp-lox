@@ -86,6 +86,7 @@ $(document).ready(function(){initNavTree('classcppLox_1_1Backend_1_1VM.html','')
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classcppLox_1_1Backend_1_1VM-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">VM Class Reference</div>  </div>
@@ -105,31 +106,44 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">~VM</a> ()=default</td></tr>
 <tr class="memdesc:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor of the virtual machine.  <a href="classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f">More...</a><br /></td></tr>
 <tr class="separator:aae7b0c7e9f0cd4bd71afc44ce51d194f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77a085c313bafd56192dcdbdc434feaf"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a77a085c313bafd56192dcdbdc434feaf">getShort</a> (<a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;chunk, size_t offset) -&gt; uint16_t</td></tr>
-<tr class="memdesc:a77a085c313bafd56192dcdbdc434feaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets two bytes from the chunk and returns them as a 16-bit integer.  <a href="classcppLox_1_1Backend_1_1VM.html#a77a085c313bafd56192dcdbdc434feaf">More...</a><br /></td></tr>
-<tr class="separator:a77a085c313bafd56192dcdbdc434feaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abafc7092b97b2d1d25df883d2065d735"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#abafc7092b97b2d1d25df883d2065d735">interpret</a> (<a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;chunk) -&gt; void</td></tr>
-<tr class="memdesc:abafc7092b97b2d1d25df883d2065d735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the given chunk.  <a href="classcppLox_1_1Backend_1_1VM.html#abafc7092b97b2d1d25df883d2065d735">More...</a><br /></td></tr>
-<tr class="separator:abafc7092b97b2d1d25df883d2065d735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bafeacb99863dcf291de32b211d269a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">peek</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
-<tr class="memdesc:a4bafeacb99863dcf291de32b211d269a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the top value of the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a4bafeacb99863dcf291de32b211d269a">More...</a><br /></td></tr>
-<tr class="separator:a4bafeacb99863dcf291de32b211d269a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32359dc5661d241d0b718d58537e7979"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">pop</a> () -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
-<tr class="memdesc:a32359dc5661d241d0b718d58537e7979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a32359dc5661d241d0b718d58537e7979">More...</a><br /></td></tr>
-<tr class="separator:a32359dc5661d241d0b718d58537e7979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">push</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
-<tr class="memdesc:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the given value onto the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a54cf8a0adf5de3c61aadd8735f5b8bbe">More...</a><br /></td></tr>
-<tr class="separator:a54cf8a0adf5de3c61aadd8735f5b8bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">resetStack</a> () -&gt; void</td></tr>
-<tr class="memdesc:a2ad52f60fbe2f0f92ccca306afe69065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a2ad52f60fbe2f0f92ccca306afe69065">More...</a><br /></td></tr>
-<tr class="separator:a2ad52f60fbe2f0f92ccca306afe69065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6674fdcf2256cf29414288150c38786a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a6674fdcf2256cf29414288150c38786a">getShort</a> (<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame) -&gt; uint16_t</td></tr>
+<tr class="memdesc:a6674fdcf2256cf29414288150c38786a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets two bytes from the chunk and returns them as a 16-bit integer.  <a href="classcppLox_1_1Backend_1_1VM.html#a6674fdcf2256cf29414288150c38786a">More...</a><br /></td></tr>
+<tr class="separator:a6674fdcf2256cf29414288150c38786a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5788cf38d797797fdea65016e763a0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#adc5788cf38d797797fdea65016e763a0">interpret</a> (<a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;function) -&gt; void</td></tr>
+<tr class="memdesc:adc5788cf38d797797fdea65016e763a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the given chunk.  <a href="classcppLox_1_1Backend_1_1VM.html#adc5788cf38d797797fdea65016e763a0">More...</a><br /></td></tr>
+<tr class="separator:adc5788cf38d797797fdea65016e763a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2933b557b4865de24410998917158eb1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a2933b557b4865de24410998917158eb1">peek</a> (<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame) -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
+<tr class="memdesc:a2933b557b4865de24410998917158eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peeks at the top value of the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a2933b557b4865de24410998917158eb1">More...</a><br /></td></tr>
+<tr class="separator:a2933b557b4865de24410998917158eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443fcf6a3dbfd96f84e448547893e9e1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a443fcf6a3dbfd96f84e448547893e9e1">pop</a> (<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame) -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td></tr>
+<tr class="memdesc:a443fcf6a3dbfd96f84e448547893e9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the top value from the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a443fcf6a3dbfd96f84e448547893e9e1">More...</a><br /></td></tr>
+<tr class="separator:a443fcf6a3dbfd96f84e448547893e9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49344b85a2d6c783a074ee18888aef17"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a49344b85a2d6c783a074ee18888aef17">push</a> (<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame, <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> value) -&gt; void</td></tr>
+<tr class="memdesc:a49344b85a2d6c783a074ee18888aef17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the given value onto the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#a49344b85a2d6c783a074ee18888aef17">More...</a><br /></td></tr>
+<tr class="separator:a49344b85a2d6c783a074ee18888aef17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedcf752e12345a6a53b352075a27b471"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#aedcf752e12345a6a53b352075a27b471">resetStack</a> () noexcept -&gt; void</td></tr>
+<tr class="memdesc:aedcf752e12345a6a53b352075a27b471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#aedcf752e12345a6a53b352075a27b471">More...</a><br /></td></tr>
+<tr class="separator:aedcf752e12345a6a53b352075a27b471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a60688136824967e1728bb19603938292"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:a60688136824967e1728bb19603938292"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a60688136824967e1728bb19603938292">runTimeError</a> (std::string_view fmt, Args &amp;&amp;... args) -&gt; void</td></tr>
-<tr class="memdesc:a60688136824967e1728bb19603938292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws a runtime exception with the given message.  <a href="classcppLox_1_1Backend_1_1VM.html#a60688136824967e1728bb19603938292">More...</a><br /></td></tr>
-<tr class="separator:a60688136824967e1728bb19603938292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeea48354b314fc63ab75562926c2c38"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:aeeea48354b314fc63ab75562926c2c38"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#aeeea48354b314fc63ab75562926c2c38">runTimeError</a> (<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame, std::string_view fmt, Args &amp;&amp;... args) -&gt; void</td></tr>
+<tr class="memdesc:aeeea48354b314fc63ab75562926c2c38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws a runtime exception with the given message.  <a href="classcppLox_1_1Backend_1_1VM.html#aeeea48354b314fc63ab75562926c2c38">More...</a><br /></td></tr>
+<tr class="separator:aeeea48354b314fc63ab75562926c2c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ef7a8976585bfff7fcfd08e980ab3c8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a4ef7a8976585bfff7fcfd08e980ab3c8">callFunction</a> (<a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> &amp;value, uint8_t arg_count, <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;frame) -&gt; void</td></tr>
+<tr class="memdesc:a4ef7a8976585bfff7fcfd08e980ab3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the given function with the given argument count.  <a href="classcppLox_1_1Backend_1_1VM.html#a4ef7a8976585bfff7fcfd08e980ab3c8">More...</a><br /></td></tr>
+<tr class="separator:a4ef7a8976585bfff7fcfd08e980ab3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056c1418a6b678622e3cd78ef9db9228"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a056c1418a6b678622e3cd78ef9db9228">call</a> (<a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;function, uint8_t arg_count) -&gt; void</td></tr>
+<tr class="memdesc:a056c1418a6b678622e3cd78ef9db9228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the given function with the given argument count.  <a href="classcppLox_1_1Backend_1_1VM.html#a056c1418a6b678622e3cd78ef9db9228">More...</a><br /></td></tr>
+<tr class="separator:a056c1418a6b678622e3cd78ef9db9228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfc2d72fc5c1f6caa5f64a3dc4744962"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#acfc2d72fc5c1f6caa5f64a3dc4744962">run</a> (<a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;function) -&gt; void</td></tr>
+<tr class="memdesc:acfc2d72fc5c1f6caa5f64a3dc4744962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the given function.  <a href="classcppLox_1_1Backend_1_1VM.html#acfc2d72fc5c1f6caa5f64a3dc4744962">More...</a><br /></td></tr>
+<tr class="separator:acfc2d72fc5c1f6caa5f64a3dc4744962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82d6afcca42192231c33c300326ddfd1"><td class="memTemplParams" colspan="2">template&lt;int16_t ARITY&gt; </td></tr>
+<tr class="memitem:a82d6afcca42192231c33c300326ddfd1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a82d6afcca42192231c33c300326ddfd1">defineNative</a> (std::string const &amp;name, std::function&lt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a>(int, <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> *, <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;, std::function&lt; void(<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;, std::string_view fmt)&gt;)&gt; function) -&gt; void</td></tr>
+<tr class="memdesc:a82d6afcca42192231c33c300326ddfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a native function with the given name and function.  <a href="classcppLox_1_1Backend_1_1VM.html#a82d6afcca42192231c33c300326ddfd1">More...</a><br /></td></tr>
+<tr class="separator:a82d6afcca42192231c33c300326ddfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -139,15 +153,20 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ade81abe3ce1aa3855490cc6193bef78c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#ade81abe3ce1aa3855490cc6193bef78c">m_stack_top</a></td></tr>
 <tr class="memdesc:ade81abe3ce1aa3855490cc6193bef78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the top of the stack.  <a href="classcppLox_1_1Backend_1_1VM.html#ade81abe3ce1aa3855490cc6193bef78c">More...</a><br /></td></tr>
 <tr class="separator:ade81abe3ce1aa3855490cc6193bef78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">m_instruction_index</a></td></tr>
-<tr class="memdesc:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the currently executed instruction.  <a href="classcppLox_1_1Backend_1_1VM.html#a55a4d8f05dcb5f6255fb28f6235ac3c4">More...</a><br /></td></tr>
-<tr class="separator:a55a4d8f05dcb5f6255fb28f6235ac3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b">m_chunk</a></td></tr>
-<tr class="memdesc:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The chunk to execute.  <a href="classcppLox_1_1Backend_1_1VM.html#a1e41e209d3f047ab694a0c3d0cbde14b">More...</a><br /></td></tr>
-<tr class="separator:a1e41e209d3f047ab694a0c3d0cbde14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcppLox_1_1MemoryMutator.html">cppLox::MemoryMutator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a48d9336c59b4c8f5ff196d1d8fef10c4">m_memoryMutator</a></td></tr>
 <tr class="memdesc:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The memory manager.  <a href="classcppLox_1_1Backend_1_1VM.html#a48d9336c59b4c8f5ff196d1d8fef10c4">More...</a><br /></td></tr>
 <tr class="separator:a48d9336c59b4c8f5ff196d1d8fef10c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6901a0d7e9b9f4e411708d249f555135"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a>, <a class="el" href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">FRAME_MAX</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a6901a0d7e9b9f4e411708d249f555135">m_frames</a></td></tr>
+<tr class="memdesc:a6901a0d7e9b9f4e411708d249f555135"><td class="mdescLeft">&#160;</td><td class="mdescRight">The call frames.  <a href="classcppLox_1_1Backend_1_1VM.html#a6901a0d7e9b9f4e411708d249f555135">More...</a><br /></td></tr>
+<tr class="separator:a6901a0d7e9b9f4e411708d249f555135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e3f87fc08317bd3b6b0ae8a42676d7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a94e3f87fc08317bd3b6b0ae8a42676d7">m_frame_count</a></td></tr>
+<tr class="memdesc:a94e3f87fc08317bd3b6b0ae8a42676d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of the current call frame.  <a href="classcppLox_1_1Backend_1_1VM.html#a94e3f87fc08317bd3b6b0ae8a42676d7">More...</a><br /></td></tr>
+<tr class="separator:a94e3f87fc08317bd3b6b0ae8a42676d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a73b8cf95ba7a26200c4e1fc8c69514b2"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Backend_1_1VM.html#a73b8cf95ba7a26200c4e1fc8c69514b2">::VMIntegrationTest</a></td></tr>
+<tr class="separator:a73b8cf95ba7a26200c4e1fc8c69514b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The virtual machine used by the cpplox interpreter. </p>
@@ -206,8 +225,156 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a77a085c313bafd56192dcdbdc434feaf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77a085c313bafd56192dcdbdc434feaf">&#9670;&nbsp;</a></span>getShort()</h2>
+<a id="a056c1418a6b678622e3cd78ef9db9228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a056c1418a6b678622e3cd78ef9db9228">&#9670;&nbsp;</a></span>call()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto call </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;&#160;</td>
+          <td class="paramname"><em>function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>arg_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calls the given function with the given argument count. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">function</td><td>The function to call </td></tr>
+    <tr><td class="paramname">arg_count</td><td>The amount of arguments to pass to the function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ef7a8976585bfff7fcfd08e980ab3c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ef7a8976585bfff7fcfd08e980ab3c8">&#9670;&nbsp;</a></span>callFunction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto callFunction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>arg_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calls the given function with the given argument count. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to call </td></tr>
+    <tr><td class="paramname">arg_count</td><td>The amount of arguments to pass to the function </td></tr>
+    <tr><td class="paramname">frame</td><td>The call frame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82d6afcca42192231c33c300326ddfd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d6afcca42192231c33c300326ddfd1">&#9670;&nbsp;</a></span>defineNative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto defineNative </td>
+          <td>(</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a>(int, <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a> *, <a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;, std::function&lt; void(<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;, std::string_view fmt)&gt;)&gt;&#160;</td>
+          <td class="paramname"><em>function</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defines a native function with the given name and function. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ARITY</td><td>The arity of the function </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the function </td></tr>
+    <tr><td class="paramname">function</td><td>The function that is wrapped in the native function object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6674fdcf2256cf29414288150c38786a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6674fdcf2256cf29414288150c38786a">&#9670;&nbsp;</a></span>getShort()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,19 +382,9 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto getShort </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;&#160;</td>
-          <td class="paramname"><em>chunk</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> -&gt; uint16_t</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
+          <td> -&gt; uint16_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -244,8 +401,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abafc7092b97b2d1d25df883d2065d735"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abafc7092b97b2d1d25df883d2065d735">&#9670;&nbsp;</a></span>interpret()</h2>
+<a id="adc5788cf38d797797fdea65016e763a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5788cf38d797797fdea65016e763a0">&#9670;&nbsp;</a></span>interpret()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,8 +410,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto interpret </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a> &amp;&#160;</td>
-          <td class="paramname"><em>chunk</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
           <td> -&gt; void</td>
         </tr>
       </table>
@@ -270,8 +427,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4bafeacb99863dcf291de32b211d269a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bafeacb99863dcf291de32b211d269a">&#9670;&nbsp;</a></span>peek()</h2>
+<a id="a2933b557b4865de24410998917158eb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2933b557b4865de24410998917158eb1">&#9670;&nbsp;</a></span>peek()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,7 +436,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto peek </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
           <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td>
         </tr>
       </table>
@@ -290,8 +448,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a32359dc5661d241d0b718d58537e7979"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32359dc5661d241d0b718d58537e7979">&#9670;&nbsp;</a></span>pop()</h2>
+<a id="a443fcf6a3dbfd96f84e448547893e9e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a443fcf6a3dbfd96f84e448547893e9e1">&#9670;&nbsp;</a></span>pop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +457,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto pop </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
           <td> -&gt; <a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a></td>
         </tr>
       </table>
@@ -310,8 +469,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a54cf8a0adf5de3c61aadd8735f5b8bbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54cf8a0adf5de3c61aadd8735f5b8bbe">&#9670;&nbsp;</a></span>push()</h2>
+<a id="a49344b85a2d6c783a074ee18888aef17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49344b85a2d6c783a074ee18888aef17">&#9670;&nbsp;</a></span>push()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,9 +478,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto push </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1Value.html">cppLox::Types::Value</a>&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td> -&gt; void</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; void</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -336,11 +505,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2ad52f60fbe2f0f92ccca306afe69065"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ad52f60fbe2f0f92ccca306afe69065">&#9670;&nbsp;</a></span>resetStack()</h2>
+<a id="aedcf752e12345a6a53b352075a27b471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedcf752e12345a6a53b352075a27b471">&#9670;&nbsp;</a></span>resetStack()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">auto resetStack </td>
@@ -349,14 +521,53 @@ Private Attributes</h2></td></tr>
           <td> -&gt; void</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Resets the stack. </p>
 
 </div>
 </div>
-<a id="a60688136824967e1728bb19603938292"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60688136824967e1728bb19603938292">&#9670;&nbsp;</a></span>runTimeError()</h2>
+<a id="acfc2d72fc5c1f6caa5f64a3dc4744962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfc2d72fc5c1f6caa5f64a3dc4744962">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto run </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html">cppLox::Types::ObjectFunction</a> &amp;&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Runs the given function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">function</td><td>The function to run </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeeea48354b314fc63ab75562926c2c38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeea48354b314fc63ab75562926c2c38">&#9670;&nbsp;</a></span>runTimeError()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,6 +578,12 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">auto runTimeError </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::string_view&#160;</td>
           <td class="paramname"><em>fmt</em>, </td>
         </tr>
@@ -406,9 +623,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a73b8cf95ba7a26200c4e1fc8c69514b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73b8cf95ba7a26200c4e1fc8c69514b2">&#9670;&nbsp;</a></span>::VMIntegrationTest</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class ::VMIntegrationTest</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1e41e209d3f047ab694a0c3d0cbde14b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e41e209d3f047ab694a0c3d0cbde14b">&#9670;&nbsp;</a></span>m_chunk</h2>
+<a id="a94e3f87fc08317bd3b6b0ae8a42676d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e3f87fc08317bd3b6b0ae8a42676d7">&#9670;&nbsp;</a></span>m_frame_count</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -417,7 +657,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classcppLox_1_1ByteCode_1_1Chunk.html">cppLox::ByteCode::Chunk</a>* m_chunk</td>
+          <td class="memname">size_t m_frame_count</td>
         </tr>
       </table>
   </td>
@@ -427,12 +667,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The chunk to execute. </p>
+<p>The count of the current call frame. </p>
 
 </div>
 </div>
-<a id="a55a4d8f05dcb5f6255fb28f6235ac3c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55a4d8f05dcb5f6255fb28f6235ac3c4">&#9670;&nbsp;</a></span>m_instruction_index</h2>
+<a id="a6901a0d7e9b9f4e411708d249f555135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6901a0d7e9b9f4e411708d249f555135">&#9670;&nbsp;</a></span>m_frames</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,7 +681,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t m_instruction_index</td>
+          <td class="memname">std::array&lt;<a class="el" href="classcppLox_1_1Backend_1_1CallFrame.html">CallFrame</a>, <a class="el" href="vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152">FRAME_MAX</a>&gt; m_frames</td>
         </tr>
       </table>
   </td>
@@ -451,7 +691,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The index of the currently executed instruction. </p>
+<p>The call frames. </p>
 
 </div>
 </div>

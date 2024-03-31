@@ -1,6 +1,8 @@
 var classcppLox_1_1Types_1_1Object =
 [
     [ "Type", "classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7", [
+      [ "FUNCTION", "classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a6a72a6a776662a244f82d31e9274a07b", null ],
+      [ "NATIVE_FUNCTION", "classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a3c651fcbd074462a6c78635ce535da7f", null ],
       [ "STRING", "classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949", null ]
     ] ],
     [ "~Object", "classcppLox_1_1Types_1_1Object.html#abbb277a2e0e9dbe1f9510f2bd0dd03bc", null ],

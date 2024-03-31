@@ -104,13 +104,17 @@ Inheritance diagram for Object:</div>
  <div class="center">
   <img src="classcppLox_1_1Types_1_1Object.png" usemap="#Object_map" alt=""/>
   <map id="Object_map" name="Object_map">
-<area href="classcppLox_1_1Types_1_1ObjectString.html" title="Represents a string object." alt="ObjectString" shape="rect" coords="0,56,82,80"/>
+<area href="classcppLox_1_1Types_1_1ObjectFunction.html" title="Represents a callable function object." alt="ObjectFunction" shape="rect" coords="0,56,134,80"/>
+<area href="classcppLox_1_1Types_1_1ObjectNativeFunction.html" title="The Object Native Function class." alt="ObjectNativeFunction" shape="rect" coords="144,56,278,80"/>
+<area href="classcppLox_1_1Types_1_1ObjectString.html" title="Represents a string object." alt="ObjectString" shape="rect" coords="288,56,422,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> { <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949">STRING</a>
+<tr class="memitem:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a> { <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a6a72a6a776662a244f82d31e9274a07b">FUNCTION</a>
+, <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a3c651fcbd074462a6c78635ce535da7f">NATIVE_FUNCTION</a>
+, <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949">STRING</a>
  }</td></tr>
 <tr class="memdesc:a1d1cfd8ffb84e947f82999c682b666a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of an object.  <a href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">More...</a><br /></td></tr>
 <tr class="separator:a1d1cfd8ffb84e947f82999c682b666a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +184,11 @@ Friends</h2></td></tr>
 
 <p>The type of an object. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"><p>An <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html" title="Represents a string object.">ObjectString</a>. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a6a72a6a776662a244f82d31e9274a07b"></a>FUNCTION&#160;</td><td class="fielddoc"><p>An <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html" title="Represents a callable function object.">ObjectFunction</a>. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a3c651fcbd074462a6c78635ce535da7f"></a>NATIVE_FUNCTION&#160;</td><td class="fielddoc"><p>A native function. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"><p>An <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html" title="Represents a string object.">ObjectString</a>. </p>
 </td></tr>
 </table>
 
@@ -281,23 +289,15 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">auto is </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">Type</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
-          <td> const -&gt; bool </td>
+          <td> const -&gt; bool</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Checks if the object is of the given type. </p>
@@ -316,22 +316,14 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">auto type </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">Object::Type</a> </td>
+          <td> const -&gt; <a class="el" href="classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7">Object::Type</a></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gets the type of the object. </p>
@@ -371,7 +363,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e">ObjectString</a>.</p>
+<p>Implemented in <a class="el" href="classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e">ObjectString</a>, <a class="el" href="classcppLox_1_1Types_1_1ObjectNativeFunction.html#af777c1ddfe8e6864b24f62a4dce3609e">ObjectNativeFunction</a>, and <a class="el" href="classcppLox_1_1Types_1_1ObjectFunction.html#af777c1ddfe8e6864b24f62a4dce3609e">ObjectFunction</a>.</p>
 
 </div>
 </div>
@@ -400,7 +392,7 @@ Friends</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; std::ostream &amp; </td>
+          <td></td><td> -&gt;  std::ostream &amp;</td>
         </tr>
       </table>
   </td>
@@ -446,7 +438,7 @@ Friends</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; std::ostream &amp; </td>
+          <td></td><td> -&gt;  std::ostream &amp;</td>
         </tr>
       </table>
   </td>
@@ -493,8 +485,9 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/types/<a class="el" href="object_8hpp_source.html">object.hpp</a></li>
+<li>src/types/<a class="el" href="object_8cpp.html">object.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

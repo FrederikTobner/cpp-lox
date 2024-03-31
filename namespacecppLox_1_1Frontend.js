@@ -4,8 +4,13 @@ var namespacecppLox_1_1Frontend =
     [ "Compiler", "classcppLox_1_1Frontend_1_1Compiler.html", "classcppLox_1_1Frontend_1_1Compiler" ],
     [ "Lexer", "classcppLox_1_1Frontend_1_1Lexer.html", "classcppLox_1_1Frontend_1_1Lexer" ],
     [ "Local", "classcppLox_1_1Frontend_1_1Local.html", "classcppLox_1_1Frontend_1_1Local" ],
+    [ "LocalScope", "classcppLox_1_1Frontend_1_1LocalScope.html", "classcppLox_1_1Frontend_1_1LocalScope" ],
     [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
     [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ],
+    [ "FunctionType", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7", [
+      [ "FUNCTION", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7a6a72a6a776662a244f82d31e9274a07b", null ],
+      [ "SCRIPT", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7abc283a640f11da0ce7f95dd103c0b38f", null ]
+    ] ],
     [ "Precedence", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852e", [
       [ "NONE", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eab50339a10e1de285ac99d4c3990b8693", null ],
       [ "ASSIGNMENT", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83", null ],

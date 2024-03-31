@@ -86,31 +86,45 @@ $(document).ready(function(){initNavTree('runtime__exception_8hpp_source.html','
 <div class="title">runtime_exception.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="runtime__exception_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecppLox_1_1Error.html">cppLox::Error</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html">RunTimeException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">   11</a></span>&#160;    <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">RunTimeException</a>(std::string_view message) : <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">m_message</a>(message) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86">   13</a></span>&#160;    [[nodiscard]] <span class="keyword">virtual</span> <span class="keyword">auto</span> <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86">what</a>() <span class="keyword">const</span> throw() -&gt; <span class="keywordtype">char</span> const * {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">m_message</a>.c_str();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">   18</a></span>&#160;    std::string <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">m_message</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <span class="comment">// namespace cppLox::Error</span></div>
-<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html">cppLox::Error::RunTimeException</a></div><div class="ttdoc">Exception that is thrown when an error occurs during run time.</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:9</div></div>
-<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_a49cfc726aa3dee4855cc8c482d3359da"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">cppLox::Error::RunTimeException::RunTimeException</a></div><div class="ttdeci">RunTimeException(std::string_view message)</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:11</div></div>
-<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_a9b855fc7deef82b2a0ec63750d5330ba"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">cppLox::Error::RunTimeException::m_message</a></div><div class="ttdeci">std::string m_message</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:18</div></div>
-<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_abb470308e52d2c0dd658ca5ed8dbff86"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#abb470308e52d2c0dd658ca5ed8dbff86">cppLox::Error::RunTimeException::what</a></div><div class="ttdeci">virtual auto what() const -&gt; char const *</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:13</div></div>
-<div class="ttc" id="anamespacecppLox_1_1Error_html"><div class="ttname"><a href="namespacecppLox_1_1Error.html">cppLox::Error</a></div><div class="ttdef"><b>Definition:</b> compiletime_exception.hpp:6</div></div>
+<a href="runtime__exception_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (C) 2024 by Frederik Tobner                                    *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *                                                                          *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This file is part of cpp-lox.                                            *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *                                                                          *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Permission to use, copy, modify, and distribute this software and its    *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * documentation under the terms of the GNU General Public License is       *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * hereby granted.                                                          *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * No representations are made about the suitability of this software for   *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * any purpose.                                                             *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * It is provided &quot;as is&quot; without express or implied warranty.              *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * See the &lt;&quot;https://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public  *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * License for more details.                                                *</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> ****************************************************************************/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacecppLox_1_1Error.html">   27</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecppLox_1_1Error.html">cppLox::Error</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html">RunTimeException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">RunTimeException</a>(std::string_view message);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    [[nodiscard]] <span class="keywordtype">char</span> <span class="keyword">const</span> * <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f">what</a>() <span class="keyword">const</span> noexcept <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">   42</a></span>&#160;    std::string <a class="code" href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">m_message</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <span class="comment">// namespace cppLox::Error</span></div>
+<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html">cppLox::Error::RunTimeException</a></div><div class="ttdoc">Exception that is thrown when an error occurs during run time.</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:30</div></div>
+<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_a49cfc726aa3dee4855cc8c482d3359da"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da">cppLox::Error::RunTimeException::RunTimeException</a></div><div class="ttdeci">RunTimeException(std::string_view message)</div><div class="ttdoc">The constructor of the RunTimeException class.</div><div class="ttdef"><b>Definition:</b> runtime_exception.cpp:10</div></div>
+<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_a70e353ee84b010f146c2176b59cc945f"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f">cppLox::Error::RunTimeException::what</a></div><div class="ttdeci">char const  * what() const noexcept override</div><div class="ttdoc">Gets the message of the exception.</div><div class="ttdef"><b>Definition:</b> runtime_exception.cpp:13</div></div>
+<div class="ttc" id="aclasscppLox_1_1Error_1_1RunTimeException_html_a9b855fc7deef82b2a0ec63750d5330ba"><div class="ttname"><a href="classcppLox_1_1Error_1_1RunTimeException.html#a9b855fc7deef82b2a0ec63750d5330ba">cppLox::Error::RunTimeException::m_message</a></div><div class="ttdeci">std::string m_message</div><div class="ttdoc">The underlying message of the exception.</div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:42</div></div>
+<div class="ttc" id="anamespacecppLox_1_1Error_html"><div class="ttname"><a href="namespacecppLox_1_1Error.html">cppLox::Error</a></div><div class="ttdef"><b>Definition:</b> runtime_exception.hpp:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
