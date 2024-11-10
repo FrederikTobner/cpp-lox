@@ -35,7 +35,7 @@ template <typename T> struct PrattParserTraits {
     /// @tparam T The type to check.
     /// @tparam Method The method to check.
     /// @return True if the method has the correct signature, false otherwise.
-    template <typename T, auto Method>
+    template <auto Method>
     static constexpr bool checkPrefixSignature =
         std::is_same_v<decltype(Method), void (T::*)(std::vector<Token> const &, bool)>;
 
@@ -43,7 +43,7 @@ template <typename T> struct PrattParserTraits {
     /// @tparam T The type to check.
     /// @tparam Method The method to check.
     /// @return True if the method has the correct signature, false otherwise.
-    template <typename T, auto Method>
+    template <auto Method>
     static constexpr bool checkInfixSignature =
         std::is_same_v<decltype(Method), void (T::*)(std::vector<Token> const &)>;
 
@@ -52,35 +52,35 @@ template <typename T> struct PrattParserTraits {
     static constexpr bool checkPrefixMethods() {
         if constexpr (!requires { &T::grouping; }) {
             static_assert(sizeof(T) == 0, "Missing required method: grouping(std::vector<Token> const &, bool)");
-        } else if constexpr (!checkPrefixSignature<T, &T::grouping>) {
+        } else if constexpr (!checkPrefixSignature<&T::grouping>) {
             static_assert(sizeof(T) == 0,
                           "Incorrect signature for grouping: expected void(std::vector<Token> const &, bool)");
         }
 
         if constexpr (!requires { &T::variable; }) {
             static_assert(sizeof(T) == 0, "Missing required method: variable(std::vector<Token> const &, bool)");
-        } else if constexpr (!checkPrefixSignature<T, &T::variable>) {
+        } else if constexpr (!checkPrefixSignature<&T::variable>) {
             static_assert(sizeof(T) == 0,
                           "Incorrect signature for variable: expected void(std::vector<Token> const &, bool)");
         }
 
         if constexpr (!requires { &T::string; }) {
             static_assert(sizeof(T) == 0, "Missing required method: string(std::vector<Token> const &, bool)");
-        } else if constexpr (!checkPrefixSignature<T, &T::string>) {
+        } else if constexpr (!checkPrefixSignature<&T::string>) {
             static_assert(sizeof(T) == 0,
                           "Incorrect signature for string: expected void(std::vector<Token> const &, bool)");
         }
 
         if constexpr (!requires { &T::number; }) {
             static_assert(sizeof(T) == 0, "Missing required method: number(std::vector<Token> const &, bool)");
-        } else if constexpr (!checkPrefixSignature<T, &T::number>) {
+        } else if constexpr (!checkPrefixSignature<&T::number>) {
             static_assert(sizeof(T) == 0,
                           "Incorrect signature for number: expected void(std::vector<Token> const &, bool)");
         }
 
         if constexpr (!requires { &T::literal; }) {
             static_assert(sizeof(T) == 0, "Missing required method: literal(std::vector<Token> const &, bool)");
-        } else if constexpr (!checkPrefixSignature<T, &T::literal>) {
+        } else if constexpr (!checkPrefixSignature<&T::literal>) {
             static_assert(sizeof(T) == 0,
                           "Incorrect signature for literal: expected void(std::vector<Token> const &, bool)");
         }
@@ -93,25 +93,25 @@ template <typename T> struct PrattParserTraits {
     static constexpr bool checkInfixMethods() {
         if constexpr (!requires { &T::call; }) {
             static_assert(sizeof(T) == 0, "Missing required method: call(std::vector<Token> const &)");
-        } else if constexpr (!checkInfixSignature<T, &T::call>) {
+        } else if constexpr (!checkInfixSignature<&T::call>) {
             static_assert(sizeof(T) == 0, "Incorrect signature for call: expected void(std::vector<Token> const &)");
         }
 
         if constexpr (!requires { &T::binary; }) {
             static_assert(sizeof(T) == 0, "Missing required method: binary(std::vector<Token> const &)");
-        } else if constexpr (!checkInfixSignature<T, &T::binary>) {
+        } else if constexpr (!checkInfixSignature<&T::binary>) {
             static_assert(sizeof(T) == 0, "Incorrect signature for binary: expected void(std::vector<Token> const &)");
         }
 
         if constexpr (!requires { &T::and_; }) {
             static_assert(sizeof(T) == 0, "Missing required method: and_(std::vector<Token> const &)");
-        } else if constexpr (!checkInfixSignature<T, &T::and_>) {
+        } else if constexpr (!checkInfixSignature<&T::and_>) {
             static_assert(sizeof(T) == 0, "Incorrect signature for and_: expected void(std::vector<Token> const &)");
         }
 
         if constexpr (!requires { &T::or_; }) {
             static_assert(sizeof(T) == 0, "Missing required method: or_(std::vector<Token> const &)");
-        } else if constexpr (!checkInfixSignature<T, &T::or_>) {
+        } else if constexpr (!checkInfixSignature<&T::or_>) {
             static_assert(sizeof(T) == 0, "Incorrect signature for or_: expected void(std::vector<Token> const &)");
         }
 
