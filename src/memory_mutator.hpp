@@ -42,8 +42,9 @@ namespace cppLox {
 /// @brief The memory mutator that manages the creation and deletion of all objects.
 class MemoryMutator {
 
-    // To access the objects stored in the memory mutator we need to be able to access them. This is done for testing
-    // purposes.
+    // To validate the objects stored in the memory we need to be able to access them.
+    // Therefor we need to make the CompilerIntegrationTest a friend of the MemoryMutator.
+    // This is done only for testing purposes.
     friend class CompilerIntegrationTest;
 
   public:

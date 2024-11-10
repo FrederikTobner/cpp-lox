@@ -483,7 +483,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
         error("Expect expression");
         return;
     }
-    (this->*prefixRule.value())(tokens, canAssign);
+    prefixRule.value()(this, tokens, canAssign);
     while (precedence <= getRule(m_current->type())->precedence()) {
         advance(tokens);
         auto infixRule = getRule(m_previous->type())->infix();
@@ -491,7 +491,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
             error("Expect expression");
             return;
         }
-        (this->*infixRule.value())(tokens);
+        infixRule.value()(this, tokens);
     }
     if (canAssign && match(Token::Type::EQUAL, tokens)) {
         error("Invalid assignment target");
@@ -525,13 +525,13 @@ auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign)
 }
 
 auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int {
-    for (auto i : std::views::iota(0u, scope.localCount()) | std::views::reverse) {
-        auto local = scope.local(i);
+    for (auto index : std::views::iota(0u, scope.localCount()) | std::views::reverse) {
+        auto local = scope.local(index);
         if (name.lexeme() == local.getToken().lexeme()) {
             if (local.getDepth() == -1) {
                 error("Cannot read local variable in its own initializer");
             }
-            return i;
+            return index;
         }
     }
     // If the local wasn't found in the current scope, check the enclosing scope.

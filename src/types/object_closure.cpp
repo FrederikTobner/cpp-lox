@@ -26,9 +26,8 @@ using namespace cppLox::Types;
 
 ObjectClosure::ObjectClosure(ObjectFunction * function) : m_function(function) {
     m_type = Object::Type::CLOSURE;
-    for (auto i : std::views::iota(0u, function->upvalueCount())) {
-        m_upvalues.push_back(nullptr);
-    }
+    // Initialize the upvalues with nullptr
+    m_upvalues.resize(function->upvalueCount(), nullptr);
 }
 
 auto ObjectClosure::function() const noexcept -> ObjectFunction * {

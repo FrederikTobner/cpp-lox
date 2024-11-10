@@ -31,6 +31,8 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
+        sudo apt install software-properties-common
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt-get -y install \
           cmake \
           ninja-build \
