@@ -26,6 +26,8 @@
         return "ADD";
     case Opcode::CALL:
         return "CALL";
+    case Opcode::CLOSURE:
+        return "CLOSURE";
     case Opcode::CONSTANT:
         return "CONSTANT";
     case Opcode::DEFINE_GLOBAL:
@@ -40,6 +42,8 @@
         return "GET_GLOBAL";
     case Opcode::GET_LOCAL:
         return "GET_LOCAL";
+    case Opcode::GET_UPVALUE:
+        return "GET_UPVALUE";
     case Opcode::GREATER:
         return "GREATER";
     case Opcode::GREATER_EQUAL:
@@ -74,6 +78,8 @@
         return "SET_GLOBAL";
     case Opcode::SET_LOCAL:
         return "SET_LOCAL";
+    case Opcode::SET_UPVALUE:
+        return "SET_UPVALUE";
     case Opcode::SUBTRACT:
         return "SUBTRACT";
     case Opcode::TRUE:

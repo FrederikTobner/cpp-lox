@@ -14,27 +14,24 @@
  ****************************************************************************/
 
 /**
- * @file callframe.cpp
- * @brief This file contains the implementation of the CallFrame class.
+ * @file upvalue.cpp
+ * @brief This file contains the implementation of the Upvalue class.
  */
 
-#include "callframe.hpp"
+#include "upvalue.hpp"
 
-using namespace cppLox::Backend;
+using namespace cppLox::Frontend;
 
-CallFrame::CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Value * slots)
-    : m_closure(closure), m_slots(slots) {
-    m_instruction_pointer = closure->function()->chunk()->code().data();
+Upvalue::Upvalue() : m_index(0), m_isLocal(false) {
 }
 
-[[nodiscard]] auto CallFrame::closure() const noexcept -> cppLox::Types::ObjectClosure * {
-    return m_closure;
+Upvalue::Upvalue(uint8_t index, bool isLocal) : m_index(index), m_isLocal(isLocal) {
 }
 
-[[nodiscard]] auto CallFrame::instructionPointer() const noexcept -> uint8_t * {
-    return m_instruction_pointer;
+auto Upvalue::index() const noexcept -> uint8_t {
+    return m_index;
 }
 
-[[nodiscard]] auto CallFrame::slots() const noexcept -> cppLox::Types::Value * {
-    return m_slots;
+auto Upvalue::isLocal() const noexcept -> bool {
+    return m_isLocal;
 }

@@ -14,27 +14,27 @@
  ****************************************************************************/
 
 /**
- * @file callframe.cpp
- * @brief This file contains the implementation of the CallFrame class.
+ * @file object_closure.cpp
+ * @brief This file contains the implementation of the ObjectClosure class.
  */
 
-#include "callframe.hpp"
+#include "object_closure.hpp"
 
-using namespace cppLox::Backend;
+#include <ranges>
 
-CallFrame::CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Value * slots)
-    : m_closure(closure), m_slots(slots) {
-    m_instruction_pointer = closure->function()->chunk()->code().data();
+using namespace cppLox::Types;
+
+ObjectClosure::ObjectClosure(ObjectFunction * function) : m_function(function) {
+    m_type = Object::Type::CLOSURE;
+    for (auto i : std::views::iota(0u, function->upvalueCount())) {
+        m_upvalues.push_back(nullptr);
+    }
 }
 
-[[nodiscard]] auto CallFrame::closure() const noexcept -> cppLox::Types::ObjectClosure * {
-    return m_closure;
+auto ObjectClosure::function() const noexcept -> ObjectFunction * {
+    return m_function;
 }
 
-[[nodiscard]] auto CallFrame::instructionPointer() const noexcept -> uint8_t * {
-    return m_instruction_pointer;
-}
-
-[[nodiscard]] auto CallFrame::slots() const noexcept -> cppLox::Types::Value * {
-    return m_slots;
+auto ObjectClosure::upvalues() noexcept -> std::vector<ObjectUpValue *> & {
+    return m_upvalues;
 }

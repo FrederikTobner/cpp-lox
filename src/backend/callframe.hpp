@@ -22,7 +22,7 @@
 
 #include <cstdint>
 
-#include "../types/object_function.hpp"
+#include "../types/object_closure.hpp"
 #include "../types/value.hpp"
 
 namespace cppLox::Backend {
@@ -40,13 +40,13 @@ class CallFrame {
     CallFrame() = default;
 
     /// @brief Constructs a new call frame.
-    /// @param function The function to call.
+    /// @param closure The closure to use.
     /// @param slots The slots to use.
-    CallFrame(cppLox::Types::ObjectFunction * function, cppLox::Types::Value * slots);
+    CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Value * slots);
 
-    /// @brief Gets the function of the call frame.
-    /// @return The function of the call frame.
-    [[nodiscard]] auto function() const noexcept -> cppLox::Types::ObjectFunction *;
+    /// @brief Gets the closure of the call frame.
+    /// @return The closure of the call frame.
+    [[nodiscard]] auto closure() const noexcept -> cppLox::Types::ObjectClosure *;
 
     /// @brief Gets the instruction pointer of the call frame.
     /// @return The instruction pointer of the call frame.
@@ -58,7 +58,7 @@ class CallFrame {
 
   private:
     /// @brief The function of the call frame.
-    cppLox::Types::ObjectFunction * m_function;
+    cppLox::Types::ObjectClosure * m_closure;
 
     /// @brief The instruction pointer of the call frame.
     uint8_t * m_instruction_pointer;

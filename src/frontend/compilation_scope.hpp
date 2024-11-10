@@ -27,6 +27,7 @@
 #include "../types/object_function.hpp"
 #include "function_type.hpp"
 #include "local_scope.hpp"
+#include "upvalue.hpp"
 
 namespace cppLox::Frontend {
 
@@ -72,6 +73,17 @@ class CompilationScope {
     /// @brief Ends the current scope.
     auto endScope() -> void;
 
+    /// @brief Adds a new local variable to the current scope.
+    /// @param index The slot index of the local variable.
+    /// @param isLocal Whether the variable is a local variable or an upvalue.
+    /// @return The index of the local variable in the upvalue array.
+    [[nodiscard]] auto addUpvalue(uint8_t index, bool isLocal) -> uint8_t;
+
+    /// @brief Gets the upvalue at the given index.
+    /// @param index The index of the upvalue.
+    /// @return The upvalue at the given index.
+    [[nodiscard]] auto upvalue(uint8_t index) -> Upvalue &;
+
   private:
     /// @brief The enclosing scope.
     std::shared_ptr<CompilationScope> m_enclosing;
@@ -87,5 +99,8 @@ class CompilationScope {
 
     /// @brief The current compiler context.
     std::shared_ptr<LocalScope> m_localScope;
+
+    /// @brief The upvalues of the current scope.
+    std::array<Upvalue, UINT8_MAX> m_upvalues;
 };
 } // namespace cppLox::Frontend

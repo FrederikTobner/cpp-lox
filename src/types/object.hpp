@@ -37,12 +37,16 @@ class Object {
   public:
     /// @brief The type of an object.
     enum class Type {
+        /// @brief An Objectclosure.
+        CLOSURE,
         /// @brief An ObjectFunction.
         FUNCTION,
         /// @brief A native function.
         NATIVE_FUNCTION,
         /// @brief An ObjectString.
-        STRING
+        STRING,
+        /// @brief An ObjectUpvalue.
+        UPVALUE
     };
 
     /// @brief Destructor of the object.

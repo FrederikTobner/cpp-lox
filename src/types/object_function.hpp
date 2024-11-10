@@ -63,6 +63,11 @@ class ObjectFunction : public Object {
     /// @brief Increments the arity of the function.
     auto incrementArity() -> void;
 
+    /// @brief Gets the amount of upvalues.
+    [[nodiscard]] auto upvalueCount() const -> uint16_t;
+
+    auto incrementUpvalueCount() -> void;
+
   private:
     /// @brief The arity of the function.
     uint16_t m_arity;
@@ -72,6 +77,9 @@ class ObjectFunction : public Object {
 
     /// @brief The name of the function.
     ObjectString * m_name;
+
+    /// @brief The amount of upvalues.
+    uint16_t m_upvalueCount;
 };
 
 } // namespace cppLox::Types

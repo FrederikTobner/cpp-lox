@@ -90,14 +90,14 @@ class VM {
     /// @param frame The call frame
     auto callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void;
 
-    /// @brief Calls the given function with the given argument count
-    /// @param function The function to call
+    /// @brief Calls the given closure with the given argument count
+    /// @param closure The closure to call
     /// @param arg_count The amount of arguments to pass to the function
-    auto call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> void;
+    auto call(cppLox::Types::ObjectClosure & closure, uint8_t arg_count) -> void;
 
     /// @brief Runs the given function
     /// @param function The function to run
-    auto run(cppLox::Types::ObjectFunction & function) -> void;
+    auto run(cppLox::Types::ObjectClosure & closure) -> void;
 
     /// @brief Defines a native function with the given name and function
     /// @tparam ARITY The arity of the function

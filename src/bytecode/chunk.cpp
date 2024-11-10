@@ -66,6 +66,15 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
         return simpleInstruction(instruction, offset);
     case Opcode::CALL:
         return byteInstruction(instruction, offset);
+    case Opcode::CLOSURE:
+        {
+            offset++;
+            uint8_t constant = m_code[offset];
+            offset++;
+            std::cout << std::format("{:>16} {} {}\n", static_cast<Opcode>(instruction), unsigned(constant),
+                                     m_constants[constant]);
+            return offset;
+        }
     case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
     case Opcode::DEFINE_GLOBAL:
@@ -79,6 +88,8 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     case Opcode::GET_GLOBAL:
         return constantInstruction(instruction, offset);
     case Opcode::GET_LOCAL:
+        return byteInstruction(instruction, offset);
+    case Opcode::GET_UPVALUE:
         return byteInstruction(instruction, offset);
     case Opcode::GREATER:
         return simpleInstruction(instruction, offset);
@@ -113,6 +124,8 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     case Opcode::SET_GLOBAL:
         return constantInstruction(instruction, offset);
     case Opcode::SET_LOCAL:
+        return byteInstruction(instruction, offset);
+    case Opcode::SET_UPVALUE:
         return byteInstruction(instruction, offset);
     case Opcode::SUBTRACT:
         return simpleInstruction(instruction, offset);
@@ -164,7 +177,7 @@ auto Chunk::getSize() const -> size_t {
     return m_code.size();
 }
 
-[[nodiscard]] auto Chunk::code() -> std::vector<uint8_t> & {
+auto Chunk::code() -> std::vector<uint8_t> & {
     return m_code;
 }
 

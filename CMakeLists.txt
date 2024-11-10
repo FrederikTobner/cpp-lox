@@ -20,8 +20,9 @@ file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp)
 add_subdirectory(src)
 
 if(CLX_BUILD_TESTS)
+    # Enables testing for the current directory and below
     enable_testing()
-    # Remove main.cpp from the sources, as it is not needed for the tests
+    # Remove main.cpp from the sources, because the tests have their own main
     list(REMOVE_ITEM INTERPRETER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
     add_subdirectory(test)
 endif()

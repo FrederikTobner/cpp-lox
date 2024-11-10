@@ -14,27 +14,40 @@
  ****************************************************************************/
 
 /**
- * @file callframe.cpp
- * @brief This file contains the implementation of the CallFrame class.
+ * @file upvalue.hpp
+ * @brief This file contains the definition of the Upvalue class.
  */
 
-#include "callframe.hpp"
+#pragma once
 
-using namespace cppLox::Backend;
+#include <cstdint>
 
-CallFrame::CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Value * slots)
-    : m_closure(closure), m_slots(slots) {
-    m_instruction_pointer = closure->function()->chunk()->code().data();
-}
+namespace cppLox::Frontend {
+class Upvalue {
+  public:
+    Upvalue();
 
-[[nodiscard]] auto CallFrame::closure() const noexcept -> cppLox::Types::ObjectClosure * {
-    return m_closure;
-}
+    /// @brief Constructs a new upvalue.
+    /// @param index The index of the local variable or upvalue.
+    /// @param isLocal Whether the upvalue is an upvalue or a local variable.
+    Upvalue(uint8_t index, bool isLocal);
 
-[[nodiscard]] auto CallFrame::instructionPointer() const noexcept -> uint8_t * {
-    return m_instruction_pointer;
-}
+    /// @brief Destructs the upvalue.
+    ~Upvalue() = default;
 
-[[nodiscard]] auto CallFrame::slots() const noexcept -> cppLox::Types::Value * {
-    return m_slots;
-}
+    /// @brief Gets the index of the local variable or upvalue.
+    /// @return The index of the local variable or upvalue.
+    [[nodiscard]] auto index() const noexcept -> uint8_t;
+
+    /// @brief Gets whether the upvalue is an upvalue or a local variable.
+    /// @return Whether the upvalue is an upvalue or a local variable.
+    [[nodiscard]] auto isLocal() const noexcept -> bool;
+
+  private:
+    /// @brief The index of the local variable or upvalue.
+    uint8_t m_index;
+
+    /// @brief Whether the upvalue is an upvalue or a local variable.
+    bool m_isLocal;
+};
+} // namespace cppLox::Frontend

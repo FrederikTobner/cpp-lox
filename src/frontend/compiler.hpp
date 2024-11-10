@@ -62,8 +62,14 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto advance(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles an AND expression.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the jump instruction in the chunk.
     auto and_(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles an argument list.
+    /// @param tokens The tokens that are compiled.
+    /// @return The number of arguments in the list.
     auto argumentList(std::vector<Token> const & tokens) -> uint8_t;
 
     /// @brief Begins a new scope.
@@ -140,6 +146,7 @@ class Compiler {
     /// @param loopStart The index of the loop start.
     auto inline emitLoop(int32_t loopStart) -> void;
 
+    /// @brief Emits a return instruction.
     auto inline emitReturn() -> void;
 
     /// @brief Ends the current scope.
@@ -172,8 +179,14 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto forStatement(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles a function declaration.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the function in the chunk.
     auto funDeclaration(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles a function.
+    /// @param type The type of the function.
+    /// @param tokens  The tokens that are compiled.
     auto function(FunctionType type, std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a grouping expression.
@@ -204,8 +217,11 @@ class Compiler {
 
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
-    auto makeConstant(cppLox::Types::Value value) -> void;
+    /// @return The index of the constant in the chunk.
+    auto makeConstant(cppLox::Types::Value value) -> uint8_t;
 
+    /// @brief Marks the current variable as initialized.
+    /// @return The index of the variable in the chunk.
     auto markInitialized() -> void;
 
     /// @brief Matches the current token with the given type and advances to the next token if it matches.
@@ -254,6 +270,13 @@ class Compiler {
     /// @return The index of the variable in the chunk.
     [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
 
+    /// @brief Resolves an upvalue.
+    /// @param name The name of the upvalue.
+    /// @return The index of the upvalue in the chunk, or -1 if the upvalue is not found.
+    [[nodiscard]] auto resolveUpvalue(Token const & name) -> int;
+
+    /// @brief Compiles a return statement
+    /// @param tokens The tpkens that are compiled
     auto returnStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a statement.

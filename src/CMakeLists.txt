@@ -6,8 +6,8 @@ add_executable(${PROJECT_NAME} ${INTERPRETER_SOURCES})
 # for including the cpplox-config.hpp file
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/src)
 
-# Install configuration
 if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
+    # Add debug flags
     if(CLX_DEBUG_PRINT_BYTECODE) 
         target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_PRINT_BYTECODE)
     endif()

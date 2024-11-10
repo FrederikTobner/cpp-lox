@@ -23,6 +23,7 @@
 #include <format>
 
 #include "object.hpp"
+#include "object_closure.hpp"
 #include "object_function.hpp"
 #include "object_string.hpp"
 
@@ -50,9 +51,21 @@ template <> struct std::formatter<cppLox::Types::Object *> : std::formatter<std:
             {
                 return formatter<string_view>::format(std::format("<native fn>"), ctx);
             }
+        case cppLox::Types::Object::Type::CLOSURE:
+            {
+                cppLox::Types::ObjectString * name = object->as<cppLox::Types::ObjectClosure>()->function()->name();
+                if (name != nullptr) {
+                    return formatter<string_view>::format(std::format("<fn {}>", name->string()), ctx);
+                }
+                return formatter<string_view>::format(std::format("<script>"), ctx);
+            }
+        case cppLox::Types::Object::Type::UPVALUE:
+            {
+                return formatter<string_view>::format(std::format("upvalue"), ctx);
+            }
+            // should be be unreachable
+        default:
+            return formatter<string_view>::format(std::format("undefined"), ctx);
         }
-
-        // should be be unreachable
-        return formatter<string_view>::format(std::format("undefined"), ctx);
     }
 };
