@@ -310,12 +310,12 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto whileStatement(std::vector<Token> const & tokens) -> void;
 
+    template <typename T> friend struct ParserTraits;
+
     // Update friend declaration to match template constraints
     template <typename T>
-        requires PrattParserTraits<T>::hasRequiredMethods
+        requires ParserTraits<T>::hasRequiredMethods
     friend class ParseRuleLookupTableFactory;
-
-    template <typename T> friend struct PrattParserTraits;
 
     /// @brief The token that was previously compiled.
     Token const * m_previous;

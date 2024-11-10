@@ -14,27 +14,18 @@
  ****************************************************************************/
 
 /**
- * @file token_formatter.hpp
- * @brief This file contains the formatter for the Token class.
+ * @file string_hash.cpp
+ * @brief This file contains the implementation of the hash specialization for ObjectString.
  */
 
-#pragma once
+#include "string_hash.hpp"
 
-#include <format>
-#include <string>
-
-#include "token.hpp"
-
-/// @brief Formatter for the Token class
-template <> struct std::formatter<cppLox::Frontend::Token> : std::formatter<std::string_view> {
-
-    /// @brief Formats the given token
-    /// @param token The token to format
-    /// @param ctx The format context
-    /// @return The formatted token
-    [[nodiscard]] auto format(cppLox::Frontend::Token token, format_context & ctx) const;
-};
-
-inline auto std::formatter<cppLox::Frontend::Token>::format(cppLox::Frontend::Token token, format_context & ctx) const {
-    return formatter<string_view>::format(std::format("Token({}, {})", token.lexeme(), token.line()), ctx);
+namespace std {
+auto hash<cppLox::Types::ObjectString>::operator()(cppLox::Types::ObjectString & s) const -> std::size_t {
+    return std::hash<std::string_view>{}(s.string());
 }
+
+auto hash<cppLox::Types::ObjectString>::operator()(cppLox::Types::ObjectString * s) const -> std::size_t {
+    return std::hash<std::string_view>{}(s->string());
+}
+} // namespace std

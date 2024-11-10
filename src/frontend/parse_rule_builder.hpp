@@ -24,44 +24,61 @@
 namespace cppLox::Frontend {
 
 /// @brief A builder for parse rules.
-/// @tparam T The type of the parser / compiler.
-template <typename T> class ParseRuleBuilder {
+/// @tparam PARSER The type of the parser / compiler.
+template <typename PARSER> class ParseRuleBuilder {
   public:
     /// @brief Creates a null rule.
     /// @return The created parse rule.
-    [[nodiscard]] static auto nullRule() -> ParseRule<T> {
-        return ParseRule<T>(std::nullopt, std::nullopt, Precedence::NONE);
-    }
+    [[nodiscard]] static auto nullRule() -> ParseRule<PARSER>;
 
     /// @brief Creates a prefix rule.
     /// @param prefix The prefix function of the rule.
     /// @return The created parse rule.
-    [[nodiscard]] static auto prefixRule(void (T::*prefix)(std::vector<Token> const &, bool)) -> ParseRule<T> {
-        return ParseRule<T>(
-            [prefix](T * instance, auto & tokens, bool canAssign) { std::invoke(prefix, instance, tokens, canAssign); },
-            std::nullopt, Precedence::NONE);
-    }
+    [[nodiscard]] static auto prefixRule(void (PARSER::*prefix)(std::vector<Token> const &, bool)) -> ParseRule<PARSER>;
 
     /// @brief Creates an infix rule.
     /// @param infix The infix function of the rule.
     /// @param prec The precedence of the rule.
     /// @return The created parse rule.
-    [[nodiscard]] static auto infixRule(void (T::*infix)(std::vector<Token> const &), Precedence prec) -> ParseRule<T> {
-        return ParseRule<T>(
-            std::nullopt, [infix](T * instance, auto & tokens) { std::invoke(infix, instance, tokens); }, prec);
-    }
+    [[nodiscard]] static auto infixRule(void (PARSER::*infix)(std::vector<Token> const &), Precedence prec)
+        -> ParseRule<PARSER>;
 
     /// @brief Creates a full rule.
     /// @param prefix The prefix function of the rule.
     /// @param infix The infix function of the rule.
     /// @param prec The precedence of the rule.
     /// @return The created parse rule.
-    [[nodiscard]] static auto fullRule(void (T::*prefix)(std::vector<Token> const &, bool),
-                                       void (T::*infix)(std::vector<Token> const &), Precedence prec) -> ParseRule<T> {
-        return ParseRule<T>(
-            [prefix](T * instance, auto & tokens, bool canAssign) { std::invoke(prefix, instance, tokens, canAssign); },
-            [infix](T * instance, auto & tokens) { std::invoke(infix, instance, tokens); }, prec);
-    }
+    [[nodiscard]] static auto fullRule(void (PARSER::*prefix)(std::vector<Token> const &, bool),
+                                       void (PARSER::*infix)(std::vector<Token> const &), Precedence prec)
+        -> ParseRule<PARSER>;
 };
+
+template <typename PARSER> auto ParseRuleBuilder<PARSER>::nullRule() -> ParseRule<PARSER> {
+    return ParseRule<PARSER>(std::nullopt, std::nullopt, Precedence::NONE);
+}
+
+template <typename PARSER>
+auto ParseRuleBuilder<PARSER>::prefixRule(void (PARSER::*prefix)(std::vector<Token> const &, bool))
+    -> ParseRule<PARSER> {
+    return ParseRule<PARSER>(
+        [prefix](PARSER * parser, auto & tokens, bool canAssign) { std::invoke(prefix, parser, tokens, canAssign); },
+        std::nullopt, Precedence::NONE);
+}
+
+template <typename PARSER>
+auto ParseRuleBuilder<PARSER>::infixRule(void (PARSER::*infix)(std::vector<Token> const &), Precedence prec)
+    -> ParseRule<PARSER> {
+    return ParseRule<PARSER>(
+        std::nullopt, [infix](PARSER * parser, auto & tokens) { std::invoke(infix, parser, tokens); }, prec);
+}
+
+template <typename PARSER>
+auto ParseRuleBuilder<PARSER>::fullRule(void (PARSER::*prefix)(std::vector<Token> const &, bool),
+                                        void (PARSER::*infix)(std::vector<Token> const &), Precedence prec)
+    -> ParseRule<PARSER> {
+    return ParseRule<PARSER>(
+        [prefix](PARSER * parser, auto & tokens, bool canAssign) { std::invoke(prefix, parser, tokens, canAssign); },
+        [infix](PARSER * parser, auto & tokens) { std::invoke(infix, parser, tokens); }, prec);
+}
 
 } // namespace cppLox::Frontend
