@@ -47,6 +47,6 @@ template <HasEqualOperator T> auto SimpleComperator<T>::operator()(T const & a, 
 }
 
 template <HasEqualOperator T> auto SimpleComperator<T>::operator()(T const * a, T const * b) const -> bool {
-    return (*a) == b;
+    return (*a) == *(b);
 }
 } // namespace cppLox::Types

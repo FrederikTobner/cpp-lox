@@ -30,37 +30,52 @@
 namespace cppLox::Frontend {
 
 /// @brief Factory for the parse rules of the Pratt parser.
-/// @tparam PARSER The type of the parser / compiler.
+/// @tparam PARSER The type of the parser.
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
 class ParseRuleLookupTableFactory {
+
+    using ParseRuleLookupTable = std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)>;
+
   public:
     /// @brief Creates the parse rules for the Pratt parser.
     /// @return The created parse rules for the Pratt parser.
-    [[nodiscard]] static auto createParseRules()
-        -> std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)>;
+    [[nodiscard]] static inline auto createParseRules() -> ParseRuleLookupTable;
 
   private:
-    static auto
-    initializeGroupingTokens(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) -> void;
-    static void initializeSeparators(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
-    static void
-    initializeArithmeticOperators(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
-    static void
-    initializeComparisonOperators(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
-    static void
-    initializeLiteralsAndIdentifiers(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
-    static void initializeKeywordsAndLogicalOperators(
-        std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
-    static void
-    initializeStatementKeywords(std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules);
+    /// @brief Initializes the grouping tokens.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeGroupingTokens(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the separators.
+    /// @param rules TThe parse rules that are initialized.
+    static inline auto initializeSeparators(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the arithmetic operators.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeArithmeticOperators(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the comparison operators.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeComparisonOperators(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the literals and identifiers.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeLiteralsAndIdentifiers(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the keywords and logical operators.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeKeywordsAndLogicalOperators(ParseRuleLookupTable & rules) -> void;
+
+    /// @brief Initializes the statement keywords.
+    /// @param rules The parse rules that are initialized.
+    static inline auto initializeStatementKeywords(ParseRuleLookupTable & rules) -> void;
 };
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-auto ParseRuleLookupTableFactory<PARSER>::createParseRules()
-    -> std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> {
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
+auto ParseRuleLookupTableFactory<PARSER>::createParseRules() -> ParseRuleLookupTable {
+    ParseRuleLookupTable rules{};
 
     initializeGroupingTokens(rules);
     initializeSeparators(rules);
@@ -77,8 +92,7 @@ auto ParseRuleLookupTableFactory<PARSER>::createParseRules()
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-auto ParseRuleLookupTableFactory<PARSER>::initializeGroupingTokens(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) -> void {
+auto ParseRuleLookupTableFactory<PARSER>::initializeGroupingTokens(ParseRuleLookupTable & rules) -> void {
     rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
         ParseRuleBuilder<PARSER>::fullRule(&PARSER::grouping, &PARSER::call, Precedence::CALL);
     rules[static_cast<size_t>(Token::Type::RIGHT_PARENTHESES)] = ParseRuleBuilder<PARSER>::nullRule();
@@ -88,8 +102,7 @@ auto ParseRuleLookupTableFactory<PARSER>::initializeGroupingTokens(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeSeparators(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeSeparators(ParseRuleLookupTable & rules) {
     auto const separators = {Token::Type::COMMA, Token::Type::DOT, Token::Type::SEMICOLON};
     for (auto type : separators) {
         rules[static_cast<size_t>(type)] = ParseRuleBuilder<PARSER>::nullRule();
@@ -98,8 +111,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeSeparators(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeArithmeticOperators(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeArithmeticOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::MINUS)] =
         ParseRuleBuilder<PARSER>::fullRule(&PARSER::unary, &PARSER::binary, Precedence::TERM);
     rules[static_cast<size_t>(Token::Type::PLUS)] =
@@ -112,8 +124,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeArithmeticOperators(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeComparisonOperators(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeComparisonOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::BANG)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::unary);
     rules[static_cast<size_t>(Token::Type::BANG_EQUAL)] =
         ParseRuleBuilder<PARSER>::infixRule(&PARSER::binary, Precedence::EQUALITY);
@@ -132,8 +143,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeComparisonOperators(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeLiteralsAndIdentifiers(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeLiteralsAndIdentifiers(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::IDENTIFIER)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::variable);
     rules[static_cast<size_t>(Token::Type::STRING)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::string);
     rules[static_cast<size_t>(Token::Type::NUMBER)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::number);
@@ -141,8 +151,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeLiteralsAndIdentifiers(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeKeywordsAndLogicalOperators(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeKeywordsAndLogicalOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::AND)] = ParseRuleBuilder<PARSER>::infixRule(&PARSER::and_, Precedence::AND);
     rules[static_cast<size_t>(Token::Type::OR)] = ParseRuleBuilder<PARSER>::infixRule(&PARSER::or_, Precedence::OR);
     auto const literals = {Token::Type::FALSE, Token::Type::NULL_, Token::Type::TRUE};
@@ -153,8 +162,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeKeywordsAndLogicalOperators(
 
 template <typename PARSER>
     requires ParserTraits<PARSER>::hasRequiredMethods
-void ParseRuleLookupTableFactory<PARSER>::initializeStatementKeywords(
-    std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)> & rules) {
+void ParseRuleLookupTableFactory<PARSER>::initializeStatementKeywords(ParseRuleLookupTable & rules) {
     auto const nullKeyWords = {Token::Type::CLASS, Token::Type::ELSE,   Token::Type::FUN,   Token::Type::FOR,
                                Token::Type::IF,    Token::Type::RETURN, Token::Type::SUPER, Token::Type::THIS,
                                Token::Type::VAR,   Token::Type::WHILE};
