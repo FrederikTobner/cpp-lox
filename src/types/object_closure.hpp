@@ -20,9 +20,11 @@
 
 #pragma once
 
+#include "../language_features.hpp"
 #include "object.hpp"
 #include "object_function.hpp"
 #include "object_upvalue.hpp"
+
 
 #include <vector>
 
@@ -40,11 +42,11 @@ class ObjectClosure : public Object {
 
     /// @brief Gets the function of the closure.
     /// @return The function of the closure.
-    [[nodiscard]] auto function() const noexcept -> ObjectFunction *;
+    [[nodiscard]] auto function() const _NO_EXCEPT->ObjectFunction *;
 
     /// @brief Gets the upvalues of the closure.
     /// @return The upvalues of the closure.
-    [[nodiscard]] auto upvalues() noexcept -> std::vector<ObjectUpValue *> &;
+    [[nodiscard]] auto upvalues() _NO_EXCEPT->std::vector<ObjectUpValue *> &;
 
     /// @brief Writes the closure to the output stream.
     /// @param os The output stream to write to.

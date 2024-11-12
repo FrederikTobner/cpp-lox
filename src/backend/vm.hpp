@@ -26,6 +26,7 @@
 #include <functional>
 
 #include "../bytecode/chunk.hpp"
+#include "../language_features.hpp"
 #include "../memory_mutator.hpp"
 #include "../types/value.hpp"
 #include "callframe.hpp"
@@ -75,7 +76,7 @@ class VM {
     auto push(CallFrame & frame, cppLox::Types::Value value) -> void;
 
     /// @brief Resets the stack
-    auto resetStack() noexcept -> void;
+    auto resetStack() _NO_EXCEPT->void;
 
   private:
     /// @brief Throws a runtime exception with the given message

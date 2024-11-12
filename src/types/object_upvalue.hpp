@@ -20,8 +20,10 @@
 
 #pragma once
 
+#include "../language_features.hpp"
 #include "object.hpp"
 #include "value.hpp"
+
 
 namespace cppLox::Types {
 
@@ -37,7 +39,7 @@ class ObjectUpValue : public Object {
 
     /// @brief Gets the closed value.
     /// @return The closed value.
-    [[nodiscard]] auto closed() const noexcept -> Value *;
+    [[nodiscard]] auto closed() const _NO_EXCEPT->Value *;
 
     /// @brief Sets the closed value.
     /// @param closed The closed value.

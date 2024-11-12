@@ -27,14 +27,14 @@ CallFrame::CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Valu
     m_instruction_pointer = closure->function()->chunk()->code().data();
 }
 
-[[nodiscard]] auto CallFrame::closure() const noexcept -> cppLox::Types::ObjectClosure * {
+[[nodiscard]] auto CallFrame::closure() const _NO_EXCEPT->cppLox::Types::ObjectClosure * {
     return m_closure;
 }
 
-[[nodiscard]] auto CallFrame::instructionPointer() const noexcept -> uint8_t * {
+[[nodiscard]] auto CallFrame::instructionPointer() const _NO_EXCEPT->uint8_t * {
     return m_instruction_pointer;
 }
 
-[[nodiscard]] auto CallFrame::slots() const noexcept -> cppLox::Types::Value * {
+[[nodiscard]] auto CallFrame::slots() const _NO_EXCEPT->cppLox::Types::Value * {
     return m_slots;
 }

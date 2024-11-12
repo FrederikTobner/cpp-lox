@@ -23,7 +23,9 @@
 #include <cstdint>
 #include <string>
 
+#include "../language_features.hpp"
 #include "token.hpp"
+
 
 namespace cppLox::Frontend {
 
@@ -42,10 +44,10 @@ class Local {
     Local(cppLox::Frontend::Token & token, int32_t depth);
 
     /// @brief Gets the token of the name of the local variable.
-    auto getToken() const noexcept -> cppLox::Frontend::Token const &;
+    auto getToken() const _NO_EXCEPT->cppLox::Frontend::Token const &;
 
     /// @brief Gets the depth of the local variable.
-    auto getDepth() const noexcept -> int32_t;
+    auto getDepth() const _NO_EXCEPT->int32_t;
 
   private:
     /// @brief The token of the name of the local variable.

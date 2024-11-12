@@ -45,7 +45,7 @@ Value::Value(Object * value) {
     this->m_underlying_value.m_object = value;
 }
 
-[[nodiscard]] auto Value::is(Value::Type type) noexcept -> bool {
+[[nodiscard]] auto Value::is(Value::Type type) _NO_EXCEPT->bool {
     return type == this->m_type;
 }
 

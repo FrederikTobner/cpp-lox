@@ -26,7 +26,7 @@ ObjectUpValue::ObjectUpValue(Value * closed) : m_closed(closed) {
     m_type = Object::Type::UPVALUE;
 }
 
-auto ObjectUpValue::closed() const noexcept -> Value * {
+auto ObjectUpValue::closed() const _NO_EXCEPT->Value * {
     return m_closed;
 }
 

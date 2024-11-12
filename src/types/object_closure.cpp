@@ -30,10 +30,10 @@ ObjectClosure::ObjectClosure(ObjectFunction * function) : m_function(function) {
     m_upvalues.resize(function->upvalueCount(), nullptr);
 }
 
-auto ObjectClosure::function() const noexcept -> ObjectFunction * {
+auto ObjectClosure::function() const _NO_EXCEPT->ObjectFunction * {
     return m_function;
 }
 
-auto ObjectClosure::upvalues() noexcept -> std::vector<ObjectUpValue *> & {
+auto ObjectClosure::upvalues() _NO_EXCEPT->std::vector<ObjectUpValue *> & {
     return m_upvalues;
 }

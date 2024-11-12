@@ -34,7 +34,6 @@ template <typename T> struct MemberFunctionTraits;
 /// @tparam ...ARGS The arguments of the method.
 template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<R (T::*)(ARGS...)> {
     using return_type = R;
-    using class_type = T;
     using args_tuple = std::tuple<ARGS...>;
     static constexpr size_t arity = sizeof...(ARGS);
 };
@@ -45,7 +44,6 @@ template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<
 /// @tparam ...ARGS The arguments of the method.
 template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<R (T::*)(ARGS...) const> {
     using return_type = R;
-    using class_type = T;
     using args_tuple = std::tuple<ARGS...>;
     static constexpr size_t arity = sizeof...(ARGS);
 };
@@ -55,6 +53,9 @@ template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<
 /// @tparam METHOD The method to check.
 template <auto METHOD, typename EXPECTED_SIGNATURE> struct MethodSignatureCheck {
     static constexpr auto method = METHOD;
+
+    static_assert(
+        requires { method; }, "Required method is missing");
 
     static_assert(std::is_member_function_pointer_v<decltype(METHOD)>, "Method must be a member function pointer");
     static_assert(std::is_member_function_pointer_v<EXPECTED_SIGNATURE>,
@@ -71,7 +72,9 @@ template <auto METHOD, typename EXPECTED_SIGNATURE> struct MethodSignatureCheck 
     static_assert(std::is_same_v<typename actual_traits::args_tuple, typename expected_traits::args_tuple>,
                   "Parameter types mismatch");
 
-    static constexpr bool hasValidSignature = std::is_same_v<decltype(METHOD), EXPECTED_SIGNATURE>;
+    static_assert(actual_traits::arity == expected_traits::arity, "Arity mismatch");
+
+    static constexpr bool allChecksSucceded = std::is_same_v<decltype(METHOD), EXPECTED_SIGNATURE>;
 };
 
 /// @brief Used to check if a type has a specific method signature.
@@ -80,9 +83,7 @@ template <auto METHOD, typename EXPECTED_SIGNATURE> struct MethodSignatureCheck 
 template <typename PARSER, typename... CHECKS> struct MethodSignatureChecks {
     template <typename CHECK> static constexpr bool verifyMethod() {
         static_assert(
-            requires { CHECK::method; }, "Required method is missing");
-        static_assert(
-            requires { CHECK::hasValidSignature; }, "Method has invalid signature");
+            requires { CHECK::allChecksSucceded; }, "Method has invalid signature");
 
         return true;
     }

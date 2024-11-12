@@ -20,7 +20,9 @@
 
 #pragma once
 
+#include "../language_features.hpp"
 #include <cstdint>
+
 
 namespace cppLox::Frontend {
 class Upvalue {
@@ -37,11 +39,11 @@ class Upvalue {
 
     /// @brief Gets the index of the local variable or upvalue.
     /// @return The index of the local variable or upvalue.
-    [[nodiscard]] auto index() const noexcept -> uint8_t;
+    [[nodiscard]] auto index() const _NO_EXCEPT->uint8_t;
 
     /// @brief Gets whether the upvalue is an upvalue or a local variable.
     /// @return Whether the upvalue is an upvalue or a local variable.
-    [[nodiscard]] auto isLocal() const noexcept -> bool;
+    [[nodiscard]] auto isLocal() const _NO_EXCEPT->bool;
 
   private:
     /// @brief The index of the local variable or upvalue.

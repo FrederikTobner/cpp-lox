@@ -24,6 +24,8 @@
 #include <string>
 #include <string_view>
 
+#include "../language_features.hpp"
+
 namespace cppLox::Error {
 
 /// @brief Exception that is thrown when an error occurs during run time.
@@ -35,7 +37,7 @@ class RunTimeException : public std::exception {
 
     /// @brief Gets the message of the exception.
     /// @return The underlying message of the exception.
-    [[nodiscard]] char const * what() const noexcept override;
+    [[nodiscard]] char const * what() const _NO_EXCEPT override;
 
   private:
     /// @brief The underlying message of the exception.

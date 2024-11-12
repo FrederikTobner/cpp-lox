@@ -304,7 +304,7 @@ auto VM::pop(CallFrame & frame) -> cppLox::Types::Value {
     return m_stack[m_stack_top - 1];
 }
 
-auto VM::resetStack() noexcept -> void {
+auto VM::resetStack() _NO_EXCEPT->void {
     m_stack_top = 0;
     m_frame_count = 0;
 }

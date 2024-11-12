@@ -28,10 +28,10 @@ Upvalue::Upvalue() : m_index(0), m_isLocal(false) {
 Upvalue::Upvalue(uint8_t index, bool isLocal) : m_index(index), m_isLocal(isLocal) {
 }
 
-auto Upvalue::index() const noexcept -> uint8_t {
+auto Upvalue::index() const _NO_EXCEPT->uint8_t {
     return m_index;
 }
 
-auto Upvalue::isLocal() const noexcept -> bool {
+auto Upvalue::isLocal() const _NO_EXCEPT->bool {
     return m_isLocal;
 }
