@@ -32,6 +32,7 @@ namespace cppLox::Frontend {
 /// @brief A parserule for the Pratt parser.
 /// @tparam PARSER The type of the parser.
 template <typename PARSER> class ParseRule {
+
   public:
     /// @brief Trivial constructor of the parse rule.
     ParseRule();

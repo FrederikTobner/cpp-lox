@@ -24,7 +24,7 @@
 
 #include "parse_rule.hpp"
 #include "parse_rule_builder.hpp"
-#include "parser_traits.hpp"
+#include "pratt_parser_traits.hpp"
 #include "token.hpp"
 
 namespace cppLox::Frontend {
@@ -32,7 +32,7 @@ namespace cppLox::Frontend {
 /// @brief Factory for the parse rules of the Pratt parser.
 /// @tparam PARSER The type of the parser.
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 class ParseRuleLookupTableFactory {
 
     using ParseRuleLookupTable = std::array<ParseRule<PARSER>, static_cast<size_t>(Token::Type::AMOUNT)>;
@@ -70,10 +70,10 @@ class ParseRuleLookupTableFactory {
     /// @brief Initializes the statement keywords.
     /// @param rules The parse rules that are initialized.
     static inline auto initializeStatementKeywords(ParseRuleLookupTable & rules) -> void;
-};
+}; // namespace cppLox::Frontend
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 auto ParseRuleLookupTableFactory<PARSER>::createParseRules() -> ParseRuleLookupTable {
     ParseRuleLookupTable rules{};
 
@@ -91,7 +91,7 @@ auto ParseRuleLookupTableFactory<PARSER>::createParseRules() -> ParseRuleLookupT
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 auto ParseRuleLookupTableFactory<PARSER>::initializeGroupingTokens(ParseRuleLookupTable & rules) -> void {
     rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
         ParseRuleBuilder<PARSER>::fullRule(&PARSER::grouping, &PARSER::call, Precedence::CALL);
@@ -101,7 +101,7 @@ auto ParseRuleLookupTableFactory<PARSER>::initializeGroupingTokens(ParseRuleLook
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeSeparators(ParseRuleLookupTable & rules) {
     auto const separators = {Token::Type::COMMA, Token::Type::DOT, Token::Type::SEMICOLON};
     for (auto type : separators) {
@@ -110,7 +110,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeSeparators(ParseRuleLookupTa
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeArithmeticOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::MINUS)] =
         ParseRuleBuilder<PARSER>::fullRule(&PARSER::unary, &PARSER::binary, Precedence::TERM);
@@ -123,7 +123,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeArithmeticOperators(ParseRul
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeComparisonOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::BANG)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::unary);
     rules[static_cast<size_t>(Token::Type::BANG_EQUAL)] =
@@ -142,7 +142,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeComparisonOperators(ParseRul
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeLiteralsAndIdentifiers(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::IDENTIFIER)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::variable);
     rules[static_cast<size_t>(Token::Type::STRING)] = ParseRuleBuilder<PARSER>::prefixRule(&PARSER::string);
@@ -150,7 +150,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeLiteralsAndIdentifiers(Parse
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeKeywordsAndLogicalOperators(ParseRuleLookupTable & rules) {
     rules[static_cast<size_t>(Token::Type::AND)] = ParseRuleBuilder<PARSER>::infixRule(&PARSER::and_, Precedence::AND);
     rules[static_cast<size_t>(Token::Type::OR)] = ParseRuleBuilder<PARSER>::infixRule(&PARSER::or_, Precedence::OR);
@@ -161,7 +161,7 @@ void ParseRuleLookupTableFactory<PARSER>::initializeKeywordsAndLogicalOperators(
 }
 
 template <typename PARSER>
-    requires ParserTraits<PARSER>::hasRequiredMethods
+    requires PrattParserTrait<PARSER>::hasRequiredMethods
 void ParseRuleLookupTableFactory<PARSER>::initializeStatementKeywords(ParseRuleLookupTable & rules) {
     auto const nullKeyWords = {Token::Type::CLASS, Token::Type::ELSE,   Token::Type::FUN,   Token::Type::FOR,
                                Token::Type::IF,    Token::Type::RETURN, Token::Type::SUPER, Token::Type::THIS,
