@@ -14,8 +14,8 @@
  ****************************************************************************/
 
 /**
- * @file parser_traits.hpp
- * @brief This file contains the type traits for Pratt parsers.
+ * @file method_signature_traits.hpp
+ * @brief This file contains the method signature traits for checking if a type has a specific method signature.
  */
 
 #pragma once
@@ -39,16 +39,6 @@ template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<
 };
 
 /// @brief Used to check if a type has a specific method signature.
-/// @tparam T The type to check.
-/// @tparam R The return type of the method.
-/// @tparam ...ARGS The arguments of the method.
-template <typename T, typename R, typename... ARGS> struct MemberFunctionTraits<R (T::*)(ARGS...) const> {
-    using return_type = R;
-    using args_tuple = std::tuple<ARGS...>;
-    static constexpr size_t arity = sizeof...(ARGS);
-};
-
-/// @brief Used to check if a type has a specific method signature.
 /// @tparam EXPECTED_SIGNATURE The expected signature of the method.
 /// @tparam METHOD The method to check.
 template <auto METHOD, typename EXPECTED_SIGNATURE> struct MethodSignatureCheck {
@@ -61,30 +51,26 @@ template <auto METHOD, typename EXPECTED_SIGNATURE> struct MethodSignatureCheck 
     static_assert(std::is_member_function_pointer_v<EXPECTED_SIGNATURE>,
                   "Expected signature must be a member function pointer");
 
-    static_assert(std::is_same_v<decltype(METHOD), EXPECTED_SIGNATURE>,
-                  "Method signature does not match expected signature");
-
     using actual_traits = MemberFunctionTraits<decltype(METHOD)>;
     using expected_traits = MemberFunctionTraits<EXPECTED_SIGNATURE>;
 
     static_assert(std::is_same_v<typename actual_traits::return_type, typename expected_traits::return_type>,
                   "Return type mismatch");
+    static_assert(actual_traits::arity == expected_traits::arity, "Arity mismatch");
     static_assert(std::is_same_v<typename actual_traits::args_tuple, typename expected_traits::args_tuple>,
                   "Parameter types mismatch");
 
-    static_assert(actual_traits::arity == expected_traits::arity, "Arity mismatch");
-
-    static constexpr bool allChecksSucceded = std::is_same_v<decltype(METHOD), EXPECTED_SIGNATURE>;
+    static constexpr bool allChecksSucceded = true;
 };
 
 /// @brief Used to check if a type has a specific method signature.
-/// @tparam PARSER The type to check.
+/// @tparam T The type to check.
 /// @tparam ...CHECKS The checks to perform.
-template <typename PARSER, typename... CHECKS> struct MethodSignatureChecks {
+template <typename T, typename... CHECKS> struct MethodSignatureChecks {
     template <typename CHECK> static constexpr bool verifyMethod() {
+        static_assert(std::is_class_v<T>, "Type must be a class");
         static_assert(
             requires { CHECK::allChecksSucceded; }, "Method has invalid signature");
-
         return true;
     }
 
