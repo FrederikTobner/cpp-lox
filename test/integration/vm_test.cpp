@@ -423,11 +423,18 @@ TEST_F(VMIntegrationTest, ReturnInstruction) {
 
 TEST_F(VMIntegrationTest, StackOverflow) {
     // Arrange
+    // Note: pushing values directly onto the stack here would be pointless, since VM::interpret()
+    // resets the stack before running the chunk. Instead, the chunk itself repeatedly pushes a
+    // constant until the stack overflows. A trailing RETURN is added as a safety net so that,
+    // should the overflow check somehow fail to trigger, execution stops instead of reading past
+    // the end of the chunk's bytecode (which previously caused a flaky out-of-bounds crash).
     cppLox::Types::Value value(42.0);
-    for (auto i : std::views::iota(0, STACK_MAX - 1)) {
-        vm->push(getTopFrame(), value);
+    uint8_t const constantIndex = static_cast<uint8_t>(function.chunk()->addConstant(value));
+    for ([[maybe_unused]] auto i : std::views::iota(0, STACK_MAX)) {
+        function.chunk()->write(cppLox::ByteCode::Opcode::CONSTANT, 0);
+        function.chunk()->write(constantIndex, 0);
     }
-    writeMultipleToChunk(cppLox::ByteCode::Opcode::CONSTANT, function.chunk()->addConstant(value));
+    function.chunk()->write(cppLox::ByteCode::Opcode::RETURN, 0);
 
     // Act & Assert
     ASSERT_THROW(vm->interpret(function), cppLox::Error::RunTimeException);
