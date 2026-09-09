@@ -28,6 +28,8 @@
         return "CALL";
     case Opcode::CLOSURE:
         return "CLOSURE";
+    case Opcode::CLOSE_UPVALUE:
+        return "CLOSE_UPVALUE";
     case Opcode::CONSTANT:
         return "CONSTANT";
     case Opcode::DEFINE_GLOBAL:

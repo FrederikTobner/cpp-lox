@@ -83,3 +83,16 @@ TEST_F(FunctionE2ETest, CallNull) {
     // Act & Assert
     ASSERT_THROW(runProgrammThrowingException(source), cppLox::Error::RunTimeException);
 }
+
+TEST_F(FunctionE2ETest, NestedFunction)
+{
+    // Arrange
+    std::string source = R"(fun outer() { fun inner() { print "Hello from inner!"; } inner(); } outer();)";
+    std::string expected = "Hello from inner!\n";
+
+    // Act
+    std::string output = runAndCaptureStdout(source);
+
+    // Assert
+    ASSERT_EQ(expected, output);
+}

@@ -49,11 +49,21 @@ class Local {
     /// @brief Gets the depth of the local variable.
     auto getDepth() const _NO_EXCEPT->int32_t;
 
+    /// @brief Gets whether the local variable is captured by a closure as an upvalue.
+    /// @return Whether the local variable is captured.
+    auto isCaptured() const _NO_EXCEPT->bool;
+
+    /// @brief Marks the local variable as captured by a closure as an upvalue.
+    auto markCaptured() _NO_EXCEPT->void;
+
   private:
     /// @brief The token of the name of the local variable.
     cppLox::Frontend::Token m_token;
 
     /// @brief The depth of the local variable.
     int32_t m_depth;
+
+    /// @brief Whether the local variable is captured by a closure as an upvalue.
+    bool m_isCaptured = false;
 };
 } // namespace cppLox::Frontend

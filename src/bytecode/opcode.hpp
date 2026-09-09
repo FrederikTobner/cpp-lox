@@ -36,6 +36,8 @@ enum Opcode : uint8_t {
     CALL,
     /// @brief Creates a closure and pushes it onto the stack.
     CLOSURE,
+    /// @brief Closes the upvalue for the top value on the stack and pops it off the stack.
+    CLOSE_UPVALUE,
     /// @brief Pushes the given constant onto the stack.
     CONSTANT,
     /// @brief Defines a global variable

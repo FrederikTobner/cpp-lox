@@ -31,19 +31,29 @@ namespace cppLox::Types {
 class ObjectUpValue : public Object {
   public:
     /// @brief Constructs a new upvalue object.
-    /// @param closed The value that is closed.
-    ObjectUpValue(Value * closed);
+    /// @param location The location of the value that is captured, either a slot on the stack or, once closed, the
+    /// internal storage of the upvalue itself.
+    ObjectUpValue(Value * location);
 
     /// @brief Destructor of the upvalue object.
     ~ObjectUpValue() override = default;
 
-    /// @brief Gets the closed value.
-    /// @return The closed value.
-    [[nodiscard]] auto closed() const _NO_EXCEPT->Value *;
+    /// @brief Gets the location of the value that is captured by the upvalue.
+    /// @return The location of the value.
+    [[nodiscard]] auto location() const _NO_EXCEPT->Value *;
 
-    /// @brief Sets the closed value.
-    /// @param closed The closed value.
-    auto setClosed(Value * closed) -> void;
+    /// @brief Sets the location of the value that is captured by the upvalue.
+    /// @param location The new location of the value.
+    auto setLocation(Value * location) -> void;
+
+    /// @brief Whether the upvalue has been closed, meaning it no longer points into the stack.
+    /// @return Whether the upvalue has been closed.
+    [[nodiscard]] auto isClosed() const _NO_EXCEPT->bool;
+
+    /// @brief Closes the upvalue, copying the value it currently points to into the upvalue itself and updating its
+    /// location to point at that internal copy. This is used when the value the upvalue refers to would otherwise go
+    /// out of scope, e.g. when the enclosing function returns or the enclosing block ends.
+    auto close() -> void;
 
     /// @brief Writes the upvalue to the output stream.
     /// @param os The output stream to write to.
@@ -52,8 +62,11 @@ class ObjectUpValue : public Object {
     }
 
   private:
-    /// @brief The enclosed value.
-    Value * m_closed;
+    /// @brief The location of the value that is captured by the upvalue.
+    Value * m_location;
+
+    /// @brief The value that is stored once the upvalue is closed.
+    Value m_closedValue;
 };
 
 } // namespace cppLox::Types

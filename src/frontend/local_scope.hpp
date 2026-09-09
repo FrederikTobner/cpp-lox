@@ -74,6 +74,10 @@ class LocalScope {
     /// @return The index of the local variable.
     auto markInitialized(uint16_t depth) -> void;
 
+    /// @brief Marks the local variable at the given index as captured by a closure as an upvalue.
+    /// @param index The index of the local variable.
+    auto markCaptured(uint16_t index) -> void;
+
     /// @brief Pops the local variables from the compilation scope.
     /// @return The number of local variables popped.
     auto popLocal() -> void;

@@ -30,3 +30,11 @@ auto cppLox::Frontend::Local::getToken() const _NO_EXCEPT->cppLox::Frontend::Tok
 auto cppLox::Frontend::Local::getDepth() const _NO_EXCEPT->int32_t {
     return m_depth;
 }
+
+auto cppLox::Frontend::Local::isCaptured() const _NO_EXCEPT->bool {
+    return m_isCaptured;
+}
+
+auto cppLox::Frontend::Local::markCaptured() _NO_EXCEPT->void {
+    m_isCaptured = true;
+}

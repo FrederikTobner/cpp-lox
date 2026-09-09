@@ -45,6 +45,7 @@ VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
 auto VM::interpret(cppLox::Types::ObjectFunction & function) -> void {
     m_stack_top = 0;
     m_frame_count = 0;
+    m_openUpvalues.clear();
     auto closure = m_memoryMutator->create<cppLox::Types::ObjectClosure>(&function)->as<cppLox::Types::ObjectClosure>();
     push(m_frames[m_frame_count], cppLox::Types::Value(&function));
     call(*closure, 0);
@@ -101,8 +102,18 @@ auto VM::run(cppLox::Types::ObjectClosure & closure) -> void {
                                                           ->getConstant(constant)
                                                           .as<cppLox::Types::Object *>()
                                                           ->as<cppLox::Types::ObjectFunction>();
-                cppLox::Types::Object * closure = m_memoryMutator->create<cppLox::Types::ObjectClosure>(fun);
-                push(*frame, cppLox::Types::Value(closure));
+                cppLox::Types::ObjectClosure * newClosure = m_memoryMutator->create<cppLox::Types::ObjectClosure>(fun)
+                                                                 ->as<cppLox::Types::ObjectClosure>();
+                for (uint16_t i = 0; i < fun->upvalueCount(); i++) {
+                    uint8_t const isLocal = *frame->m_instruction_pointer++;
+                    uint8_t const index = *frame->m_instruction_pointer++;
+                    if (isLocal) {
+                        newClosure->upvalues()[i] = captureUpvalue(&frame->m_slots[index + 1]);
+                    } else {
+                        newClosure->upvalues()[i] = frame->m_closure->upvalues()[index];
+                    }
+                }
+                push(*frame, cppLox::Types::Value(static_cast<cppLox::Types::Object *>(newClosure)));
                 break;
             }
         case cppLox::ByteCode::Opcode::CONSTANT:
@@ -159,7 +170,7 @@ auto VM::run(cppLox::Types::ObjectClosure & closure) -> void {
         case cppLox::ByteCode::Opcode::GET_UPVALUE:
             {
                 uint8_t const slot = *frame->m_instruction_pointer++;
-                push(*frame, *frame->m_closure->upvalues()[slot]->closed());
+                push(*frame, *frame->m_closure->upvalues()[slot]->location());
                 break;
             }
         case cppLox::ByteCode::Opcode::GREATER:
@@ -228,6 +239,7 @@ auto VM::run(cppLox::Types::ObjectClosure & closure) -> void {
         case cppLox::ByteCode::Opcode::RETURN:
             {
                 cppLox::Types::Value const result = pop(*frame);
+                closeUpvalues(frame->m_slots);
                 m_frame_count--;
                 if (m_frame_count == 0) {
                     return;
@@ -261,10 +273,16 @@ auto VM::run(cppLox::Types::ObjectClosure & closure) -> void {
                 frame->m_slots[slot + 1] = peek(*frame);
                 break;
             }
+        case cppLox::ByteCode::Opcode::CLOSE_UPVALUE:
+            {
+                closeUpvalues(&m_stack[m_stack_top - 1]);
+                pop(*frame);
+                break;
+            }
         case cppLox::ByteCode::Opcode::SET_UPVALUE:
             {
                 uint8_t const slot = *frame->m_instruction_pointer++;
-                frame->m_closure->upvalues()[slot]->setClosed(m_stack + m_stack_top - 1);
+                *frame->m_closure->upvalues()[slot]->location() = peek(*frame);
                 break;
             }
         case cppLox::ByteCode::Opcode::SUBTRACT:
@@ -307,6 +325,29 @@ auto VM::pop(CallFrame & frame) -> cppLox::Types::Value {
 auto VM::resetStack() _NO_EXCEPT->void {
     m_stack_top = 0;
     m_frame_count = 0;
+    m_openUpvalues.clear();
+}
+
+[[nodiscard]] auto VM::captureUpvalue(cppLox::Types::Value * local) -> cppLox::Types::ObjectUpValue * {
+    for (cppLox::Types::ObjectUpValue * upvalue : m_openUpvalues) {
+        if (upvalue->location() == local) {
+            return upvalue;
+        }
+    }
+    cppLox::Types::ObjectUpValue * createdUpvalue =
+        m_memoryMutator->create<cppLox::Types::ObjectUpValue>(local)->as<cppLox::Types::ObjectUpValue>();
+    m_openUpvalues.push_back(createdUpvalue);
+    return createdUpvalue;
+}
+
+auto VM::closeUpvalues(cppLox::Types::Value * last) -> void {
+    std::erase_if(m_openUpvalues, [last](cppLox::Types::ObjectUpValue * upvalue) {
+        if (upvalue->location() >= last) {
+            upvalue->close();
+            return true;
+        }
+        return false;
+    });
 }
 
 [[nodiscard]] auto VM::getShort(CallFrame & frame) -> uint16_t {

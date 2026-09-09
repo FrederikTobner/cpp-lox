@@ -30,23 +30,57 @@ TEST_F(ObjectUpvalueTest, is) {
     ASSERT_TRUE(result);
 }
 
-TEST_F(ObjectUpvalueTest, closed) {
+TEST_F(ObjectUpvalueTest, location) {
     // Act
-    auto result = object->as<cppLox::Types::ObjectUpValue>()->closed();
+    auto result = object->as<cppLox::Types::ObjectUpValue>()->location();
 
     // Assert
     ASSERT_EQ(result, closed.get());
 }
 
-TEST_F(ObjectUpvalueTest, setClosed) {
+TEST_F(ObjectUpvalueTest, setLocation) {
     // Arrange
-    auto newClosed = cppLox::Types::Value(1.0);
+    auto newLocation = cppLox::Types::Value(1.0);
 
     // Act
-    object->as<cppLox::Types::ObjectUpValue>()->setClosed(&newClosed);
+    object->as<cppLox::Types::ObjectUpValue>()->setLocation(&newLocation);
 
     // Assert
-    ASSERT_EQ(object->as<cppLox::Types::ObjectUpValue>()->closed(), &newClosed);
+    ASSERT_EQ(object->as<cppLox::Types::ObjectUpValue>()->location(), &newLocation);
+}
+
+TEST_F(ObjectUpvalueTest, isClosedInitiallyFalse) {
+    // Act
+    auto result = object->as<cppLox::Types::ObjectUpValue>()->isClosed();
+
+    // Assert
+    ASSERT_FALSE(result);
+}
+
+TEST_F(ObjectUpvalueTest, close) {
+    // Arrange
+    *closed = cppLox::Types::Value(42.0);
+    auto * upvalue = object->as<cppLox::Types::ObjectUpValue>();
+
+    // Act
+    upvalue->close();
+
+    // Assert
+    ASSERT_TRUE(upvalue->isClosed());
+    ASSERT_NE(upvalue->location(), closed.get());
+    ASSERT_EQ(upvalue->location()->as<double>(), 42.0);
+}
+
+TEST_F(ObjectUpvalueTest, closeIsIndependentOfOriginalLocation) {
+    // Arrange
+    auto * upvalue = object->as<cppLox::Types::ObjectUpValue>();
+    upvalue->close();
+
+    // Act - mutating the original location must no longer affect the upvalue.
+    *closed = cppLox::Types::Value(99.0);
+
+    // Assert
+    ASSERT_EQ(upvalue->location()->as<double>(), 1.0);
 }
 
 TEST_F(ObjectUpvalueTest, writeToOutputStream) {

@@ -72,14 +72,14 @@ auto CompilationScope::endScope() -> void {
 
 auto CompilationScope::addUpvalue(uint8_t index, bool isLocal) -> uint8_t {
     Upvalue * upvalue = nullptr;
-    for (auto i : std::views::iota(0u, m_function->upvalueCount()) | std::views::reverse) {
+    uint8_t upvalueCount = m_function->upvalueCount();
+    for (auto i : std::views::iota(0u, upvalueCount) | std::views::reverse) {
         upvalue = &m_upvalues[i];
         if (upvalue->index() == index && upvalue->isLocal() == isLocal) {
             return i;
         }
     }
-    m_upvalues[index] = Upvalue(index, isLocal);
-    uint8_t upvalueCount = m_function->upvalueCount();
+    m_upvalues[upvalueCount] = Upvalue(index, isLocal);
     m_function->incrementUpvalueCount();
     return upvalueCount;
 }

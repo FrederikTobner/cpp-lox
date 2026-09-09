@@ -22,14 +22,23 @@
 
 using namespace cppLox::Types;
 
-ObjectUpValue::ObjectUpValue(Value * closed) : m_closed(closed) {
+ObjectUpValue::ObjectUpValue(Value * location) : m_location(location) {
     m_type = Object::Type::UPVALUE;
 }
 
-auto ObjectUpValue::closed() const _NO_EXCEPT->Value * {
-    return m_closed;
+auto ObjectUpValue::location() const _NO_EXCEPT->Value * {
+    return m_location;
 }
 
-auto ObjectUpValue::setClosed(Value * closed) -> void {
-    m_closed = closed;
+auto ObjectUpValue::setLocation(Value * location) -> void {
+    m_location = location;
+}
+
+auto ObjectUpValue::isClosed() const _NO_EXCEPT->bool {
+    return m_location == &m_closedValue;
+}
+
+auto ObjectUpValue::close() -> void {
+    m_closedValue = *m_location;
+    m_location = &m_closedValue;
 }

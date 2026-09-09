@@ -235,7 +235,11 @@ auto Compiler::endScope() -> void {
     while (m_currentScope->localScope()->localCount() > 0 &&
            m_currentScope->localScope()->local(m_currentScope->localScope()->localCount() - 1).getDepth() >=
                m_currentScope->scopeDepth()) {
-        emitByte(cppLox::ByteCode::Opcode::POP);
+        if (m_currentScope->localScope()->local(m_currentScope->localScope()->localCount() - 1).isCaptured()) {
+            emitByte(cppLox::ByteCode::Opcode::CLOSE_UPVALUE);
+        } else {
+            emitByte(cppLox::ByteCode::Opcode::POP);
+        }
         m_currentScope->localScope()->popLocal();
     }
     m_currentScope->endScope();
@@ -342,13 +346,14 @@ auto Compiler::function(FunctionType type, std::vector<Token> const & tokens) ->
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after parameters", tokens);
     consume(Token::Type::LEFT_BRACE, "Expect '{' before function body", tokens);
     block(tokens);
+    std::shared_ptr<CompilationScope> const compiledScope = m_currentScope;
     auto function = endCompilation();
     emitBytes(cppLox::ByteCode::Opcode::CLOSURE,
               makeConstant(cppLox::Types::Value(static_cast<cppLox::Types::Object *>(function))));
 
     for (auto i : std::views::iota(0u, function->upvalueCount())) {
-        emitByte(m_currentScope->upvalue(i).isLocal() ? 1 : 0);
-        emitByte(m_currentScope->upvalue(i).index());
+        emitByte(compiledScope->upvalue(i).isLocal() ? 1 : 0);
+        emitByte(compiledScope->upvalue(i).index());
     }
 }
 
@@ -545,11 +550,16 @@ auto Compiler::resolveUpvalue(Token const & name) -> int {
     if (m_currentScope->enclosing().get() == nullptr) {
         return -1;
     }
-    int localIndex = resolveLocal(name, *m_currentScope->localScope().get());
+    std::shared_ptr<CompilationScope> const & enclosingScope = m_currentScope->enclosing();
+    int localIndex = resolveLocal(name, *enclosingScope->localScope().get());
     if (localIndex != -1) {
+        enclosingScope->localScope()->markCaptured((uint16_t)localIndex);
         return m_currentScope->addUpvalue((uint8_t)localIndex, true);
     }
+    std::shared_ptr<CompilationScope> currentScope = m_currentScope;
+    m_currentScope = enclosingScope;
     int upvalueIndex = resolveUpvalue(name);
+    m_currentScope = currentScope;
     if (upvalueIndex != -1) {
         return m_currentScope->addUpvalue((uint8_t)upvalueIndex, false);
     }

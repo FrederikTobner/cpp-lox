@@ -24,6 +24,7 @@
 #include <iomanip>
 #include <iostream>
 
+#include "../types/object_function.hpp"
 #include "../types/value_formatter.hpp"
 #include "opcode_formatter.hpp"
 
@@ -73,8 +74,19 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
             offset++;
             std::cout << std::format("{:>16} {} {}\n", static_cast<Opcode>(instruction), unsigned(constant),
                                      m_constants[constant]);
+            auto * function = m_constants[constant]
+                                  .as<cppLox::Types::Object *>()
+                                  ->as<cppLox::Types::ObjectFunction>();
+            for (uint16_t i = 0; i < function->upvalueCount(); i++) {
+                uint8_t const isLocal = m_code[offset++];
+                uint8_t const index = m_code[offset++];
+                std::cout << std::format("{:#06X}      |                     {} {}\n", offset - 2,
+                                         isLocal ? "local" : "upvalue", unsigned(index));
+            }
             return offset;
         }
+    case Opcode::CLOSE_UPVALUE:
+        return simpleInstruction(instruction, offset);
     case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
     case Opcode::DEFINE_GLOBAL:
