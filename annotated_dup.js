@@ -18,14 +18,27 @@ var annotated_dup =
         [ "Local", "classcppLox_1_1Frontend_1_1Local.html", "classcppLox_1_1Frontend_1_1Local" ],
         [ "LocalScope", "classcppLox_1_1Frontend_1_1LocalScope.html", "classcppLox_1_1Frontend_1_1LocalScope" ],
         [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
-        [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ]
+        [ "ParseRuleBuilder", "classcppLox_1_1Frontend_1_1ParseRuleBuilder.html", "classcppLox_1_1Frontend_1_1ParseRuleBuilder" ],
+        [ "ParseRuleLookupTableFactory", "classcppLox_1_1Frontend_1_1ParseRuleLookupTableFactory.html", "classcppLox_1_1Frontend_1_1ParseRuleLookupTableFactory" ],
+        [ "PrattParserTrait", "classcppLox_1_1Frontend_1_1PrattParserTrait.html", "classcppLox_1_1Frontend_1_1PrattParserTrait" ],
+        [ "Signatures", "structcppLox_1_1Frontend_1_1Signatures.html", "structcppLox_1_1Frontend_1_1Signatures" ],
+        [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ],
+        [ "Upvalue", "classcppLox_1_1Frontend_1_1Upvalue.html", "classcppLox_1_1Frontend_1_1Upvalue" ]
+      ] ],
+      [ "Traits", "namespacecppLox_1_1Traits.html", [
+        [ "MemberFunctionTraits", "structcppLox_1_1Traits_1_1MemberFunctionTraits.html", null ],
+        [ "MemberFunctionTraits< R(T::*)(ARGS...)>", "structcppLox_1_1Traits_1_1MemberFunctionTraits_3_01R_07T_1_1_5_08_07ARGS_8_8_8_08_4.html", "structcppLox_1_1Traits_1_1MemberFunctionTraits_3_01R_07T_1_1_5_08_07ARGS_8_8_8_08_4" ],
+        [ "MethodSignatureCheck", "structcppLox_1_1Traits_1_1MethodSignatureCheck.html", "structcppLox_1_1Traits_1_1MethodSignatureCheck" ],
+        [ "MethodSignatureChecks", "structcppLox_1_1Traits_1_1MethodSignatureChecks.html", "structcppLox_1_1Traits_1_1MethodSignatureChecks" ]
       ] ],
       [ "Types", "namespacecppLox_1_1Types.html", [
-        [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ],
         [ "Object", "classcppLox_1_1Types_1_1Object.html", "classcppLox_1_1Types_1_1Object" ],
+        [ "ObjectClosure", "classcppLox_1_1Types_1_1ObjectClosure.html", "classcppLox_1_1Types_1_1ObjectClosure" ],
         [ "ObjectFunction", "classcppLox_1_1Types_1_1ObjectFunction.html", "classcppLox_1_1Types_1_1ObjectFunction" ],
         [ "ObjectNativeFunction", "classcppLox_1_1Types_1_1ObjectNativeFunction.html", "classcppLox_1_1Types_1_1ObjectNativeFunction" ],
         [ "ObjectString", "classcppLox_1_1Types_1_1ObjectString.html", "classcppLox_1_1Types_1_1ObjectString" ],
+        [ "ObjectUpValue", "classcppLox_1_1Types_1_1ObjectUpValue.html", "classcppLox_1_1Types_1_1ObjectUpValue" ],
+        [ "SimpleComperator", "structcppLox_1_1Types_1_1SimpleComperator.html", "structcppLox_1_1Types_1_1SimpleComperator" ],
         [ "Value", "classcppLox_1_1Types_1_1Value.html", "classcppLox_1_1Types_1_1Value" ]
       ] ],
       [ "MemoryMutator", "classcppLox_1_1MemoryMutator.html", "classcppLox_1_1MemoryMutator" ]
@@ -33,8 +46,8 @@ var annotated_dup =
     [ "std", "namespacestd.html", [
       [ "formatter< cppLox::ByteCode::Opcode >", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1ByteCode_1_1Opcode_01_4" ],
       [ "formatter< cppLox::Frontend::Token >", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Frontend_1_1Token_01_4" ],
-      [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ],
       [ "formatter< cppLox::Types::Object * >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Object_01_5_01_4" ],
-      [ "formatter< cppLox::Types::Value >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4" ]
+      [ "formatter< cppLox::Types::Value >", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4.html", "structstd_1_1formatter_3_01cppLox_1_1Types_1_1Value_01_4" ],
+      [ "hash< cppLox::Types::ObjectString >", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4.html", "structstd_1_1hash_3_01cppLox_1_1Types_1_1ObjectString_01_4" ]
     ] ]
 ];

@@ -13,7 +13,7 @@ var classcppLox_1_1Types_1_1Value =
     [ "~Value", "classcppLox_1_1Types_1_1Value.html#ac569ccd27ad1adf1eb7d079d9ab21ffa", null ],
     [ "as", "classcppLox_1_1Types_1_1Value.html#ab2482647eb6d37c07c40a09bf111f746", null ],
     [ "getType", "classcppLox_1_1Types_1_1Value.html#a624092da3de731da5d05cca0cda8d138", null ],
-    [ "is", "classcppLox_1_1Types_1_1Value.html#a8733d79f1833923bc6e4a21961fb67f6", null ],
+    [ "is", "classcppLox_1_1Types_1_1Value.html#a61e4808f8b0188b19c9ab17c06b24d8a", null ],
     [ "operator!", "classcppLox_1_1Types_1_1Value.html#ab61f9d16e034ae87a1ba672665afe768", null ],
     [ "operator!=", "classcppLox_1_1Types_1_1Value.html#a13335d90fd27e279f9a57c0ae0d2d13e", null ],
     [ "operator*", "classcppLox_1_1Types_1_1Value.html#a7f56740e591aae431d7a3d3871b61a8b", null ],

@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['bang_13',['BANG',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a489b3c14da5e92c8b256b195e92ae93a',1,'cppLox::Frontend::Token']]],
-  ['bang_5fequal_14',['BANG_EQUAL',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a62f38cfb27e89ed4c4c8617fe3b7007a',1,'cppLox::Frontend::Token']]],
-  ['beginnewscope_15',['beginNewScope',['../classcppLox_1_1Frontend_1_1CompilationScope.html#a6a83d4a053744376509e9fd1d97a3bc7',1,'cppLox::Frontend::CompilationScope']]],
-  ['beginscope_16',['beginScope',['../classcppLox_1_1Frontend_1_1Compiler.html#a496e876e03699093546d74405a0d14b3',1,'cppLox::Frontend::Compiler']]],
-  ['binary_17',['binary',['../classcppLox_1_1Frontend_1_1Compiler.html#a290d4a4d4910c33afec289213d737abe',1,'cppLox::Frontend::Compiler']]],
-  ['block_18',['block',['../classcppLox_1_1Frontend_1_1Compiler.html#ae25bd6d2624207dc454db4cb56d81696',1,'cppLox::Frontend::Compiler']]],
-  ['bool_19',['BOOL',['../classcppLox_1_1Types_1_1Value.html#a1d1cfd8ffb84e947f82999c682b666a7aa97b2c144243b2b9d2c593ec268b62f5',1,'cppLox::Types::Value']]],
-  ['byteinstruction_20',['byteInstruction',['../classcppLox_1_1ByteCode_1_1Chunk.html#a66e35d20912a457304294823f3ed76d6',1,'cppLox::ByteCode::Chunk']]]
+  ['actual_5ftraits_0',['actual_traits',['../structcppLox_1_1Traits_1_1MethodSignatureCheck.html#ab733cfbe77a9e6aecfaab37f5dab1cdd',1,'cppLox::Traits::MethodSignatureCheck']]],
+  ['add_1',['ADD',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1acfcf145f2788bf340ff3f3098bc54909',1,'cppLox::ByteCode']]],
+  ['addconstant_2',['addConstant',['../classcppLox_1_1ByteCode_1_1Chunk.html#a5dd6d75487b244bcdbba61ed5b9e57b7',1,'cppLox::ByteCode::Chunk']]],
+  ['addlocal_3',['addLocal',['../classcppLox_1_1Frontend_1_1LocalScope.html#a5121680364447a5f291e1d58dfc27d6a',1,'cppLox::Frontend::LocalScope']]],
+  ['addtoken_4',['addToken',['../classcppLox_1_1Frontend_1_1Lexer.html#a6ab36bf81fdaae087186234f58ebe9a1',1,'cppLox::Frontend::Lexer']]],
+  ['addupvalue_5',['addUpvalue',['../classcppLox_1_1Frontend_1_1CompilationScope.html#a3e8544778f7e124085c79b11eccee726',1,'cppLox::Frontend::CompilationScope']]],
+  ['advance_6',['advance',['../classcppLox_1_1Frontend_1_1Compiler.html#a9024439cdcddb3188a4c50afbb6fbe5c',1,'cppLox::Frontend::Compiler::advance()'],['../classcppLox_1_1Frontend_1_1Lexer.html#aec9d80d1d45c6f82b6e6d0640ab4b346',1,'cppLox::Frontend::Lexer::advance()']]],
+  ['allcheckssucceded_7',['allChecksSucceded',['../structcppLox_1_1Traits_1_1MethodSignatureCheck.html#a4282783e0802172b3c8c0a5346f4afc5',1,'cppLox::Traits::MethodSignatureCheck']]],
+  ['amount_8',['amount',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ad01105a464390b87eab3d6c69be43a08',1,'cppLox::Frontend::Token::AMOUNT'],['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a4ae3ac2b199ac6dd5e7a2622dd408e97',1,'cppLox::ByteCode::AMOUNT']]],
+  ['and_9',['and',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a558ffc8f5770d8e4f95f51d822685532',1,'cppLox::Frontend::Token::AND'],['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea558ffc8f5770d8e4f95f51d822685532',1,'cppLox::Frontend::AND']]],
+  ['and_5f_10',['and_',['../classcppLox_1_1Frontend_1_1Compiler.html#aab672ed53ab916bb9310cf8e29a7b502',1,'cppLox::Frontend::Compiler']]],
+  ['args_5ftuple_11',['args_tuple',['../structcppLox_1_1Traits_1_1MemberFunctionTraits_3_01R_07T_1_1_5_08_07ARGS_8_8_8_08_4.html#a2666bdf617b6cee2139324731d617151',1,'cppLox::Traits::MemberFunctionTraits&lt; R(T::*)(ARGS...)&gt;']]],
+  ['argumentlist_12',['argumentList',['../classcppLox_1_1Frontend_1_1Compiler.html#ad10a492415c6bfb01678518caa5d9058',1,'cppLox::Frontend::Compiler']]],
+  ['arity_13',['arity',['../classcppLox_1_1Types_1_1ObjectNativeFunction.html#ab4293fadc83f33271c610e0781391bb7',1,'cppLox::Types::ObjectNativeFunction::arity()'],['../classcppLox_1_1Types_1_1ObjectFunction.html#ab2d5f7ed6b952d30e7bf4cc98e2a7f1b',1,'cppLox::Types::ObjectFunction::arity()'],['../structcppLox_1_1Traits_1_1MemberFunctionTraits_3_01R_07T_1_1_5_08_07ARGS_8_8_8_08_4.html#a19c61d4aa06582a579dc1fe5c793e27c',1,'cppLox::Traits::MemberFunctionTraits&lt; R(T::*)(ARGS...)&gt;::arity']]],
+  ['as_14',['as',['../classcppLox_1_1Types_1_1Object.html#a368bea6b0136551b9d4390c2fa759045',1,'cppLox::Types::Object::as()'],['../classcppLox_1_1Types_1_1Value.html#ab2482647eb6d37c07c40a09bf111f746',1,'cppLox::Types::Value::as()']]],
+  ['assignment_15',['ASSIGNMENT',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83',1,'cppLox::Frontend']]]
 ];

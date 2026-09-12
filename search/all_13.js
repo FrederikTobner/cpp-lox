@@ -1,5 +1,30 @@
 var searchData=
 [
-  ['unary_340',['unary',['../classcppLox_1_1Frontend_1_1Compiler.html#aee81a59097d2909dfd7c3a49a31e3718',1,'cppLox::Frontend::Compiler']]],
-  ['unary_341',['UNARY',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4',1,'cppLox::Frontend']]]
+  ['scantoken_0',['scanToken',['../classcppLox_1_1Frontend_1_1Lexer.html#ab75ad47175de6a0c4abe0965b680bd07',1,'cppLox::Frontend::Lexer']]],
+  ['scopebaseoffset_1',['scopeBaseOffset',['../classcppLox_1_1Frontend_1_1Compiler.html#aac000c160d51b075a46252da4a420c53',1,'cppLox::Frontend::Compiler']]],
+  ['scopedepth_2',['scopeDepth',['../classcppLox_1_1Frontend_1_1CompilationScope.html#ae3506e097be7e6eff576557d7fd2f9f0',1,'cppLox::Frontend::CompilationScope']]],
+  ['script_3',['SCRIPT',['../namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7abc283a640f11da0ce7f95dd103c0b38f',1,'cppLox::Frontend']]],
+  ['semicolon_4',['SEMICOLON',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479abaaceccc27b1d4e0968c999583f97de5',1,'cppLox::Frontend::Token']]],
+  ['set_5fglobal_5',['SET_GLOBAL',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a1f0d8ddea21f001cd9464b3820fcdc0d',1,'cppLox::ByteCode']]],
+  ['set_5flocal_6',['SET_LOCAL',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1ab025f0a80a00922b7205a49f79e7e825',1,'cppLox::ByteCode']]],
+  ['set_5fupvalue_7',['SET_UPVALUE',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aeb245c1886cb44f1774f3bc08e4aa0c4',1,'cppLox::ByteCode']]],
+  ['setglobal_8',['setGlobal',['../classcppLox_1_1MemoryMutator.html#a7b8b37344a4c185598d20e030699278e',1,'cppLox::MemoryMutator']]],
+  ['setlocation_9',['setLocation',['../classcppLox_1_1Types_1_1ObjectUpValue.html#a8bbe0adde484ed041e5059e3057b4cc1',1,'cppLox::Types::ObjectUpValue']]],
+  ['signatures_10',['Signatures',['../structcppLox_1_1Frontend_1_1Signatures.html',1,'cppLox::Frontend']]],
+  ['simple_5fcomperator_2ehpp_11',['simple_comperator.hpp',['../simple__comperator_8hpp.html',1,'']]],
+  ['simplecomperator_12',['SimpleComperator',['../structcppLox_1_1Types_1_1SimpleComperator.html',1,'cppLox::Types']]],
+  ['simpleinstruction_13',['simpleInstruction',['../classcppLox_1_1ByteCode_1_1Chunk.html#a09a4b8f895f9bb76de02a51fd7611cec',1,'cppLox::ByteCode::Chunk']]],
+  ['skipwhitespace_14',['skipWhitespace',['../classcppLox_1_1Frontend_1_1Lexer.html#a6cf5f2dbe1b0aa3e27f3d205601e3019',1,'cppLox::Frontend::Lexer']]],
+  ['slash_15',['SLASH',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a646da671ca01bb5d84dbb5fb2238dc8e',1,'cppLox::Frontend::Token']]],
+  ['slots_16',['slots',['../classcppLox_1_1Backend_1_1CallFrame.html#a2312c07d5631a36031a155b780eee301',1,'cppLox::Backend::CallFrame']]],
+  ['stack_5fmax_17',['STACK_MAX',['../vm_8hpp.html#a27b296fccb4da1e9cfcf1f9c810e619e',1,'vm.hpp']]],
+  ['star_18',['STAR',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a8ab2630ada18b94a005a0c5399d9d483',1,'cppLox::Frontend::Token']]],
+  ['statement_19',['statement',['../classcppLox_1_1Frontend_1_1Compiler.html#a3648ef6c91db2cef71ce5c73b5b94333',1,'cppLox::Frontend::Compiler']]],
+  ['std_20',['std',['../namespacestd.html',1,'']]],
+  ['string_21',['string',['../classcppLox_1_1Frontend_1_1Compiler.html#ad1af38c41df360a5d9384281388eeff2',1,'cppLox::Frontend::Compiler::string()'],['../classcppLox_1_1Frontend_1_1Lexer.html#a63161ad873364d92ee8e849b4dbaade5',1,'cppLox::Frontend::Lexer::string()'],['../classcppLox_1_1Types_1_1ObjectString.html#adce3860231aa2e159250200a5ff0413a',1,'cppLox::Types::ObjectString::string()'],['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a63b588d5559f64f89a416e656880b949',1,'cppLox::Frontend::Token::STRING'],['../classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7a63b588d5559f64f89a416e656880b949',1,'cppLox::Types::Object::STRING']]],
+  ['string_5fhash_2ecpp_22',['string_hash.cpp',['../string__hash_8cpp.html',1,'']]],
+  ['string_5fhash_2ehpp_23',['string_hash.hpp',['../string__hash_8hpp.html',1,'']]],
+  ['subtract_24',['SUBTRACT',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aad8ff967f143b54da6d2112fb5858e8c',1,'cppLox::ByteCode']]],
+  ['super_25',['SUPER',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479afc91b14eef9c58c4cad8fdf87b4c0bea',1,'cppLox::Frontend::Token']]],
+  ['synchronize_26',['synchronize',['../classcppLox_1_1Frontend_1_1Compiler.html#a281575aaf203b2af1d69468b08b35b2e',1,'cppLox::Frontend::Compiler']]]
 ];

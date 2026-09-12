@@ -4,6 +4,7 @@ var namespacecppLox =
     [ "ByteCode", "namespacecppLox_1_1ByteCode.html", "namespacecppLox_1_1ByteCode" ],
     [ "Error", "namespacecppLox_1_1Error.html", "namespacecppLox_1_1Error" ],
     [ "Frontend", "namespacecppLox_1_1Frontend.html", "namespacecppLox_1_1Frontend" ],
+    [ "Traits", "namespacecppLox_1_1Traits.html", "namespacecppLox_1_1Traits" ],
     [ "Types", "namespacecppLox_1_1Types.html", "namespacecppLox_1_1Types" ],
     [ "MemoryMutator", "classcppLox_1_1MemoryMutator.html", "classcppLox_1_1MemoryMutator" ],
     [ "exit_code_t", "namespacecppLox.html#a2d967eed409413b06a8450ff977ab52a", [

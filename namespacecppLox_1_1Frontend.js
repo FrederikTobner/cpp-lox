@@ -6,7 +6,13 @@ var namespacecppLox_1_1Frontend =
     [ "Local", "classcppLox_1_1Frontend_1_1Local.html", "classcppLox_1_1Frontend_1_1Local" ],
     [ "LocalScope", "classcppLox_1_1Frontend_1_1LocalScope.html", "classcppLox_1_1Frontend_1_1LocalScope" ],
     [ "ParseRule", "classcppLox_1_1Frontend_1_1ParseRule.html", "classcppLox_1_1Frontend_1_1ParseRule" ],
+    [ "ParseRuleBuilder", "classcppLox_1_1Frontend_1_1ParseRuleBuilder.html", "classcppLox_1_1Frontend_1_1ParseRuleBuilder" ],
+    [ "ParseRuleLookupTableFactory", "classcppLox_1_1Frontend_1_1ParseRuleLookupTableFactory.html", "classcppLox_1_1Frontend_1_1ParseRuleLookupTableFactory" ],
+    [ "PrattParserTrait", "classcppLox_1_1Frontend_1_1PrattParserTrait.html", "classcppLox_1_1Frontend_1_1PrattParserTrait" ],
+    [ "Signatures", "structcppLox_1_1Frontend_1_1Signatures.html", "structcppLox_1_1Frontend_1_1Signatures" ],
     [ "Token", "classcppLox_1_1Frontend_1_1Token.html", "classcppLox_1_1Frontend_1_1Token" ],
+    [ "Upvalue", "classcppLox_1_1Frontend_1_1Upvalue.html", "classcppLox_1_1Frontend_1_1Upvalue" ],
+    [ "IsPackOfEitherOf", "conceptcppLox_1_1Frontend_1_1IsPackOfEitherOf.html", null ],
     [ "FunctionType", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7", [
       [ "FUNCTION", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7a6a72a6a776662a244f82d31e9274a07b", null ],
       [ "SCRIPT", "namespacecppLox_1_1Frontend.html#a27609b2430539b61ea5804a99a66bdd7abc283a640f11da0ce7f95dd103c0b38f", null ]
@@ -23,6 +29,5 @@ var namespacecppLox_1_1Frontend =
       [ "UNARY", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4", null ],
       [ "CALL", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852eaca3547acb9162b49fb4a6594ed9b3030", null ],
       [ "PRIMARY", "namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea428429ba9ea83e4841036fb0508fd6dc", null ]
-    ] ],
-    [ "IsPackOfEitherOf", "namespacecppLox_1_1Frontend.html#a4190535f5e72e70d70623d9a41e088f1", null ]
+    ] ]
 ];

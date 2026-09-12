@@ -1,17 +1,14 @@
 var searchData=
 [
-  ['_7echunk_358',['~Chunk',['../classcppLox_1_1ByteCode_1_1Chunk.html#aed2f42065e5584f0dad876414273a90c',1,'cppLox::ByteCode::Chunk']]],
-  ['_7ecompilationscope_359',['~CompilationScope',['../classcppLox_1_1Frontend_1_1CompilationScope.html#a338f0d189beab5f80029ef3c3af1cdb6',1,'cppLox::Frontend::CompilationScope']]],
-  ['_7ecompiler_360',['~Compiler',['../classcppLox_1_1Frontend_1_1Compiler.html#a5164d894bb6a230015000dcc48b4b114',1,'cppLox::Frontend::Compiler']]],
-  ['_7elexer_361',['~Lexer',['../classcppLox_1_1Frontend_1_1Lexer.html#ac4d1ece325fa1627d3b913dfab4e8219',1,'cppLox::Frontend::Lexer']]],
-  ['_7elocalscope_362',['~LocalScope',['../classcppLox_1_1Frontend_1_1LocalScope.html#a494f57e7ed7be78f24fd3fc7039f31d8',1,'cppLox::Frontend::LocalScope']]],
-  ['_7ememorymutator_363',['~MemoryMutator',['../classcppLox_1_1MemoryMutator.html#a6af825e4e7fee045849a6cf4c9c5a2b5',1,'cppLox::MemoryMutator']]],
-  ['_7eobject_364',['~Object',['../classcppLox_1_1Types_1_1Object.html#abbb277a2e0e9dbe1f9510f2bd0dd03bc',1,'cppLox::Types::Object']]],
-  ['_7eobjectfunction_365',['~ObjectFunction',['../classcppLox_1_1Types_1_1ObjectFunction.html#aef4e2694b71773e7a257771e29b43ab5',1,'cppLox::Types::ObjectFunction']]],
-  ['_7eobjectnativefunction_366',['~ObjectNativeFunction',['../classcppLox_1_1Types_1_1ObjectNativeFunction.html#ad1483dca789710937284564ee72e4086',1,'cppLox::Types::ObjectNativeFunction']]],
-  ['_7eobjectstring_367',['~ObjectString',['../classcppLox_1_1Types_1_1ObjectString.html#a00ca0292912e83b4f20515d95f1d7a86',1,'cppLox::Types::ObjectString']]],
-  ['_7eparserule_368',['~ParseRule',['../classcppLox_1_1Frontend_1_1ParseRule.html#af6d74920e7c2d65093f4b2507398357c',1,'cppLox::Frontend::ParseRule']]],
-  ['_7etoken_369',['~Token',['../classcppLox_1_1Frontend_1_1Token.html#a7add93c081384656a6aadf8e524fe88f',1,'cppLox::Frontend::Token']]],
-  ['_7evalue_370',['~Value',['../classcppLox_1_1Types_1_1Value.html#ac569ccd27ad1adf1eb7d079d9ab21ffa',1,'cppLox::Types::Value']]],
-  ['_7evm_371',['~VM',['../classcppLox_1_1Backend_1_1VM.html#aae7b0c7e9f0cd4bd71afc44ce51d194f',1,'cppLox::Backend::VM']]]
+  ['value_0',['value',['../classcppLox_1_1Types_1_1Value.html',1,'Value'],['../classcppLox_1_1Types_1_1Value.html#abe8b5f7eee6b178c99c13b92f7ce85d4',1,'cppLox::Types::Value::Value()'],['../classcppLox_1_1Types_1_1Value.html#ad7a6ddd22c84ae38cb303a4917f3d654',1,'cppLox::Types::Value::Value(bool value)'],['../classcppLox_1_1Types_1_1Value.html#a35cacb12b494ecd3015a0aa99ee71f1f',1,'cppLox::Types::Value::Value(double value)'],['../classcppLox_1_1Types_1_1Value.html#ada5a32777c50fe5a30d362b8c8b46c55',1,'cppLox::Types::Value::Value(Object *value)']]],
+  ['value_2ecpp_1',['value.cpp',['../value_8cpp.html',1,'']]],
+  ['value_2ehpp_2',['value.hpp',['../value_8hpp.html',1,'']]],
+  ['value_5fformatter_2ehpp_3',['value_formatter.hpp',['../value__formatter_8hpp.html',1,'']]],
+  ['var_4',['VAR',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ad6f4440b8633f973d33c78928bdac2e1',1,'cppLox::Frontend::Token']]],
+  ['variable_5',['variable',['../classcppLox_1_1Frontend_1_1Compiler.html#a3bca2bffecfe4c15c42786c6638fda8b',1,'cppLox::Frontend::Compiler']]],
+  ['variabledeclaration_6',['variableDeclaration',['../classcppLox_1_1Frontend_1_1Compiler.html#a5e793b8988652379b925e02cdb113100',1,'cppLox::Frontend::Compiler']]],
+  ['verifymethod_7',['verifyMethod',['../structcppLox_1_1Traits_1_1MethodSignatureChecks.html#ad93293c0f51306a185ff113cb94257be',1,'cppLox::Traits::MethodSignatureChecks']]],
+  ['vm_8',['vm',['../classcppLox_1_1Backend_1_1VM.html#a070737366b4e17d14b3b9fad2671e5a6',1,'cppLox::Backend::VM::VM()'],['../classcppLox_1_1Backend_1_1CallFrame.html#ac692204ff14b03296e5ff3cfc4a3b3d6',1,'cppLox::Backend::CallFrame::VM'],['../classcppLox_1_1Backend_1_1VM.html',1,'VM']]],
+  ['vm_2ecpp_9',['vm.cpp',['../vm_8cpp.html',1,'']]],
+  ['vm_2ehpp_10',['vm.hpp',['../vm_8hpp.html',1,'']]]
 ];

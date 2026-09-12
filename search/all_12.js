@@ -1,13 +1,18 @@
 var searchData=
 [
-  ['term_330',['TERM',['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8baeec6d282f1791ea9954d0c514ed8d',1,'cppLox::Frontend']]],
-  ['this_331',['THIS',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac9f869114804f0a61ce9b03def9d71f5',1,'cppLox::Frontend::Token']]],
-  ['token_332',['Token',['../classcppLox_1_1Frontend_1_1Token.html',1,'Token'],['../classcppLox_1_1Frontend_1_1Token.html#a9065a6ef11623e3a361801b298d08fc3',1,'cppLox::Frontend::Token::Token(Token::Type type, std::string lexeme, std::size_t &amp;&amp;line)'],['../classcppLox_1_1Frontend_1_1Token.html#abbc44c1e7bee2f62ce5305ba4940b8b8',1,'cppLox::Frontend::Token::Token(Token const &amp;)=default']]],
-  ['token_2ecpp_333',['token.cpp',['../token_8cpp.html',1,'']]],
-  ['token_2ehpp_334',['token.hpp',['../token_8hpp.html',1,'']]],
-  ['token_5fformatter_2ehpp_335',['token_formatter.hpp',['../token__formatter_8hpp.html',1,'']]],
-  ['tokenize_336',['tokenize',['../classcppLox_1_1Frontend_1_1Lexer.html#a6d2b83a25b5d8ea7ad5c2e7d0e4553d1',1,'cppLox::Frontend::Lexer']]],
-  ['true_337',['TRUE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac0d83f0b82a6b30de8811e69e6d95c61',1,'cppLox::Frontend::Token::TRUE()'],['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1aa82764c3079aea4e60c80e45befbb839',1,'cppLox::ByteCode::TRUE()']]],
-  ['type_338',['Type',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479',1,'cppLox::Frontend::Token::Type()'],['../classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7',1,'cppLox::Types::Object::Type()'],['../classcppLox_1_1Types_1_1Value.html#a1d1cfd8ffb84e947f82999c682b666a7',1,'cppLox::Types::Value::Type()']]],
-  ['type_339',['type',['../classcppLox_1_1Frontend_1_1Token.html#af82206bb73fc41d95a035740760d40a2',1,'cppLox::Frontend::Token::type()'],['../classcppLox_1_1Types_1_1Object.html#aa25a4859997783f67485eecf9f9c1e8b',1,'cppLox::Types::Object::type()']]]
+  ['repl_0',['repl',['../namespacecppLox.html#ab9ffae0d38fc012bc00f64364d766809',1,'cppLox']]],
+  ['resetstack_1',['resetStack',['../classcppLox_1_1Backend_1_1VM.html#a35235bc063662cba22eb594ad9a92f08',1,'cppLox::Backend::VM']]],
+  ['resolvelocal_2',['resolveLocal',['../classcppLox_1_1Frontend_1_1Compiler.html#a707eddce32b5030c203d8225a4bec998',1,'cppLox::Frontend::Compiler']]],
+  ['resolveupvalue_3',['resolveUpvalue',['../classcppLox_1_1Frontend_1_1Compiler.html#a3303871a22ab94722eaf7688e857e974',1,'cppLox::Frontend::Compiler']]],
+  ['return_4',['return',['../namespacecppLox_1_1ByteCode.html#a7e03c1168c8bc0a433a4cbbab207eec1a520e09ffec033636dba711f3441cc600',1,'cppLox::ByteCode::RETURN'],['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479aa2bec276a54439fe011eb523b845dac5',1,'cppLox::Frontend::Token::RETURN']]],
+  ['return_5ftype_5',['return_type',['../structcppLox_1_1Traits_1_1MemberFunctionTraits_3_01R_07T_1_1_5_08_07ARGS_8_8_8_08_4.html#a8e050123635e43d7f23d95f697771057',1,'cppLox::Traits::MemberFunctionTraits&lt; R(T::*)(ARGS...)&gt;']]],
+  ['returnstatement_6',['returnStatement',['../classcppLox_1_1Frontend_1_1Compiler.html#a762e3a09a32e58c3d31e4775ca5f7cbe',1,'cppLox::Frontend::Compiler']]],
+  ['right_5fbrace_7',['RIGHT_BRACE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a262bd36c5946e1483a7036f8635e2be5',1,'cppLox::Frontend::Token']]],
+  ['right_5fparentheses_8',['RIGHT_PARENTHESES',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a87ba0d1335263817ee7dcf36717006d6',1,'cppLox::Frontend::Token']]],
+  ['run_9',['run',['../namespacecppLox.html#a5a842db15852690525fa4fa8cd32c6bf',1,'cppLox::run()'],['../classcppLox_1_1Backend_1_1VM.html#afdfc346b5334e4f468914d0c1af0f36d',1,'cppLox::Backend::VM::run()']]],
+  ['runfile_10',['runFile',['../namespacecppLox.html#a7a9585b91eec25b99abc10d992d21072',1,'cppLox']]],
+  ['runtime_5fexception_2ecpp_11',['runtime_exception.cpp',['../runtime__exception_8cpp.html',1,'']]],
+  ['runtime_5fexception_2ehpp_12',['runtime_exception.hpp',['../runtime__exception_8hpp.html',1,'']]],
+  ['runtimeerror_13',['runTimeError',['../classcppLox_1_1Backend_1_1VM.html#aeeea48354b314fc63ab75562926c2c38',1,'cppLox::Backend::VM']]],
+  ['runtimeexception_14',['runtimeexception',['../classcppLox_1_1Error_1_1RunTimeException.html#a49cfc726aa3dee4855cc8c482d3359da',1,'cppLox::Error::RunTimeException::RunTimeException()'],['../classcppLox_1_1Error_1_1RunTimeException.html',1,'RunTimeException']]]
 ];

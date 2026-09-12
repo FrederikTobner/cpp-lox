@@ -3,6 +3,8 @@ var opcode_8hpp =
     [ "Opcode", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1", [
       [ "ADD", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1acfcf145f2788bf340ff3f3098bc54909", null ],
       [ "CALL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1abd0ebc08c262bab82a1882256d2d66e8", null ],
+      [ "CLOSURE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1ae2c4a03baadacd89b21c9bbbc951bd29", null ],
+      [ "CLOSE_UPVALUE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a92bf0a5b056499730ca83ee76892ba94", null ],
       [ "CONSTANT", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a83972670b57415508523b5641bb46116", null ],
       [ "DEFINE_GLOBAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1ab6a6acf2cfc8d9e02dd3fb33b5a9c41b", null ],
       [ "DIVIDE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a0cb86713ee09fe297dde9ab03d50d5da", null ],
@@ -10,6 +12,7 @@ var opcode_8hpp =
       [ "FALSE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aa1e095cc966dbecf6a0d8aad75348d1a", null ],
       [ "GET_GLOBAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a10b5df8d40666efe5aba98e6ef6fd8b6", null ],
       [ "GET_LOCAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a7aa60f21755c843ce1060fbe49856a14", null ],
+      [ "GET_UPVALUE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1ae2eb705d34032f82a286208344a8eb37", null ],
       [ "GREATER", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a25b5ca2f56d99ba6ffcb5316adac34c1", null ],
       [ "GREATER_EQUAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a4495f63771aa2060042a31363e16d4f9", null ],
       [ "JUMP", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a1f28d4392b1c1e7da2af2283632d81e1", null ],
@@ -27,6 +30,7 @@ var opcode_8hpp =
       [ "RETURN", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a520e09ffec033636dba711f3441cc600", null ],
       [ "SET_GLOBAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a1f0d8ddea21f001cd9464b3820fcdc0d", null ],
       [ "SET_LOCAL", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1ab025f0a80a00922b7205a49f79e7e825", null ],
+      [ "SET_UPVALUE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aeb245c1886cb44f1774f3bc08e4aa0c4", null ],
       [ "SUBTRACT", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aad8ff967f143b54da6d2112fb5858e8c", null ],
       [ "TRUE", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1aa82764c3079aea4e60c80e45befbb839", null ],
       [ "AMOUNT", "opcode_8hpp.html#a7e03c1168c8bc0a433a4cbbab207eec1a4ae3ac2b199ac6dd5e7a2622dd408e97", null ]

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['what_352',['what',['../classcppLox_1_1Error_1_1RunTimeException.html#a70e353ee84b010f146c2176b59cc945f',1,'cppLox::Error::RunTimeException']]],
-  ['while_353',['WHILE',['../classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479ac0ca84371abbc18f52fd48e32195cd15',1,'cppLox::Frontend::Token']]],
-  ['whilestatement_354',['whileStatement',['../classcppLox_1_1Frontend_1_1Compiler.html#ae1b09d97c561345e098ace2bcf11c3fb',1,'cppLox::Frontend::Compiler']]],
-  ['write_355',['write',['../classcppLox_1_1ByteCode_1_1Chunk.html#af391cb7e1d4649f40cabe0624775667a',1,'cppLox::ByteCode::Chunk::write(uint8_t byte, int line) -&gt; void'],['../classcppLox_1_1ByteCode_1_1Chunk.html#ab8e9708ca333f2f6faa4a31536132fac',1,'cppLox::ByteCode::Chunk::write(Opcode byte, int line) -&gt; void']]],
-  ['writeat_356',['writeAt',['../classcppLox_1_1ByteCode_1_1Chunk.html#a8b20e13e18c2fb2d8421e273fa44b1ff',1,'cppLox::ByteCode::Chunk']]],
-  ['writetooutputstream_357',['writeToOutputStream',['../classcppLox_1_1Types_1_1Object.html#ab5704d9df08c8a8a9224f297df957e20',1,'cppLox::Types::Object::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectFunction.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectFunction::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectNativeFunction.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectNativeFunction::writeToOutputStream()'],['../classcppLox_1_1Types_1_1ObjectString.html#af777c1ddfe8e6864b24f62a4dce3609e',1,'cppLox::Types::ObjectString::writeToOutputStream()']]]
+  ['unary_0',['unary',['../classcppLox_1_1Frontend_1_1Compiler.html#aee81a59097d2909dfd7c3a49a31e3718',1,'cppLox::Frontend::Compiler::unary()'],['../namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea8ca44f46ef1f04b2113678603c3800b4',1,'cppLox::Frontend::UNARY']]],
+  ['upvalue_1',['upvalue',['../classcppLox_1_1Frontend_1_1Upvalue.html',1,'Upvalue'],['../classcppLox_1_1Frontend_1_1CompilationScope.html#ac63144163bfae399374f78d24b249a56',1,'cppLox::Frontend::CompilationScope::upvalue()'],['../classcppLox_1_1Frontend_1_1Upvalue.html#a4d2bb01a84369b6c746040482c544847',1,'cppLox::Frontend::Upvalue::Upvalue()'],['../classcppLox_1_1Frontend_1_1Upvalue.html#a7836dbf983d6d3d6f86199c87cbe8110',1,'cppLox::Frontend::Upvalue::Upvalue(uint8_t index, bool isLocal)'],['../classcppLox_1_1Types_1_1Object.html#a1d1cfd8ffb84e947f82999c682b666a7ac24465ccaa62ea56305df0848e0f55ed',1,'cppLox::Types::Object::UPVALUE']]],
+  ['upvalue_2ecpp_2',['upvalue.cpp',['../upvalue_8cpp.html',1,'']]],
+  ['upvalue_2ehpp_3',['upvalue.hpp',['../upvalue_8hpp.html',1,'']]],
+  ['upvaluecount_4',['upvalueCount',['../classcppLox_1_1Types_1_1ObjectFunction.html#aeae8ed1ec126cd0623914076ffc4b486',1,'cppLox::Types::ObjectFunction']]],
+  ['upvalues_5',['upvalues',['../classcppLox_1_1Types_1_1ObjectClosure.html#a4b7a20a277fdae8d4d9cd9954cf5fd28',1,'cppLox::Types::ObjectClosure']]]
 ];

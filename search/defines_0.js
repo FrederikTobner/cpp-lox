@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frame_5fmax_759',['FRAME_MAX',['../vm_8hpp.html#aafb25112ae329c844aeabfdddae5a152',1,'vm.hpp']]]
+  ['_5fno_5fexcept_0',['_NO_EXCEPT',['../language__features_8hpp.html#a210b692758cdfe9f17ef5f8e5d11fd97',1,'language_features.hpp']]]
 ];

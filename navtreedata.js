@@ -25,23 +25,17 @@
 var NAVTREE =
 [
   [ "cpp-lox", "index.html", [
-    [ "Main Page", "index.html", [
-      [ "Introduction", "index.html#intro_sec", null ],
-      [ "Key concepts", "index.html#keyconcepts_sec", null ],
-      [ "Building", "index.html#building_sec", null ],
-      [ "Testing", "index.html#testing_sec", null ],
-      [ "License", "index.html#license_sec", null ]
-    ] ],
+    [ "Main Page", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -50,8 +44,9 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -68,8 +63,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classcppLox_1_1MemoryMutator.html",
-"namespacecppLox_1_1Frontend.html#af5e272dc9bc498661184c41f4907852ea791ff9f35e0ac7dbbf3a564c6ef98c83"
+"classcppLox_1_1Frontend_1_1Compiler.html#aab672ed53ab916bb9310cf8e29a7b502",
+"classcppLox_1_1Frontend_1_1Token.html#a5f787df9cdf370248382504196841479a7885ad399f9cab93cb42befbe402c588",
+"classcppLox_1_1Types_1_1Value.html#a4d79f5c206096e84afb4345b3e731f33",
+"object__function_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
