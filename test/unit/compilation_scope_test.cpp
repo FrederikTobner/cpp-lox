@@ -96,6 +96,40 @@ TEST_F(CompilationScopeTest, Upvalue) {
     ASSERT_EQ(upvalue.index(), 0);
 }
 
+TEST_F(CompilationScopeTest, AddUpvalueNonLocal) {
+    // Act
+    auto count = testScope->addUpvalue(0, false);
+
+    // Assert
+    ASSERT_EQ(count, 0);
+    auto upvalue = testScope->upvalue(0);
+    ASSERT_FALSE(upvalue.isLocal());
+    ASSERT_EQ(upvalue.index(), 0);
+}
+
+TEST_F(CompilationScopeTest, AddUpvalueDeduplicatesExistingEntry) {
+    // Arrange - the same local slot is captured by two different closures compiled in the same scope.
+    auto firstIndex = testScope->addUpvalue(0, true);
+
+    // Act
+    auto secondIndex = testScope->addUpvalue(0, true);
+
+    // Assert - no new upvalue slot should have been created for the duplicate.
+    ASSERT_EQ(firstIndex, secondIndex);
+}
+
+TEST_F(CompilationScopeTest, AddUpvalueDistinctSlotsCreateDistinctEntries) {
+    // Arrange
+    auto firstIndex = testScope->addUpvalue(0, true);
+
+    // Act
+    auto secondIndex = testScope->addUpvalue(1, true);
+
+    // Assert
+    ASSERT_NE(firstIndex, secondIndex);
+    ASSERT_EQ(testScope->upvalue(secondIndex).index(), 1);
+}
+
 TEST_F(CompilationScopeTest, CreateEnclosingScope) {
 
     // Act

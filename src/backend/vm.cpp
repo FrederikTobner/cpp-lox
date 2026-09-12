@@ -359,7 +359,13 @@ auto VM::closeUpvalues(cppLox::Types::Value * last) -> void {
 
 auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void {
     if (!value.is(cppLox::Types::Value::Type::OBJECT)) {
-        runTimeError(frame, "Can only call functions and classes");
+    runTimeError(frame, std::format("Can only call functions and classes, but got {}", value.getType() == cppLox::Types::Value::Type::NUMBER
+                                         ? "number"
+                                         : value.getType() == cppLox::Types::Value::Type::BOOL
+                                               ? "boolean"
+                                               : value.getType() == cppLox::Types::Value::Type::NULL_
+                                                     ? "null"
+                                                     : "unknown"));
     }
     cppLox::Types::Object * object = value.as<cppLox::Types::Object *>();
     if (object->is(cppLox::Types::Object::Type::FUNCTION)) {
@@ -385,7 +391,7 @@ auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame
         cppLox::Types::ObjectClosure * closure = object->as<cppLox::Types::ObjectClosure>();
         call(*closure, arg_count);
     } else {
-        runTimeError(frame, "Can only call functions and classes");
+        runTimeError(frame, std::format("Can only call functions and classes, but got {}", object->is(cppLox::Types::Object::Type::STRING) ? "string" : "unknown"));
     }
 }
 

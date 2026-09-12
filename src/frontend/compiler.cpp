@@ -425,7 +425,6 @@ auto Compiler::makeConstant(cppLox::Types::Value value) -> uint8_t {
     if (constant > UINT8_MAX) {
         error("Too many constants in one chunk");
     }
-    emitBytes(static_cast<uint8_t>(cppLox::ByteCode::Opcode::CONSTANT), (uint8_t)constant);
     return (uint8_t)constant;
 }
 
@@ -536,7 +535,7 @@ auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int
             if (local.getDepth() == -1) {
                 error("Cannot read local variable in its own initializer");
             }
-            return index;
+            return scopeBaseOffset(scope) + static_cast<int>(index);
         }
     }
     // If the local wasn't found in the current scope, check the enclosing scope.
@@ -546,6 +545,16 @@ auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int
     return -1;
 }
 
+auto Compiler::scopeBaseOffset(LocalScope const & scope) -> int {
+    int offset = 0;
+    std::optional<std::shared_ptr<LocalScope>> enclosing = scope.enclosing();
+    while (enclosing.has_value()) {
+        offset += enclosing.value()->localCount();
+        enclosing = enclosing.value()->enclosing();
+    }
+    return offset == 0 ? 0 : offset - 1;
+}
+
 auto Compiler::resolveUpvalue(Token const & name) -> int {
     if (m_currentScope->enclosing().get() == nullptr) {
         return -1;
@@ -553,7 +562,8 @@ auto Compiler::resolveUpvalue(Token const & name) -> int {
     std::shared_ptr<CompilationScope> const & enclosingScope = m_currentScope->enclosing();
     int localIndex = resolveLocal(name, *enclosingScope->localScope().get());
     if (localIndex != -1) {
-        enclosingScope->localScope()->markCaptured((uint16_t)localIndex);
+        int const localBaseOffset = scopeBaseOffset(*enclosingScope->localScope());
+        enclosingScope->localScope()->markCaptured((uint16_t)(localIndex - localBaseOffset));
         return m_currentScope->addUpvalue((uint8_t)localIndex, true);
     }
     std::shared_ptr<CompilationScope> currentScope = m_currentScope;

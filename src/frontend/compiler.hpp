@@ -271,6 +271,11 @@ class Compiler {
     /// @return The index of the variable in the chunk.
     [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
 
+    /// @brief Gets the base slot offset for the given scope.
+    /// @param scope The scope whose base offset should be computed.
+    /// @return The base slot offset for the scope.
+    [[nodiscard]] auto scopeBaseOffset(LocalScope const & scope) -> int;
+
     /// @brief Resolves an upvalue.
     /// @param name The name of the upvalue.
     /// @return The index of the upvalue in the chunk, or -1 if the upvalue is not found.
