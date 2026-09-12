@@ -1,13 +1,15 @@
 # configure cellox config to show version
 configure_file(cpplox-config.hpp.in cpplox-config.hpp)
 
-add_executable(${PROJECT_NAME} ${INTERPRETER_SOURCES})
+include(AddExecutable)
+
+add_cpplox_executable(${PROJECT_NAME} ${INTERPRETER_SOURCES})
 
 # for including the cpplox-config.hpp file
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR}/src)
 
-# Install configuration
 if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
+    # Add debug flags
     if(CLX_DEBUG_PRINT_BYTECODE) 
         target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_PRINT_BYTECODE)
     endif()
@@ -63,7 +65,5 @@ else()
     # About URL provided in the installer
     set(CPACK_NSIS_URL_INFO_ABOUT ${PROJECT_PAGE})    
     # Includes the CPack module 
-    include(CPack)    
-    # Configure install destination of the interpreter
-    install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+    include(CPack)
 endif()

@@ -25,12 +25,14 @@ using namespace cppLox::Types;
 ObjectFunction::ObjectFunction(uint16_t arity, ObjectString * name) : m_arity(arity), m_name(name) {
     m_type = Object::Type::FUNCTION;
     m_chunk = std::make_unique<cppLox::ByteCode::Chunk>();
+    m_upvalueCount = 0;
 }
 
 auto ObjectFunction::operator=(ObjectFunction const & other) -> ObjectFunction & {
     m_arity = other.m_arity;
     m_chunk = std::make_unique<cppLox::ByteCode::Chunk>(*other.m_chunk);
     m_name = other.m_name;
+    m_upvalueCount = other.m_upvalueCount;
     return *this;
 };
 
@@ -48,4 +50,12 @@ auto ObjectFunction::operator=(ObjectFunction const & other) -> ObjectFunction &
 
 auto ObjectFunction::incrementArity() -> void {
     m_arity++;
+}
+
+auto ObjectFunction::upvalueCount() const -> uint16_t {
+    return m_upvalueCount;
+}
+
+auto ObjectFunction::incrementUpvalueCount() -> void {
+    m_upvalueCount++;
 }

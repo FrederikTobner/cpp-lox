@@ -24,7 +24,9 @@
 #include <string>
 #include <type_traits>
 
+#include "../language_features.hpp"
 #include "object.hpp"
+
 
 namespace cppLox::Types {
 
@@ -68,7 +70,7 @@ class Value {
     /// @brief Checks if the value is of the given type
     /// @param type The type to check against
     /// @return true if the value is of the given type, false otherwise
-    [[nodiscard]] auto is(Type type) noexcept -> bool;
+    [[nodiscard]] auto is(Type type) _NO_EXCEPT->bool;
 
     /// @brief Gets the underlying value as the given type
     /// @tparam T The type to get the underlying value as

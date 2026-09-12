@@ -15,7 +15,7 @@
 
 /**
  * @file string_hash.hpp
- * @brief This file contains the hash specialization for ObjectString.
+ * @brief This file contains the definition of the hash specialization for ObjectString.
  */
 
 #pragma once
@@ -34,15 +34,11 @@ template <> struct hash<cppLox::Types::ObjectString> {
     /// @brief Hashes the given ObjectString reference.
     /// @param s The ObjectString to hash.
     /// @return The hash of the given string.
-    [[nodiscard]] auto operator()(cppLox::Types::ObjectString & s) const -> std::size_t {
-        return std::hash<std::string_view>{}(s.string());
-    }
+    [[nodiscard]] auto operator()(cppLox::Types::ObjectString & s) const -> std::size_t;
 
     /// @brief Hashes the given ObjectString pointer.
     /// @param s The ObjectString pointer to hash.
     /// @return The hash of the given string.
-    [[nodiscard]] auto operator()(cppLox::Types::ObjectString * s) const -> std::size_t {
-        return std::hash<std::string_view>{}(s->string());
-    }
+    [[nodiscard]] auto operator()(cppLox::Types::ObjectString * s) const -> std::size_t;
 };
 } // namespace std

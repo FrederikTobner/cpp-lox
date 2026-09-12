@@ -10,6 +10,6 @@ using namespace cppLox::Error;
 RunTimeException::RunTimeException(std::string_view message) : m_message(message) {
 }
 
-[[nodiscard]] char const * RunTimeException::what() const noexcept {
+[[nodiscard]] char const * RunTimeException::what() const _NO_EXCEPT {
     return m_message.c_str();
 }

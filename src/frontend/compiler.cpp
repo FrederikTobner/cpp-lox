@@ -235,7 +235,11 @@ auto Compiler::endScope() -> void {
     while (m_currentScope->localScope()->localCount() > 0 &&
            m_currentScope->localScope()->local(m_currentScope->localScope()->localCount() - 1).getDepth() >=
                m_currentScope->scopeDepth()) {
-        emitByte(cppLox::ByteCode::Opcode::POP);
+        if (m_currentScope->localScope()->local(m_currentScope->localScope()->localCount() - 1).isCaptured()) {
+            emitByte(cppLox::ByteCode::Opcode::CLOSE_UPVALUE);
+        } else {
+            emitByte(cppLox::ByteCode::Opcode::POP);
+        }
         m_currentScope->localScope()->popLocal();
     }
     m_currentScope->endScope();
@@ -342,8 +346,15 @@ auto Compiler::function(FunctionType type, std::vector<Token> const & tokens) ->
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after parameters", tokens);
     consume(Token::Type::LEFT_BRACE, "Expect '{' before function body", tokens);
     block(tokens);
+    std::shared_ptr<CompilationScope> const compiledScope = m_currentScope;
     auto function = endCompilation();
-    emitConstant(cppLox::Types::Value(static_cast<cppLox::Types::Object *>(function)));
+    emitBytes(cppLox::ByteCode::Opcode::CLOSURE,
+              makeConstant(cppLox::Types::Value(static_cast<cppLox::Types::Object *>(function))));
+
+    for (auto i : std::views::iota(0u, function->upvalueCount())) {
+        emitByte(compiledScope->upvalue(i).isLocal() ? 1 : 0);
+        emitByte(compiledScope->upvalue(i).index());
+    }
 }
 
 auto Compiler::getRule(Token::Type type) -> ParseRule<Compiler> * {
@@ -409,12 +420,12 @@ auto Compiler::grouping(std::vector<Token> const & tokens, bool canAssign) -> vo
     consume(Token::Type::RIGHT_PARENTHESES, "Expect ')' after expression", tokens);
 }
 
-auto Compiler::makeConstant(cppLox::Types::Value value) -> void {
+auto Compiler::makeConstant(cppLox::Types::Value value) -> uint8_t {
     auto constant = currentChunk()->addConstant(value);
     if (constant > UINT8_MAX) {
         error("Too many constants in one chunk");
     }
-    emitBytes(static_cast<uint8_t>(cppLox::ByteCode::Opcode::CONSTANT), (uint8_t)constant);
+    return (uint8_t)constant;
 }
 
 auto Compiler::markInitialized() -> void {
@@ -438,6 +449,9 @@ auto Compiler::namedVariable(Token const & name, std::vector<Token> const & toke
     if (arg != -1) {
         getOp = cppLox::ByteCode::Opcode::GET_LOCAL;
         setOp = cppLox::ByteCode::Opcode::SET_LOCAL;
+    } else if ((arg = resolveUpvalue(name)) != -1) {
+        getOp = cppLox::ByteCode::Opcode::GET_UPVALUE;
+        setOp = cppLox::ByteCode::Opcode::SET_UPVALUE;
     } else {
         arg = identifierConstant(name);
         getOp = cppLox::ByteCode::Opcode::GET_GLOBAL;
@@ -473,7 +487,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
         error("Expect expression");
         return;
     }
-    (this->*prefixRule.value())(tokens, canAssign);
+    prefixRule.value()(this, tokens, canAssign);
     while (precedence <= getRule(m_current->type())->precedence()) {
         advance(tokens);
         auto infixRule = getRule(m_previous->type())->infix();
@@ -481,7 +495,7 @@ auto Compiler::parsePrecedence(Precedence precedence, std::vector<Token> const &
             error("Expect expression");
             return;
         }
-        (this->*infixRule.value())(tokens);
+        infixRule.value()(this, tokens);
     }
     if (canAssign && match(Token::Type::EQUAL, tokens)) {
         error("Invalid assignment target");
@@ -512,6 +526,54 @@ auto Compiler::printStatement(std::vector<Token> const & tokens, bool canAssign)
     expression(tokens);
     consume(Token::Type::SEMICOLON, "Expect ';' after value", tokens);
     emitByte(cppLox::ByteCode::Opcode::PRINT);
+}
+
+auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int {
+    for (auto index : std::views::iota(0u, scope.localCount()) | std::views::reverse) {
+        auto local = scope.local(index);
+        if (name.lexeme() == local.getToken().lexeme()) {
+            if (local.getDepth() == -1) {
+                error("Cannot read local variable in its own initializer");
+            }
+            return scopeBaseOffset(scope) + static_cast<int>(index);
+        }
+    }
+    // If the local wasn't found in the current scope, check the enclosing scope.
+    if (scope.enclosing().has_value()) {
+        return resolveLocal(name, *scope.enclosing().value());
+    }
+    return -1;
+}
+
+auto Compiler::scopeBaseOffset(LocalScope const & scope) -> int {
+    int offset = 0;
+    std::optional<std::shared_ptr<LocalScope>> enclosing = scope.enclosing();
+    while (enclosing.has_value()) {
+        offset += enclosing.value()->localCount();
+        enclosing = enclosing.value()->enclosing();
+    }
+    return offset == 0 ? 0 : offset - 1;
+}
+
+auto Compiler::resolveUpvalue(Token const & name) -> int {
+    if (m_currentScope->enclosing().get() == nullptr) {
+        return -1;
+    }
+    std::shared_ptr<CompilationScope> const & enclosingScope = m_currentScope->enclosing();
+    int localIndex = resolveLocal(name, *enclosingScope->localScope().get());
+    if (localIndex != -1) {
+        int const localBaseOffset = scopeBaseOffset(*enclosingScope->localScope());
+        enclosingScope->localScope()->markCaptured((uint16_t)(localIndex - localBaseOffset));
+        return m_currentScope->addUpvalue((uint8_t)localIndex, true);
+    }
+    std::shared_ptr<CompilationScope> currentScope = m_currentScope;
+    m_currentScope = enclosingScope;
+    int upvalueIndex = resolveUpvalue(name);
+    m_currentScope = currentScope;
+    if (upvalueIndex != -1) {
+        return m_currentScope->addUpvalue((uint8_t)upvalueIndex, false);
+    }
+    return -1;
 }
 
 auto Compiler::returnStatement(std::vector<Token> const & tokens) -> void {
@@ -545,23 +607,6 @@ auto Compiler::statement(std::vector<Token> const & tokens) -> void {
     } else {
         expressionStatement(tokens);
     }
-}
-
-auto Compiler::resolveLocal(Token const & name, LocalScope const & scope) -> int {
-    for (auto i : std::views::iota(0u, scope.localCount()) | std::views::reverse) {
-        auto local = scope.local(i);
-        if (name.lexeme() == local.getToken().lexeme()) {
-            if (local.getDepth() == -1) {
-                error("Cannot read local variable in its own initializer");
-            }
-            return i;
-        }
-    }
-    // If the local wasn't found in the current scope, check the enclosing scope.
-    if (scope.enclosing().has_value()) {
-        return resolveLocal(name, *scope.enclosing().value());
-    }
-    return -1;
 }
 
 auto Compiler::string(std::vector<Token> const & tokens, bool canAssign) -> void {

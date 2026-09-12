@@ -14,27 +14,31 @@
  ****************************************************************************/
 
 /**
- * @file local.cpp
- * @brief This file contains the implementation of the Local class.
+ * @file object_upvalue.cpp
+ * @brief This file contains the implementation of the ObjectUpValue class.
  */
 
-#include "local.hpp"
+#include "object_upvalue.hpp"
 
-cppLox::Frontend::Local::Local(cppLox::Frontend::Token & token, std::int32_t depth) : m_depth(depth), m_token(token) {
+using namespace cppLox::Types;
+
+ObjectUpValue::ObjectUpValue(Value * location) : m_location(location) {
+    m_type = Object::Type::UPVALUE;
 }
 
-auto cppLox::Frontend::Local::getToken() const _NO_EXCEPT->cppLox::Frontend::Token const & {
-    return m_token;
+auto ObjectUpValue::location() const _NO_EXCEPT->Value * {
+    return m_location;
 }
 
-auto cppLox::Frontend::Local::getDepth() const _NO_EXCEPT->int32_t {
-    return m_depth;
+auto ObjectUpValue::setLocation(Value * location) -> void {
+    m_location = location;
 }
 
-auto cppLox::Frontend::Local::isCaptured() const _NO_EXCEPT->bool {
-    return m_isCaptured;
+auto ObjectUpValue::isClosed() const _NO_EXCEPT->bool {
+    return m_location == &m_closedValue;
 }
 
-auto cppLox::Frontend::Local::markCaptured() _NO_EXCEPT->void {
-    m_isCaptured = true;
+auto ObjectUpValue::close() -> void {
+    m_closedValue = *m_location;
+    m_location = &m_closedValue;
 }

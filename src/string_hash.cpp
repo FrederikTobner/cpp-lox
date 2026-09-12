@@ -14,27 +14,18 @@
  ****************************************************************************/
 
 /**
- * @file local.cpp
- * @brief This file contains the implementation of the Local class.
+ * @file string_hash.cpp
+ * @brief This file contains the implementation of the hash specialization for ObjectString.
  */
 
-#include "local.hpp"
+#include "string_hash.hpp"
 
-cppLox::Frontend::Local::Local(cppLox::Frontend::Token & token, std::int32_t depth) : m_depth(depth), m_token(token) {
+namespace std {
+auto hash<cppLox::Types::ObjectString>::operator()(cppLox::Types::ObjectString & s) const -> std::size_t {
+    return std::hash<std::string_view>{}(s.string());
 }
 
-auto cppLox::Frontend::Local::getToken() const _NO_EXCEPT->cppLox::Frontend::Token const & {
-    return m_token;
+auto hash<cppLox::Types::ObjectString>::operator()(cppLox::Types::ObjectString * s) const -> std::size_t {
+    return std::hash<std::string_view>{}(s->string());
 }
-
-auto cppLox::Frontend::Local::getDepth() const _NO_EXCEPT->int32_t {
-    return m_depth;
-}
-
-auto cppLox::Frontend::Local::isCaptured() const _NO_EXCEPT->bool {
-    return m_isCaptured;
-}
-
-auto cppLox::Frontend::Local::markCaptured() _NO_EXCEPT->void {
-    m_isCaptured = true;
-}
+} // namespace std

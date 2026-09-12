@@ -34,6 +34,7 @@
 #include "compilation_scope.hpp"
 #include "function_type.hpp"
 #include "parse_rule.hpp"
+#include "parse_rule_lookup_table_factory.hpp"
 #include "precedence.hpp"
 #include "token.hpp"
 
@@ -62,8 +63,14 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto advance(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles an AND expression.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the jump instruction in the chunk.
     auto and_(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles an argument list.
+    /// @param tokens The tokens that are compiled.
+    /// @return The number of arguments in the list.
     auto argumentList(std::vector<Token> const & tokens) -> uint8_t;
 
     /// @brief Begins a new scope.
@@ -140,6 +147,7 @@ class Compiler {
     /// @param loopStart The index of the loop start.
     auto inline emitLoop(int32_t loopStart) -> void;
 
+    /// @brief Emits a return instruction.
     auto inline emitReturn() -> void;
 
     /// @brief Ends the current scope.
@@ -172,8 +180,14 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto forStatement(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles a function declaration.
+    /// @param tokens The tokens that are compiled.
+    /// @return The index of the function in the chunk.
     auto funDeclaration(std::vector<Token> const & tokens) -> void;
 
+    /// @brief Compiles a function.
+    /// @param type The type of the function.
+    /// @param tokens  The tokens that are compiled.
     auto function(FunctionType type, std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a grouping expression.
@@ -204,8 +218,11 @@ class Compiler {
 
     /// @brief Makes a constant from the given value.
     /// @param value The value to make a constant from.
-    auto makeConstant(cppLox::Types::Value value) -> void;
+    /// @return The index of the constant in the chunk.
+    auto makeConstant(cppLox::Types::Value value) -> uint8_t;
 
+    /// @brief Marks the current variable as initialized.
+    /// @return The index of the variable in the chunk.
     auto markInitialized() -> void;
 
     /// @brief Matches the current token with the given type and advances to the next token if it matches.
@@ -254,6 +271,18 @@ class Compiler {
     /// @return The index of the variable in the chunk.
     [[nodiscard]] auto resolveLocal(Token const & name, LocalScope const & scope) -> int;
 
+    /// @brief Gets the base slot offset for the given scope.
+    /// @param scope The scope whose base offset should be computed.
+    /// @return The base slot offset for the scope.
+    [[nodiscard]] auto scopeBaseOffset(LocalScope const & scope) -> int;
+
+    /// @brief Resolves an upvalue.
+    /// @param name The name of the upvalue.
+    /// @return The index of the upvalue in the chunk, or -1 if the upvalue is not found.
+    [[nodiscard]] auto resolveUpvalue(Token const & name) -> int;
+
+    /// @brief Compiles a return statement
+    /// @param tokens The tpkens that are compiled
     auto returnStatement(std::vector<Token> const & tokens) -> void;
 
     /// @brief Compiles a statement.
@@ -286,88 +315,16 @@ class Compiler {
     /// @param tokens The tokens that are compiled.
     auto whileStatement(std::vector<Token> const & tokens) -> void;
 
-    /// @brief Creates the parsing rules for the different token types.
-    /// @return The rules for the different token types.
-    static std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> makeRules() {
-        std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> rules{};
-        rules[static_cast<size_t>(Token::Type::LEFT_PARENTHESES)] =
-            ParseRule<Compiler>(&Compiler::grouping, &Compiler::call, Precedence::CALL);
-        rules[static_cast<size_t>(Token::Type::RIGHT_PARENTHESES)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::LEFT_BRACE)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::RIGHT_BRACE)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::COMMA)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::DOT)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::MINUS)] =
-            ParseRule<Compiler>(&Compiler::unary, &Compiler::binary, Precedence::TERM);
-        rules[static_cast<size_t>(Token::Type::PLUS)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::TERM);
-        rules[static_cast<size_t>(Token::Type::SEMICOLON)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::SLASH)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::FACTOR);
-        rules[static_cast<size_t>(Token::Type::STAR)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::FACTOR);
-        rules[static_cast<size_t>(Token::Type::BANG)] =
-            ParseRule<Compiler>(&Compiler::unary, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::BANG_EQUAL)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
-        rules[static_cast<size_t>(Token::Type::EQUAL)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::EQUAL_EQUAL)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::EQUALITY);
-        rules[static_cast<size_t>(Token::Type::GREATER)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
-        rules[static_cast<size_t>(Token::Type::GREATER_EQUAL)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
-        rules[static_cast<size_t>(Token::Type::LESS)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
-        rules[static_cast<size_t>(Token::Type::LESS_EQUAL)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::binary, Precedence::COMPARISON);
-        rules[static_cast<size_t>(Token::Type::IDENTIFIER)] =
-            ParseRule<Compiler>(&Compiler::variable, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::STRING)] =
-            ParseRule<Compiler>(&Compiler::string, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::NUMBER)] =
-            ParseRule<Compiler>(&Compiler::number, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::AND)] =
-            ParseRule<Compiler>(std::nullopt, &Compiler::and_, Precedence::AND);
-        rules[static_cast<size_t>(Token::Type::CLASS)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::ELSE)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FALSE)] =
-            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FUN)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::FOR)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::IF)] = ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::NULL_)] =
-            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::OR)] = ParseRule<Compiler>(std::nullopt, &Compiler::or_, Precedence::OR);
-        rules[static_cast<size_t>(Token::Type::PRINT)] =
-            ParseRule<Compiler>(&Compiler::printStatement, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::RETURN)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::SUPER)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::THIS)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::TRUE)] =
-            ParseRule<Compiler>(&Compiler::literal, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::VAR)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::WHILE)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        rules[static_cast<size_t>(Token::Type::END_OF_FILE)] =
-            ParseRule<Compiler>(std::nullopt, std::nullopt, Precedence::NONE);
-        return rules;
-    }
+    template <typename T, typename... Checks> friend struct ParserTraits;
+
+    // Update friend declaration to match template constraints
+    template <typename PARSER>
+        requires PrattParserTrait<PARSER>::hasRequiredMethods
+    friend class ParseRuleLookupTableFactory;
+
+    template <typename T> friend class PrattParserTrait;
+
+    template <auto Method, typename Signature> friend struct cppLox::Traits::MethodSignatureCheck;
 
     /// @brief The token that was previously compiled.
     Token const * m_previous;
@@ -378,11 +335,13 @@ class Compiler {
     /// @brief The memory manager.
     std::shared_ptr<cppLox::MemoryMutator> m_memoryMutator;
     /// @brief The rules for the different token types.
-    static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules = makeRules();
+    static inline std::array<ParseRule<Compiler>, static_cast<size_t>(Token::Type::AMOUNT)> m_rules =
+        cppLox::Frontend::ParseRuleLookupTableFactory<Compiler>::createParseRules();
     /// @brief Whether the compiler is in panic mode.
     bool m_panicMode;
-    /// Whether the compilation resulted in an error.
+    /// @brief Whether the compilation resulted in an error.
     bool m_hadError;
+    /// @brief The current scope.
     std::shared_ptr<CompilationScope> m_currentScope;
 };
 } // namespace cppLox::Frontend

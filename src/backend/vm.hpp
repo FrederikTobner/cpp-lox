@@ -24,9 +24,12 @@
 #include <cstdint>
 #include <format>
 #include <functional>
+#include <vector>
 
 #include "../bytecode/chunk.hpp"
+#include "../language_features.hpp"
 #include "../memory_mutator.hpp"
+#include "../types/object_upvalue.hpp"
 #include "../types/value.hpp"
 #include "callframe.hpp"
 
@@ -75,7 +78,7 @@ class VM {
     auto push(CallFrame & frame, cppLox::Types::Value value) -> void;
 
     /// @brief Resets the stack
-    auto resetStack() noexcept -> void;
+    auto resetStack() _NO_EXCEPT->void;
 
   private:
     /// @brief Throws a runtime exception with the given message
@@ -90,14 +93,25 @@ class VM {
     /// @param frame The call frame
     auto callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void;
 
-    /// @brief Calls the given function with the given argument count
-    /// @param function The function to call
+    /// @brief Calls the given closure with the given argument count
+    /// @param closure The closure to call
     /// @param arg_count The amount of arguments to pass to the function
-    auto call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> void;
+    auto call(cppLox::Types::ObjectClosure & closure, uint8_t arg_count) -> void;
 
     /// @brief Runs the given function
     /// @param function The function to run
-    auto run(cppLox::Types::ObjectFunction & function) -> void;
+    auto run(cppLox::Types::ObjectClosure & closure) -> void;
+
+    /// @brief Captures the given stack slot as an upvalue, reusing an already open upvalue for that slot if one
+    /// exists.
+    /// @param local The stack slot to capture.
+    /// @return The upvalue that captures the given stack slot.
+    [[nodiscard]] auto captureUpvalue(cppLox::Types::Value * local) -> cppLox::Types::ObjectUpValue *;
+
+    /// @brief Closes every open upvalue that points at or above the given stack slot, copying the value it refers to
+    /// into the upvalue itself so that it remains valid after the stack slot is reused.
+    /// @param last The stack slot up to which (inclusive) upvalues should be closed.
+    auto closeUpvalues(cppLox::Types::Value * last) -> void;
 
     /// @brief Defines a native function with the given name and function
     /// @tparam ARITY The arity of the function
@@ -123,5 +137,9 @@ class VM {
 
     /// @brief The count of the current call frame
     size_t m_frame_count;
+
+    /// @brief The upvalues that are currently open, i.e. that still point into the stack instead of having been
+    /// closed over.
+    std::vector<cppLox::Types::ObjectUpValue *> m_openUpvalues;
 };
 } // namespace cppLox::Backend

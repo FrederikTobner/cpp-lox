@@ -14,27 +14,24 @@
  ****************************************************************************/
 
 /**
- * @file local.cpp
- * @brief This file contains the implementation of the Local class.
+ * @file upvalue.cpp
+ * @brief This file contains the implementation of the Upvalue class.
  */
 
-#include "local.hpp"
+#include "upvalue.hpp"
 
-cppLox::Frontend::Local::Local(cppLox::Frontend::Token & token, std::int32_t depth) : m_depth(depth), m_token(token) {
+using namespace cppLox::Frontend;
+
+Upvalue::Upvalue() : m_index(0), m_isLocal(false) {
 }
 
-auto cppLox::Frontend::Local::getToken() const _NO_EXCEPT->cppLox::Frontend::Token const & {
-    return m_token;
+Upvalue::Upvalue(uint8_t index, bool isLocal) : m_index(index), m_isLocal(isLocal) {
 }
 
-auto cppLox::Frontend::Local::getDepth() const _NO_EXCEPT->int32_t {
-    return m_depth;
+auto Upvalue::index() const _NO_EXCEPT->uint8_t {
+    return m_index;
 }
 
-auto cppLox::Frontend::Local::isCaptured() const _NO_EXCEPT->bool {
-    return m_isCaptured;
-}
-
-auto cppLox::Frontend::Local::markCaptured() _NO_EXCEPT->void {
-    m_isCaptured = true;
+auto Upvalue::isLocal() const _NO_EXCEPT->bool {
+    return m_isLocal;
 }

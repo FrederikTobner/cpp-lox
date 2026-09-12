@@ -26,6 +26,7 @@
 
 #include "../bytecode/opcode.hpp"
 #include "../error/runtime_exception.hpp"
+#include "../types/object_closure.hpp"
 #include "../types/object_formatter.hpp"
 #include "../types/object_native_fuction.hpp"
 #include "../types/object_string.hpp"
@@ -44,12 +45,14 @@ VM::VM(std::shared_ptr<cppLox::MemoryMutator> memoryMutator) {
 auto VM::interpret(cppLox::Types::ObjectFunction & function) -> void {
     m_stack_top = 0;
     m_frame_count = 0;
+    m_openUpvalues.clear();
+    auto closure = m_memoryMutator->create<cppLox::Types::ObjectClosure>(&function)->as<cppLox::Types::ObjectClosure>();
     push(m_frames[m_frame_count], cppLox::Types::Value(&function));
-    call(function, 0);
+    call(*closure, 0);
     return;
 }
 
-auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
+auto VM::run(cppLox::Types::ObjectClosure & closure) -> void {
     CallFrame * frame = &m_frames[m_frame_count - 1];
     for (;;) {
 #ifdef DEBUG_TRACE_EXECUTION
@@ -91,17 +94,40 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
                 callFunction(val, arg_count, *frame);
                 break;
             }
+        case cppLox::ByteCode::Opcode::CLOSURE:
+            {
+                uint8_t const constant = *frame->m_instruction_pointer++;
+                cppLox::Types::ObjectFunction * fun = closure.function()
+                                                          ->chunk()
+                                                          ->getConstant(constant)
+                                                          .as<cppLox::Types::Object *>()
+                                                          ->as<cppLox::Types::ObjectFunction>();
+                cppLox::Types::ObjectClosure * newClosure = m_memoryMutator->create<cppLox::Types::ObjectClosure>(fun)
+                                                                 ->as<cppLox::Types::ObjectClosure>();
+                for (uint16_t i = 0; i < fun->upvalueCount(); i++) {
+                    uint8_t const isLocal = *frame->m_instruction_pointer++;
+                    uint8_t const index = *frame->m_instruction_pointer++;
+                    if (isLocal) {
+                        newClosure->upvalues()[i] = captureUpvalue(&frame->m_slots[index + 1]);
+                    } else {
+                        newClosure->upvalues()[i] = frame->m_closure->upvalues()[index];
+                    }
+                }
+                push(*frame, cppLox::Types::Value(static_cast<cppLox::Types::Object *>(newClosure)));
+                break;
+            }
         case cppLox::ByteCode::Opcode::CONSTANT:
             {
                 uint8_t const constant = *frame->m_instruction_pointer++;
-                push(*frame, function.chunk()->getConstant(constant));
+                push(*frame, closure.function()->chunk()->getConstant(constant));
                 break;
             }
         case cppLox::ByteCode::Opcode::DEFINE_GLOBAL:
             {
                 uint8_t const constant = *frame->m_instruction_pointer++;
                 cppLox::Types::Value const value = pop(*frame);
-                if (m_memoryMutator->setGlobal(function.chunk()
+                if (m_memoryMutator->setGlobal(closure.function()
+                                                   ->chunk()
                                                    ->getConstant(constant)
                                                    .as<cppLox::Types::Object *>()
                                                    ->as<cppLox::Types::ObjectString>(),
@@ -127,7 +153,8 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
         case cppLox::ByteCode::Opcode::GET_GLOBAL:
             {
                 uint8_t const constant = *frame->m_instruction_pointer++;
-                cppLox::Types::Value const value = m_memoryMutator->getGlobal(frame->m_function->chunk()
+                cppLox::Types::Value const value = m_memoryMutator->getGlobal(frame->m_closure->function()
+                                                                                  ->chunk()
                                                                                   ->getConstant(constant)
                                                                                   .as<cppLox::Types::Object *>()
                                                                                   ->as<cppLox::Types::ObjectString>());
@@ -138,6 +165,12 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
             {
                 uint8_t const slot = *frame->m_instruction_pointer++;
                 push(*frame, frame->m_slots[slot + 1]);
+                break;
+            }
+        case cppLox::ByteCode::Opcode::GET_UPVALUE:
+            {
+                uint8_t const slot = *frame->m_instruction_pointer++;
+                push(*frame, *frame->m_closure->upvalues()[slot]->location());
                 break;
             }
         case cppLox::ByteCode::Opcode::GREATER:
@@ -206,6 +239,7 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
         case cppLox::ByteCode::Opcode::RETURN:
             {
                 cppLox::Types::Value const result = pop(*frame);
+                closeUpvalues(frame->m_slots);
                 m_frame_count--;
                 if (m_frame_count == 0) {
                     return;
@@ -222,7 +256,8 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
             {
                 uint8_t const constant = *frame->m_instruction_pointer++;
                 cppLox::Types::Value value = pop(*frame);
-                cppLox::Types::ObjectString * name = function.chunk()
+                cppLox::Types::ObjectString * name = closure.function()
+                                                         ->chunk()
                                                          ->getConstant(constant)
                                                          .as<cppLox::Types::Object *>()
                                                          ->as<cppLox::Types::ObjectString>();
@@ -236,6 +271,18 @@ auto VM::run(cppLox::Types::ObjectFunction & function) -> void {
             {
                 uint8_t const slot = *frame->m_instruction_pointer++;
                 frame->m_slots[slot + 1] = peek(*frame);
+                break;
+            }
+        case cppLox::ByteCode::Opcode::CLOSE_UPVALUE:
+            {
+                closeUpvalues(&m_stack[m_stack_top - 1]);
+                pop(*frame);
+                break;
+            }
+        case cppLox::ByteCode::Opcode::SET_UPVALUE:
+            {
+                uint8_t const slot = *frame->m_instruction_pointer++;
+                *frame->m_closure->upvalues()[slot]->location() = peek(*frame);
                 break;
             }
         case cppLox::ByteCode::Opcode::SUBTRACT:
@@ -275,9 +322,32 @@ auto VM::pop(CallFrame & frame) -> cppLox::Types::Value {
     return m_stack[m_stack_top - 1];
 }
 
-auto VM::resetStack() noexcept -> void {
+auto VM::resetStack() _NO_EXCEPT->void {
     m_stack_top = 0;
     m_frame_count = 0;
+    m_openUpvalues.clear();
+}
+
+[[nodiscard]] auto VM::captureUpvalue(cppLox::Types::Value * local) -> cppLox::Types::ObjectUpValue * {
+    for (cppLox::Types::ObjectUpValue * upvalue : m_openUpvalues) {
+        if (upvalue->location() == local) {
+            return upvalue;
+        }
+    }
+    cppLox::Types::ObjectUpValue * createdUpvalue =
+        m_memoryMutator->create<cppLox::Types::ObjectUpValue>(local)->as<cppLox::Types::ObjectUpValue>();
+    m_openUpvalues.push_back(createdUpvalue);
+    return createdUpvalue;
+}
+
+auto VM::closeUpvalues(cppLox::Types::Value * last) -> void {
+    std::erase_if(m_openUpvalues, [last](cppLox::Types::ObjectUpValue * upvalue) {
+        if (upvalue->location() >= last) {
+            upvalue->close();
+            return true;
+        }
+        return false;
+    });
 }
 
 [[nodiscard]] auto VM::getShort(CallFrame & frame) -> uint16_t {
@@ -289,7 +359,13 @@ auto VM::resetStack() noexcept -> void {
 
 auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame & frame) -> void {
     if (!value.is(cppLox::Types::Value::Type::OBJECT)) {
-        runTimeError(frame, "Can only call functions and classes");
+    runTimeError(frame, std::format("Can only call functions and classes, but got {}", value.getType() == cppLox::Types::Value::Type::NUMBER
+                                         ? "number"
+                                         : value.getType() == cppLox::Types::Value::Type::BOOL
+                                               ? "boolean"
+                                               : value.getType() == cppLox::Types::Value::Type::NULL_
+                                                     ? "null"
+                                                     : "unknown"));
     }
     cppLox::Types::Object * object = value.as<cppLox::Types::Object *>();
     if (object->is(cppLox::Types::Object::Type::FUNCTION)) {
@@ -297,7 +373,9 @@ auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame
         if (arg_count != function->arity()) {
             runTimeError(frame, "Expected %d arguments but got %d", function->arity(), arg_count);
         }
-        call(*function, arg_count);
+        cppLox::Types::ObjectClosure * closure =
+            m_memoryMutator->create<cppLox::Types::ObjectClosure>(function)->as<cppLox::Types::ObjectClosure>();
+        call(*closure, arg_count);
     } else if (object->is(cppLox::Types::Object::Type::NATIVE_FUNCTION)) {
         cppLox::Types::ObjectNativeFunction * function = object->as<cppLox::Types::ObjectNativeFunction>();
         auto arity = function->arity();
@@ -309,20 +387,23 @@ auto VM::callFunction(cppLox::Types::Value & value, uint8_t arg_count, CallFrame
                            [&](CallFrame & frame, std::string_view fmt) { runTimeError(frame, fmt); });
         m_stack_top -= arg_count + 1;
         push(frame, result);
+    } else if (object->is(cppLox::Types::Object::Type::CLOSURE)) {
+        cppLox::Types::ObjectClosure * closure = object->as<cppLox::Types::ObjectClosure>();
+        call(*closure, arg_count);
     } else {
-        runTimeError(frame, "Can only call functions and classes");
+        runTimeError(frame, std::format("Can only call functions and classes, but got {}", object->is(cppLox::Types::Object::Type::STRING) ? "string" : "unknown"));
     }
 }
 
-auto VM::call(cppLox::Types::ObjectFunction & function, uint8_t arg_count) -> void {
+auto VM::call(cppLox::Types::ObjectClosure & closure, uint8_t arg_count) -> void {
     if (m_frame_count == FRAME_MAX) {
         runTimeError(m_frames[m_frame_count - 1], "Stack overflow");
     }
     CallFrame * frame = &m_frames[m_frame_count++];
-    frame->m_function = &function;
-    frame->m_instruction_pointer = function.chunk()->code().data();
+    frame->m_closure = &closure;
+    frame->m_instruction_pointer = closure.function()->chunk()->code().data();
     frame->m_slots = m_stack + m_stack_top - arg_count - 1;
-    run(function);
+    run(closure);
 }
 
 template <int16_t ARITY>
@@ -331,7 +412,7 @@ auto VM::defineNative(std::string const & name,
                                                          std::function<void(CallFrame &, std::string_view fmt)>)>
                           function) -> void {
     static_assert(ARITY >= -1);
-    auto nameObj = m_memoryMutator->create<cppLox::Types::ObjectString>(name);
+    cppLox::Types::Object * nameObj = m_memoryMutator->create<cppLox::Types::ObjectString>(name);
     cppLox::Types::Object * nativeFunctionObj =
         m_memoryMutator->create<cppLox::Types::ObjectNativeFunction>(function, ARITY);
     push(m_frames[m_frame_count], cppLox::Types::Value(nameObj));
@@ -347,10 +428,12 @@ template <class... Args> auto VM::runTimeError(CallFrame & frame, std::string_vi
     for (auto callFrameIndex : std::views::iota(0u, m_frame_count - 1) | std::views::reverse) {
         CallFrame const & currentFrame = m_frames[callFrameIndex];
         size_t const instructionIndex =
-            (currentFrame.m_instruction_pointer - 1) - currentFrame.m_function->chunk()->code().data();
-        stackTrace.append(std::format(
-            "[line {}] in {}\n", currentFrame.m_function->chunk()->getLine(instructionIndex),
-            currentFrame.m_function->name()->string() == "" ? "script" : currentFrame.m_function->name()->string()));
+            (currentFrame.m_instruction_pointer - 1) - currentFrame.m_closure->function()->chunk()->code().data();
+        stackTrace.append(std::format("[line {}] in {}\n",
+                                      currentFrame.m_closure->function()->chunk()->getLine(instructionIndex),
+                                      currentFrame.m_closure->function()->name()->string() == ""
+                                          ? "script"
+                                          : currentFrame.m_closure->function()->name()->string()));
     }
     resetStack();
     throw cppLox::Error::RunTimeException(std::format("{}\n{}", errorMessage, stackTrace));

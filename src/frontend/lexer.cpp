@@ -33,6 +33,9 @@ using namespace cppLox::Frontend;
     this->m_tokens.clear();
     while (!isAtEnd(source)) {
         skipWhitespace(source);
+        if (isAtEnd(source)) {
+            break;
+        }
         m_start = m_current;
         scanToken(source);
     }

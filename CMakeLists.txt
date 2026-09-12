@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # CMake Macros
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-include(Base)
+include(Options)
 
 # CMake Options
 clx_option(CLX_DEBUG_PRINT_BYTECODE "Determines whether the chunks are dissassembled and the bytecode is printed" OFF)
@@ -20,8 +20,9 @@ file(GLOB_RECURSE INTERPRETER_SOURCES src/*.cpp)
 add_subdirectory(src)
 
 if(CLX_BUILD_TESTS)
+    # Enables testing for the current directory and below
     enable_testing()
-    # Remove main.cpp from the sources, as it is not needed for the tests
+    # Remove main.cpp from the sources, because the tests have their own main
     list(REMOVE_ITEM INTERPRETER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
     add_subdirectory(test)
 endif()

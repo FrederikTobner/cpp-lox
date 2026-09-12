@@ -20,6 +20,8 @@
 
 #include "compilation_scope.hpp"
 
+#include <ranges>
+
 using namespace cppLox::Frontend;
 
 CompilationScope::CompilationScope(cppLox::Types::ObjectFunction * function, FunctionType type) {
@@ -66,4 +68,22 @@ auto CompilationScope::beginNewScope() -> void {
 auto CompilationScope::endScope() -> void {
     m_scopeDepth--;
     m_localScope = m_localScope->enclosing().value();
+}
+
+auto CompilationScope::addUpvalue(uint8_t index, bool isLocal) -> uint8_t {
+    Upvalue * upvalue = nullptr;
+    uint8_t upvalueCount = m_function->upvalueCount();
+    for (auto i : std::views::iota(0u, upvalueCount) | std::views::reverse) {
+        upvalue = &m_upvalues[i];
+        if (upvalue->index() == index && upvalue->isLocal() == isLocal) {
+            return i;
+        }
+    }
+    m_upvalues[upvalueCount] = Upvalue(index, isLocal);
+    m_function->incrementUpvalueCount();
+    return upvalueCount;
+}
+
+auto CompilationScope::upvalue(uint8_t index) -> Upvalue & {
+    return m_upvalues[index];
 }

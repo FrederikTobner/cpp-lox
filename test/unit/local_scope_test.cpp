@@ -62,3 +62,27 @@ TEST_F(LocalScopeTest, PopLocal) {
     // Assert
     ASSERT_EQ(localScope->localCount(), 0);
 }
+
+TEST_F(LocalScopeTest, MarkCaptured) {
+    // Arrange
+    cppLox::Frontend::Token token(cppLox::Frontend::Token::Type::IDENTIFIER, "test", 123);
+    localScope->addLocal(token, [](std::string &) {});
+
+    // Act
+    localScope->markCaptured(0);
+
+    // Assert
+    ASSERT_TRUE(localScope->local(0).isCaptured());
+}
+
+TEST_F(LocalScopeTest, LocalsNotCapturedByDefault) {
+    // Arrange
+    cppLox::Frontend::Token token(cppLox::Frontend::Token::Type::IDENTIFIER, "test", 123);
+    localScope->addLocal(token, [](std::string &) {});
+
+    // Act
+    auto result = localScope->local(0).isCaptured();
+
+    // Assert
+    ASSERT_FALSE(result);
+}

@@ -53,6 +53,10 @@ auto LocalScope::markInitialized(uint16_t depth) -> void {
     m_locals[m_localCount - 1]->m_depth = depth;
 }
 
+auto LocalScope::markCaptured(uint16_t index) -> void {
+    m_locals[index]->markCaptured();
+}
+
 auto LocalScope::popLocal() -> void {
     m_localCount--;
 }

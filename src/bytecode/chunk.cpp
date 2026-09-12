@@ -24,6 +24,7 @@
 #include <iomanip>
 #include <iostream>
 
+#include "../types/object_function.hpp"
 #include "../types/value_formatter.hpp"
 #include "opcode_formatter.hpp"
 
@@ -66,6 +67,26 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
         return simpleInstruction(instruction, offset);
     case Opcode::CALL:
         return byteInstruction(instruction, offset);
+    case Opcode::CLOSURE:
+        {
+            offset++;
+            uint8_t constant = m_code[offset];
+            offset++;
+            std::cout << std::format("{:>16} {} {}\n", static_cast<Opcode>(instruction), unsigned(constant),
+                                     m_constants[constant]);
+            auto * function = m_constants[constant]
+                                  .as<cppLox::Types::Object *>()
+                                  ->as<cppLox::Types::ObjectFunction>();
+            for (uint16_t i = 0; i < function->upvalueCount(); i++) {
+                uint8_t const isLocal = m_code[offset++];
+                uint8_t const index = m_code[offset++];
+                std::cout << std::format("{:#06X}      |                     {} {}\n", offset - 2,
+                                         isLocal ? "local" : "upvalue", unsigned(index));
+            }
+            return offset;
+        }
+    case Opcode::CLOSE_UPVALUE:
+        return simpleInstruction(instruction, offset);
     case Opcode::CONSTANT:
         return constantInstruction(instruction, offset);
     case Opcode::DEFINE_GLOBAL:
@@ -79,6 +100,8 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     case Opcode::GET_GLOBAL:
         return constantInstruction(instruction, offset);
     case Opcode::GET_LOCAL:
+        return byteInstruction(instruction, offset);
+    case Opcode::GET_UPVALUE:
         return byteInstruction(instruction, offset);
     case Opcode::GREATER:
         return simpleInstruction(instruction, offset);
@@ -113,6 +136,8 @@ auto Chunk::disassembleInstruction(size_t offset) const -> size_t {
     case Opcode::SET_GLOBAL:
         return constantInstruction(instruction, offset);
     case Opcode::SET_LOCAL:
+        return byteInstruction(instruction, offset);
+    case Opcode::SET_UPVALUE:
         return byteInstruction(instruction, offset);
     case Opcode::SUBTRACT:
         return simpleInstruction(instruction, offset);
@@ -164,7 +189,7 @@ auto Chunk::getSize() const -> size_t {
     return m_code.size();
 }
 
-[[nodiscard]] auto Chunk::code() -> std::vector<uint8_t> & {
+auto Chunk::code() -> std::vector<uint8_t> & {
     return m_code;
 }
 

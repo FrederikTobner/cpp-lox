@@ -22,8 +22,10 @@
 
 #include <cstdint>
 
-#include "../types/object_function.hpp"
+#include "../language_features.hpp"
+#include "../types/object_closure.hpp"
 #include "../types/value.hpp"
+
 
 namespace cppLox::Backend {
 
@@ -40,25 +42,25 @@ class CallFrame {
     CallFrame() = default;
 
     /// @brief Constructs a new call frame.
-    /// @param function The function to call.
+    /// @param closure The closure to use.
     /// @param slots The slots to use.
-    CallFrame(cppLox::Types::ObjectFunction * function, cppLox::Types::Value * slots);
+    CallFrame(cppLox::Types::ObjectClosure * closure, cppLox::Types::Value * slots);
 
-    /// @brief Gets the function of the call frame.
-    /// @return The function of the call frame.
-    [[nodiscard]] auto function() const noexcept -> cppLox::Types::ObjectFunction *;
+    /// @brief Gets the closure of the call frame.
+    /// @return The closure of the call frame.
+    [[nodiscard]] auto closure() const _NO_EXCEPT->cppLox::Types::ObjectClosure *;
 
     /// @brief Gets the instruction pointer of the call frame.
     /// @return The instruction pointer of the call frame.
-    [[nodiscard]] auto instructionPointer() const noexcept -> uint8_t *;
+    [[nodiscard]] auto instructionPointer() const _NO_EXCEPT->uint8_t *;
 
     /// @brief Gets the slots of the call frame.
     /// @return The slots of the call frame.
-    [[nodiscard]] auto slots() const noexcept -> cppLox::Types::Value *;
+    [[nodiscard]] auto slots() const _NO_EXCEPT->cppLox::Types::Value *;
 
   private:
     /// @brief The function of the call frame.
-    cppLox::Types::ObjectFunction * m_function;
+    cppLox::Types::ObjectClosure * m_closure;
 
     /// @brief The instruction pointer of the call frame.
     uint8_t * m_instruction_pointer;

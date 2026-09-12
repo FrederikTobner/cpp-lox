@@ -20,6 +20,7 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <vector>
 
@@ -29,26 +30,27 @@
 namespace cppLox::Frontend {
 
 /// @brief A parserule for the Pratt parser.
-/// @tparam T The type of the parser / compiler.
-template <typename T> class ParseRule {
+/// @tparam PARSER The type of the parser.
+template <typename PARSER> class ParseRule {
+
   public:
     /// @brief Trivial constructor of the parse rule.
     ParseRule();
 
     /// @brief Constructs a new parse rule.
-    ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> prefix,
-              std::optional<void (T::*)(std::vector<Token> const & tokens)> infix, Precedence precedence);
+    ParseRule(std::optional<std::function<void(PARSER *, std::vector<Token> const &, bool)>> prefix,
+              std::optional<std::function<void(PARSER *, std::vector<Token> const &)>> infix, Precedence precedence);
 
     /// @brief Destructor of the parse rule.
     ~ParseRule() = default;
 
     /// @brief Gets the prefix function of the rule.
     /// @return An optional containing the prefix function of the rule.
-    [[nodiscard]] auto prefix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)>;
+    [[nodiscard]] auto prefix() const -> std::optional<std::function<void(PARSER *, std::vector<Token> const &, bool)>>;
 
     /// @brief Gets the infix function of the rule.
     /// @return An optional containing the infix function of the rule.
-    [[nodiscard]] auto infix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens)>;
+    [[nodiscard]] auto infix() const -> std::optional<std::function<void(PARSER *, std::vector<Token> const &)>>;
 
     /// @brief Gets the precedence of the rule.
     /// @return The precedence of the rule.
@@ -59,34 +61,36 @@ template <typename T> class ParseRule {
     Precedence m_precedence;
 
     /// @brief The prefix function of the rule.
-    std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> m_prefix;
+    std::optional<std::function<void(PARSER *, std::vector<Token> const &, bool)>> m_prefix;
 
     /// @brief The infix function of the rule.
-    std::optional<void (T::*)(std::vector<Token> const & tokens)> m_infix;
+    std::optional<std::function<void(PARSER *, std::vector<Token> const &)>> m_infix;
 };
 
-template <typename T>
-ParseRule<T>::ParseRule() : m_prefix(std::nullopt), m_infix(std::nullopt), m_precedence(Precedence::NONE) {
+template <typename PARSER>
+ParseRule<PARSER>::ParseRule() : m_prefix(std::nullopt), m_infix(std::nullopt), m_precedence(Precedence::NONE) {
 }
 
-template <typename T>
-ParseRule<T>::ParseRule(std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> prefix,
-                        std::optional<void (T::*)(std::vector<Token> const & tokens)> infix, Precedence precedence)
+template <typename PARSER>
+ParseRule<PARSER>::ParseRule(std::optional<std::function<void(PARSER *, std::vector<Token> const &, bool)>> prefix,
+                             std::optional<std::function<void(PARSER *, std::vector<Token> const &)>> infix,
+                             Precedence precedence)
     : m_prefix(prefix), m_infix(infix), m_precedence(precedence) {
 }
 
-template <typename T>
-[[nodiscard]] auto ParseRule<T>::prefix() const
-    -> std::optional<void (T::*)(std::vector<Token> const & tokens, bool canAssign)> {
+template <typename PARSER>
+[[nodiscard]] auto ParseRule<PARSER>::prefix() const
+    -> std::optional<std::function<void(PARSER *, std::vector<Token> const &, bool)>> {
     return m_prefix;
 }
 
-template <typename T>
-[[nodiscard]] auto ParseRule<T>::infix() const -> std::optional<void (T::*)(std::vector<Token> const & tokens)> {
+template <typename PARSER>
+[[nodiscard]] auto ParseRule<PARSER>::infix() const
+    -> std::optional<std::function<void(PARSER *, std::vector<Token> const &)>> {
     return m_infix;
 }
 
-template <typename T> [[nodiscard]] auto ParseRule<T>::precedence() -> Precedence const & {
+template <typename PARSER> [[nodiscard]] auto ParseRule<PARSER>::precedence() -> Precedence const & {
     return m_precedence;
 }
 

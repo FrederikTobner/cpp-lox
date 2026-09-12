@@ -34,6 +34,10 @@ enum Opcode : uint8_t {
     ADD,
     /// @brief Calls the function at the given index on the stack.
     CALL,
+    /// @brief Creates a closure and pushes it onto the stack.
+    CLOSURE,
+    /// @brief Closes the upvalue for the top value on the stack and pops it off the stack.
+    CLOSE_UPVALUE,
     /// @brief Pushes the given constant onto the stack.
     CONSTANT,
     /// @brief Defines a global variable
@@ -49,6 +53,8 @@ enum Opcode : uint8_t {
     GET_GLOBAL,
     /// @brief Gets the value of the local variable with the given index on the stack and pushes it onto the stack.
     GET_LOCAL,
+    /// @brief Gets the value of the upvalue with the given index on the stack and pushes it onto the stack.
+    GET_UPVALUE,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
     GREATER,
     /// @brief Pops the top two values off the stack, compares them, and pushes the result back on the stack.
@@ -83,6 +89,8 @@ enum Opcode : uint8_t {
     SET_GLOBAL,
     /// @brief Sets the local variable with the given index on the stack.
     SET_LOCAL,
+    /// @brief Sets the upvalue with the given index on the stack.
+    SET_UPVALUE,
     /// @brief Pops the top two values off the stack, subtracts them, and pushes the result back on the stack.
     SUBTRACT,
     /// @brief Pushes the true value onto the stack.

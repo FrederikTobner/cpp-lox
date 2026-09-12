@@ -14,27 +14,26 @@
  ****************************************************************************/
 
 /**
- * @file local.cpp
- * @brief This file contains the implementation of the Local class.
+ * @file object_closure.cpp
+ * @brief This file contains the implementation of the ObjectClosure class.
  */
 
-#include "local.hpp"
+#include "object_closure.hpp"
 
-cppLox::Frontend::Local::Local(cppLox::Frontend::Token & token, std::int32_t depth) : m_depth(depth), m_token(token) {
+#include <ranges>
+
+using namespace cppLox::Types;
+
+ObjectClosure::ObjectClosure(ObjectFunction * function) : m_function(function) {
+    m_type = Object::Type::CLOSURE;
+    // Initialize the upvalues with nullptr
+    m_upvalues.resize(function->upvalueCount(), nullptr);
 }
 
-auto cppLox::Frontend::Local::getToken() const _NO_EXCEPT->cppLox::Frontend::Token const & {
-    return m_token;
+auto ObjectClosure::function() const _NO_EXCEPT->ObjectFunction * {
+    return m_function;
 }
 
-auto cppLox::Frontend::Local::getDepth() const _NO_EXCEPT->int32_t {
-    return m_depth;
-}
-
-auto cppLox::Frontend::Local::isCaptured() const _NO_EXCEPT->bool {
-    return m_isCaptured;
-}
-
-auto cppLox::Frontend::Local::markCaptured() _NO_EXCEPT->void {
-    m_isCaptured = true;
+auto ObjectClosure::upvalues() _NO_EXCEPT->std::vector<ObjectUpValue *> & {
+    return m_upvalues;
 }

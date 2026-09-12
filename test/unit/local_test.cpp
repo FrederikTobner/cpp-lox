@@ -27,3 +27,19 @@ TEST_F(LocalTest, GetDepth) {
     // Assert
     ASSERT_EQ(result, 321);
 }
+
+TEST_F(LocalTest, IsCapturedInitiallyFalse) {
+    // Act
+    auto result = local.isCaptured();
+
+    // Assert
+    ASSERT_FALSE(result);
+}
+
+TEST_F(LocalTest, MarkCaptured) {
+    // Act
+    local.markCaptured();
+
+    // Assert
+    ASSERT_TRUE(local.isCaptured());
+}
